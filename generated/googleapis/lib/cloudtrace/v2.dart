@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudtrace.v2;
 
@@ -32,20 +50,19 @@ class CloudtraceApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudtraceApi(http.Client client,
       {core.String rootUrl = "https://cloudtrace.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsTracesResourceApi get traces =>
-      new ProjectsTracesResourceApi(_requester);
+  ProjectsTracesResourceApi get traces => ProjectsTracesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -54,7 +71,7 @@ class ProjectsTracesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsTracesSpansResourceApi get spans =>
-      new ProjectsTracesSpansResourceApi(_requester);
+      ProjectsTracesSpansResourceApi(_requester);
 
   ProjectsTracesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -80,20 +97,22 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> batchWrite(
-      BatchWriteSpansRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchWriteSpansRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -103,13 +122,16 @@ class ProjectsTracesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/traces:batchWrite';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -143,20 +165,23 @@ class ProjectsTracesSpansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Span> createSpan(Span request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Span> createSpan(
+    Span request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -164,13 +189,16 @@ class ProjectsTracesSpansResourceApi {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Span.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Span.fromJson(data));
   }
 }
 
@@ -188,21 +216,21 @@ class Annotation {
 
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = new Attributes.fromJson(_json["attributes"]);
+      attributes = Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("description")) {
-      description = new TruncatableString.fromJson(_json["description"]);
+      description = TruncatableString.fromJson(_json["description"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = (attributes).toJson();
+      _json["attributes"] = attributes.toJson();
     }
     if (description != null) {
-      _json["description"] = (description).toJson();
+      _json["description"] = description.toJson();
     }
     return _json;
   }
@@ -229,13 +257,13 @@ class AttributeValue {
       intValue = _json["intValue"];
     }
     if (_json.containsKey("stringValue")) {
-      stringValue = new TruncatableString.fromJson(_json["stringValue"]);
+      stringValue = TruncatableString.fromJson(_json["stringValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -243,7 +271,7 @@ class AttributeValue {
       _json["intValue"] = intValue;
     }
     if (stringValue != null) {
-      _json["stringValue"] = (stringValue).toJson();
+      _json["stringValue"] = stringValue.toJson();
     }
     return _json;
   }
@@ -269,7 +297,7 @@ class Attributes {
     if (_json.containsKey("attributeMap")) {
       attributeMap = commons.mapMap<core.Map, AttributeValue>(
           _json["attributeMap"].cast<core.String, core.Map>(),
-          (core.Map item) => new AttributeValue.fromJson(item));
+          (core.Map item) => AttributeValue.fromJson(item));
     }
     if (_json.containsKey("droppedAttributesCount")) {
       droppedAttributesCount = _json["droppedAttributesCount"];
@@ -278,11 +306,11 @@ class Attributes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributeMap != null) {
       _json["attributeMap"] =
           commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(
-              attributeMap, (AttributeValue item) => (item).toJson());
+              attributeMap, (AttributeValue item) => item.toJson());
     }
     if (droppedAttributesCount != null) {
       _json["droppedAttributesCount"] = droppedAttributesCount;
@@ -302,16 +330,16 @@ class BatchWriteSpansRequest {
   BatchWriteSpansRequest.fromJson(core.Map _json) {
     if (_json.containsKey("spans")) {
       spans = (_json["spans"] as core.List)
-          .map<Span>((value) => new Span.fromJson(value))
+          .map<Span>((value) => Span.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (spans != null) {
-      _json["spans"] = spans.map((value) => (value).toJson()).toList();
+      _json["spans"] = spans.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -329,7 +357,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -360,7 +388,7 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = new Attributes.fromJson(_json["attributes"]);
+      attributes = Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("spanId")) {
       spanId = _json["spanId"];
@@ -375,9 +403,9 @@ class Link {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = (attributes).toJson();
+      _json["attributes"] = attributes.toJson();
     }
     if (spanId != null) {
       _json["spanId"] = spanId;
@@ -410,19 +438,19 @@ class Links {
     }
     if (_json.containsKey("link")) {
       link = (_json["link"] as core.List)
-          .map<Link>((value) => new Link.fromJson(value))
+          .map<Link>((value) => Link.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (droppedLinksCount != null) {
       _json["droppedLinksCount"] = droppedLinksCount;
     }
     if (link != null) {
-      _json["link"] = link.map((value) => (value).toJson()).toList();
+      _json["link"] = link.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -468,7 +496,7 @@ class MessageEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compressedSizeBytes != null) {
       _json["compressedSizeBytes"] = compressedSizeBytes;
     }
@@ -499,21 +527,21 @@ class Module {
 
   Module.fromJson(core.Map _json) {
     if (_json.containsKey("buildId")) {
-      buildId = new TruncatableString.fromJson(_json["buildId"]);
+      buildId = TruncatableString.fromJson(_json["buildId"]);
     }
     if (_json.containsKey("module")) {
-      module = new TruncatableString.fromJson(_json["module"]);
+      module = TruncatableString.fromJson(_json["module"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (buildId != null) {
-      _json["buildId"] = (buildId).toJson();
+      _json["buildId"] = buildId.toJson();
     }
     if (module != null) {
-      _json["module"] = (module).toJson();
+      _json["module"] = module.toJson();
     }
     return _json;
   }
@@ -610,19 +638,19 @@ class Span {
 
   Span.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = new Attributes.fromJson(_json["attributes"]);
+      attributes = Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("childSpanCount")) {
       childSpanCount = _json["childSpanCount"];
     }
     if (_json.containsKey("displayName")) {
-      displayName = new TruncatableString.fromJson(_json["displayName"]);
+      displayName = TruncatableString.fromJson(_json["displayName"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("links")) {
-      links = new Links.fromJson(_json["links"]);
+      links = Links.fromJson(_json["links"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -640,36 +668,36 @@ class Span {
       spanKind = _json["spanKind"];
     }
     if (_json.containsKey("stackTrace")) {
-      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+      stackTrace = StackTrace.fromJson(_json["stackTrace"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
     if (_json.containsKey("timeEvents")) {
-      timeEvents = new TimeEvents.fromJson(_json["timeEvents"]);
+      timeEvents = TimeEvents.fromJson(_json["timeEvents"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = (attributes).toJson();
+      _json["attributes"] = attributes.toJson();
     }
     if (childSpanCount != null) {
       _json["childSpanCount"] = childSpanCount;
     }
     if (displayName != null) {
-      _json["displayName"] = (displayName).toJson();
+      _json["displayName"] = displayName.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (links != null) {
-      _json["links"] = (links).toJson();
+      _json["links"] = links.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -687,16 +715,16 @@ class Span {
       _json["spanKind"] = spanKind;
     }
     if (stackTrace != null) {
-      _json["stackTrace"] = (stackTrace).toJson();
+      _json["stackTrace"] = stackTrace.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (timeEvents != null) {
-      _json["timeEvents"] = (timeEvents).toJson();
+      _json["timeEvents"] = timeEvents.toJson();
     }
     return _json;
   }
@@ -737,49 +765,49 @@ class StackFrame {
       columnNumber = _json["columnNumber"];
     }
     if (_json.containsKey("fileName")) {
-      fileName = new TruncatableString.fromJson(_json["fileName"]);
+      fileName = TruncatableString.fromJson(_json["fileName"]);
     }
     if (_json.containsKey("functionName")) {
-      functionName = new TruncatableString.fromJson(_json["functionName"]);
+      functionName = TruncatableString.fromJson(_json["functionName"]);
     }
     if (_json.containsKey("lineNumber")) {
       lineNumber = _json["lineNumber"];
     }
     if (_json.containsKey("loadModule")) {
-      loadModule = new Module.fromJson(_json["loadModule"]);
+      loadModule = Module.fromJson(_json["loadModule"]);
     }
     if (_json.containsKey("originalFunctionName")) {
       originalFunctionName =
-          new TruncatableString.fromJson(_json["originalFunctionName"]);
+          TruncatableString.fromJson(_json["originalFunctionName"]);
     }
     if (_json.containsKey("sourceVersion")) {
-      sourceVersion = new TruncatableString.fromJson(_json["sourceVersion"]);
+      sourceVersion = TruncatableString.fromJson(_json["sourceVersion"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (columnNumber != null) {
       _json["columnNumber"] = columnNumber;
     }
     if (fileName != null) {
-      _json["fileName"] = (fileName).toJson();
+      _json["fileName"] = fileName.toJson();
     }
     if (functionName != null) {
-      _json["functionName"] = (functionName).toJson();
+      _json["functionName"] = functionName.toJson();
     }
     if (lineNumber != null) {
       _json["lineNumber"] = lineNumber;
     }
     if (loadModule != null) {
-      _json["loadModule"] = (loadModule).toJson();
+      _json["loadModule"] = loadModule.toJson();
     }
     if (originalFunctionName != null) {
-      _json["originalFunctionName"] = (originalFunctionName).toJson();
+      _json["originalFunctionName"] = originalFunctionName.toJson();
     }
     if (sourceVersion != null) {
-      _json["sourceVersion"] = (sourceVersion).toJson();
+      _json["sourceVersion"] = sourceVersion.toJson();
     }
     return _json;
   }
@@ -802,19 +830,19 @@ class StackFrames {
     }
     if (_json.containsKey("frame")) {
       frame = (_json["frame"] as core.List)
-          .map<StackFrame>((value) => new StackFrame.fromJson(value))
+          .map<StackFrame>((value) => StackFrame.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (droppedFramesCount != null) {
       _json["droppedFramesCount"] = droppedFramesCount;
     }
     if (frame != null) {
-      _json["frame"] = frame.map((value) => (value).toJson()).toList();
+      _json["frame"] = frame.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -837,7 +865,7 @@ class StackTrace {
 
   StackTrace.fromJson(core.Map _json) {
     if (_json.containsKey("stackFrames")) {
-      stackFrames = new StackFrames.fromJson(_json["stackFrames"]);
+      stackFrames = StackFrames.fromJson(_json["stackFrames"]);
     }
     if (_json.containsKey("stackTraceHashId")) {
       stackTraceHashId = _json["stackTraceHashId"];
@@ -846,9 +874,9 @@ class StackTrace {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (stackFrames != null) {
-      _json["stackFrames"] = (stackFrames).toJson();
+      _json["stackFrames"] = stackFrames.toJson();
     }
     if (stackTraceHashId != null) {
       _json["stackTraceHashId"] = stackTraceHashId;
@@ -898,7 +926,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -927,10 +955,10 @@ class TimeEvent {
 
   TimeEvent.fromJson(core.Map _json) {
     if (_json.containsKey("annotation")) {
-      annotation = new Annotation.fromJson(_json["annotation"]);
+      annotation = Annotation.fromJson(_json["annotation"]);
     }
     if (_json.containsKey("messageEvent")) {
-      messageEvent = new MessageEvent.fromJson(_json["messageEvent"]);
+      messageEvent = MessageEvent.fromJson(_json["messageEvent"]);
     }
     if (_json.containsKey("time")) {
       time = _json["time"];
@@ -939,12 +967,12 @@ class TimeEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (annotation != null) {
-      _json["annotation"] = (annotation).toJson();
+      _json["annotation"] = annotation.toJson();
     }
     if (messageEvent != null) {
-      _json["messageEvent"] = (messageEvent).toJson();
+      _json["messageEvent"] = messageEvent.toJson();
     }
     if (time != null) {
       _json["time"] = time;
@@ -979,14 +1007,14 @@ class TimeEvents {
     }
     if (_json.containsKey("timeEvent")) {
       timeEvent = (_json["timeEvent"] as core.List)
-          .map<TimeEvent>((value) => new TimeEvent.fromJson(value))
+          .map<TimeEvent>((value) => TimeEvent.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (droppedAnnotationsCount != null) {
       _json["droppedAnnotationsCount"] = droppedAnnotationsCount;
     }
@@ -994,7 +1022,7 @@ class TimeEvents {
       _json["droppedMessageEventsCount"] = droppedMessageEventsCount;
     }
     if (timeEvent != null) {
-      _json["timeEvent"] = timeEvent.map((value) => (value).toJson()).toList();
+      _json["timeEvent"] = timeEvent.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1026,7 +1054,7 @@ class TruncatableString {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (truncatedByteCount != null) {
       _json["truncatedByteCount"] = truncatedByteCount;
     }

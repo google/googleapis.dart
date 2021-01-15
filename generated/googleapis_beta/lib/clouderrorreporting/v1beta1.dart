@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.clouderrorreporting.v1beta1;
 
@@ -26,24 +44,22 @@ class ClouderrorreportingApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   ClouderrorreportingApi(http.Client client,
       {core.String rootUrl = "https://clouderrorreporting.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsEventsResourceApi get events =>
-      new ProjectsEventsResourceApi(_requester);
+  ProjectsEventsResourceApi get events => ProjectsEventsResourceApi(_requester);
   ProjectsGroupStatsResourceApi get groupStats =>
-      new ProjectsGroupStatsResourceApi(_requester);
-  ProjectsGroupsResourceApi get groups =>
-      new ProjectsGroupsResourceApi(_requester);
+      ProjectsGroupStatsResourceApi(_requester);
+  ProjectsGroupsResourceApi get groups => ProjectsGroupsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -68,17 +84,19 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DeleteEventsResponse> deleteEvents(core.String projectName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DeleteEventsResponse> deleteEvents(
+    core.String projectName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError("Parameter projectName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -88,13 +106,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeleteEventsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeleteEventsResponse.fromJson(data));
   }
 }
 
@@ -155,24 +176,26 @@ class ProjectsEventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListEventsResponse> list(core.String projectName,
-      {core.int pageSize,
-      core.String timeRange_period,
-      core.String serviceFilter_service,
-      core.String pageToken,
-      core.String serviceFilter_version,
-      core.String groupId,
-      core.String serviceFilter_resourceType,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListEventsResponse> list(
+    core.String projectName, {
+    core.int pageSize,
+    core.String timeRange_period,
+    core.String serviceFilter_service,
+    core.String pageToken,
+    core.String serviceFilter_version,
+    core.String groupId,
+    core.String serviceFilter_resourceType,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError("Parameter projectName is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -203,13 +226,16 @@ class ProjectsEventsResourceApi {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListEventsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListEventsResponse.fromJson(data));
   }
 
   /// Report an individual error event. This endpoint accepts **either** an
@@ -241,20 +267,22 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReportErrorEventResponse> report(
-      ReportedErrorEvent request, core.String projectName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ReportedErrorEvent request,
+    core.String projectName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError("Parameter projectName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -264,14 +292,16 @@ class ProjectsEventsResourceApi {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events:report';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ReportErrorEventResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReportErrorEventResponse.fromJson(data));
   }
 }
 
@@ -369,28 +399,30 @@ class ProjectsGroupStatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGroupStatsResponse> list(core.String projectName,
-      {core.String serviceFilter_service,
-      core.String pageToken,
-      core.List<core.String> groupId,
-      core.String timeRange_period,
-      core.String serviceFilter_resourceType,
-      core.String order,
-      core.String serviceFilter_version,
-      core.String alignmentTime,
-      core.String alignment,
-      core.String timedCountDuration,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGroupStatsResponse> list(
+    core.String projectName, {
+    core.String serviceFilter_service,
+    core.String pageToken,
+    core.List<core.String> groupId,
+    core.String timeRange_period,
+    core.String serviceFilter_resourceType,
+    core.String order,
+    core.String serviceFilter_version,
+    core.String alignmentTime,
+    core.String alignment,
+    core.String timedCountDuration,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectName == null) {
-      throw new core.ArgumentError("Parameter projectName is required.");
+      throw core.ArgumentError("Parameter projectName is required.");
     }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
@@ -433,13 +465,16 @@ class ProjectsGroupStatsResourceApi {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/groupStats';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListGroupStatsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListGroupStatsResponse.fromJson(data));
   }
 }
 
@@ -469,16 +504,19 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ErrorGroup> get(core.String groupName, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ErrorGroup> get(
+    core.String groupName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (groupName == null) {
-      throw new core.ArgumentError("Parameter groupName is required.");
+      throw core.ArgumentError("Parameter groupName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -486,13 +524,16 @@ class ProjectsGroupsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ErrorGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ErrorGroup.fromJson(data));
   }
 
   /// Replace the data for the specified group. Fails if the group does not
@@ -516,20 +557,23 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ErrorGroup> update(ErrorGroup request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ErrorGroup> update(
+    ErrorGroup request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -537,13 +581,16 @@ class ProjectsGroupsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ErrorGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ErrorGroup.fromJson(data));
   }
 }
 
@@ -555,7 +602,7 @@ class DeleteEventsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -589,14 +636,14 @@ class ErrorContext {
 
   ErrorContext.fromJson(core.Map _json) {
     if (_json.containsKey("httpRequest")) {
-      httpRequest = new HttpRequestContext.fromJson(_json["httpRequest"]);
+      httpRequest = HttpRequestContext.fromJson(_json["httpRequest"]);
     }
     if (_json.containsKey("reportLocation")) {
-      reportLocation = new SourceLocation.fromJson(_json["reportLocation"]);
+      reportLocation = SourceLocation.fromJson(_json["reportLocation"]);
     }
     if (_json.containsKey("sourceReferences")) {
       sourceReferences = (_json["sourceReferences"] as core.List)
-          .map<SourceReference>((value) => new SourceReference.fromJson(value))
+          .map<SourceReference>((value) => SourceReference.fromJson(value))
           .toList();
     }
     if (_json.containsKey("user")) {
@@ -606,16 +653,16 @@ class ErrorContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpRequest != null) {
-      _json["httpRequest"] = (httpRequest).toJson();
+      _json["httpRequest"] = httpRequest.toJson();
     }
     if (reportLocation != null) {
-      _json["reportLocation"] = (reportLocation).toJson();
+      _json["reportLocation"] = reportLocation.toJson();
     }
     if (sourceReferences != null) {
       _json["sourceReferences"] =
-          sourceReferences.map((value) => (value).toJson()).toList();
+          sourceReferences.map((value) => value.toJson()).toList();
     }
     if (user != null) {
       _json["user"] = user;
@@ -644,7 +691,7 @@ class ErrorEvent {
 
   ErrorEvent.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new ErrorContext.fromJson(_json["context"]);
+      context = ErrorContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("eventTime")) {
       eventTime = _json["eventTime"];
@@ -653,15 +700,15 @@ class ErrorEvent {
       message = _json["message"];
     }
     if (_json.containsKey("serviceContext")) {
-      serviceContext = new ServiceContext.fromJson(_json["serviceContext"]);
+      serviceContext = ServiceContext.fromJson(_json["serviceContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (eventTime != null) {
       _json["eventTime"] = eventTime;
@@ -670,7 +717,7 @@ class ErrorEvent {
       _json["message"] = message;
     }
     if (serviceContext != null) {
-      _json["serviceContext"] = (serviceContext).toJson();
+      _json["serviceContext"] = serviceContext.toJson();
     }
     return _json;
   }
@@ -717,14 +764,14 @@ class ErrorGroup {
     }
     if (_json.containsKey("trackingIssues")) {
       trackingIssues = (_json["trackingIssues"] as core.List)
-          .map<TrackingIssue>((value) => new TrackingIssue.fromJson(value))
+          .map<TrackingIssue>((value) => TrackingIssue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (groupId != null) {
       _json["groupId"] = groupId;
     }
@@ -736,7 +783,7 @@ class ErrorGroup {
     }
     if (trackingIssues != null) {
       _json["trackingIssues"] =
-          trackingIssues.map((value) => (value).toJson()).toList();
+          trackingIssues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -799,7 +846,7 @@ class ErrorGroupStats {
   ErrorGroupStats.fromJson(core.Map _json) {
     if (_json.containsKey("affectedServices")) {
       affectedServices = (_json["affectedServices"] as core.List)
-          .map<ServiceContext>((value) => new ServiceContext.fromJson(value))
+          .map<ServiceContext>((value) => ServiceContext.fromJson(value))
           .toList();
     }
     if (_json.containsKey("affectedUsersCount")) {
@@ -812,7 +859,7 @@ class ErrorGroupStats {
       firstSeenTime = _json["firstSeenTime"];
     }
     if (_json.containsKey("group")) {
-      group = new ErrorGroup.fromJson(_json["group"]);
+      group = ErrorGroup.fromJson(_json["group"]);
     }
     if (_json.containsKey("lastSeenTime")) {
       lastSeenTime = _json["lastSeenTime"];
@@ -821,21 +868,21 @@ class ErrorGroupStats {
       numAffectedServices = _json["numAffectedServices"];
     }
     if (_json.containsKey("representative")) {
-      representative = new ErrorEvent.fromJson(_json["representative"]);
+      representative = ErrorEvent.fromJson(_json["representative"]);
     }
     if (_json.containsKey("timedCounts")) {
       timedCounts = (_json["timedCounts"] as core.List)
-          .map<TimedCount>((value) => new TimedCount.fromJson(value))
+          .map<TimedCount>((value) => TimedCount.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (affectedServices != null) {
       _json["affectedServices"] =
-          affectedServices.map((value) => (value).toJson()).toList();
+          affectedServices.map((value) => value.toJson()).toList();
     }
     if (affectedUsersCount != null) {
       _json["affectedUsersCount"] = affectedUsersCount;
@@ -847,7 +894,7 @@ class ErrorGroupStats {
       _json["firstSeenTime"] = firstSeenTime;
     }
     if (group != null) {
-      _json["group"] = (group).toJson();
+      _json["group"] = group.toJson();
     }
     if (lastSeenTime != null) {
       _json["lastSeenTime"] = lastSeenTime;
@@ -856,11 +903,11 @@ class ErrorGroupStats {
       _json["numAffectedServices"] = numAffectedServices;
     }
     if (representative != null) {
-      _json["representative"] = (representative).toJson();
+      _json["representative"] = representative.toJson();
     }
     if (timedCounts != null) {
       _json["timedCounts"] =
-          timedCounts.map((value) => (value).toJson()).toList();
+          timedCounts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -915,7 +962,7 @@ class HttpRequestContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (method != null) {
       _json["method"] = method;
     }
@@ -957,7 +1004,7 @@ class ListEventsResponse {
   ListEventsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorEvents")) {
       errorEvents = (_json["errorEvents"] as core.List)
-          .map<ErrorEvent>((value) => new ErrorEvent.fromJson(value))
+          .map<ErrorEvent>((value) => ErrorEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -970,10 +1017,10 @@ class ListEventsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorEvents != null) {
       _json["errorEvents"] =
-          errorEvents.map((value) => (value).toJson()).toList();
+          errorEvents.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1006,7 +1053,7 @@ class ListGroupStatsResponse {
   ListGroupStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("errorGroupStats")) {
       errorGroupStats = (_json["errorGroupStats"] as core.List)
-          .map<ErrorGroupStats>((value) => new ErrorGroupStats.fromJson(value))
+          .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1019,10 +1066,10 @@ class ListGroupStatsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorGroupStats != null) {
       _json["errorGroupStats"] =
-          errorGroupStats.map((value) => (value).toJson()).toList();
+          errorGroupStats.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1043,7 +1090,7 @@ class ReportErrorEventResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1086,7 +1133,7 @@ class ReportedErrorEvent {
 
   ReportedErrorEvent.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new ErrorContext.fromJson(_json["context"]);
+      context = ErrorContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("eventTime")) {
       eventTime = _json["eventTime"];
@@ -1095,15 +1142,15 @@ class ReportedErrorEvent {
       message = _json["message"];
     }
     if (_json.containsKey("serviceContext")) {
-      serviceContext = new ServiceContext.fromJson(_json["serviceContext"]);
+      serviceContext = ServiceContext.fromJson(_json["serviceContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (eventTime != null) {
       _json["eventTime"] = eventTime;
@@ -1112,7 +1159,7 @@ class ReportedErrorEvent {
       _json["message"] = message;
     }
     if (serviceContext != null) {
-      _json["serviceContext"] = (serviceContext).toJson();
+      _json["serviceContext"] = serviceContext.toJson();
     }
     return _json;
   }
@@ -1156,7 +1203,7 @@ class ServiceContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceType != null) {
       _json["resourceType"] = resourceType;
     }
@@ -1203,7 +1250,7 @@ class SourceLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filePath != null) {
       _json["filePath"] = filePath;
     }
@@ -1241,7 +1288,7 @@ class SourceReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (repository != null) {
       _json["repository"] = repository;
     }
@@ -1280,7 +1327,7 @@ class TimedCount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -1310,7 +1357,7 @@ class TrackingIssue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }

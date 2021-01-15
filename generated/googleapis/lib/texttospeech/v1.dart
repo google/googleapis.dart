@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.texttospeech.v1;
 
@@ -25,14 +43,14 @@ class TexttospeechApi {
 
   final commons.ApiRequester _requester;
 
-  TextResourceApi get text => new TextResourceApi(_requester);
-  VoicesResourceApi get voices => new VoicesResourceApi(_requester);
+  TextResourceApi get text => TextResourceApi(_requester);
+  VoicesResourceApi get voices => VoicesResourceApi(_requester);
 
   TexttospeechApi(http.Client client,
       {core.String rootUrl = "https://texttospeech.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class TextResourceApi {
@@ -58,17 +76,18 @@ class TextResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SynthesizeSpeechResponse> synthesize(
-      SynthesizeSpeechRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SynthesizeSpeechRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -76,14 +95,16 @@ class TextResourceApi {
 
     _url = 'v1/text:synthesize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SynthesizeSpeechResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SynthesizeSpeechResponse.fromJson(data));
   }
 }
 
@@ -115,14 +136,16 @@ class VoicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListVoicesResponse> list(
-      {core.String languageCode, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListVoicesResponse> list({
+    core.String languageCode,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
@@ -133,13 +156,16 @@ class VoicesResourceApi {
 
     _url = 'v1/voices';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListVoicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListVoicesResponse.fromJson(data));
   }
 }
 
@@ -221,7 +247,7 @@ class AudioConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioEncoding != null) {
       _json["audioEncoding"] = audioEncoding;
     }
@@ -254,16 +280,16 @@ class ListVoicesResponse {
   ListVoicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("voices")) {
       voices = (_json["voices"] as core.List)
-          .map<Voice>((value) => new Voice.fromJson(value))
+          .map<Voice>((value) => Voice.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (voices != null) {
-      _json["voices"] = voices.map((value) => (value).toJson()).toList();
+      _json["voices"] = voices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -296,7 +322,7 @@ class SynthesisInput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ssml != null) {
       _json["ssml"] = ssml;
     }
@@ -322,27 +348,27 @@ class SynthesizeSpeechRequest {
 
   SynthesizeSpeechRequest.fromJson(core.Map _json) {
     if (_json.containsKey("audioConfig")) {
-      audioConfig = new AudioConfig.fromJson(_json["audioConfig"]);
+      audioConfig = AudioConfig.fromJson(_json["audioConfig"]);
     }
     if (_json.containsKey("input")) {
-      input = new SynthesisInput.fromJson(_json["input"]);
+      input = SynthesisInput.fromJson(_json["input"]);
     }
     if (_json.containsKey("voice")) {
-      voice = new VoiceSelectionParams.fromJson(_json["voice"]);
+      voice = VoiceSelectionParams.fromJson(_json["voice"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioConfig != null) {
-      _json["audioConfig"] = (audioConfig).toJson();
+      _json["audioConfig"] = audioConfig.toJson();
     }
     if (input != null) {
-      _json["input"] = (input).toJson();
+      _json["input"] = input.toJson();
     }
     if (voice != null) {
-      _json["voice"] = (voice).toJson();
+      _json["voice"] = voice.toJson();
     }
     return _json;
   }
@@ -356,9 +382,8 @@ class SynthesizeSpeechResponse {
   /// fields, protobuffers use a pure binary representation, whereas JSON
   /// representations use base64.
   core.String audioContent;
-  core.List<core.int> get audioContentAsBytes {
-    return convert.base64.decode(audioContent);
-  }
+  core.List<core.int> get audioContentAsBytes =>
+      convert.base64.decode(audioContent);
 
   set audioContentAsBytes(core.List<core.int> _bytes) {
     audioContent =
@@ -375,7 +400,7 @@ class SynthesizeSpeechResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioContent != null) {
       _json["audioContent"] = audioContent;
     }
@@ -427,7 +452,7 @@ class Voice {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCodes != null) {
       _json["languageCodes"] = languageCodes;
     }
@@ -495,7 +520,7 @@ class VoiceSelectionParams {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }

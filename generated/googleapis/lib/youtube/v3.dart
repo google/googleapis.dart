@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.youtube.v3;
 
@@ -60,59 +78,57 @@ class YoutubeApi {
   final commons.ApiRequester _requester;
 
   AbuseReportsResourceApi get abuseReports =>
-      new AbuseReportsResourceApi(_requester);
-  ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
-  CaptionsResourceApi get captions => new CaptionsResourceApi(_requester);
+      AbuseReportsResourceApi(_requester);
+  ActivitiesResourceApi get activities => ActivitiesResourceApi(_requester);
+  CaptionsResourceApi get captions => CaptionsResourceApi(_requester);
   ChannelBannersResourceApi get channelBanners =>
-      new ChannelBannersResourceApi(_requester);
+      ChannelBannersResourceApi(_requester);
   ChannelSectionsResourceApi get channelSections =>
-      new ChannelSectionsResourceApi(_requester);
-  ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
+      ChannelSectionsResourceApi(_requester);
+  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
   CommentThreadsResourceApi get commentThreads =>
-      new CommentThreadsResourceApi(_requester);
-  CommentsResourceApi get comments => new CommentsResourceApi(_requester);
+      CommentThreadsResourceApi(_requester);
+  CommentsResourceApi get comments => CommentsResourceApi(_requester);
   I18nLanguagesResourceApi get i18nLanguages =>
-      new I18nLanguagesResourceApi(_requester);
-  I18nRegionsResourceApi get i18nRegions =>
-      new I18nRegionsResourceApi(_requester);
+      I18nLanguagesResourceApi(_requester);
+  I18nRegionsResourceApi get i18nRegions => I18nRegionsResourceApi(_requester);
   LiveBroadcastsResourceApi get liveBroadcasts =>
-      new LiveBroadcastsResourceApi(_requester);
+      LiveBroadcastsResourceApi(_requester);
   LiveChatBansResourceApi get liveChatBans =>
-      new LiveChatBansResourceApi(_requester);
+      LiveChatBansResourceApi(_requester);
   LiveChatMessagesResourceApi get liveChatMessages =>
-      new LiveChatMessagesResourceApi(_requester);
+      LiveChatMessagesResourceApi(_requester);
   LiveChatModeratorsResourceApi get liveChatModerators =>
-      new LiveChatModeratorsResourceApi(_requester);
-  LiveStreamsResourceApi get liveStreams =>
-      new LiveStreamsResourceApi(_requester);
-  MembersResourceApi get members => new MembersResourceApi(_requester);
+      LiveChatModeratorsResourceApi(_requester);
+  LiveStreamsResourceApi get liveStreams => LiveStreamsResourceApi(_requester);
+  MembersResourceApi get members => MembersResourceApi(_requester);
   MembershipsLevelsResourceApi get membershipsLevels =>
-      new MembershipsLevelsResourceApi(_requester);
+      MembershipsLevelsResourceApi(_requester);
   PlaylistItemsResourceApi get playlistItems =>
-      new PlaylistItemsResourceApi(_requester);
-  PlaylistsResourceApi get playlists => new PlaylistsResourceApi(_requester);
-  SearchResourceApi get search => new SearchResourceApi(_requester);
-  SponsorsResourceApi get sponsors => new SponsorsResourceApi(_requester);
+      PlaylistItemsResourceApi(_requester);
+  PlaylistsResourceApi get playlists => PlaylistsResourceApi(_requester);
+  SearchResourceApi get search => SearchResourceApi(_requester);
+  SponsorsResourceApi get sponsors => SponsorsResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions =>
-      new SubscriptionsResourceApi(_requester);
+      SubscriptionsResourceApi(_requester);
   SuperChatEventsResourceApi get superChatEvents =>
-      new SuperChatEventsResourceApi(_requester);
-  TestsResourceApi get tests => new TestsResourceApi(_requester);
+      SuperChatEventsResourceApi(_requester);
+  TestsResourceApi get tests => TestsResourceApi(_requester);
   ThirdPartyLinksResourceApi get thirdPartyLinks =>
-      new ThirdPartyLinksResourceApi(_requester);
-  ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
+      ThirdPartyLinksResourceApi(_requester);
+  ThumbnailsResourceApi get thumbnails => ThumbnailsResourceApi(_requester);
   VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons =>
-      new VideoAbuseReportReasonsResourceApi(_requester);
+      VideoAbuseReportReasonsResourceApi(_requester);
   VideoCategoriesResourceApi get videoCategories =>
-      new VideoCategoriesResourceApi(_requester);
-  VideosResourceApi get videos => new VideosResourceApi(_requester);
-  WatermarksResourceApi get watermarks => new WatermarksResourceApi(_requester);
+      VideoCategoriesResourceApi(_requester);
+  VideosResourceApi get videos => VideosResourceApi(_requester);
+  WatermarksResourceApi get watermarks => WatermarksResourceApi(_requester);
 
   YoutubeApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AbuseReportsResourceApi {
@@ -141,20 +157,22 @@ class AbuseReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AbuseReport> insert(
-      AbuseReport request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AbuseReport request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -163,13 +181,16 @@ class AbuseReportsResourceApi {
 
     _url = 'youtube/v3/abuseReports';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AbuseReport.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AbuseReport.fromJson(data));
   }
 }
 
@@ -220,25 +241,27 @@ class ActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ActivityListResponse> list(core.List<core.String> part,
-      {core.String publishedAfter,
-      core.bool mine,
-      core.String channelId,
-      core.int maxResults,
-      core.String publishedBefore,
-      core.String regionCode,
-      core.bool home,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ActivityListResponse> list(
+    core.List<core.String> part, {
+    core.String publishedAfter,
+    core.bool mine,
+    core.String channelId,
+    core.int maxResults,
+    core.String publishedBefore,
+    core.String regionCode,
+    core.bool home,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (publishedAfter != null) {
@@ -271,13 +294,16 @@ class ActivitiesResourceApi {
 
     _url = 'youtube/v3/activities';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ActivityListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ActivityListResponse.fromJson(data));
   }
 }
 
@@ -314,19 +340,21 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOf,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOf,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOf != null) {
@@ -343,12 +371,15 @@ class CaptionsResourceApi {
 
     _url = 'youtube/v3/captions';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -390,23 +421,24 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(core.String id,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOf,
-      core.String tlang,
-      core.String tfmt,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future download(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOf,
+    core.String tlang,
+    core.String tfmt,
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -428,12 +460,15 @@ class CaptionsResourceApi {
 
     _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
@@ -484,25 +519,28 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Caption> insert(Caption request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOf,
-      core.bool sync,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Caption> insert(
+    Caption request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOf,
+    core.bool sync,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -529,13 +567,16 @@ class CaptionsResourceApi {
       _url = '/upload/youtube/v3/captions';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Caption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Caption.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -575,24 +616,26 @@ class CaptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CaptionListResponse> list(
-      core.String videoId, core.List<core.String> part,
-      {core.String onBehalfOf,
-      core.String onBehalfOfContentOwner,
-      core.List<core.String> id,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String videoId,
+    core.List<core.String> part, {
+    core.String onBehalfOf,
+    core.String onBehalfOfContentOwner,
+    core.List<core.String> id,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (videoId == null) {
-      throw new core.ArgumentError("Parameter videoId is required.");
+      throw core.ArgumentError("Parameter videoId is required.");
     }
     _queryParams["videoId"] = [videoId];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOf != null) {
@@ -610,13 +653,16 @@ class CaptionsResourceApi {
 
     _url = 'youtube/v3/captions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CaptionListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CaptionListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -662,25 +708,28 @@ class CaptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Caption> update(Caption request, core.List<core.String> part,
-      {core.bool sync,
-      core.String onBehalfOfContentOwner,
-      core.String onBehalfOf,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Caption> update(
+    Caption request,
+    core.List<core.String> part, {
+    core.bool sync,
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOf,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (sync != null) {
@@ -707,13 +756,16 @@ class CaptionsResourceApi {
       _url = '/upload/youtube/v3/captions';
     }
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Caption.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Caption.fromJson(data));
   }
 }
 
@@ -775,22 +827,24 @@ class ChannelBannersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelBannerResource> insert(ChannelBannerResource request,
-      {core.String onBehalfOfContentOwner,
-      core.String channelId,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ChannelBannerResource> insert(
+    ChannelBannerResource request, {
+    core.String onBehalfOfContentOwner,
+    core.String channelId,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -818,13 +872,16 @@ class ChannelBannersResourceApi {
       _url = '/upload/youtube/v3/channelBanners/insert';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChannelBannerResource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChannelBannerResource.fromJson(data));
   }
 }
 
@@ -858,17 +915,20 @@ class ChannelSectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
@@ -882,12 +942,15 @@ class ChannelSectionsResourceApi {
 
     _url = 'youtube/v3/channelSections';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -941,22 +1004,24 @@ class ChannelSectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChannelSection> insert(
-      ChannelSection request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ChannelSection request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -973,13 +1038,16 @@ class ChannelSectionsResourceApi {
 
     _url = 'youtube/v3/channelSections';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChannelSection.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChannelSection.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1026,22 +1094,24 @@ class ChannelSectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelSectionListResponse> list(core.List<core.String> part,
-      {core.List<core.String> id,
-      core.bool mine,
-      core.String channelId,
-      core.String hl,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ChannelSectionListResponse> list(
+    core.List<core.String> part, {
+    core.List<core.String> id,
+    core.bool mine,
+    core.String channelId,
+    core.String hl,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (id != null) {
@@ -1065,14 +1135,16 @@ class ChannelSectionsResourceApi {
 
     _url = 'youtube/v3/channelSections';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ChannelSectionListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChannelSectionListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -1108,20 +1180,23 @@ class ChannelSectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChannelSection> update(
-      ChannelSection request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ChannelSection request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -1133,13 +1208,16 @@ class ChannelSectionsResourceApi {
 
     _url = 'youtube/v3/channelSections';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChannelSection.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChannelSection.fromJson(data));
   }
 }
 
@@ -1206,27 +1284,29 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChannelListResponse> list(core.List<core.String> part,
-      {core.List<core.String> id,
-      core.String categoryId,
-      core.String hl,
-      core.int maxResults,
-      core.String onBehalfOfContentOwner,
-      core.String forUsername,
-      core.bool managedByMe,
-      core.String pageToken,
-      core.bool mine,
-      core.bool mySubscribers,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ChannelListResponse> list(
+    core.List<core.String> part, {
+    core.List<core.String> id,
+    core.String categoryId,
+    core.String hl,
+    core.int maxResults,
+    core.String onBehalfOfContentOwner,
+    core.String forUsername,
+    core.bool managedByMe,
+    core.String pageToken,
+    core.bool mine,
+    core.bool mySubscribers,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (id != null) {
@@ -1265,13 +1345,16 @@ class ChannelsResourceApi {
 
     _url = 'youtube/v3/channels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChannelListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChannelListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -1309,20 +1392,24 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> update(Channel request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> update(
+    Channel request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -1334,13 +1421,16 @@ class ChannelsResourceApi {
 
     _url = 'youtube/v3/channels';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -1370,20 +1460,22 @@ class CommentThreadsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentThread> insert(
-      CommentThread request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CommentThread request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -1392,13 +1484,16 @@ class CommentThreadsResourceApi {
 
     _url = 'youtube/v3/commentThreads';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommentThread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentThread.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1460,27 +1555,29 @@ class CommentThreadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentThreadListResponse> list(core.List<core.String> part,
-      {core.String order,
-      core.String videoId,
-      core.int maxResults,
-      core.List<core.String> id,
-      core.String moderationStatus,
-      core.String channelId,
-      core.String pageToken,
-      core.String searchTerms,
-      core.String allThreadsRelatedToChannelId,
-      core.String textFormat,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CommentThreadListResponse> list(
+    core.List<core.String> part, {
+    core.String order,
+    core.String videoId,
+    core.int maxResults,
+    core.List<core.String> id,
+    core.String moderationStatus,
+    core.String channelId,
+    core.String pageToken,
+    core.String searchTerms,
+    core.String allThreadsRelatedToChannelId,
+    core.String textFormat,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (order != null) {
@@ -1521,14 +1618,16 @@ class CommentThreadsResourceApi {
 
     _url = 'youtube/v3/commentThreads';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new CommentThreadListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentThreadListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -1553,20 +1652,22 @@ class CommentThreadsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentThread> update(
-      CommentThread request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CommentThread request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -1575,13 +1676,16 @@ class CommentThreadsResourceApi {
 
     _url = 'youtube/v3/commentThreads';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommentThread.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentThread.fromJson(data));
   }
 }
 
@@ -1604,16 +1708,19 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -1624,12 +1731,15 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1653,20 +1763,23 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> insert(Comment request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Comment> insert(
+    Comment request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -1675,13 +1788,16 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1720,22 +1836,24 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentListResponse> list(core.List<core.String> part,
-      {core.List<core.String> id,
-      core.String pageToken,
-      core.int maxResults,
-      core.String textFormat,
-      core.String parentId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CommentListResponse> list(
+    core.List<core.String> part, {
+    core.List<core.String> id,
+    core.String pageToken,
+    core.int maxResults,
+    core.String textFormat,
+    core.String parentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (id != null) {
@@ -1759,13 +1877,16 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommentListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentListResponse.fromJson(data));
   }
 
   /// Expresses the caller's opinion that one or more comments should be flagged
@@ -1784,16 +1905,19 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future markAsSpam(core.List<core.String> id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future markAsSpam(
+    core.List<core.String> id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = id;
     if ($fields != null) {
@@ -1804,12 +1928,15 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments/markAsSpam';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1843,21 +1970,24 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future setModerationStatus(
-      core.List<core.String> id, core.String moderationStatus,
-      {core.bool banAuthor, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.List<core.String> id,
+    core.String moderationStatus, {
+    core.bool banAuthor,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = id;
     if (moderationStatus == null) {
-      throw new core.ArgumentError("Parameter moderationStatus is required.");
+      throw core.ArgumentError("Parameter moderationStatus is required.");
     }
     _queryParams["moderationStatus"] = [moderationStatus];
     if (banAuthor != null) {
@@ -1871,12 +2001,15 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments/setModerationStatus';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1901,20 +2034,23 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> update(Comment request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Comment> update(
+    Comment request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -1923,13 +2059,16 @@ class CommentsResourceApi {
 
     _url = 'youtube/v3/comments';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 }
 
@@ -1958,17 +2097,20 @@ class I18nLanguagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<I18nLanguageListResponse> list(core.List<core.String> part,
-      {core.String hl, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<I18nLanguageListResponse> list(
+    core.List<core.String> part, {
+    core.String hl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (hl != null) {
@@ -1980,14 +2122,16 @@ class I18nLanguagesResourceApi {
 
     _url = 'youtube/v3/i18nLanguages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new I18nLanguageListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => I18nLanguageListResponse.fromJson(data));
   }
 }
 
@@ -2015,17 +2159,20 @@ class I18nRegionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<I18nRegionListResponse> list(core.List<core.String> part,
-      {core.String hl, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<I18nRegionListResponse> list(
+    core.List<core.String> part, {
+    core.String hl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (hl != null) {
@@ -2037,13 +2184,16 @@ class I18nRegionsResourceApi {
 
     _url = 'youtube/v3/i18nRegions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new I18nRegionListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => I18nRegionListResponse.fromJson(data));
   }
 }
 
@@ -2103,24 +2253,27 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcast> bind(core.String id, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String streamId,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LiveBroadcast> bind(
+    core.String id,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String streamId,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -2140,13 +2293,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts/bind';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveBroadcast.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcast.fromJson(data));
   }
 
   /// Slate and recording control of the live broadcast. Support actions: slate
@@ -2211,26 +2367,28 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> control(
-      core.String id, core.List<core.String> part,
-      {core.bool displaySlate,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String walltime,
-      core.String offsetTimeMs,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String id,
+    core.List<core.String> part, {
+    core.bool displaySlate,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String walltime,
+    core.String offsetTimeMs,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (displaySlate != null) {
@@ -2256,13 +2414,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts/control';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveBroadcast.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcast.fromJson(data));
   }
 
   /// Delete a given broadcast.
@@ -2307,19 +2468,21 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
@@ -2338,12 +2501,15 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2398,22 +2564,24 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> insert(
-      LiveBroadcast request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveBroadcast request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwnerChannel,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
@@ -2430,13 +2598,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveBroadcast.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcast.fromJson(data));
   }
 
   /// Retrieve the list of broadcasts associated with the given channel.
@@ -2513,25 +2684,27 @@ class LiveBroadcastsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveBroadcastListResponse> list(core.List<core.String> part,
-      {core.int maxResults,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String broadcastType,
-      core.String broadcastStatus,
-      core.String pageToken,
-      core.bool mine,
-      core.List<core.String> id,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LiveBroadcastListResponse> list(
+    core.List<core.String> part, {
+    core.int maxResults,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String broadcastType,
+    core.String broadcastStatus,
+    core.String pageToken,
+    core.bool mine,
+    core.List<core.String> id,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (maxResults != null) {
@@ -2566,14 +2739,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LiveBroadcastListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcastListResponse.fromJson(data));
   }
 
   /// Transition a broadcast to a given status.
@@ -2638,27 +2813,30 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> transition(
-      core.String id, core.String broadcastStatus, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String id,
+    core.String broadcastStatus,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwnerChannel,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (broadcastStatus == null) {
-      throw new core.ArgumentError("Parameter broadcastStatus is required.");
+      throw core.ArgumentError("Parameter broadcastStatus is required.");
     }
     _queryParams["broadcastStatus"] = [broadcastStatus];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
@@ -2675,13 +2853,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts/transition';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveBroadcast.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcast.fromJson(data));
   }
 
   /// Updates an existing broadcast for the authenticated user.
@@ -2743,22 +2924,24 @@ class LiveBroadcastsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> update(
-      LiveBroadcast request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveBroadcast request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -2775,13 +2958,16 @@ class LiveBroadcastsResourceApi {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveBroadcast.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveBroadcast.fromJson(data));
   }
 }
 
@@ -2804,16 +2990,19 @@ class LiveChatBansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -2824,12 +3013,15 @@ class LiveChatBansResourceApi {
 
     _url = 'youtube/v3/liveChat/bans';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2855,20 +3047,22 @@ class LiveChatBansResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatBan> insert(
-      LiveChatBan request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveChatBan request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -2877,13 +3071,16 @@ class LiveChatBansResourceApi {
 
     _url = 'youtube/v3/liveChat/bans';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveChatBan.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveChatBan.fromJson(data));
   }
 }
 
@@ -2907,16 +3104,19 @@ class LiveChatMessagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -2927,12 +3127,15 @@ class LiveChatMessagesResourceApi {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2957,20 +3160,22 @@ class LiveChatMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatMessage> insert(
-      LiveChatMessage request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveChatMessage request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -2979,13 +3184,16 @@ class LiveChatMessagesResourceApi {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveChatMessage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveChatMessage.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3022,25 +3230,27 @@ class LiveChatMessagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatMessageListResponse> list(
-      core.String liveChatId, core.List<core.String> part,
-      {core.String pageToken,
-      core.int maxResults,
-      core.int profileImageSize,
-      core.String hl,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String liveChatId,
+    core.List<core.String> part, {
+    core.String pageToken,
+    core.int maxResults,
+    core.int profileImageSize,
+    core.String hl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (liveChatId == null) {
-      throw new core.ArgumentError("Parameter liveChatId is required.");
+      throw core.ArgumentError("Parameter liveChatId is required.");
     }
     _queryParams["liveChatId"] = [liveChatId];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (pageToken != null) {
@@ -3061,14 +3271,16 @@ class LiveChatMessagesResourceApi {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LiveChatMessageListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveChatMessageListResponse.fromJson(data));
   }
 }
 
@@ -3092,16 +3304,19 @@ class LiveChatModeratorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -3112,12 +3327,15 @@ class LiveChatModeratorsResourceApi {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3143,20 +3361,22 @@ class LiveChatModeratorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatModerator> insert(
-      LiveChatModerator request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveChatModerator request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -3165,13 +3385,16 @@ class LiveChatModeratorsResourceApi {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveChatModerator.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveChatModerator.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3203,21 +3426,25 @@ class LiveChatModeratorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveChatModeratorListResponse> list(
-      core.String liveChatId, core.List<core.String> part,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String liveChatId,
+    core.List<core.String> part, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (liveChatId == null) {
-      throw new core.ArgumentError("Parameter liveChatId is required.");
+      throw core.ArgumentError("Parameter liveChatId is required.");
     }
     _queryParams["liveChatId"] = [liveChatId];
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (maxResults != null) {
@@ -3232,14 +3459,17 @@ class LiveChatModeratorsResourceApi {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new LiveChatModeratorListResponse.fromJson(data));
+        .then((data) => LiveChatModeratorListResponse.fromJson(data));
   }
 }
 
@@ -3290,19 +3520,21 @@ class LiveStreamsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwnerChannel,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwnerChannel != null) {
@@ -3321,12 +3553,15 @@ class LiveStreamsResourceApi {
 
     _url = 'youtube/v3/liveStreams';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3380,22 +3615,24 @@ class LiveStreamsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveStream> insert(
-      LiveStream request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveStream request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -3412,13 +3649,16 @@ class LiveStreamsResourceApi {
 
     _url = 'youtube/v3/liveStreams';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveStream.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveStream.fromJson(data));
   }
 
   /// Retrieve the list of streams associated with the given channel. --
@@ -3479,23 +3719,25 @@ class LiveStreamsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LiveStreamListResponse> list(core.List<core.String> part,
-      {core.List<core.String> id,
-      core.String onBehalfOfContentOwnerChannel,
-      core.bool mine,
-      core.int maxResults,
-      core.String pageToken,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LiveStreamListResponse> list(
+    core.List<core.String> part, {
+    core.List<core.String> id,
+    core.String onBehalfOfContentOwnerChannel,
+    core.bool mine,
+    core.int maxResults,
+    core.String pageToken,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (id != null) {
@@ -3524,13 +3766,16 @@ class LiveStreamsResourceApi {
 
     _url = 'youtube/v3/liveStreams';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveStreamListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveStreamListResponse.fromJson(data));
   }
 
   /// Updates an existing stream for the authenticated user.
@@ -3587,22 +3832,24 @@ class LiveStreamsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveStream> update(
-      LiveStream request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LiveStream request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwnerChannel,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
@@ -3619,13 +3866,16 @@ class LiveStreamsResourceApi {
 
     _url = 'youtube/v3/liveStreams';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LiveStream.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LiveStream.fromJson(data));
   }
 }
 
@@ -3671,22 +3921,24 @@ class MembersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MemberListResponse> list(core.List<core.String> part,
-      {core.String filterByMemberChannelId,
-      core.String pageToken,
-      core.String mode,
-      core.int maxResults,
-      core.String hasAccessToLevel,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MemberListResponse> list(
+    core.List<core.String> part, {
+    core.String filterByMemberChannelId,
+    core.String pageToken,
+    core.String mode,
+    core.int maxResults,
+    core.String hasAccessToLevel,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (filterByMemberChannelId != null) {
@@ -3710,13 +3962,16 @@ class MembersResourceApi {
 
     _url = 'youtube/v3/members';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MemberListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MemberListResponse.fromJson(data));
   }
 }
 
@@ -3744,17 +3999,19 @@ class MembershipsLevelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MembershipsLevelListResponse> list(core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MembershipsLevelListResponse> list(
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -3763,14 +4020,17 @@ class MembershipsLevelsResourceApi {
 
     _url = 'youtube/v3/membershipsLevels';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new MembershipsLevelListResponse.fromJson(data));
+        .then((data) => MembershipsLevelListResponse.fromJson(data));
   }
 }
 
@@ -3804,17 +4064,20 @@ class PlaylistItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
@@ -3828,12 +4091,15 @@ class PlaylistItemsResourceApi {
 
     _url = 'youtube/v3/playlistItems';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3869,20 +4135,23 @@ class PlaylistItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlaylistItem> insert(
-      PlaylistItem request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlaylistItem request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -3894,13 +4163,16 @@ class PlaylistItemsResourceApi {
 
     _url = 'youtube/v3/playlistItems';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlaylistItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlaylistItem.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3950,23 +4222,25 @@ class PlaylistItemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistItemListResponse> list(core.List<core.String> part,
-      {core.int maxResults,
-      core.String onBehalfOfContentOwner,
-      core.String playlistId,
-      core.String pageToken,
-      core.String videoId,
-      core.List<core.String> id,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlaylistItemListResponse> list(
+    core.List<core.String> part, {
+    core.int maxResults,
+    core.String onBehalfOfContentOwner,
+    core.String playlistId,
+    core.String pageToken,
+    core.String videoId,
+    core.List<core.String> id,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (maxResults != null) {
@@ -3993,14 +4267,16 @@ class PlaylistItemsResourceApi {
 
     _url = 'youtube/v3/playlistItems';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new PlaylistItemListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlaylistItemListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -4045,20 +4321,23 @@ class PlaylistItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlaylistItem> update(
-      PlaylistItem request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlaylistItem request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -4070,13 +4349,16 @@ class PlaylistItemsResourceApi {
 
     _url = 'youtube/v3/playlistItems';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlaylistItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlaylistItem.fromJson(data));
   }
 }
 
@@ -4110,17 +4392,20 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
@@ -4134,12 +4419,15 @@ class PlaylistsResourceApi {
 
     _url = 'youtube/v3/playlists';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -4191,22 +4479,25 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Playlist> insert(Playlist request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwnerChannel,
-      core.String onBehalfOfContentOwner,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Playlist> insert(
+    Playlist request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwnerChannel,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwnerChannel != null) {
@@ -4223,13 +4514,16 @@ class PlaylistsResourceApi {
 
     _url = 'youtube/v3/playlists';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Playlist.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Playlist.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -4297,25 +4591,27 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlaylistListResponse> list(core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.String onBehalfOfContentOwnerChannel,
-      core.int maxResults,
-      core.String hl,
-      core.List<core.String> id,
-      core.bool mine,
-      core.String channelId,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlaylistListResponse> list(
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String onBehalfOfContentOwnerChannel,
+    core.int maxResults,
+    core.String hl,
+    core.List<core.String> id,
+    core.bool mine,
+    core.String channelId,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -4350,13 +4646,16 @@ class PlaylistsResourceApi {
 
     _url = 'youtube/v3/playlists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlaylistListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlaylistListResponse.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -4396,20 +4695,24 @@ class PlaylistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Playlist> update(Playlist request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Playlist> update(
+    Playlist request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -4421,13 +4724,16 @@ class PlaylistsResourceApi {
 
     _url = 'youtube/v3/playlists';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Playlist.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Playlist.fromJson(data));
   }
 }
 
@@ -4601,47 +4907,49 @@ class SearchResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchListResponse> list(core.List<core.String> part,
-      {core.String videoType,
-      core.String videoDimension,
-      core.bool forDeveloper,
-      core.String videoCategoryId,
-      core.bool forContentOwner,
-      core.String videoLicense,
-      core.String regionCode,
-      core.String videoSyndicated,
-      core.String eventType,
-      core.bool forMine,
-      core.String publishedBefore,
-      core.String safeSearch,
-      core.String q,
-      core.String location,
-      core.String relatedToVideoId,
-      core.String locationRadius,
-      core.String order,
-      core.String videoDuration,
-      core.String videoDefinition,
-      core.String channelType,
-      core.String onBehalfOfContentOwner,
-      core.String channelId,
-      core.String relevanceLanguage,
-      core.String publishedAfter,
-      core.List<core.String> type,
-      core.String videoCaption,
-      core.String pageToken,
-      core.String topicId,
-      core.int maxResults,
-      core.String videoEmbeddable,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SearchListResponse> list(
+    core.List<core.String> part, {
+    core.String videoType,
+    core.String videoDimension,
+    core.bool forDeveloper,
+    core.String videoCategoryId,
+    core.bool forContentOwner,
+    core.String videoLicense,
+    core.String regionCode,
+    core.String videoSyndicated,
+    core.String eventType,
+    core.bool forMine,
+    core.String publishedBefore,
+    core.String safeSearch,
+    core.String q,
+    core.String location,
+    core.String relatedToVideoId,
+    core.String locationRadius,
+    core.String order,
+    core.String videoDuration,
+    core.String videoDefinition,
+    core.String channelType,
+    core.String onBehalfOfContentOwner,
+    core.String channelId,
+    core.String relevanceLanguage,
+    core.String publishedAfter,
+    core.List<core.String> type,
+    core.String videoCaption,
+    core.String pageToken,
+    core.String topicId,
+    core.int maxResults,
+    core.String videoEmbeddable,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (videoType != null) {
@@ -4740,13 +5048,16 @@ class SearchResourceApi {
 
     _url = 'youtube/v3/search';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SearchListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SearchListResponse.fromJson(data));
   }
 }
 
@@ -4786,20 +5097,22 @@ class SponsorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SponsorListResponse> list(core.List<core.String> part,
-      {core.String pageToken,
-      core.int maxResults,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SponsorListResponse> list(
+    core.List<core.String> part, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (pageToken != null) {
@@ -4817,13 +5130,16 @@ class SponsorsResourceApi {
 
     _url = 'youtube/v3/sponsors';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SponsorListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SponsorListResponse.fromJson(data));
   }
 }
 
@@ -4846,16 +5162,19 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if ($fields != null) {
@@ -4866,12 +5185,15 @@ class SubscriptionsResourceApi {
 
     _url = 'youtube/v3/subscriptions';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -4896,20 +5218,22 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> insert(
-      Subscription request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Subscription request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -4918,13 +5242,16 @@ class SubscriptionsResourceApi {
 
     _url = 'youtube/v3/subscriptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -5004,28 +5331,30 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SubscriptionListResponse> list(core.List<core.String> part,
-      {core.String onBehalfOfContentOwner,
-      core.bool mine,
-      core.String channelId,
-      core.String forChannelId,
-      core.int maxResults,
-      core.String onBehalfOfContentOwnerChannel,
-      core.String order,
-      core.List<core.String> id,
-      core.bool myRecentSubscribers,
-      core.bool mySubscribers,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SubscriptionListResponse> list(
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.bool mine,
+    core.String channelId,
+    core.String forChannelId,
+    core.int maxResults,
+    core.String onBehalfOfContentOwnerChannel,
+    core.String order,
+    core.List<core.String> id,
+    core.bool myRecentSubscribers,
+    core.bool mySubscribers,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -5069,14 +5398,16 @@ class SubscriptionsResourceApi {
 
     _url = 'youtube/v3/subscriptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SubscriptionListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SubscriptionListResponse.fromJson(data));
   }
 }
 
@@ -5111,20 +5442,22 @@ class SuperChatEventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SuperChatEventListResponse> list(core.List<core.String> part,
-      {core.String hl,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SuperChatEventListResponse> list(
+    core.List<core.String> part, {
+    core.String hl,
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (hl != null) {
@@ -5142,14 +5475,16 @@ class SuperChatEventsResourceApi {
 
     _url = 'youtube/v3/superChatEvents';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SuperChatEventListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SuperChatEventListResponse.fromJson(data));
   }
 }
 
@@ -5176,20 +5511,23 @@ class TestsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TestItem> insert(TestItem request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TestItem> insert(
+    TestItem request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -5198,13 +5536,16 @@ class TestsResourceApi {
 
     _url = 'youtube/v3/tests';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestItem.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestItem.fromJson(data));
   }
 }
 
@@ -5236,21 +5577,25 @@ class ThirdPartyLinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String linkingToken, core.String type,
-      {core.List<core.String> part, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String linkingToken,
+    core.String type, {
+    core.List<core.String> part,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (linkingToken == null) {
-      throw new core.ArgumentError("Parameter linkingToken is required.");
+      throw core.ArgumentError("Parameter linkingToken is required.");
     }
     _queryParams["linkingToken"] = [linkingToken];
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     _queryParams["type"] = [type];
     if (part != null) {
@@ -5264,12 +5609,15 @@ class ThirdPartyLinksResourceApi {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -5294,20 +5642,22 @@ class ThirdPartyLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ThirdPartyLink> insert(
-      ThirdPartyLink request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ThirdPartyLink request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -5316,13 +5666,16 @@ class ThirdPartyLinksResourceApi {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ThirdPartyLink.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -5352,17 +5705,21 @@ class ThirdPartyLinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ThirdPartyLink> list(core.List<core.String> part,
-      {core.String type, core.String linkingToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ThirdPartyLink> list(
+    core.List<core.String> part, {
+    core.String type,
+    core.String linkingToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (type != null) {
@@ -5377,13 +5734,16 @@ class ThirdPartyLinksResourceApi {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ThirdPartyLink.fromJson(data));
   }
 
   /// Updates an existing resource.
@@ -5407,20 +5767,22 @@ class ThirdPartyLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ThirdPartyLink> update(
-      ThirdPartyLink request, core.List<core.String> part,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ThirdPartyLink request,
+    core.List<core.String> part, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if ($fields != null) {
@@ -5429,13 +5791,16 @@ class ThirdPartyLinksResourceApi {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ThirdPartyLink.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ThirdPartyLink.fromJson(data));
   }
 }
 
@@ -5480,20 +5845,22 @@ class ThumbnailsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ThumbnailSetResponse> set(core.String videoId,
-      {core.String onBehalfOfContentOwner,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ThumbnailSetResponse> set(
+    core.String videoId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (videoId == null) {
-      throw new core.ArgumentError("Parameter videoId is required.");
+      throw core.ArgumentError("Parameter videoId is required.");
     }
     _queryParams["videoId"] = [videoId];
     if (onBehalfOfContentOwner != null) {
@@ -5514,13 +5881,16 @@ class ThumbnailsResourceApi {
       _url = '/upload/youtube/v3/thumbnails/set';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ThumbnailSetResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ThumbnailSetResponse.fromJson(data));
   }
 }
 
@@ -5550,18 +5920,19 @@ class VideoAbuseReportReasonsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VideoAbuseReportReasonListResponse> list(
-      core.List<core.String> part,
-      {core.String hl,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.List<core.String> part, {
+    core.String hl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (hl != null) {
@@ -5573,14 +5944,17 @@ class VideoAbuseReportReasonsResourceApi {
 
     _url = 'youtube/v3/videoAbuseReportReasons';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new VideoAbuseReportReasonListResponse.fromJson(data));
+        .then((data) => VideoAbuseReportReasonListResponse.fromJson(data));
   }
 }
 
@@ -5614,20 +5988,22 @@ class VideoCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoCategoryListResponse> list(core.List<core.String> part,
-      {core.String regionCode,
-      core.List<core.String> id,
-      core.String hl,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VideoCategoryListResponse> list(
+    core.List<core.String> part, {
+    core.String regionCode,
+    core.List<core.String> id,
+    core.String hl,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (regionCode != null) {
@@ -5645,14 +6021,16 @@ class VideoCategoriesResourceApi {
 
     _url = 'youtube/v3/videoCategories';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new VideoCategoryListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VideoCategoryListResponse.fromJson(data));
   }
 }
 
@@ -5686,17 +6064,20 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String id, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
@@ -5710,12 +6091,15 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -5747,17 +6131,20 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoRatingListResponse> getRating(core.List<core.String> id,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VideoRatingListResponse> getRating(
+    core.List<core.String> id, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null || id.isEmpty) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = id;
     if (onBehalfOfContentOwner != null) {
@@ -5769,13 +6156,16 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos/getRating';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VideoRatingListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VideoRatingListResponse.fromJson(data));
   }
 
   /// Inserts a new resource into this collection.
@@ -5844,27 +6234,30 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Video> insert(Video request, core.List<core.String> part,
-      {core.bool autoLevels,
-      core.String onBehalfOfContentOwnerChannel,
-      core.bool stabilize,
-      core.bool notifySubscribers,
-      core.String onBehalfOfContentOwner,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Video> insert(
+    Video request,
+    core.List<core.String> part, {
+    core.bool autoLevels,
+    core.String onBehalfOfContentOwnerChannel,
+    core.bool stabilize,
+    core.bool notifySubscribers,
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (autoLevels != null) {
@@ -5899,13 +6292,16 @@ class VideosResourceApi {
       _url = '/upload/youtube/v3/videos';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Video.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Video.fromJson(data));
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -5985,29 +6381,31 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoListResponse> list(core.List<core.String> part,
-      {core.int maxWidth,
-      core.String chart,
-      core.int maxHeight,
-      core.String myRating,
-      core.String regionCode,
-      core.List<core.String> id,
-      core.String pageToken,
-      core.String locale,
-      core.String onBehalfOfContentOwner,
-      core.String videoCategoryId,
-      core.String hl,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<VideoListResponse> list(
+    core.List<core.String> part, {
+    core.int maxWidth,
+    core.String chart,
+    core.int maxHeight,
+    core.String myRating,
+    core.String regionCode,
+    core.List<core.String> id,
+    core.String pageToken,
+    core.String locale,
+    core.String onBehalfOfContentOwner,
+    core.String videoCategoryId,
+    core.String hl,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (maxWidth != null) {
@@ -6052,13 +6450,16 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VideoListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VideoListResponse.fromJson(data));
   }
 
   /// Adds a like or dislike rating to a video or removes a rating from a video.
@@ -6081,20 +6482,24 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future rate(core.String id, core.String rating, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future rate(
+    core.String id,
+    core.String rating, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
     if (rating == null) {
-      throw new core.ArgumentError("Parameter rating is required.");
+      throw core.ArgumentError("Parameter rating is required.");
     }
     _queryParams["rating"] = [rating];
     if ($fields != null) {
@@ -6105,12 +6510,15 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos/rate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6139,17 +6547,20 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reportAbuse(VideoAbuseReport request,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future reportAbuse(
+    VideoAbuseReport request, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -6162,12 +6573,15 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos/reportAbuse';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6216,20 +6630,24 @@ class VideosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Video> update(Video request, core.List<core.String> part,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Video> update(
+    Video request,
+    core.List<core.String> part, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (part == null || part.isEmpty) {
-      throw new core.ArgumentError("Parameter part is required.");
+      throw core.ArgumentError("Parameter part is required.");
     }
     _queryParams["part"] = part;
     if (onBehalfOfContentOwner != null) {
@@ -6241,13 +6659,16 @@ class VideosResourceApi {
 
     _url = 'youtube/v3/videos';
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Video.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Video.fromJson(data));
   }
 }
 
@@ -6289,23 +6710,26 @@ class WatermarksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future set(InvideoBranding request, core.String channelId,
-      {core.String onBehalfOfContentOwner,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future set(
+    InvideoBranding request,
+    core.String channelId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     _queryParams["channelId"] = [channelId];
     if (onBehalfOfContentOwner != null) {
@@ -6327,12 +6751,15 @@ class WatermarksResourceApi {
       _url = '/upload/youtube/v3/watermarks/set';
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -6361,17 +6788,20 @@ class WatermarksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unset(core.String channelId,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future unset(
+    core.String channelId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (channelId == null) {
-      throw new core.ArgumentError("Parameter channelId is required.");
+      throw core.ArgumentError("Parameter channelId is required.");
     }
     _queryParams["channelId"] = [channelId];
     if (onBehalfOfContentOwner != null) {
@@ -6385,12 +6815,15 @@ class WatermarksResourceApi {
 
     _url = 'youtube/v3/watermarks/unset';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -6406,7 +6839,7 @@ class AbuseReport {
   AbuseReport.fromJson(core.Map _json) {
     if (_json.containsKey("abuseTypes")) {
       abuseTypes = (_json["abuseTypes"] as core.List)
-          .map<AbuseType>((value) => new AbuseType.fromJson(value))
+          .map<AbuseType>((value) => AbuseType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -6414,30 +6847,29 @@ class AbuseReport {
     }
     if (_json.containsKey("relatedEntities")) {
       relatedEntities = (_json["relatedEntities"] as core.List)
-          .map<RelatedEntity>((value) => new RelatedEntity.fromJson(value))
+          .map<RelatedEntity>((value) => RelatedEntity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("subject")) {
-      subject = new Entity.fromJson(_json["subject"]);
+      subject = Entity.fromJson(_json["subject"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (abuseTypes != null) {
-      _json["abuseTypes"] =
-          abuseTypes.map((value) => (value).toJson()).toList();
+      _json["abuseTypes"] = abuseTypes.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
     }
     if (relatedEntities != null) {
       _json["relatedEntities"] =
-          relatedEntities.map((value) => (value).toJson()).toList();
+          relatedEntities.map((value) => value.toJson()).toList();
     }
     if (subject != null) {
-      _json["subject"] = (subject).toJson();
+      _json["subject"] = subject.toJson();
     }
     return _json;
   }
@@ -6456,7 +6888,7 @@ class AbuseType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -6487,7 +6919,7 @@ class AccessPolicy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowed != null) {
       _json["allowed"] = allowed;
     }
@@ -6530,8 +6962,7 @@ class Activity {
 
   Activity.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
-      contentDetails =
-          new ActivityContentDetails.fromJson(_json["contentDetails"]);
+      contentDetails = ActivityContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -6543,15 +6974,15 @@ class Activity {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new ActivitySnippet.fromJson(_json["snippet"]);
+      snippet = ActivitySnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -6563,7 +6994,7 @@ class Activity {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -6626,80 +7057,80 @@ class ActivityContentDetails {
 
   ActivityContentDetails.fromJson(core.Map _json) {
     if (_json.containsKey("bulletin")) {
-      bulletin = new ActivityContentDetailsBulletin.fromJson(_json["bulletin"]);
+      bulletin = ActivityContentDetailsBulletin.fromJson(_json["bulletin"]);
     }
     if (_json.containsKey("channelItem")) {
       channelItem =
-          new ActivityContentDetailsChannelItem.fromJson(_json["channelItem"]);
+          ActivityContentDetailsChannelItem.fromJson(_json["channelItem"]);
     }
     if (_json.containsKey("comment")) {
-      comment = new ActivityContentDetailsComment.fromJson(_json["comment"]);
+      comment = ActivityContentDetailsComment.fromJson(_json["comment"]);
     }
     if (_json.containsKey("favorite")) {
-      favorite = new ActivityContentDetailsFavorite.fromJson(_json["favorite"]);
+      favorite = ActivityContentDetailsFavorite.fromJson(_json["favorite"]);
     }
     if (_json.containsKey("like")) {
-      like = new ActivityContentDetailsLike.fromJson(_json["like"]);
+      like = ActivityContentDetailsLike.fromJson(_json["like"]);
     }
     if (_json.containsKey("playlistItem")) {
-      playlistItem = new ActivityContentDetailsPlaylistItem.fromJson(
-          _json["playlistItem"]);
+      playlistItem =
+          ActivityContentDetailsPlaylistItem.fromJson(_json["playlistItem"]);
     }
     if (_json.containsKey("promotedItem")) {
-      promotedItem = new ActivityContentDetailsPromotedItem.fromJson(
-          _json["promotedItem"]);
+      promotedItem =
+          ActivityContentDetailsPromotedItem.fromJson(_json["promotedItem"]);
     }
     if (_json.containsKey("recommendation")) {
-      recommendation = new ActivityContentDetailsRecommendation.fromJson(
+      recommendation = ActivityContentDetailsRecommendation.fromJson(
           _json["recommendation"]);
     }
     if (_json.containsKey("social")) {
-      social = new ActivityContentDetailsSocial.fromJson(_json["social"]);
+      social = ActivityContentDetailsSocial.fromJson(_json["social"]);
     }
     if (_json.containsKey("subscription")) {
-      subscription = new ActivityContentDetailsSubscription.fromJson(
-          _json["subscription"]);
+      subscription =
+          ActivityContentDetailsSubscription.fromJson(_json["subscription"]);
     }
     if (_json.containsKey("upload")) {
-      upload = new ActivityContentDetailsUpload.fromJson(_json["upload"]);
+      upload = ActivityContentDetailsUpload.fromJson(_json["upload"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bulletin != null) {
-      _json["bulletin"] = (bulletin).toJson();
+      _json["bulletin"] = bulletin.toJson();
     }
     if (channelItem != null) {
-      _json["channelItem"] = (channelItem).toJson();
+      _json["channelItem"] = channelItem.toJson();
     }
     if (comment != null) {
-      _json["comment"] = (comment).toJson();
+      _json["comment"] = comment.toJson();
     }
     if (favorite != null) {
-      _json["favorite"] = (favorite).toJson();
+      _json["favorite"] = favorite.toJson();
     }
     if (like != null) {
-      _json["like"] = (like).toJson();
+      _json["like"] = like.toJson();
     }
     if (playlistItem != null) {
-      _json["playlistItem"] = (playlistItem).toJson();
+      _json["playlistItem"] = playlistItem.toJson();
     }
     if (promotedItem != null) {
-      _json["promotedItem"] = (promotedItem).toJson();
+      _json["promotedItem"] = promotedItem.toJson();
     }
     if (recommendation != null) {
-      _json["recommendation"] = (recommendation).toJson();
+      _json["recommendation"] = recommendation.toJson();
     }
     if (social != null) {
-      _json["social"] = (social).toJson();
+      _json["social"] = social.toJson();
     }
     if (subscription != null) {
-      _json["subscription"] = (subscription).toJson();
+      _json["subscription"] = subscription.toJson();
     }
     if (upload != null) {
-      _json["upload"] = (upload).toJson();
+      _json["upload"] = upload.toJson();
     }
     return _json;
   }
@@ -6715,15 +7146,15 @@ class ActivityContentDetailsBulletin {
 
   ActivityContentDetailsBulletin.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6739,15 +7170,15 @@ class ActivityContentDetailsChannelItem {
 
   ActivityContentDetailsChannelItem.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6763,15 +7194,15 @@ class ActivityContentDetailsComment {
 
   ActivityContentDetailsComment.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6787,15 +7218,15 @@ class ActivityContentDetailsFavorite {
 
   ActivityContentDetailsFavorite.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6811,15 +7242,15 @@ class ActivityContentDetailsLike {
 
   ActivityContentDetailsLike.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6847,13 +7278,13 @@ class ActivityContentDetailsPlaylistItem {
       playlistItemId = _json["playlistItemId"];
     }
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (playlistId != null) {
       _json["playlistId"] = playlistId;
     }
@@ -6861,7 +7292,7 @@ class ActivityContentDetailsPlaylistItem {
       _json["playlistItemId"] = playlistItemId;
     }
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -6948,7 +7379,7 @@ class ActivityContentDetailsPromotedItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adTag != null) {
       _json["adTag"] = adTag;
     }
@@ -7008,24 +7439,24 @@ class ActivityContentDetailsRecommendation {
       reason = _json["reason"];
     }
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
     if (_json.containsKey("seedResourceId")) {
-      seedResourceId = new ResourceId.fromJson(_json["seedResourceId"]);
+      seedResourceId = ResourceId.fromJson(_json["seedResourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (reason != null) {
       _json["reason"] = reason;
     }
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     if (seedResourceId != null) {
-      _json["seedResourceId"] = (seedResourceId).toJson();
+      _json["seedResourceId"] = seedResourceId.toJson();
     }
     return _json;
   }
@@ -7067,7 +7498,7 @@ class ActivityContentDetailsSocial {
       referenceUrl = _json["referenceUrl"];
     }
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -7076,7 +7507,7 @@ class ActivityContentDetailsSocial {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (author != null) {
       _json["author"] = author;
     }
@@ -7087,7 +7518,7 @@ class ActivityContentDetailsSocial {
       _json["referenceUrl"] = referenceUrl;
     }
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -7106,15 +7537,15 @@ class ActivityContentDetailsSubscription {
 
   ActivityContentDetailsSubscription.fromJson(core.Map _json) {
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     return _json;
   }
@@ -7135,7 +7566,7 @@ class ActivityContentDetailsUpload {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (videoId != null) {
       _json["videoId"] = videoId;
     }
@@ -7181,7 +7612,7 @@ class ActivityListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Activity>((value) => new Activity.fromJson(value))
+          .map<Activity>((value) => Activity.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -7191,13 +7622,13 @@ class ActivityListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -7206,7 +7637,7 @@ class ActivityListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -7214,7 +7645,7 @@ class ActivityListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -7223,13 +7654,13 @@ class ActivityListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -7308,7 +7739,7 @@ class ActivitySnippet {
       publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -7320,7 +7751,7 @@ class ActivitySnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -7337,7 +7768,7 @@ class ActivitySnippet {
       _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -7378,13 +7809,13 @@ class Caption {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new CaptionSnippet.fromJson(_json["snippet"]);
+      snippet = CaptionSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -7395,7 +7826,7 @@ class Caption {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -7429,7 +7860,7 @@ class CaptionListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Caption>((value) => new Caption.fromJson(value))
+          .map<Caption>((value) => Caption.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -7442,7 +7873,7 @@ class CaptionListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -7450,7 +7881,7 @@ class CaptionListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -7583,7 +8014,7 @@ class CaptionSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioTrackType != null) {
       _json["audioTrackType"] = audioTrackType;
     }
@@ -7673,7 +8104,7 @@ class CdnSettings {
       frameRate = _json["frameRate"];
     }
     if (_json.containsKey("ingestionInfo")) {
-      ingestionInfo = new IngestionInfo.fromJson(_json["ingestionInfo"]);
+      ingestionInfo = IngestionInfo.fromJson(_json["ingestionInfo"]);
     }
     if (_json.containsKey("ingestionType")) {
       ingestionType = _json["ingestionType"];
@@ -7685,7 +8116,7 @@ class CdnSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (format != null) {
       _json["format"] = format;
     }
@@ -7693,7 +8124,7 @@ class CdnSettings {
       _json["frameRate"] = frameRate;
     }
     if (ingestionInfo != null) {
-      _json["ingestionInfo"] = (ingestionInfo).toJson();
+      _json["ingestionInfo"] = ingestionInfo.toJson();
     }
     if (ingestionType != null) {
       _json["ingestionType"] = ingestionType;
@@ -7759,23 +8190,22 @@ class Channel {
 
   Channel.fromJson(core.Map _json) {
     if (_json.containsKey("auditDetails")) {
-      auditDetails = new ChannelAuditDetails.fromJson(_json["auditDetails"]);
+      auditDetails = ChannelAuditDetails.fromJson(_json["auditDetails"]);
     }
     if (_json.containsKey("brandingSettings")) {
       brandingSettings =
-          new ChannelBrandingSettings.fromJson(_json["brandingSettings"]);
+          ChannelBrandingSettings.fromJson(_json["brandingSettings"]);
     }
     if (_json.containsKey("contentDetails")) {
-      contentDetails =
-          new ChannelContentDetails.fromJson(_json["contentDetails"]);
+      contentDetails = ChannelContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("contentOwnerDetails")) {
       contentOwnerDetails =
-          new ChannelContentOwnerDetails.fromJson(_json["contentOwnerDetails"]);
+          ChannelContentOwnerDetails.fromJson(_json["contentOwnerDetails"]);
     }
     if (_json.containsKey("conversionPings")) {
       conversionPings =
-          new ChannelConversionPings.fromJson(_json["conversionPings"]);
+          ChannelConversionPings.fromJson(_json["conversionPings"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -7789,39 +8219,39 @@ class Channel {
     if (_json.containsKey("localizations")) {
       localizations = commons.mapMap<core.Map, ChannelLocalization>(
           _json["localizations"].cast<core.String, core.Map>(),
-          (core.Map item) => new ChannelLocalization.fromJson(item));
+          (core.Map item) => ChannelLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
-      snippet = new ChannelSnippet.fromJson(_json["snippet"]);
+      snippet = ChannelSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("statistics")) {
-      statistics = new ChannelStatistics.fromJson(_json["statistics"]);
+      statistics = ChannelStatistics.fromJson(_json["statistics"]);
     }
     if (_json.containsKey("status")) {
-      status = new ChannelStatus.fromJson(_json["status"]);
+      status = ChannelStatus.fromJson(_json["status"]);
     }
     if (_json.containsKey("topicDetails")) {
-      topicDetails = new ChannelTopicDetails.fromJson(_json["topicDetails"]);
+      topicDetails = ChannelTopicDetails.fromJson(_json["topicDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditDetails != null) {
-      _json["auditDetails"] = (auditDetails).toJson();
+      _json["auditDetails"] = auditDetails.toJson();
     }
     if (brandingSettings != null) {
-      _json["brandingSettings"] = (brandingSettings).toJson();
+      _json["brandingSettings"] = brandingSettings.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (contentOwnerDetails != null) {
-      _json["contentOwnerDetails"] = (contentOwnerDetails).toJson();
+      _json["contentOwnerDetails"] = contentOwnerDetails.toJson();
     }
     if (conversionPings != null) {
-      _json["conversionPings"] = (conversionPings).toJson();
+      _json["conversionPings"] = conversionPings.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -7835,19 +8265,19 @@ class Channel {
     if (localizations != null) {
       _json["localizations"] = commons
           .mapMap<ChannelLocalization, core.Map<core.String, core.Object>>(
-              localizations, (ChannelLocalization item) => (item).toJson());
+              localizations, (ChannelLocalization item) => item.toJson());
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = (statistics).toJson();
+      _json["statistics"] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (topicDetails != null) {
-      _json["topicDetails"] = (topicDetails).toJson();
+      _json["topicDetails"] = topicDetails.toJson();
     }
     return _json;
   }
@@ -7882,7 +8312,7 @@ class ChannelAuditDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (communityGuidelinesGoodStanding != null) {
       _json["communityGuidelinesGoodStanding"] =
           communityGuidelinesGoodStanding;
@@ -7924,7 +8354,7 @@ class ChannelBannerResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -7956,35 +8386,35 @@ class ChannelBrandingSettings {
 
   ChannelBrandingSettings.fromJson(core.Map _json) {
     if (_json.containsKey("channel")) {
-      channel = new ChannelSettings.fromJson(_json["channel"]);
+      channel = ChannelSettings.fromJson(_json["channel"]);
     }
     if (_json.containsKey("hints")) {
       hints = (_json["hints"] as core.List)
-          .map<PropertyValue>((value) => new PropertyValue.fromJson(value))
+          .map<PropertyValue>((value) => PropertyValue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("image")) {
-      image = new ImageSettings.fromJson(_json["image"]);
+      image = ImageSettings.fromJson(_json["image"]);
     }
     if (_json.containsKey("watch")) {
-      watch = new WatchSettings.fromJson(_json["watch"]);
+      watch = WatchSettings.fromJson(_json["watch"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channel != null) {
-      _json["channel"] = (channel).toJson();
+      _json["channel"] = channel.toJson();
     }
     if (hints != null) {
-      _json["hints"] = hints.map((value) => (value).toJson()).toList();
+      _json["hints"] = hints.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (watch != null) {
-      _json["watch"] = (watch).toJson();
+      _json["watch"] = watch.toJson();
     }
     return _json;
   }
@@ -8038,7 +8468,7 @@ class ChannelContentDetailsRelatedPlaylists {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (favorites != null) {
       _json["favorites"] = favorites;
     }
@@ -8066,16 +8496,16 @@ class ChannelContentDetails {
 
   ChannelContentDetails.fromJson(core.Map _json) {
     if (_json.containsKey("relatedPlaylists")) {
-      relatedPlaylists = new ChannelContentDetailsRelatedPlaylists.fromJson(
+      relatedPlaylists = ChannelContentDetailsRelatedPlaylists.fromJson(
           _json["relatedPlaylists"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (relatedPlaylists != null) {
-      _json["relatedPlaylists"] = (relatedPlaylists).toJson();
+      _json["relatedPlaylists"] = relatedPlaylists.toJson();
     }
     return _json;
   }
@@ -8104,7 +8534,7 @@ class ChannelContentOwnerDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentOwner != null) {
       _json["contentOwner"] = contentOwner;
     }
@@ -8148,7 +8578,7 @@ class ChannelConversionPing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
       _json["context"] = context;
     }
@@ -8173,16 +8603,16 @@ class ChannelConversionPings {
     if (_json.containsKey("pings")) {
       pings = (_json["pings"] as core.List)
           .map<ChannelConversionPing>(
-              (value) => new ChannelConversionPing.fromJson(value))
+              (value) => ChannelConversionPing.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pings != null) {
-      _json["pings"] = pings.map((value) => (value).toJson()).toList();
+      _json["pings"] = pings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8226,7 +8656,7 @@ class ChannelListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Channel>((value) => new Channel.fromJson(value))
+          .map<Channel>((value) => Channel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -8236,13 +8666,13 @@ class ChannelListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -8251,7 +8681,7 @@ class ChannelListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -8259,7 +8689,7 @@ class ChannelListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -8268,13 +8698,13 @@ class ChannelListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -8304,7 +8734,7 @@ class ChannelLocalization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -8347,7 +8777,7 @@ class ChannelProfileDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -8395,7 +8825,7 @@ class ChannelSection {
   ChannelSection.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
       contentDetails =
-          new ChannelSectionContentDetails.fromJson(_json["contentDetails"]);
+          ChannelSectionContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -8409,21 +8839,21 @@ class ChannelSection {
     if (_json.containsKey("localizations")) {
       localizations = commons.mapMap<core.Map, ChannelSectionLocalization>(
           _json["localizations"].cast<core.String, core.Map>(),
-          (core.Map item) => new ChannelSectionLocalization.fromJson(item));
+          (core.Map item) => ChannelSectionLocalization.fromJson(item));
     }
     if (_json.containsKey("snippet")) {
-      snippet = new ChannelSectionSnippet.fromJson(_json["snippet"]);
+      snippet = ChannelSectionSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("targeting")) {
-      targeting = new ChannelSectionTargeting.fromJson(_json["targeting"]);
+      targeting = ChannelSectionTargeting.fromJson(_json["targeting"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -8437,13 +8867,13 @@ class ChannelSection {
     if (localizations != null) {
       _json["localizations"] = commons.mapMap<ChannelSectionLocalization,
               core.Map<core.String, core.Object>>(
-          localizations, (ChannelSectionLocalization item) => (item).toJson());
+          localizations, (ChannelSectionLocalization item) => item.toJson());
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (targeting != null) {
-      _json["targeting"] = (targeting).toJson();
+      _json["targeting"] = targeting.toJson();
     }
     return _json;
   }
@@ -8471,7 +8901,7 @@ class ChannelSectionContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channels != null) {
       _json["channels"] = channels;
     }
@@ -8510,7 +8940,7 @@ class ChannelSectionListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<ChannelSection>((value) => new ChannelSection.fromJson(value))
+          .map<ChannelSection>((value) => ChannelSection.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -8523,7 +8953,7 @@ class ChannelSectionListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -8531,7 +8961,7 @@ class ChannelSectionListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -8558,7 +8988,7 @@ class ChannelSectionLocalization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (title != null) {
       _json["title"] = title;
     }
@@ -8622,7 +9052,7 @@ class ChannelSectionSnippet {
       defaultLanguage = _json["defaultLanguage"];
     }
     if (_json.containsKey("localized")) {
-      localized = new ChannelSectionLocalization.fromJson(_json["localized"]);
+      localized = ChannelSectionLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("position")) {
       position = _json["position"];
@@ -8640,7 +9070,7 @@ class ChannelSectionSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -8648,7 +9078,7 @@ class ChannelSectionSnippet {
       _json["defaultLanguage"] = defaultLanguage;
     }
     if (localized != null) {
-      _json["localized"] = (localized).toJson();
+      _json["localized"] = localized.toJson();
     }
     if (position != null) {
       _json["position"] = position;
@@ -8693,7 +9123,7 @@ class ChannelSectionTargeting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (countries != null) {
       _json["countries"] = countries;
     }
@@ -8801,7 +9231,7 @@ class ChannelSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (country != null) {
       _json["country"] = country;
     }
@@ -8902,13 +9332,13 @@ class ChannelSnippet {
       description = _json["description"];
     }
     if (_json.containsKey("localized")) {
-      localized = new ChannelLocalization.fromJson(_json["localized"]);
+      localized = ChannelLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -8917,7 +9347,7 @@ class ChannelSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (country != null) {
       _json["country"] = country;
     }
@@ -8931,13 +9361,13 @@ class ChannelSnippet {
       _json["description"] = description;
     }
     if (localized != null) {
-      _json["localized"] = (localized).toJson();
+      _json["localized"] = localized.toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -8986,7 +9416,7 @@ class ChannelStatistics {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commentCount != null) {
       _json["commentCount"] = commentCount;
     }
@@ -9052,7 +9482,7 @@ class ChannelStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isLinked != null) {
       _json["isLinked"] = isLinked;
     }
@@ -9094,7 +9524,7 @@ class ChannelToStoreLinkDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (storeName != null) {
       _json["storeName"] = storeName;
     }
@@ -9128,7 +9558,7 @@ class ChannelTopicDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (topicCategories != null) {
       _json["topicCategories"] = topicCategories;
     }
@@ -9167,13 +9597,13 @@ class Comment {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new CommentSnippet.fromJson(_json["snippet"]);
+      snippet = CommentSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -9184,7 +9614,7 @@ class Comment {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -9226,7 +9656,7 @@ class CommentListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Comment>((value) => new Comment.fromJson(value))
+          .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9236,10 +9666,10 @@ class CommentListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -9248,7 +9678,7 @@ class CommentListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -9256,7 +9686,7 @@ class CommentListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -9265,10 +9695,10 @@ class CommentListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -9349,7 +9779,7 @@ class CommentSnippet {
   CommentSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("authorChannelId")) {
       authorChannelId =
-          new CommentSnippetAuthorChannelId.fromJson(_json["authorChannelId"]);
+          CommentSnippetAuthorChannelId.fromJson(_json["authorChannelId"]);
     }
     if (_json.containsKey("authorChannelUrl")) {
       authorChannelUrl = _json["authorChannelUrl"];
@@ -9397,9 +9827,9 @@ class CommentSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorChannelId != null) {
-      _json["authorChannelId"] = (authorChannelId).toJson();
+      _json["authorChannelId"] = authorChannelId.toJson();
     }
     if (authorChannelUrl != null) {
       _json["authorChannelUrl"] = authorChannelUrl;
@@ -9461,7 +9891,7 @@ class CommentSnippetAuthorChannelId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (value != null) {
       _json["value"] = value;
     }
@@ -9504,16 +9934,16 @@ class CommentThread {
       kind = _json["kind"];
     }
     if (_json.containsKey("replies")) {
-      replies = new CommentThreadReplies.fromJson(_json["replies"]);
+      replies = CommentThreadReplies.fromJson(_json["replies"]);
     }
     if (_json.containsKey("snippet")) {
-      snippet = new CommentThreadSnippet.fromJson(_json["snippet"]);
+      snippet = CommentThreadSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -9524,10 +9954,10 @@ class CommentThread {
       _json["kind"] = kind;
     }
     if (replies != null) {
-      _json["replies"] = (replies).toJson();
+      _json["replies"] = replies.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -9569,7 +9999,7 @@ class CommentThreadListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<CommentThread>((value) => new CommentThread.fromJson(value))
+          .map<CommentThread>((value) => CommentThread.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -9579,10 +10009,10 @@ class CommentThreadListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -9591,7 +10021,7 @@ class CommentThreadListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -9599,7 +10029,7 @@ class CommentThreadListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -9608,10 +10038,10 @@ class CommentThreadListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -9632,16 +10062,16 @@ class CommentThreadReplies {
   CommentThreadReplies.fromJson(core.Map _json) {
     if (_json.containsKey("comments")) {
       comments = (_json["comments"] as core.List)
-          .map<Comment>((value) => new Comment.fromJson(value))
+          .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (comments != null) {
-      _json["comments"] = comments.map((value) => (value).toJson()).toList();
+      _json["comments"] = comments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9685,7 +10115,7 @@ class CommentThreadSnippet {
       isPublic = _json["isPublic"];
     }
     if (_json.containsKey("topLevelComment")) {
-      topLevelComment = new Comment.fromJson(_json["topLevelComment"]);
+      topLevelComment = Comment.fromJson(_json["topLevelComment"]);
     }
     if (_json.containsKey("totalReplyCount")) {
       totalReplyCount = _json["totalReplyCount"];
@@ -9697,7 +10127,7 @@ class CommentThreadSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (canReply != null) {
       _json["canReply"] = canReply;
     }
@@ -9708,7 +10138,7 @@ class CommentThreadSnippet {
       _json["isPublic"] = isPublic;
     }
     if (topLevelComment != null) {
-      _json["topLevelComment"] = (topLevelComment).toJson();
+      _json["topLevelComment"] = topLevelComment.toJson();
     }
     if (totalReplyCount != null) {
       _json["totalReplyCount"] = totalReplyCount;
@@ -10829,7 +11259,7 @@ class ContentRating {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (acbRating != null) {
       _json["acbRating"] = acbRating;
     }
@@ -11068,7 +11498,7 @@ class Entity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -11109,7 +11539,7 @@ class GeoPoint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (altitude != null) {
       _json["altitude"] = altitude;
     }
@@ -11153,13 +11583,13 @@ class I18nLanguage {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new I18nLanguageSnippet.fromJson(_json["snippet"]);
+      snippet = I18nLanguageSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -11170,7 +11600,7 @@ class I18nLanguage {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -11205,7 +11635,7 @@ class I18nLanguageListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<I18nLanguage>((value) => new I18nLanguage.fromJson(value))
+          .map<I18nLanguage>((value) => I18nLanguage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -11218,7 +11648,7 @@ class I18nLanguageListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -11226,7 +11656,7 @@ class I18nLanguageListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -11260,7 +11690,7 @@ class I18nLanguageSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hl != null) {
       _json["hl"] = hl;
     }
@@ -11300,13 +11730,13 @@ class I18nRegion {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new I18nRegionSnippet.fromJson(_json["snippet"]);
+      snippet = I18nRegionSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -11317,7 +11747,7 @@ class I18nRegion {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -11352,7 +11782,7 @@ class I18nRegionListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<I18nRegion>((value) => new I18nRegion.fromJson(value))
+          .map<I18nRegion>((value) => I18nRegion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -11365,7 +11795,7 @@ class I18nRegionListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -11373,7 +11803,7 @@ class I18nRegionListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -11407,7 +11837,7 @@ class I18nRegionSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gl != null) {
       _json["gl"] = gl;
     }
@@ -11496,7 +11926,7 @@ class ImageSettings {
   ImageSettings.fromJson(core.Map _json) {
     if (_json.containsKey("backgroundImageUrl")) {
       backgroundImageUrl =
-          new LocalizedProperty.fromJson(_json["backgroundImageUrl"]);
+          LocalizedProperty.fromJson(_json["backgroundImageUrl"]);
     }
     if (_json.containsKey("bannerExternalUrl")) {
       bannerExternalUrl = _json["bannerExternalUrl"];
@@ -11544,20 +11974,20 @@ class ImageSettings {
       bannerTvMediumImageUrl = _json["bannerTvMediumImageUrl"];
     }
     if (_json.containsKey("largeBrandedBannerImageImapScript")) {
-      largeBrandedBannerImageImapScript = new LocalizedProperty.fromJson(
+      largeBrandedBannerImageImapScript = LocalizedProperty.fromJson(
           _json["largeBrandedBannerImageImapScript"]);
     }
     if (_json.containsKey("largeBrandedBannerImageUrl")) {
       largeBrandedBannerImageUrl =
-          new LocalizedProperty.fromJson(_json["largeBrandedBannerImageUrl"]);
+          LocalizedProperty.fromJson(_json["largeBrandedBannerImageUrl"]);
     }
     if (_json.containsKey("smallBrandedBannerImageImapScript")) {
-      smallBrandedBannerImageImapScript = new LocalizedProperty.fromJson(
+      smallBrandedBannerImageImapScript = LocalizedProperty.fromJson(
           _json["smallBrandedBannerImageImapScript"]);
     }
     if (_json.containsKey("smallBrandedBannerImageUrl")) {
       smallBrandedBannerImageUrl =
-          new LocalizedProperty.fromJson(_json["smallBrandedBannerImageUrl"]);
+          LocalizedProperty.fromJson(_json["smallBrandedBannerImageUrl"]);
     }
     if (_json.containsKey("trackingImageUrl")) {
       trackingImageUrl = _json["trackingImageUrl"];
@@ -11569,9 +11999,9 @@ class ImageSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backgroundImageUrl != null) {
-      _json["backgroundImageUrl"] = (backgroundImageUrl).toJson();
+      _json["backgroundImageUrl"] = backgroundImageUrl.toJson();
     }
     if (bannerExternalUrl != null) {
       _json["bannerExternalUrl"] = bannerExternalUrl;
@@ -11620,19 +12050,17 @@ class ImageSettings {
     }
     if (largeBrandedBannerImageImapScript != null) {
       _json["largeBrandedBannerImageImapScript"] =
-          (largeBrandedBannerImageImapScript).toJson();
+          largeBrandedBannerImageImapScript.toJson();
     }
     if (largeBrandedBannerImageUrl != null) {
-      _json["largeBrandedBannerImageUrl"] =
-          (largeBrandedBannerImageUrl).toJson();
+      _json["largeBrandedBannerImageUrl"] = largeBrandedBannerImageUrl.toJson();
     }
     if (smallBrandedBannerImageImapScript != null) {
       _json["smallBrandedBannerImageImapScript"] =
-          (smallBrandedBannerImageImapScript).toJson();
+          smallBrandedBannerImageImapScript.toJson();
     }
     if (smallBrandedBannerImageUrl != null) {
-      _json["smallBrandedBannerImageUrl"] =
-          (smallBrandedBannerImageUrl).toJson();
+      _json["smallBrandedBannerImageUrl"] = smallBrandedBannerImageUrl.toJson();
     }
     if (trackingImageUrl != null) {
       _json["trackingImageUrl"] = trackingImageUrl;
@@ -11691,7 +12119,7 @@ class IngestionInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backupIngestionAddress != null) {
       _json["backupIngestionAddress"] = backupIngestionAddress;
     }
@@ -11715,9 +12143,8 @@ class IngestionInfo {
 class InvideoBranding {
   /// The bytes the uploaded image. Only used in api to youtube communication.
   core.String imageBytes;
-  core.List<core.int> get imageBytesAsBytes {
-    return convert.base64.decode(imageBytes);
-  }
+  core.List<core.int> get imageBytesAsBytes =>
+      convert.base64.decode(imageBytes);
 
   set imageBytesAsBytes(core.List<core.int> _bytes) {
     imageBytes =
@@ -11748,19 +12175,19 @@ class InvideoBranding {
       imageUrl = _json["imageUrl"];
     }
     if (_json.containsKey("position")) {
-      position = new InvideoPosition.fromJson(_json["position"]);
+      position = InvideoPosition.fromJson(_json["position"]);
     }
     if (_json.containsKey("targetChannelId")) {
       targetChannelId = _json["targetChannelId"];
     }
     if (_json.containsKey("timing")) {
-      timing = new InvideoTiming.fromJson(_json["timing"]);
+      timing = InvideoTiming.fromJson(_json["timing"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageBytes != null) {
       _json["imageBytes"] = imageBytes;
     }
@@ -11768,13 +12195,13 @@ class InvideoBranding {
       _json["imageUrl"] = imageUrl;
     }
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (targetChannelId != null) {
       _json["targetChannelId"] = targetChannelId;
     }
     if (timing != null) {
-      _json["timing"] = (timing).toJson();
+      _json["timing"] = timing.toJson();
     }
     return _json;
   }
@@ -11809,7 +12236,7 @@ class InvideoPosition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cornerPosition != null) {
       _json["cornerPosition"] = cornerPosition;
     }
@@ -11856,7 +12283,7 @@ class InvideoTiming {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (durationMs != null) {
       _json["durationMs"] = durationMs;
     }
@@ -11883,7 +12310,7 @@ class LanguageTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (value != null) {
       _json["value"] = value;
     }
@@ -11905,7 +12332,7 @@ class LevelDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -11950,7 +12377,7 @@ class LiveBroadcast {
   LiveBroadcast.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
       contentDetails =
-          new LiveBroadcastContentDetails.fromJson(_json["contentDetails"]);
+          LiveBroadcastContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -11962,21 +12389,21 @@ class LiveBroadcast {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new LiveBroadcastSnippet.fromJson(_json["snippet"]);
+      snippet = LiveBroadcastSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("statistics")) {
-      statistics = new LiveBroadcastStatistics.fromJson(_json["statistics"]);
+      statistics = LiveBroadcastStatistics.fromJson(_json["statistics"]);
     }
     if (_json.containsKey("status")) {
-      status = new LiveBroadcastStatus.fromJson(_json["status"]);
+      status = LiveBroadcastStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -11988,13 +12415,13 @@ class LiveBroadcast {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = (statistics).toJson();
+      _json["statistics"] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -12075,9 +12502,7 @@ class LiveBroadcastContentDetails {
   /// excluding the box size and type but including the following four reserved
   /// zero bytes for the version and flags.
   core.String mesh;
-  core.List<core.int> get meshAsBytes {
-    return convert.base64.decode(mesh);
-  }
+  core.List<core.int> get meshAsBytes => convert.base64.decode(mesh);
 
   set meshAsBytes(core.List<core.int> _bytes) {
     mesh =
@@ -12153,7 +12578,7 @@ class LiveBroadcastContentDetails {
       mesh = _json["mesh"];
     }
     if (_json.containsKey("monitorStream")) {
-      monitorStream = new MonitorStreamInfo.fromJson(_json["monitorStream"]);
+      monitorStream = MonitorStreamInfo.fromJson(_json["monitorStream"]);
     }
     if (_json.containsKey("projection")) {
       projection = _json["projection"];
@@ -12168,7 +12593,7 @@ class LiveBroadcastContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundStreamId != null) {
       _json["boundStreamId"] = boundStreamId;
     }
@@ -12206,7 +12631,7 @@ class LiveBroadcastContentDetails {
       _json["mesh"] = mesh;
     }
     if (monitorStream != null) {
-      _json["monitorStream"] = (monitorStream).toJson();
+      _json["monitorStream"] = monitorStream.toJson();
     }
     if (projection != null) {
       _json["projection"] = projection;
@@ -12261,7 +12686,7 @@ class LiveBroadcastListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LiveBroadcast>((value) => new LiveBroadcast.fromJson(value))
+          .map<LiveBroadcast>((value) => LiveBroadcast.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -12271,13 +12696,13 @@ class LiveBroadcastListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -12286,7 +12711,7 @@ class LiveBroadcastListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -12294,7 +12719,7 @@ class LiveBroadcastListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -12303,13 +12728,13 @@ class LiveBroadcastListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -12398,7 +12823,7 @@ class LiveBroadcastSnippet {
       scheduledStartTime = _json["scheduledStartTime"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -12407,7 +12832,7 @@ class LiveBroadcastSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actualEndTime != null) {
       _json["actualEndTime"] = actualEndTime;
     }
@@ -12436,7 +12861,7 @@ class LiveBroadcastSnippet {
       _json["scheduledStartTime"] = scheduledStartTime;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -12467,7 +12892,7 @@ class LiveBroadcastStatistics {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (totalChatCount != null) {
       _json["totalChatCount"] = totalChatCount;
     }
@@ -12554,7 +12979,7 @@ class LiveBroadcastStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lifeCycleStatus != null) {
       _json["lifeCycleStatus"] = lifeCycleStatus;
     }
@@ -12605,13 +13030,13 @@ class LiveChatBan {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new LiveChatBanSnippet.fromJson(_json["snippet"]);
+      snippet = LiveChatBanSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -12622,7 +13047,7 @@ class LiveChatBan {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -12651,7 +13076,7 @@ class LiveChatBanSnippet {
     }
     if (_json.containsKey("bannedUserDetails")) {
       bannedUserDetails =
-          new ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+          ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
     }
     if (_json.containsKey("liveChatId")) {
       liveChatId = _json["liveChatId"];
@@ -12663,12 +13088,12 @@ class LiveChatBanSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (banDurationSeconds != null) {
       _json["banDurationSeconds"] = banDurationSeconds;
     }
     if (bannedUserDetails != null) {
-      _json["bannedUserDetails"] = (bannedUserDetails).toJson();
+      _json["bannedUserDetails"] = bannedUserDetails.toJson();
     }
     if (liveChatId != null) {
       _json["liveChatId"] = liveChatId;
@@ -12712,7 +13137,7 @@ class LiveChatFanFundingEventDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (amountDisplayString != null) {
       _json["amountDisplayString"] = amountDisplayString;
     }
@@ -12754,7 +13179,7 @@ class LiveChatMessage {
   LiveChatMessage.fromJson(core.Map _json) {
     if (_json.containsKey("authorDetails")) {
       authorDetails =
-          new LiveChatMessageAuthorDetails.fromJson(_json["authorDetails"]);
+          LiveChatMessageAuthorDetails.fromJson(_json["authorDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -12766,15 +13191,15 @@ class LiveChatMessage {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new LiveChatMessageSnippet.fromJson(_json["snippet"]);
+      snippet = LiveChatMessageSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorDetails != null) {
-      _json["authorDetails"] = (authorDetails).toJson();
+      _json["authorDetails"] = authorDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -12786,7 +13211,7 @@ class LiveChatMessage {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -12848,7 +13273,7 @@ class LiveChatMessageAuthorDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -12890,7 +13315,7 @@ class LiveChatMessageDeletedDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deletedMessageId != null) {
       _json["deletedMessageId"] = deletedMessageId;
     }
@@ -12936,7 +13361,7 @@ class LiveChatMessageListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LiveChatMessage>((value) => new LiveChatMessage.fromJson(value))
+          .map<LiveChatMessage>((value) => LiveChatMessage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -12949,13 +13374,13 @@ class LiveChatMessageListResponse {
       offlineAt = _json["offlineAt"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("pollingIntervalMillis")) {
       pollingIntervalMillis = _json["pollingIntervalMillis"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -12964,7 +13389,7 @@ class LiveChatMessageListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -12972,7 +13397,7 @@ class LiveChatMessageListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -12984,13 +13409,13 @@ class LiveChatMessageListResponse {
       _json["offlineAt"] = offlineAt;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (pollingIntervalMillis != null) {
       _json["pollingIntervalMillis"] = pollingIntervalMillis;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -13012,7 +13437,7 @@ class LiveChatMessageRetractedDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (retractedMessageId != null) {
       _json["retractedMessageId"] = retractedMessageId;
     }
@@ -13090,7 +13515,7 @@ class LiveChatMessageSnippet {
       displayMessage = _json["displayMessage"];
     }
     if (_json.containsKey("fanFundingEventDetails")) {
-      fanFundingEventDetails = new LiveChatFanFundingEventDetails.fromJson(
+      fanFundingEventDetails = LiveChatFanFundingEventDetails.fromJson(
           _json["fanFundingEventDetails"]);
     }
     if (_json.containsKey("hasDisplayContent")) {
@@ -13100,11 +13525,11 @@ class LiveChatMessageSnippet {
       liveChatId = _json["liveChatId"];
     }
     if (_json.containsKey("messageDeletedDetails")) {
-      messageDeletedDetails = new LiveChatMessageDeletedDetails.fromJson(
+      messageDeletedDetails = LiveChatMessageDeletedDetails.fromJson(
           _json["messageDeletedDetails"]);
     }
     if (_json.containsKey("messageRetractedDetails")) {
-      messageRetractedDetails = new LiveChatMessageRetractedDetails.fromJson(
+      messageRetractedDetails = LiveChatMessageRetractedDetails.fromJson(
           _json["messageRetractedDetails"]);
     }
     if (_json.containsKey("publishedAt")) {
@@ -13112,28 +13537,28 @@ class LiveChatMessageSnippet {
     }
     if (_json.containsKey("superChatDetails")) {
       superChatDetails =
-          new LiveChatSuperChatDetails.fromJson(_json["superChatDetails"]);
+          LiveChatSuperChatDetails.fromJson(_json["superChatDetails"]);
     }
     if (_json.containsKey("superStickerDetails")) {
-      superStickerDetails = new LiveChatSuperStickerDetails.fromJson(
-          _json["superStickerDetails"]);
+      superStickerDetails =
+          LiveChatSuperStickerDetails.fromJson(_json["superStickerDetails"]);
     }
     if (_json.containsKey("textMessageDetails")) {
       textMessageDetails =
-          new LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
+          LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
     if (_json.containsKey("userBannedDetails")) {
-      userBannedDetails = new LiveChatUserBannedMessageDetails.fromJson(
-          _json["userBannedDetails"]);
+      userBannedDetails =
+          LiveChatUserBannedMessageDetails.fromJson(_json["userBannedDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authorChannelId != null) {
       _json["authorChannelId"] = authorChannelId;
     }
@@ -13141,7 +13566,7 @@ class LiveChatMessageSnippet {
       _json["displayMessage"] = displayMessage;
     }
     if (fanFundingEventDetails != null) {
-      _json["fanFundingEventDetails"] = (fanFundingEventDetails).toJson();
+      _json["fanFundingEventDetails"] = fanFundingEventDetails.toJson();
     }
     if (hasDisplayContent != null) {
       _json["hasDisplayContent"] = hasDisplayContent;
@@ -13150,28 +13575,28 @@ class LiveChatMessageSnippet {
       _json["liveChatId"] = liveChatId;
     }
     if (messageDeletedDetails != null) {
-      _json["messageDeletedDetails"] = (messageDeletedDetails).toJson();
+      _json["messageDeletedDetails"] = messageDeletedDetails.toJson();
     }
     if (messageRetractedDetails != null) {
-      _json["messageRetractedDetails"] = (messageRetractedDetails).toJson();
+      _json["messageRetractedDetails"] = messageRetractedDetails.toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = publishedAt;
     }
     if (superChatDetails != null) {
-      _json["superChatDetails"] = (superChatDetails).toJson();
+      _json["superChatDetails"] = superChatDetails.toJson();
     }
     if (superStickerDetails != null) {
-      _json["superStickerDetails"] = (superStickerDetails).toJson();
+      _json["superStickerDetails"] = superStickerDetails.toJson();
     }
     if (textMessageDetails != null) {
-      _json["textMessageDetails"] = (textMessageDetails).toJson();
+      _json["textMessageDetails"] = textMessageDetails.toJson();
     }
     if (type != null) {
       _json["type"] = type;
     }
     if (userBannedDetails != null) {
-      _json["userBannedDetails"] = (userBannedDetails).toJson();
+      _json["userBannedDetails"] = userBannedDetails.toJson();
     }
     return _json;
   }
@@ -13207,13 +13632,13 @@ class LiveChatModerator {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new LiveChatModeratorSnippet.fromJson(_json["snippet"]);
+      snippet = LiveChatModeratorSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -13224,7 +13649,7 @@ class LiveChatModerator {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -13270,8 +13695,7 @@ class LiveChatModeratorListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LiveChatModerator>(
-              (value) => new LiveChatModerator.fromJson(value))
+          .map<LiveChatModerator>((value) => LiveChatModerator.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13281,13 +13705,13 @@ class LiveChatModeratorListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -13296,7 +13720,7 @@ class LiveChatModeratorListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -13304,7 +13728,7 @@ class LiveChatModeratorListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -13313,13 +13737,13 @@ class LiveChatModeratorListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -13343,18 +13767,18 @@ class LiveChatModeratorSnippet {
     }
     if (_json.containsKey("moderatorDetails")) {
       moderatorDetails =
-          new ChannelProfileDetails.fromJson(_json["moderatorDetails"]);
+          ChannelProfileDetails.fromJson(_json["moderatorDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (liveChatId != null) {
       _json["liveChatId"] = liveChatId;
     }
     if (moderatorDetails != null) {
-      _json["moderatorDetails"] = (moderatorDetails).toJson();
+      _json["moderatorDetails"] = moderatorDetails.toJson();
     }
     return _json;
   }
@@ -13399,7 +13823,7 @@ class LiveChatSuperChatDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (amountDisplayString != null) {
       _json["amountDisplayString"] = amountDisplayString;
     }
@@ -13450,7 +13874,7 @@ class LiveChatSuperStickerDetails {
     }
     if (_json.containsKey("superStickerMetadata")) {
       superStickerMetadata =
-          new SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
+          SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
     }
     if (_json.containsKey("tier")) {
       tier = _json["tier"];
@@ -13459,7 +13883,7 @@ class LiveChatSuperStickerDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (amountDisplayString != null) {
       _json["amountDisplayString"] = amountDisplayString;
     }
@@ -13470,7 +13894,7 @@ class LiveChatSuperStickerDetails {
       _json["currency"] = currency;
     }
     if (superStickerMetadata != null) {
-      _json["superStickerMetadata"] = (superStickerMetadata).toJson();
+      _json["superStickerMetadata"] = superStickerMetadata.toJson();
     }
     if (tier != null) {
       _json["tier"] = tier;
@@ -13493,7 +13917,7 @@ class LiveChatTextMessageDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (messageText != null) {
       _json["messageText"] = messageText;
     }
@@ -13526,13 +13950,13 @@ class LiveChatUserBannedMessageDetails {
     }
     if (_json.containsKey("bannedUserDetails")) {
       bannedUserDetails =
-          new ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
+          ChannelProfileDetails.fromJson(_json["bannedUserDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (banDurationSeconds != null) {
       _json["banDurationSeconds"] = banDurationSeconds;
     }
@@ -13540,7 +13964,7 @@ class LiveChatUserBannedMessageDetails {
       _json["banType"] = banType;
     }
     if (bannedUserDetails != null) {
-      _json["bannedUserDetails"] = (bannedUserDetails).toJson();
+      _json["bannedUserDetails"] = bannedUserDetails.toJson();
     }
     return _json;
   }
@@ -13578,11 +14002,11 @@ class LiveStream {
 
   LiveStream.fromJson(core.Map _json) {
     if (_json.containsKey("cdn")) {
-      cdn = new CdnSettings.fromJson(_json["cdn"]);
+      cdn = CdnSettings.fromJson(_json["cdn"]);
     }
     if (_json.containsKey("contentDetails")) {
       contentDetails =
-          new LiveStreamContentDetails.fromJson(_json["contentDetails"]);
+          LiveStreamContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -13594,21 +14018,21 @@ class LiveStream {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new LiveStreamSnippet.fromJson(_json["snippet"]);
+      snippet = LiveStreamSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("status")) {
-      status = new LiveStreamStatus.fromJson(_json["status"]);
+      status = LiveStreamStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cdn != null) {
-      _json["cdn"] = (cdn).toJson();
+      _json["cdn"] = cdn.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -13620,10 +14044,10 @@ class LiveStream {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -13700,7 +14124,7 @@ class LiveStreamConfigurationIssue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -13749,7 +14173,7 @@ class LiveStreamContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (closedCaptionsIngestionUrl != null) {
       _json["closedCaptionsIngestionUrl"] = closedCaptionsIngestionUrl;
     }
@@ -13782,7 +14206,7 @@ class LiveStreamHealthStatus {
     if (_json.containsKey("configurationIssues")) {
       configurationIssues = (_json["configurationIssues"] as core.List)
           .map<LiveStreamConfigurationIssue>(
-              (value) => new LiveStreamConfigurationIssue.fromJson(value))
+              (value) => LiveStreamConfigurationIssue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("lastUpdateTimeSeconds")) {
@@ -13795,10 +14219,10 @@ class LiveStreamHealthStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configurationIssues != null) {
       _json["configurationIssues"] =
-          configurationIssues.map((value) => (value).toJson()).toList();
+          configurationIssues.map((value) => value.toJson()).toList();
     }
     if (lastUpdateTimeSeconds != null) {
       _json["lastUpdateTimeSeconds"] = lastUpdateTimeSeconds;
@@ -13848,7 +14272,7 @@ class LiveStreamListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LiveStream>((value) => new LiveStream.fromJson(value))
+          .map<LiveStream>((value) => LiveStream.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -13858,13 +14282,13 @@ class LiveStreamListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -13873,7 +14297,7 @@ class LiveStreamListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -13881,7 +14305,7 @@ class LiveStreamListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -13890,13 +14314,13 @@ class LiveStreamListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -13944,7 +14368,7 @@ class LiveStreamSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -13982,7 +14406,7 @@ class LiveStreamStatus {
 
   LiveStreamStatus.fromJson(core.Map _json) {
     if (_json.containsKey("healthStatus")) {
-      healthStatus = new LiveStreamHealthStatus.fromJson(_json["healthStatus"]);
+      healthStatus = LiveStreamHealthStatus.fromJson(_json["healthStatus"]);
     }
     if (_json.containsKey("streamStatus")) {
       streamStatus = _json["streamStatus"];
@@ -13991,9 +14415,9 @@ class LiveStreamStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (healthStatus != null) {
-      _json["healthStatus"] = (healthStatus).toJson();
+      _json["healthStatus"] = healthStatus.toJson();
     }
     if (streamStatus != null) {
       _json["streamStatus"] = streamStatus;
@@ -14016,26 +14440,26 @@ class LocalizedProperty {
       default_ = _json["default"];
     }
     if (_json.containsKey("defaultLanguage")) {
-      defaultLanguage = new LanguageTag.fromJson(_json["defaultLanguage"]);
+      defaultLanguage = LanguageTag.fromJson(_json["defaultLanguage"]);
     }
     if (_json.containsKey("localized")) {
       localized = (_json["localized"] as core.List)
-          .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
+          .map<LocalizedString>((value) => LocalizedString.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (default_ != null) {
       _json["default"] = default_;
     }
     if (defaultLanguage != null) {
-      _json["defaultLanguage"] = (defaultLanguage).toJson();
+      _json["defaultLanguage"] = defaultLanguage.toJson();
     }
     if (localized != null) {
-      _json["localized"] = localized.map((value) => (value).toJson()).toList();
+      _json["localized"] = localized.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14058,7 +14482,7 @@ class LocalizedString {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (language != null) {
       _json["language"] = language;
     }
@@ -14093,13 +14517,13 @@ class Member {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new MemberSnippet.fromJson(_json["snippet"]);
+      snippet = MemberSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -14107,7 +14531,7 @@ class Member {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -14147,7 +14571,7 @@ class MemberListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Member>((value) => new Member.fromJson(value))
+          .map<Member>((value) => Member.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14157,10 +14581,10 @@ class MemberListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -14169,7 +14593,7 @@ class MemberListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -14177,7 +14601,7 @@ class MemberListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14186,10 +14610,10 @@ class MemberListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -14215,26 +14639,25 @@ class MemberSnippet {
       creatorChannelId = _json["creatorChannelId"];
     }
     if (_json.containsKey("memberDetails")) {
-      memberDetails =
-          new ChannelProfileDetails.fromJson(_json["memberDetails"]);
+      memberDetails = ChannelProfileDetails.fromJson(_json["memberDetails"]);
     }
     if (_json.containsKey("membershipsDetails")) {
       membershipsDetails =
-          new MembershipsDetails.fromJson(_json["membershipsDetails"]);
+          MembershipsDetails.fromJson(_json["membershipsDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creatorChannelId != null) {
       _json["creatorChannelId"] = creatorChannelId;
     }
     if (memberDetails != null) {
-      _json["memberDetails"] = (memberDetails).toJson();
+      _json["memberDetails"] = memberDetails.toJson();
     }
     if (membershipsDetails != null) {
-      _json["membershipsDetails"] = (membershipsDetails).toJson();
+      _json["membershipsDetails"] = membershipsDetails.toJson();
     }
     return _json;
   }
@@ -14276,20 +14699,20 @@ class MembershipsDetails {
     }
     if (_json.containsKey("membershipsDuration")) {
       membershipsDuration =
-          new MembershipsDuration.fromJson(_json["membershipsDuration"]);
+          MembershipsDuration.fromJson(_json["membershipsDuration"]);
     }
     if (_json.containsKey("membershipsDurationAtLevels")) {
       membershipsDurationAtLevels =
           (_json["membershipsDurationAtLevels"] as core.List)
               .map<MembershipsDurationAtLevel>(
-                  (value) => new MembershipsDurationAtLevel.fromJson(value))
+                  (value) => MembershipsDurationAtLevel.fromJson(value))
               .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessibleLevels != null) {
       _json["accessibleLevels"] = accessibleLevels;
     }
@@ -14301,11 +14724,11 @@ class MembershipsDetails {
           highestAccessibleLevelDisplayName;
     }
     if (membershipsDuration != null) {
-      _json["membershipsDuration"] = (membershipsDuration).toJson();
+      _json["membershipsDuration"] = membershipsDuration.toJson();
     }
     if (membershipsDurationAtLevels != null) {
       _json["membershipsDurationAtLevels"] =
-          membershipsDurationAtLevels.map((value) => (value).toJson()).toList();
+          membershipsDurationAtLevels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14333,7 +14756,7 @@ class MembershipsDuration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (memberSince != null) {
       _json["memberSince"] = memberSince;
     }
@@ -14372,7 +14795,7 @@ class MembershipsDurationAtLevel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (level != null) {
       _json["level"] = level;
     }
@@ -14417,13 +14840,13 @@ class MembershipsLevel {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new MembershipsLevelSnippet.fromJson(_json["snippet"]);
+      snippet = MembershipsLevelSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -14434,7 +14857,7 @@ class MembershipsLevel {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -14468,8 +14891,7 @@ class MembershipsLevelListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<MembershipsLevel>(
-              (value) => new MembershipsLevel.fromJson(value))
+          .map<MembershipsLevel>((value) => MembershipsLevel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14482,7 +14904,7 @@ class MembershipsLevelListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -14490,7 +14912,7 @@ class MembershipsLevelListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14516,18 +14938,18 @@ class MembershipsLevelSnippet {
       creatorChannelId = _json["creatorChannelId"];
     }
     if (_json.containsKey("levelDetails")) {
-      levelDetails = new LevelDetails.fromJson(_json["levelDetails"]);
+      levelDetails = LevelDetails.fromJson(_json["levelDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creatorChannelId != null) {
       _json["creatorChannelId"] = creatorChannelId;
     }
     if (levelDetails != null) {
-      _json["levelDetails"] = (levelDetails).toJson();
+      _json["levelDetails"] = levelDetails.toJson();
     }
     return _json;
   }
@@ -14568,7 +14990,7 @@ class MonitorStreamInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (broadcastStreamDelayMs != null) {
       _json["broadcastStreamDelayMs"] = broadcastStreamDelayMs;
     }
@@ -14604,7 +15026,7 @@ class PageInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resultsPerPage != null) {
       _json["resultsPerPage"] = resultsPerPage;
     }
@@ -14661,8 +15083,7 @@ class Playlist {
 
   Playlist.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
-      contentDetails =
-          new PlaylistContentDetails.fromJson(_json["contentDetails"]);
+      contentDetails = PlaylistContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -14676,24 +15097,24 @@ class Playlist {
     if (_json.containsKey("localizations")) {
       localizations = commons.mapMap<core.Map, PlaylistLocalization>(
           _json["localizations"].cast<core.String, core.Map>(),
-          (core.Map item) => new PlaylistLocalization.fromJson(item));
+          (core.Map item) => PlaylistLocalization.fromJson(item));
     }
     if (_json.containsKey("player")) {
-      player = new PlaylistPlayer.fromJson(_json["player"]);
+      player = PlaylistPlayer.fromJson(_json["player"]);
     }
     if (_json.containsKey("snippet")) {
-      snippet = new PlaylistSnippet.fromJson(_json["snippet"]);
+      snippet = PlaylistSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("status")) {
-      status = new PlaylistStatus.fromJson(_json["status"]);
+      status = PlaylistStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -14707,16 +15128,16 @@ class Playlist {
     if (localizations != null) {
       _json["localizations"] = commons
           .mapMap<PlaylistLocalization, core.Map<core.String, core.Object>>(
-              localizations, (PlaylistLocalization item) => (item).toJson());
+              localizations, (PlaylistLocalization item) => item.toJson());
     }
     if (player != null) {
-      _json["player"] = (player).toJson();
+      _json["player"] = player.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -14736,7 +15157,7 @@ class PlaylistContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (itemCount != null) {
       _json["itemCount"] = itemCount;
     }
@@ -14788,7 +15209,7 @@ class PlaylistItem {
   PlaylistItem.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
       contentDetails =
-          new PlaylistItemContentDetails.fromJson(_json["contentDetails"]);
+          PlaylistItemContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -14800,18 +15221,18 @@ class PlaylistItem {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new PlaylistItemSnippet.fromJson(_json["snippet"]);
+      snippet = PlaylistItemSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("status")) {
-      status = new PlaylistItemStatus.fromJson(_json["status"]);
+      status = PlaylistItemStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -14823,10 +15244,10 @@ class PlaylistItem {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -14880,7 +15301,7 @@ class PlaylistItemContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endAt != null) {
       _json["endAt"] = endAt;
     }
@@ -14939,7 +15360,7 @@ class PlaylistItemListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<PlaylistItem>((value) => new PlaylistItem.fromJson(value))
+          .map<PlaylistItem>((value) => PlaylistItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -14949,13 +15370,13 @@ class PlaylistItemListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -14964,7 +15385,7 @@ class PlaylistItemListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -14972,7 +15393,7 @@ class PlaylistItemListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -14981,13 +15402,13 @@ class PlaylistItemListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -15056,10 +15477,10 @@ class PlaylistItemSnippet {
       publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -15068,7 +15489,7 @@ class PlaylistItemSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -15088,10 +15509,10 @@ class PlaylistItemSnippet {
       _json["publishedAt"] = publishedAt;
     }
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -15119,7 +15540,7 @@ class PlaylistItemStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
     }
@@ -15167,7 +15588,7 @@ class PlaylistListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Playlist>((value) => new Playlist.fromJson(value))
+          .map<Playlist>((value) => Playlist.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15177,13 +15598,13 @@ class PlaylistListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -15192,7 +15613,7 @@ class PlaylistListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -15200,7 +15621,7 @@ class PlaylistListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15209,13 +15630,13 @@ class PlaylistListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -15245,7 +15666,7 @@ class PlaylistLocalization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -15270,7 +15691,7 @@ class PlaylistPlayer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (embedHtml != null) {
       _json["embedHtml"] = embedHtml;
     }
@@ -15327,7 +15748,7 @@ class PlaylistSnippet {
       description = _json["description"];
     }
     if (_json.containsKey("localized")) {
-      localized = new PlaylistLocalization.fromJson(_json["localized"]);
+      localized = PlaylistLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = _json["publishedAt"];
@@ -15336,7 +15757,7 @@ class PlaylistSnippet {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -15345,7 +15766,7 @@ class PlaylistSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -15359,7 +15780,7 @@ class PlaylistSnippet {
       _json["description"] = description;
     }
     if (localized != null) {
-      _json["localized"] = (localized).toJson();
+      _json["localized"] = localized.toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = publishedAt;
@@ -15368,7 +15789,7 @@ class PlaylistSnippet {
       _json["tags"] = tags;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -15395,7 +15816,7 @@ class PlaylistStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
     }
@@ -15424,7 +15845,7 @@ class PropertyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (property != null) {
       _json["property"] = property;
     }
@@ -15442,15 +15863,15 @@ class RelatedEntity {
 
   RelatedEntity.fromJson(core.Map _json) {
     if (_json.containsKey("entity")) {
-      entity = new Entity.fromJson(_json["entity"]);
+      entity = Entity.fromJson(_json["entity"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entity != null) {
-      _json["entity"] = (entity).toJson();
+      _json["entity"] = entity.toJson();
     }
     return _json;
   }
@@ -15496,7 +15917,7 @@ class ResourceId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -15554,7 +15975,7 @@ class SearchListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<SearchResult>((value) => new SearchResult.fromJson(value))
+          .map<SearchResult>((value) => SearchResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15564,7 +15985,7 @@ class SearchListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
@@ -15573,7 +15994,7 @@ class SearchListResponse {
       regionCode = _json["regionCode"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -15582,7 +16003,7 @@ class SearchListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -15590,7 +16011,7 @@ class SearchListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15599,7 +16020,7 @@ class SearchListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
@@ -15608,7 +16029,7 @@ class SearchListResponse {
       _json["regionCode"] = regionCode;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -15646,30 +16067,30 @@ class SearchResult {
       etag = _json["etag"];
     }
     if (_json.containsKey("id")) {
-      id = new ResourceId.fromJson(_json["id"]);
+      id = ResourceId.fromJson(_json["id"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new SearchResultSnippet.fromJson(_json["snippet"]);
+      snippet = SearchResultSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (id != null) {
-      _json["id"] = (id).toJson();
+      _json["id"] = id.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -15730,7 +16151,7 @@ class SearchResultSnippet {
       publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -15739,7 +16160,7 @@ class SearchResultSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -15756,7 +16177,7 @@ class SearchResultSnippet {
       _json["publishedAt"] = publishedAt;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -15789,13 +16210,13 @@ class Sponsor {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new SponsorSnippet.fromJson(_json["snippet"]);
+      snippet = SponsorSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -15803,7 +16224,7 @@ class Sponsor {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -15843,7 +16264,7 @@ class SponsorListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Sponsor>((value) => new Sponsor.fromJson(value))
+          .map<Sponsor>((value) => Sponsor.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -15853,10 +16274,10 @@ class SponsorListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -15865,7 +16286,7 @@ class SponsorListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -15873,7 +16294,7 @@ class SponsorListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -15882,10 +16303,10 @@ class SponsorListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -15918,8 +16339,7 @@ class SponsorSnippet {
       cumulativeDurationMonths = _json["cumulativeDurationMonths"];
     }
     if (_json.containsKey("sponsorDetails")) {
-      sponsorDetails =
-          new ChannelProfileDetails.fromJson(_json["sponsorDetails"]);
+      sponsorDetails = ChannelProfileDetails.fromJson(_json["sponsorDetails"]);
     }
     if (_json.containsKey("sponsorSince")) {
       sponsorSince = _json["sponsorSince"];
@@ -15928,7 +16348,7 @@ class SponsorSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -15936,7 +16356,7 @@ class SponsorSnippet {
       _json["cumulativeDurationMonths"] = cumulativeDurationMonths;
     }
     if (sponsorDetails != null) {
-      _json["sponsorDetails"] = (sponsorDetails).toJson();
+      _json["sponsorDetails"] = sponsorDetails.toJson();
     }
     if (sponsorSince != null) {
       _json["sponsorSince"] = sponsorSince;
@@ -15976,7 +16396,7 @@ class Subscription {
   Subscription.fromJson(core.Map _json) {
     if (_json.containsKey("contentDetails")) {
       contentDetails =
-          new SubscriptionContentDetails.fromJson(_json["contentDetails"]);
+          SubscriptionContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -15988,19 +16408,19 @@ class Subscription {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new SubscriptionSnippet.fromJson(_json["snippet"]);
+      snippet = SubscriptionSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("subscriberSnippet")) {
-      subscriberSnippet = new SubscriptionSubscriberSnippet.fromJson(
-          _json["subscriberSnippet"]);
+      subscriberSnippet =
+          SubscriptionSubscriberSnippet.fromJson(_json["subscriberSnippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -16012,10 +16432,10 @@ class Subscription {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (subscriberSnippet != null) {
-      _json["subscriberSnippet"] = (subscriberSnippet).toJson();
+      _json["subscriberSnippet"] = subscriberSnippet.toJson();
     }
     return _json;
   }
@@ -16053,7 +16473,7 @@ class SubscriptionContentDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activityType != null) {
       _json["activityType"] = activityType;
     }
@@ -16105,7 +16525,7 @@ class SubscriptionListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Subscription>((value) => new Subscription.fromJson(value))
+          .map<Subscription>((value) => Subscription.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16115,13 +16535,13 @@ class SubscriptionListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -16130,7 +16550,7 @@ class SubscriptionListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -16138,7 +16558,7 @@ class SubscriptionListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16147,13 +16567,13 @@ class SubscriptionListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -16206,10 +16626,10 @@ class SubscriptionSnippet {
       publishedAt = _json["publishedAt"];
     }
     if (_json.containsKey("resourceId")) {
-      resourceId = new ResourceId.fromJson(_json["resourceId"]);
+      resourceId = ResourceId.fromJson(_json["resourceId"]);
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -16218,7 +16638,7 @@ class SubscriptionSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -16232,10 +16652,10 @@ class SubscriptionSnippet {
       _json["publishedAt"] = publishedAt;
     }
     if (resourceId != null) {
-      _json["resourceId"] = (resourceId).toJson();
+      _json["resourceId"] = resourceId.toJson();
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -16269,7 +16689,7 @@ class SubscriptionSubscriberSnippet {
       description = _json["description"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -16278,7 +16698,7 @@ class SubscriptionSubscriberSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -16286,7 +16706,7 @@ class SubscriptionSubscriberSnippet {
       _json["description"] = description;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -16324,13 +16744,13 @@ class SuperChatEvent {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new SuperChatEventSnippet.fromJson(_json["snippet"]);
+      snippet = SuperChatEventSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -16341,7 +16761,7 @@ class SuperChatEvent {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -16381,7 +16801,7 @@ class SuperChatEventListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<SuperChatEvent>((value) => new SuperChatEvent.fromJson(value))
+          .map<SuperChatEvent>((value) => SuperChatEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16391,10 +16811,10 @@ class SuperChatEventListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -16403,7 +16823,7 @@ class SuperChatEventListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -16411,7 +16831,7 @@ class SuperChatEventListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16420,10 +16840,10 @@ class SuperChatEventListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -16497,17 +16917,17 @@ class SuperChatEventSnippet {
     }
     if (_json.containsKey("superStickerMetadata")) {
       superStickerMetadata =
-          new SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
+          SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
     }
     if (_json.containsKey("supporterDetails")) {
       supporterDetails =
-          new ChannelProfileDetails.fromJson(_json["supporterDetails"]);
+          ChannelProfileDetails.fromJson(_json["supporterDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (amountMicros != null) {
       _json["amountMicros"] = amountMicros;
     }
@@ -16533,10 +16953,10 @@ class SuperChatEventSnippet {
       _json["messageType"] = messageType;
     }
     if (superStickerMetadata != null) {
-      _json["superStickerMetadata"] = (superStickerMetadata).toJson();
+      _json["superStickerMetadata"] = superStickerMetadata.toJson();
     }
     if (supporterDetails != null) {
-      _json["supporterDetails"] = (supporterDetails).toJson();
+      _json["supporterDetails"] = supporterDetails.toJson();
     }
     return _json;
   }
@@ -16571,7 +16991,7 @@ class SuperStickerMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (altText != null) {
       _json["altText"] = altText;
     }
@@ -16600,13 +17020,13 @@ class TestItem {
       id = _json["id"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new TestItemTestItemSnippet.fromJson(_json["snippet"]);
+      snippet = TestItemTestItemSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gaia != null) {
       _json["gaia"] = gaia;
     }
@@ -16614,7 +17034,7 @@ class TestItem {
       _json["id"] = id;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -16627,7 +17047,7 @@ class TestItemTestItemSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -16666,16 +17086,16 @@ class ThirdPartyLink {
       linkingToken = _json["linkingToken"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new ThirdPartyLinkSnippet.fromJson(_json["snippet"]);
+      snippet = ThirdPartyLinkSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("status")) {
-      status = new ThirdPartyLinkStatus.fromJson(_json["status"]);
+      status = ThirdPartyLinkStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -16686,10 +17106,10 @@ class ThirdPartyLink {
       _json["linkingToken"] = linkingToken;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -16715,7 +17135,7 @@ class ThirdPartyLinkSnippet {
   ThirdPartyLinkSnippet.fromJson(core.Map _json) {
     if (_json.containsKey("channelToStoreLink")) {
       channelToStoreLink =
-          new ChannelToStoreLinkDetails.fromJson(_json["channelToStoreLink"]);
+          ChannelToStoreLinkDetails.fromJson(_json["channelToStoreLink"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -16724,9 +17144,9 @@ class ThirdPartyLinkSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channelToStoreLink != null) {
-      _json["channelToStoreLink"] = (channelToStoreLink).toJson();
+      _json["channelToStoreLink"] = channelToStoreLink.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -16756,7 +17176,7 @@ class ThirdPartyLinkStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (linkStatus != null) {
       _json["linkStatus"] = linkStatus;
     }
@@ -16791,7 +17211,7 @@ class Thumbnail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -16826,39 +17246,39 @@ class ThumbnailDetails {
 
   ThumbnailDetails.fromJson(core.Map _json) {
     if (_json.containsKey("default")) {
-      default_ = new Thumbnail.fromJson(_json["default"]);
+      default_ = Thumbnail.fromJson(_json["default"]);
     }
     if (_json.containsKey("high")) {
-      high = new Thumbnail.fromJson(_json["high"]);
+      high = Thumbnail.fromJson(_json["high"]);
     }
     if (_json.containsKey("maxres")) {
-      maxres = new Thumbnail.fromJson(_json["maxres"]);
+      maxres = Thumbnail.fromJson(_json["maxres"]);
     }
     if (_json.containsKey("medium")) {
-      medium = new Thumbnail.fromJson(_json["medium"]);
+      medium = Thumbnail.fromJson(_json["medium"]);
     }
     if (_json.containsKey("standard")) {
-      standard = new Thumbnail.fromJson(_json["standard"]);
+      standard = Thumbnail.fromJson(_json["standard"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (default_ != null) {
-      _json["default"] = (default_).toJson();
+      _json["default"] = default_.toJson();
     }
     if (high != null) {
-      _json["high"] = (high).toJson();
+      _json["high"] = high.toJson();
     }
     if (maxres != null) {
-      _json["maxres"] = (maxres).toJson();
+      _json["maxres"] = maxres.toJson();
     }
     if (medium != null) {
-      _json["medium"] = (medium).toJson();
+      _json["medium"] = medium.toJson();
     }
     if (standard != null) {
-      _json["standard"] = (standard).toJson();
+      _json["standard"] = standard.toJson();
     }
     return _json;
   }
@@ -16892,8 +17312,7 @@ class ThumbnailSetResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<ThumbnailDetails>(
-              (value) => new ThumbnailDetails.fromJson(value))
+          .map<ThumbnailDetails>((value) => ThumbnailDetails.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -16906,7 +17325,7 @@ class ThumbnailSetResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -16914,7 +17333,7 @@ class ThumbnailSetResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -16934,7 +17353,7 @@ class TokenPagination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -17025,17 +17444,16 @@ class Video {
 
   Video.fromJson(core.Map _json) {
     if (_json.containsKey("ageGating")) {
-      ageGating = new VideoAgeGating.fromJson(_json["ageGating"]);
+      ageGating = VideoAgeGating.fromJson(_json["ageGating"]);
     }
     if (_json.containsKey("contentDetails")) {
-      contentDetails =
-          new VideoContentDetails.fromJson(_json["contentDetails"]);
+      contentDetails = VideoContentDetails.fromJson(_json["contentDetails"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("fileDetails")) {
-      fileDetails = new VideoFileDetails.fromJson(_json["fileDetails"]);
+      fileDetails = VideoFileDetails.fromJson(_json["fileDetails"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -17045,63 +17463,62 @@ class Video {
     }
     if (_json.containsKey("liveStreamingDetails")) {
       liveStreamingDetails =
-          new VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
+          VideoLiveStreamingDetails.fromJson(_json["liveStreamingDetails"]);
     }
     if (_json.containsKey("localizations")) {
       localizations = commons.mapMap<core.Map, VideoLocalization>(
           _json["localizations"].cast<core.String, core.Map>(),
-          (core.Map item) => new VideoLocalization.fromJson(item));
+          (core.Map item) => VideoLocalization.fromJson(item));
     }
     if (_json.containsKey("monetizationDetails")) {
       monetizationDetails =
-          new VideoMonetizationDetails.fromJson(_json["monetizationDetails"]);
+          VideoMonetizationDetails.fromJson(_json["monetizationDetails"]);
     }
     if (_json.containsKey("player")) {
-      player = new VideoPlayer.fromJson(_json["player"]);
+      player = VideoPlayer.fromJson(_json["player"]);
     }
     if (_json.containsKey("processingDetails")) {
       processingDetails =
-          new VideoProcessingDetails.fromJson(_json["processingDetails"]);
+          VideoProcessingDetails.fromJson(_json["processingDetails"]);
     }
     if (_json.containsKey("projectDetails")) {
-      projectDetails =
-          new VideoProjectDetails.fromJson(_json["projectDetails"]);
+      projectDetails = VideoProjectDetails.fromJson(_json["projectDetails"]);
     }
     if (_json.containsKey("recordingDetails")) {
       recordingDetails =
-          new VideoRecordingDetails.fromJson(_json["recordingDetails"]);
+          VideoRecordingDetails.fromJson(_json["recordingDetails"]);
     }
     if (_json.containsKey("snippet")) {
-      snippet = new VideoSnippet.fromJson(_json["snippet"]);
+      snippet = VideoSnippet.fromJson(_json["snippet"]);
     }
     if (_json.containsKey("statistics")) {
-      statistics = new VideoStatistics.fromJson(_json["statistics"]);
+      statistics = VideoStatistics.fromJson(_json["statistics"]);
     }
     if (_json.containsKey("status")) {
-      status = new VideoStatus.fromJson(_json["status"]);
+      status = VideoStatus.fromJson(_json["status"]);
     }
     if (_json.containsKey("suggestions")) {
-      suggestions = new VideoSuggestions.fromJson(_json["suggestions"]);
+      suggestions = VideoSuggestions.fromJson(_json["suggestions"]);
     }
     if (_json.containsKey("topicDetails")) {
-      topicDetails = new VideoTopicDetails.fromJson(_json["topicDetails"]);
+      topicDetails = VideoTopicDetails.fromJson(_json["topicDetails"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageGating != null) {
-      _json["ageGating"] = (ageGating).toJson();
+      _json["ageGating"] = ageGating.toJson();
     }
     if (contentDetails != null) {
-      _json["contentDetails"] = (contentDetails).toJson();
+      _json["contentDetails"] = contentDetails.toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (fileDetails != null) {
-      _json["fileDetails"] = (fileDetails).toJson();
+      _json["fileDetails"] = fileDetails.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -17110,42 +17527,42 @@ class Video {
       _json["kind"] = kind;
     }
     if (liveStreamingDetails != null) {
-      _json["liveStreamingDetails"] = (liveStreamingDetails).toJson();
+      _json["liveStreamingDetails"] = liveStreamingDetails.toJson();
     }
     if (localizations != null) {
       _json["localizations"] =
           commons.mapMap<VideoLocalization, core.Map<core.String, core.Object>>(
-              localizations, (VideoLocalization item) => (item).toJson());
+              localizations, (VideoLocalization item) => item.toJson());
     }
     if (monetizationDetails != null) {
-      _json["monetizationDetails"] = (monetizationDetails).toJson();
+      _json["monetizationDetails"] = monetizationDetails.toJson();
     }
     if (player != null) {
-      _json["player"] = (player).toJson();
+      _json["player"] = player.toJson();
     }
     if (processingDetails != null) {
-      _json["processingDetails"] = (processingDetails).toJson();
+      _json["processingDetails"] = processingDetails.toJson();
     }
     if (projectDetails != null) {
-      _json["projectDetails"] = (projectDetails).toJson();
+      _json["projectDetails"] = projectDetails.toJson();
     }
     if (recordingDetails != null) {
-      _json["recordingDetails"] = (recordingDetails).toJson();
+      _json["recordingDetails"] = recordingDetails.toJson();
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     if (statistics != null) {
-      _json["statistics"] = (statistics).toJson();
+      _json["statistics"] = statistics.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     if (suggestions != null) {
-      _json["suggestions"] = (suggestions).toJson();
+      _json["suggestions"] = suggestions.toJson();
     }
     if (topicDetails != null) {
-      _json["topicDetails"] = (topicDetails).toJson();
+      _json["topicDetails"] = topicDetails.toJson();
     }
     return _json;
   }
@@ -17192,7 +17609,7 @@ class VideoAbuseReport {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (comments != null) {
       _json["comments"] = comments;
     }
@@ -17242,13 +17659,13 @@ class VideoAbuseReportReason {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new VideoAbuseReportReasonSnippet.fromJson(_json["snippet"]);
+      snippet = VideoAbuseReportReasonSnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -17259,7 +17676,7 @@ class VideoAbuseReportReason {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -17294,7 +17711,7 @@ class VideoAbuseReportReasonListResponse {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<VideoAbuseReportReason>(
-              (value) => new VideoAbuseReportReason.fromJson(value))
+              (value) => VideoAbuseReportReason.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17307,7 +17724,7 @@ class VideoAbuseReportReasonListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -17315,7 +17732,7 @@ class VideoAbuseReportReasonListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17345,20 +17762,20 @@ class VideoAbuseReportReasonSnippet {
     if (_json.containsKey("secondaryReasons")) {
       secondaryReasons = (_json["secondaryReasons"] as core.List)
           .map<VideoAbuseReportSecondaryReason>(
-              (value) => new VideoAbuseReportSecondaryReason.fromJson(value))
+              (value) => VideoAbuseReportSecondaryReason.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
     if (secondaryReasons != null) {
       _json["secondaryReasons"] =
-          secondaryReasons.map((value) => (value).toJson()).toList();
+          secondaryReasons.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17384,7 +17801,7 @@ class VideoAbuseReportSecondaryReason {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -17431,7 +17848,7 @@ class VideoAgeGating {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alcoholContent != null) {
       _json["alcoholContent"] = alcoholContent;
     }
@@ -17475,13 +17892,13 @@ class VideoCategory {
       kind = _json["kind"];
     }
     if (_json.containsKey("snippet")) {
-      snippet = new VideoCategorySnippet.fromJson(_json["snippet"]);
+      snippet = VideoCategorySnippet.fromJson(_json["snippet"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -17492,7 +17909,7 @@ class VideoCategory {
       _json["kind"] = kind;
     }
     if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
+      _json["snippet"] = snippet.toJson();
     }
     return _json;
   }
@@ -17540,7 +17957,7 @@ class VideoCategoryListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<VideoCategory>((value) => new VideoCategory.fromJson(value))
+          .map<VideoCategory>((value) => VideoCategory.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -17550,13 +17967,13 @@ class VideoCategoryListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -17565,7 +17982,7 @@ class VideoCategoryListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -17573,7 +17990,7 @@ class VideoCategoryListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -17582,13 +17999,13 @@ class VideoCategoryListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -17623,7 +18040,7 @@ class VideoCategorySnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assignable != null) {
       _json["assignable"] = assignable;
     }
@@ -17700,11 +18117,10 @@ class VideoContentDetails {
       caption = _json["caption"];
     }
     if (_json.containsKey("contentRating")) {
-      contentRating = new ContentRating.fromJson(_json["contentRating"]);
+      contentRating = ContentRating.fromJson(_json["contentRating"]);
     }
     if (_json.containsKey("countryRestriction")) {
-      countryRestriction =
-          new AccessPolicy.fromJson(_json["countryRestriction"]);
+      countryRestriction = AccessPolicy.fromJson(_json["countryRestriction"]);
     }
     if (_json.containsKey("definition")) {
       definition = _json["definition"];
@@ -17725,22 +18141,22 @@ class VideoContentDetails {
       projection = _json["projection"];
     }
     if (_json.containsKey("regionRestriction")) {
-      regionRestriction = new VideoContentDetailsRegionRestriction.fromJson(
+      regionRestriction = VideoContentDetailsRegionRestriction.fromJson(
           _json["regionRestriction"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (caption != null) {
       _json["caption"] = caption;
     }
     if (contentRating != null) {
-      _json["contentRating"] = (contentRating).toJson();
+      _json["contentRating"] = contentRating.toJson();
     }
     if (countryRestriction != null) {
-      _json["countryRestriction"] = (countryRestriction).toJson();
+      _json["countryRestriction"] = countryRestriction.toJson();
     }
     if (definition != null) {
       _json["definition"] = definition;
@@ -17761,7 +18177,7 @@ class VideoContentDetails {
       _json["projection"] = projection;
     }
     if (regionRestriction != null) {
-      _json["regionRestriction"] = (regionRestriction).toJson();
+      _json["regionRestriction"] = regionRestriction.toJson();
     }
     return _json;
   }
@@ -17795,7 +18211,7 @@ class VideoContentDetailsRegionRestriction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowed != null) {
       _json["allowed"] = allowed;
     }
@@ -17862,7 +18278,7 @@ class VideoFileDetails {
     if (_json.containsKey("audioStreams")) {
       audioStreams = (_json["audioStreams"] as core.List)
           .map<VideoFileDetailsAudioStream>(
-              (value) => new VideoFileDetailsAudioStream.fromJson(value))
+              (value) => VideoFileDetailsAudioStream.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bitrateBps")) {
@@ -17889,17 +18305,17 @@ class VideoFileDetails {
     if (_json.containsKey("videoStreams")) {
       videoStreams = (_json["videoStreams"] as core.List)
           .map<VideoFileDetailsVideoStream>(
-              (value) => new VideoFileDetailsVideoStream.fromJson(value))
+              (value) => VideoFileDetailsVideoStream.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audioStreams != null) {
       _json["audioStreams"] =
-          audioStreams.map((value) => (value).toJson()).toList();
+          audioStreams.map((value) => value.toJson()).toList();
     }
     if (bitrateBps != null) {
       _json["bitrateBps"] = bitrateBps;
@@ -17924,7 +18340,7 @@ class VideoFileDetails {
     }
     if (videoStreams != null) {
       _json["videoStreams"] =
-          videoStreams.map((value) => (value).toJson()).toList();
+          videoStreams.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17964,7 +18380,7 @@ class VideoFileDetailsAudioStream {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bitrateBps != null) {
       _json["bitrateBps"] = bitrateBps;
     }
@@ -18048,7 +18464,7 @@ class VideoFileDetailsVideoStream {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aspectRatio != null) {
       _json["aspectRatio"] = aspectRatio;
     }
@@ -18115,7 +18531,7 @@ class VideoListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Video>((value) => new Video.fromJson(value))
+          .map<Video>((value) => Video.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -18125,13 +18541,13 @@ class VideoListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("pageInfo")) {
-      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+      pageInfo = PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
     }
     if (_json.containsKey("tokenPagination")) {
-      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+      tokenPagination = TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("visitorId")) {
       visitorId = _json["visitorId"];
@@ -18140,7 +18556,7 @@ class VideoListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -18148,7 +18564,7 @@ class VideoListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -18157,13 +18573,13 @@ class VideoListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (pageInfo != null) {
-      _json["pageInfo"] = (pageInfo).toJson();
+      _json["pageInfo"] = pageInfo.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
     }
     if (tokenPagination != null) {
-      _json["tokenPagination"] = (tokenPagination).toJson();
+      _json["tokenPagination"] = tokenPagination.toJson();
     }
     if (visitorId != null) {
       _json["visitorId"] = visitorId;
@@ -18234,7 +18650,7 @@ class VideoLiveStreamingDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeLiveChatId != null) {
       _json["activeLiveChatId"] = activeLiveChatId;
     }
@@ -18278,7 +18694,7 @@ class VideoLocalization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -18298,15 +18714,15 @@ class VideoMonetizationDetails {
 
   VideoMonetizationDetails.fromJson(core.Map _json) {
     if (_json.containsKey("access")) {
-      access = new AccessPolicy.fromJson(_json["access"]);
+      access = AccessPolicy.fromJson(_json["access"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (access != null) {
-      _json["access"] = (access).toJson();
+      _json["access"] = access.toJson();
     }
     return _json;
   }
@@ -18338,7 +18754,7 @@ class VideoPlayer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (embedHeight != null) {
       _json["embedHeight"] = embedHeight;
     }
@@ -18422,9 +18838,8 @@ class VideoProcessingDetails {
       processingIssuesAvailability = _json["processingIssuesAvailability"];
     }
     if (_json.containsKey("processingProgress")) {
-      processingProgress =
-          new VideoProcessingDetailsProcessingProgress.fromJson(
-              _json["processingProgress"]);
+      processingProgress = VideoProcessingDetailsProcessingProgress.fromJson(
+          _json["processingProgress"]);
     }
     if (_json.containsKey("processingStatus")) {
       processingStatus = _json["processingStatus"];
@@ -18439,7 +18854,7 @@ class VideoProcessingDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (editorSuggestionsAvailability != null) {
       _json["editorSuggestionsAvailability"] = editorSuggestionsAvailability;
     }
@@ -18453,7 +18868,7 @@ class VideoProcessingDetails {
       _json["processingIssuesAvailability"] = processingIssuesAvailability;
     }
     if (processingProgress != null) {
-      _json["processingProgress"] = (processingProgress).toJson();
+      _json["processingProgress"] = processingProgress.toJson();
     }
     if (processingStatus != null) {
       _json["processingStatus"] = processingStatus;
@@ -18504,7 +18919,7 @@ class VideoProcessingDetailsProcessingProgress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (partsProcessed != null) {
       _json["partsProcessed"] = partsProcessed;
     }
@@ -18533,7 +18948,7 @@ class VideoProjectDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tags != null) {
       _json["tags"] = tags;
     }
@@ -18566,7 +18981,7 @@ class VideoRating {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rating != null) {
       _json["rating"] = rating;
     }
@@ -18605,7 +19020,7 @@ class VideoRatingListResponse {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<VideoRating>((value) => new VideoRating.fromJson(value))
+          .map<VideoRating>((value) => VideoRating.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -18618,7 +19033,7 @@ class VideoRatingListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -18626,7 +19041,7 @@ class VideoRatingListResponse {
       _json["eventId"] = eventId;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -18654,7 +19069,7 @@ class VideoRecordingDetails {
 
   VideoRecordingDetails.fromJson(core.Map _json) {
     if (_json.containsKey("location")) {
-      location = new GeoPoint.fromJson(_json["location"]);
+      location = GeoPoint.fromJson(_json["location"]);
     }
     if (_json.containsKey("locationDescription")) {
       locationDescription = _json["locationDescription"];
@@ -18666,9 +19081,9 @@ class VideoRecordingDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     if (locationDescription != null) {
       _json["locationDescription"] = locationDescription;
@@ -18757,7 +19172,7 @@ class VideoSnippet {
       liveBroadcastContent = _json["liveBroadcastContent"];
     }
     if (_json.containsKey("localized")) {
-      localized = new VideoLocalization.fromJson(_json["localized"]);
+      localized = VideoLocalization.fromJson(_json["localized"]);
     }
     if (_json.containsKey("publishedAt")) {
       publishedAt = _json["publishedAt"];
@@ -18766,7 +19181,7 @@ class VideoSnippet {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = new ThumbnailDetails.fromJson(_json["thumbnails"]);
+      thumbnails = ThumbnailDetails.fromJson(_json["thumbnails"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -18775,7 +19190,7 @@ class VideoSnippet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoryId != null) {
       _json["categoryId"] = categoryId;
     }
@@ -18798,7 +19213,7 @@ class VideoSnippet {
       _json["liveBroadcastContent"] = liveBroadcastContent;
     }
     if (localized != null) {
-      _json["localized"] = (localized).toJson();
+      _json["localized"] = localized.toJson();
     }
     if (publishedAt != null) {
       _json["publishedAt"] = publishedAt;
@@ -18807,7 +19222,7 @@ class VideoSnippet {
       _json["tags"] = tags;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = (thumbnails).toJson();
+      _json["thumbnails"] = thumbnails.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -18859,7 +19274,7 @@ class VideoStatistics {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commentCount != null) {
       _json["commentCount"] = commentCount;
     }
@@ -18985,7 +19400,7 @@ class VideoStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (embeddable != null) {
       _json["embeddable"] = embeddable;
     }
@@ -19072,14 +19487,14 @@ class VideoSuggestions {
     if (_json.containsKey("tagSuggestions")) {
       tagSuggestions = (_json["tagSuggestions"] as core.List)
           .map<VideoSuggestionsTagSuggestion>(
-              (value) => new VideoSuggestionsTagSuggestion.fromJson(value))
+              (value) => VideoSuggestionsTagSuggestion.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (editorSuggestions != null) {
       _json["editorSuggestions"] = editorSuggestions;
     }
@@ -19094,7 +19509,7 @@ class VideoSuggestions {
     }
     if (tagSuggestions != null) {
       _json["tagSuggestions"] =
-          tagSuggestions.map((value) => (value).toJson()).toList();
+          tagSuggestions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19126,7 +19541,7 @@ class VideoSuggestionsTagSuggestion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoryRestricts != null) {
       _json["categoryRestricts"] = categoryRestricts;
     }
@@ -19173,7 +19588,7 @@ class VideoTopicDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (relevantTopicIds != null) {
       _json["relevantTopicIds"] = relevantTopicIds;
     }
@@ -19215,7 +19630,7 @@ class WatchSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json["backgroundColor"] = backgroundColor;
     }

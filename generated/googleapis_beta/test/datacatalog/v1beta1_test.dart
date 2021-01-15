@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis_beta.datacatalog.v1beta1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,66 +66,66 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed6475() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5843() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6475(core.List<core.String> o) {
+void checkUnnamed5843(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBinding = 0;
-buildBinding() {
-  var o = new api.Binding();
+api.Binding buildBinding() {
+  var o = api.Binding();
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.bindingId = "foo";
     o.condition = buildExpr();
-    o.members = buildUnnamed6475();
+    o.members = buildUnnamed5843();
     o.role = "foo";
   }
   buildCounterBinding--;
   return o;
 }
 
-checkBinding(api.Binding o) {
+void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
     checkExpr(o.condition);
-    checkUnnamed6475(o.members);
+    checkUnnamed5843(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
 core.int buildCounterEmpty = 0;
-buildEmpty() {
-  var o = new api.Empty();
+api.Empty buildEmpty() {
+  var o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
   return o;
 }
 
-checkEmpty(api.Empty o) {
+void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
 }
 
 core.int buildCounterExpr = 0;
-buildExpr() {
-  var o = new api.Expr();
+api.Expr buildExpr() {
+  var o = api.Expr();
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
     o.description = "foo";
@@ -117,7 +137,7 @@ buildExpr() {
   return o;
 }
 
-checkExpr(api.Expr o) {
+void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
@@ -129,8 +149,8 @@ checkExpr(api.Expr o) {
 }
 
 core.int buildCounterGetIamPolicyRequest = 0;
-buildGetIamPolicyRequest() {
-  var o = new api.GetIamPolicyRequest();
+api.GetIamPolicyRequest buildGetIamPolicyRequest() {
+  var o = api.GetIamPolicyRequest();
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
     o.options = buildGetPolicyOptions();
@@ -139,7 +159,7 @@ buildGetIamPolicyRequest() {
   return o;
 }
 
-checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
+void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
     checkGetPolicyOptions(o.options);
@@ -148,8 +168,8 @@ checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
 }
 
 core.int buildCounterGetPolicyOptions = 0;
-buildGetPolicyOptions() {
-  var o = new api.GetPolicyOptions();
+api.GetPolicyOptions buildGetPolicyOptions() {
+  var o = api.GetPolicyOptions();
   buildCounterGetPolicyOptions++;
   if (buildCounterGetPolicyOptions < 3) {
     o.requestedPolicyVersion = 42;
@@ -158,7 +178,7 @@ buildGetPolicyOptions() {
   return o;
 }
 
-checkGetPolicyOptions(api.GetPolicyOptions o) {
+void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions++;
   if (buildCounterGetPolicyOptions < 3) {
     unittest.expect(o.requestedPolicyVersion, unittest.equals(42));
@@ -167,8 +187,9 @@ checkGetPolicyOptions(api.GetPolicyOptions o) {
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec = 0;
-buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
+api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec
+    buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec < 3) {
     o.dataset = "foo";
@@ -179,7 +200,7 @@ buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
+void checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
     api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec < 3) {
@@ -191,8 +212,9 @@ checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec = 0;
-buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
+api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec
+    buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec < 3) {
     o.tableSourceType = "foo";
@@ -203,7 +225,7 @@ buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
+void checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
     api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec < 3) {
@@ -214,50 +236,53 @@ checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
   buildCounterGoogleCloudDatacatalogV1beta1BigQueryTableSpec--;
 }
 
-buildUnnamed6476() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema>();
+core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed5844() {
+  var o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
 }
 
-checkUnnamed6476(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
+void checkUnnamed5844(
+    core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema = 0;
-buildGoogleCloudDatacatalogV1beta1ColumnSchema() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ColumnSchema();
+api.GoogleCloudDatacatalogV1beta1ColumnSchema
+    buildGoogleCloudDatacatalogV1beta1ColumnSchema() {
+  var o = api.GoogleCloudDatacatalogV1beta1ColumnSchema();
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema < 3) {
     o.column = "foo";
     o.description = "foo";
     o.mode = "foo";
-    o.subcolumns = buildUnnamed6476();
+    o.subcolumns = buildUnnamed5844();
     o.type = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ColumnSchema(
+void checkGoogleCloudDatacatalogV1beta1ColumnSchema(
     api.GoogleCloudDatacatalogV1beta1ColumnSchema o) {
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema < 3) {
     unittest.expect(o.column, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.mode, unittest.equals('foo'));
-    checkUnnamed6476(o.subcolumns);
+    checkUnnamed5844(o.subcolumns);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ColumnSchema--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Entry = 0;
-buildGoogleCloudDatacatalogV1beta1Entry() {
-  var o = new api.GoogleCloudDatacatalogV1beta1Entry();
+api.GoogleCloudDatacatalogV1beta1Entry
+    buildGoogleCloudDatacatalogV1beta1Entry() {
+  var o = api.GoogleCloudDatacatalogV1beta1Entry();
   buildCounterGoogleCloudDatacatalogV1beta1Entry++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Entry < 3) {
     o.bigqueryDateShardedSpec =
@@ -280,7 +305,7 @@ buildGoogleCloudDatacatalogV1beta1Entry() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1Entry(
+void checkGoogleCloudDatacatalogV1beta1Entry(
     api.GoogleCloudDatacatalogV1beta1Entry o) {
   buildCounterGoogleCloudDatacatalogV1beta1Entry++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Entry < 3) {
@@ -304,8 +329,9 @@ checkGoogleCloudDatacatalogV1beta1Entry(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1EntryGroup = 0;
-buildGoogleCloudDatacatalogV1beta1EntryGroup() {
-  var o = new api.GoogleCloudDatacatalogV1beta1EntryGroup();
+api.GoogleCloudDatacatalogV1beta1EntryGroup
+    buildGoogleCloudDatacatalogV1beta1EntryGroup() {
+  var o = api.GoogleCloudDatacatalogV1beta1EntryGroup();
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup++;
   if (buildCounterGoogleCloudDatacatalogV1beta1EntryGroup < 3) {
     o.dataCatalogTimestamps =
@@ -318,7 +344,7 @@ buildGoogleCloudDatacatalogV1beta1EntryGroup() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1EntryGroup(
+void checkGoogleCloudDatacatalogV1beta1EntryGroup(
     api.GoogleCloudDatacatalogV1beta1EntryGroup o) {
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup++;
   if (buildCounterGoogleCloudDatacatalogV1beta1EntryGroup < 3) {
@@ -330,14 +356,15 @@ checkGoogleCloudDatacatalogV1beta1EntryGroup(
   buildCounterGoogleCloudDatacatalogV1beta1EntryGroup--;
 }
 
-buildUnnamed6477() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>();
+core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
+    buildUnnamed5845() {
+  var o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
 }
 
-checkUnnamed6477(
+void checkUnnamed5845(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
@@ -345,28 +372,30 @@ checkUnnamed6477(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
+api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
+    buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse < 3) {
-    o.taxonomies = buildUnnamed6477();
+    o.taxonomies = buildUnnamed5845();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
+void checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
     api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse < 3) {
-    checkUnnamed6477(o.taxonomies);
+    checkUnnamed5845(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1FieldType = 0;
-buildGoogleCloudDatacatalogV1beta1FieldType() {
-  var o = new api.GoogleCloudDatacatalogV1beta1FieldType();
+api.GoogleCloudDatacatalogV1beta1FieldType
+    buildGoogleCloudDatacatalogV1beta1FieldType() {
+  var o = api.GoogleCloudDatacatalogV1beta1FieldType();
   buildCounterGoogleCloudDatacatalogV1beta1FieldType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldType < 3) {
     o.enumType = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
@@ -376,7 +405,7 @@ buildGoogleCloudDatacatalogV1beta1FieldType() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1FieldType(
+void checkGoogleCloudDatacatalogV1beta1FieldType(
     api.GoogleCloudDatacatalogV1beta1FieldType o) {
   buildCounterGoogleCloudDatacatalogV1beta1FieldType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldType < 3) {
@@ -386,15 +415,15 @@ checkGoogleCloudDatacatalogV1beta1FieldType(
   buildCounterGoogleCloudDatacatalogV1beta1FieldType--;
 }
 
-buildUnnamed6478() {
-  var o = new core
-      .List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>();
+core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
+    buildUnnamed5846() {
+  var o = <api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>[];
   o.add(buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue());
   o.add(buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue());
   return o;
 }
 
-checkUnnamed6478(
+void checkUnnamed5846(
     core.List<api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(o[0]);
@@ -402,29 +431,31 @@ checkUnnamed6478(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType = 0;
-buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType() {
-  var o = new api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
+api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType
+    buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType() {
+  var o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType < 3) {
-    o.allowedValues = buildUnnamed6478();
+    o.allowedValues = buildUnnamed5846();
   }
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
+void checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
     api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType o) {
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType < 3) {
-    checkUnnamed6478(o.allowedValues);
+    checkUnnamed5846(o.allowedValues);
   }
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumType--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
     0;
-buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue() {
-  var o = new api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
+api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
+    buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue() {
+  var o = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue < 3) {
     o.displayName = "foo";
@@ -433,7 +464,7 @@ buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
+void checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
     api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue o) {
   buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue < 3) {
@@ -443,8 +474,9 @@ checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec = 0;
-buildGoogleCloudDatacatalogV1beta1GcsFileSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1GcsFileSpec();
+api.GoogleCloudDatacatalogV1beta1GcsFileSpec
+    buildGoogleCloudDatacatalogV1beta1GcsFileSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1GcsFileSpec();
   buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec < 3) {
     o.filePath = "foo";
@@ -455,7 +487,7 @@ buildGoogleCloudDatacatalogV1beta1GcsFileSpec() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
+void checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
     api.GoogleCloudDatacatalogV1beta1GcsFileSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec < 3) {
@@ -466,57 +498,60 @@ checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
   buildCounterGoogleCloudDatacatalogV1beta1GcsFileSpec--;
 }
 
-buildUnnamed6479() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5847() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6479(core.List<core.String> o) {
+void checkUnnamed5847(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed6480() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec>();
+core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> buildUnnamed5848() {
+  var o = <api.GoogleCloudDatacatalogV1beta1GcsFileSpec>[];
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   o.add(buildGoogleCloudDatacatalogV1beta1GcsFileSpec());
   return o;
 }
 
-checkUnnamed6480(core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> o) {
+void checkUnnamed5848(
+    core.List<api.GoogleCloudDatacatalogV1beta1GcsFileSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[0]);
   checkGoogleCloudDatacatalogV1beta1GcsFileSpec(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec = 0;
-buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
+api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec
+    buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec < 3) {
-    o.filePatterns = buildUnnamed6479();
-    o.sampleGcsFileSpecs = buildUnnamed6480();
+    o.filePatterns = buildUnnamed5847();
+    o.sampleGcsFileSpecs = buildUnnamed5848();
   }
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
+void checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
     api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec < 3) {
-    checkUnnamed6479(o.filePatterns);
-    checkUnnamed6480(o.sampleGcsFileSpecs);
+    checkUnnamed5847(o.filePatterns);
+    checkUnnamed5848(o.sampleGcsFileSpecs);
   }
   buildCounterGoogleCloudDatacatalogV1beta1GcsFilesetSpec--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest = 0;
-buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
+api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
+    buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest() {
+  var o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest < 3) {
     o.inlineSource = buildGoogleCloudDatacatalogV1beta1InlineSource();
@@ -525,7 +560,7 @@ buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
+void checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
     api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest o) {
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest < 3) {
@@ -534,47 +569,49 @@ checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest--;
 }
 
-buildUnnamed6481() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy>();
+core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed5849() {
+  var o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
 }
 
-checkUnnamed6481(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
+void checkUnnamed5849(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
+api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
+    buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse < 3) {
-    o.taxonomies = buildUnnamed6481();
+    o.taxonomies = buildUnnamed5849();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
+void checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
     api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse < 3) {
-    checkUnnamed6481(o.taxonomies);
+    checkUnnamed5849(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse--;
 }
 
-buildUnnamed6482() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>();
+core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>
+    buildUnnamed5850() {
+  var o = <api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy());
   return o;
 }
 
-checkUnnamed6482(
+void checkUnnamed5850(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(o[0]);
@@ -582,219 +619,227 @@ checkUnnamed6482(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1InlineSource = 0;
-buildGoogleCloudDatacatalogV1beta1InlineSource() {
-  var o = new api.GoogleCloudDatacatalogV1beta1InlineSource();
+api.GoogleCloudDatacatalogV1beta1InlineSource
+    buildGoogleCloudDatacatalogV1beta1InlineSource() {
+  var o = api.GoogleCloudDatacatalogV1beta1InlineSource();
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource++;
   if (buildCounterGoogleCloudDatacatalogV1beta1InlineSource < 3) {
-    o.taxonomies = buildUnnamed6482();
+    o.taxonomies = buildUnnamed5850();
   }
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1InlineSource(
+void checkGoogleCloudDatacatalogV1beta1InlineSource(
     api.GoogleCloudDatacatalogV1beta1InlineSource o) {
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource++;
   if (buildCounterGoogleCloudDatacatalogV1beta1InlineSource < 3) {
-    checkUnnamed6482(o.taxonomies);
+    checkUnnamed5850(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1InlineSource--;
 }
 
-buildUnnamed6483() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1Entry>();
+core.List<api.GoogleCloudDatacatalogV1beta1Entry> buildUnnamed5851() {
+  var o = <api.GoogleCloudDatacatalogV1beta1Entry>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   o.add(buildGoogleCloudDatacatalogV1beta1Entry());
   return o;
 }
 
-checkUnnamed6483(core.List<api.GoogleCloudDatacatalogV1beta1Entry> o) {
+void checkUnnamed5851(core.List<api.GoogleCloudDatacatalogV1beta1Entry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Entry(o[0]);
   checkGoogleCloudDatacatalogV1beta1Entry(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ListEntriesResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ListEntriesResponse();
+api.GoogleCloudDatacatalogV1beta1ListEntriesResponse
+    buildGoogleCloudDatacatalogV1beta1ListEntriesResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse < 3) {
-    o.entries = buildUnnamed6483();
+    o.entries = buildUnnamed5851();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
+void checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
     api.GoogleCloudDatacatalogV1beta1ListEntriesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse < 3) {
-    checkUnnamed6483(o.entries);
+    checkUnnamed5851(o.entries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntriesResponse--;
 }
 
-buildUnnamed6484() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup>();
+core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> buildUnnamed5852() {
+  var o = <api.GoogleCloudDatacatalogV1beta1EntryGroup>[];
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   o.add(buildGoogleCloudDatacatalogV1beta1EntryGroup());
   return o;
 }
 
-checkUnnamed6484(core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> o) {
+void checkUnnamed5852(
+    core.List<api.GoogleCloudDatacatalogV1beta1EntryGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1EntryGroup(o[0]);
   checkGoogleCloudDatacatalogV1beta1EntryGroup(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
+api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
+    buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse < 3) {
-    o.entryGroups = buildUnnamed6484();
+    o.entryGroups = buildUnnamed5852();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
+void checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
     api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse < 3) {
-    checkUnnamed6484(o.entryGroups);
+    checkUnnamed5852(o.entryGroups);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse--;
 }
 
-buildUnnamed6485() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag>();
+core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> buildUnnamed5853() {
+  var o = <api.GoogleCloudDatacatalogV1beta1PolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1PolicyTag());
   return o;
 }
 
-checkUnnamed6485(core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> o) {
+void checkUnnamed5853(core.List<api.GoogleCloudDatacatalogV1beta1PolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1PolicyTag(o[0]);
   checkGoogleCloudDatacatalogV1beta1PolicyTag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
+api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
+    buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse < 3) {
     o.nextPageToken = "foo";
-    o.policyTags = buildUnnamed6485();
+    o.policyTags = buildUnnamed5853();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
+void checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
     api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6485(o.policyTags);
+    checkUnnamed5853(o.policyTags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse--;
 }
 
-buildUnnamed6486() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1Tag>();
+core.List<api.GoogleCloudDatacatalogV1beta1Tag> buildUnnamed5854() {
+  var o = <api.GoogleCloudDatacatalogV1beta1Tag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   o.add(buildGoogleCloudDatacatalogV1beta1Tag());
   return o;
 }
 
-checkUnnamed6486(core.List<api.GoogleCloudDatacatalogV1beta1Tag> o) {
+void checkUnnamed5854(core.List<api.GoogleCloudDatacatalogV1beta1Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Tag(o[0]);
   checkGoogleCloudDatacatalogV1beta1Tag(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ListTagsResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ListTagsResponse();
+api.GoogleCloudDatacatalogV1beta1ListTagsResponse
+    buildGoogleCloudDatacatalogV1beta1ListTagsResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ListTagsResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse < 3) {
     o.nextPageToken = "foo";
-    o.tags = buildUnnamed6486();
+    o.tags = buildUnnamed5854();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
+void checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
     api.GoogleCloudDatacatalogV1beta1ListTagsResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6486(o.tags);
+    checkUnnamed5854(o.tags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTagsResponse--;
 }
 
-buildUnnamed6487() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy>();
+core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> buildUnnamed5855() {
+  var o = <api.GoogleCloudDatacatalogV1beta1Taxonomy>[];
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   o.add(buildGoogleCloudDatacatalogV1beta1Taxonomy());
   return o;
 }
 
-checkUnnamed6487(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
+void checkUnnamed5855(core.List<api.GoogleCloudDatacatalogV1beta1Taxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[0]);
   checkGoogleCloudDatacatalogV1beta1Taxonomy(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse = 0;
-buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
+api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
+    buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse < 3) {
     o.nextPageToken = "foo";
-    o.taxonomies = buildUnnamed6487();
+    o.taxonomies = buildUnnamed5855();
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
+void checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
     api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6487(o.taxonomies);
+    checkUnnamed5855(o.taxonomies);
   }
   buildCounterGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse--;
 }
 
-buildUnnamed6488() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5856() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6488(core.List<core.String> o) {
+void checkUnnamed5856(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1PolicyTag = 0;
-buildGoogleCloudDatacatalogV1beta1PolicyTag() {
-  var o = new api.GoogleCloudDatacatalogV1beta1PolicyTag();
+api.GoogleCloudDatacatalogV1beta1PolicyTag
+    buildGoogleCloudDatacatalogV1beta1PolicyTag() {
+  var o = api.GoogleCloudDatacatalogV1beta1PolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1PolicyTag < 3) {
-    o.childPolicyTags = buildUnnamed6488();
+    o.childPolicyTags = buildUnnamed5856();
     o.description = "foo";
     o.displayName = "foo";
     o.name = "foo";
@@ -804,11 +849,11 @@ buildGoogleCloudDatacatalogV1beta1PolicyTag() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1PolicyTag(
+void checkGoogleCloudDatacatalogV1beta1PolicyTag(
     api.GoogleCloudDatacatalogV1beta1PolicyTag o) {
   buildCounterGoogleCloudDatacatalogV1beta1PolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1PolicyTag < 3) {
-    checkUnnamed6488(o.childPolicyTags);
+    checkUnnamed5856(o.childPolicyTags);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -820,9 +865,10 @@ checkGoogleCloudDatacatalogV1beta1PolicyTag(
 core.int
     buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest =
     0;
-buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest() {
-  var o = new api
-      .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
+api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+    buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest() {
+  var o =
+      api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest <
       3) {
@@ -832,7 +878,7 @@ buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
+void checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
     api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest o) {
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest <
@@ -844,8 +890,9 @@ checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
 
 core.int
     buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest = 0;
-buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest() {
-  var o = new api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
+api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
+    buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest() {
+  var o = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest <
       3) {
@@ -855,7 +902,7 @@ buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
+void checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
     api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest o) {
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest <
@@ -865,42 +912,45 @@ checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
   buildCounterGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest--;
 }
 
-buildUnnamed6489() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema>();
+core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> buildUnnamed5857() {
+  var o = <api.GoogleCloudDatacatalogV1beta1ColumnSchema>[];
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   o.add(buildGoogleCloudDatacatalogV1beta1ColumnSchema());
   return o;
 }
 
-checkUnnamed6489(core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
+void checkUnnamed5857(
+    core.List<api.GoogleCloudDatacatalogV1beta1ColumnSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[0]);
   checkGoogleCloudDatacatalogV1beta1ColumnSchema(o[1]);
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Schema = 0;
-buildGoogleCloudDatacatalogV1beta1Schema() {
-  var o = new api.GoogleCloudDatacatalogV1beta1Schema();
+api.GoogleCloudDatacatalogV1beta1Schema
+    buildGoogleCloudDatacatalogV1beta1Schema() {
+  var o = api.GoogleCloudDatacatalogV1beta1Schema();
   buildCounterGoogleCloudDatacatalogV1beta1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Schema < 3) {
-    o.columns = buildUnnamed6489();
+    o.columns = buildUnnamed5857();
   }
   buildCounterGoogleCloudDatacatalogV1beta1Schema--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1Schema(
+void checkGoogleCloudDatacatalogV1beta1Schema(
     api.GoogleCloudDatacatalogV1beta1Schema o) {
   buildCounterGoogleCloudDatacatalogV1beta1Schema++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Schema < 3) {
-    checkUnnamed6489(o.columns);
+    checkUnnamed5857(o.columns);
   }
   buildCounterGoogleCloudDatacatalogV1beta1Schema--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest = 0;
-buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
+api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest
+    buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest() {
+  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest < 3) {
     o.orderBy = "foo";
@@ -913,7 +963,7 @@ buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
+void checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
     api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest o) {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest < 3) {
@@ -926,125 +976,129 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequest--;
 }
 
-buildUnnamed6490() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5858() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6490(core.List<core.String> o) {
+void checkUnnamed5858(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed6491() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5859() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6491(core.List<core.String> o) {
+void checkUnnamed5859(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed6492() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5860() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6492(core.List<core.String> o) {
+void checkUnnamed5860(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope = 0;
-buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
+api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope
+    buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope() {
+  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope < 3) {
     o.includeGcpPublicDatasets = true;
-    o.includeOrgIds = buildUnnamed6490();
-    o.includeProjectIds = buildUnnamed6491();
-    o.restrictedLocations = buildUnnamed6492();
+    o.includeOrgIds = buildUnnamed5858();
+    o.includeProjectIds = buildUnnamed5859();
+    o.restrictedLocations = buildUnnamed5860();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
+void checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
     api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope o) {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope < 3) {
     unittest.expect(o.includeGcpPublicDatasets, unittest.isTrue);
-    checkUnnamed6490(o.includeOrgIds);
-    checkUnnamed6491(o.includeProjectIds);
-    checkUnnamed6492(o.restrictedLocations);
+    checkUnnamed5858(o.includeOrgIds);
+    checkUnnamed5859(o.includeProjectIds);
+    checkUnnamed5860(o.restrictedLocations);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope--;
 }
 
-buildUnnamed6493() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>();
+core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>
+    buildUnnamed5861() {
+  var o = <api.GoogleCloudDatacatalogV1beta1SearchCatalogResult>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   o.add(buildGoogleCloudDatacatalogV1beta1SearchCatalogResult());
   return o;
 }
 
-checkUnnamed6493(
+void checkUnnamed5861(
     core.List<api.GoogleCloudDatacatalogV1beta1SearchCatalogResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[0]);
   checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(o[1]);
 }
 
-buildUnnamed6494() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5862() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6494(core.List<core.String> o) {
+void checkUnnamed5862(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse = 0;
-buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
+api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse
+    buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse() {
+  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse < 3) {
     o.nextPageToken = "foo";
-    o.results = buildUnnamed6493();
-    o.unreachable = buildUnnamed6494();
+    o.results = buildUnnamed5861();
+    o.unreachable = buildUnnamed5862();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
+void checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
     api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse o) {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6493(o.results);
-    checkUnnamed6494(o.unreachable);
+    checkUnnamed5861(o.results);
+    checkUnnamed5862(o.unreachable);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResponse--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult = 0;
-buildGoogleCloudDatacatalogV1beta1SearchCatalogResult() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SearchCatalogResult();
+api.GoogleCloudDatacatalogV1beta1SearchCatalogResult
+    buildGoogleCloudDatacatalogV1beta1SearchCatalogResult() {
+  var o = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult();
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult < 3) {
     o.linkedResource = "foo";
@@ -1056,7 +1110,7 @@ buildGoogleCloudDatacatalogV1beta1SearchCatalogResult() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
+void checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
     api.GoogleCloudDatacatalogV1beta1SearchCatalogResult o) {
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult < 3) {
@@ -1068,14 +1122,15 @@ checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
   buildCounterGoogleCloudDatacatalogV1beta1SearchCatalogResult--;
 }
 
-buildUnnamed6495() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>();
+core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
+    buildUnnamed5863() {
+  var o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
 }
 
-checkUnnamed6495(
+void checkUnnamed5863(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
@@ -1083,11 +1138,12 @@ checkUnnamed6495(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag = 0;
-buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
+api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag
+    buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag() {
+  var o = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag < 3) {
-    o.childPolicyTags = buildUnnamed6495();
+    o.childPolicyTags = buildUnnamed5863();
     o.description = "foo";
     o.displayName = "foo";
     o.policyTag = "foo";
@@ -1096,11 +1152,11 @@ buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
+void checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
     api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag o) {
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag < 3) {
-    checkUnnamed6495(o.childPolicyTags);
+    checkUnnamed5863(o.childPolicyTags);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.policyTag, unittest.equals('foo'));
@@ -1108,14 +1164,15 @@ checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
   buildCounterGoogleCloudDatacatalogV1beta1SerializedPolicyTag--;
 }
 
-buildUnnamed6496() {
-  var o = new core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>();
+core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>
+    buildUnnamed5864() {
+  var o = <api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag>[];
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   o.add(buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag());
   return o;
 }
 
-checkUnnamed6496(
+void checkUnnamed5864(
     core.List<api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(o[0]);
@@ -1123,32 +1180,34 @@ checkUnnamed6496(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy = 0;
-buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
+api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy
+    buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy() {
+  var o = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy < 3) {
     o.description = "foo";
     o.displayName = "foo";
-    o.policyTags = buildUnnamed6496();
+    o.policyTags = buildUnnamed5864();
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
+void checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
     api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy o) {
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed6496(o.policyTags);
+    checkUnnamed5864(o.policyTags);
   }
   buildCounterGoogleCloudDatacatalogV1beta1SerializedTaxonomy--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps = 0;
-buildGoogleCloudDatacatalogV1beta1SystemTimestamps() {
-  var o = new api.GoogleCloudDatacatalogV1beta1SystemTimestamps();
+api.GoogleCloudDatacatalogV1beta1SystemTimestamps
+    buildGoogleCloudDatacatalogV1beta1SystemTimestamps() {
+  var o = api.GoogleCloudDatacatalogV1beta1SystemTimestamps();
   buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps < 3) {
     o.createTime = "foo";
@@ -1159,7 +1218,7 @@ buildGoogleCloudDatacatalogV1beta1SystemTimestamps() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
+void checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
     api.GoogleCloudDatacatalogV1beta1SystemTimestamps o) {
   buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps++;
   if (buildCounterGoogleCloudDatacatalogV1beta1SystemTimestamps < 3) {
@@ -1171,8 +1230,9 @@ checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TableSpec = 0;
-buildGoogleCloudDatacatalogV1beta1TableSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1TableSpec();
+api.GoogleCloudDatacatalogV1beta1TableSpec
+    buildGoogleCloudDatacatalogV1beta1TableSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1TableSpec();
   buildCounterGoogleCloudDatacatalogV1beta1TableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TableSpec < 3) {
     o.groupedEntry = "foo";
@@ -1181,7 +1241,7 @@ buildGoogleCloudDatacatalogV1beta1TableSpec() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1TableSpec(
+void checkGoogleCloudDatacatalogV1beta1TableSpec(
     api.GoogleCloudDatacatalogV1beta1TableSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1TableSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TableSpec < 3) {
@@ -1190,15 +1250,15 @@ checkGoogleCloudDatacatalogV1beta1TableSpec(
   buildCounterGoogleCloudDatacatalogV1beta1TableSpec--;
 }
 
-buildUnnamed6497() {
-  var o =
-      new core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField>();
+core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField>
+    buildUnnamed5865() {
+  var o = <core.String, api.GoogleCloudDatacatalogV1beta1TagField>{};
   o["x"] = buildGoogleCloudDatacatalogV1beta1TagField();
   o["y"] = buildGoogleCloudDatacatalogV1beta1TagField();
   return o;
 }
 
-checkUnnamed6497(
+void checkUnnamed5865(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogV1beta1TagField(o["x"]);
@@ -1206,12 +1266,12 @@ checkUnnamed6497(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Tag = 0;
-buildGoogleCloudDatacatalogV1beta1Tag() {
-  var o = new api.GoogleCloudDatacatalogV1beta1Tag();
+api.GoogleCloudDatacatalogV1beta1Tag buildGoogleCloudDatacatalogV1beta1Tag() {
+  var o = api.GoogleCloudDatacatalogV1beta1Tag();
   buildCounterGoogleCloudDatacatalogV1beta1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Tag < 3) {
     o.column = "foo";
-    o.fields = buildUnnamed6497();
+    o.fields = buildUnnamed5865();
     o.name = "foo";
     o.template = "foo";
     o.templateDisplayName = "foo";
@@ -1220,11 +1280,12 @@ buildGoogleCloudDatacatalogV1beta1Tag() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1Tag(api.GoogleCloudDatacatalogV1beta1Tag o) {
+void checkGoogleCloudDatacatalogV1beta1Tag(
+    api.GoogleCloudDatacatalogV1beta1Tag o) {
   buildCounterGoogleCloudDatacatalogV1beta1Tag++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Tag < 3) {
     unittest.expect(o.column, unittest.equals('foo'));
-    checkUnnamed6497(o.fields);
+    checkUnnamed5865(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.template, unittest.equals('foo'));
     unittest.expect(o.templateDisplayName, unittest.equals('foo'));
@@ -1233,8 +1294,9 @@ checkGoogleCloudDatacatalogV1beta1Tag(api.GoogleCloudDatacatalogV1beta1Tag o) {
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagField = 0;
-buildGoogleCloudDatacatalogV1beta1TagField() {
-  var o = new api.GoogleCloudDatacatalogV1beta1TagField();
+api.GoogleCloudDatacatalogV1beta1TagField
+    buildGoogleCloudDatacatalogV1beta1TagField() {
+  var o = api.GoogleCloudDatacatalogV1beta1TagField();
   buildCounterGoogleCloudDatacatalogV1beta1TagField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagField < 3) {
     o.boolValue = true;
@@ -1249,7 +1311,7 @@ buildGoogleCloudDatacatalogV1beta1TagField() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1TagField(
+void checkGoogleCloudDatacatalogV1beta1TagField(
     api.GoogleCloudDatacatalogV1beta1TagField o) {
   buildCounterGoogleCloudDatacatalogV1beta1TagField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagField < 3) {
@@ -1265,8 +1327,9 @@ checkGoogleCloudDatacatalogV1beta1TagField(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue = 0;
-buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue() {
-  var o = new api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
+api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue
+    buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue() {
+  var o = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
   buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue < 3) {
     o.displayName = "foo";
@@ -1275,7 +1338,7 @@ buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
+void checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
     api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue o) {
   buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue < 3) {
@@ -1284,15 +1347,15 @@ checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
   buildCounterGoogleCloudDatacatalogV1beta1TagFieldEnumValue--;
 }
 
-buildUnnamed6498() {
-  var o = new core
-      .Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>();
+core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>
+    buildUnnamed5866() {
+  var o = <core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>{};
   o["x"] = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
   o["y"] = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
   return o;
 }
 
-checkUnnamed6498(
+void checkUnnamed5866(
     core.Map<core.String, api.GoogleCloudDatacatalogV1beta1TagTemplateField>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1301,32 +1364,34 @@ checkUnnamed6498(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagTemplate = 0;
-buildGoogleCloudDatacatalogV1beta1TagTemplate() {
-  var o = new api.GoogleCloudDatacatalogV1beta1TagTemplate();
+api.GoogleCloudDatacatalogV1beta1TagTemplate
+    buildGoogleCloudDatacatalogV1beta1TagTemplate() {
+  var o = api.GoogleCloudDatacatalogV1beta1TagTemplate();
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplate < 3) {
     o.displayName = "foo";
-    o.fields = buildUnnamed6498();
+    o.fields = buildUnnamed5866();
     o.name = "foo";
   }
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate--;
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1TagTemplate(
+void checkGoogleCloudDatacatalogV1beta1TagTemplate(
     api.GoogleCloudDatacatalogV1beta1TagTemplate o) {
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplate < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed6498(o.fields);
+    checkUnnamed5866(o.fields);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplate--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField = 0;
-buildGoogleCloudDatacatalogV1beta1TagTemplateField() {
-  var o = new api.GoogleCloudDatacatalogV1beta1TagTemplateField();
+api.GoogleCloudDatacatalogV1beta1TagTemplateField
+    buildGoogleCloudDatacatalogV1beta1TagTemplateField() {
+  var o = api.GoogleCloudDatacatalogV1beta1TagTemplateField();
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField < 3) {
     o.displayName = "foo";
@@ -1339,7 +1404,7 @@ buildGoogleCloudDatacatalogV1beta1TagTemplateField() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1TagTemplateField(
+void checkGoogleCloudDatacatalogV1beta1TagTemplateField(
     api.GoogleCloudDatacatalogV1beta1TagTemplateField o) {
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField++;
   if (buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField < 3) {
@@ -1352,25 +1417,26 @@ checkGoogleCloudDatacatalogV1beta1TagTemplateField(
   buildCounterGoogleCloudDatacatalogV1beta1TagTemplateField--;
 }
 
-buildUnnamed6499() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5867() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6499(core.List<core.String> o) {
+void checkUnnamed5867(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1Taxonomy = 0;
-buildGoogleCloudDatacatalogV1beta1Taxonomy() {
-  var o = new api.GoogleCloudDatacatalogV1beta1Taxonomy();
+api.GoogleCloudDatacatalogV1beta1Taxonomy
+    buildGoogleCloudDatacatalogV1beta1Taxonomy() {
+  var o = api.GoogleCloudDatacatalogV1beta1Taxonomy();
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Taxonomy < 3) {
-    o.activatedPolicyTypes = buildUnnamed6499();
+    o.activatedPolicyTypes = buildUnnamed5867();
     o.description = "foo";
     o.displayName = "foo";
     o.name = "foo";
@@ -1379,11 +1445,11 @@ buildGoogleCloudDatacatalogV1beta1Taxonomy() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1Taxonomy(
+void checkGoogleCloudDatacatalogV1beta1Taxonomy(
     api.GoogleCloudDatacatalogV1beta1Taxonomy o) {
   buildCounterGoogleCloudDatacatalogV1beta1Taxonomy++;
   if (buildCounterGoogleCloudDatacatalogV1beta1Taxonomy < 3) {
-    checkUnnamed6499(o.activatedPolicyTypes);
+    checkUnnamed5867(o.activatedPolicyTypes);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1392,8 +1458,9 @@ checkGoogleCloudDatacatalogV1beta1Taxonomy(
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1beta1ViewSpec = 0;
-buildGoogleCloudDatacatalogV1beta1ViewSpec() {
-  var o = new api.GoogleCloudDatacatalogV1beta1ViewSpec();
+api.GoogleCloudDatacatalogV1beta1ViewSpec
+    buildGoogleCloudDatacatalogV1beta1ViewSpec() {
+  var o = api.GoogleCloudDatacatalogV1beta1ViewSpec();
   buildCounterGoogleCloudDatacatalogV1beta1ViewSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ViewSpec < 3) {
     o.viewQuery = "foo";
@@ -1402,7 +1469,7 @@ buildGoogleCloudDatacatalogV1beta1ViewSpec() {
   return o;
 }
 
-checkGoogleCloudDatacatalogV1beta1ViewSpec(
+void checkGoogleCloudDatacatalogV1beta1ViewSpec(
     api.GoogleCloudDatacatalogV1beta1ViewSpec o) {
   buildCounterGoogleCloudDatacatalogV1beta1ViewSpec++;
   if (buildCounterGoogleCloudDatacatalogV1beta1ViewSpec < 3) {
@@ -1411,25 +1478,25 @@ checkGoogleCloudDatacatalogV1beta1ViewSpec(
   buildCounterGoogleCloudDatacatalogV1beta1ViewSpec--;
 }
 
-buildUnnamed6500() {
-  var o = new core.List<api.Binding>();
+core.List<api.Binding> buildUnnamed5868() {
+  var o = <api.Binding>[];
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed6500(core.List<api.Binding> o) {
+void checkUnnamed5868(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
 }
 
 core.int buildCounterPolicy = 0;
-buildPolicy() {
-  var o = new api.Policy();
+api.Policy buildPolicy() {
+  var o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed6500();
+    o.bindings = buildUnnamed5868();
     o.etag = "foo";
     o.version = 42;
   }
@@ -1437,10 +1504,10 @@ buildPolicy() {
   return o;
 }
 
-checkPolicy(api.Policy o) {
+void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed6500(o.bindings);
+    checkUnnamed5868(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -1448,8 +1515,8 @@ checkPolicy(api.Policy o) {
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
-buildSetIamPolicyRequest() {
-  var o = new api.SetIamPolicyRequest();
+api.SetIamPolicyRequest buildSetIamPolicyRequest() {
+  var o = api.SetIamPolicyRequest();
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     o.policy = buildPolicy();
@@ -1458,7 +1525,7 @@ buildSetIamPolicyRequest() {
   return o;
 }
 
-checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
+void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
     checkPolicy(o.policy);
@@ -1466,88 +1533,88 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed6501() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5869() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6501(core.List<core.String> o) {
+void checkUnnamed5869(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTestIamPermissionsRequest = 0;
-buildTestIamPermissionsRequest() {
-  var o = new api.TestIamPermissionsRequest();
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  var o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed6501();
+    o.permissions = buildUnnamed5869();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
 }
 
-checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed6501(o.permissions);
+    checkUnnamed5869(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed6502() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5870() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6502(core.List<core.String> o) {
+void checkUnnamed5870(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTestIamPermissionsResponse = 0;
-buildTestIamPermissionsResponse() {
-  var o = new api.TestIamPermissionsResponse();
+api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
+  var o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed6502();
+    o.permissions = buildUnnamed5870();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
 }
 
-checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
+void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed6502(o.permissions);
+    checkUnnamed5870(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed6503() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5871() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed6503(core.List<core.String> o) {
+void checkUnnamed5871(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
-      var od = new api.Binding.fromJson(o.toJson());
+      var od = api.Binding.fromJson(o.toJson());
       checkBinding(od);
     });
   });
@@ -1555,7 +1622,7 @@ main() {
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
       var o = buildEmpty();
-      var od = new api.Empty.fromJson(o.toJson());
+      var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
@@ -1563,7 +1630,7 @@ main() {
   unittest.group("obj-schema-Expr", () {
     unittest.test("to-json--from-json", () {
       var o = buildExpr();
-      var od = new api.Expr.fromJson(o.toJson());
+      var od = api.Expr.fromJson(o.toJson());
       checkExpr(od);
     });
   });
@@ -1571,7 +1638,7 @@ main() {
   unittest.group("obj-schema-GetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGetIamPolicyRequest();
-      var od = new api.GetIamPolicyRequest.fromJson(o.toJson());
+      var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od);
     });
   });
@@ -1579,7 +1646,7 @@ main() {
   unittest.group("obj-schema-GetPolicyOptions", () {
     unittest.test("to-json--from-json", () {
       var o = buildGetPolicyOptions();
-      var od = new api.GetPolicyOptions.fromJson(o.toJson());
+      var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od);
     });
   });
@@ -1589,7 +1656,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
       var od =
-          new api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
+          api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
               o.toJson());
       checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(od);
     });
@@ -1599,7 +1666,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec();
-      var od = new api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(od);
     });
@@ -1608,8 +1675,8 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1ColumnSchema", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ColumnSchema();
-      var od = new api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1ColumnSchema(od);
     });
   });
@@ -1617,7 +1684,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1Entry", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1Entry();
-      var od = new api.GoogleCloudDatacatalogV1beta1Entry.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Entry(od);
     });
   });
@@ -1625,8 +1692,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1EntryGroup", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1EntryGroup();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1EntryGroup(od);
     });
   });
@@ -1635,9 +1701,9 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
+              o.toJson());
       checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(od);
     });
   });
@@ -1645,8 +1711,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1FieldType", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1FieldType();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1FieldType(od);
     });
   });
@@ -1655,7 +1720,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
-      var od = new api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(od);
     });
@@ -1665,9 +1730,9 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
+              o.toJson());
       checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(od);
     });
   });
@@ -1676,7 +1741,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFileSpec();
       var od =
-          new api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(o.toJson());
+          api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1GcsFileSpec(od);
     });
   });
@@ -1684,8 +1749,8 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1GcsFilesetSpec", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec();
-      var od = new api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(od);
     });
   });
@@ -1695,7 +1760,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
       var od =
-          new api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
+          api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
               o.toJson());
       checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(od);
     });
@@ -1705,9 +1770,9 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
+              o.toJson());
       checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(od);
     });
   });
@@ -1715,8 +1780,8 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1InlineSource", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1InlineSource();
-      var od = new api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1InlineSource(od);
     });
   });
@@ -1725,9 +1790,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntriesResponse();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(od);
     });
   });
@@ -1737,7 +1801,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
       var od =
-          new api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
+          api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
               o.toJson());
       checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(od);
     });
@@ -1747,9 +1811,8 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(od);
     });
   });
@@ -1758,7 +1821,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ListTagsResponse();
-      var od = new api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1ListTagsResponse(od);
     });
@@ -1768,9 +1831,8 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(od);
     });
   });
@@ -1778,8 +1840,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1PolicyTag", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1PolicyTag();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1PolicyTag(od);
     });
   });
@@ -1790,9 +1851,9 @@ main() {
     unittest.test("to-json--from-json", () {
       var o =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+              .fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
           od);
     });
@@ -1803,9 +1864,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.fromJson(
-          o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
+          .fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(od);
     });
   });
@@ -1813,7 +1873,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1Schema", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1Schema();
-      var od = new api.GoogleCloudDatacatalogV1beta1Schema.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Schema(od);
     });
   });
@@ -1822,9 +1882,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(od);
     });
   });
@@ -1833,9 +1892,9 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
-      var od = new api
-              .GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-          o.toJson());
+      var od =
+          api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
+              o.toJson());
       checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(od);
     });
   });
@@ -1844,9 +1903,8 @@ main() {
       "obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(od);
     });
   });
@@ -1855,9 +1913,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResult();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(od);
     });
   });
@@ -1866,9 +1923,8 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
-              o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
+          o.toJson());
       checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(od);
     });
   });
@@ -1877,7 +1933,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy();
-      var od = new api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(od);
     });
@@ -1887,7 +1943,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1SystemTimestamps();
-      var od = new api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1SystemTimestamps(od);
     });
@@ -1896,8 +1952,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1TableSpec", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1TableSpec();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1TableSpec(od);
     });
   });
@@ -1905,7 +1960,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1Tag", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1Tag();
-      var od = new api.GoogleCloudDatacatalogV1beta1Tag.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Tag(od);
     });
   });
@@ -1913,8 +1968,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1TagField", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1TagField();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1TagField.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1TagField(od);
     });
   });
@@ -1923,7 +1977,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue();
-      var od = new api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(od);
     });
@@ -1933,7 +1987,7 @@ main() {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var od =
-          new api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(o.toJson());
+          api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1TagTemplate(od);
     });
   });
@@ -1942,7 +1996,7 @@ main() {
       () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
-      var od = new api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+      var od = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
           o.toJson());
       checkGoogleCloudDatacatalogV1beta1TagTemplateField(od);
     });
@@ -1951,8 +2005,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1Taxonomy", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1Taxonomy();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Taxonomy(od);
     });
   });
@@ -1960,8 +2013,7 @@ main() {
   unittest.group("obj-schema-GoogleCloudDatacatalogV1beta1ViewSpec", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDatacatalogV1beta1ViewSpec();
-      var od =
-          new api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(o.toJson());
+      var od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1ViewSpec(od);
     });
   });
@@ -1969,7 +2021,7 @@ main() {
   unittest.group("obj-schema-Policy", () {
     unittest.test("to-json--from-json", () {
       var o = buildPolicy();
-      var od = new api.Policy.fromJson(o.toJson());
+      var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od);
     });
   });
@@ -1977,7 +2029,7 @@ main() {
   unittest.group("obj-schema-SetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSetIamPolicyRequest();
-      var od = new api.SetIamPolicyRequest.fromJson(o.toJson());
+      var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od);
     });
   });
@@ -1985,7 +2037,7 @@ main() {
   unittest.group("obj-schema-TestIamPermissionsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildTestIamPermissionsRequest();
-      var od = new api.TestIamPermissionsRequest.fromJson(o.toJson());
+      var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od);
     });
   });
@@ -1993,28 +2045,28 @@ main() {
   unittest.group("obj-schema-TestIamPermissionsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildTestIamPermissionsResponse();
-      var od = new api.TestIamPermissionsResponse.fromJson(o.toJson());
+      var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od);
     });
   });
 
   unittest.group("resource-CatalogResourceApi", () {
     unittest.test("method--search", () {
-      var mock = new HttpServerMock();
-      api.CatalogResourceApi res = new api.DatacatalogApi(mock).catalog;
+      var mock = HttpServerMock();
+      api.CatalogResourceApi res = api.DatacatalogApi(mock).catalog;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
-            new api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
+            api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
                 json);
         checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2025,19 +2077,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2047,7 +2095,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .search(arg_request, $fields: arg_$fields)
@@ -2059,16 +2107,16 @@ main() {
 
   unittest.group("resource-EntriesResourceApi", () {
     unittest.test("method--lookup", () {
-      var mock = new HttpServerMock();
-      api.EntriesResourceApi res = new api.DatacatalogApi(mock).entries;
+      var mock = HttpServerMock();
+      api.EntriesResourceApi res = api.DatacatalogApi(mock).entries;
       var arg_sqlResource = "foo";
       var arg_linkedResource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2079,19 +2127,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2105,7 +2149,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .lookup(
@@ -2120,22 +2164,21 @@ main() {
 
   unittest.group("resource-ProjectsLocationsEntryGroupsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
       var arg_parent = "foo";
       var arg_entryGroupId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1EntryGroup(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2147,19 +2190,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2171,7 +2210,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -2182,17 +2221,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_name = "foo";
       var arg_force = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2204,19 +2243,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["force"].first, unittest.equals("$arg_force"));
@@ -2226,7 +2261,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, force: arg_force, $fields: arg_$fields)
@@ -2236,17 +2271,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_name = "foo";
       var arg_readMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2258,19 +2293,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2282,7 +2313,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, readMask: arg_readMask, $fields: arg_$fields)
@@ -2292,20 +2323,20 @@ main() {
     });
 
     unittest.test("method--getIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        var obj = api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2317,19 +2348,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2338,7 +2365,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -2348,9 +2375,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -2358,8 +2385,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2371,19 +2398,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -2397,7 +2420,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -2410,22 +2433,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1EntryGroup(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2437,19 +2459,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2461,7 +2479,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -2472,20 +2490,20 @@ main() {
     });
 
     unittest.test("method--setIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SetIamPolicyRequest.fromJson(json);
+        var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2497,19 +2515,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2518,7 +2532,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -2528,20 +2542,20 @@ main() {
     });
 
     unittest.test("method--testIamPermissions", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups;
+          api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2553,19 +2567,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2574,7 +2584,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
@@ -2586,21 +2596,21 @@ main() {
 
   unittest.group("resource-ProjectsLocationsEntryGroupsEntriesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
       var arg_parent = "foo";
       var arg_entryId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Entry.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Entry(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2612,19 +2622,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2636,7 +2642,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -2647,16 +2653,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2668,19 +2674,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2689,7 +2691,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -2699,16 +2701,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2720,19 +2722,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2742,7 +2740,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -2752,20 +2750,20 @@ main() {
     });
 
     unittest.test("method--getIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        var obj = api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2777,19 +2775,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2798,7 +2792,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -2808,9 +2802,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_readMask = "foo";
@@ -2819,8 +2813,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2832,19 +2826,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2860,7 +2850,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListEntriesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -2874,21 +2864,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Entry.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Entry(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2900,19 +2890,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2924,7 +2910,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -2935,20 +2921,20 @@ main() {
     });
 
     unittest.test("method--testIamPermissions", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2960,19 +2946,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2981,7 +2963,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
@@ -2994,25 +2976,20 @@ main() {
   unittest.group("resource-ProjectsLocationsEntryGroupsEntriesTagsResourceApi",
       () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
-          new api.DatacatalogApi(mock)
-              .projects
-              .locations
-              .entryGroups
-              .entries
-              .tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3024,19 +3001,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3045,7 +3018,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -3055,21 +3028,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
-          new api.DatacatalogApi(mock)
-              .projects
-              .locations
-              .entryGroups
-              .entries
-              .tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3081,19 +3049,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3102,7 +3066,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -3112,14 +3076,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
-          new api.DatacatalogApi(mock)
-              .projects
-              .locations
-              .entryGroups
-              .entries
-              .tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -3127,8 +3086,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3140,19 +3099,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3166,7 +3121,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -3179,26 +3134,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
-          new api.DatacatalogApi(mock)
-              .projects
-              .locations
-              .entryGroups
-              .entries
-              .tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3210,19 +3160,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3233,7 +3179,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -3246,20 +3192,20 @@ main() {
 
   unittest.group("resource-ProjectsLocationsEntryGroupsTagsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3271,19 +3217,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3292,7 +3234,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -3302,16 +3244,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3323,19 +3265,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3344,7 +3282,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -3354,9 +3292,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -3364,8 +3302,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3377,19 +3315,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -3403,7 +3337,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -3416,21 +3350,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Tag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3442,19 +3376,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3465,7 +3395,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -3478,22 +3408,21 @@ main() {
 
   unittest.group("resource-ProjectsLocationsTagTemplatesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var arg_parent = "foo";
       var arg_tagTemplateId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1TagTemplate(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3505,19 +3434,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["tagTemplateId"].first,
@@ -3529,7 +3454,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -3540,17 +3465,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = "foo";
       var arg_force = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3562,19 +3487,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["force"].first, unittest.equals("$arg_force"));
@@ -3584,7 +3505,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, force: arg_force, $fields: arg_$fields)
@@ -3594,16 +3515,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3615,19 +3536,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3637,7 +3554,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -3647,20 +3564,20 @@ main() {
     });
 
     unittest.test("method--getIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        var obj = api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3672,19 +3589,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3693,7 +3606,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -3703,22 +3616,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1TagTemplate(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3730,19 +3642,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3754,7 +3662,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -3765,20 +3673,20 @@ main() {
     });
 
     unittest.test("method--setIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SetIamPolicyRequest.fromJson(json);
+        var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3790,19 +3698,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3811,7 +3715,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -3821,20 +3725,20 @@ main() {
     });
 
     unittest.test("method--testIamPermissions", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3846,19 +3750,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3867,7 +3767,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
@@ -3879,23 +3779,22 @@ main() {
 
   unittest.group("resource-ProjectsLocationsTagTemplatesFieldsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
       var arg_parent = "foo";
       var arg_tagTemplateFieldId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
-            new api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-                json);
+            api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1TagTemplateField(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3907,19 +3806,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["tagTemplateFieldId"].first,
@@ -3931,7 +3826,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -3942,17 +3837,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_name = "foo";
       var arg_force = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3964,19 +3859,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["force"].first, unittest.equals("$arg_force"));
@@ -3986,7 +3877,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, force: arg_force, $fields: arg_$fields)
@@ -3996,23 +3887,22 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
-            new api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-                json);
+            api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1TagTemplateField(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4024,19 +3914,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -4048,7 +3934,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -4059,23 +3945,22 @@ main() {
     });
 
     unittest.test("method--rename", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.fromJson(
-            json);
+        var obj = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
+            .fromJson(json);
         checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4087,19 +3972,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4109,7 +3990,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .rename(arg_request, arg_name, $fields: arg_$fields)
@@ -4122,9 +4003,9 @@ main() {
   unittest.group(
       "resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi", () {
     unittest.test("method--rename", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi res =
-          new api.DatacatalogApi(mock)
+          api.DatacatalogApi(mock)
               .projects
               .locations
               .tagTemplates
@@ -4135,16 +4016,16 @@ main() {
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
-            json);
+        var obj =
+            api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+                .fromJson(json);
         checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
             obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4156,19 +4037,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4178,7 +4055,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .rename(arg_request, arg_name, $fields: arg_$fields)
@@ -4190,20 +4067,20 @@ main() {
 
   unittest.group("resource-ProjectsLocationsTaxonomiesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Taxonomy(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4215,19 +4092,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4237,7 +4110,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -4247,16 +4120,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4268,19 +4141,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4289,7 +4158,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -4299,18 +4168,18 @@ main() {
     });
 
     unittest.test("method--export", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = "foo";
-      var arg_taxonomies = buildUnnamed6503();
+      var arg_taxonomies = buildUnnamed5871();
       var arg_serializedTaxonomies = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4322,19 +4191,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -4348,7 +4213,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .export(arg_parent,
@@ -4361,16 +4226,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4382,19 +4247,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4404,7 +4265,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -4414,20 +4275,20 @@ main() {
     });
 
     unittest.test("method--getIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        var obj = api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4439,19 +4300,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4460,7 +4317,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -4470,23 +4327,23 @@ main() {
     });
 
     unittest.test("method--import", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api
-                .GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
-            json);
+        var obj =
+            api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
+                json);
         checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4498,19 +4355,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4520,7 +4373,7 @@ main() {
         };
         var resp = convert.json.encode(
             buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .import(arg_request, arg_parent, $fields: arg_$fields)
@@ -4530,9 +4383,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -4540,8 +4393,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4553,19 +4406,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -4579,7 +4428,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -4592,21 +4441,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1Taxonomy(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4618,19 +4467,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -4642,7 +4487,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -4653,20 +4498,20 @@ main() {
     });
 
     unittest.test("method--setIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SetIamPolicyRequest.fromJson(json);
+        var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4678,19 +4523,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4699,7 +4540,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -4709,20 +4550,20 @@ main() {
     });
 
     unittest.test("method--testIamPermissions", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies;
+          api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4734,19 +4575,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4755,7 +4592,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
@@ -4768,20 +4605,20 @@ main() {
   unittest.group("resource-ProjectsLocationsTaxonomiesPolicyTagsResourceApi",
       () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1PolicyTag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4793,19 +4630,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4815,7 +4648,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -4825,16 +4658,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4846,19 +4679,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4867,7 +4696,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -4877,16 +4706,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4898,19 +4727,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4920,7 +4745,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -4930,20 +4755,20 @@ main() {
     });
 
     unittest.test("method--getIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GetIamPolicyRequest.fromJson(json);
+        var obj = api.GetIamPolicyRequest.fromJson(json);
         checkGetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4955,19 +4780,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4976,7 +4797,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -4986,9 +4807,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -4996,8 +4817,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5009,19 +4830,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -5035,7 +4852,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -5048,21 +4865,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(json);
+        var obj = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(json);
         checkGoogleCloudDatacatalogV1beta1PolicyTag(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5074,19 +4891,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -5098,7 +4911,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -5109,20 +4922,20 @@ main() {
     });
 
     unittest.test("method--setIamPolicy", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SetIamPolicyRequest.fromJson(json);
+        var obj = api.SetIamPolicyRequest.fromJson(json);
         checkSetIamPolicyRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5134,19 +4947,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5155,7 +4964,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPolicy());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
@@ -5165,20 +4974,20 @@ main() {
     });
 
     unittest.test("method--testIamPermissions", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
-          new api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
+          api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TestIamPermissionsRequest.fromJson(json);
+        var obj = api.TestIamPermissionsRequest.fromJson(json);
         checkTestIamPermissionsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5190,19 +4999,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5211,7 +5016,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)

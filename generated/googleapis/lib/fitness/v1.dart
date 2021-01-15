@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.fitness.v1;
 
@@ -102,24 +120,22 @@ class FitnessApi {
 
   final commons.ApiRequester _requester;
 
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   FitnessApi(http.Client client,
       {core.String rootUrl = "https://fitness.googleapis.com/",
       core.String servicePath = "fitness/v1/users/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
   UsersDataSourcesResourceApi get dataSources =>
-      new UsersDataSourcesResourceApi(_requester);
-  UsersDatasetResourceApi get dataset =>
-      new UsersDatasetResourceApi(_requester);
-  UsersSessionsResourceApi get sessions =>
-      new UsersSessionsResourceApi(_requester);
+      UsersDataSourcesResourceApi(_requester);
+  UsersDatasetResourceApi get dataset => UsersDatasetResourceApi(_requester);
+  UsersSessionsResourceApi get sessions => UsersSessionsResourceApi(_requester);
 
   UsersResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -128,9 +144,9 @@ class UsersDataSourcesResourceApi {
   final commons.ApiRequester _requester;
 
   UsersDataSourcesDataPointChangesResourceApi get dataPointChanges =>
-      new UsersDataSourcesDataPointChangesResourceApi(_requester);
+      UsersDataSourcesDataPointChangesResourceApi(_requester);
   UsersDataSourcesDatasetsResourceApi get datasets =>
-      new UsersDataSourcesDatasetsResourceApi(_requester);
+      UsersDataSourcesDatasetsResourceApi(_requester);
 
   UsersDataSourcesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -179,20 +195,23 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> create(DataSource request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataSource> create(
+    DataSource request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -200,13 +219,16 @@ class UsersDataSourcesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataSource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataSource.fromJson(data));
   }
 
   /// Deletes the specified data source. The request will fail if the data
@@ -229,20 +251,23 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> delete(core.String userId, core.String dataSourceId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataSource> delete(
+    core.String userId,
+    core.String dataSourceId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,13 +277,16 @@ class UsersDataSourcesResourceApi {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataSource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataSource.fromJson(data));
   }
 
   /// Returns the specified data source.
@@ -280,20 +308,23 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(core.String userId, core.String dataSourceId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DataSource> get(
+    core.String userId,
+    core.String dataSourceId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -303,13 +334,16 @@ class UsersDataSourcesResourceApi {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataSource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataSource.fromJson(data));
   }
 
   /// Lists all data sources that are visible to the developer, using the OAuth
@@ -335,17 +369,20 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDataSourcesResponse> list(core.String userId,
-      {core.List<core.String> dataTypeName, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDataSourcesResponse> list(
+    core.String userId, {
+    core.List<core.String> dataTypeName,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataTypeName != null) {
       _queryParams["dataTypeName"] = dataTypeName;
@@ -356,13 +393,16 @@ class UsersDataSourcesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDataSourcesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDataSourcesResponse.fromJson(data));
   }
 
   /// Updates the specified data source. The dataStreamId, dataType, type,
@@ -389,23 +429,26 @@ class UsersDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataSource> update(
-      DataSource request, core.String userId, core.String dataSourceId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DataSource request,
+    core.String userId,
+    core.String dataSourceId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -415,13 +458,16 @@ class UsersDataSourcesResourceApi {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataSource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DataSource.fromJson(data));
   }
 }
 
@@ -459,20 +505,24 @@ class UsersDataSourcesDataPointChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataPointChangesResponse> list(
-      core.String userId, core.String dataSourceId,
-      {core.int limit, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String dataSourceId, {
+    core.int limit,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if (limit != null) {
       _queryParams["limit"] = ["${limit}"];
@@ -489,14 +539,17 @@ class UsersDataSourcesDataPointChangesResourceApi {
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/dataPointChanges';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListDataPointChangesResponse.fromJson(data));
+        .then((data) => ListDataPointChangesResponse.fromJson(data));
   }
 }
 
@@ -541,25 +594,28 @@ class UsersDataSourcesDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.String currentTimeMillis,
-      core.String modifiedTimeMillis,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String dataSourceId,
+    core.String datasetId, {
+    core.String currentTimeMillis,
+    core.String modifiedTimeMillis,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if (datasetId == null) {
-      throw new core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError("Parameter datasetId is required.");
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
@@ -579,12 +635,15 @@ class UsersDataSourcesDatasetsResourceApi {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -628,23 +687,28 @@ class UsersDataSourcesDatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> get(
-      core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.String pageToken, core.int limit, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String dataSourceId,
+    core.String datasetId, {
+    core.String pageToken,
+    core.int limit,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if (datasetId == null) {
-      throw new core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError("Parameter datasetId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -662,13 +726,16 @@ class UsersDataSourcesDatasetsResourceApi {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Dataset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Dataset.fromJson(data));
   }
 
   /// Adds data points to a dataset. The dataset need not be previously created.
@@ -705,27 +772,32 @@ class UsersDataSourcesDatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> patch(Dataset request, core.String userId,
-      core.String dataSourceId, core.String datasetId,
-      {core.String currentTimeMillis, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Dataset> patch(
+    Dataset request,
+    core.String userId,
+    core.String dataSourceId,
+    core.String datasetId, {
+    core.String currentTimeMillis,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
+      throw core.ArgumentError("Parameter dataSourceId is required.");
     }
     if (datasetId == null) {
-      throw new core.ArgumentError("Parameter datasetId is required.");
+      throw core.ArgumentError("Parameter datasetId is required.");
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
@@ -740,13 +812,16 @@ class UsersDataSourcesDatasetsResourceApi {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Dataset.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Dataset.fromJson(data));
   }
 }
 
@@ -778,20 +853,22 @@ class UsersDatasetResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AggregateResponse> aggregate(
-      AggregateRequest request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AggregateRequest request,
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -799,13 +876,16 @@ class UsersDatasetResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AggregateResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AggregateResponse.fromJson(data));
   }
 }
 
@@ -834,20 +914,24 @@ class UsersSessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userId, core.String sessionId,
-      {core.String currentTimeMillis, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String userId,
+    core.String sessionId, {
+    core.String currentTimeMillis,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sessionId == null) {
-      throw new core.ArgumentError("Parameter sessionId is required.");
+      throw core.ArgumentError("Parameter sessionId is required.");
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
@@ -862,12 +946,15 @@ class UsersSessionsResourceApi {
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -911,22 +998,24 @@ class UsersSessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListSessionsResponse> list(core.String userId,
-      {core.String endTime,
-      core.List<core.int> activityType,
-      core.bool includeDeleted,
-      core.String pageToken,
-      core.String startTime,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListSessionsResponse> list(
+    core.String userId, {
+    core.String endTime,
+    core.List<core.int> activityType,
+    core.bool includeDeleted,
+    core.String pageToken,
+    core.String startTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
@@ -950,13 +1039,16 @@ class UsersSessionsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSessionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListSessionsResponse.fromJson(data));
   }
 
   /// Updates or insert a given session.
@@ -984,23 +1076,27 @@ class UsersSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Session> update(
-      Session request, core.String userId, core.String sessionId,
-      {core.String currentTimeMillis, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Session request,
+    core.String userId,
+    core.String sessionId, {
+    core.String currentTimeMillis,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (sessionId == null) {
-      throw new core.ArgumentError("Parameter sessionId is required.");
+      throw core.ArgumentError("Parameter sessionId is required.");
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
@@ -1013,13 +1109,16 @@ class UsersSessionsResourceApi {
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Session.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Session.fromJson(data));
   }
 }
 
@@ -1069,14 +1168,14 @@ class AggregateBucket {
     }
     if (_json.containsKey("dataset")) {
       dataset = (_json["dataset"] as core.List)
-          .map<Dataset>((value) => new Dataset.fromJson(value))
+          .map<Dataset>((value) => Dataset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("endTimeMillis")) {
       endTimeMillis = _json["endTimeMillis"];
     }
     if (_json.containsKey("session")) {
-      session = new Session.fromJson(_json["session"]);
+      session = Session.fromJson(_json["session"]);
     }
     if (_json.containsKey("startTimeMillis")) {
       startTimeMillis = _json["startTimeMillis"];
@@ -1088,18 +1187,18 @@ class AggregateBucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activity != null) {
       _json["activity"] = activity;
     }
     if (dataset != null) {
-      _json["dataset"] = dataset.map((value) => (value).toJson()).toList();
+      _json["dataset"] = dataset.map((value) => value.toJson()).toList();
     }
     if (endTimeMillis != null) {
       _json["endTimeMillis"] = endTimeMillis;
     }
     if (session != null) {
-      _json["session"] = (session).toJson();
+      _json["session"] = session.toJson();
     }
     if (startTimeMillis != null) {
       _json["startTimeMillis"] = startTimeMillis;
@@ -1142,7 +1241,7 @@ class AggregateBy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1200,22 +1299,22 @@ class AggregateRequest {
   AggregateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("aggregateBy")) {
       aggregateBy = (_json["aggregateBy"] as core.List)
-          .map<AggregateBy>((value) => new AggregateBy.fromJson(value))
+          .map<AggregateBy>((value) => AggregateBy.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bucketByActivitySegment")) {
       bucketByActivitySegment =
-          new BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
+          BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
     }
     if (_json.containsKey("bucketByActivityType")) {
       bucketByActivityType =
-          new BucketByActivity.fromJson(_json["bucketByActivityType"]);
+          BucketByActivity.fromJson(_json["bucketByActivityType"]);
     }
     if (_json.containsKey("bucketBySession")) {
-      bucketBySession = new BucketBySession.fromJson(_json["bucketBySession"]);
+      bucketBySession = BucketBySession.fromJson(_json["bucketBySession"]);
     }
     if (_json.containsKey("bucketByTime")) {
-      bucketByTime = new BucketByTime.fromJson(_json["bucketByTime"]);
+      bucketByTime = BucketByTime.fromJson(_json["bucketByTime"]);
     }
     if (_json.containsKey("endTimeMillis")) {
       endTimeMillis = _json["endTimeMillis"];
@@ -1232,22 +1331,22 @@ class AggregateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aggregateBy != null) {
       _json["aggregateBy"] =
-          aggregateBy.map((value) => (value).toJson()).toList();
+          aggregateBy.map((value) => value.toJson()).toList();
     }
     if (bucketByActivitySegment != null) {
-      _json["bucketByActivitySegment"] = (bucketByActivitySegment).toJson();
+      _json["bucketByActivitySegment"] = bucketByActivitySegment.toJson();
     }
     if (bucketByActivityType != null) {
-      _json["bucketByActivityType"] = (bucketByActivityType).toJson();
+      _json["bucketByActivityType"] = bucketByActivityType.toJson();
     }
     if (bucketBySession != null) {
-      _json["bucketBySession"] = (bucketBySession).toJson();
+      _json["bucketBySession"] = bucketBySession.toJson();
     }
     if (bucketByTime != null) {
-      _json["bucketByTime"] = (bucketByTime).toJson();
+      _json["bucketByTime"] = bucketByTime.toJson();
     }
     if (endTimeMillis != null) {
       _json["endTimeMillis"] = endTimeMillis;
@@ -1271,16 +1370,16 @@ class AggregateResponse {
   AggregateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bucket")) {
       bucket = (_json["bucket"] as core.List)
-          .map<AggregateBucket>((value) => new AggregateBucket.fromJson(value))
+          .map<AggregateBucket>((value) => AggregateBucket.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucket != null) {
-      _json["bucket"] = bucket.map((value) => (value).toJson()).toList();
+      _json["bucket"] = bucket.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1325,7 +1424,7 @@ class Application {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
     }
@@ -1365,7 +1464,7 @@ class BucketByActivity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activityDataSourceId != null) {
       _json["activityDataSourceId"] = activityDataSourceId;
     }
@@ -1391,7 +1490,7 @@ class BucketBySession {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (minDurationMillis != null) {
       _json["minDurationMillis"] = minDurationMillis;
     }
@@ -1413,18 +1512,18 @@ class BucketByTime {
       durationMillis = _json["durationMillis"];
     }
     if (_json.containsKey("period")) {
-      period = new BucketByTimePeriod.fromJson(_json["period"]);
+      period = BucketByTimePeriod.fromJson(_json["period"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (durationMillis != null) {
       _json["durationMillis"] = durationMillis;
     }
     if (period != null) {
-      _json["period"] = (period).toJson();
+      _json["period"] = period.toJson();
     }
     return _json;
   }
@@ -1458,7 +1557,7 @@ class BucketByTimePeriod {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (timeZoneId != null) {
       _json["timeZoneId"] = timeZoneId;
     }
@@ -1543,14 +1642,14 @@ class DataPoint {
     }
     if (_json.containsKey("value")) {
       value = (_json["value"] as core.List)
-          .map<Value>((value) => new Value.fromJson(value))
+          .map<Value>((value) => Value.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (computationTimeMillis != null) {
       _json["computationTimeMillis"] = computationTimeMillis;
     }
@@ -1573,7 +1672,7 @@ class DataPoint {
       _json["startTimeNanos"] = startTimeNanos;
     }
     if (value != null) {
-      _json["value"] = value.map((value) => (value).toJson()).toList();
+      _json["value"] = value.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1657,7 +1756,7 @@ class DataSource {
 
   DataSource.fromJson(core.Map _json) {
     if (_json.containsKey("application")) {
-      application = new Application.fromJson(_json["application"]);
+      application = Application.fromJson(_json["application"]);
     }
     if (_json.containsKey("dataQualityStandard")) {
       dataQualityStandard =
@@ -1670,10 +1769,10 @@ class DataSource {
       dataStreamName = _json["dataStreamName"];
     }
     if (_json.containsKey("dataType")) {
-      dataType = new DataType.fromJson(_json["dataType"]);
+      dataType = DataType.fromJson(_json["dataType"]);
     }
     if (_json.containsKey("device")) {
-      device = new Device.fromJson(_json["device"]);
+      device = Device.fromJson(_json["device"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1685,9 +1784,9 @@ class DataSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (application != null) {
-      _json["application"] = (application).toJson();
+      _json["application"] = application.toJson();
     }
     if (dataQualityStandard != null) {
       _json["dataQualityStandard"] = dataQualityStandard;
@@ -1699,10 +1798,10 @@ class DataSource {
       _json["dataStreamName"] = dataStreamName;
     }
     if (dataType != null) {
-      _json["dataType"] = (dataType).toJson();
+      _json["dataType"] = dataType.toJson();
     }
     if (device != null) {
-      _json["device"] = (device).toJson();
+      _json["device"] = device.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1727,7 +1826,7 @@ class DataType {
   DataType.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
       field = (_json["field"] as core.List)
-          .map<DataTypeField>((value) => new DataTypeField.fromJson(value))
+          .map<DataTypeField>((value) => DataTypeField.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1737,9 +1836,9 @@ class DataType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (field != null) {
-      _json["field"] = field.map((value) => (value).toJson()).toList();
+      _json["field"] = field.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1786,7 +1885,7 @@ class DataTypeField {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (format != null) {
       _json["format"] = format;
     }
@@ -1847,14 +1946,14 @@ class Dataset {
     }
     if (_json.containsKey("point")) {
       point = (_json["point"] as core.List)
-          .map<DataPoint>((value) => new DataPoint.fromJson(value))
+          .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1868,7 +1967,7 @@ class Dataset {
       _json["nextPageToken"] = nextPageToken;
     }
     if (point != null) {
-      _json["point"] = point.map((value) => (value).toJson()).toList();
+      _json["point"] = point.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1935,7 +2034,7 @@ class Device {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (manufacturer != null) {
       _json["manufacturer"] = manufacturer;
     }
@@ -1979,12 +2078,12 @@ class ListDataPointChangesResponse {
     }
     if (_json.containsKey("deletedDataPoint")) {
       deletedDataPoint = (_json["deletedDataPoint"] as core.List)
-          .map<DataPoint>((value) => new DataPoint.fromJson(value))
+          .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("insertedDataPoint")) {
       insertedDataPoint = (_json["insertedDataPoint"] as core.List)
-          .map<DataPoint>((value) => new DataPoint.fromJson(value))
+          .map<DataPoint>((value) => DataPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1994,17 +2093,17 @@ class ListDataPointChangesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
     if (deletedDataPoint != null) {
       _json["deletedDataPoint"] =
-          deletedDataPoint.map((value) => (value).toJson()).toList();
+          deletedDataPoint.map((value) => value.toJson()).toList();
     }
     if (insertedDataPoint != null) {
       _json["insertedDataPoint"] =
-          insertedDataPoint.map((value) => (value).toJson()).toList();
+          insertedDataPoint.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2022,17 +2121,16 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSource")) {
       dataSource = (_json["dataSource"] as core.List)
-          .map<DataSource>((value) => new DataSource.fromJson(value))
+          .map<DataSource>((value) => DataSource.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataSource != null) {
-      _json["dataSource"] =
-          dataSource.map((value) => (value).toJson()).toList();
+      _json["dataSource"] = dataSource.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2061,7 +2159,7 @@ class ListSessionsResponse {
   ListSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deletedSession")) {
       deletedSession = (_json["deletedSession"] as core.List)
-          .map<Session>((value) => new Session.fromJson(value))
+          .map<Session>((value) => Session.fromJson(value))
           .toList();
     }
     if (_json.containsKey("hasMoreData")) {
@@ -2072,17 +2170,17 @@ class ListSessionsResponse {
     }
     if (_json.containsKey("session")) {
       session = (_json["session"] as core.List)
-          .map<Session>((value) => new Session.fromJson(value))
+          .map<Session>((value) => Session.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deletedSession != null) {
       _json["deletedSession"] =
-          deletedSession.map((value) => (value).toJson()).toList();
+          deletedSession.map((value) => value.toJson()).toList();
     }
     if (hasMoreData != null) {
       _json["hasMoreData"] = hasMoreData;
@@ -2091,7 +2189,7 @@ class ListSessionsResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (session != null) {
-      _json["session"] = session.map((value) => (value).toJson()).toList();
+      _json["session"] = session.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2113,7 +2211,7 @@ class MapValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -2166,7 +2264,7 @@ class Session {
       activityType = _json["activityType"];
     }
     if (_json.containsKey("application")) {
-      application = new Application.fromJson(_json["application"]);
+      application = Application.fromJson(_json["application"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2190,7 +2288,7 @@ class Session {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activeTimeMillis != null) {
       _json["activeTimeMillis"] = activeTimeMillis;
     }
@@ -2198,7 +2296,7 @@ class Session {
       _json["activityType"] = activityType;
     }
     if (application != null) {
-      _json["application"] = (application).toJson();
+      _json["application"] = application.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -2254,8 +2352,7 @@ class Value {
     }
     if (_json.containsKey("mapVal")) {
       mapVal = (_json["mapVal"] as core.List)
-          .map<ValueMapValEntry>(
-              (value) => new ValueMapValEntry.fromJson(value))
+          .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stringVal")) {
@@ -2265,7 +2362,7 @@ class Value {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -2273,7 +2370,7 @@ class Value {
       _json["intVal"] = intVal;
     }
     if (mapVal != null) {
-      _json["mapVal"] = mapVal.map((value) => (value).toJson()).toList();
+      _json["mapVal"] = mapVal.map((value) => value.toJson()).toList();
     }
     if (stringVal != null) {
       _json["stringVal"] = stringVal;
@@ -2293,18 +2390,18 @@ class ValueMapValEntry {
       key = _json["key"];
     }
     if (_json.containsKey("value")) {
-      value = new MapValue.fromJson(_json["value"]);
+      value = MapValue.fromJson(_json["value"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
     if (value != null) {
-      _json["value"] = (value).toJson();
+      _json["value"] = value.toJson();
     }
     return _json;
   }

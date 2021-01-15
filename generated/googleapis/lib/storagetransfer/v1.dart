@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.storagetransfer.v1;
 
@@ -26,17 +44,17 @@ class StoragetransferApi {
   final commons.ApiRequester _requester;
 
   GoogleServiceAccountsResourceApi get googleServiceAccounts =>
-      new GoogleServiceAccountsResourceApi(_requester);
+      GoogleServiceAccountsResourceApi(_requester);
   TransferJobsResourceApi get transferJobs =>
-      new TransferJobsResourceApi(_requester);
+      TransferJobsResourceApi(_requester);
   TransferOperationsResourceApi get transferOperations =>
-      new TransferOperationsResourceApi(_requester);
+      TransferOperationsResourceApi(_requester);
 
   StoragetransferApi(http.Client client,
       {core.String rootUrl = "https://storagetransfer.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class GoogleServiceAccountsResourceApi {
@@ -68,17 +86,19 @@ class GoogleServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleServiceAccount> get(core.String projectId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleServiceAccount> get(
+    core.String projectId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -87,13 +107,16 @@ class GoogleServiceAccountsResourceApi {
     _url = 'v1/googleServiceAccounts/' +
         commons.Escaper.ecapeVariable('$projectId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleServiceAccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleServiceAccount.fromJson(data));
   }
 }
 
@@ -118,16 +141,19 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferJob> create(TransferJob request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TransferJob> create(
+    TransferJob request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -135,13 +161,16 @@ class TransferJobsResourceApi {
 
     _url = 'v1/transferJobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TransferJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TransferJob.fromJson(data));
   }
 
   /// Gets a transfer job.
@@ -164,17 +193,20 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferJob> get(core.String jobName,
-      {core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TransferJob> get(
+    core.String jobName, {
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (jobName == null) {
-      throw new core.ArgumentError("Parameter jobName is required.");
+      throw core.ArgumentError("Parameter jobName is required.");
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -185,13 +217,16 @@ class TransferJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TransferJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TransferJob.fromJson(data));
   }
 
   /// Lists transfer jobs.
@@ -221,17 +256,18 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTransferJobsResponse> list({
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -248,14 +284,16 @@ class TransferJobsResourceApi {
 
     _url = 'v1/transferJobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListTransferJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTransferJobsResponse.fromJson(data));
   }
 
   /// Updates a transfer job. Updating a job's transfer spec does not affect
@@ -281,20 +319,22 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferJob> patch(
-      UpdateTransferJobRequest request, core.String jobName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateTransferJobRequest request,
+    core.String jobName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (jobName == null) {
-      throw new core.ArgumentError("Parameter jobName is required.");
+      throw core.ArgumentError("Parameter jobName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -302,13 +342,16 @@ class TransferJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TransferJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TransferJob.fromJson(data));
   }
 }
 
@@ -354,20 +397,23 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -375,13 +421,16 @@ class TransferOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -403,16 +452,19 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -420,13 +472,16 @@ class TransferOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists transfer operations.
@@ -461,20 +516,22 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -491,13 +548,16 @@ class TransferOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 
   /// Pauses a transfer operation.
@@ -520,20 +580,22 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> pause(
-      PauseTransferOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PauseTransferOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -541,13 +603,16 @@ class TransferOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Resumes a transfer operation that is paused.
@@ -570,20 +635,22 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> resume(
-      ResumeTransferOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ResumeTransferOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -591,13 +658,16 @@ class TransferOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -624,7 +694,7 @@ class AwsAccessKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessKeyId != null) {
       _json["accessKeyId"] = accessKeyId;
     }
@@ -651,7 +721,7 @@ class AwsS3Data {
 
   AwsS3Data.fromJson(core.Map _json) {
     if (_json.containsKey("awsAccessKey")) {
-      awsAccessKey = new AwsAccessKey.fromJson(_json["awsAccessKey"]);
+      awsAccessKey = AwsAccessKey.fromJson(_json["awsAccessKey"]);
     }
     if (_json.containsKey("bucketName")) {
       bucketName = _json["bucketName"];
@@ -660,9 +730,9 @@ class AwsS3Data {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (awsAccessKey != null) {
-      _json["awsAccessKey"] = (awsAccessKey).toJson();
+      _json["awsAccessKey"] = awsAccessKey.toJson();
     }
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
@@ -693,8 +763,7 @@ class AzureBlobStorageData {
 
   AzureBlobStorageData.fromJson(core.Map _json) {
     if (_json.containsKey("azureCredentials")) {
-      azureCredentials =
-          new AzureCredentials.fromJson(_json["azureCredentials"]);
+      azureCredentials = AzureCredentials.fromJson(_json["azureCredentials"]);
     }
     if (_json.containsKey("container")) {
       container = _json["container"];
@@ -706,9 +775,9 @@ class AzureBlobStorageData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (azureCredentials != null) {
-      _json["azureCredentials"] = (azureCredentials).toJson();
+      _json["azureCredentials"] = azureCredentials.toJson();
     }
     if (container != null) {
       _json["container"] = container;
@@ -737,7 +806,7 @@ class AzureCredentials {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sasToken != null) {
       _json["sasToken"] = sasToken;
     }
@@ -753,7 +822,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -796,7 +865,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -822,7 +891,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -849,7 +918,7 @@ class ErrorLogEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorDetails != null) {
       _json["errorDetails"] = errorDetails;
     }
@@ -964,14 +1033,14 @@ class ErrorSummary {
     }
     if (_json.containsKey("errorLogEntries")) {
       errorLogEntries = (_json["errorLogEntries"] as core.List)
-          .map<ErrorLogEntry>((value) => new ErrorLogEntry.fromJson(value))
+          .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -980,7 +1049,7 @@ class ErrorSummary {
     }
     if (errorLogEntries != null) {
       _json["errorLogEntries"] =
-          errorLogEntries.map((value) => (value).toJson()).toList();
+          errorLogEntries.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1005,7 +1074,7 @@ class GcsData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -1028,7 +1097,7 @@ class GoogleServiceAccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountEmail != null) {
       _json["accountEmail"] = accountEmail;
     }
@@ -1077,7 +1146,7 @@ class HttpData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (listUrl != null) {
       _json["listUrl"] = listUrl;
     }
@@ -1101,20 +1170,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1136,20 +1204,20 @@ class ListTransferJobsResponse {
     }
     if (_json.containsKey("transferJobs")) {
       transferJobs = (_json["transferJobs"] as core.List)
-          .map<TransferJob>((value) => new TransferJob.fromJson(value))
+          .map<TransferJob>((value) => TransferJob.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (transferJobs != null) {
       _json["transferJobs"] =
-          transferJobs.map((value) => (value).toJson()).toList();
+          transferJobs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1200,7 +1268,7 @@ class NotificationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventTypes != null) {
       _json["eventTypes"] = eventTypes;
     }
@@ -1305,7 +1373,7 @@ class ObjectConditions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludePrefixes != null) {
       _json["excludePrefixes"] = excludePrefixes;
     }
@@ -1372,7 +1440,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -1389,12 +1457,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -1417,7 +1485,7 @@ class PauseTransferOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1430,7 +1498,7 @@ class ResumeTransferOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1472,27 +1540,27 @@ class Schedule {
 
   Schedule.fromJson(core.Map _json) {
     if (_json.containsKey("scheduleEndDate")) {
-      scheduleEndDate = new Date.fromJson(_json["scheduleEndDate"]);
+      scheduleEndDate = Date.fromJson(_json["scheduleEndDate"]);
     }
     if (_json.containsKey("scheduleStartDate")) {
-      scheduleStartDate = new Date.fromJson(_json["scheduleStartDate"]);
+      scheduleStartDate = Date.fromJson(_json["scheduleStartDate"]);
     }
     if (_json.containsKey("startTimeOfDay")) {
-      startTimeOfDay = new TimeOfDay.fromJson(_json["startTimeOfDay"]);
+      startTimeOfDay = TimeOfDay.fromJson(_json["startTimeOfDay"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (scheduleEndDate != null) {
-      _json["scheduleEndDate"] = (scheduleEndDate).toJson();
+      _json["scheduleEndDate"] = scheduleEndDate.toJson();
     }
     if (scheduleStartDate != null) {
-      _json["scheduleStartDate"] = (scheduleStartDate).toJson();
+      _json["scheduleStartDate"] = scheduleStartDate.toJson();
     }
     if (startTimeOfDay != null) {
-      _json["startTimeOfDay"] = (startTimeOfDay).toJson();
+      _json["startTimeOfDay"] = startTimeOfDay.toJson();
     }
     return _json;
   }
@@ -1539,7 +1607,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1590,7 +1658,7 @@ class TimeOfDay {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hours != null) {
       _json["hours"] = hours;
     }
@@ -1720,7 +1788,7 @@ class TransferCounters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bytesCopiedToSink != null) {
       _json["bytesCopiedToSink"] = bytesCopiedToSink;
     }
@@ -1848,25 +1916,25 @@ class TransferJob {
     }
     if (_json.containsKey("notificationConfig")) {
       notificationConfig =
-          new NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json["notificationConfig"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("schedule")) {
-      schedule = new Schedule.fromJson(_json["schedule"]);
+      schedule = Schedule.fromJson(_json["schedule"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
     if (_json.containsKey("transferSpec")) {
-      transferSpec = new TransferSpec.fromJson(_json["transferSpec"]);
+      transferSpec = TransferSpec.fromJson(_json["transferSpec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -1883,19 +1951,19 @@ class TransferJob {
       _json["name"] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = (notificationConfig).toJson();
+      _json["notificationConfig"] = notificationConfig.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
     if (schedule != null) {
-      _json["schedule"] = (schedule).toJson();
+      _json["schedule"] = schedule.toJson();
     }
     if (status != null) {
       _json["status"] = status;
     }
     if (transferSpec != null) {
-      _json["transferSpec"] = (transferSpec).toJson();
+      _json["transferSpec"] = transferSpec.toJson();
     }
     return _json;
   }
@@ -1946,14 +2014,14 @@ class TransferOperation {
 
   TransferOperation.fromJson(core.Map _json) {
     if (_json.containsKey("counters")) {
-      counters = new TransferCounters.fromJson(_json["counters"]);
+      counters = TransferCounters.fromJson(_json["counters"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("errorBreakdowns")) {
       errorBreakdowns = (_json["errorBreakdowns"] as core.List)
-          .map<ErrorSummary>((value) => new ErrorSummary.fromJson(value))
+          .map<ErrorSummary>((value) => ErrorSummary.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1961,7 +2029,7 @@ class TransferOperation {
     }
     if (_json.containsKey("notificationConfig")) {
       notificationConfig =
-          new NotificationConfig.fromJson(_json["notificationConfig"]);
+          NotificationConfig.fromJson(_json["notificationConfig"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -1976,28 +2044,28 @@ class TransferOperation {
       transferJobName = _json["transferJobName"];
     }
     if (_json.containsKey("transferSpec")) {
-      transferSpec = new TransferSpec.fromJson(_json["transferSpec"]);
+      transferSpec = TransferSpec.fromJson(_json["transferSpec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (counters != null) {
-      _json["counters"] = (counters).toJson();
+      _json["counters"] = counters.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (errorBreakdowns != null) {
       _json["errorBreakdowns"] =
-          errorBreakdowns.map((value) => (value).toJson()).toList();
+          errorBreakdowns.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (notificationConfig != null) {
-      _json["notificationConfig"] = (notificationConfig).toJson();
+      _json["notificationConfig"] = notificationConfig.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -2012,7 +2080,7 @@ class TransferOperation {
       _json["transferJobName"] = transferJobName;
     }
     if (transferSpec != null) {
-      _json["transferSpec"] = (transferSpec).toJson();
+      _json["transferSpec"] = transferSpec.toJson();
     }
     return _json;
   }
@@ -2051,7 +2119,7 @@ class TransferOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deleteObjectsFromSourceAfterTransfer != null) {
       _json["deleteObjectsFromSourceAfterTransfer"] =
           deleteObjectsFromSourceAfterTransfer;
@@ -2098,54 +2166,52 @@ class TransferSpec {
 
   TransferSpec.fromJson(core.Map _json) {
     if (_json.containsKey("awsS3DataSource")) {
-      awsS3DataSource = new AwsS3Data.fromJson(_json["awsS3DataSource"]);
+      awsS3DataSource = AwsS3Data.fromJson(_json["awsS3DataSource"]);
     }
     if (_json.containsKey("azureBlobStorageDataSource")) {
-      azureBlobStorageDataSource = new AzureBlobStorageData.fromJson(
-          _json["azureBlobStorageDataSource"]);
+      azureBlobStorageDataSource =
+          AzureBlobStorageData.fromJson(_json["azureBlobStorageDataSource"]);
     }
     if (_json.containsKey("gcsDataSink")) {
-      gcsDataSink = new GcsData.fromJson(_json["gcsDataSink"]);
+      gcsDataSink = GcsData.fromJson(_json["gcsDataSink"]);
     }
     if (_json.containsKey("gcsDataSource")) {
-      gcsDataSource = new GcsData.fromJson(_json["gcsDataSource"]);
+      gcsDataSource = GcsData.fromJson(_json["gcsDataSource"]);
     }
     if (_json.containsKey("httpDataSource")) {
-      httpDataSource = new HttpData.fromJson(_json["httpDataSource"]);
+      httpDataSource = HttpData.fromJson(_json["httpDataSource"]);
     }
     if (_json.containsKey("objectConditions")) {
-      objectConditions =
-          new ObjectConditions.fromJson(_json["objectConditions"]);
+      objectConditions = ObjectConditions.fromJson(_json["objectConditions"]);
     }
     if (_json.containsKey("transferOptions")) {
-      transferOptions = new TransferOptions.fromJson(_json["transferOptions"]);
+      transferOptions = TransferOptions.fromJson(_json["transferOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (awsS3DataSource != null) {
-      _json["awsS3DataSource"] = (awsS3DataSource).toJson();
+      _json["awsS3DataSource"] = awsS3DataSource.toJson();
     }
     if (azureBlobStorageDataSource != null) {
-      _json["azureBlobStorageDataSource"] =
-          (azureBlobStorageDataSource).toJson();
+      _json["azureBlobStorageDataSource"] = azureBlobStorageDataSource.toJson();
     }
     if (gcsDataSink != null) {
-      _json["gcsDataSink"] = (gcsDataSink).toJson();
+      _json["gcsDataSink"] = gcsDataSink.toJson();
     }
     if (gcsDataSource != null) {
-      _json["gcsDataSource"] = (gcsDataSource).toJson();
+      _json["gcsDataSource"] = gcsDataSource.toJson();
     }
     if (httpDataSource != null) {
-      _json["httpDataSource"] = (httpDataSource).toJson();
+      _json["httpDataSource"] = httpDataSource.toJson();
     }
     if (objectConditions != null) {
-      _json["objectConditions"] = (objectConditions).toJson();
+      _json["objectConditions"] = objectConditions.toJson();
     }
     if (transferOptions != null) {
-      _json["transferOptions"] = (transferOptions).toJson();
+      _json["transferOptions"] = transferOptions.toJson();
     }
     return _json;
   }
@@ -2179,7 +2245,7 @@ class UpdateTransferJobRequest {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("transferJob")) {
-      transferJob = new TransferJob.fromJson(_json["transferJob"]);
+      transferJob = TransferJob.fromJson(_json["transferJob"]);
     }
     if (_json.containsKey("updateTransferJobFieldMask")) {
       updateTransferJobFieldMask = _json["updateTransferJobFieldMask"];
@@ -2188,12 +2254,12 @@ class UpdateTransferJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
     if (transferJob != null) {
-      _json["transferJob"] = (transferJob).toJson();
+      _json["transferJob"] = transferJob.toJson();
     }
     if (updateTransferJobFieldMask != null) {
       _json["updateTransferJobFieldMask"] = updateTransferJobFieldMask;

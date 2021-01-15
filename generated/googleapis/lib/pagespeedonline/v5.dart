@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.pagespeedonline.v5;
 
@@ -26,13 +44,13 @@ class PagespeedonlineApi {
   final commons.ApiRequester _requester;
 
   PagespeedapiResourceApi get pagespeedapi =>
-      new PagespeedapiResourceApi(_requester);
+      PagespeedapiResourceApi(_requester);
 
   PagespeedonlineApi(http.Client client,
       {core.String rootUrl = "https://pagespeedonline.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class PagespeedapiResourceApi {
@@ -76,21 +94,22 @@ class PagespeedapiResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(
-      {core.String strategy,
-      core.String utmCampaign,
-      core.List<core.String> category,
-      core.String locale,
-      core.String url,
-      core.String utmSource,
-      core.String captchaToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed({
+    core.String strategy,
+    core.String utmCampaign,
+    core.List<core.String> category,
+    core.String locale,
+    core.String url,
+    core.String utmSource,
+    core.String captchaToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (strategy != null) {
       _queryParams["strategy"] = [strategy];
@@ -119,14 +138,17 @@ class PagespeedapiResourceApi {
 
     _url = 'pagespeedonline/v5/runPagespeed';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PagespeedApiPagespeedResponseV5.fromJson(data));
+        .then((data) => PagespeedApiPagespeedResponseV5.fromJson(data));
   }
 }
 
@@ -158,7 +180,7 @@ class AuditRefs {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (group != null) {
       _json["group"] = group;
     }
@@ -201,7 +223,7 @@ class Bucket {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (max != null) {
       _json["max"] = max;
     }
@@ -237,40 +259,39 @@ class Categories {
 
   Categories.fromJson(core.Map _json) {
     if (_json.containsKey("accessibility")) {
-      accessibility = new LighthouseCategoryV5.fromJson(_json["accessibility"]);
+      accessibility = LighthouseCategoryV5.fromJson(_json["accessibility"]);
     }
     if (_json.containsKey("best-practices")) {
-      best_practices =
-          new LighthouseCategoryV5.fromJson(_json["best-practices"]);
+      best_practices = LighthouseCategoryV5.fromJson(_json["best-practices"]);
     }
     if (_json.containsKey("performance")) {
-      performance = new LighthouseCategoryV5.fromJson(_json["performance"]);
+      performance = LighthouseCategoryV5.fromJson(_json["performance"]);
     }
     if (_json.containsKey("pwa")) {
-      pwa = new LighthouseCategoryV5.fromJson(_json["pwa"]);
+      pwa = LighthouseCategoryV5.fromJson(_json["pwa"]);
     }
     if (_json.containsKey("seo")) {
-      seo = new LighthouseCategoryV5.fromJson(_json["seo"]);
+      seo = LighthouseCategoryV5.fromJson(_json["seo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessibility != null) {
-      _json["accessibility"] = (accessibility).toJson();
+      _json["accessibility"] = accessibility.toJson();
     }
     if (best_practices != null) {
-      _json["best-practices"] = (best_practices).toJson();
+      _json["best-practices"] = best_practices.toJson();
     }
     if (performance != null) {
-      _json["performance"] = (performance).toJson();
+      _json["performance"] = performance.toJson();
     }
     if (pwa != null) {
-      _json["pwa"] = (pwa).toJson();
+      _json["pwa"] = pwa.toJson();
     }
     if (seo != null) {
-      _json["seo"] = (seo).toJson();
+      _json["seo"] = seo.toJson();
     }
     return _json;
   }
@@ -297,7 +318,7 @@ class CategoryGroupV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -345,7 +366,7 @@ class ConfigSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channel != null) {
       _json["channel"] = channel;
     }
@@ -389,7 +410,7 @@ class Environment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (benchmarkIndex != null) {
       _json["benchmarkIndex"] = benchmarkIndex;
     }
@@ -413,16 +434,16 @@ class I18n {
 
   I18n.fromJson(core.Map _json) {
     if (_json.containsKey("rendererFormattedStrings")) {
-      rendererFormattedStrings = new RendererFormattedStrings.fromJson(
-          _json["rendererFormattedStrings"]);
+      rendererFormattedStrings =
+          RendererFormattedStrings.fromJson(_json["rendererFormattedStrings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (rendererFormattedStrings != null) {
-      _json["rendererFormattedStrings"] = (rendererFormattedStrings).toJson();
+      _json["rendererFormattedStrings"] = rendererFormattedStrings.toJson();
     }
     return _json;
   }
@@ -514,7 +535,7 @@ class LighthouseAuditResultV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -581,7 +602,7 @@ class LighthouseCategoryV5 {
   LighthouseCategoryV5.fromJson(core.Map _json) {
     if (_json.containsKey("auditRefs")) {
       auditRefs = (_json["auditRefs"] as core.List)
-          .map<AuditRefs>((value) => new AuditRefs.fromJson(value))
+          .map<AuditRefs>((value) => AuditRefs.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -603,9 +624,9 @@ class LighthouseCategoryV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditRefs != null) {
-      _json["auditRefs"] = auditRefs.map((value) => (value).toJson()).toList();
+      _json["auditRefs"] = auditRefs.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -683,21 +704,21 @@ class LighthouseResultV5 {
     if (_json.containsKey("audits")) {
       audits = commons.mapMap<core.Map, LighthouseAuditResultV5>(
           _json["audits"].cast<core.String, core.Map>(),
-          (core.Map item) => new LighthouseAuditResultV5.fromJson(item));
+          (core.Map item) => LighthouseAuditResultV5.fromJson(item));
     }
     if (_json.containsKey("categories")) {
-      categories = new Categories.fromJson(_json["categories"]);
+      categories = Categories.fromJson(_json["categories"]);
     }
     if (_json.containsKey("categoryGroups")) {
       categoryGroups = commons.mapMap<core.Map, CategoryGroupV5>(
           _json["categoryGroups"].cast<core.String, core.Map>(),
-          (core.Map item) => new CategoryGroupV5.fromJson(item));
+          (core.Map item) => CategoryGroupV5.fromJson(item));
     }
     if (_json.containsKey("configSettings")) {
-      configSettings = new ConfigSettings.fromJson(_json["configSettings"]);
+      configSettings = ConfigSettings.fromJson(_json["configSettings"]);
     }
     if (_json.containsKey("environment")) {
-      environment = new Environment.fromJson(_json["environment"]);
+      environment = Environment.fromJson(_json["environment"]);
     }
     if (_json.containsKey("fetchTime")) {
       fetchTime = _json["fetchTime"];
@@ -706,7 +727,7 @@ class LighthouseResultV5 {
       finalUrl = _json["finalUrl"];
     }
     if (_json.containsKey("i18n")) {
-      i18n = new I18n.fromJson(_json["i18n"]);
+      i18n = I18n.fromJson(_json["i18n"]);
     }
     if (_json.containsKey("lighthouseVersion")) {
       lighthouseVersion = _json["lighthouseVersion"];
@@ -718,15 +739,15 @@ class LighthouseResultV5 {
       runWarnings = (_json["runWarnings"] as core.List).cast<core.Object>();
     }
     if (_json.containsKey("runtimeError")) {
-      runtimeError = new RuntimeError.fromJson(_json["runtimeError"]);
+      runtimeError = RuntimeError.fromJson(_json["runtimeError"]);
     }
     if (_json.containsKey("stackPacks")) {
       stackPacks = (_json["stackPacks"] as core.List)
-          .map<StackPack>((value) => new StackPack.fromJson(value))
+          .map<StackPack>((value) => StackPack.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timing")) {
-      timing = new Timing.fromJson(_json["timing"]);
+      timing = Timing.fromJson(_json["timing"]);
     }
     if (_json.containsKey("userAgent")) {
       userAgent = _json["userAgent"];
@@ -735,25 +756,25 @@ class LighthouseResultV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (audits != null) {
       _json["audits"] = commons
           .mapMap<LighthouseAuditResultV5, core.Map<core.String, core.Object>>(
-              audits, (LighthouseAuditResultV5 item) => (item).toJson());
+              audits, (LighthouseAuditResultV5 item) => item.toJson());
     }
     if (categories != null) {
-      _json["categories"] = (categories).toJson();
+      _json["categories"] = categories.toJson();
     }
     if (categoryGroups != null) {
       _json["categoryGroups"] =
           commons.mapMap<CategoryGroupV5, core.Map<core.String, core.Object>>(
-              categoryGroups, (CategoryGroupV5 item) => (item).toJson());
+              categoryGroups, (CategoryGroupV5 item) => item.toJson());
     }
     if (configSettings != null) {
-      _json["configSettings"] = (configSettings).toJson();
+      _json["configSettings"] = configSettings.toJson();
     }
     if (environment != null) {
-      _json["environment"] = (environment).toJson();
+      _json["environment"] = environment.toJson();
     }
     if (fetchTime != null) {
       _json["fetchTime"] = fetchTime;
@@ -762,7 +783,7 @@ class LighthouseResultV5 {
       _json["finalUrl"] = finalUrl;
     }
     if (i18n != null) {
-      _json["i18n"] = (i18n).toJson();
+      _json["i18n"] = i18n.toJson();
     }
     if (lighthouseVersion != null) {
       _json["lighthouseVersion"] = lighthouseVersion;
@@ -774,14 +795,13 @@ class LighthouseResultV5 {
       _json["runWarnings"] = runWarnings;
     }
     if (runtimeError != null) {
-      _json["runtimeError"] = (runtimeError).toJson();
+      _json["runtimeError"] = runtimeError.toJson();
     }
     if (stackPacks != null) {
-      _json["stackPacks"] =
-          stackPacks.map((value) => (value).toJson()).toList();
+      _json["stackPacks"] = stackPacks.map((value) => value.toJson()).toList();
     }
     if (timing != null) {
-      _json["timing"] = (timing).toJson();
+      _json["timing"] = timing.toJson();
     }
     if (userAgent != null) {
       _json["userAgent"] = userAgent;
@@ -819,7 +839,7 @@ class PagespeedApiLoadingExperienceV5 {
     if (_json.containsKey("metrics")) {
       metrics = commons.mapMap<core.Map, UserPageLoadMetricV5>(
           _json["metrics"].cast<core.String, core.Map>(),
-          (core.Map item) => new UserPageLoadMetricV5.fromJson(item));
+          (core.Map item) => UserPageLoadMetricV5.fromJson(item));
     }
     if (_json.containsKey("origin_fallback")) {
       originFallback = _json["origin_fallback"];
@@ -831,7 +851,7 @@ class PagespeedApiLoadingExperienceV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -841,7 +861,7 @@ class PagespeedApiLoadingExperienceV5 {
     if (metrics != null) {
       _json["metrics"] = commons
           .mapMap<UserPageLoadMetricV5, core.Map<core.String, core.Object>>(
-              metrics, (UserPageLoadMetricV5 item) => (item).toJson());
+              metrics, (UserPageLoadMetricV5 item) => item.toJson());
     }
     if (originFallback != null) {
       _json["origin_fallback"] = originFallback;
@@ -896,25 +916,24 @@ class PagespeedApiPagespeedResponseV5 {
       kind = _json["kind"];
     }
     if (_json.containsKey("lighthouseResult")) {
-      lighthouseResult =
-          new LighthouseResultV5.fromJson(_json["lighthouseResult"]);
+      lighthouseResult = LighthouseResultV5.fromJson(_json["lighthouseResult"]);
     }
     if (_json.containsKey("loadingExperience")) {
-      loadingExperience = new PagespeedApiLoadingExperienceV5.fromJson(
-          _json["loadingExperience"]);
+      loadingExperience =
+          PagespeedApiLoadingExperienceV5.fromJson(_json["loadingExperience"]);
     }
     if (_json.containsKey("originLoadingExperience")) {
-      originLoadingExperience = new PagespeedApiLoadingExperienceV5.fromJson(
+      originLoadingExperience = PagespeedApiLoadingExperienceV5.fromJson(
           _json["originLoadingExperience"]);
     }
     if (_json.containsKey("version")) {
-      version = new PagespeedVersion.fromJson(_json["version"]);
+      version = PagespeedVersion.fromJson(_json["version"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analysisUTCTimestamp != null) {
       _json["analysisUTCTimestamp"] = analysisUTCTimestamp;
     }
@@ -928,16 +947,16 @@ class PagespeedApiPagespeedResponseV5 {
       _json["kind"] = kind;
     }
     if (lighthouseResult != null) {
-      _json["lighthouseResult"] = (lighthouseResult).toJson();
+      _json["lighthouseResult"] = lighthouseResult.toJson();
     }
     if (loadingExperience != null) {
-      _json["loadingExperience"] = (loadingExperience).toJson();
+      _json["loadingExperience"] = loadingExperience.toJson();
     }
     if (originLoadingExperience != null) {
-      _json["originLoadingExperience"] = (originLoadingExperience).toJson();
+      _json["originLoadingExperience"] = originLoadingExperience.toJson();
     }
     if (version != null) {
-      _json["version"] = (version).toJson();
+      _json["version"] = version.toJson();
     }
     return _json;
   }
@@ -964,7 +983,7 @@ class PagespeedVersion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (major != null) {
       _json["major"] = major;
     }
@@ -1084,7 +1103,7 @@ class RendererFormattedStrings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditGroupExpandTooltip != null) {
       _json["auditGroupExpandTooltip"] = auditGroupExpandTooltip;
     }
@@ -1159,7 +1178,7 @@ class RuntimeError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1204,7 +1223,7 @@ class StackPack {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (descriptions != null) {
       _json["descriptions"] = descriptions;
     }
@@ -1236,7 +1255,7 @@ class Timing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (total != null) {
       _json["total"] = total;
     }
@@ -1273,7 +1292,7 @@ class UserPageLoadMetricV5 {
     }
     if (_json.containsKey("distributions")) {
       distributions = (_json["distributions"] as core.List)
-          .map<Bucket>((value) => new Bucket.fromJson(value))
+          .map<Bucket>((value) => Bucket.fromJson(value))
           .toList();
     }
     if (_json.containsKey("formFactor")) {
@@ -1292,13 +1311,13 @@ class UserPageLoadMetricV5 {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (category != null) {
       _json["category"] = category;
     }
     if (distributions != null) {
       _json["distributions"] =
-          distributions.map((value) => (value).toJson()).toList();
+          distributions.map((value) => value.toJson()).toList();
     }
     if (formFactor != null) {
       _json["formFactor"] = formFactor;

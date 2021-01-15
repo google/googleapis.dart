@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.indexing.v3;
 
@@ -24,13 +42,13 @@ class IndexingApi {
   final commons.ApiRequester _requester;
 
   UrlNotificationsResourceApi get urlNotifications =>
-      new UrlNotificationsResourceApi(_requester);
+      UrlNotificationsResourceApi(_requester);
 
   IndexingApi(http.Client client,
       {core.String rootUrl = "https://indexing.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class UrlNotificationsResourceApi {
@@ -58,14 +76,16 @@ class UrlNotificationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UrlNotificationMetadata> getMetadata(
-      {core.String url, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UrlNotificationMetadata> getMetadata({
+    core.String url,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (url != null) {
       _queryParams["url"] = [url];
@@ -76,13 +96,16 @@ class UrlNotificationsResourceApi {
 
     _url = 'v3/urlNotifications/metadata';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlNotificationMetadata.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UrlNotificationMetadata.fromJson(data));
   }
 
   /// Notifies that a URL has been updated or deleted.
@@ -101,17 +124,19 @@ class UrlNotificationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PublishUrlNotificationResponse> publish(UrlNotification request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PublishUrlNotificationResponse> publish(
+    UrlNotification request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -119,14 +144,17 @@ class UrlNotificationsResourceApi {
 
     _url = 'v3/urlNotifications:publish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PublishUrlNotificationResponse.fromJson(data));
+        .then((data) => PublishUrlNotificationResponse.fromJson(data));
   }
 }
 
@@ -139,16 +167,16 @@ class PublishUrlNotificationResponse {
 
   PublishUrlNotificationResponse.fromJson(core.Map _json) {
     if (_json.containsKey("urlNotificationMetadata")) {
-      urlNotificationMetadata = new UrlNotificationMetadata.fromJson(
-          _json["urlNotificationMetadata"]);
+      urlNotificationMetadata =
+          UrlNotificationMetadata.fromJson(_json["urlNotificationMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (urlNotificationMetadata != null) {
-      _json["urlNotificationMetadata"] = (urlNotificationMetadata).toJson();
+      _json["urlNotificationMetadata"] = urlNotificationMetadata.toJson();
     }
     return _json;
   }
@@ -189,7 +217,7 @@ class UrlNotification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notifyTime != null) {
       _json["notifyTime"] = notifyTime;
     }
@@ -219,10 +247,10 @@ class UrlNotificationMetadata {
 
   UrlNotificationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("latestRemove")) {
-      latestRemove = new UrlNotification.fromJson(_json["latestRemove"]);
+      latestRemove = UrlNotification.fromJson(_json["latestRemove"]);
     }
     if (_json.containsKey("latestUpdate")) {
-      latestUpdate = new UrlNotification.fromJson(_json["latestUpdate"]);
+      latestUpdate = UrlNotification.fromJson(_json["latestUpdate"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -231,12 +259,12 @@ class UrlNotificationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latestRemove != null) {
-      _json["latestRemove"] = (latestRemove).toJson();
+      _json["latestRemove"] = latestRemove.toJson();
     }
     if (latestUpdate != null) {
-      _json["latestUpdate"] = (latestUpdate).toJson();
+      _json["latestUpdate"] = latestUpdate.toJson();
     }
     if (url != null) {
       _json["url"] = url;

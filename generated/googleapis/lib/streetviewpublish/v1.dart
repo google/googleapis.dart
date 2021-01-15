@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.streetviewpublish.v1;
 
@@ -26,14 +44,14 @@ class StreetviewpublishApi {
 
   final commons.ApiRequester _requester;
 
-  PhotoResourceApi get photo => new PhotoResourceApi(_requester);
-  PhotosResourceApi get photos => new PhotosResourceApi(_requester);
+  PhotoResourceApi get photo => PhotoResourceApi(_requester);
+  PhotosResourceApi get photos => PhotosResourceApi(_requester);
 
   StreetviewpublishApi(http.Client client,
       {core.String rootUrl = "https://streetviewpublish.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class PhotoResourceApi {
@@ -68,16 +86,19 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Photo> create(Photo request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Photo> create(
+    Photo request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -85,13 +106,16 @@ class PhotoResourceApi {
 
     _url = 'v1/photo';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Photo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Photo.fromJson(data));
   }
 
   /// Deletes a Photo and its metadata. This method returns the following error
@@ -113,16 +137,19 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String photoId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String photoId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (photoId == null) {
-      throw new core.ArgumentError("Parameter photoId is required.");
+      throw core.ArgumentError("Parameter photoId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -130,13 +157,16 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the metadata of the specified Photo. This method returns the
@@ -173,17 +203,21 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Photo> get(core.String photoId,
-      {core.String view, core.String languageCode, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Photo> get(
+    core.String photoId, {
+    core.String view,
+    core.String languageCode,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (photoId == null) {
-      throw new core.ArgumentError("Parameter photoId is required.");
+      throw core.ArgumentError("Parameter photoId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -197,13 +231,16 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Photo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Photo.fromJson(data));
   }
 
   /// Creates an upload session to start uploading photo bytes. The method uses
@@ -234,16 +271,19 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UploadRef> startUpload(Empty request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UploadRef> startUpload(
+    Empty request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -251,13 +291,16 @@ class PhotoResourceApi {
 
     _url = 'v1/photo:startUpload';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UploadRef.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UploadRef.fromJson(data));
   }
 
   /// Updates the metadata of a Photo, such as pose, place association,
@@ -298,20 +341,24 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Photo> update(Photo request, core.String id,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Photo> update(
+    Photo request,
+    core.String id, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
+      throw core.ArgumentError("Parameter id is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -322,13 +369,16 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Photo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Photo.fromJson(data));
   }
 }
 
@@ -359,17 +409,18 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchDeletePhotosResponse> batchDelete(
-      BatchDeletePhotosRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchDeletePhotosRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -377,14 +428,16 @@ class PhotosResourceApi {
 
     _url = 'v1/photos:batchDelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchDeletePhotosResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchDeletePhotosResponse.fromJson(data));
   }
 
   /// Gets the metadata of the specified Photo batch. Note that if
@@ -423,17 +476,18 @@ class PhotosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view,
-      core.String languageCode,
-      core.List<core.String> photoIds,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BatchGetPhotosResponse> batchGet({
+    core.String view,
+    core.String languageCode,
+    core.List<core.String> photoIds,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (view != null) {
       _queryParams["view"] = [view];
@@ -450,13 +504,16 @@ class PhotosResourceApi {
 
     _url = 'v1/photos:batchGet';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BatchGetPhotosResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchGetPhotosResponse.fromJson(data));
   }
 
   /// Updates the metadata of Photos, such as pose, place association,
@@ -488,17 +545,18 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdatePhotosResponse> batchUpdate(
-      BatchUpdatePhotosRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchUpdatePhotosRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -506,14 +564,16 @@ class PhotosResourceApi {
 
     _url = 'v1/photos:batchUpdate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchUpdatePhotosResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchUpdatePhotosResponse.fromJson(data));
   }
 
   /// Lists all the Photos that belong to the user. *Note:* Recently created
@@ -558,19 +618,20 @@ class PhotosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPhotosResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String languageCode,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPhotosResponse> list({
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String languageCode,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -593,13 +654,16 @@ class PhotosResourceApi {
 
     _url = 'v1/photos';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListPhotosResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListPhotosResponse.fromJson(data));
   }
 }
 
@@ -619,7 +683,7 @@ class BatchDeletePhotosRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (photoIds != null) {
       _json["photoIds"] = photoIds;
     }
@@ -638,16 +702,16 @@ class BatchDeletePhotosResponse {
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("status")) {
       status = (_json["status"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (status != null) {
-      _json["status"] = status.map((value) => (value).toJson()).toList();
+      _json["status"] = status.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -664,16 +728,16 @@ class BatchGetPhotosResponse {
   BatchGetPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
-          .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -691,17 +755,17 @@ class BatchUpdatePhotosRequest {
     if (_json.containsKey("updatePhotoRequests")) {
       updatePhotoRequests = (_json["updatePhotoRequests"] as core.List)
           .map<UpdatePhotoRequest>(
-              (value) => new UpdatePhotoRequest.fromJson(value))
+              (value) => UpdatePhotoRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (updatePhotoRequests != null) {
       _json["updatePhotoRequests"] =
-          updatePhotoRequests.map((value) => (value).toJson()).toList();
+          updatePhotoRequests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -718,16 +782,16 @@ class BatchUpdatePhotosResponse {
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
-          .map<PhotoResponse>((value) => new PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -743,15 +807,15 @@ class Connection {
 
   Connection.fromJson(core.Map _json) {
     if (_json.containsKey("target")) {
-      target = new PhotoId.fromJson(_json["target"]);
+      target = PhotoId.fromJson(_json["target"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (target != null) {
-      _json["target"] = (target).toJson();
+      _json["target"] = target.toJson();
     }
     return _json;
   }
@@ -769,7 +833,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -798,7 +862,7 @@ class LatLng {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -834,7 +898,7 @@ class Level {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -863,19 +927,19 @@ class ListPhotosResponse {
     }
     if (_json.containsKey("photos")) {
       photos = (_json["photos"] as core.List)
-          .map<Photo>((value) => new Photo.fromJson(value))
+          .map<Photo>((value) => Photo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (photos != null) {
-      _json["photos"] = photos.map((value) => (value).toJson()).toList();
+      _json["photos"] = photos.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -925,7 +989,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -942,12 +1006,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -1031,7 +1095,7 @@ class Photo {
     }
     if (_json.containsKey("connections")) {
       connections = (_json["connections"] as core.List)
-          .map<Connection>((value) => new Connection.fromJson(value))
+          .map<Connection>((value) => Connection.fromJson(value))
           .toList();
     }
     if (_json.containsKey("downloadUrl")) {
@@ -1041,15 +1105,15 @@ class Photo {
       mapsPublishStatus = _json["mapsPublishStatus"];
     }
     if (_json.containsKey("photoId")) {
-      photoId = new PhotoId.fromJson(_json["photoId"]);
+      photoId = PhotoId.fromJson(_json["photoId"]);
     }
     if (_json.containsKey("places")) {
       places = (_json["places"] as core.List)
-          .map<Place>((value) => new Place.fromJson(value))
+          .map<Place>((value) => Place.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pose")) {
-      pose = new Pose.fromJson(_json["pose"]);
+      pose = Pose.fromJson(_json["pose"]);
     }
     if (_json.containsKey("shareLink")) {
       shareLink = _json["shareLink"];
@@ -1061,7 +1125,7 @@ class Photo {
       transferStatus = _json["transferStatus"];
     }
     if (_json.containsKey("uploadReference")) {
-      uploadReference = new UploadRef.fromJson(_json["uploadReference"]);
+      uploadReference = UploadRef.fromJson(_json["uploadReference"]);
     }
     if (_json.containsKey("viewCount")) {
       viewCount = _json["viewCount"];
@@ -1070,13 +1134,13 @@ class Photo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (captureTime != null) {
       _json["captureTime"] = captureTime;
     }
     if (connections != null) {
       _json["connections"] =
-          connections.map((value) => (value).toJson()).toList();
+          connections.map((value) => value.toJson()).toList();
     }
     if (downloadUrl != null) {
       _json["downloadUrl"] = downloadUrl;
@@ -1085,13 +1149,13 @@ class Photo {
       _json["mapsPublishStatus"] = mapsPublishStatus;
     }
     if (photoId != null) {
-      _json["photoId"] = (photoId).toJson();
+      _json["photoId"] = photoId.toJson();
     }
     if (places != null) {
-      _json["places"] = places.map((value) => (value).toJson()).toList();
+      _json["places"] = places.map((value) => value.toJson()).toList();
     }
     if (pose != null) {
-      _json["pose"] = (pose).toJson();
+      _json["pose"] = pose.toJson();
     }
     if (shareLink != null) {
       _json["shareLink"] = shareLink;
@@ -1103,7 +1167,7 @@ class Photo {
       _json["transferStatus"] = transferStatus;
     }
     if (uploadReference != null) {
-      _json["uploadReference"] = (uploadReference).toJson();
+      _json["uploadReference"] = uploadReference.toJson();
     }
     if (viewCount != null) {
       _json["viewCount"] = viewCount;
@@ -1127,7 +1191,7 @@ class PhotoId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -1149,21 +1213,21 @@ class PhotoResponse {
 
   PhotoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("photo")) {
-      photo = new Photo.fromJson(_json["photo"]);
+      photo = Photo.fromJson(_json["photo"]);
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (photo != null) {
-      _json["photo"] = (photo).toJson();
+      _json["photo"] = photo.toJson();
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -1199,7 +1263,7 @@ class Place {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -1265,10 +1329,10 @@ class Pose {
       heading = _json["heading"].toDouble();
     }
     if (_json.containsKey("latLngPair")) {
-      latLngPair = new LatLng.fromJson(_json["latLngPair"]);
+      latLngPair = LatLng.fromJson(_json["latLngPair"]);
     }
     if (_json.containsKey("level")) {
-      level = new Level.fromJson(_json["level"]);
+      level = Level.fromJson(_json["level"]);
     }
     if (_json.containsKey("pitch")) {
       pitch = _json["pitch"].toDouble();
@@ -1280,7 +1344,7 @@ class Pose {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accuracyMeters != null) {
       _json["accuracyMeters"] = accuracyMeters;
     }
@@ -1291,10 +1355,10 @@ class Pose {
       _json["heading"] = heading;
     }
     if (latLngPair != null) {
-      _json["latLngPair"] = (latLngPair).toJson();
+      _json["latLngPair"] = latLngPair.toJson();
     }
     if (level != null) {
-      _json["level"] = (level).toJson();
+      _json["level"] = level.toJson();
     }
     if (pitch != null) {
       _json["pitch"] = pitch;
@@ -1347,7 +1411,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1384,7 +1448,7 @@ class UpdatePhotoRequest {
 
   UpdatePhotoRequest.fromJson(core.Map _json) {
     if (_json.containsKey("photo")) {
-      photo = new Photo.fromJson(_json["photo"]);
+      photo = Photo.fromJson(_json["photo"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -1393,9 +1457,9 @@ class UpdatePhotoRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (photo != null) {
-      _json["photo"] = (photo).toJson();
+      _json["photo"] = photo.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -1421,7 +1485,7 @@ class UploadRef {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uploadUrl != null) {
       _json["uploadUrl"] = uploadUrl;
     }

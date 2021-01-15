@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudiot.v1;
 
@@ -28,20 +46,20 @@ class CloudiotApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   CloudiotApi(http.Client client,
       {core.String rootUrl = "https://cloudiot.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -50,7 +68,7 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRegistriesResourceApi get registries =>
-      new ProjectsLocationsRegistriesResourceApi(_requester);
+      ProjectsLocationsRegistriesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -60,9 +78,9 @@ class ProjectsLocationsRegistriesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRegistriesDevicesResourceApi get devices =>
-      new ProjectsLocationsRegistriesDevicesResourceApi(_requester);
+      ProjectsLocationsRegistriesDevicesResourceApi(_requester);
   ProjectsLocationsRegistriesGroupsResourceApi get groups =>
-      new ProjectsLocationsRegistriesGroupsResourceApi(_requester);
+      ProjectsLocationsRegistriesGroupsResourceApi(_requester);
 
   ProjectsLocationsRegistriesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -89,20 +107,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BindDeviceToGatewayResponse> bindDeviceToGateway(
-      BindDeviceToGatewayRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BindDeviceToGatewayRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -112,14 +132,16 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':bindDeviceToGateway';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BindDeviceToGatewayResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BindDeviceToGatewayResponse.fromJson(data));
   }
 
   /// Creates a device registry that contains devices.
@@ -144,20 +166,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeviceRegistry> create(
-      DeviceRegistry request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    DeviceRegistry request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -167,13 +191,16 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeviceRegistry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeviceRegistry.fromJson(data));
   }
 
   /// Deletes a device registry configuration.
@@ -195,16 +222,19 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -212,13 +242,16 @@ class ProjectsLocationsRegistriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a device registry configuration.
@@ -240,16 +273,19 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DeviceRegistry> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DeviceRegistry> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -257,13 +293,16 @@ class ProjectsLocationsRegistriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeviceRegistry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeviceRegistry.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -290,20 +329,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -313,13 +354,16 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists device registries.
@@ -350,17 +394,21 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDeviceRegistriesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDeviceRegistriesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -376,14 +424,17 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListDeviceRegistriesResponse.fromJson(data));
+        .then((data) => ListDeviceRegistriesResponse.fromJson(data));
   }
 
   /// Updates a device registry configuration.
@@ -413,20 +464,24 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DeviceRegistry> patch(DeviceRegistry request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<DeviceRegistry> patch(
+    DeviceRegistry request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -437,13 +492,16 @@ class ProjectsLocationsRegistriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeviceRegistry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeviceRegistry.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -470,20 +528,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -493,13 +553,16 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -527,20 +590,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -550,14 +615,16 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 
   /// Deletes the association between the device and the gateway.
@@ -582,20 +649,22 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UnbindDeviceFromGatewayResponse> unbindDeviceFromGateway(
-      UnbindDeviceFromGatewayRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UnbindDeviceFromGatewayRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -605,14 +674,17 @@ class ProjectsLocationsRegistriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':unbindDeviceFromGateway';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new UnbindDeviceFromGatewayResponse.fromJson(data));
+        .then((data) => UnbindDeviceFromGatewayResponse.fromJson(data));
   }
 }
 
@@ -621,10 +693,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
   ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi
       get configVersions =>
-          new ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi(
+          ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi(
               _requester);
   ProjectsLocationsRegistriesDevicesStatesResourceApi get states =>
-      new ProjectsLocationsRegistriesDevicesStatesResourceApi(_requester);
+      ProjectsLocationsRegistriesDevicesStatesResourceApi(_requester);
 
   ProjectsLocationsRegistriesDevicesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -651,20 +723,23 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> create(Device request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Device> create(
+    Device request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -673,13 +748,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Device.fromJson(data));
   }
 
   /// Deletes a device.
@@ -703,16 +781,19 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -720,13 +801,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets details about a device.
@@ -753,17 +837,20 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(core.String name,
-      {core.String fieldMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Device> get(
+    core.String name, {
+    core.String fieldMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
@@ -774,13 +861,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Device.fromJson(data));
   }
 
   /// List devices in a device registry.
@@ -843,25 +933,27 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String gatewayListOptions_gatewayType,
-      core.String fieldMask,
-      core.String gatewayListOptions_associationsDeviceId,
-      core.String gatewayListOptions_associationsGatewayId,
-      core.int pageSize,
-      core.List<core.String> deviceNumIds,
-      core.String pageToken,
-      core.List<core.String> deviceIds,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDevicesResponse> list(
+    core.String parent, {
+    core.String gatewayListOptions_gatewayType,
+    core.String fieldMask,
+    core.String gatewayListOptions_associationsDeviceId,
+    core.String gatewayListOptions_associationsGatewayId,
+    core.int pageSize,
+    core.List<core.String> deviceNumIds,
+    core.String pageToken,
+    core.List<core.String> deviceIds,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (gatewayListOptions_gatewayType != null) {
       _queryParams["gatewayListOptions.gatewayType"] = [
@@ -900,13 +992,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDevicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDevicesResponse.fromJson(data));
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
@@ -935,20 +1030,22 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeviceConfig> modifyCloudToDeviceConfig(
-      ModifyCloudToDeviceConfigRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyCloudToDeviceConfigRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -958,13 +1055,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':modifyCloudToDeviceConfig';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeviceConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeviceConfig.fromJson(data));
   }
 
   /// Updates a device.
@@ -996,20 +1096,24 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> patch(Device request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Device> patch(
+    Device request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1020,13 +1124,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Device.fromJson(data));
   }
 
   /// Sends a command to the specified device. In order for a device to be able
@@ -1064,20 +1171,22 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SendCommandToDeviceResponse> sendCommandToDevice(
-      SendCommandToDeviceRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SendCommandToDeviceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1087,14 +1196,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':sendCommandToDevice';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SendCommandToDeviceResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SendCommandToDeviceResponse.fromJson(data));
   }
 }
 
@@ -1132,17 +1243,20 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDeviceConfigVersionsResponse> list(core.String name,
-      {core.int numVersions, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDeviceConfigVersionsResponse> list(
+    core.String name, {
+    core.int numVersions,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (numVersions != null) {
       _queryParams["numVersions"] = ["${numVersions}"];
@@ -1155,14 +1269,17 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/configVersions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListDeviceConfigVersionsResponse.fromJson(data));
+        .then((data) => ListDeviceConfigVersionsResponse.fromJson(data));
   }
 }
 
@@ -1199,17 +1316,20 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDeviceStatesResponse> list(core.String name,
-      {core.int numStates, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDeviceStatesResponse> list(
+    core.String name, {
+    core.int numStates,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (numStates != null) {
       _queryParams["numStates"] = ["${numStates}"];
@@ -1220,14 +1340,16 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListDeviceStatesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDeviceStatesResponse.fromJson(data));
   }
 }
 
@@ -1235,7 +1357,7 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRegistriesGroupsDevicesResourceApi get devices =>
-      new ProjectsLocationsRegistriesGroupsDevicesResourceApi(_requester);
+      ProjectsLocationsRegistriesGroupsDevicesResourceApi(_requester);
 
   ProjectsLocationsRegistriesGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1264,20 +1386,22 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1287,13 +1411,16 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1320,20 +1447,22 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1343,13 +1472,16 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1377,20 +1509,22 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1400,14 +1534,16 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1478,25 +1614,27 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String gatewayListOptions_associationsGatewayId,
-      core.String gatewayListOptions_gatewayType,
-      core.List<core.String> deviceIds,
-      core.String gatewayListOptions_associationsDeviceId,
-      core.List<core.String> deviceNumIds,
-      core.int pageSize,
-      core.String pageToken,
-      core.String fieldMask,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDevicesResponse> list(
+    core.String parent, {
+    core.String gatewayListOptions_associationsGatewayId,
+    core.String gatewayListOptions_gatewayType,
+    core.List<core.String> deviceIds,
+    core.String gatewayListOptions_associationsDeviceId,
+    core.List<core.String> deviceNumIds,
+    core.int pageSize,
+    core.String pageToken,
+    core.String fieldMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (gatewayListOptions_associationsGatewayId != null) {
       _queryParams["gatewayListOptions.associationsGatewayId"] = [
@@ -1535,13 +1673,16 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListDevicesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDevicesResponse.fromJson(data));
   }
 }
 
@@ -1569,7 +1710,7 @@ class BindDeviceToGatewayRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
     }
@@ -1588,7 +1729,7 @@ class BindDeviceToGatewayResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1650,7 +1791,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -1662,12 +1803,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -1789,16 +1930,15 @@ class Device {
       blocked = _json["blocked"];
     }
     if (_json.containsKey("config")) {
-      config = new DeviceConfig.fromJson(_json["config"]);
+      config = DeviceConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("credentials")) {
       credentials = (_json["credentials"] as core.List)
-          .map<DeviceCredential>(
-              (value) => new DeviceCredential.fromJson(value))
+          .map<DeviceCredential>((value) => DeviceCredential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("gatewayConfig")) {
-      gatewayConfig = new GatewayConfig.fromJson(_json["gatewayConfig"]);
+      gatewayConfig = GatewayConfig.fromJson(_json["gatewayConfig"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1810,7 +1950,7 @@ class Device {
       lastConfigSendTime = _json["lastConfigSendTime"];
     }
     if (_json.containsKey("lastErrorStatus")) {
-      lastErrorStatus = new Status.fromJson(_json["lastErrorStatus"]);
+      lastErrorStatus = Status.fromJson(_json["lastErrorStatus"]);
     }
     if (_json.containsKey("lastErrorTime")) {
       lastErrorTime = _json["lastErrorTime"];
@@ -1838,25 +1978,25 @@ class Device {
       numId = _json["numId"];
     }
     if (_json.containsKey("state")) {
-      state = new DeviceState.fromJson(_json["state"]);
+      state = DeviceState.fromJson(_json["state"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocked != null) {
       _json["blocked"] = blocked;
     }
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (credentials != null) {
       _json["credentials"] =
-          credentials.map((value) => (value).toJson()).toList();
+          credentials.map((value) => value.toJson()).toList();
     }
     if (gatewayConfig != null) {
-      _json["gatewayConfig"] = (gatewayConfig).toJson();
+      _json["gatewayConfig"] = gatewayConfig.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1868,7 +2008,7 @@ class Device {
       _json["lastConfigSendTime"] = lastConfigSendTime;
     }
     if (lastErrorStatus != null) {
-      _json["lastErrorStatus"] = (lastErrorStatus).toJson();
+      _json["lastErrorStatus"] = lastErrorStatus.toJson();
     }
     if (lastErrorTime != null) {
       _json["lastErrorTime"] = lastErrorTime;
@@ -1895,7 +2035,7 @@ class Device {
       _json["numId"] = numId;
     }
     if (state != null) {
-      _json["state"] = (state).toJson();
+      _json["state"] = state.toJson();
     }
     return _json;
   }
@@ -1905,9 +2045,8 @@ class Device {
 class DeviceConfig {
   /// The device configuration data.
   core.String binaryData;
-  core.List<core.int> get binaryDataAsBytes {
-    return convert.base64.decode(binaryData);
-  }
+  core.List<core.int> get binaryDataAsBytes =>
+      convert.base64.decode(binaryData);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -1954,7 +2093,7 @@ class DeviceConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binaryData != null) {
       _json["binaryData"] = binaryData;
     }
@@ -1997,18 +2136,18 @@ class DeviceCredential {
       expirationTime = _json["expirationTime"];
     }
     if (_json.containsKey("publicKey")) {
-      publicKey = new PublicKeyCredential.fromJson(_json["publicKey"]);
+      publicKey = PublicKeyCredential.fromJson(_json["publicKey"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expirationTime != null) {
       _json["expirationTime"] = expirationTime;
     }
     if (publicKey != null) {
-      _json["publicKey"] = (publicKey).toJson();
+      _json["publicKey"] = publicKey.toJson();
     }
     return _json;
   }
@@ -2079,18 +2218,18 @@ class DeviceRegistry {
     if (_json.containsKey("credentials")) {
       credentials = (_json["credentials"] as core.List)
           .map<RegistryCredential>(
-              (value) => new RegistryCredential.fromJson(value))
+              (value) => RegistryCredential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventNotificationConfigs")) {
       eventNotificationConfigs =
           (_json["eventNotificationConfigs"] as core.List)
               .map<EventNotificationConfig>(
-                  (value) => new EventNotificationConfig.fromJson(value))
+                  (value) => EventNotificationConfig.fromJson(value))
               .toList();
     }
     if (_json.containsKey("httpConfig")) {
-      httpConfig = new HttpConfig.fromJson(_json["httpConfig"]);
+      httpConfig = HttpConfig.fromJson(_json["httpConfig"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2099,30 +2238,30 @@ class DeviceRegistry {
       logLevel = _json["logLevel"];
     }
     if (_json.containsKey("mqttConfig")) {
-      mqttConfig = new MqttConfig.fromJson(_json["mqttConfig"]);
+      mqttConfig = MqttConfig.fromJson(_json["mqttConfig"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("stateNotificationConfig")) {
-      stateNotificationConfig = new StateNotificationConfig.fromJson(
-          _json["stateNotificationConfig"]);
+      stateNotificationConfig =
+          StateNotificationConfig.fromJson(_json["stateNotificationConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (credentials != null) {
       _json["credentials"] =
-          credentials.map((value) => (value).toJson()).toList();
+          credentials.map((value) => value.toJson()).toList();
     }
     if (eventNotificationConfigs != null) {
       _json["eventNotificationConfigs"] =
-          eventNotificationConfigs.map((value) => (value).toJson()).toList();
+          eventNotificationConfigs.map((value) => value.toJson()).toList();
     }
     if (httpConfig != null) {
-      _json["httpConfig"] = (httpConfig).toJson();
+      _json["httpConfig"] = httpConfig.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2131,13 +2270,13 @@ class DeviceRegistry {
       _json["logLevel"] = logLevel;
     }
     if (mqttConfig != null) {
-      _json["mqttConfig"] = (mqttConfig).toJson();
+      _json["mqttConfig"] = mqttConfig.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (stateNotificationConfig != null) {
-      _json["stateNotificationConfig"] = (stateNotificationConfig).toJson();
+      _json["stateNotificationConfig"] = stateNotificationConfig.toJson();
     }
     return _json;
   }
@@ -2147,9 +2286,8 @@ class DeviceRegistry {
 class DeviceState {
   /// The device state data.
   core.String binaryData;
-  core.List<core.int> get binaryDataAsBytes {
-    return convert.base64.decode(binaryData);
-  }
+  core.List<core.int> get binaryDataAsBytes =>
+      convert.base64.decode(binaryData);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2173,7 +2311,7 @@ class DeviceState {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binaryData != null) {
       _json["binaryData"] = binaryData;
     }
@@ -2196,7 +2334,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2226,7 +2364,7 @@ class EventNotificationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pubsubTopicName != null) {
       _json["pubsubTopicName"] = pubsubTopicName;
     }
@@ -2289,7 +2427,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -2356,7 +2494,7 @@ class GatewayConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gatewayAuthMethod != null) {
       _json["gatewayAuthMethod"] = gatewayAuthMethod;
     }
@@ -2383,15 +2521,15 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new GetPolicyOptions.fromJson(_json["options"]);
+      options = GetPolicyOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -2418,7 +2556,7 @@ class GetPolicyOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json["requestedPolicyVersion"] = requestedPolicyVersion;
     }
@@ -2448,7 +2586,7 @@ class HttpConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpEnabledState != null) {
       _json["httpEnabledState"] = httpEnabledState;
     }
@@ -2467,17 +2605,17 @@ class ListDeviceConfigVersionsResponse {
   ListDeviceConfigVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceConfigs")) {
       deviceConfigs = (_json["deviceConfigs"] as core.List)
-          .map<DeviceConfig>((value) => new DeviceConfig.fromJson(value))
+          .map<DeviceConfig>((value) => DeviceConfig.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceConfigs != null) {
       _json["deviceConfigs"] =
-          deviceConfigs.map((value) => (value).toJson()).toList();
+          deviceConfigs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2498,7 +2636,7 @@ class ListDeviceRegistriesResponse {
   ListDeviceRegistriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceRegistries")) {
       deviceRegistries = (_json["deviceRegistries"] as core.List)
-          .map<DeviceRegistry>((value) => new DeviceRegistry.fromJson(value))
+          .map<DeviceRegistry>((value) => DeviceRegistry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2508,10 +2646,10 @@ class ListDeviceRegistriesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceRegistries != null) {
       _json["deviceRegistries"] =
-          deviceRegistries.map((value) => (value).toJson()).toList();
+          deviceRegistries.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2531,17 +2669,17 @@ class ListDeviceStatesResponse {
   ListDeviceStatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deviceStates")) {
       deviceStates = (_json["deviceStates"] as core.List)
-          .map<DeviceState>((value) => new DeviceState.fromJson(value))
+          .map<DeviceState>((value) => DeviceState.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceStates != null) {
       _json["deviceStates"] =
-          deviceStates.map((value) => (value).toJson()).toList();
+          deviceStates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2561,7 +2699,7 @@ class ListDevicesResponse {
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
       devices = (_json["devices"] as core.List)
-          .map<Device>((value) => new Device.fromJson(value))
+          .map<Device>((value) => Device.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2571,9 +2709,9 @@ class ListDevicesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+      _json["devices"] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2586,9 +2724,8 @@ class ListDevicesResponse {
 class ModifyCloudToDeviceConfigRequest {
   /// Required. The configuration data for the device.
   core.String binaryData;
-  core.List<core.int> get binaryDataAsBytes {
-    return convert.base64.decode(binaryData);
-  }
+  core.List<core.int> get binaryDataAsBytes =>
+      convert.base64.decode(binaryData);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2615,7 +2752,7 @@ class ModifyCloudToDeviceConfigRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binaryData != null) {
       _json["binaryData"] = binaryData;
     }
@@ -2647,7 +2784,7 @@ class MqttConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mqttEnabledState != null) {
       _json["mqttEnabledState"] = mqttEnabledState;
     }
@@ -2702,9 +2839,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2733,7 +2868,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -2746,9 +2881,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -2787,13 +2922,13 @@ class PublicKeyCertificate {
       format = _json["format"];
     }
     if (_json.containsKey("x509Details")) {
-      x509Details = new X509CertificateDetails.fromJson(_json["x509Details"]);
+      x509Details = X509CertificateDetails.fromJson(_json["x509Details"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certificate != null) {
       _json["certificate"] = certificate;
     }
@@ -2801,7 +2936,7 @@ class PublicKeyCertificate {
       _json["format"] = format;
     }
     if (x509Details != null) {
-      _json["x509Details"] = (x509Details).toJson();
+      _json["x509Details"] = x509Details.toJson();
     }
     return _json;
   }
@@ -2847,7 +2982,7 @@ class PublicKeyCredential {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (format != null) {
       _json["format"] = format;
     }
@@ -2868,15 +3003,15 @@ class RegistryCredential {
   RegistryCredential.fromJson(core.Map _json) {
     if (_json.containsKey("publicKeyCertificate")) {
       publicKeyCertificate =
-          new PublicKeyCertificate.fromJson(_json["publicKeyCertificate"]);
+          PublicKeyCertificate.fromJson(_json["publicKeyCertificate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (publicKeyCertificate != null) {
-      _json["publicKeyCertificate"] = (publicKeyCertificate).toJson();
+      _json["publicKeyCertificate"] = publicKeyCertificate.toJson();
     }
     return _json;
   }
@@ -2886,9 +3021,8 @@ class RegistryCredential {
 class SendCommandToDeviceRequest {
   /// Required. The command data to send to the device.
   core.String binaryData;
-  core.List<core.int> get binaryDataAsBytes {
-    return convert.base64.decode(binaryData);
-  }
+  core.List<core.int> get binaryDataAsBytes =>
+      convert.base64.decode(binaryData);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2916,7 +3050,7 @@ class SendCommandToDeviceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (binaryData != null) {
       _json["binaryData"] = binaryData;
     }
@@ -2935,7 +3069,7 @@ class SendCommandToDeviceResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2952,15 +3086,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -2982,7 +3116,7 @@ class StateNotificationConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pubsubTopicName != null) {
       _json["pubsubTopicName"] = pubsubTopicName;
     }
@@ -3031,7 +3165,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -3063,7 +3197,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -3087,7 +3221,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -3119,7 +3253,7 @@ class UnbindDeviceFromGatewayRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
     }
@@ -3138,7 +3272,7 @@ class UnbindDeviceFromGatewayResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3188,7 +3322,7 @@ class X509CertificateDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expiryTime != null) {
       _json["expiryTime"] = expiryTime;
     }

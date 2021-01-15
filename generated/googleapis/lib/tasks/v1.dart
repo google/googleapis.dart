@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.tasks.v1;
 
@@ -27,14 +45,14 @@ class TasksApi {
 
   final commons.ApiRequester _requester;
 
-  TasklistsResourceApi get tasklists => new TasklistsResourceApi(_requester);
-  TasksResourceApi get tasks => new TasksResourceApi(_requester);
+  TasklistsResourceApi get tasklists => TasklistsResourceApi(_requester);
+  TasksResourceApi get tasks => TasksResourceApi(_requester);
 
   TasksApi(http.Client client,
       {core.String rootUrl = "https://tasks.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class TasklistsResourceApi {
@@ -56,16 +74,19 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tasklist, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String tasklist, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -76,12 +97,15 @@ class TasklistsResourceApi {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -101,16 +125,19 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> get(core.String tasklist, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TaskList> get(
+    core.String tasklist, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -119,13 +146,16 @@ class TasklistsResourceApi {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TaskList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TaskList.fromJson(data));
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
@@ -145,16 +175,19 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> insert(TaskList request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TaskList> insert(
+    TaskList request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -162,13 +195,16 @@ class TasklistsResourceApi {
 
     _url = 'tasks/v1/users/@me/lists';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TaskList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TaskList.fromJson(data));
   }
 
   /// Returns all the authenticated user's task lists.
@@ -190,14 +226,17 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskLists> list(
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TaskLists> list({
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -211,13 +250,16 @@ class TasklistsResourceApi {
 
     _url = 'tasks/v1/users/@me/lists';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TaskLists.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TaskLists.fromJson(data));
   }
 
   /// Updates the authenticated user's specified task list. This method supports
@@ -239,20 +281,23 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> patch(TaskList request, core.String tasklist,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TaskList> patch(
+    TaskList request,
+    core.String tasklist, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -261,13 +306,16 @@ class TasklistsResourceApi {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TaskList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TaskList.fromJson(data));
   }
 
   /// Updates the authenticated user's specified task list.
@@ -288,20 +336,23 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> update(TaskList request, core.String tasklist,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<TaskList> update(
+    TaskList request,
+    core.String tasklist, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -310,13 +361,16 @@ class TasklistsResourceApi {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new TaskList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TaskList.fromJson(data));
   }
 }
 
@@ -341,16 +395,19 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(core.String tasklist, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future clear(
+    core.String tasklist, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -362,12 +419,15 @@ class TasksResourceApi {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/clear';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -387,20 +447,23 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tasklist, core.String task,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String tasklist,
+    core.String task, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (task == null) {
-      throw new core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError("Parameter task is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -413,12 +476,15 @@ class TasksResourceApi {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -440,20 +506,23 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> get(core.String tasklist, core.String task,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> get(
+    core.String tasklist,
+    core.String task, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (task == null) {
-      throw new core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError("Parameter task is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -464,13 +533,16 @@ class TasksResourceApi {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Creates a new task on the specified task list.
@@ -498,20 +570,25 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> insert(Task request, core.String tasklist,
-      {core.String previous, core.String parent, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> insert(
+    Task request,
+    core.String tasklist, {
+    core.String previous,
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (previous != null) {
       _queryParams["previous"] = [previous];
@@ -527,13 +604,16 @@ class TasksResourceApi {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Returns all tasks in the specified task list.
@@ -586,27 +666,29 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tasks> list(core.String tasklist,
-      {core.String completedMin,
-      core.bool showCompleted,
-      core.int maxResults,
-      core.String completedMax,
-      core.String dueMin,
-      core.bool showDeleted,
-      core.String updatedMin,
-      core.String dueMax,
-      core.String pageToken,
-      core.bool showHidden,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Tasks> list(
+    core.String tasklist, {
+    core.String completedMin,
+    core.bool showCompleted,
+    core.int maxResults,
+    core.String completedMax,
+    core.String dueMin,
+    core.bool showDeleted,
+    core.String updatedMin,
+    core.String dueMax,
+    core.String pageToken,
+    core.bool showHidden,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (completedMin != null) {
       _queryParams["completedMin"] = [completedMin];
@@ -646,13 +728,16 @@ class TasksResourceApi {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Tasks.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Tasks.fromJson(data));
   }
 
   /// Moves the specified task to another position in the task list. This can
@@ -682,20 +767,25 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> move(core.String tasklist, core.String task,
-      {core.String parent, core.String previous, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> move(
+    core.String tasklist,
+    core.String task, {
+    core.String parent,
+    core.String previous,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (task == null) {
-      throw new core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError("Parameter task is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -713,13 +803,16 @@ class TasksResourceApi {
         commons.Escaper.ecapeVariable('$task') +
         '/move';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Updates the specified task. This method supports patch semantics.
@@ -742,23 +835,27 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> patch(Task request, core.String tasklist, core.String task,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Task> patch(
+    Task request,
+    core.String tasklist,
+    core.String task, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (task == null) {
-      throw new core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError("Parameter task is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -769,13 +866,16 @@ class TasksResourceApi {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 
   /// Updates the specified task.
@@ -799,23 +899,26 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> update(
-      Task request, core.String tasklist, core.String task,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Task request,
+    core.String tasklist,
+    core.String task, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (tasklist == null) {
-      throw new core.ArgumentError("Parameter tasklist is required.");
+      throw core.ArgumentError("Parameter tasklist is required.");
     }
     if (task == null) {
-      throw new core.ArgumentError("Parameter task is required.");
+      throw core.ArgumentError("Parameter task is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -826,13 +929,16 @@ class TasksResourceApi {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Task.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Task.fromJson(data));
   }
 }
 
@@ -862,7 +968,7 @@ class TaskLinks {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -962,7 +1068,7 @@ class Task {
     }
     if (_json.containsKey("links")) {
       links = (_json["links"] as core.List)
-          .map<TaskLinks>((value) => new TaskLinks.fromJson(value))
+          .map<TaskLinks>((value) => TaskLinks.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notes")) {
@@ -990,7 +1096,7 @@ class Task {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (completed != null) {
       _json["completed"] = completed;
     }
@@ -1013,7 +1119,7 @@ class Task {
       _json["kind"] = kind;
     }
     if (links != null) {
-      _json["links"] = links.map((value) => (value).toJson()).toList();
+      _json["links"] = links.map((value) => value.toJson()).toList();
     }
     if (notes != null) {
       _json["notes"] = notes;
@@ -1085,7 +1191,7 @@ class TaskList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1129,7 +1235,7 @@ class TaskLists {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<TaskList>((value) => new TaskList.fromJson(value))
+          .map<TaskList>((value) => TaskList.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1142,12 +1248,12 @@ class TaskLists {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1180,7 +1286,7 @@ class Tasks {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Task>((value) => new Task.fromJson(value))
+          .map<Task>((value) => Task.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1193,12 +1299,12 @@ class Tasks {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;

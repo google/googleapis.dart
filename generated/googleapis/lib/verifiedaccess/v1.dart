@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.verifiedaccess.v1;
 
@@ -25,13 +43,13 @@ class VerifiedaccessApi {
 
   final commons.ApiRequester _requester;
 
-  ChallengeResourceApi get challenge => new ChallengeResourceApi(_requester);
+  ChallengeResourceApi get challenge => ChallengeResourceApi(_requester);
 
   VerifiedaccessApi(http.Client client,
       {core.String rootUrl = "https://verifiedaccess.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ChallengeResourceApi {
@@ -55,16 +73,19 @@ class ChallengeResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Challenge> create(Empty request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Challenge> create(
+    Empty request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -72,13 +93,16 @@ class ChallengeResourceApi {
 
     _url = 'v1/challenge';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Challenge.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Challenge.fromJson(data));
   }
 
   /// VerifyChallengeResponse API
@@ -98,17 +122,18 @@ class ChallengeResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyChallengeResponseResult> verify(
-      VerifyChallengeResponseRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    VerifyChallengeResponseRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -116,14 +141,17 @@ class ChallengeResourceApi {
 
     _url = 'v1/challenge:verify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new VerifyChallengeResponseResult.fromJson(data));
+        .then((data) => VerifyChallengeResponseResult.fromJson(data));
   }
 }
 
@@ -140,22 +168,21 @@ class Challenge {
 
   Challenge.fromJson(core.Map _json) {
     if (_json.containsKey("alternativeChallenge")) {
-      alternativeChallenge =
-          new SignedData.fromJson(_json["alternativeChallenge"]);
+      alternativeChallenge = SignedData.fromJson(_json["alternativeChallenge"]);
     }
     if (_json.containsKey("challenge")) {
-      challenge = new SignedData.fromJson(_json["challenge"]);
+      challenge = SignedData.fromJson(_json["challenge"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alternativeChallenge != null) {
-      _json["alternativeChallenge"] = (alternativeChallenge).toJson();
+      _json["alternativeChallenge"] = alternativeChallenge.toJson();
     }
     if (challenge != null) {
-      _json["challenge"] = (challenge).toJson();
+      _json["challenge"] = challenge.toJson();
     }
     return _json;
   }
@@ -173,7 +200,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -182,9 +209,7 @@ class Empty {
 class SignedData {
   /// The data to be signed.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -193,9 +218,7 @@ class SignedData {
 
   /// The signature of the data field.
   core.String signature;
-  core.List<core.int> get signatureAsBytes {
-    return convert.base64.decode(signature);
-  }
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -215,7 +238,7 @@ class SignedData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
       _json["data"] = data;
     }
@@ -242,7 +265,7 @@ class VerifyChallengeResponseRequest {
 
   VerifyChallengeResponseRequest.fromJson(core.Map _json) {
     if (_json.containsKey("challengeResponse")) {
-      challengeResponse = new SignedData.fromJson(_json["challengeResponse"]);
+      challengeResponse = SignedData.fromJson(_json["challengeResponse"]);
     }
     if (_json.containsKey("expectedIdentity")) {
       expectedIdentity = _json["expectedIdentity"];
@@ -251,9 +274,9 @@ class VerifyChallengeResponseRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (challengeResponse != null) {
-      _json["challengeResponse"] = (challengeResponse).toJson();
+      _json["challengeResponse"] = challengeResponse.toJson();
     }
     if (expectedIdentity != null) {
       _json["expectedIdentity"] = expectedIdentity;
@@ -303,7 +326,7 @@ class VerifyChallengeResponseResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceEnrollmentId != null) {
       _json["deviceEnrollmentId"] = deviceEnrollmentId;
     }

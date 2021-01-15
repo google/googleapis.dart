@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.apigee.v1;
 
@@ -28,23 +46,22 @@ class ApigeeApi {
 
   final commons.ApiRequester _requester;
 
-  HybridResourceApi get hybrid => new HybridResourceApi(_requester);
+  HybridResourceApi get hybrid => HybridResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
-      new OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+      OrganizationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   ApigeeApi(http.Client client,
       {core.String rootUrl = "https://apigee.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class HybridResourceApi {
   final commons.ApiRequester _requester;
 
-  HybridIssuersResourceApi get issuers =>
-      new HybridIssuersResourceApi(_requester);
+  HybridIssuersResourceApi get issuers => HybridIssuersResourceApi(_requester);
 
   HybridResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -75,17 +92,18 @@ class HybridIssuersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListHybridIssuersResponse> list(
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -93,14 +111,17 @@ class HybridIssuersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(data));
   }
 }
 
@@ -108,33 +129,33 @@ class OrganizationsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsAnalyticsResourceApi get analytics =>
-      new OrganizationsAnalyticsResourceApi(_requester);
+      OrganizationsAnalyticsResourceApi(_requester);
   OrganizationsApiproductsResourceApi get apiproducts =>
-      new OrganizationsApiproductsResourceApi(_requester);
+      OrganizationsApiproductsResourceApi(_requester);
   OrganizationsApisResourceApi get apis =>
-      new OrganizationsApisResourceApi(_requester);
+      OrganizationsApisResourceApi(_requester);
   OrganizationsAppsResourceApi get apps =>
-      new OrganizationsAppsResourceApi(_requester);
+      OrganizationsAppsResourceApi(_requester);
   OrganizationsDeploymentsResourceApi get deployments =>
-      new OrganizationsDeploymentsResourceApi(_requester);
+      OrganizationsDeploymentsResourceApi(_requester);
   OrganizationsDevelopersResourceApi get developers =>
-      new OrganizationsDevelopersResourceApi(_requester);
+      OrganizationsDevelopersResourceApi(_requester);
   OrganizationsEnvgroupsResourceApi get envgroups =>
-      new OrganizationsEnvgroupsResourceApi(_requester);
+      OrganizationsEnvgroupsResourceApi(_requester);
   OrganizationsEnvironmentsResourceApi get environments =>
-      new OrganizationsEnvironmentsResourceApi(_requester);
+      OrganizationsEnvironmentsResourceApi(_requester);
   OrganizationsInstancesResourceApi get instances =>
-      new OrganizationsInstancesResourceApi(_requester);
+      OrganizationsInstancesResourceApi(_requester);
   OrganizationsKeyvaluemapsResourceApi get keyvaluemaps =>
-      new OrganizationsKeyvaluemapsResourceApi(_requester);
+      OrganizationsKeyvaluemapsResourceApi(_requester);
   OrganizationsOperationsResourceApi get operations =>
-      new OrganizationsOperationsResourceApi(_requester);
+      OrganizationsOperationsResourceApi(_requester);
   OrganizationsReportsResourceApi get reports =>
-      new OrganizationsReportsResourceApi(_requester);
+      OrganizationsReportsResourceApi(_requester);
   OrganizationsSharedflowsResourceApi get sharedflows =>
-      new OrganizationsSharedflowsResourceApi(_requester);
+      OrganizationsSharedflowsResourceApi(_requester);
   OrganizationsSitesResourceApi get sites =>
-      new OrganizationsSitesResourceApi(_requester);
+      OrganizationsSitesResourceApi(_requester);
 
   OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -160,18 +181,19 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1Organization request,
-      {core.String parent,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Organization request, {
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -182,14 +204,16 @@ class OrganizationsResourceApi {
 
     _url = 'v1/organizations';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets the profile for an Apigee organization. See [Understanding
@@ -211,17 +235,19 @@ class OrganizationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Organization> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Organization> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -229,14 +255,17 @@ class OrganizationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Organization.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Organization.fromJson(data));
   }
 
   /// Gets the deployed ingress configuration for an organization.
@@ -271,18 +300,19 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1IngressConfig> getDeployedIngressConfig(
-      core.String name,
-      {core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -293,14 +323,17 @@ class OrganizationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1IngressConfig.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1IngressConfig.fromJson(data));
   }
 
   /// Lists the service accounts with the permissions required to allow the
@@ -332,20 +365,22 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SyncAuthorization> getSyncAuthorization(
-      GoogleCloudApigeeV1GetSyncAuthorizationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1GetSyncAuthorizationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -355,14 +390,17 @@ class OrganizationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getSyncAuthorization';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
   }
 
   /// Lists the Apigee organizations and associated GCP projects that you have
@@ -386,17 +424,18 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOrganizationsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -404,14 +443,17 @@ class OrganizationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(data));
   }
 
   /// Sets the permissions required to allow the Synchronizer to download
@@ -444,20 +486,22 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SyncAuthorization> setSyncAuthorization(
-      GoogleCloudApigeeV1SyncAuthorization request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1SyncAuthorization request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -467,14 +511,17 @@ class OrganizationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setSyncAuthorization';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
   }
 
   /// Updates the properties for an Apigee organization. No other fields in the
@@ -499,20 +546,22 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Organization> update(
-      GoogleCloudApigeeV1Organization request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Organization request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -520,14 +569,17 @@ class OrganizationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Organization.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Organization.fromJson(data));
   }
 }
 
@@ -535,7 +587,7 @@ class OrganizationsAnalyticsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsAnalyticsDatastoresResourceApi get datastores =>
-      new OrganizationsAnalyticsDatastoresResourceApi(_requester);
+      OrganizationsAnalyticsDatastoresResourceApi(_requester);
 
   OrganizationsAnalyticsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -568,20 +620,22 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Datastore> create(
-      GoogleCloudApigeeV1Datastore request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Datastore request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -591,14 +645,17 @@ class OrganizationsAnalyticsDatastoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Datastore.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
   }
 
   /// Delete a Datastore from an org.
@@ -620,17 +677,19 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -638,13 +697,16 @@ class OrganizationsAnalyticsDatastoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Get a Datastore
@@ -666,17 +728,19 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Datastore> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Datastore> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -684,14 +748,17 @@ class OrganizationsAnalyticsDatastoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Datastore.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
   }
 
   /// List Datastores
@@ -716,18 +783,19 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDatastoresResponse> list(
-      core.String parent,
-      {core.String targetType,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String targetType,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (targetType != null) {
       _queryParams["targetType"] = [targetType];
@@ -740,14 +808,17 @@ class OrganizationsAnalyticsDatastoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1ListDatastoresResponse.fromJson(data));
+        (data) => GoogleCloudApigeeV1ListDatastoresResponse.fromJson(data));
   }
 
   /// Test if Datastore configuration is correct. This includes checking if
@@ -773,20 +844,22 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1TestDatastoreResponse> test(
-      GoogleCloudApigeeV1Datastore request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Datastore request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -796,14 +869,17 @@ class OrganizationsAnalyticsDatastoresResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores:test';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1TestDatastoreResponse.fromJson(data));
+        (data) => GoogleCloudApigeeV1TestDatastoreResponse.fromJson(data));
   }
 
   /// Update a Datastore
@@ -828,20 +904,22 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Datastore> update(
-      GoogleCloudApigeeV1Datastore request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Datastore request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -849,14 +927,17 @@ class OrganizationsAnalyticsDatastoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Datastore.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
   }
 }
 
@@ -864,7 +945,7 @@ class OrganizationsApiproductsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsApiproductsAttributesResourceApi get attributes_1 =>
-      new OrganizationsApiproductsAttributesResourceApi(_requester);
+      OrganizationsApiproductsAttributesResourceApi(_requester);
 
   OrganizationsApiproductsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -899,20 +980,22 @@ class OrganizationsApiproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
-      GoogleCloudApigeeV1Attributes request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attributes request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -921,14 +1004,17 @@ class OrganizationsApiproductsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/attributes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Creates an API product in an organization. You create API products after
@@ -969,20 +1055,22 @@ class OrganizationsApiproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProduct> create(
-      GoogleCloudApigeeV1ApiProduct request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ApiProduct request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -992,14 +1080,17 @@ class OrganizationsApiproductsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apiproducts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProduct.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
   }
 
   /// Deletes an API product from an organization. Deleting an API product
@@ -1027,17 +1118,19 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiProduct> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiProduct> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1045,14 +1138,17 @@ class OrganizationsApiproductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProduct.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
   }
 
   /// Gets configuration details for an API product. The API product name
@@ -1077,17 +1173,19 @@ class OrganizationsApiproductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiProduct> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiProduct> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1095,14 +1193,17 @@ class OrganizationsApiproductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProduct.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
   }
 
   /// Lists all API product names for an organization. Filter the list by
@@ -1142,22 +1243,23 @@ class OrganizationsApiproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiProductsResponse> list(
-      core.String parent,
-      {core.bool expand,
-      core.String attributevalue,
-      core.String startKey,
-      core.String count,
-      core.String attributename,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool expand,
+    core.String attributevalue,
+    core.String startKey,
+    core.String count,
+    core.String attributename,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
@@ -1182,14 +1284,17 @@ class OrganizationsApiproductsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apiproducts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListApiProductsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListApiProductsResponse.fromJson(data));
   }
 
   /// Updates an existing API product. You must include all required values,
@@ -1218,20 +1323,22 @@ class OrganizationsApiproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProduct> update(
-      GoogleCloudApigeeV1ApiProduct request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ApiProduct request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1239,14 +1346,17 @@ class OrganizationsApiproductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProduct.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
   }
 }
 
@@ -1275,17 +1385,19 @@ class OrganizationsApiproductsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1293,14 +1405,17 @@ class OrganizationsApiproductsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns the value of an API product attribute.
@@ -1322,17 +1437,19 @@ class OrganizationsApiproductsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1340,14 +1457,17 @@ class OrganizationsApiproductsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns a list of all API product attributes.
@@ -1368,17 +1488,19 @@ class OrganizationsApiproductsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attributes> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attributes> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1388,14 +1510,17 @@ class OrganizationsApiproductsAttributesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Updates the value of an API product attribute. Limitations are: OAuth
@@ -1426,20 +1551,22 @@ class OrganizationsApiproductsAttributesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> updateApiProductAttribute(
-      GoogleCloudApigeeV1Attribute request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attribute request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1447,14 +1574,17 @@ class OrganizationsApiproductsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 }
 
@@ -1462,11 +1592,11 @@ class OrganizationsApisResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsApisDeploymentsResourceApi get deployments =>
-      new OrganizationsApisDeploymentsResourceApi(_requester);
+      OrganizationsApisDeploymentsResourceApi(_requester);
   OrganizationsApisKeyvaluemapsResourceApi get keyvaluemaps =>
-      new OrganizationsApisKeyvaluemapsResourceApi(_requester);
+      OrganizationsApisKeyvaluemapsResourceApi(_requester);
   OrganizationsApisRevisionsResourceApi get revisions =>
-      new OrganizationsApisRevisionsResourceApi(_requester);
+      OrganizationsApisRevisionsResourceApi(_requester);
 
   OrganizationsApisResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1517,23 +1647,25 @@ class OrganizationsApisResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> create(
-      GoogleApiHttpBody request, core.String parent,
-      {core.String name,
-      core.bool validate,
-      core.String action,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String parent, {
+    core.String name,
+    core.bool validate,
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -1550,14 +1682,17 @@ class OrganizationsApisResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
   }
 
   /// Deletes an API proxy and all associated endpoints, policies, resources,
@@ -1579,17 +1714,19 @@ class OrganizationsApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiProxy> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiProxy> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1597,14 +1734,16 @@ class OrganizationsApisResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProxy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1ApiProxy.fromJson(data));
   }
 
   /// Gets an API proxy including a list of existing revisions.
@@ -1625,17 +1764,19 @@ class OrganizationsApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiProxy> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiProxy> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1643,14 +1784,16 @@ class OrganizationsApisResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProxy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1ApiProxy.fromJson(data));
   }
 
   /// Lists the names of all API proxies in an organization. The names returned
@@ -1680,19 +1823,20 @@ class OrganizationsApisResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiProxiesResponse> list(
-      core.String parent,
-      {core.bool includeMetaData,
-      core.bool includeRevisions,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool includeMetaData,
+    core.bool includeRevisions,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (includeMetaData != null) {
       _queryParams["includeMetaData"] = ["${includeMetaData}"];
@@ -1706,14 +1850,17 @@ class OrganizationsApisResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(data));
+        (data) => GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(data));
   }
 }
 
@@ -1742,17 +1889,18 @@ class OrganizationsApisDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1762,14 +1910,17 @@ class OrganizationsApisDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -1801,20 +1952,22 @@ class OrganizationsApisKeyvaluemapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
-      GoogleCloudApigeeV1KeyValueMap request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1824,14 +1977,17 @@ class OrganizationsApisKeyvaluemapsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 
   /// Delete a key value map in an api proxy.
@@ -1853,17 +2009,19 @@ class OrganizationsApisKeyvaluemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1871,14 +2029,17 @@ class OrganizationsApisKeyvaluemapsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 }
 
@@ -1886,7 +2047,7 @@ class OrganizationsApisRevisionsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsApisRevisionsDeploymentsResourceApi get deployments =>
-      new OrganizationsApisRevisionsDeploymentsResourceApi(_requester);
+      OrganizationsApisRevisionsDeploymentsResourceApi(_requester);
 
   OrganizationsApisRevisionsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1912,17 +2073,19 @@ class OrganizationsApisRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiProxyRevision> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiProxyRevision> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1930,14 +2093,17 @@ class OrganizationsApisRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
   }
 
   /// Gets an API proxy revision. To download the API proxy configuration bundle
@@ -1970,17 +2136,20 @@ class OrganizationsApisRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleApiHttpBody> get(core.String name,
-      {core.String format, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleApiHttpBody> get(
+    core.String name, {
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (format != null) {
       _queryParams["format"] = [format];
@@ -1991,13 +2160,16 @@ class OrganizationsApisRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Updates an existing API proxy revision by uploading the API proxy
@@ -2030,20 +2202,23 @@ class OrganizationsApisRevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> updateApiProxyRevision(
-      GoogleApiHttpBody request, core.String name,
-      {core.bool validate, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String name, {
+    core.bool validate,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (validate != null) {
       _queryParams["validate"] = ["${validate}"];
@@ -2054,14 +2229,17 @@ class OrganizationsApisRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
   }
 }
 
@@ -2092,17 +2270,18 @@ class OrganizationsApisRevisionsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2112,14 +2291,17 @@ class OrganizationsApisRevisionsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -2147,17 +2329,19 @@ class OrganizationsAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1App> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1App> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2165,13 +2349,16 @@ class OrganizationsAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudApigeeV1App.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1App.fromJson(data));
   }
 
   /// Lists IDs of apps within an organization that have the specified app
@@ -2217,26 +2404,28 @@ class OrganizationsAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ListAppsResponse> list(core.String parent,
-      {core.String startKey,
-      core.bool expand,
-      core.bool includeCred,
-      core.String rows,
-      core.String status,
-      core.String keyStatus,
-      core.String apptype,
-      core.String apiProduct,
-      core.String ids,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ListAppsResponse> list(
+    core.String parent, {
+    core.String startKey,
+    core.bool expand,
+    core.bool includeCred,
+    core.String rows,
+    core.String status,
+    core.String keyStatus,
+    core.String apptype,
+    core.String apiProduct,
+    core.String ids,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (startKey != null) {
       _queryParams["startKey"] = [startKey];
@@ -2271,14 +2460,17 @@ class OrganizationsAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ListAppsResponse.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ListAppsResponse.fromJson(data));
   }
 }
 
@@ -2312,18 +2504,19 @@ class OrganizationsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.bool sharedFlows,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool sharedFlows,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (sharedFlows != null) {
       _queryParams["sharedFlows"] = ["${sharedFlows}"];
@@ -2336,14 +2529,17 @@ class OrganizationsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -2351,9 +2547,9 @@ class OrganizationsDevelopersResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsDevelopersAppsResourceApi get apps =>
-      new OrganizationsDevelopersAppsResourceApi(_requester);
+      OrganizationsDevelopersAppsResourceApi(_requester);
   OrganizationsDevelopersAttributesResourceApi get attributes_1 =>
-      new OrganizationsDevelopersAttributesResourceApi(_requester);
+      OrganizationsDevelopersAttributesResourceApi(_requester);
 
   OrganizationsDevelopersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2389,20 +2585,22 @@ class OrganizationsDevelopersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
-      GoogleCloudApigeeV1Attributes request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attributes request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2412,14 +2610,17 @@ class OrganizationsDevelopersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Creates a developer. Once created, the developer can register an app and
@@ -2446,20 +2647,22 @@ class OrganizationsDevelopersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Developer> create(
-      GoogleCloudApigeeV1Developer request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Developer request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2469,14 +2672,17 @@ class OrganizationsDevelopersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/developers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Developer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
   }
 
   /// Deletes a developer. All apps and API keys associated with the developer
@@ -2505,17 +2711,19 @@ class OrganizationsDevelopersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Developer> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Developer> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2523,14 +2731,17 @@ class OrganizationsDevelopersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Developer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
   }
 
   /// Returns the developer details, including the developer's name, email
@@ -2557,17 +2768,20 @@ class OrganizationsDevelopersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Developer> get(core.String name,
-      {core.String action, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Developer> get(
+    core.String name, {
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -2578,14 +2792,17 @@ class OrganizationsDevelopersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Developer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
   }
 
   /// Lists all developers in an organization by email address. By default, the
@@ -2632,22 +2849,23 @@ class OrganizationsDevelopersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOfDevelopersResponse> list(
-      core.String parent,
-      {core.bool expand,
-      core.bool includeCompany,
-      core.String startKey,
-      core.String ids,
-      core.String count,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool expand,
+    core.bool includeCompany,
+    core.String startKey,
+    core.String ids,
+    core.String count,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
@@ -2672,14 +2890,17 @@ class OrganizationsDevelopersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/developers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(data));
   }
 
   /// Sets the status of a developer. Valid values are `active` or `inactive`. A
@@ -2710,17 +2931,20 @@ class OrganizationsDevelopersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> setDeveloperStatus(core.String name,
-      {core.String action, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> setDeveloperStatus(
+    core.String name, {
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -2731,13 +2955,16 @@ class OrganizationsDevelopersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Updates a developer. This API replaces the existing developer details with
@@ -2770,20 +2997,22 @@ class OrganizationsDevelopersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Developer> update(
-      GoogleCloudApigeeV1Developer request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Developer request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2791,14 +3020,17 @@ class OrganizationsDevelopersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Developer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
   }
 }
 
@@ -2806,9 +3038,9 @@ class OrganizationsDevelopersAppsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsDevelopersAppsAttributesResourceApi get attributes_1 =>
-      new OrganizationsDevelopersAppsAttributesResourceApi(_requester);
+      OrganizationsDevelopersAppsAttributesResourceApi(_requester);
   OrganizationsDevelopersAppsKeysResourceApi get keys =>
-      new OrganizationsDevelopersAppsKeysResourceApi(_requester);
+      OrganizationsDevelopersAppsKeysResourceApi(_requester);
 
   OrganizationsDevelopersAppsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2837,20 +3069,22 @@ class OrganizationsDevelopersAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
-      GoogleCloudApigeeV1Attributes request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attributes request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2859,14 +3093,17 @@ class OrganizationsDevelopersAppsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/attributes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Creates an app associated with a developer. This API associates the
@@ -2895,20 +3132,22 @@ class OrganizationsDevelopersAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp> create(
-      GoogleCloudApigeeV1DeveloperApp request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperApp request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2916,14 +3155,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
   }
 
   /// Deletes a developer app. **Note**: The delete operation is asynchronous.
@@ -2949,17 +3191,19 @@ class OrganizationsDevelopersAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DeveloperApp> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DeveloperApp> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2967,14 +3211,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
   }
 
   /// Manages access to a developer app by enabling you to: * Approve or revoke
@@ -3026,20 +3273,23 @@ class OrganizationsDevelopersAppsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp>
       generateKeyPairOrUpdateDeveloperAppStatus(
-          GoogleCloudApigeeV1DeveloperApp request, core.String name,
-          {core.String action, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperApp request,
+    core.String name, {
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -3050,14 +3300,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
   }
 
   /// Returns the details for a developer app.
@@ -3090,17 +3343,21 @@ class OrganizationsDevelopersAppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DeveloperApp> get(core.String name,
-      {core.String query, core.String entity, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DeveloperApp> get(
+    core.String name, {
+    core.String query,
+    core.String entity,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (query != null) {
       _queryParams["query"] = [query];
@@ -3114,14 +3371,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
   }
 
   /// Lists all apps created by a developer in an Apigee organization.
@@ -3165,21 +3425,22 @@ class OrganizationsDevelopersAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeveloperAppsResponse> list(
-      core.String parent,
-      {core.String startKey,
-      core.bool shallowExpand,
-      core.bool expand,
-      core.String count,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String startKey,
+    core.bool shallowExpand,
+    core.bool expand,
+    core.String count,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (startKey != null) {
       _queryParams["startKey"] = [startKey];
@@ -3199,14 +3460,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(data));
   }
 
   /// Updates the details for a developer app. In addition, you can add an API
@@ -3241,20 +3505,22 @@ class OrganizationsDevelopersAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp> update(
-      GoogleCloudApigeeV1DeveloperApp request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperApp request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3262,14 +3528,17 @@ class OrganizationsDevelopersAppsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
   }
 }
 
@@ -3299,17 +3568,19 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3317,14 +3588,17 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns a developer app attribute.
@@ -3347,17 +3621,19 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3365,14 +3641,17 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns a list of all developer app attributes.
@@ -3395,17 +3674,19 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attributes> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attributes> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3415,14 +3696,17 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Updates a developer app attribute. **Note**: OAuth access tokens and Key
@@ -3453,20 +3737,22 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> updateDeveloperAppAttribute(
-      GoogleCloudApigeeV1Attribute request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attribute request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3474,14 +3760,17 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 }
 
@@ -3489,9 +3778,9 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsDevelopersAppsKeysApiproductsResourceApi get apiproducts =>
-      new OrganizationsDevelopersAppsKeysApiproductsResourceApi(_requester);
+      OrganizationsDevelopersAppsKeysApiproductsResourceApi(_requester);
   OrganizationsDevelopersAppsKeysCreateResourceApi get create_1 =>
-      new OrganizationsDevelopersAppsKeysCreateResourceApi(_requester);
+      OrganizationsDevelopersAppsKeysCreateResourceApi(_requester);
 
   OrganizationsDevelopersAppsKeysResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -3529,20 +3818,22 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> create(
-      GoogleCloudApigeeV1DeveloperAppKey request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperAppKey request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3550,14 +3841,17 @@ class OrganizationsDevelopersAppsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keys';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 
   /// Deletes an app's consumer key and removes all API products associated with
@@ -3586,17 +3880,19 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3604,14 +3900,17 @@ class OrganizationsDevelopersAppsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 
   /// Returns details for a consumer key for a developer app, including the key
@@ -3635,17 +3934,19 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DeveloperAppKey> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DeveloperAppKey> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3653,14 +3954,17 @@ class OrganizationsDevelopersAppsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 
   /// Updates the scope of an app. This API replaces the existing scopes with
@@ -3691,20 +3995,22 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> replaceDeveloperAppKey(
-      GoogleCloudApigeeV1DeveloperAppKey request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperAppKey request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3712,14 +4018,17 @@ class OrganizationsDevelopersAppsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 
   /// Adds an API product to a developer app key, enabling the app that holds
@@ -3754,20 +4063,23 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> updateDeveloperAppKey(
-      GoogleCloudApigeeV1DeveloperAppKey request, core.String name,
-      {core.String action, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperAppKey request,
+    core.String name, {
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -3778,14 +4090,17 @@ class OrganizationsDevelopersAppsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 }
 
@@ -3819,17 +4134,19 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3837,14 +4154,17 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 
   /// Approve or revoke an app's consumer key. After a consumer key is approved,
@@ -3876,18 +4196,19 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> updateDeveloperAppKeyApiProduct(
-      core.String name,
-      {core.String action,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String action,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -3898,13 +4219,16 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 }
 
@@ -3947,20 +4271,22 @@ class OrganizationsDevelopersAppsKeysCreateResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> create(
-      GoogleCloudApigeeV1DeveloperAppKey request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DeveloperAppKey request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3970,14 +4296,17 @@ class OrganizationsDevelopersAppsKeysCreateResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keys/create';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
   }
 }
 
@@ -4007,17 +4336,19 @@ class OrganizationsDevelopersAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4025,14 +4356,17 @@ class OrganizationsDevelopersAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns the value of the specified developer attribute.
@@ -4055,17 +4389,19 @@ class OrganizationsDevelopersAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attribute> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attribute> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4073,14 +4409,17 @@ class OrganizationsDevelopersAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 
   /// Returns a list of all developer attributes.
@@ -4102,17 +4441,19 @@ class OrganizationsDevelopersAttributesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Attributes> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Attributes> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4122,14 +4463,17 @@ class OrganizationsDevelopersAttributesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attributes.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
   }
 
   /// Updates a developer attribute. **Note**: OAuth access tokens and Key
@@ -4160,20 +4504,22 @@ class OrganizationsDevelopersAttributesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> updateDeveloperAttribute(
-      GoogleCloudApigeeV1Attribute request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Attribute request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4181,14 +4527,17 @@ class OrganizationsDevelopersAttributesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Attribute.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
   }
 }
 
@@ -4196,7 +4545,7 @@ class OrganizationsEnvgroupsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvgroupsAttachmentsResourceApi get attachments =>
-      new OrganizationsEnvgroupsAttachmentsResourceApi(_requester);
+      OrganizationsEnvgroupsAttachmentsResourceApi(_requester);
 
   OrganizationsEnvgroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -4225,20 +4574,23 @@ class OrganizationsEnvgroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1EnvironmentGroup request, core.String parent,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1EnvironmentGroup request,
+    core.String parent, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -4250,14 +4602,16 @@ class OrganizationsEnvgroupsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/envgroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an environment group.
@@ -4278,17 +4632,19 @@ class OrganizationsEnvgroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4296,14 +4652,16 @@ class OrganizationsEnvgroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets an environment group.
@@ -4324,17 +4682,19 @@ class OrganizationsEnvgroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1EnvironmentGroup> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1EnvironmentGroup> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4342,14 +4702,17 @@ class OrganizationsEnvgroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1EnvironmentGroup.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(data));
   }
 
   /// Lists all environment groups.
@@ -4377,19 +4740,20 @@ class OrganizationsEnvgroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4404,14 +4768,17 @@ class OrganizationsEnvgroupsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/envgroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(data));
+        GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(data));
   }
 
   /// Updates an environment group.
@@ -4437,20 +4804,23 @@ class OrganizationsEnvgroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
-      GoogleCloudApigeeV1EnvironmentGroup request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1EnvironmentGroup request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -4461,14 +4831,16 @@ class OrganizationsEnvgroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -4499,20 +4871,22 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1EnvironmentGroupAttachment request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1EnvironmentGroupAttachment request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4522,14 +4896,16 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an environment group attachment.
@@ -4552,17 +4928,19 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4570,14 +4948,16 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets an environment group attachment.
@@ -4601,17 +4981,18 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1EnvironmentGroupAttachment> get(
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4619,14 +5000,17 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(data));
   }
 
   /// Lists all attachments of an environment group.
@@ -4656,19 +5040,20 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4684,14 +5069,17 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
+        GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
             data));
   }
 }
@@ -4700,33 +5088,33 @@ class OrganizationsEnvironmentsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsAnalyticsResourceApi get analytics =>
-      new OrganizationsEnvironmentsAnalyticsResourceApi(_requester);
+      OrganizationsEnvironmentsAnalyticsResourceApi(_requester);
   OrganizationsEnvironmentsApisResourceApi get apis =>
-      new OrganizationsEnvironmentsApisResourceApi(_requester);
+      OrganizationsEnvironmentsApisResourceApi(_requester);
   OrganizationsEnvironmentsCachesResourceApi get caches =>
-      new OrganizationsEnvironmentsCachesResourceApi(_requester);
+      OrganizationsEnvironmentsCachesResourceApi(_requester);
   OrganizationsEnvironmentsDeploymentsResourceApi get deployments =>
-      new OrganizationsEnvironmentsDeploymentsResourceApi(_requester);
+      OrganizationsEnvironmentsDeploymentsResourceApi(_requester);
   OrganizationsEnvironmentsFlowhooksResourceApi get flowhooks =>
-      new OrganizationsEnvironmentsFlowhooksResourceApi(_requester);
+      OrganizationsEnvironmentsFlowhooksResourceApi(_requester);
   OrganizationsEnvironmentsKeystoresResourceApi get keystores =>
-      new OrganizationsEnvironmentsKeystoresResourceApi(_requester);
+      OrganizationsEnvironmentsKeystoresResourceApi(_requester);
   OrganizationsEnvironmentsKeyvaluemapsResourceApi get keyvaluemaps =>
-      new OrganizationsEnvironmentsKeyvaluemapsResourceApi(_requester);
+      OrganizationsEnvironmentsKeyvaluemapsResourceApi(_requester);
   OrganizationsEnvironmentsOptimizedStatsResourceApi get optimizedStats =>
-      new OrganizationsEnvironmentsOptimizedStatsResourceApi(_requester);
+      OrganizationsEnvironmentsOptimizedStatsResourceApi(_requester);
   OrganizationsEnvironmentsQueriesResourceApi get queries =>
-      new OrganizationsEnvironmentsQueriesResourceApi(_requester);
+      OrganizationsEnvironmentsQueriesResourceApi(_requester);
   OrganizationsEnvironmentsReferencesResourceApi get references =>
-      new OrganizationsEnvironmentsReferencesResourceApi(_requester);
+      OrganizationsEnvironmentsReferencesResourceApi(_requester);
   OrganizationsEnvironmentsResourcefilesResourceApi get resourcefiles =>
-      new OrganizationsEnvironmentsResourcefilesResourceApi(_requester);
+      OrganizationsEnvironmentsResourcefilesResourceApi(_requester);
   OrganizationsEnvironmentsSharedflowsResourceApi get sharedflows =>
-      new OrganizationsEnvironmentsSharedflowsResourceApi(_requester);
+      OrganizationsEnvironmentsSharedflowsResourceApi(_requester);
   OrganizationsEnvironmentsStatsResourceApi get stats =>
-      new OrganizationsEnvironmentsStatsResourceApi(_requester);
+      OrganizationsEnvironmentsStatsResourceApi(_requester);
   OrganizationsEnvironmentsTargetserversResourceApi get targetservers =>
-      new OrganizationsEnvironmentsTargetserversResourceApi(_requester);
+      OrganizationsEnvironmentsTargetserversResourceApi(_requester);
 
   OrganizationsEnvironmentsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -4756,20 +5144,23 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1Environment request, core.String parent,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Environment request,
+    core.String parent, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -4782,14 +5173,16 @@ class OrganizationsEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an environment from an organization.
@@ -4810,17 +5203,19 @@ class OrganizationsEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4828,14 +5223,16 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets environment details.
@@ -4856,17 +5253,19 @@ class OrganizationsEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Environment> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Environment> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4874,14 +5273,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Environment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
   }
 
   /// Gets the debug mask singleton resource for an environment.
@@ -4903,17 +5305,19 @@ class OrganizationsEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DebugMask> getDebugmask(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DebugMask> getDebugmask(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4921,14 +5325,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DebugMask.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DebugMask.fromJson(data));
   }
 
   /// Gets the deployed configuration for an environment.
@@ -4952,17 +5359,18 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1EnvironmentConfig> getDeployedConfig(
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4970,14 +5378,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1EnvironmentConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1EnvironmentConfig.fromJson(data));
   }
 
   /// Gets the IAM policy on an environment. For more information, see [Manage
@@ -5011,17 +5422,20 @@ class OrganizationsEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -5036,13 +5450,16 @@ class OrganizationsEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Sets the IAM policy on an environment, if the policy already exists it
@@ -5072,20 +5489,22 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> setIamPolicy(
-      GoogleIamV1SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5095,13 +5514,16 @@ class OrganizationsEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Creates a subscription for the environment's Pub/Sub topic. The server
@@ -5124,17 +5546,19 @@ class OrganizationsEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Subscription> subscribe(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Subscription> subscribe(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5143,14 +5567,17 @@ class OrganizationsEnvironmentsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':subscribe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Subscription.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Subscription.fromJson(data));
   }
 
   /// Tests the permissions of a user on an environment, and returns a subset of
@@ -5178,20 +5605,22 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-      GoogleIamV1TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5201,14 +5630,17 @@ class OrganizationsEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleIamV1TestIamPermissionsResponse.fromJson(data));
   }
 
   /// Deletes a subscription for the environment's Pub/Sub topic.
@@ -5232,20 +5664,22 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> unsubscribe(
-      GoogleCloudApigeeV1Subscription request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Subscription request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5255,13 +5689,16 @@ class OrganizationsEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':unsubscribe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Updates an existing environment. When updating properties, you must pass
@@ -5289,20 +5726,22 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Environment> update(
-      GoogleCloudApigeeV1Environment request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Environment request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5310,14 +5749,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Environment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
   }
 
   /// Updates the debug mask singleton resource for an environment.
@@ -5348,22 +5790,24 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugMask> updateDebugmask(
-      GoogleCloudApigeeV1DebugMask request, core.String name,
-      {core.String updateMask,
-      core.bool replaceRepeatedFields,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DebugMask request,
+    core.String name, {
+    core.String updateMask,
+    core.bool replaceRepeatedFields,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -5377,14 +5821,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DebugMask.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DebugMask.fromJson(data));
   }
 
   /// Updates an existing environment. When updating properties, you must pass
@@ -5412,20 +5859,22 @@ class OrganizationsEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Environment> updateEnvironment(
-      GoogleCloudApigeeV1Environment request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Environment request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5433,14 +5882,17 @@ class OrganizationsEnvironmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Environment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
   }
 }
 
@@ -5448,9 +5900,9 @@ class OrganizationsEnvironmentsAnalyticsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsAnalyticsAdminResourceApi get admin =>
-      new OrganizationsEnvironmentsAnalyticsAdminResourceApi(_requester);
+      OrganizationsEnvironmentsAnalyticsAdminResourceApi(_requester);
   OrganizationsEnvironmentsAnalyticsExportsResourceApi get exports =>
-      new OrganizationsEnvironmentsAnalyticsExportsResourceApi(_requester);
+      OrganizationsEnvironmentsAnalyticsExportsResourceApi(_requester);
 
   OrganizationsEnvironmentsAnalyticsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -5489,17 +5941,20 @@ class OrganizationsEnvironmentsAnalyticsAdminResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Schema> getSchemav2(core.String name,
-      {core.String type, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Schema> getSchemav2(
+    core.String name, {
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (type != null) {
       _queryParams["type"] = [type];
@@ -5510,14 +5965,16 @@ class OrganizationsEnvironmentsAnalyticsAdminResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Schema.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Schema.fromJson(data));
   }
 }
 
@@ -5552,20 +6009,22 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Export> create(
-      GoogleCloudApigeeV1ExportRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ExportRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5575,14 +6034,16 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/exports';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Export.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Export.fromJson(data));
   }
 
   /// Gets the details and status of an analytics export job. If the export job
@@ -5606,17 +6067,19 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Export> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Export> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5624,14 +6087,16 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Export.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Export.fromJson(data));
   }
 
   /// Lists the details and status of all analytics export jobs belonging to the
@@ -5653,17 +6118,19 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ListExportsResponse> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ListExportsResponse> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5673,14 +6140,17 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/exports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1ListExportsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1ListExportsResponse.fromJson(data));
   }
 }
 
@@ -5688,9 +6158,9 @@ class OrganizationsEnvironmentsApisResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsApisDeploymentsResourceApi get deployments =>
-      new OrganizationsEnvironmentsApisDeploymentsResourceApi(_requester);
+      OrganizationsEnvironmentsApisDeploymentsResourceApi(_requester);
   OrganizationsEnvironmentsApisRevisionsResourceApi get revisions =>
-      new OrganizationsEnvironmentsApisRevisionsResourceApi(_requester);
+      OrganizationsEnvironmentsApisRevisionsResourceApi(_requester);
 
   OrganizationsEnvironmentsApisResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -5723,17 +6193,18 @@ class OrganizationsEnvironmentsApisDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5743,14 +6214,17 @@ class OrganizationsEnvironmentsApisDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -5759,11 +6233,11 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
 
   OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi
       get debugsessions =>
-          new OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi(
+          OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi(
               _requester);
   OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi
       get deployments =>
-          new OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi(
+          OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi(
               _requester);
 
   OrganizationsEnvironmentsApisRevisionsResourceApi(commons.ApiRequester client)
@@ -5817,17 +6291,21 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Deployment> deploy(core.String name,
-      {core.bool override, core.bool sequencedRollout, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Deployment> deploy(
+    core.String name, {
+    core.bool override,
+    core.bool sequencedRollout,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (override != null) {
       _queryParams["override"] = ["${override}"];
@@ -5842,14 +6320,17 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Deployment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
   }
 
   /// Gets the deployment of an API proxy revision and actual state reported by
@@ -5873,17 +6354,19 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Deployment> getDeployments(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5892,14 +6375,17 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Deployment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
   }
 
   /// Undeploys an API proxy revision from an environment. For a request path
@@ -5937,17 +6423,20 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> undeploy(core.String name,
-      {core.bool sequencedRollout, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> undeploy(
+    core.String name, {
+    core.bool sequencedRollout,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (sequencedRollout != null) {
       _queryParams["sequencedRollout"] = ["${sequencedRollout}"];
@@ -5959,13 +6448,16 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 }
 
@@ -5973,7 +6465,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi get data =>
-      new OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi(
+      OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi(
           _requester);
 
   OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi(
@@ -6006,20 +6498,23 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugSession> create(
-      GoogleCloudApigeeV1DebugSession request, core.String parent,
-      {core.String timeout, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1DebugSession request,
+    core.String parent, {
+    core.String timeout,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (timeout != null) {
       _queryParams["timeout"] = [timeout];
@@ -6032,14 +6527,17 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/debugsessions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DebugSession.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DebugSession.fromJson(data));
   }
 
   /// Deletes the data from a debug session. This does not cancel the debug
@@ -6064,17 +6562,19 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> deleteData(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> deleteData(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6082,13 +6582,16 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/data';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Retrieves a debug session.
@@ -6111,17 +6614,19 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DebugSession> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DebugSession> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6129,14 +6634,17 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1DebugSession.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1DebugSession.fromJson(data));
   }
 
   /// Lists debug sessions that are currently active in the given API Proxy
@@ -6167,19 +6675,20 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDebugSessionsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -6195,14 +6704,17 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/debugsessions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(data));
   }
 }
 
@@ -6233,17 +6745,19 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1DebugSessionTransaction> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1DebugSessionTransaction> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6251,14 +6765,17 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1DebugSessionTransaction.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1DebugSessionTransaction.fromJson(data));
   }
 }
 
@@ -6305,17 +6822,20 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeploymentChangeReport>
-      generateDeployChangeReport(core.String name,
-          {core.bool override, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      generateDeployChangeReport(
+    core.String name, {
+    core.bool override,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (override != null) {
       _queryParams["override"] = ["${override}"];
@@ -6328,14 +6848,17 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/deployments:generateDeployChangeReport';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
+        (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
   }
 
   /// Generates a report for a dry run analysis of an UndeployApiProxy request
@@ -6370,16 +6893,19 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeploymentChangeReport>
-      generateUndeployChangeReport(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      generateUndeployChangeReport(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6389,14 +6915,17 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/deployments:generateUndeployChangeReport';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
+        (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
   }
 }
 
@@ -6425,17 +6954,19 @@ class OrganizationsEnvironmentsCachesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6443,13 +6974,16 @@ class OrganizationsEnvironmentsCachesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 }
 
@@ -6484,18 +7018,19 @@ class OrganizationsEnvironmentsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.bool sharedFlows,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool sharedFlows,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (sharedFlows != null) {
       _queryParams["sharedFlows"] = ["${sharedFlows}"];
@@ -6508,14 +7043,17 @@ class OrganizationsEnvironmentsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -6548,20 +7086,22 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1FlowHook> attachSharedFlowToFlowHook(
-      GoogleCloudApigeeV1FlowHook request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1FlowHook request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6569,14 +7109,16 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1FlowHook.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
   }
 
   /// Detaches a shared flow from a flow hook.
@@ -6599,17 +7141,18 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1FlowHook> detachSharedFlowFromFlowHook(
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6617,14 +7160,16 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1FlowHook.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
   }
 
   /// Returns the name of the shared flow attached to the specified flow hook.
@@ -6648,17 +7193,19 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1FlowHook> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1FlowHook> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6666,14 +7213,16 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1FlowHook.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
   }
 }
 
@@ -6681,7 +7230,7 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsKeystoresAliasesResourceApi get aliases =>
-      new OrganizationsEnvironmentsKeystoresAliasesResourceApi(_requester);
+      OrganizationsEnvironmentsKeystoresAliasesResourceApi(_requester);
 
   OrganizationsEnvironmentsKeystoresResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -6714,20 +7263,23 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Keystore> create(
-      GoogleCloudApigeeV1Keystore request, core.String parent,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Keystore request,
+    core.String parent, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -6739,14 +7291,16 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keystores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Keystore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
   }
 
   /// Deletes a keystore or truststore.
@@ -6768,17 +7322,19 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Keystore> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Keystore> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6786,14 +7342,16 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Keystore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
   }
 
   /// Gets a keystore or truststore.
@@ -6815,17 +7373,19 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Keystore> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Keystore> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6833,14 +7393,16 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Keystore.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
   }
 }
 
@@ -6899,25 +7461,27 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> create(
-      GoogleApiHttpBody request, core.String parent,
-      {core.String alias,
-      core.bool ignoreNewlineValidation,
-      core.String P_password,
-      core.bool ignoreExpiryValidation,
-      core.String format,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String parent, {
+    core.String alias,
+    core.bool ignoreNewlineValidation,
+    core.String P_password,
+    core.bool ignoreExpiryValidation,
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (alias != null) {
       _queryParams["alias"] = [alias];
@@ -6941,14 +7505,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/aliases';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Alias.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
   }
 
   /// Generates a PKCS #10 Certificate Signing Request for the private key in an
@@ -6971,16 +7537,19 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleApiHttpBody> csr(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleApiHttpBody> csr(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6988,13 +7557,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/csr';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Deletes an alias.
@@ -7016,17 +7588,19 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Alias> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Alias> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7034,14 +7608,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Alias.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
   }
 
   /// Gets an alias.
@@ -7063,17 +7639,19 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Alias> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Alias> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7081,14 +7659,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Alias.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
   }
 
   /// Gets the certificate from an alias in PEM-encoded form.
@@ -7110,17 +7690,19 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleApiHttpBody> getCertificate(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleApiHttpBody> getCertificate(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7129,13 +7711,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/certificate';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Updates the certificate in an alias.
@@ -7167,22 +7752,24 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> update(
-      GoogleApiHttpBody request, core.String name,
-      {core.bool ignoreNewlineValidation,
-      core.bool ignoreExpiryValidation,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String name, {
+    core.bool ignoreNewlineValidation,
+    core.bool ignoreExpiryValidation,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (ignoreNewlineValidation != null) {
       _queryParams["ignoreNewlineValidation"] = ["${ignoreNewlineValidation}"];
@@ -7196,14 +7783,16 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Alias.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
   }
 }
 
@@ -7235,20 +7824,22 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
-      GoogleCloudApigeeV1KeyValueMap request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7258,14 +7849,17 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 
   /// Delete a key value map in an environment.
@@ -7287,17 +7881,19 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7305,14 +7901,17 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 }
 
@@ -7394,32 +7993,34 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1OptimizedStats> get(core.String name,
-      {core.String offset,
-      core.bool sonar,
-      core.String accuracy,
-      core.String limit,
-      core.String timeUnit,
-      core.String sort,
-      core.bool realtime,
-      core.String aggTable,
-      core.String timeRange,
-      core.String tzo,
-      core.String sortby,
-      core.String topk,
-      core.String select,
-      core.bool tsAscending,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1OptimizedStats> get(
+    core.String name, {
+    core.String offset,
+    core.bool sonar,
+    core.String accuracy,
+    core.String limit,
+    core.String timeUnit,
+    core.String sort,
+    core.bool realtime,
+    core.String aggTable,
+    core.String timeRange,
+    core.String tzo,
+    core.String sortby,
+    core.String topk,
+    core.String select,
+    core.bool tsAscending,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (offset != null) {
       _queryParams["offset"] = [offset];
@@ -7472,14 +8073,17 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1OptimizedStats.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1OptimizedStats.fromJson(data));
   }
 }
 
@@ -7513,20 +8117,22 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1AsyncQuery> create(
-      GoogleCloudApigeeV1Query request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Query request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7535,14 +8141,17 @@ class OrganizationsEnvironmentsQueriesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queries';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1AsyncQuery.fromJson(data));
   }
 
   /// Get query status If the query is still in progress, the `state` is set to
@@ -7566,17 +8175,19 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1AsyncQuery> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1AsyncQuery> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7584,14 +8195,17 @@ class OrganizationsEnvironmentsQueriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1AsyncQuery.fromJson(data));
   }
 
   /// After the query is completed, use this API to retrieve the results. If the
@@ -7618,17 +8232,19 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleApiHttpBody> getResult(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleApiHttpBody> getResult(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7636,13 +8252,16 @@ class OrganizationsEnvironmentsQueriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Return a list of Asynchronous Queries
@@ -7681,23 +8300,24 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
-      core.String parent,
-      {core.String submittedBy,
-      core.String from,
-      core.String inclQueriesWithoutReport,
-      core.String to,
-      core.String status,
-      core.String dataset,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String submittedBy,
+    core.String from,
+    core.String inclQueriesWithoutReport,
+    core.String to,
+    core.String status,
+    core.String dataset,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (submittedBy != null) {
       _queryParams["submittedBy"] = [submittedBy];
@@ -7724,14 +8344,17 @@ class OrganizationsEnvironmentsQueriesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queries';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(data));
   }
 }
 
@@ -7763,20 +8386,22 @@ class OrganizationsEnvironmentsReferencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Reference> create(
-      GoogleCloudApigeeV1Reference request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Reference request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7786,14 +8411,17 @@ class OrganizationsEnvironmentsReferencesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/references';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Reference.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
   }
 
   /// Deletes a Reference from an environment. Returns the deleted Reference
@@ -7816,17 +8444,19 @@ class OrganizationsEnvironmentsReferencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Reference> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Reference> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7834,14 +8464,17 @@ class OrganizationsEnvironmentsReferencesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Reference.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
   }
 
   /// Gets a Reference resource.
@@ -7863,17 +8496,19 @@ class OrganizationsEnvironmentsReferencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Reference> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Reference> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7881,14 +8516,17 @@ class OrganizationsEnvironmentsReferencesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Reference.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
   }
 
   /// Updates an existing Reference. Note that this operation has PUT semantics;
@@ -7915,20 +8553,22 @@ class OrganizationsEnvironmentsReferencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Reference> update(
-      GoogleCloudApigeeV1Reference request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Reference request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -7936,14 +8576,17 @@ class OrganizationsEnvironmentsReferencesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Reference.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
   }
 }
 
@@ -7983,20 +8626,24 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ResourceFile> create(
-      GoogleApiHttpBody request, core.String parent,
-      {core.String type, core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String parent, {
+    core.String type,
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type != null) {
       _queryParams["type"] = [type];
@@ -8012,14 +8659,17 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/resourcefiles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ResourceFile.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
   }
 
   /// Deletes a resource file. For more information about resource files, see
@@ -8047,23 +8697,26 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ResourceFile> delete(
-      core.String parent, core.String type, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String type,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8076,14 +8729,17 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ResourceFile.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
   }
 
   /// Gets the contents of a resource file. For more information about resource
@@ -8111,23 +8767,26 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> get(
-      core.String parent, core.String type, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent,
+    core.String type,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8140,13 +8799,16 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Lists all resource files. For more information about resource files, see
@@ -8172,18 +8834,19 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> list(
-      core.String parent,
-      {core.String type,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type != null) {
       _queryParams["type"] = [type];
@@ -8196,14 +8859,17 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/resourcefiles';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
+        GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
   }
 
   /// Lists all resource files. For more information about resource files, see
@@ -8229,20 +8895,23 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>
-      listEnvironmentResources(core.String parent, core.String type,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      listEnvironmentResources(
+    core.String parent,
+    core.String type, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8253,14 +8922,17 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         '/resourcefiles/' +
         commons.Escaper.ecapeVariable('$type');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
+        GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
   }
 
   /// Updates a resource file. Specify the `Content-Type` as
@@ -8292,29 +8964,30 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ResourceFile> update(
-      GoogleApiHttpBody request,
-      core.String parent,
-      core.String type,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String parent,
+    core.String type,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type == null) {
-      throw new core.ArgumentError("Parameter type is required.");
+      throw core.ArgumentError("Parameter type is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8327,14 +9000,17 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ResourceFile.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
   }
 }
 
@@ -8342,10 +9018,9 @@ class OrganizationsEnvironmentsSharedflowsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi get deployments =>
-      new OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi(
-          _requester);
+      OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi(_requester);
   OrganizationsEnvironmentsSharedflowsRevisionsResourceApi get revisions =>
-      new OrganizationsEnvironmentsSharedflowsRevisionsResourceApi(_requester);
+      OrganizationsEnvironmentsSharedflowsRevisionsResourceApi(_requester);
 
   OrganizationsEnvironmentsSharedflowsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -8379,17 +9054,18 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8399,14 +9075,17 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -8454,17 +9133,20 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Deployment> deploy(core.String name,
-      {core.bool override, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Deployment> deploy(
+    core.String name, {
+    core.bool override,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (override != null) {
       _queryParams["override"] = ["${override}"];
@@ -8476,14 +9158,17 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Deployment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
   }
 
   /// Gets the deployment of a shared flow revision and actual state reported by
@@ -8507,17 +9192,19 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Deployment> getDeployments(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8526,14 +9213,17 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1Deployment.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
   }
 
   /// Undeploys a shared flow revision from an environment. For a request path
@@ -8561,17 +9251,19 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> undeploy(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> undeploy(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8580,13 +9272,16 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 }
 
@@ -8669,32 +9364,34 @@ class OrganizationsEnvironmentsStatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Stats> get(core.String name,
-      {core.bool realtime,
-      core.String timeUnit,
-      core.String sortby,
-      core.String accuracy,
-      core.String filter,
-      core.String tzo,
-      core.String sort,
-      core.String select,
-      core.String offset,
-      core.String limit,
-      core.bool sonar,
-      core.String topk,
-      core.String timeRange,
-      core.bool tsAscending,
-      core.String aggTable,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Stats> get(
+    core.String name, {
+    core.bool realtime,
+    core.String timeUnit,
+    core.String sortby,
+    core.String accuracy,
+    core.String filter,
+    core.String tzo,
+    core.String sort,
+    core.String select,
+    core.String offset,
+    core.String limit,
+    core.bool sonar,
+    core.String topk,
+    core.String timeRange,
+    core.bool tsAscending,
+    core.String aggTable,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (realtime != null) {
       _queryParams["realtime"] = ["${realtime}"];
@@ -8747,14 +9444,16 @@ class OrganizationsEnvironmentsStatsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Stats.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Stats.fromJson(data));
   }
 }
 
@@ -8789,20 +9488,23 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1TargetServer> create(
-      GoogleCloudApigeeV1TargetServer request, core.String parent,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1TargetServer request,
+    core.String parent, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -8815,14 +9517,17 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/targetservers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1TargetServer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
   }
 
   /// Deletes a TargetServer from an environment. Returns the deleted
@@ -8846,17 +9551,19 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1TargetServer> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1TargetServer> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8864,14 +9571,17 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1TargetServer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
   }
 
   /// Gets a TargetServer resource.
@@ -8894,17 +9604,19 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1TargetServer> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1TargetServer> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8912,14 +9624,17 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1TargetServer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
   }
 
   /// Updates an existing TargetServer. Note that this operation has PUT
@@ -8947,20 +9662,22 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1TargetServer> update(
-      GoogleCloudApigeeV1TargetServer request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1TargetServer request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -8968,14 +9685,17 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1TargetServer.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
   }
 }
 
@@ -8983,7 +9703,7 @@ class OrganizationsInstancesResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsInstancesAttachmentsResourceApi get attachments =>
-      new OrganizationsInstancesAttachmentsResourceApi(_requester);
+      OrganizationsInstancesAttachmentsResourceApi(_requester);
 
   OrganizationsInstancesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -9011,20 +9731,22 @@ class OrganizationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1Instance request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1Instance request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9033,14 +9755,16 @@ class OrganizationsInstancesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an Apigee runtime instance. The instance stops serving requests
@@ -9063,17 +9787,19 @@ class OrganizationsInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9081,14 +9807,16 @@ class OrganizationsInstancesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets the details for an Apigee runtime instance. **Note:** Not supported
@@ -9110,17 +9838,19 @@ class OrganizationsInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1Instance> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1Instance> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9128,14 +9858,16 @@ class OrganizationsInstancesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleCloudApigeeV1Instance.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudApigeeV1Instance.fromJson(data));
   }
 
   /// Lists all Apigee runtime instances for the organization. **Note:** Not
@@ -9163,19 +9895,20 @@ class OrganizationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstancesResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -9190,14 +9923,17 @@ class OrganizationsInstancesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudApigeeV1ListInstancesResponse.fromJson(data));
+        (data) => GoogleCloudApigeeV1ListInstancesResponse.fromJson(data));
   }
 
   /// Reports the latest status for a runtime instance.
@@ -9222,21 +9958,22 @@ class OrganizationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ReportInstanceStatusResponse> reportStatus(
-      GoogleCloudApigeeV1ReportInstanceStatusRequest request,
-      core.String instance,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ReportInstanceStatusRequest request,
+    core.String instance, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
+      throw core.ArgumentError("Parameter instance is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9246,14 +9983,17 @@ class OrganizationsInstancesResourceApi {
         commons.Escaper.ecapeVariableReserved('$instance') +
         ':reportStatus';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(data));
+        GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(data));
   }
 }
 
@@ -9285,20 +10025,22 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudApigeeV1InstanceAttachment request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1InstanceAttachment request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9308,14 +10050,16 @@ class OrganizationsInstancesAttachmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes an attachment. **Note:** Not supported for Apigee hybrid.
@@ -9338,17 +10082,19 @@ class OrganizationsInstancesAttachmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9356,14 +10102,16 @@ class OrganizationsInstancesAttachmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
@@ -9386,17 +10134,19 @@ class OrganizationsInstancesAttachmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1InstanceAttachment> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1InstanceAttachment> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9404,14 +10154,17 @@ class OrganizationsInstancesAttachmentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1InstanceAttachment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1InstanceAttachment.fromJson(data));
   }
 
   /// Lists all attachments to an instance. **Note:** Not supported for Apigee
@@ -9440,19 +10193,20 @@ class OrganizationsInstancesAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -9468,14 +10222,17 @@ class OrganizationsInstancesAttachmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(data));
+        GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(data));
   }
 }
 
@@ -9506,20 +10263,22 @@ class OrganizationsKeyvaluemapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
-      GoogleCloudApigeeV1KeyValueMap request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1KeyValueMap request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9529,14 +10288,17 @@ class OrganizationsKeyvaluemapsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 
   /// Delete a key value map in an organization.
@@ -9557,17 +10319,19 @@ class OrganizationsKeyvaluemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9575,14 +10339,17 @@ class OrganizationsKeyvaluemapsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
   }
 }
 
@@ -9611,17 +10378,19 @@ class OrganizationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9629,14 +10398,16 @@ class OrganizationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -9670,20 +10441,22 @@ class OrganizationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -9701,14 +10474,17 @@ class OrganizationsOperationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
   }
 }
 
@@ -9746,20 +10522,22 @@ class OrganizationsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1CustomReport> create(
-      GoogleCloudApigeeV1CustomReport request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1CustomReport request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9768,14 +10546,17 @@ class OrganizationsReportsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/reports';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1CustomReport.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
   }
 
   /// Deletes an existing custom report definition
@@ -9797,17 +10578,18 @@ class OrganizationsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeleteCustomReportResponse> delete(
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9815,14 +10597,17 @@ class OrganizationsReportsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(data));
   }
 
   /// Retrieve a custom report definition.
@@ -9843,17 +10628,19 @@ class OrganizationsReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1CustomReport> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1CustomReport> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9861,14 +10648,17 @@ class OrganizationsReportsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1CustomReport.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
   }
 
   /// Return a list of Custom Reports
@@ -9892,18 +10682,19 @@ class OrganizationsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListCustomReportsResponse> list(
-      core.String parent,
-      {core.bool expand,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool expand,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (expand != null) {
       _queryParams["expand"] = ["${expand}"];
@@ -9915,14 +10706,17 @@ class OrganizationsReportsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(data));
   }
 
   /// Update an existing custom report definition
@@ -9946,20 +10740,22 @@ class OrganizationsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1CustomReport> update(
-      GoogleCloudApigeeV1CustomReport request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1CustomReport request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -9967,14 +10763,17 @@ class OrganizationsReportsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1CustomReport.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
   }
 }
 
@@ -9982,9 +10781,9 @@ class OrganizationsSharedflowsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsSharedflowsDeploymentsResourceApi get deployments =>
-      new OrganizationsSharedflowsDeploymentsResourceApi(_requester);
+      OrganizationsSharedflowsDeploymentsResourceApi(_requester);
   OrganizationsSharedflowsRevisionsResourceApi get revisions =>
-      new OrganizationsSharedflowsRevisionsResourceApi(_requester);
+      OrganizationsSharedflowsRevisionsResourceApi(_requester);
 
   OrganizationsSharedflowsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -10019,20 +10818,24 @@ class OrganizationsSharedflowsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> create(
-      GoogleApiHttpBody request, core.String parent,
-      {core.String action, core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String parent, {
+    core.String action,
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (action != null) {
       _queryParams["action"] = [action];
@@ -10048,14 +10851,17 @@ class OrganizationsSharedflowsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/sharedflows';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
   }
 
   /// Deletes a shared flow and all it's revisions. The shared flow must be
@@ -10077,17 +10883,19 @@ class OrganizationsSharedflowsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1SharedFlow> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1SharedFlow> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10095,14 +10903,17 @@ class OrganizationsSharedflowsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1SharedFlow.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1SharedFlow.fromJson(data));
   }
 
   /// Gets a shared flow by name, including a list of its revisions.
@@ -10123,17 +10934,19 @@ class OrganizationsSharedflowsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1SharedFlow> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1SharedFlow> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10141,14 +10954,17 @@ class OrganizationsSharedflowsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1SharedFlow.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1SharedFlow.fromJson(data));
   }
 
   /// Lists all shared flows in the organization.
@@ -10176,19 +10992,20 @@ class OrganizationsSharedflowsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListSharedFlowsResponse> list(
-      core.String parent,
-      {core.bool includeMetaData,
-      core.bool includeRevisions,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.bool includeMetaData,
+    core.bool includeRevisions,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (includeMetaData != null) {
       _queryParams["includeMetaData"] = ["${includeMetaData}"];
@@ -10204,14 +11021,17 @@ class OrganizationsSharedflowsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/sharedflows';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(data));
   }
 }
 
@@ -10241,17 +11061,18 @@ class OrganizationsSharedflowsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10261,14 +11082,17 @@ class OrganizationsSharedflowsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -10276,7 +11100,7 @@ class OrganizationsSharedflowsRevisionsResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsSharedflowsRevisionsDeploymentsResourceApi get deployments =>
-      new OrganizationsSharedflowsRevisionsDeploymentsResourceApi(_requester);
+      OrganizationsSharedflowsRevisionsDeploymentsResourceApi(_requester);
 
   OrganizationsSharedflowsRevisionsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -10302,17 +11126,19 @@ class OrganizationsSharedflowsRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1SharedFlowRevision> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1SharedFlowRevision> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10320,14 +11146,17 @@ class OrganizationsSharedflowsRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
   }
 
   /// Gets a revision of a shared flow. If `format=bundle` is passed, it instead
@@ -10355,17 +11184,20 @@ class OrganizationsSharedflowsRevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleApiHttpBody> get(core.String name,
-      {core.String format, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleApiHttpBody> get(
+    core.String name, {
+    core.String format,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (format != null) {
       _queryParams["format"] = [format];
@@ -10376,13 +11208,16 @@ class OrganizationsSharedflowsRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Updates a shared flow revision. This operation is only allowed on
@@ -10416,20 +11251,23 @@ class OrganizationsSharedflowsRevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> updateSharedFlowRevision(
-      GoogleApiHttpBody request, core.String name,
-      {core.bool validate, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleApiHttpBody request,
+    core.String name, {
+    core.bool validate,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (validate != null) {
       _queryParams["validate"] = ["${validate}"];
@@ -10440,14 +11278,17 @@ class OrganizationsSharedflowsRevisionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
   }
 }
 
@@ -10479,17 +11320,18 @@ class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10499,14 +11341,17 @@ class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -10514,7 +11359,7 @@ class OrganizationsSitesResourceApi {
   final commons.ApiRequester _requester;
 
   OrganizationsSitesApicategoriesResourceApi get apicategories =>
-      new OrganizationsSitesApicategoriesResourceApi(_requester);
+      OrganizationsSitesApicategoriesResourceApi(_requester);
 
   OrganizationsSitesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -10547,20 +11392,22 @@ class OrganizationsSitesApicategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiCategory> create(
-      GoogleCloudApigeeV1ApiCategoryData request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ApiCategoryData request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10570,14 +11417,17 @@ class OrganizationsSitesApicategoriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apicategories';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
   }
 
   /// Deletes a category from the portal.
@@ -10600,17 +11450,19 @@ class OrganizationsSitesApicategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10618,14 +11470,17 @@ class OrganizationsSitesApicategoriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudApigeeV1ApiResponseWrapper.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudApigeeV1ApiResponseWrapper.fromJson(data));
   }
 
   /// Gets a category on the portal.
@@ -10648,17 +11503,19 @@ class OrganizationsSitesApicategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiCategory> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudApigeeV1ApiCategory> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10666,14 +11523,17 @@ class OrganizationsSitesApicategoriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
   }
 
   /// Lists the categories on the portal.
@@ -10695,17 +11555,18 @@ class OrganizationsSitesApicategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiCategoriesResponse> list(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10715,14 +11576,17 @@ class OrganizationsSitesApicategoriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apicategories';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(data));
   }
 
   /// Updates a category on the portal.
@@ -10748,20 +11612,22 @@ class OrganizationsSitesApicategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiCategory> patch(
-      GoogleCloudApigeeV1ApiCategoryData request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ApiCategoryData request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10769,14 +11635,17 @@ class OrganizationsSitesApicategoriesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudApigeeV1ApiCategory.fromJson(data));
+        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
   }
 }
 
@@ -10807,21 +11676,22 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> provisionOrganization(
-      GoogleCloudApigeeV1ProvisionOrganizationRequest request,
-      core.String project,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudApigeeV1ProvisionOrganizationRequest request,
+    core.String project, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -10831,14 +11701,16 @@ class ProjectsResourceApi {
         commons.Escaper.ecapeVariableReserved('$project') +
         ':provisionOrganization';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -10866,9 +11738,7 @@ class GoogleApiHttpBody {
 
   /// The HTTP request/response body as raw binary.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -10901,7 +11771,7 @@ class GoogleApiHttpBody {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -10924,27 +11794,27 @@ class GoogleCloudApigeeV1Access {
 
   GoogleCloudApigeeV1Access.fromJson(core.Map _json) {
     if (_json.containsKey("Get")) {
-      Get = new GoogleCloudApigeeV1AccessGet.fromJson(_json["Get"]);
+      Get = GoogleCloudApigeeV1AccessGet.fromJson(_json["Get"]);
     }
     if (_json.containsKey("Remove")) {
-      Remove = new GoogleCloudApigeeV1AccessRemove.fromJson(_json["Remove"]);
+      Remove = GoogleCloudApigeeV1AccessRemove.fromJson(_json["Remove"]);
     }
     if (_json.containsKey("Set")) {
-      Set = new GoogleCloudApigeeV1AccessSet.fromJson(_json["Set"]);
+      Set = GoogleCloudApigeeV1AccessSet.fromJson(_json["Set"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (Get != null) {
-      _json["Get"] = (Get).toJson();
+      _json["Get"] = Get.toJson();
     }
     if (Remove != null) {
-      _json["Remove"] = (Remove).toJson();
+      _json["Remove"] = Remove.toJson();
     }
     if (Set != null) {
-      _json["Set"] = (Set).toJson();
+      _json["Set"] = Set.toJson();
     }
     return _json;
   }
@@ -10969,7 +11839,7 @@ class GoogleCloudApigeeV1AccessGet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -10999,7 +11869,7 @@ class GoogleCloudApigeeV1AccessRemove {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -11033,7 +11903,7 @@ class GoogleCloudApigeeV1AccessSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -11070,8 +11940,7 @@ class GoogleCloudApigeeV1Alias {
       alias = _json["alias"];
     }
     if (_json.containsKey("certsInfo")) {
-      certsInfo =
-          new GoogleCloudApigeeV1Certificate.fromJson(_json["certsInfo"]);
+      certsInfo = GoogleCloudApigeeV1Certificate.fromJson(_json["certsInfo"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -11080,12 +11949,12 @@ class GoogleCloudApigeeV1Alias {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alias != null) {
       _json["alias"] = alias;
     }
     if (certsInfo != null) {
-      _json["certsInfo"] = (certsInfo).toJson();
+      _json["certsInfo"] = certsInfo.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -11126,7 +11995,7 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
       _json["location"] = location;
     }
@@ -11161,7 +12030,7 @@ class GoogleCloudApigeeV1ApiCategory {
 
   GoogleCloudApigeeV1ApiCategory.fromJson(core.Map _json) {
     if (_json.containsKey("data")) {
-      data = new GoogleCloudApigeeV1ApiCategoryData.fromJson(_json["data"]);
+      data = GoogleCloudApigeeV1ApiCategoryData.fromJson(_json["data"]);
     }
     if (_json.containsKey("errorCode")) {
       errorCode = _json["errorCode"];
@@ -11179,9 +12048,9 @@ class GoogleCloudApigeeV1ApiCategory {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = (data).toJson();
+      _json["data"] = data.toJson();
     }
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
@@ -11232,7 +12101,7 @@ class GoogleCloudApigeeV1ApiCategoryData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -11371,7 +12240,7 @@ class GoogleCloudApigeeV1ApiProduct {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createdAt")) {
@@ -11393,8 +12262,8 @@ class GoogleCloudApigeeV1ApiProduct {
       name = _json["name"];
     }
     if (_json.containsKey("operationGroup")) {
-      operationGroup = new GoogleCloudApigeeV1OperationGroup.fromJson(
-          _json["operationGroup"]);
+      operationGroup =
+          GoogleCloudApigeeV1OperationGroup.fromJson(_json["operationGroup"]);
     }
     if (_json.containsKey("proxies")) {
       proxies = (_json["proxies"] as core.List).cast<core.String>();
@@ -11415,7 +12284,7 @@ class GoogleCloudApigeeV1ApiProduct {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiResources != null) {
       _json["apiResources"] = apiResources;
     }
@@ -11423,8 +12292,7 @@ class GoogleCloudApigeeV1ApiProduct {
       _json["approvalType"] = approvalType;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
@@ -11445,7 +12313,7 @@ class GoogleCloudApigeeV1ApiProduct {
       _json["name"] = name;
     }
     if (operationGroup != null) {
-      _json["operationGroup"] = (operationGroup).toJson();
+      _json["operationGroup"] = operationGroup.toJson();
     }
     if (proxies != null) {
       _json["proxies"] = proxies;
@@ -11486,7 +12354,7 @@ class GoogleCloudApigeeV1ApiProductRef {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiproduct != null) {
       _json["apiproduct"] = apiproduct;
     }
@@ -11518,8 +12386,7 @@ class GoogleCloudApigeeV1ApiProxy {
       latestRevisionId = _json["latestRevisionId"];
     }
     if (_json.containsKey("metaData")) {
-      metaData =
-          new GoogleCloudApigeeV1EntityMetadata.fromJson(_json["metaData"]);
+      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json["metaData"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -11531,12 +12398,12 @@ class GoogleCloudApigeeV1ApiProxy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latestRevisionId != null) {
       _json["latestRevisionId"] = latestRevisionId;
     }
     if (metaData != null) {
-      _json["metaData"] = (metaData).toJson();
+      _json["metaData"] = metaData.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -11639,7 +12506,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
       basepaths = (_json["basepaths"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("configurationVersion")) {
-      configurationVersion = new GoogleCloudApigeeV1ConfigVersion.fromJson(
+      configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
           _json["configurationVersion"]);
     }
     if (_json.containsKey("contextInfo")) {
@@ -11677,7 +12544,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
     if (_json.containsKey("resourceFiles")) {
       resourceFiles =
-          new GoogleCloudApigeeV1ResourceFiles.fromJson(_json["resourceFiles"]);
+          GoogleCloudApigeeV1ResourceFiles.fromJson(_json["resourceFiles"]);
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List).cast<core.String>();
@@ -11711,12 +12578,12 @@ class GoogleCloudApigeeV1ApiProxyRevision {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (basepaths != null) {
       _json["basepaths"] = basepaths;
     }
     if (configurationVersion != null) {
-      _json["configurationVersion"] = (configurationVersion).toJson();
+      _json["configurationVersion"] = configurationVersion.toJson();
     }
     if (contextInfo != null) {
       _json["contextInfo"] = contextInfo;
@@ -11749,7 +12616,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
       _json["proxyEndpoints"] = proxyEndpoints;
     }
     if (resourceFiles != null) {
-      _json["resourceFiles"] = (resourceFiles).toJson();
+      _json["resourceFiles"] = resourceFiles.toJson();
     }
     if (resources != null) {
       _json["resources"] = resources;
@@ -11814,7 +12681,7 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -11882,7 +12749,7 @@ class GoogleCloudApigeeV1App {
     if (_json.containsKey("apiProducts")) {
       apiProducts = (_json["apiProducts"] as core.List)
           .map<GoogleCloudApigeeV1ApiProductRef>(
-              (value) => new GoogleCloudApigeeV1ApiProductRef.fromJson(value))
+              (value) => GoogleCloudApigeeV1ApiProductRef.fromJson(value))
           .toList();
     }
     if (_json.containsKey("appId")) {
@@ -11891,7 +12758,7 @@ class GoogleCloudApigeeV1App {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("callbackUrl")) {
@@ -11906,7 +12773,7 @@ class GoogleCloudApigeeV1App {
     if (_json.containsKey("credentials")) {
       credentials = (_json["credentials"] as core.List)
           .map<GoogleCloudApigeeV1Credential>(
-              (value) => new GoogleCloudApigeeV1Credential.fromJson(value))
+              (value) => GoogleCloudApigeeV1Credential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("developerId")) {
@@ -11931,17 +12798,16 @@ class GoogleCloudApigeeV1App {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProducts != null) {
       _json["apiProducts"] =
-          apiProducts.map((value) => (value).toJson()).toList();
+          apiProducts.map((value) => value.toJson()).toList();
     }
     if (appId != null) {
       _json["appId"] = appId;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (callbackUrl != null) {
       _json["callbackUrl"] = callbackUrl;
@@ -11954,7 +12820,7 @@ class GoogleCloudApigeeV1App {
     }
     if (credentials != null) {
       _json["credentials"] =
-          credentials.map((value) => (value).toJson()).toList();
+          credentials.map((value) => value.toJson()).toList();
     }
     if (developerId != null) {
       _json["developerId"] = developerId;
@@ -12033,14 +12899,13 @@ class GoogleCloudApigeeV1AsyncQuery {
     }
     if (_json.containsKey("queryParams")) {
       queryParams =
-          new GoogleCloudApigeeV1QueryMetadata.fromJson(_json["queryParams"]);
+          GoogleCloudApigeeV1QueryMetadata.fromJson(_json["queryParams"]);
     }
     if (_json.containsKey("reportDefinitionId")) {
       reportDefinitionId = _json["reportDefinitionId"];
     }
     if (_json.containsKey("result")) {
-      result =
-          new GoogleCloudApigeeV1AsyncQueryResult.fromJson(_json["result"]);
+      result = GoogleCloudApigeeV1AsyncQueryResult.fromJson(_json["result"]);
     }
     if (_json.containsKey("resultFileSize")) {
       resultFileSize = _json["resultFileSize"];
@@ -12061,7 +12926,7 @@ class GoogleCloudApigeeV1AsyncQuery {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (created != null) {
       _json["created"] = created;
     }
@@ -12075,13 +12940,13 @@ class GoogleCloudApigeeV1AsyncQuery {
       _json["name"] = name;
     }
     if (queryParams != null) {
-      _json["queryParams"] = (queryParams).toJson();
+      _json["queryParams"] = queryParams.toJson();
     }
     if (reportDefinitionId != null) {
       _json["reportDefinitionId"] = reportDefinitionId;
     }
     if (result != null) {
-      _json["result"] = (result).toJson();
+      _json["result"] = result.toJson();
     }
     if (resultFileSize != null) {
       _json["resultFileSize"] = resultFileSize;
@@ -12123,7 +12988,7 @@ class GoogleCloudApigeeV1AsyncQueryResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expires != null) {
       _json["expires"] = expires;
     }
@@ -12155,7 +13020,7 @@ class GoogleCloudApigeeV1Attribute {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -12176,16 +13041,16 @@ class GoogleCloudApigeeV1Attributes {
     if (_json.containsKey("attribute")) {
       attribute = (_json["attribute"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attribute != null) {
-      _json["attribute"] = attribute.map((value) => (value).toJson()).toList();
+      _json["attribute"] = attribute.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12268,7 +13133,7 @@ class GoogleCloudApigeeV1CertInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (basicConstraints != null) {
       _json["basicConstraints"] = basicConstraints;
     }
@@ -12316,16 +13181,16 @@ class GoogleCloudApigeeV1Certificate {
     if (_json.containsKey("certInfo")) {
       certInfo = (_json["certInfo"] as core.List)
           .map<GoogleCloudApigeeV1CertInfo>(
-              (value) => new GoogleCloudApigeeV1CertInfo.fromJson(value))
+              (value) => GoogleCloudApigeeV1CertInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certInfo != null) {
-      _json["certInfo"] = certInfo.map((value) => (value).toJson()).toList();
+      _json["certInfo"] = certInfo.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12348,7 +13213,7 @@ class GoogleCloudApigeeV1CommonNameConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matchWildCards != null) {
       _json["matchWildCards"] = matchWildCards;
     }
@@ -12381,7 +13246,7 @@ class GoogleCloudApigeeV1ConfigVersion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (majorVersion != null) {
       _json["majorVersion"] = majorVersion;
     }
@@ -12424,13 +13289,13 @@ class GoogleCloudApigeeV1Credential {
     if (_json.containsKey("apiProducts")) {
       apiProducts = (_json["apiProducts"] as core.List)
           .map<GoogleCloudApigeeV1ApiProductRef>(
-              (value) => new GoogleCloudApigeeV1ApiProductRef.fromJson(value))
+              (value) => GoogleCloudApigeeV1ApiProductRef.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("consumerKey")) {
@@ -12455,14 +13320,13 @@ class GoogleCloudApigeeV1Credential {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProducts != null) {
       _json["apiProducts"] =
-          apiProducts.map((value) => (value).toJson()).toList();
+          apiProducts.map((value) => value.toJson()).toList();
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (consumerKey != null) {
       _json["consumerKey"] = consumerKey;
@@ -12597,8 +13461,8 @@ class GoogleCloudApigeeV1CustomReport {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<GoogleCloudApigeeV1CustomReportMetric>((value) =>
-              new GoogleCloudApigeeV1CustomReportMetric.fromJson(value))
+          .map<GoogleCloudApigeeV1CustomReportMetric>(
+              (value) => GoogleCloudApigeeV1CustomReportMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -12613,7 +13477,7 @@ class GoogleCloudApigeeV1CustomReport {
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
           .map<GoogleCloudApigeeV1ReportProperty>(
-              (value) => new GoogleCloudApigeeV1ReportProperty.fromJson(value))
+              (value) => GoogleCloudApigeeV1ReportProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("sortByCols")) {
@@ -12638,7 +13502,7 @@ class GoogleCloudApigeeV1CustomReport {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (chartType != null) {
       _json["chartType"] = chartType;
     }
@@ -12673,7 +13537,7 @@ class GoogleCloudApigeeV1CustomReport {
       _json["limit"] = limit;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -12685,8 +13549,7 @@ class GoogleCloudApigeeV1CustomReport {
       _json["organization"] = organization;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (sortByCols != null) {
       _json["sortByCols"] = sortByCols;
@@ -12732,7 +13595,7 @@ class GoogleCloudApigeeV1CustomReportMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (function != null) {
       _json["function"] = function;
     }
@@ -12772,7 +13635,7 @@ class GoogleCloudApigeeV1DataCollectorConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -12818,8 +13681,8 @@ class GoogleCloudApigeeV1Datastore {
       createTime = _json["createTime"];
     }
     if (_json.containsKey("datastoreConfig")) {
-      datastoreConfig = new GoogleCloudApigeeV1DatastoreConfig.fromJson(
-          _json["datastoreConfig"]);
+      datastoreConfig =
+          GoogleCloudApigeeV1DatastoreConfig.fromJson(_json["datastoreConfig"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -12840,12 +13703,12 @@ class GoogleCloudApigeeV1Datastore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (datastoreConfig != null) {
-      _json["datastoreConfig"] = (datastoreConfig).toJson();
+      _json["datastoreConfig"] = datastoreConfig.toJson();
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
@@ -12905,7 +13768,7 @@ class GoogleCloudApigeeV1DatastoreConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -12949,7 +13812,7 @@ class GoogleCloudApigeeV1DateRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (end != null) {
       _json["end"] = end;
     }
@@ -13033,7 +13896,7 @@ class GoogleCloudApigeeV1DebugMask {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (faultJSONPaths != null) {
       _json["faultJSONPaths"] = faultJSONPaths;
     }
@@ -13116,7 +13979,7 @@ class GoogleCloudApigeeV1DebugSession {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -13160,19 +14023,19 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
     if (_json.containsKey("point")) {
       point = (_json["point"] as core.List)
           .map<GoogleCloudApigeeV1Point>(
-              (value) => new GoogleCloudApigeeV1Point.fromJson(value))
+              (value) => GoogleCloudApigeeV1Point.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (completed != null) {
       _json["completed"] = completed;
     }
     if (point != null) {
-      _json["point"] = point.map((value) => (value).toJson()).toList();
+      _json["point"] = point.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13192,7 +14055,7 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (message != null) {
       _json["message"] = message;
     }
@@ -13258,19 +14121,19 @@ class GoogleCloudApigeeV1Deployment {
     }
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<GoogleRpcStatus>((value) => new GoogleRpcStatus.fromJson(value))
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List)
           .map<GoogleCloudApigeeV1InstanceDeploymentStatus>((value) =>
-              new GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(value))
+              GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pods")) {
       pods = (_json["pods"] as core.List)
           .map<GoogleCloudApigeeV1PodStatus>(
-              (value) => new GoogleCloudApigeeV1PodStatus.fromJson(value))
+              (value) => GoogleCloudApigeeV1PodStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("revision")) {
@@ -13280,7 +14143,7 @@ class GoogleCloudApigeeV1Deployment {
       routeConflicts = (_json["routeConflicts"] as core.List)
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
               (value) =>
-                  new GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+                  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
                       .fromJson(value))
           .toList();
     }
@@ -13291,7 +14154,7 @@ class GoogleCloudApigeeV1Deployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProxy != null) {
       _json["apiProxy"] = apiProxy;
     }
@@ -13302,20 +14165,20 @@ class GoogleCloudApigeeV1Deployment {
       _json["environment"] = environment;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (instances != null) {
-      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+      _json["instances"] = instances.map((value) => value.toJson()).toList();
     }
     if (pods != null) {
-      _json["pods"] = pods.map((value) => (value).toJson()).toList();
+      _json["pods"] = pods.map((value) => value.toJson()).toList();
     }
     if (revision != null) {
       _json["revision"] = revision;
     }
     if (routeConflicts != null) {
       _json["routeConflicts"] =
-          routeConflicts.map((value) => (value).toJson()).toList();
+          routeConflicts.map((value) => value.toJson()).toList();
     }
     if (state != null) {
       _json["state"] = state;
@@ -13355,38 +14218,37 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
     if (_json.containsKey("routingChanges")) {
       routingChanges = (_json["routingChanges"] as core.List)
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>(
-              (value) =>
-                  new GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
-                      .fromJson(value))
+              (value) => GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
+                  .fromJson(value))
           .toList();
     }
     if (_json.containsKey("routingConflicts")) {
       routingConflicts = (_json["routingConflicts"] as core.List)
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
               (value) =>
-                  new GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+                  GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("validationErrors")) {
       validationErrors =
-          new GoogleRpcPreconditionFailure.fromJson(_json["validationErrors"]);
+          GoogleRpcPreconditionFailure.fromJson(_json["validationErrors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (routingChanges != null) {
       _json["routingChanges"] =
-          routingChanges.map((value) => (value).toJson()).toList();
+          routingChanges.map((value) => value.toJson()).toList();
     }
     if (routingConflicts != null) {
       _json["routingConflicts"] =
-          routingConflicts.map((value) => (value).toJson()).toList();
+          routingConflicts.map((value) => value.toJson()).toList();
     }
     if (validationErrors != null) {
-      _json["validationErrors"] = (validationErrors).toJson();
+      _json["validationErrors"] = validationErrors.toJson();
     }
     return _json;
   }
@@ -13425,22 +14287,22 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     }
     if (_json.containsKey("fromDeployment")) {
       fromDeployment =
-          new GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
-              .fromJson(_json["fromDeployment"]);
+          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
+              _json["fromDeployment"]);
     }
     if (_json.containsKey("shouldSequenceRollout")) {
       shouldSequenceRollout = _json["shouldSequenceRollout"];
     }
     if (_json.containsKey("toDeployment")) {
       toDeployment =
-          new GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
-              .fromJson(_json["toDeployment"]);
+          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
+              _json["toDeployment"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -13448,13 +14310,13 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
       _json["environmentGroup"] = environmentGroup;
     }
     if (fromDeployment != null) {
-      _json["fromDeployment"] = (fromDeployment).toJson();
+      _json["fromDeployment"] = fromDeployment.toJson();
     }
     if (shouldSequenceRollout != null) {
       _json["shouldSequenceRollout"] = shouldSequenceRollout;
     }
     if (toDeployment != null) {
-      _json["toDeployment"] = (toDeployment).toJson();
+      _json["toDeployment"] = toDeployment.toJson();
     }
     return _json;
   }
@@ -13479,8 +14341,8 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
       core.Map _json) {
     if (_json.containsKey("conflictingDeployment")) {
       conflictingDeployment =
-          new GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
-              .fromJson(_json["conflictingDeployment"]);
+          GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
+              _json["conflictingDeployment"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -13492,9 +14354,9 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conflictingDeployment != null) {
-      _json["conflictingDeployment"] = (conflictingDeployment).toJson();
+      _json["conflictingDeployment"] = conflictingDeployment.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -13540,7 +14402,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProxy != null) {
       _json["apiProxy"] = apiProxy;
     }
@@ -13605,7 +14467,7 @@ class GoogleCloudApigeeV1DeploymentConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
       _json["attributes"] = attributes;
     }
@@ -13693,7 +14555,7 @@ class GoogleCloudApigeeV1Developer {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("companies")) {
@@ -13730,7 +14592,7 @@ class GoogleCloudApigeeV1Developer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessType != null) {
       _json["accessType"] = accessType;
     }
@@ -13741,8 +14603,7 @@ class GoogleCloudApigeeV1Developer {
       _json["apps"] = apps;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (companies != null) {
       _json["companies"] = companies;
@@ -13841,7 +14702,7 @@ class GoogleCloudApigeeV1DeveloperApp {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("callbackUrl")) {
@@ -13853,7 +14714,7 @@ class GoogleCloudApigeeV1DeveloperApp {
     if (_json.containsKey("credentials")) {
       credentials = (_json["credentials"] as core.List)
           .map<GoogleCloudApigeeV1Credential>(
-              (value) => new GoogleCloudApigeeV1Credential.fromJson(value))
+              (value) => GoogleCloudApigeeV1Credential.fromJson(value))
           .toList();
     }
     if (_json.containsKey("developerId")) {
@@ -13878,7 +14739,7 @@ class GoogleCloudApigeeV1DeveloperApp {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProducts != null) {
       _json["apiProducts"] = apiProducts;
     }
@@ -13889,8 +14750,7 @@ class GoogleCloudApigeeV1DeveloperApp {
       _json["appId"] = appId;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (callbackUrl != null) {
       _json["callbackUrl"] = callbackUrl;
@@ -13900,7 +14760,7 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
     if (credentials != null) {
       _json["credentials"] =
-          credentials.map((value) => (value).toJson()).toList();
+          credentials.map((value) => value.toJson()).toList();
     }
     if (developerId != null) {
       _json["developerId"] = developerId;
@@ -13965,7 +14825,7 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("consumerKey")) {
@@ -13990,13 +14850,12 @@ class GoogleCloudApigeeV1DeveloperAppKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProducts != null) {
       _json["apiProducts"] = apiProducts;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (consumerKey != null) {
       _json["consumerKey"] = consumerKey;
@@ -14034,7 +14893,7 @@ class GoogleCloudApigeeV1DimensionMetric {
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
           .map<GoogleCloudApigeeV1Metric>(
-              (value) => new GoogleCloudApigeeV1Metric.fromJson(value))
+              (value) => GoogleCloudApigeeV1Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -14044,9 +14903,9 @@ class GoogleCloudApigeeV1DimensionMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -14083,7 +14942,7 @@ class GoogleCloudApigeeV1EntityMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -14139,14 +14998,13 @@ class GoogleCloudApigeeV1Environment {
       name = _json["name"];
     }
     if (_json.containsKey("properties")) {
-      properties =
-          new GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
+      properties = GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -14163,7 +15021,7 @@ class GoogleCloudApigeeV1Environment {
       _json["name"] = name;
     }
     if (properties != null) {
-      _json["properties"] = (properties).toJson();
+      _json["properties"] = properties.toJson();
     }
     return _json;
   }
@@ -14235,17 +15093,17 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (_json.containsKey("dataCollectors")) {
       dataCollectors = (_json["dataCollectors"] as core.List)
-          .map<GoogleCloudApigeeV1DataCollectorConfig>((value) =>
-              new GoogleCloudApigeeV1DataCollectorConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1DataCollectorConfig>(
+              (value) => GoogleCloudApigeeV1DataCollectorConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("debugMask")) {
-      debugMask = new GoogleCloudApigeeV1DebugMask.fromJson(_json["debugMask"]);
+      debugMask = GoogleCloudApigeeV1DebugMask.fromJson(_json["debugMask"]);
     }
     if (_json.containsKey("deployments")) {
       deployments = (_json["deployments"] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentConfig>((value) =>
-              new GoogleCloudApigeeV1DeploymentConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1DeploymentConfig>(
+              (value) => GoogleCloudApigeeV1DeploymentConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("featureFlags")) {
@@ -14255,13 +15113,13 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     if (_json.containsKey("flowhooks")) {
       flowhooks = (_json["flowhooks"] as core.List)
           .map<GoogleCloudApigeeV1FlowHookConfig>(
-              (value) => new GoogleCloudApigeeV1FlowHookConfig.fromJson(value))
+              (value) => GoogleCloudApigeeV1FlowHookConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("keystores")) {
       keystores = (_json["keystores"] as core.List)
           .map<GoogleCloudApigeeV1KeystoreConfig>(
-              (value) => new GoogleCloudApigeeV1KeystoreConfig.fromJson(value))
+              (value) => GoogleCloudApigeeV1KeystoreConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -14276,13 +15134,13 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     if (_json.containsKey("resourceReferences")) {
       resourceReferences = (_json["resourceReferences"] as core.List)
           .map<GoogleCloudApigeeV1ReferenceConfig>(
-              (value) => new GoogleCloudApigeeV1ReferenceConfig.fromJson(value))
+              (value) => GoogleCloudApigeeV1ReferenceConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
           .map<GoogleCloudApigeeV1ResourceConfig>(
-              (value) => new GoogleCloudApigeeV1ResourceConfig.fromJson(value))
+              (value) => GoogleCloudApigeeV1ResourceConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("revisionId")) {
@@ -14293,13 +15151,13 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (_json.containsKey("targets")) {
       targets = (_json["targets"] as core.List)
-          .map<GoogleCloudApigeeV1TargetServerConfig>((value) =>
-              new GoogleCloudApigeeV1TargetServerConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1TargetServerConfig>(
+              (value) => GoogleCloudApigeeV1TargetServerConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("traceConfig")) {
-      traceConfig = new GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
-          _json["traceConfig"]);
+      traceConfig =
+          GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(_json["traceConfig"]);
     }
     if (_json.containsKey("uid")) {
       uid = _json["uid"];
@@ -14308,29 +15166,29 @@ class GoogleCloudApigeeV1EnvironmentConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
     if (dataCollectors != null) {
       _json["dataCollectors"] =
-          dataCollectors.map((value) => (value).toJson()).toList();
+          dataCollectors.map((value) => value.toJson()).toList();
     }
     if (debugMask != null) {
-      _json["debugMask"] = (debugMask).toJson();
+      _json["debugMask"] = debugMask.toJson();
     }
     if (deployments != null) {
       _json["deployments"] =
-          deployments.map((value) => (value).toJson()).toList();
+          deployments.map((value) => value.toJson()).toList();
     }
     if (featureFlags != null) {
       _json["featureFlags"] = featureFlags;
     }
     if (flowhooks != null) {
-      _json["flowhooks"] = flowhooks.map((value) => (value).toJson()).toList();
+      _json["flowhooks"] = flowhooks.map((value) => value.toJson()).toList();
     }
     if (keystores != null) {
-      _json["keystores"] = keystores.map((value) => (value).toJson()).toList();
+      _json["keystores"] = keystores.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -14343,10 +15201,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (resourceReferences != null) {
       _json["resourceReferences"] =
-          resourceReferences.map((value) => (value).toJson()).toList();
+          resourceReferences.map((value) => value.toJson()).toList();
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+      _json["resources"] = resources.map((value) => value.toJson()).toList();
     }
     if (revisionId != null) {
       _json["revisionId"] = revisionId;
@@ -14355,10 +15213,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
       _json["sequenceNumber"] = sequenceNumber;
     }
     if (targets != null) {
-      _json["targets"] = targets.map((value) => (value).toJson()).toList();
+      _json["targets"] = targets.map((value) => value.toJson()).toList();
     }
     if (traceConfig != null) {
-      _json["traceConfig"] = (traceConfig).toJson();
+      _json["traceConfig"] = traceConfig.toJson();
     }
     if (uid != null) {
       _json["uid"] = uid;
@@ -14403,7 +15261,7 @@ class GoogleCloudApigeeV1EnvironmentGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -14449,7 +15307,7 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -14501,7 +15359,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     if (_json.containsKey("routingRules")) {
       routingRules = (_json["routingRules"] as core.List)
           .map<GoogleCloudApigeeV1RoutingRule>(
-              (value) => new GoogleCloudApigeeV1RoutingRule.fromJson(value))
+              (value) => GoogleCloudApigeeV1RoutingRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("uid")) {
@@ -14511,7 +15369,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hostnames != null) {
       _json["hostnames"] = hostnames;
     }
@@ -14523,7 +15381,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     }
     if (routingRules != null) {
       _json["routingRules"] =
-          routingRules.map((value) => (value).toJson()).toList();
+          routingRules.map((value) => value.toJson()).toList();
     }
     if (uid != null) {
       _json["uid"] = uid;
@@ -14602,7 +15460,7 @@ class GoogleCloudApigeeV1Export {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (created != null) {
       _json["created"] = created;
     }
@@ -14668,7 +15526,7 @@ class GoogleCloudApigeeV1ExportRequest {
       datastoreName = _json["datastoreName"];
     }
     if (_json.containsKey("dateRange")) {
-      dateRange = new GoogleCloudApigeeV1DateRange.fromJson(_json["dateRange"]);
+      dateRange = GoogleCloudApigeeV1DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -14683,7 +15541,7 @@ class GoogleCloudApigeeV1ExportRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (csvDelimiter != null) {
       _json["csvDelimiter"] = csvDelimiter;
     }
@@ -14691,7 +15549,7 @@ class GoogleCloudApigeeV1ExportRequest {
       _json["datastoreName"] = datastoreName;
     }
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -14744,7 +15602,7 @@ class GoogleCloudApigeeV1FlowHook {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (continueOnError != null) {
       _json["continueOnError"] = continueOnError;
     }
@@ -14792,7 +15650,7 @@ class GoogleCloudApigeeV1FlowHookConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (continueOnError != null) {
       _json["continueOnError"] = continueOnError;
     }
@@ -14814,7 +15672,7 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -14844,7 +15702,7 @@ class GoogleCloudApigeeV1IngressConfig {
     if (_json.containsKey("environmentGroups")) {
       environmentGroups = (_json["environmentGroups"] as core.List)
           .map<GoogleCloudApigeeV1EnvironmentGroupConfig>((value) =>
-              new GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(value))
+              GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -14863,10 +15721,10 @@ class GoogleCloudApigeeV1IngressConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environmentGroups != null) {
       _json["environmentGroups"] =
-          environmentGroups.map((value) => (value).toJson()).toList();
+          environmentGroups.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -14963,7 +15821,7 @@ class GoogleCloudApigeeV1Instance {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -15026,7 +15884,7 @@ class GoogleCloudApigeeV1InstanceAttachment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -15061,7 +15919,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
       deployedRevisions = (_json["deployedRevisions"] as core.List)
           .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>(
               (value) =>
-                  new GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+                  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
                       .fromJson(value))
           .toList();
     }
@@ -15069,7 +15927,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
       deployedRoutes = (_json["deployedRoutes"] as core.List)
           .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>(
               (value) =>
-                  new GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
+                  GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
                       .fromJson(value))
           .toList();
     }
@@ -15080,14 +15938,14 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployedRevisions != null) {
       _json["deployedRevisions"] =
-          deployedRevisions.map((value) => (value).toJson()).toList();
+          deployedRevisions.map((value) => value.toJson()).toList();
     }
     if (deployedRoutes != null) {
       _json["deployedRoutes"] =
-          deployedRoutes.map((value) => (value).toJson()).toList();
+          deployedRoutes.map((value) => value.toJson()).toList();
     }
     if (instance != null) {
       _json["instance"] = instance;
@@ -15118,7 +15976,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (percentage != null) {
       _json["percentage"] = percentage;
     }
@@ -15164,7 +16022,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (basepath != null) {
       _json["basepath"] = basepath;
     }
@@ -15202,7 +16060,7 @@ class GoogleCloudApigeeV1KeyAliasReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliasId != null) {
       _json["aliasId"] = aliasId;
     }
@@ -15234,7 +16092,7 @@ class GoogleCloudApigeeV1KeyValueMap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (encrypted != null) {
       _json["encrypted"] = encrypted;
     }
@@ -15267,7 +16125,7 @@ class GoogleCloudApigeeV1Keystore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliases != null) {
       _json["aliases"] = aliases;
     }
@@ -15291,8 +16149,8 @@ class GoogleCloudApigeeV1KeystoreConfig {
   GoogleCloudApigeeV1KeystoreConfig.fromJson(core.Map _json) {
     if (_json.containsKey("aliases")) {
       aliases = (_json["aliases"] as core.List)
-          .map<GoogleCloudApigeeV1AliasRevisionConfig>((value) =>
-              new GoogleCloudApigeeV1AliasRevisionConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1AliasRevisionConfig>(
+              (value) => GoogleCloudApigeeV1AliasRevisionConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -15302,9 +16160,9 @@ class GoogleCloudApigeeV1KeystoreConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aliases != null) {
-      _json["aliases"] = aliases.map((value) => (value).toJson()).toList();
+      _json["aliases"] = aliases.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -15336,7 +16194,7 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
     if (_json.containsKey("data")) {
       data = (_json["data"] as core.List)
           .map<GoogleCloudApigeeV1ApiCategoryData>(
-              (value) => new GoogleCloudApigeeV1ApiCategoryData.fromJson(value))
+              (value) => GoogleCloudApigeeV1ApiCategoryData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("errorCode")) {
@@ -15355,9 +16213,9 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
-      _json["data"] = data.map((value) => (value).toJson()).toList();
+      _json["data"] = data.map((value) => value.toJson()).toList();
     }
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
@@ -15385,17 +16243,16 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
     if (_json.containsKey("apiProduct")) {
       apiProduct = (_json["apiProduct"] as core.List)
           .map<GoogleCloudApigeeV1ApiProduct>(
-              (value) => new GoogleCloudApigeeV1ApiProduct.fromJson(value))
+              (value) => GoogleCloudApigeeV1ApiProduct.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProduct != null) {
-      _json["apiProduct"] =
-          apiProduct.map((value) => (value).toJson()).toList();
+      _json["apiProduct"] = apiProduct.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15410,16 +16267,16 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
     if (_json.containsKey("proxies")) {
       proxies = (_json["proxies"] as core.List)
           .map<GoogleCloudApigeeV1ApiProxy>(
-              (value) => new GoogleCloudApigeeV1ApiProxy.fromJson(value))
+              (value) => GoogleCloudApigeeV1ApiProxy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (proxies != null) {
-      _json["proxies"] = proxies.map((value) => (value).toJson()).toList();
+      _json["proxies"] = proxies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15434,16 +16291,16 @@ class GoogleCloudApigeeV1ListAppsResponse {
     if (_json.containsKey("app")) {
       app = (_json["app"] as core.List)
           .map<GoogleCloudApigeeV1App>(
-              (value) => new GoogleCloudApigeeV1App.fromJson(value))
+              (value) => GoogleCloudApigeeV1App.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (app != null) {
-      _json["app"] = app.map((value) => (value).toJson()).toList();
+      _json["app"] = app.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15460,16 +16317,16 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
     if (_json.containsKey("queries")) {
       queries = (_json["queries"] as core.List)
           .map<GoogleCloudApigeeV1AsyncQuery>(
-              (value) => new GoogleCloudApigeeV1AsyncQuery.fromJson(value))
+              (value) => GoogleCloudApigeeV1AsyncQuery.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (queries != null) {
-      _json["queries"] = queries.map((value) => (value).toJson()).toList();
+      _json["queries"] = queries.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15485,16 +16342,16 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
     if (_json.containsKey("qualifier")) {
       qualifier = (_json["qualifier"] as core.List)
           .map<GoogleCloudApigeeV1CustomReport>(
-              (value) => new GoogleCloudApigeeV1CustomReport.fromJson(value))
+              (value) => GoogleCloudApigeeV1CustomReport.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (qualifier != null) {
-      _json["qualifier"] = qualifier.map((value) => (value).toJson()).toList();
+      _json["qualifier"] = qualifier.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15511,17 +16368,16 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
     if (_json.containsKey("datastores")) {
       datastores = (_json["datastores"] as core.List)
           .map<GoogleCloudApigeeV1Datastore>(
-              (value) => new GoogleCloudApigeeV1Datastore.fromJson(value))
+              (value) => GoogleCloudApigeeV1Datastore.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (datastores != null) {
-      _json["datastores"] =
-          datastores.map((value) => (value).toJson()).toList();
+      _json["datastores"] = datastores.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15545,19 +16401,19 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
     if (_json.containsKey("sessions")) {
       sessions = (_json["sessions"] as core.List)
           .map<GoogleCloudApigeeV1Session>(
-              (value) => new GoogleCloudApigeeV1Session.fromJson(value))
+              (value) => GoogleCloudApigeeV1Session.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (sessions != null) {
-      _json["sessions"] = sessions.map((value) => (value).toJson()).toList();
+      _json["sessions"] = sessions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15573,17 +16429,17 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
     if (_json.containsKey("deployments")) {
       deployments = (_json["deployments"] as core.List)
           .map<GoogleCloudApigeeV1Deployment>(
-              (value) => new GoogleCloudApigeeV1Deployment.fromJson(value))
+              (value) => GoogleCloudApigeeV1Deployment.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deployments != null) {
       _json["deployments"] =
-          deployments.map((value) => (value).toJson()).toList();
+          deployments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15599,16 +16455,16 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
     if (_json.containsKey("app")) {
       app = (_json["app"] as core.List)
           .map<GoogleCloudApigeeV1DeveloperApp>(
-              (value) => new GoogleCloudApigeeV1DeveloperApp.fromJson(value))
+              (value) => GoogleCloudApigeeV1DeveloperApp.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (app != null) {
-      _json["app"] = app.map((value) => (value).toJson()).toList();
+      _json["app"] = app.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15629,11 +16485,11 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("environmentGroupAttachments")) {
-      environmentGroupAttachments = (_json["environmentGroupAttachments"]
-              as core.List)
-          .map<GoogleCloudApigeeV1EnvironmentGroupAttachment>((value) =>
-              new GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(value))
-          .toList();
+      environmentGroupAttachments =
+          (_json["environmentGroupAttachments"] as core.List)
+              .map<GoogleCloudApigeeV1EnvironmentGroupAttachment>((value) =>
+                  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -15642,10 +16498,10 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environmentGroupAttachments != null) {
       _json["environmentGroupAttachments"] =
-          environmentGroupAttachments.map((value) => (value).toJson()).toList();
+          environmentGroupAttachments.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -15668,8 +16524,8 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("environmentGroups")) {
       environmentGroups = (_json["environmentGroups"] as core.List)
-          .map<GoogleCloudApigeeV1EnvironmentGroup>((value) =>
-              new GoogleCloudApigeeV1EnvironmentGroup.fromJson(value))
+          .map<GoogleCloudApigeeV1EnvironmentGroup>(
+              (value) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -15679,10 +16535,10 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environmentGroups != null) {
       _json["environmentGroups"] =
-          environmentGroups.map((value) => (value).toJson()).toList();
+          environmentGroups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -15702,17 +16558,17 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
     if (_json.containsKey("resourceFile")) {
       resourceFile = (_json["resourceFile"] as core.List)
           .map<GoogleCloudApigeeV1ResourceFile>(
-              (value) => new GoogleCloudApigeeV1ResourceFile.fromJson(value))
+              (value) => GoogleCloudApigeeV1ResourceFile.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceFile != null) {
       _json["resourceFile"] =
-          resourceFile.map((value) => (value).toJson()).toList();
+          resourceFile.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15729,16 +16585,16 @@ class GoogleCloudApigeeV1ListExportsResponse {
     if (_json.containsKey("exports")) {
       exports = (_json["exports"] as core.List)
           .map<GoogleCloudApigeeV1Export>(
-              (value) => new GoogleCloudApigeeV1Export.fromJson(value))
+              (value) => GoogleCloudApigeeV1Export.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exports != null) {
-      _json["exports"] = exports.map((value) => (value).toJson()).toList();
+      _json["exports"] = exports.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15754,16 +16610,16 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
     if (_json.containsKey("issuers")) {
       issuers = (_json["issuers"] as core.List)
           .map<GoogleCloudApigeeV1ServiceIssuersMapping>((value) =>
-              new GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(value))
+              GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (issuers != null) {
-      _json["issuers"] = issuers.map((value) => (value).toJson()).toList();
+      _json["issuers"] = issuers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15783,8 +16639,8 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("attachments")) {
       attachments = (_json["attachments"] as core.List)
-          .map<GoogleCloudApigeeV1InstanceAttachment>((value) =>
-              new GoogleCloudApigeeV1InstanceAttachment.fromJson(value))
+          .map<GoogleCloudApigeeV1InstanceAttachment>(
+              (value) => GoogleCloudApigeeV1InstanceAttachment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -15794,10 +16650,10 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attachments != null) {
       _json["attachments"] =
-          attachments.map((value) => (value).toJson()).toList();
+          attachments.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -15821,7 +16677,7 @@ class GoogleCloudApigeeV1ListInstancesResponse {
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List)
           .map<GoogleCloudApigeeV1Instance>(
-              (value) => new GoogleCloudApigeeV1Instance.fromJson(value))
+              (value) => GoogleCloudApigeeV1Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -15831,9 +16687,9 @@ class GoogleCloudApigeeV1ListInstancesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (instances != null) {
-      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+      _json["instances"] = instances.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -15852,16 +16708,16 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
     if (_json.containsKey("developer")) {
       developer = (_json["developer"] as core.List)
           .map<GoogleCloudApigeeV1Developer>(
-              (value) => new GoogleCloudApigeeV1Developer.fromJson(value))
+              (value) => GoogleCloudApigeeV1Developer.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (developer != null) {
-      _json["developer"] = developer.map((value) => (value).toJson()).toList();
+      _json["developer"] = developer.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15877,17 +16733,17 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
     if (_json.containsKey("organizations")) {
       organizations = (_json["organizations"] as core.List)
           .map<GoogleCloudApigeeV1OrganizationProjectMapping>((value) =>
-              new GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(value))
+              GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (organizations != null) {
       _json["organizations"] =
-          organizations.map((value) => (value).toJson()).toList();
+          organizations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15902,17 +16758,17 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
     if (_json.containsKey("sharedFlows")) {
       sharedFlows = (_json["sharedFlows"] as core.List)
           .map<GoogleCloudApigeeV1SharedFlow>(
-              (value) => new GoogleCloudApigeeV1SharedFlow.fromJson(value))
+              (value) => GoogleCloudApigeeV1SharedFlow.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sharedFlows != null) {
       _json["sharedFlows"] =
-          sharedFlows.map((value) => (value).toJson()).toList();
+          sharedFlows.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15943,7 +16799,7 @@ class GoogleCloudApigeeV1Metadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
       _json["errors"] = errors;
     }
@@ -15982,7 +16838,7 @@ class GoogleCloudApigeeV1Metric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -16018,7 +16874,7 @@ class GoogleCloudApigeeV1Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (methods != null) {
       _json["methods"] = methods;
     }
@@ -16057,36 +16913,34 @@ class GoogleCloudApigeeV1OperationConfig {
     if (_json.containsKey("attributes")) {
       attributes = (_json["attributes"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
           .map<GoogleCloudApigeeV1Operation>(
-              (value) => new GoogleCloudApigeeV1Operation.fromJson(value))
+              (value) => GoogleCloudApigeeV1Operation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("quota")) {
-      quota = new GoogleCloudApigeeV1Quota.fromJson(_json["quota"]);
+      quota = GoogleCloudApigeeV1Quota.fromJson(_json["quota"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiSource != null) {
       _json["apiSource"] = apiSource;
     }
     if (attributes != null) {
-      _json["attributes"] =
-          attributes.map((value) => (value).toJson()).toList();
+      _json["attributes"] = attributes.map((value) => value.toJson()).toList();
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     if (quota != null) {
-      _json["quota"] = (quota).toJson();
+      _json["quota"] = quota.toJson();
     }
     return _json;
   }
@@ -16116,20 +16970,20 @@ class GoogleCloudApigeeV1OperationGroup {
     if (_json.containsKey("operationConfigs")) {
       operationConfigs = (_json["operationConfigs"] as core.List)
           .map<GoogleCloudApigeeV1OperationConfig>(
-              (value) => new GoogleCloudApigeeV1OperationConfig.fromJson(value))
+              (value) => GoogleCloudApigeeV1OperationConfig.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operationConfigType != null) {
       _json["operationConfigType"] = operationConfigType;
     }
     if (operationConfigs != null) {
       _json["operationConfigs"] =
-          operationConfigs.map((value) => (value).toJson()).toList();
+          operationConfigs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16172,7 +17026,7 @@ class GoogleCloudApigeeV1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
@@ -16203,16 +17057,16 @@ class GoogleCloudApigeeV1OptimizedStats {
 
   GoogleCloudApigeeV1OptimizedStats.fromJson(core.Map _json) {
     if (_json.containsKey("Response")) {
-      Response = new GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
-          _json["Response"]);
+      Response =
+          GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(_json["Response"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (Response != null) {
-      _json["Response"] = (Response).toJson();
+      _json["Response"] = Response.toJson();
     }
     return _json;
   }
@@ -16242,7 +17096,7 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (data != null) {
       _json["data"] = data;
     }
@@ -16273,31 +17127,30 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
       TimeUnit = (_json["TimeUnit"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("metaData")) {
-      metaData = new GoogleCloudApigeeV1Metadata.fromJson(_json["metaData"]);
+      metaData = GoogleCloudApigeeV1Metadata.fromJson(_json["metaData"]);
     }
     if (_json.containsKey("resultTruncated")) {
       resultTruncated = _json["resultTruncated"];
     }
     if (_json.containsKey("stats")) {
-      stats =
-          new GoogleCloudApigeeV1OptimizedStatsNode.fromJson(_json["stats"]);
+      stats = GoogleCloudApigeeV1OptimizedStatsNode.fromJson(_json["stats"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (TimeUnit != null) {
       _json["TimeUnit"] = TimeUnit;
     }
     if (metaData != null) {
-      _json["metaData"] = (metaData).toJson();
+      _json["metaData"] = metaData.toJson();
     }
     if (resultTruncated != null) {
       _json["resultTruncated"] = resultTruncated;
     }
     if (stats != null) {
-      _json["stats"] = (stats).toJson();
+      _json["stats"] = stats.toJson();
     }
     return _json;
   }
@@ -16323,9 +17176,8 @@ class GoogleCloudApigeeV1Organization {
   /// Output only. Base64-encoded public certificate for the root CA of the
   /// Apigee organization. Valid only when [RuntimeType] is CLOUD.
   core.String caCertificate;
-  core.List<core.int> get caCertificateAsBytes {
-    return convert.base64.decode(caCertificate);
-  }
+  core.List<core.int> get caCertificateAsBytes =>
+      convert.base64.decode(caCertificate);
 
   set caCertificateAsBytes(core.List<core.int> _bytes) {
     caCertificate =
@@ -16428,8 +17280,7 @@ class GoogleCloudApigeeV1Organization {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("properties")) {
-      properties =
-          new GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
+      properties = GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
     }
     if (_json.containsKey("runtimeType")) {
       runtimeType_ = _json["runtimeType"];
@@ -16444,7 +17295,7 @@ class GoogleCloudApigeeV1Organization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsRegion != null) {
       _json["analyticsRegion"] = analyticsRegion;
     }
@@ -16482,7 +17333,7 @@ class GoogleCloudApigeeV1Organization {
       _json["projectId"] = projectId;
     }
     if (properties != null) {
-      _json["properties"] = (properties).toJson();
+      _json["properties"] = properties.toJson();
     }
     if (runtimeType_ != null) {
       _json["runtimeType"] = runtimeType_;
@@ -16517,7 +17368,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (organization != null) {
       _json["organization"] = organization;
     }
@@ -16594,7 +17445,7 @@ class GoogleCloudApigeeV1PodStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appVersion != null) {
       _json["appVersion"] = appVersion;
     }
@@ -16652,19 +17503,19 @@ class GoogleCloudApigeeV1Point {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudApigeeV1Result>(
-              (value) => new GoogleCloudApigeeV1Result.fromJson(value))
+              (value) => GoogleCloudApigeeV1Result.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16682,16 +17533,16 @@ class GoogleCloudApigeeV1Properties {
     if (_json.containsKey("property")) {
       property = (_json["property"] as core.List)
           .map<GoogleCloudApigeeV1Property>(
-              (value) => new GoogleCloudApigeeV1Property.fromJson(value))
+              (value) => GoogleCloudApigeeV1Property.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (property != null) {
-      _json["property"] = property.map((value) => (value).toJson()).toList();
+      _json["property"] = property.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16718,7 +17569,7 @@ class GoogleCloudApigeeV1Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -16761,7 +17612,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (analyticsRegion != null) {
       _json["analyticsRegion"] = analyticsRegion;
     }
@@ -16851,7 +17702,7 @@ class GoogleCloudApigeeV1Query {
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
           .map<GoogleCloudApigeeV1QueryMetric>(
-              (value) => new GoogleCloudApigeeV1QueryMetric.fromJson(value))
+              (value) => GoogleCloudApigeeV1QueryMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -16870,7 +17721,7 @@ class GoogleCloudApigeeV1Query {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (csvDelimiter != null) {
       _json["csvDelimiter"] = csvDelimiter;
     }
@@ -16887,7 +17738,7 @@ class GoogleCloudApigeeV1Query {
       _json["limit"] = limit;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -16950,7 +17801,7 @@ class GoogleCloudApigeeV1QueryMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
     }
@@ -17014,7 +17865,7 @@ class GoogleCloudApigeeV1QueryMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alias != null) {
       _json["alias"] = alias;
     }
@@ -17069,7 +17920,7 @@ class GoogleCloudApigeeV1Quota {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (interval != null) {
       _json["interval"] = interval;
     }
@@ -17121,7 +17972,7 @@ class GoogleCloudApigeeV1Reference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -17161,7 +18012,7 @@ class GoogleCloudApigeeV1ReferenceConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -17198,14 +18049,14 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
           .map<GoogleCloudApigeeV1ResourceStatus>(
-              (value) => new GoogleCloudApigeeV1ResourceStatus.fromJson(value))
+              (value) => GoogleCloudApigeeV1ResourceStatus.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (instanceUid != null) {
       _json["instanceUid"] = instanceUid;
     }
@@ -17213,7 +18064,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
       _json["reportTime"] = reportTime;
     }
     if (resources != null) {
-      _json["resources"] = resources.map((value) => (value).toJson()).toList();
+      _json["resources"] = resources.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17227,7 +18078,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -17248,19 +18099,19 @@ class GoogleCloudApigeeV1ReportProperty {
     if (_json.containsKey("value")) {
       value = (_json["value"] as core.List)
           .map<GoogleCloudApigeeV1Attribute>(
-              (value) => new GoogleCloudApigeeV1Attribute.fromJson(value))
+              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (property != null) {
       _json["property"] = property;
     }
     if (value != null) {
-      _json["value"] = value.map((value) => (value).toJson()).toList();
+      _json["value"] = value.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17288,7 +18139,7 @@ class GoogleCloudApigeeV1ResourceConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (location != null) {
       _json["location"] = location;
     }
@@ -17320,7 +18171,7 @@ class GoogleCloudApigeeV1ResourceFile {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -17342,17 +18193,17 @@ class GoogleCloudApigeeV1ResourceFiles {
     if (_json.containsKey("resourceFile")) {
       resourceFile = (_json["resourceFile"] as core.List)
           .map<GoogleCloudApigeeV1ResourceFile>(
-              (value) => new GoogleCloudApigeeV1ResourceFile.fromJson(value))
+              (value) => GoogleCloudApigeeV1ResourceFile.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceFile != null) {
       _json["resourceFile"] =
-          resourceFile.map((value) => (value).toJson()).toList();
+          resourceFile.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17386,7 +18237,7 @@ class GoogleCloudApigeeV1ResourceStatus {
     if (_json.containsKey("revisions")) {
       revisions = (_json["revisions"] as core.List)
           .map<GoogleCloudApigeeV1RevisionStatus>(
-              (value) => new GoogleCloudApigeeV1RevisionStatus.fromJson(value))
+              (value) => GoogleCloudApigeeV1RevisionStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalReplicas")) {
@@ -17399,12 +18250,12 @@ class GoogleCloudApigeeV1ResourceStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resource != null) {
       _json["resource"] = resource;
     }
     if (revisions != null) {
-      _json["revisions"] = revisions.map((value) => (value).toJson()).toList();
+      _json["revisions"] = revisions.map((value) => value.toJson()).toList();
     }
     if (totalReplicas != null) {
       _json["totalReplicas"] = totalReplicas;
@@ -17476,7 +18327,7 @@ class GoogleCloudApigeeV1Result {
     if (_json.containsKey("accessList")) {
       accessList = (_json["accessList"] as core.List)
           .map<GoogleCloudApigeeV1Access>(
-              (value) => new GoogleCloudApigeeV1Access.fromJson(value))
+              (value) => GoogleCloudApigeeV1Access.fromJson(value))
           .toList();
     }
     if (_json.containsKey("content")) {
@@ -17485,12 +18336,11 @@ class GoogleCloudApigeeV1Result {
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.List)
           .map<GoogleCloudApigeeV1Property>(
-              (value) => new GoogleCloudApigeeV1Property.fromJson(value))
+              (value) => GoogleCloudApigeeV1Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("properties")) {
-      properties =
-          new GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
+      properties = GoogleCloudApigeeV1Properties.fromJson(_json["properties"]);
     }
     if (_json.containsKey("reasonPhrase")) {
       reasonPhrase = _json["reasonPhrase"];
@@ -17511,22 +18361,21 @@ class GoogleCloudApigeeV1Result {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ActionResult != null) {
       _json["ActionResult"] = ActionResult;
     }
     if (accessList != null) {
-      _json["accessList"] =
-          accessList.map((value) => (value).toJson()).toList();
+      _json["accessList"] = accessList.map((value) => value.toJson()).toList();
     }
     if (content != null) {
       _json["content"] = content;
     }
     if (headers != null) {
-      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+      _json["headers"] = headers.map((value) => value.toJson()).toList();
     }
     if (properties != null) {
-      _json["properties"] = (properties).toJson();
+      _json["properties"] = properties.toJson();
     }
     if (reasonPhrase != null) {
       _json["reasonPhrase"] = reasonPhrase;
@@ -17567,7 +18416,7 @@ class GoogleCloudApigeeV1RevisionStatus {
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
           .map<GoogleCloudApigeeV1UpdateError>(
-              (value) => new GoogleCloudApigeeV1UpdateError.fromJson(value))
+              (value) => GoogleCloudApigeeV1UpdateError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("jsonSpec")) {
@@ -17583,9 +18432,9 @@ class GoogleCloudApigeeV1RevisionStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     if (jsonSpec != null) {
       _json["jsonSpec"] = jsonSpec;
@@ -17652,7 +18501,7 @@ class GoogleCloudApigeeV1RoutingRule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (basepath != null) {
       _json["basepath"] = basepath;
     }
@@ -17719,7 +18568,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     if (_json.containsKey("overrides")) {
       overrides = (_json["overrides"] as core.List)
           .map<GoogleCloudApigeeV1RuntimeTraceConfigOverride>((value) =>
-              new GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(value))
+              GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(value))
           .toList();
     }
     if (_json.containsKey("revisionCreateTime")) {
@@ -17729,15 +18578,14 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
       revisionId = _json["revisionId"];
     }
     if (_json.containsKey("samplingConfig")) {
-      samplingConfig =
-          new GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-              _json["samplingConfig"]);
+      samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
+          _json["samplingConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
     }
@@ -17748,7 +18596,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
       _json["name"] = name;
     }
     if (overrides != null) {
-      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
+      _json["overrides"] = overrides.map((value) => value.toJson()).toList();
     }
     if (revisionCreateTime != null) {
       _json["revisionCreateTime"] = revisionCreateTime;
@@ -17757,7 +18605,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
       _json["revisionId"] = revisionId;
     }
     if (samplingConfig != null) {
-      _json["samplingConfig"] = (samplingConfig).toJson();
+      _json["samplingConfig"] = samplingConfig.toJson();
     }
     return _json;
   }
@@ -17804,9 +18652,8 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
       revisionId = _json["revisionId"];
     }
     if (_json.containsKey("samplingConfig")) {
-      samplingConfig =
-          new GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-              _json["samplingConfig"]);
+      samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
+          _json["samplingConfig"]);
     }
     if (_json.containsKey("uid")) {
       uid = _json["uid"];
@@ -17815,7 +18662,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiProxy != null) {
       _json["apiProxy"] = apiProxy;
     }
@@ -17829,7 +18676,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
       _json["revisionId"] = revisionId;
     }
     if (samplingConfig != null) {
-      _json["samplingConfig"] = (samplingConfig).toJson();
+      _json["samplingConfig"] = samplingConfig.toJson();
     }
     if (uid != null) {
       _json["uid"] = uid;
@@ -17881,7 +18728,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
       responseCodeRanges = (_json["responseCodeRanges"] as core.List)
           .map<GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>(
               (value) =>
-                  new GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
+                  GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
                       .fromJson(value))
           .toList();
     }
@@ -17898,13 +18745,13 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorSources != null) {
       _json["errorSources"] = errorSources;
     }
     if (responseCodeRanges != null) {
       _json["responseCodeRanges"] =
-          responseCodeRanges.map((value) => (value).toJson()).toList();
+          responseCodeRanges.map((value) => value.toJson()).toList();
     }
     if (responseCodes != null) {
       _json["responseCodes"] = responseCodes;
@@ -17944,7 +18791,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (firstResponseCode != null) {
       _json["firstResponseCode"] = firstResponseCode;
     }
@@ -17973,8 +18820,8 @@ class GoogleCloudApigeeV1Schema {
   GoogleCloudApigeeV1Schema.fromJson(core.Map _json) {
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
-              new GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
+          .map<GoogleCloudApigeeV1SchemaSchemaElement>(
+              (value) => GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("meta")) {
@@ -17982,24 +18829,23 @@ class GoogleCloudApigeeV1Schema {
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
-              new GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
+          .map<GoogleCloudApigeeV1SchemaSchemaElement>(
+              (value) => GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (meta != null) {
       _json["meta"] = meta;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -18021,19 +18867,19 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
       name = _json["name"];
     }
     if (_json.containsKey("properties")) {
-      properties = new GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
-          _json["properties"]);
+      properties =
+          GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(_json["properties"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
     if (properties != null) {
-      _json["properties"] = (properties).toJson();
+      _json["properties"] = properties.toJson();
     }
     return _json;
   }
@@ -18067,7 +18913,7 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -18101,7 +18947,7 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (emailIds != null) {
       _json["emailIds"] = emailIds;
     }
@@ -18133,7 +18979,7 @@ class GoogleCloudApigeeV1Session {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -18165,8 +19011,7 @@ class GoogleCloudApigeeV1SharedFlow {
       latestRevisionId = _json["latestRevisionId"];
     }
     if (_json.containsKey("metaData")) {
-      metaData =
-          new GoogleCloudApigeeV1EntityMetadata.fromJson(_json["metaData"]);
+      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json["metaData"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -18178,12 +19023,12 @@ class GoogleCloudApigeeV1SharedFlow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latestRevisionId != null) {
       _json["latestRevisionId"] = latestRevisionId;
     }
     if (metaData != null) {
-      _json["metaData"] = (metaData).toJson();
+      _json["metaData"] = metaData.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -18249,7 +19094,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
 
   GoogleCloudApigeeV1SharedFlowRevision.fromJson(core.Map _json) {
     if (_json.containsKey("configurationVersion")) {
-      configurationVersion = new GoogleCloudApigeeV1ConfigVersion.fromJson(
+      configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
           _json["configurationVersion"]);
     }
     if (_json.containsKey("contextInfo")) {
@@ -18280,7 +19125,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
     }
     if (_json.containsKey("resourceFiles")) {
       resourceFiles =
-          new GoogleCloudApigeeV1ResourceFiles.fromJson(_json["resourceFiles"]);
+          GoogleCloudApigeeV1ResourceFiles.fromJson(_json["resourceFiles"]);
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List).cast<core.String>();
@@ -18298,9 +19143,9 @@ class GoogleCloudApigeeV1SharedFlowRevision {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (configurationVersion != null) {
-      _json["configurationVersion"] = (configurationVersion).toJson();
+      _json["configurationVersion"] = configurationVersion.toJson();
     }
     if (contextInfo != null) {
       _json["contextInfo"] = contextInfo;
@@ -18327,7 +19172,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
       _json["policies"] = policies;
     }
     if (resourceFiles != null) {
-      _json["resourceFiles"] = (resourceFiles).toJson();
+      _json["resourceFiles"] = resourceFiles.toJson();
     }
     if (resources != null) {
       _json["resources"] = resources;
@@ -18359,23 +19204,23 @@ class GoogleCloudApigeeV1Stats {
     if (_json.containsKey("environments")) {
       environments = (_json["environments"] as core.List)
           .map<GoogleCloudApigeeV1StatsEnvironmentStats>((value) =>
-              new GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(value))
+              GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metaData")) {
-      metaData = new GoogleCloudApigeeV1Metadata.fromJson(_json["metaData"]);
+      metaData = GoogleCloudApigeeV1Metadata.fromJson(_json["metaData"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environments != null) {
       _json["environments"] =
-          environments.map((value) => (value).toJson()).toList();
+          environments.map((value) => value.toJson()).toList();
     }
     if (metaData != null) {
-      _json["metaData"] = (metaData).toJson();
+      _json["metaData"] = metaData.toJson();
     }
     return _json;
   }
@@ -18407,13 +19252,13 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
     if (_json.containsKey("dimensions")) {
       dimensions = (_json["dimensions"] as core.List)
           .map<GoogleCloudApigeeV1DimensionMetric>(
-              (value) => new GoogleCloudApigeeV1DimensionMetric.fromJson(value))
+              (value) => GoogleCloudApigeeV1DimensionMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
           .map<GoogleCloudApigeeV1Metric>(
-              (value) => new GoogleCloudApigeeV1Metric.fromJson(value))
+              (value) => GoogleCloudApigeeV1Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -18423,13 +19268,12 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensions != null) {
-      _json["dimensions"] =
-          dimensions.map((value) => (value).toJson()).toList();
+      _json["dimensions"] = dimensions.map((value) => value.toJson()).toList();
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -18454,7 +19298,7 @@ class GoogleCloudApigeeV1Subscription {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -18473,9 +19317,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// indiscriminately. **Note**: We strongly recommend that you use the ETag in
   /// the read-modify-write cycle to avoid race conditions.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -18507,7 +19349,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -18567,13 +19409,13 @@ class GoogleCloudApigeeV1TargetServer {
       port = _json["port"];
     }
     if (_json.containsKey("sSLInfo")) {
-      sSLInfo = new GoogleCloudApigeeV1TlsInfo.fromJson(_json["sSLInfo"]);
+      sSLInfo = GoogleCloudApigeeV1TlsInfo.fromJson(_json["sSLInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -18590,7 +19432,7 @@ class GoogleCloudApigeeV1TargetServer {
       _json["port"] = port;
     }
     if (sSLInfo != null) {
-      _json["sSLInfo"] = (sSLInfo).toJson();
+      _json["sSLInfo"] = sSLInfo.toJson();
     }
     return _json;
   }
@@ -18623,13 +19465,13 @@ class GoogleCloudApigeeV1TargetServerConfig {
       port = _json["port"];
     }
     if (_json.containsKey("tlsInfo")) {
-      tlsInfo = new GoogleCloudApigeeV1TlsInfoConfig.fromJson(_json["tlsInfo"]);
+      tlsInfo = GoogleCloudApigeeV1TlsInfoConfig.fromJson(_json["tlsInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (host != null) {
       _json["host"] = host;
     }
@@ -18640,7 +19482,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
       _json["port"] = port;
     }
     if (tlsInfo != null) {
-      _json["tlsInfo"] = (tlsInfo).toJson();
+      _json["tlsInfo"] = tlsInfo.toJson();
     }
     return _json;
   }
@@ -18667,7 +19509,7 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
       _json["error"] = error;
     }
@@ -18727,8 +19569,8 @@ class GoogleCloudApigeeV1TlsInfo {
       clientAuthEnabled = _json["clientAuthEnabled"];
     }
     if (_json.containsKey("commonName")) {
-      commonName = new GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
-          _json["commonName"]);
+      commonName =
+          GoogleCloudApigeeV1TlsInfoCommonName.fromJson(_json["commonName"]);
     }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
@@ -18752,7 +19594,7 @@ class GoogleCloudApigeeV1TlsInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ciphers != null) {
       _json["ciphers"] = ciphers;
     }
@@ -18760,7 +19602,7 @@ class GoogleCloudApigeeV1TlsInfo {
       _json["clientAuthEnabled"] = clientAuthEnabled;
     }
     if (commonName != null) {
-      _json["commonName"] = (commonName).toJson();
+      _json["commonName"] = commonName.toJson();
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
@@ -18804,7 +19646,7 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (value != null) {
       _json["value"] = value;
     }
@@ -18862,7 +19704,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     }
     if (_json.containsKey("commonName")) {
       commonName =
-          new GoogleCloudApigeeV1CommonNameConfig.fromJson(_json["commonName"]);
+          GoogleCloudApigeeV1CommonNameConfig.fromJson(_json["commonName"]);
     }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
@@ -18874,7 +19716,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
       keyAlias = _json["keyAlias"];
     }
     if (_json.containsKey("keyAliasReference")) {
-      keyAliasReference = new GoogleCloudApigeeV1KeyAliasReference.fromJson(
+      keyAliasReference = GoogleCloudApigeeV1KeyAliasReference.fromJson(
           _json["keyAliasReference"]);
     }
     if (_json.containsKey("protocols")) {
@@ -18887,7 +19729,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ciphers != null) {
       _json["ciphers"] = ciphers;
     }
@@ -18895,7 +19737,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
       _json["clientAuthEnabled"] = clientAuthEnabled;
     }
     if (commonName != null) {
-      _json["commonName"] = (commonName).toJson();
+      _json["commonName"] = commonName.toJson();
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
@@ -18907,7 +19749,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
       _json["keyAlias"] = keyAlias;
     }
     if (keyAliasReference != null) {
-      _json["keyAliasReference"] = (keyAliasReference).toJson();
+      _json["keyAliasReference"] = keyAliasReference.toJson();
     }
     if (protocols != null) {
       _json["protocols"] = protocols;
@@ -19034,7 +19876,7 @@ class GoogleCloudApigeeV1UpdateError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -19082,7 +19924,7 @@ class GoogleIamV1AuditConfig {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = (_json["auditLogConfigs"] as core.List)
           .map<GoogleIamV1AuditLogConfig>(
-              (value) => new GoogleIamV1AuditLogConfig.fromJson(value))
+              (value) => GoogleIamV1AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -19092,10 +19934,10 @@ class GoogleIamV1AuditConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
+          auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
       _json["service"] = service;
@@ -19136,7 +19978,7 @@ class GoogleIamV1AuditLogConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -19197,7 +20039,7 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
-      condition = new GoogleTypeExpr.fromJson(_json["condition"]);
+      condition = GoogleTypeExpr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -19209,9 +20051,9 @@ class GoogleIamV1Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -19273,9 +20115,7 @@ class GoogleIamV1Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -19305,13 +20145,13 @@ class GoogleIamV1Policy {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = (_json["auditConfigs"] as core.List)
           .map<GoogleIamV1AuditConfig>(
-              (value) => new GoogleIamV1AuditConfig.fromJson(value))
+              (value) => GoogleIamV1AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
           .map<GoogleIamV1Binding>(
-              (value) => new GoogleIamV1Binding.fromJson(value))
+              (value) => GoogleIamV1Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -19324,13 +20164,13 @@ class GoogleIamV1Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
+          auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -19359,7 +20199,7 @@ class GoogleIamV1SetIamPolicyRequest {
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new GoogleIamV1Policy.fromJson(_json["policy"]);
+      policy = GoogleIamV1Policy.fromJson(_json["policy"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -19368,9 +20208,9 @@ class GoogleIamV1SetIamPolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -19397,7 +20237,7 @@ class GoogleIamV1TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -19421,7 +20261,7 @@ class GoogleIamV1TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -19446,20 +20286,19 @@ class GoogleLongrunningListOperationsResponse {
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
           .map<GoogleLongrunningOperation>(
-              (value) => new GoogleLongrunningOperation.fromJson(value))
+              (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19509,7 +20348,7 @@ class GoogleLongrunningOperation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new GoogleRpcStatus.fromJson(_json["error"]);
+      error = GoogleRpcStatus.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -19526,12 +20365,12 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -19558,7 +20397,7 @@ class GoogleProtobufEmpty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -19575,18 +20414,17 @@ class GoogleRpcPreconditionFailure {
   GoogleRpcPreconditionFailure.fromJson(core.Map _json) {
     if (_json.containsKey("violations")) {
       violations = (_json["violations"] as core.List)
-          .map<GoogleRpcPreconditionFailureViolation>((value) =>
-              new GoogleRpcPreconditionFailureViolation.fromJson(value))
+          .map<GoogleRpcPreconditionFailureViolation>(
+              (value) => GoogleRpcPreconditionFailureViolation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (violations != null) {
-      _json["violations"] =
-          violations.map((value) => (value).toJson()).toList();
+      _json["violations"] = violations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -19625,7 +20463,7 @@ class GoogleRpcPreconditionFailureViolation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -19680,7 +20518,7 @@ class GoogleRpcStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -19746,7 +20584,7 @@ class GoogleTypeExpr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }

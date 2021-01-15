@@ -25,26 +25,25 @@ Future<List<DirectoryListItems>> _listAllApis() {
 }
 
 Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
-    {List<String> ids}) {
-  return fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
-    final directory = Directory(outputDir);
-    if (directory.existsSync()) {
-      print('Deleting directory $outputDir.');
-      directory.deleteSync(recursive: true);
-    }
-    directory.createSync(recursive: true);
+        {List<String> ids}) =>
+    fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
+      final directory = Directory(outputDir);
+      if (directory.existsSync()) {
+        print('Deleting directory $outputDir.');
+        directory.deleteSync(recursive: true);
+      }
+      directory.createSync(recursive: true);
 
-    for (var description in apis) {
-      final name =
-          '$outputDir/${description.name}__${description.version}.json';
-      final file = File(name);
-      final encoder = JsonEncoder.withIndent('    ');
-      file.writeAsStringSync(encoder.convert(description.toJson()));
-      print('Wrote: $name');
-    }
-    return apis;
-  });
-}
+      for (var description in apis) {
+        final name =
+            '$outputDir/${description.name}__${description.version}.json';
+        final file = File(name);
+        const encoder = JsonEncoder.withIndent('    ');
+        file.writeAsStringSync(encoder.convert(description.toJson()));
+        print('Wrote: $name');
+      }
+      return apis;
+    });
 
 Future<List<RestDescription>> fetchDiscoveryDocuments(
     {List<String> ids}) async {
@@ -60,17 +59,22 @@ Future<List<RestDescription>> fetchDiscoveryDocuments(
       var count = 0;
       return await pool
           .forEach(list.items, (item) async {
-            print(ansi.darkGray.wrap(
-                'Requesting ${++count} of ${list.items.length} - ${item.id}'));
+            print(
+              ansi.darkGray.wrap(
+                  'Requesting ${++count} of ${list.items.length} - ${item.id}'),
+            );
             if (ids == null || ids.contains(item.id)) {
               try {
                 // NOTE: await is intentional here – ensures the catch clause
                 // is executed on an async error
                 return await discovery.apis.getRest(item.name, item.version);
               } catch (e) {
-                print(ansi.red.wrap(
-                    'Failed to retrieve document for "${item.name}:${item.version}"'
-                    ' -> Ignoring!'));
+                print(
+                  ansi.red.wrap(
+                    'Failed to retrieve document for '
+                    '"${item.name}:${item.version}" -> Ignoring!',
+                  ),
+                );
               }
             }
           })
@@ -84,16 +88,13 @@ Future<List<RestDescription>> fetchDiscoveryDocuments(
   }
 }
 
-List<RestDescription> loadDiscoveryDocuments(String directory) {
-  final apiDescriptions = Directory(directory)
-      .listSync()
-      .where((fse) => fse is File && fse.path.endsWith('.json'))
-      .map((FileSystemEntity file) {
-    return RestDescription.fromJson(
-        json.decode((file as File).readAsStringSync()));
-  }).toList();
-  return apiDescriptions;
-}
+List<RestDescription> loadDiscoveryDocuments(String directory) =>
+    Directory(directory)
+        .listSync()
+        .where((fse) => fse is File && fse.path.endsWith('.json'))
+        .map((FileSystemEntity file) => RestDescription.fromJson(
+            json.decode((file as File).readAsStringSync())))
+        .toList();
 
 Future downloadFromConfiguration(String configFile) async {
   final items = await _listAllApis();
@@ -107,11 +108,15 @@ Future downloadFromConfiguration(String configFile) async {
   // Print warnings for APIs not mentioned.
   if (configuration.missingApis.isNotEmpty) {
     print('WARNING: No configuration for the following APIs:');
-    configuration.missingApis.forEach((id) => print('- $id'));
+    for (var id in configuration.missingApis) {
+      print('- $id');
+    }
   }
   if (configuration.excessApis.isNotEmpty) {
     print('WARNING: The following APIs do not exist:');
-    configuration.excessApis.forEach((id) => print('- $id'));
+    for (var id in configuration.excessApis) {
+      print('- $id');
+    }
   }
 }
 

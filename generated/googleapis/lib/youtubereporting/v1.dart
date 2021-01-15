@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.youtubereporting.v1;
 
@@ -38,22 +56,21 @@ class YoutubereportingApi {
 
   final commons.ApiRequester _requester;
 
-  JobsResourceApi get jobs => new JobsResourceApi(_requester);
-  MediaResourceApi get media => new MediaResourceApi(_requester);
-  ReportTypesResourceApi get reportTypes =>
-      new ReportTypesResourceApi(_requester);
+  JobsResourceApi get jobs => JobsResourceApi(_requester);
+  MediaResourceApi get media => MediaResourceApi(_requester);
+  ReportTypesResourceApi get reportTypes => ReportTypesResourceApi(_requester);
 
   YoutubereportingApi(http.Client client,
       {core.String rootUrl = "https://youtubereporting.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class JobsResourceApi {
   final commons.ApiRequester _requester;
 
-  JobsReportsResourceApi get reports => new JobsReportsResourceApi(_requester);
+  JobsReportsResourceApi get reports => JobsReportsResourceApi(_requester);
 
   JobsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -77,17 +94,20 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> create(Job request,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> create(
+    Job request, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -98,13 +118,16 @@ class JobsResourceApi {
 
     _url = 'v1/jobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Deletes a job.
@@ -127,17 +150,20 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String jobId,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String jobId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError("Parameter jobId is required.");
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -148,13 +174,16 @@ class JobsResourceApi {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a job.
@@ -177,17 +206,20 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(core.String jobId,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Job> get(
+    core.String jobId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError("Parameter jobId is required.");
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -198,13 +230,16 @@ class JobsResourceApi {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Job.fromJson(data));
   }
 
   /// Lists jobs.
@@ -237,18 +272,19 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListJobsResponse> list(
-      {core.String pageToken,
-      core.String onBehalfOfContentOwner,
-      core.int pageSize,
-      core.bool includeSystemManaged,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListJobsResponse> list({
+    core.String pageToken,
+    core.String onBehalfOfContentOwner,
+    core.int pageSize,
+    core.bool includeSystemManaged,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -268,13 +304,16 @@ class JobsResourceApi {
 
     _url = 'v1/jobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListJobsResponse.fromJson(data));
   }
 }
 
@@ -305,20 +344,24 @@ class JobsReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(core.String jobId, core.String reportId,
-      {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Report> get(
+    core.String jobId,
+    core.String reportId, {
+    core.String onBehalfOfContentOwner,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError("Parameter jobId is required.");
     }
     if (reportId == null) {
-      throw new core.ArgumentError("Parameter reportId is required.");
+      throw core.ArgumentError("Parameter reportId is required.");
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -332,13 +375,16 @@ class JobsReportsResourceApi {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Report.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Report.fromJson(data));
   }
 
   /// Lists reports created by a specific job. Returns NOT_FOUND if the job does
@@ -379,23 +425,25 @@ class JobsReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListReportsResponse> list(core.String jobId,
-      {core.String startTimeAtOrAfter,
-      core.String onBehalfOfContentOwner,
-      core.int pageSize,
-      core.String pageToken,
-      core.String createdAfter,
-      core.String startTimeBefore,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListReportsResponse> list(
+    core.String jobId, {
+    core.String startTimeAtOrAfter,
+    core.String onBehalfOfContentOwner,
+    core.int pageSize,
+    core.String pageToken,
+    core.String createdAfter,
+    core.String startTimeBefore,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
+      throw core.ArgumentError("Parameter jobId is required.");
     }
     if (startTimeAtOrAfter != null) {
       _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
@@ -421,13 +469,16 @@ class JobsReportsResourceApi {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListReportsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListReportsResponse.fromJson(data));
   }
 }
 
@@ -462,19 +513,20 @@ class MediaResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(core.String resourceName,
-      {core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future download(
+    core.String resourceName, {
+    core.String $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -484,15 +536,18 @@ class MediaResourceApi {
 
     _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new GdataMedia.fromJson(data));
+      return _response.then((data) => GdataMedia.fromJson(data));
     } else {
       return _response;
     }
@@ -534,18 +589,19 @@ class ReportTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListReportTypesResponse> list(
-      {core.bool includeSystemManaged,
-      core.String onBehalfOfContentOwner,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListReportTypesResponse> list({
+    core.bool includeSystemManaged,
+    core.String onBehalfOfContentOwner,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
@@ -565,13 +621,16 @@ class ReportTypesResourceApi {
 
     _url = 'v1/reportTypes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListReportTypesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListReportTypesResponse.fromJson(data));
   }
 }
 
@@ -587,7 +646,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -602,9 +661,8 @@ class GdataBlobstore2Info {
 
   /// gdata
   core.String downloadReadHandle;
-  core.List<core.int> get downloadReadHandleAsBytes {
-    return convert.base64.decode(downloadReadHandle);
-  }
+  core.List<core.int> get downloadReadHandleAsBytes =>
+      convert.base64.decode(downloadReadHandle);
 
   set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
     downloadReadHandle =
@@ -616,9 +674,8 @@ class GdataBlobstore2Info {
 
   /// gdata
   core.String uploadMetadataContainer;
-  core.List<core.int> get uploadMetadataContainerAsBytes {
-    return convert.base64.decode(uploadMetadataContainer);
-  }
+  core.List<core.int> get uploadMetadataContainerAsBytes =>
+      convert.base64.decode(uploadMetadataContainer);
 
   set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
     uploadMetadataContainer =
@@ -647,7 +704,7 @@ class GdataBlobstore2Info {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blobGeneration != null) {
       _json["blobGeneration"] = blobGeneration;
     }
@@ -671,9 +728,7 @@ class GdataBlobstore2Info {
 class GdataCompositeMedia {
   /// gdata
   core.String blobRef;
-  core.List<core.int> get blobRefAsBytes {
-    return convert.base64.decode(blobRef);
-  }
+  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef);
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
@@ -685,9 +740,8 @@ class GdataCompositeMedia {
 
   /// gdata
   core.String cosmoBinaryReference;
-  core.List<core.int> get cosmoBinaryReferenceAsBytes {
-    return convert.base64.decode(cosmoBinaryReference);
-  }
+  core.List<core.int> get cosmoBinaryReferenceAsBytes =>
+      convert.base64.decode(cosmoBinaryReference);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
@@ -699,9 +753,7 @@ class GdataCompositeMedia {
 
   /// gdata
   core.String inline;
-  core.List<core.int> get inlineAsBytes {
-    return convert.base64.decode(inline);
-  }
+  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline);
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
@@ -713,9 +765,7 @@ class GdataCompositeMedia {
 
   /// gdata
   core.String md5Hash;
-  core.List<core.int> get md5HashAsBytes {
-    return convert.base64.decode(md5Hash);
-  }
+  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash);
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
@@ -739,9 +789,7 @@ class GdataCompositeMedia {
 
   /// gdata
   core.String sha1Hash;
-  core.List<core.int> get sha1HashAsBytes {
-    return convert.base64.decode(sha1Hash);
-  }
+  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash);
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
@@ -755,8 +803,7 @@ class GdataCompositeMedia {
       blobRef = _json["blobRef"];
     }
     if (_json.containsKey("blobstore2Info")) {
-      blobstore2Info =
-          new GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+      blobstore2Info = GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
     }
     if (_json.containsKey("cosmoBinaryReference")) {
       cosmoBinaryReference = _json["cosmoBinaryReference"];
@@ -774,7 +821,7 @@ class GdataCompositeMedia {
       md5Hash = _json["md5Hash"];
     }
     if (_json.containsKey("objectId")) {
-      objectId = new GdataObjectId.fromJson(_json["objectId"]);
+      objectId = GdataObjectId.fromJson(_json["objectId"]);
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -789,12 +836,12 @@ class GdataCompositeMedia {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blobRef != null) {
       _json["blobRef"] = blobRef;
     }
     if (blobstore2Info != null) {
-      _json["blobstore2Info"] = (blobstore2Info).toJson();
+      _json["blobstore2Info"] = blobstore2Info.toJson();
     }
     if (cosmoBinaryReference != null) {
       _json["cosmoBinaryReference"] = cosmoBinaryReference;
@@ -812,7 +859,7 @@ class GdataCompositeMedia {
       _json["md5Hash"] = md5Hash;
     }
     if (objectId != null) {
-      _json["objectId"] = (objectId).toJson();
+      _json["objectId"] = objectId.toJson();
     }
     if (path != null) {
       _json["path"] = path;
@@ -866,7 +913,7 @@ class GdataContentTypeInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuess != null) {
       _json["bestGuess"] = bestGuess;
     }
@@ -908,14 +955,13 @@ class GdataDiffChecksumsResponse {
   GdataDiffChecksumsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("checksumsLocation")) {
       checksumsLocation =
-          new GdataCompositeMedia.fromJson(_json["checksumsLocation"]);
+          GdataCompositeMedia.fromJson(_json["checksumsLocation"]);
     }
     if (_json.containsKey("chunkSizeBytes")) {
       chunkSizeBytes = _json["chunkSizeBytes"];
     }
     if (_json.containsKey("objectLocation")) {
-      objectLocation =
-          new GdataCompositeMedia.fromJson(_json["objectLocation"]);
+      objectLocation = GdataCompositeMedia.fromJson(_json["objectLocation"]);
     }
     if (_json.containsKey("objectSizeBytes")) {
       objectSizeBytes = _json["objectSizeBytes"];
@@ -927,15 +973,15 @@ class GdataDiffChecksumsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checksumsLocation != null) {
-      _json["checksumsLocation"] = (checksumsLocation).toJson();
+      _json["checksumsLocation"] = checksumsLocation.toJson();
     }
     if (chunkSizeBytes != null) {
       _json["chunkSizeBytes"] = chunkSizeBytes;
     }
     if (objectLocation != null) {
-      _json["objectLocation"] = (objectLocation).toJson();
+      _json["objectLocation"] = objectLocation.toJson();
     }
     if (objectSizeBytes != null) {
       _json["objectSizeBytes"] = objectSizeBytes;
@@ -956,16 +1002,15 @@ class GdataDiffDownloadResponse {
 
   GdataDiffDownloadResponse.fromJson(core.Map _json) {
     if (_json.containsKey("objectLocation")) {
-      objectLocation =
-          new GdataCompositeMedia.fromJson(_json["objectLocation"]);
+      objectLocation = GdataCompositeMedia.fromJson(_json["objectLocation"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (objectLocation != null) {
-      _json["objectLocation"] = (objectLocation).toJson();
+      _json["objectLocation"] = objectLocation.toJson();
     }
     return _json;
   }
@@ -986,10 +1031,10 @@ class GdataDiffUploadRequest {
 
   GdataDiffUploadRequest.fromJson(core.Map _json) {
     if (_json.containsKey("checksumsInfo")) {
-      checksumsInfo = new GdataCompositeMedia.fromJson(_json["checksumsInfo"]);
+      checksumsInfo = GdataCompositeMedia.fromJson(_json["checksumsInfo"]);
     }
     if (_json.containsKey("objectInfo")) {
-      objectInfo = new GdataCompositeMedia.fromJson(_json["objectInfo"]);
+      objectInfo = GdataCompositeMedia.fromJson(_json["objectInfo"]);
     }
     if (_json.containsKey("objectVersion")) {
       objectVersion = _json["objectVersion"];
@@ -998,12 +1043,12 @@ class GdataDiffUploadRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (checksumsInfo != null) {
-      _json["checksumsInfo"] = (checksumsInfo).toJson();
+      _json["checksumsInfo"] = checksumsInfo.toJson();
     }
     if (objectInfo != null) {
-      _json["objectInfo"] = (objectInfo).toJson();
+      _json["objectInfo"] = objectInfo.toJson();
     }
     if (objectVersion != null) {
       _json["objectVersion"] = objectVersion;
@@ -1027,19 +1072,18 @@ class GdataDiffUploadResponse {
       objectVersion = _json["objectVersion"];
     }
     if (_json.containsKey("originalObject")) {
-      originalObject =
-          new GdataCompositeMedia.fromJson(_json["originalObject"]);
+      originalObject = GdataCompositeMedia.fromJson(_json["originalObject"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (objectVersion != null) {
       _json["objectVersion"] = objectVersion;
     }
     if (originalObject != null) {
-      _json["originalObject"] = (originalObject).toJson();
+      _json["originalObject"] = originalObject.toJson();
     }
     return _json;
   }
@@ -1066,7 +1110,7 @@ class GdataDiffVersionResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (objectSizeBytes != null) {
       _json["objectSizeBytes"] = objectSizeBytes;
     }
@@ -1098,7 +1142,7 @@ class GdataDownloadParameters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowGzipCompression != null) {
       _json["allowGzipCompression"] = allowGzipCompression;
     }
@@ -1116,9 +1160,8 @@ class GdataMedia {
 
   /// gdata
   core.String bigstoreObjectRef;
-  core.List<core.int> get bigstoreObjectRefAsBytes {
-    return convert.base64.decode(bigstoreObjectRef);
-  }
+  core.List<core.int> get bigstoreObjectRefAsBytes =>
+      convert.base64.decode(bigstoreObjectRef);
 
   set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
     bigstoreObjectRef =
@@ -1127,9 +1170,7 @@ class GdataMedia {
 
   /// gdata
   core.String blobRef;
-  core.List<core.int> get blobRefAsBytes {
-    return convert.base64.decode(blobRef);
-  }
+  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef);
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
@@ -1150,9 +1191,8 @@ class GdataMedia {
 
   /// gdata
   core.String cosmoBinaryReference;
-  core.List<core.int> get cosmoBinaryReferenceAsBytes {
-    return convert.base64.decode(cosmoBinaryReference);
-  }
+  core.List<core.int> get cosmoBinaryReferenceAsBytes =>
+      convert.base64.decode(cosmoBinaryReference);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
@@ -1191,9 +1231,7 @@ class GdataMedia {
 
   /// gdata
   core.String inline;
-  core.List<core.int> get inlineAsBytes {
-    return convert.base64.decode(inline);
-  }
+  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline);
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
@@ -1208,9 +1246,7 @@ class GdataMedia {
 
   /// gdata
   core.String md5Hash;
-  core.List<core.int> get md5HashAsBytes {
-    return convert.base64.decode(md5Hash);
-  }
+  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash);
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
@@ -1219,9 +1255,7 @@ class GdataMedia {
 
   /// gdata
   core.String mediaId;
-  core.List<core.int> get mediaIdAsBytes {
-    return convert.base64.decode(mediaId);
-  }
+  core.List<core.int> get mediaIdAsBytes => convert.base64.decode(mediaId);
 
   set mediaIdAsBytes(core.List<core.int> _bytes) {
     mediaId =
@@ -1253,9 +1287,7 @@ class GdataMedia {
 
   /// gdata
   core.String sha1Hash;
-  core.List<core.int> get sha1HashAsBytes {
-    return convert.base64.decode(sha1Hash);
-  }
+  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash);
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
@@ -1264,9 +1296,8 @@ class GdataMedia {
 
   /// gdata
   core.String sha256Hash;
-  core.List<core.int> get sha256HashAsBytes {
-    return convert.base64.decode(sha256Hash);
-  }
+  core.List<core.int> get sha256HashAsBytes =>
+      convert.base64.decode(sha256Hash);
 
   set sha256HashAsBytes(core.List<core.int> _bytes) {
     sha256Hash =
@@ -1292,21 +1323,19 @@ class GdataMedia {
       blobRef = _json["blobRef"];
     }
     if (_json.containsKey("blobstore2Info")) {
-      blobstore2Info =
-          new GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
+      blobstore2Info = GdataBlobstore2Info.fromJson(_json["blobstore2Info"]);
     }
     if (_json.containsKey("compositeMedia")) {
       compositeMedia = (_json["compositeMedia"] as core.List)
           .map<GdataCompositeMedia>(
-              (value) => new GdataCompositeMedia.fromJson(value))
+              (value) => GdataCompositeMedia.fromJson(value))
           .toList();
     }
     if (_json.containsKey("contentType")) {
       contentType = _json["contentType"];
     }
     if (_json.containsKey("contentTypeInfo")) {
-      contentTypeInfo =
-          new GdataContentTypeInfo.fromJson(_json["contentTypeInfo"]);
+      contentTypeInfo = GdataContentTypeInfo.fromJson(_json["contentTypeInfo"]);
     }
     if (_json.containsKey("cosmoBinaryReference")) {
       cosmoBinaryReference = _json["cosmoBinaryReference"];
@@ -1315,28 +1344,28 @@ class GdataMedia {
       crc32cHash = _json["crc32cHash"];
     }
     if (_json.containsKey("diffChecksumsResponse")) {
-      diffChecksumsResponse = new GdataDiffChecksumsResponse.fromJson(
-          _json["diffChecksumsResponse"]);
+      diffChecksumsResponse =
+          GdataDiffChecksumsResponse.fromJson(_json["diffChecksumsResponse"]);
     }
     if (_json.containsKey("diffDownloadResponse")) {
       diffDownloadResponse =
-          new GdataDiffDownloadResponse.fromJson(_json["diffDownloadResponse"]);
+          GdataDiffDownloadResponse.fromJson(_json["diffDownloadResponse"]);
     }
     if (_json.containsKey("diffUploadRequest")) {
       diffUploadRequest =
-          new GdataDiffUploadRequest.fromJson(_json["diffUploadRequest"]);
+          GdataDiffUploadRequest.fromJson(_json["diffUploadRequest"]);
     }
     if (_json.containsKey("diffUploadResponse")) {
       diffUploadResponse =
-          new GdataDiffUploadResponse.fromJson(_json["diffUploadResponse"]);
+          GdataDiffUploadResponse.fromJson(_json["diffUploadResponse"]);
     }
     if (_json.containsKey("diffVersionResponse")) {
       diffVersionResponse =
-          new GdataDiffVersionResponse.fromJson(_json["diffVersionResponse"]);
+          GdataDiffVersionResponse.fromJson(_json["diffVersionResponse"]);
     }
     if (_json.containsKey("downloadParameters")) {
       downloadParameters =
-          new GdataDownloadParameters.fromJson(_json["downloadParameters"]);
+          GdataDownloadParameters.fromJson(_json["downloadParameters"]);
     }
     if (_json.containsKey("filename")) {
       filename = _json["filename"];
@@ -1363,7 +1392,7 @@ class GdataMedia {
       mediaId = _json["mediaId"];
     }
     if (_json.containsKey("objectId")) {
-      objectId = new GdataObjectId.fromJson(_json["objectId"]);
+      objectId = GdataObjectId.fromJson(_json["objectId"]);
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -1387,7 +1416,7 @@ class GdataMedia {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1398,17 +1427,17 @@ class GdataMedia {
       _json["blobRef"] = blobRef;
     }
     if (blobstore2Info != null) {
-      _json["blobstore2Info"] = (blobstore2Info).toJson();
+      _json["blobstore2Info"] = blobstore2Info.toJson();
     }
     if (compositeMedia != null) {
       _json["compositeMedia"] =
-          compositeMedia.map((value) => (value).toJson()).toList();
+          compositeMedia.map((value) => value.toJson()).toList();
     }
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
     if (contentTypeInfo != null) {
-      _json["contentTypeInfo"] = (contentTypeInfo).toJson();
+      _json["contentTypeInfo"] = contentTypeInfo.toJson();
     }
     if (cosmoBinaryReference != null) {
       _json["cosmoBinaryReference"] = cosmoBinaryReference;
@@ -1417,22 +1446,22 @@ class GdataMedia {
       _json["crc32cHash"] = crc32cHash;
     }
     if (diffChecksumsResponse != null) {
-      _json["diffChecksumsResponse"] = (diffChecksumsResponse).toJson();
+      _json["diffChecksumsResponse"] = diffChecksumsResponse.toJson();
     }
     if (diffDownloadResponse != null) {
-      _json["diffDownloadResponse"] = (diffDownloadResponse).toJson();
+      _json["diffDownloadResponse"] = diffDownloadResponse.toJson();
     }
     if (diffUploadRequest != null) {
-      _json["diffUploadRequest"] = (diffUploadRequest).toJson();
+      _json["diffUploadRequest"] = diffUploadRequest.toJson();
     }
     if (diffUploadResponse != null) {
-      _json["diffUploadResponse"] = (diffUploadResponse).toJson();
+      _json["diffUploadResponse"] = diffUploadResponse.toJson();
     }
     if (diffVersionResponse != null) {
-      _json["diffVersionResponse"] = (diffVersionResponse).toJson();
+      _json["diffVersionResponse"] = diffVersionResponse.toJson();
     }
     if (downloadParameters != null) {
-      _json["downloadParameters"] = (downloadParameters).toJson();
+      _json["downloadParameters"] = downloadParameters.toJson();
     }
     if (filename != null) {
       _json["filename"] = filename;
@@ -1459,7 +1488,7 @@ class GdataMedia {
       _json["mediaId"] = mediaId;
     }
     if (objectId != null) {
-      _json["objectId"] = (objectId).toJson();
+      _json["objectId"] = objectId.toJson();
     }
     if (path != null) {
       _json["path"] = path;
@@ -1510,7 +1539,7 @@ class GdataObjectId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
     }
@@ -1572,7 +1601,7 @@ class Job {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1610,7 +1639,7 @@ class ListJobsResponse {
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("jobs")) {
       jobs = (_json["jobs"] as core.List)
-          .map<Job>((value) => new Job.fromJson(value))
+          .map<Job>((value) => Job.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1620,9 +1649,9 @@ class ListJobsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1649,20 +1678,20 @@ class ListReportTypesResponse {
     }
     if (_json.containsKey("reportTypes")) {
       reportTypes = (_json["reportTypes"] as core.List)
-          .map<ReportType>((value) => new ReportType.fromJson(value))
+          .map<ReportType>((value) => ReportType.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (reportTypes != null) {
       _json["reportTypes"] =
-          reportTypes.map((value) => (value).toJson()).toList();
+          reportTypes.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1686,19 +1715,19 @@ class ListReportsResponse {
     }
     if (_json.containsKey("reports")) {
       reports = (_json["reports"] as core.List)
-          .map<Report>((value) => new Report.fromJson(value))
+          .map<Report>((value) => Report.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (reports != null) {
-      _json["reports"] = reports.map((value) => (value).toJson()).toList();
+      _json["reports"] = reports.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1758,7 +1787,7 @@ class Report {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1819,7 +1848,7 @@ class ReportType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deprecateTime != null) {
       _json["deprecateTime"] = deprecateTime;
     }

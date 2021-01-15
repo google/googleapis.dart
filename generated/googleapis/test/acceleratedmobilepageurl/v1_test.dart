@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.acceleratedmobilepageurl.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,13 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterAmpUrl = 0;
-buildAmpUrl() {
-  var o = new api.AmpUrl();
+api.AmpUrl buildAmpUrl() {
+  var o = api.AmpUrl();
   buildCounterAmpUrl++;
   if (buildCounterAmpUrl < 3) {
     o.ampUrl = "foo";
@@ -63,7 +83,7 @@ buildAmpUrl() {
   return o;
 }
 
-checkAmpUrl(api.AmpUrl o) {
+void checkAmpUrl(api.AmpUrl o) {
   buildCounterAmpUrl++;
   if (buildCounterAmpUrl < 3) {
     unittest.expect(o.ampUrl, unittest.equals('foo'));
@@ -74,8 +94,8 @@ checkAmpUrl(api.AmpUrl o) {
 }
 
 core.int buildCounterAmpUrlError = 0;
-buildAmpUrlError() {
-  var o = new api.AmpUrlError();
+api.AmpUrlError buildAmpUrlError() {
+  var o = api.AmpUrlError();
   buildCounterAmpUrlError++;
   if (buildCounterAmpUrlError < 3) {
     o.errorCode = "foo";
@@ -86,7 +106,7 @@ buildAmpUrlError() {
   return o;
 }
 
-checkAmpUrlError(api.AmpUrlError o) {
+void checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError++;
   if (buildCounterAmpUrlError < 3) {
     unittest.expect(o.errorCode, unittest.equals('foo'));
@@ -96,92 +116,92 @@ checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-buildUnnamed4077() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3236() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4077(core.List<core.String> o) {
+void checkUnnamed3236(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchGetAmpUrlsRequest = 0;
-buildBatchGetAmpUrlsRequest() {
-  var o = new api.BatchGetAmpUrlsRequest();
+api.BatchGetAmpUrlsRequest buildBatchGetAmpUrlsRequest() {
+  var o = api.BatchGetAmpUrlsRequest();
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     o.lookupStrategy = "foo";
-    o.urls = buildUnnamed4077();
+    o.urls = buildUnnamed3236();
   }
   buildCounterBatchGetAmpUrlsRequest--;
   return o;
 }
 
-checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
+void checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed4077(o.urls);
+    checkUnnamed3236(o.urls);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-buildUnnamed4078() {
-  var o = new core.List<api.AmpUrl>();
+core.List<api.AmpUrl> buildUnnamed3237() {
+  var o = <api.AmpUrl>[];
   o.add(buildAmpUrl());
   o.add(buildAmpUrl());
   return o;
 }
 
-checkUnnamed4078(core.List<api.AmpUrl> o) {
+void checkUnnamed3237(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrl(o[0]);
   checkAmpUrl(o[1]);
 }
 
-buildUnnamed4079() {
-  var o = new core.List<api.AmpUrlError>();
+core.List<api.AmpUrlError> buildUnnamed3238() {
+  var o = <api.AmpUrlError>[];
   o.add(buildAmpUrlError());
   o.add(buildAmpUrlError());
   return o;
 }
 
-checkUnnamed4079(core.List<api.AmpUrlError> o) {
+void checkUnnamed3238(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrlError(o[0]);
   checkAmpUrlError(o[1]);
 }
 
 core.int buildCounterBatchGetAmpUrlsResponse = 0;
-buildBatchGetAmpUrlsResponse() {
-  var o = new api.BatchGetAmpUrlsResponse();
+api.BatchGetAmpUrlsResponse buildBatchGetAmpUrlsResponse() {
+  var o = api.BatchGetAmpUrlsResponse();
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    o.ampUrls = buildUnnamed4078();
-    o.urlErrors = buildUnnamed4079();
+    o.ampUrls = buildUnnamed3237();
+    o.urlErrors = buildUnnamed3238();
   }
   buildCounterBatchGetAmpUrlsResponse--;
   return o;
 }
 
-checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
+void checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed4078(o.ampUrls);
-    checkUnnamed4079(o.urlErrors);
+    checkUnnamed3237(o.ampUrls);
+    checkUnnamed3238(o.urlErrors);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-AmpUrl", () {
     unittest.test("to-json--from-json", () {
       var o = buildAmpUrl();
-      var od = new api.AmpUrl.fromJson(o.toJson());
+      var od = api.AmpUrl.fromJson(o.toJson());
       checkAmpUrl(od);
     });
   });
@@ -189,7 +209,7 @@ main() {
   unittest.group("obj-schema-AmpUrlError", () {
     unittest.test("to-json--from-json", () {
       var o = buildAmpUrlError();
-      var od = new api.AmpUrlError.fromJson(o.toJson());
+      var od = api.AmpUrlError.fromJson(o.toJson());
       checkAmpUrlError(od);
     });
   });
@@ -197,7 +217,7 @@ main() {
   unittest.group("obj-schema-BatchGetAmpUrlsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchGetAmpUrlsRequest();
-      var od = new api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
+      var od = api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
       checkBatchGetAmpUrlsRequest(od);
     });
   });
@@ -205,26 +225,26 @@ main() {
   unittest.group("obj-schema-BatchGetAmpUrlsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchGetAmpUrlsResponse();
-      var od = new api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
+      var od = api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
       checkBatchGetAmpUrlsResponse(od);
     });
   });
 
   unittest.group("resource-AmpUrlsResourceApi", () {
     unittest.test("method--batchGet", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.AmpUrlsResourceApi res =
-          new api.AcceleratedmobilepageurlApi(mock).ampUrls;
+          api.AcceleratedmobilepageurlApi(mock).ampUrls;
       var arg_request = buildBatchGetAmpUrlsRequest();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.BatchGetAmpUrlsRequest.fromJson(json);
+        var obj = api.BatchGetAmpUrlsRequest.fromJson(json);
         checkBatchGetAmpUrlsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -235,19 +255,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -256,7 +272,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildBatchGetAmpUrlsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .batchGet(arg_request, $fields: arg_$fields)

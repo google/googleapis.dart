@@ -38,11 +38,6 @@ class DiscoveryPackagesConfiguration {
 
   /// Create a new discovery packages configuration.
   ///
-  /// [config] is the path to the YAML configuration file.
-  ///
-  /// [allApis] is the list of all supported APIs returned by the Discovery
-  /// Service.
-  ///
   /// The format of a YAML document describing a number of packages looks
   /// like this:
   ///
@@ -84,7 +79,9 @@ class DiscoveryPackagesConfiguration {
   /// [discoveryDocsDir] is the directory where all the downloaded discovery
   /// documents are stored.
   Future download(
-      String discoveryDocsDir, List<DirectoryListItems> items) async {
+    String discoveryDocsDir,
+    List<DirectoryListItems> items,
+  ) async {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
     if (dir.existsSync()) dir.deleteSync(recursive: true);
@@ -127,11 +124,11 @@ class DiscoveryPackagesConfiguration {
 
     // Load discovery documents from disc & initialize this object.
     final allApis = <RestDescription>[];
-    (yaml['packages'] as List).forEach((package) {
+    for (var package in yaml['packages'] as List) {
       (package as Map).forEach((name, _) {
         allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
-    });
+    }
     _initialize(allApis);
 
     // Generate packages.
@@ -198,11 +195,12 @@ package.
       sb
         ..writeln('${item.title} - ${item.name} ${item.version}')
         ..writeln()
-        ..writeln('${item.description}')
+        ..writeln(item.description)
         ..writeln();
       if (item.documentationLink != null) {
-        sb.writeln('Official API documentation: ${item.documentationLink}');
-        sb.writeln();
+        sb
+          ..writeln('Official API documentation: ${item.documentationLink}')
+          ..writeln();
       }
     }
     return sb.toString();
@@ -211,11 +209,11 @@ package.
   static Map<String, Package> _packagesFromYaml(YamlList configPackages,
       String configFile, List<RestDescription> allApis) {
     final packages = <String, Package>{};
-    configPackages.forEach((package) {
+    for (var package in configPackages) {
       package.forEach((name, values) {
         packages[name] = _packageFromYaml(name, values, configFile, allApis);
       });
-    });
+    }
 
     return packages;
   }
@@ -235,19 +233,19 @@ package.
       return a.version.compareTo(b.version);
     });
 
-    var readmeFile;
+    String readmeFile;
     if (values['readme'] != null) {
       readmeFile = configUri.resolve(values['readme']).path;
     }
-    var licenseFile;
+    String licenseFile;
     if (values['license'] != null) {
       licenseFile = configUri.resolve(values['license']).path;
     }
-    var changelogFile;
+    String changelogFile;
     if (values['changelog'] != null) {
       changelogFile = configUri.resolve(values['changelog']).path;
     }
-    var example;
+    String example;
     if (values['example'] != null) {
       final exampleFile = configUri.resolve(values['example']).path;
       example = File(exampleFile).readAsStringSync();
@@ -257,11 +255,11 @@ package.
     final apiDescriptions = <RestDescription>[];
     const description = 'Auto-generated client libraries for accessing Google '
         'APIs described through the API discovery service.';
-    allApis.forEach((RestDescription apiDescription) {
+    for (var apiDescription in allApis) {
       if (apis.contains(apiDescription.id)) {
         apiDescriptions.add(apiDescription);
       }
-    });
+    }
 
     // Generate the README.md file content.
     final readme = _generateReadme(readmeFile, apiDescriptions);
@@ -289,9 +287,10 @@ package.
   /// The known APIs are the APis mentioned in each package together with
   /// the APIs explicitly skipped.
   static Set<String> _calculateKnownApis(
-      Map<String, Package> packages, YamlList skippedApis) {
-    final knownApis = <String>{};
-    knownApis.addAll(skippedApis.cast<String>());
+    Map<String, Package> packages,
+    YamlList skippedApis,
+  ) {
+    final knownApis = <String>{...skippedApis.cast<String>()};
     packages.forEach((_, package) => knownApis.addAll(package.apis));
     return knownApis;
   }
@@ -308,8 +307,8 @@ package.
   /// returned from the Discovery Service.
   static Iterable<String> _calculateExcessApis(
       Iterable<String> knownApis, List<RestDescription> allApis) {
-    final excessApis = Set<String>.from(knownApis);
-    allApis.forEach((item) => excessApis.remove(item.id));
+    final excessApis = Set<String>.from(knownApis)
+      ..removeAll(allApis.map((e) => e.id));
     return excessApis;
   }
 }

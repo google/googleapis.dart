@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.osconfig.v1;
 
@@ -25,22 +43,22 @@ class OsconfigApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   OsconfigApi(http.Client client,
       {core.String rootUrl = "https://osconfig.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsPatchDeploymentsResourceApi get patchDeployments =>
-      new ProjectsPatchDeploymentsResourceApi(_requester);
+      ProjectsPatchDeploymentsResourceApi(_requester);
   ProjectsPatchJobsResourceApi get patchJobs =>
-      new ProjectsPatchJobsResourceApi(_requester);
+      ProjectsPatchJobsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -78,20 +96,23 @@ class ProjectsPatchDeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PatchDeployment> create(
-      PatchDeployment request, core.String parent,
-      {core.String patchDeploymentId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PatchDeployment request,
+    core.String parent, {
+    core.String patchDeploymentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (patchDeploymentId != null) {
       _queryParams["patchDeploymentId"] = [patchDeploymentId];
@@ -104,13 +125,16 @@ class ProjectsPatchDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchDeployments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PatchDeployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PatchDeployment.fromJson(data));
   }
 
   /// Delete an OS Config patch deployment.
@@ -131,16 +155,19 @@ class ProjectsPatchDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -148,13 +175,16 @@ class ProjectsPatchDeploymentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Get an OS Config patch deployment.
@@ -175,16 +205,19 @@ class ProjectsPatchDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PatchDeployment> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PatchDeployment> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -192,13 +225,16 @@ class ProjectsPatchDeploymentsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PatchDeployment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PatchDeployment.fromJson(data));
   }
 
   /// Get a page of OS Config patch deployments.
@@ -226,17 +262,21 @@ class ProjectsPatchDeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPatchDeploymentsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPatchDeploymentsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -252,14 +292,17 @@ class ProjectsPatchDeploymentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchDeployments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListPatchDeploymentsResponse.fromJson(data));
+        .then((data) => ListPatchDeploymentsResponse.fromJson(data));
   }
 }
 
@@ -267,7 +310,7 @@ class ProjectsPatchJobsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsPatchJobsInstanceDetailsResourceApi get instanceDetails =>
-      new ProjectsPatchJobsInstanceDetailsResourceApi(_requester);
+      ProjectsPatchJobsInstanceDetailsResourceApi(_requester);
 
   ProjectsPatchJobsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -293,20 +336,23 @@ class ProjectsPatchJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PatchJob> cancel(CancelPatchJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PatchJob> cancel(
+    CancelPatchJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -314,13 +360,16 @@ class ProjectsPatchJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PatchJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PatchJob.fromJson(data));
   }
 
   /// Patch VM instances by creating and running a patch job.
@@ -344,20 +393,22 @@ class ProjectsPatchJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PatchJob> execute(
-      ExecutePatchJobRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ExecutePatchJobRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -367,13 +418,16 @@ class ProjectsPatchJobsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchJobs:execute';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PatchJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PatchJob.fromJson(data));
   }
 
   /// Get the patch job. This can be used to track the progress of an ongoing
@@ -395,16 +449,19 @@ class ProjectsPatchJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PatchJob> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PatchJob> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -412,13 +469,16 @@ class ProjectsPatchJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PatchJob.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PatchJob.fromJson(data));
   }
 
   /// Get a list of patch jobs.
@@ -447,20 +507,22 @@ class ProjectsPatchJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPatchJobsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPatchJobsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -478,13 +540,16 @@ class ProjectsPatchJobsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/patchJobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListPatchJobsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListPatchJobsResponse.fromJson(data));
   }
 }
 
@@ -522,20 +587,22 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPatchJobInstanceDetailsResponse> list(core.String parent,
-      {core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPatchJobInstanceDetailsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -554,14 +621,17 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instanceDetails';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListPatchJobInstanceDetailsResponse.fromJson(data));
+        .then((data) => ListPatchJobInstanceDetailsResponse.fromJson(data));
   }
 }
 
@@ -602,7 +672,7 @@ class AptSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludes != null) {
       _json["excludes"] = excludes;
     }
@@ -624,7 +694,7 @@ class CancelPatchJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -641,7 +711,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -659,22 +729,22 @@ class ExecStep {
   ExecStep.fromJson(core.Map _json) {
     if (_json.containsKey("linuxExecStepConfig")) {
       linuxExecStepConfig =
-          new ExecStepConfig.fromJson(_json["linuxExecStepConfig"]);
+          ExecStepConfig.fromJson(_json["linuxExecStepConfig"]);
     }
     if (_json.containsKey("windowsExecStepConfig")) {
       windowsExecStepConfig =
-          new ExecStepConfig.fromJson(_json["windowsExecStepConfig"]);
+          ExecStepConfig.fromJson(_json["windowsExecStepConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (linuxExecStepConfig != null) {
-      _json["linuxExecStepConfig"] = (linuxExecStepConfig).toJson();
+      _json["linuxExecStepConfig"] = linuxExecStepConfig.toJson();
     }
     if (windowsExecStepConfig != null) {
-      _json["windowsExecStepConfig"] = (windowsExecStepConfig).toJson();
+      _json["windowsExecStepConfig"] = windowsExecStepConfig.toJson();
     }
     return _json;
   }
@@ -714,7 +784,7 @@ class ExecStepConfig {
           (_json["allowedSuccessCodes"] as core.List).cast<core.int>();
     }
     if (_json.containsKey("gcsObject")) {
-      gcsObject = new GcsObject.fromJson(_json["gcsObject"]);
+      gcsObject = GcsObject.fromJson(_json["gcsObject"]);
     }
     if (_json.containsKey("interpreter")) {
       interpreter = _json["interpreter"];
@@ -726,12 +796,12 @@ class ExecStepConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowedSuccessCodes != null) {
       _json["allowedSuccessCodes"] = allowedSuccessCodes;
     }
     if (gcsObject != null) {
-      _json["gcsObject"] = (gcsObject).toJson();
+      _json["gcsObject"] = gcsObject.toJson();
     }
     if (interpreter != null) {
       _json["interpreter"] = interpreter;
@@ -787,20 +857,19 @@ class ExecutePatchJobRequest {
       duration = _json["duration"];
     }
     if (_json.containsKey("instanceFilter")) {
-      instanceFilter =
-          new PatchInstanceFilter.fromJson(_json["instanceFilter"]);
+      instanceFilter = PatchInstanceFilter.fromJson(_json["instanceFilter"]);
     }
     if (_json.containsKey("patchConfig")) {
-      patchConfig = new PatchConfig.fromJson(_json["patchConfig"]);
+      patchConfig = PatchConfig.fromJson(_json["patchConfig"]);
     }
     if (_json.containsKey("rollout")) {
-      rollout = new PatchRollout.fromJson(_json["rollout"]);
+      rollout = PatchRollout.fromJson(_json["rollout"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -814,13 +883,13 @@ class ExecutePatchJobRequest {
       _json["duration"] = duration;
     }
     if (instanceFilter != null) {
-      _json["instanceFilter"] = (instanceFilter).toJson();
+      _json["instanceFilter"] = instanceFilter.toJson();
     }
     if (patchConfig != null) {
-      _json["patchConfig"] = (patchConfig).toJson();
+      _json["patchConfig"] = patchConfig.toJson();
     }
     if (rollout != null) {
-      _json["rollout"] = (rollout).toJson();
+      _json["rollout"] = rollout.toJson();
     }
     return _json;
   }
@@ -849,7 +918,7 @@ class FixedOrPercent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fixed != null) {
       _json["fixed"] = fixed;
     }
@@ -888,7 +957,7 @@ class GcsObject {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bucket != null) {
       _json["bucket"] = bucket;
     }
@@ -910,7 +979,7 @@ class GooSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -932,20 +1001,20 @@ class ListPatchDeploymentsResponse {
     }
     if (_json.containsKey("patchDeployments")) {
       patchDeployments = (_json["patchDeployments"] as core.List)
-          .map<PatchDeployment>((value) => new PatchDeployment.fromJson(value))
+          .map<PatchDeployment>((value) => PatchDeployment.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (patchDeployments != null) {
       _json["patchDeployments"] =
-          patchDeployments.map((value) => (value).toJson()).toList();
+          patchDeployments.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -968,20 +1037,20 @@ class ListPatchJobInstanceDetailsResponse {
     if (_json.containsKey("patchJobInstanceDetails")) {
       patchJobInstanceDetails = (_json["patchJobInstanceDetails"] as core.List)
           .map<PatchJobInstanceDetails>(
-              (value) => new PatchJobInstanceDetails.fromJson(value))
+              (value) => PatchJobInstanceDetails.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (patchJobInstanceDetails != null) {
       _json["patchJobInstanceDetails"] =
-          patchJobInstanceDetails.map((value) => (value).toJson()).toList();
+          patchJobInstanceDetails.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1003,19 +1072,19 @@ class ListPatchJobsResponse {
     }
     if (_json.containsKey("patchJobs")) {
       patchJobs = (_json["patchJobs"] as core.List)
-          .map<PatchJob>((value) => new PatchJob.fromJson(value))
+          .map<PatchJob>((value) => PatchJob.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (patchJobs != null) {
-      _json["patchJobs"] = patchJobs.map((value) => (value).toJson()).toList();
+      _json["patchJobs"] = patchJobs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1040,18 +1109,18 @@ class MonthlySchedule {
       monthDay = _json["monthDay"];
     }
     if (_json.containsKey("weekDayOfMonth")) {
-      weekDayOfMonth = new WeekDayOfMonth.fromJson(_json["weekDayOfMonth"]);
+      weekDayOfMonth = WeekDayOfMonth.fromJson(_json["weekDayOfMonth"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (monthDay != null) {
       _json["monthDay"] = monthDay;
     }
     if (weekDayOfMonth != null) {
-      _json["weekDayOfMonth"] = (weekDayOfMonth).toJson();
+      _json["weekDayOfMonth"] = weekDayOfMonth.toJson();
     }
     return _json;
   }
@@ -1073,7 +1142,7 @@ class OneTimeSchedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (executeTime != null) {
       _json["executeTime"] = executeTime;
     }
@@ -1125,58 +1194,57 @@ class PatchConfig {
 
   PatchConfig.fromJson(core.Map _json) {
     if (_json.containsKey("apt")) {
-      apt = new AptSettings.fromJson(_json["apt"]);
+      apt = AptSettings.fromJson(_json["apt"]);
     }
     if (_json.containsKey("goo")) {
-      goo = new GooSettings.fromJson(_json["goo"]);
+      goo = GooSettings.fromJson(_json["goo"]);
     }
     if (_json.containsKey("postStep")) {
-      postStep = new ExecStep.fromJson(_json["postStep"]);
+      postStep = ExecStep.fromJson(_json["postStep"]);
     }
     if (_json.containsKey("preStep")) {
-      preStep = new ExecStep.fromJson(_json["preStep"]);
+      preStep = ExecStep.fromJson(_json["preStep"]);
     }
     if (_json.containsKey("rebootConfig")) {
       rebootConfig = _json["rebootConfig"];
     }
     if (_json.containsKey("windowsUpdate")) {
-      windowsUpdate =
-          new WindowsUpdateSettings.fromJson(_json["windowsUpdate"]);
+      windowsUpdate = WindowsUpdateSettings.fromJson(_json["windowsUpdate"]);
     }
     if (_json.containsKey("yum")) {
-      yum = new YumSettings.fromJson(_json["yum"]);
+      yum = YumSettings.fromJson(_json["yum"]);
     }
     if (_json.containsKey("zypper")) {
-      zypper = new ZypperSettings.fromJson(_json["zypper"]);
+      zypper = ZypperSettings.fromJson(_json["zypper"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apt != null) {
-      _json["apt"] = (apt).toJson();
+      _json["apt"] = apt.toJson();
     }
     if (goo != null) {
-      _json["goo"] = (goo).toJson();
+      _json["goo"] = goo.toJson();
     }
     if (postStep != null) {
-      _json["postStep"] = (postStep).toJson();
+      _json["postStep"] = postStep.toJson();
     }
     if (preStep != null) {
-      _json["preStep"] = (preStep).toJson();
+      _json["preStep"] = preStep.toJson();
     }
     if (rebootConfig != null) {
       _json["rebootConfig"] = rebootConfig;
     }
     if (windowsUpdate != null) {
-      _json["windowsUpdate"] = (windowsUpdate).toJson();
+      _json["windowsUpdate"] = windowsUpdate.toJson();
     }
     if (yum != null) {
-      _json["yum"] = (yum).toJson();
+      _json["yum"] = yum.toJson();
     }
     if (zypper != null) {
-      _json["zypper"] = (zypper).toJson();
+      _json["zypper"] = zypper.toJson();
     }
     return _json;
   }
@@ -1243,8 +1311,7 @@ class PatchDeployment {
       duration = _json["duration"];
     }
     if (_json.containsKey("instanceFilter")) {
-      instanceFilter =
-          new PatchInstanceFilter.fromJson(_json["instanceFilter"]);
+      instanceFilter = PatchInstanceFilter.fromJson(_json["instanceFilter"]);
     }
     if (_json.containsKey("lastExecuteTime")) {
       lastExecuteTime = _json["lastExecuteTime"];
@@ -1253,17 +1320,17 @@ class PatchDeployment {
       name = _json["name"];
     }
     if (_json.containsKey("oneTimeSchedule")) {
-      oneTimeSchedule = new OneTimeSchedule.fromJson(_json["oneTimeSchedule"]);
+      oneTimeSchedule = OneTimeSchedule.fromJson(_json["oneTimeSchedule"]);
     }
     if (_json.containsKey("patchConfig")) {
-      patchConfig = new PatchConfig.fromJson(_json["patchConfig"]);
+      patchConfig = PatchConfig.fromJson(_json["patchConfig"]);
     }
     if (_json.containsKey("recurringSchedule")) {
       recurringSchedule =
-          new RecurringSchedule.fromJson(_json["recurringSchedule"]);
+          RecurringSchedule.fromJson(_json["recurringSchedule"]);
     }
     if (_json.containsKey("rollout")) {
-      rollout = new PatchRollout.fromJson(_json["rollout"]);
+      rollout = PatchRollout.fromJson(_json["rollout"]);
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -1272,7 +1339,7 @@ class PatchDeployment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1283,7 +1350,7 @@ class PatchDeployment {
       _json["duration"] = duration;
     }
     if (instanceFilter != null) {
-      _json["instanceFilter"] = (instanceFilter).toJson();
+      _json["instanceFilter"] = instanceFilter.toJson();
     }
     if (lastExecuteTime != null) {
       _json["lastExecuteTime"] = lastExecuteTime;
@@ -1292,16 +1359,16 @@ class PatchDeployment {
       _json["name"] = name;
     }
     if (oneTimeSchedule != null) {
-      _json["oneTimeSchedule"] = (oneTimeSchedule).toJson();
+      _json["oneTimeSchedule"] = oneTimeSchedule.toJson();
     }
     if (patchConfig != null) {
-      _json["patchConfig"] = (patchConfig).toJson();
+      _json["patchConfig"] = patchConfig.toJson();
     }
     if (recurringSchedule != null) {
-      _json["recurringSchedule"] = (recurringSchedule).toJson();
+      _json["recurringSchedule"] = recurringSchedule.toJson();
     }
     if (rollout != null) {
-      _json["rollout"] = (rollout).toJson();
+      _json["rollout"] = rollout.toJson();
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -1346,7 +1413,7 @@ class PatchInstanceFilter {
     if (_json.containsKey("groupLabels")) {
       groupLabels = (_json["groupLabels"] as core.List)
           .map<PatchInstanceFilterGroupLabel>(
-              (value) => new PatchInstanceFilterGroupLabel.fromJson(value))
+              (value) => PatchInstanceFilterGroupLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("instanceNamePrefixes")) {
@@ -1363,13 +1430,13 @@ class PatchInstanceFilter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (all != null) {
       _json["all"] = all;
     }
     if (groupLabels != null) {
       _json["groupLabels"] =
-          groupLabels.map((value) => (value).toJson()).toList();
+          groupLabels.map((value) => value.toJson()).toList();
     }
     if (instanceNamePrefixes != null) {
       _json["instanceNamePrefixes"] = instanceNamePrefixes;
@@ -1406,7 +1473,7 @@ class PatchInstanceFilterGroupLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (labels != null) {
       _json["labels"] = labels;
     }
@@ -1503,18 +1570,17 @@ class PatchJob {
       errorMessage = _json["errorMessage"];
     }
     if (_json.containsKey("instanceDetailsSummary")) {
-      instanceDetailsSummary = new PatchJobInstanceDetailsSummary.fromJson(
+      instanceDetailsSummary = PatchJobInstanceDetailsSummary.fromJson(
           _json["instanceDetailsSummary"]);
     }
     if (_json.containsKey("instanceFilter")) {
-      instanceFilter =
-          new PatchInstanceFilter.fromJson(_json["instanceFilter"]);
+      instanceFilter = PatchInstanceFilter.fromJson(_json["instanceFilter"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("patchConfig")) {
-      patchConfig = new PatchConfig.fromJson(_json["patchConfig"]);
+      patchConfig = PatchConfig.fromJson(_json["patchConfig"]);
     }
     if (_json.containsKey("patchDeployment")) {
       patchDeployment = _json["patchDeployment"];
@@ -1523,7 +1589,7 @@ class PatchJob {
       percentComplete = _json["percentComplete"].toDouble();
     }
     if (_json.containsKey("rollout")) {
-      rollout = new PatchRollout.fromJson(_json["rollout"]);
+      rollout = PatchRollout.fromJson(_json["rollout"]);
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -1535,7 +1601,7 @@ class PatchJob {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1555,16 +1621,16 @@ class PatchJob {
       _json["errorMessage"] = errorMessage;
     }
     if (instanceDetailsSummary != null) {
-      _json["instanceDetailsSummary"] = (instanceDetailsSummary).toJson();
+      _json["instanceDetailsSummary"] = instanceDetailsSummary.toJson();
     }
     if (instanceFilter != null) {
-      _json["instanceFilter"] = (instanceFilter).toJson();
+      _json["instanceFilter"] = instanceFilter.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (patchConfig != null) {
-      _json["patchConfig"] = (patchConfig).toJson();
+      _json["patchConfig"] = patchConfig.toJson();
     }
     if (patchDeployment != null) {
       _json["patchDeployment"] = patchDeployment;
@@ -1573,7 +1639,7 @@ class PatchJob {
       _json["percentComplete"] = percentComplete;
     }
     if (rollout != null) {
-      _json["rollout"] = (rollout).toJson();
+      _json["rollout"] = rollout.toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -1648,7 +1714,7 @@ class PatchJobInstanceDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attemptCount != null) {
       _json["attemptCount"] = attemptCount;
     }
@@ -1774,7 +1840,7 @@ class PatchJobInstanceDetailsSummary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ackedInstanceCount != null) {
       _json["ackedInstanceCount"] = ackedInstanceCount;
     }
@@ -1866,7 +1932,7 @@ class PatchRollout {
 
   PatchRollout.fromJson(core.Map _json) {
     if (_json.containsKey("disruptionBudget")) {
-      disruptionBudget = new FixedOrPercent.fromJson(_json["disruptionBudget"]);
+      disruptionBudget = FixedOrPercent.fromJson(_json["disruptionBudget"]);
     }
     if (_json.containsKey("mode")) {
       mode = _json["mode"];
@@ -1875,9 +1941,9 @@ class PatchRollout {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disruptionBudget != null) {
-      _json["disruptionBudget"] = (disruptionBudget).toJson();
+      _json["disruptionBudget"] = disruptionBudget.toJson();
     }
     if (mode != null) {
       _json["mode"] = mode;
@@ -1937,7 +2003,7 @@ class RecurringSchedule {
       lastExecuteTime = _json["lastExecuteTime"];
     }
     if (_json.containsKey("monthly")) {
-      monthly = new MonthlySchedule.fromJson(_json["monthly"]);
+      monthly = MonthlySchedule.fromJson(_json["monthly"]);
     }
     if (_json.containsKey("nextExecuteTime")) {
       nextExecuteTime = _json["nextExecuteTime"];
@@ -1946,19 +2012,19 @@ class RecurringSchedule {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("timeOfDay")) {
-      timeOfDay = new TimeOfDay.fromJson(_json["timeOfDay"]);
+      timeOfDay = TimeOfDay.fromJson(_json["timeOfDay"]);
     }
     if (_json.containsKey("timeZone")) {
-      timeZone = new TimeZone.fromJson(_json["timeZone"]);
+      timeZone = TimeZone.fromJson(_json["timeZone"]);
     }
     if (_json.containsKey("weekly")) {
-      weekly = new WeeklySchedule.fromJson(_json["weekly"]);
+      weekly = WeeklySchedule.fromJson(_json["weekly"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -1969,7 +2035,7 @@ class RecurringSchedule {
       _json["lastExecuteTime"] = lastExecuteTime;
     }
     if (monthly != null) {
-      _json["monthly"] = (monthly).toJson();
+      _json["monthly"] = monthly.toJson();
     }
     if (nextExecuteTime != null) {
       _json["nextExecuteTime"] = nextExecuteTime;
@@ -1978,13 +2044,13 @@ class RecurringSchedule {
       _json["startTime"] = startTime;
     }
     if (timeOfDay != null) {
-      _json["timeOfDay"] = (timeOfDay).toJson();
+      _json["timeOfDay"] = timeOfDay.toJson();
     }
     if (timeZone != null) {
-      _json["timeZone"] = (timeZone).toJson();
+      _json["timeZone"] = timeZone.toJson();
     }
     if (weekly != null) {
-      _json["weekly"] = (weekly).toJson();
+      _json["weekly"] = weekly.toJson();
     }
     return _json;
   }
@@ -2027,7 +2093,7 @@ class TimeOfDay {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (hours != null) {
       _json["hours"] = hours;
     }
@@ -2066,7 +2132,7 @@ class TimeZone {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2108,7 +2174,7 @@ class WeekDayOfMonth {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dayOfWeek != null) {
       _json["dayOfWeek"] = dayOfWeek;
     }
@@ -2143,7 +2209,7 @@ class WeeklySchedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dayOfWeek != null) {
       _json["dayOfWeek"] = dayOfWeek;
     }
@@ -2183,7 +2249,7 @@ class WindowsUpdateSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (classifications != null) {
       _json["classifications"] = classifications;
     }
@@ -2238,7 +2304,7 @@ class YumSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (excludes != null) {
       _json["excludes"] = excludes;
     }
@@ -2306,7 +2372,7 @@ class ZypperSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categories != null) {
       _json["categories"] = categories;
     }

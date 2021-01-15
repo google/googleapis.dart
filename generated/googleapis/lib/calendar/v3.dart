@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.calendar.v3;
 
@@ -40,21 +58,21 @@ class CalendarApi {
 
   final commons.ApiRequester _requester;
 
-  AclResourceApi get acl => new AclResourceApi(_requester);
+  AclResourceApi get acl => AclResourceApi(_requester);
   CalendarListResourceApi get calendarList =>
-      new CalendarListResourceApi(_requester);
-  CalendarsResourceApi get calendars => new CalendarsResourceApi(_requester);
-  ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
-  ColorsResourceApi get colors => new ColorsResourceApi(_requester);
-  EventsResourceApi get events => new EventsResourceApi(_requester);
-  FreebusyResourceApi get freebusy => new FreebusyResourceApi(_requester);
-  SettingsResourceApi get settings => new SettingsResourceApi(_requester);
+      CalendarListResourceApi(_requester);
+  CalendarsResourceApi get calendars => CalendarsResourceApi(_requester);
+  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
+  ColorsResourceApi get colors => ColorsResourceApi(_requester);
+  EventsResourceApi get events => EventsResourceApi(_requester);
+  FreebusyResourceApi get freebusy => FreebusyResourceApi(_requester);
+  SettingsResourceApi get settings => SettingsResourceApi(_requester);
 
   CalendarApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = "calendar/v3/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AclResourceApi {
@@ -80,20 +98,23 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId, core.String ruleId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String calendarId,
+    core.String ruleId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError("Parameter ruleId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -106,12 +127,15 @@ class AclResourceApi {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -135,20 +159,23 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AclRule> get(core.String calendarId, core.String ruleId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AclRule> get(
+    core.String calendarId,
+    core.String ruleId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError("Parameter ruleId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -159,13 +186,16 @@ class AclResourceApi {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AclRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AclRule.fromJson(data));
   }
 
   /// Creates an access control rule.
@@ -191,20 +221,24 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AclRule> insert(AclRule request, core.String calendarId,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AclRule> insert(
+    AclRule request,
+    core.String calendarId, {
+    core.bool sendNotifications,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
@@ -215,13 +249,16 @@ class AclResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AclRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AclRule.fromJson(data));
   }
 
   /// Returns the rules in the access control list for the calendar.
@@ -263,21 +300,23 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Acl> list(core.String calendarId,
-      {core.String pageToken,
-      core.String syncToken,
-      core.int maxResults,
-      core.bool showDeleted,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Acl> list(
+    core.String calendarId, {
+    core.String pageToken,
+    core.String syncToken,
+    core.int maxResults,
+    core.bool showDeleted,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -297,13 +336,16 @@ class AclResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Acl.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Acl.fromJson(data));
   }
 
   /// Updates an access control rule. This method supports patch semantics.
@@ -333,23 +375,27 @@ class AclResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AclRule> patch(
-      AclRule request, core.String calendarId, core.String ruleId,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AclRule request,
+    core.String calendarId,
+    core.String ruleId, {
+    core.bool sendNotifications,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError("Parameter ruleId is required.");
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
@@ -363,13 +409,16 @@ class AclResourceApi {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AclRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AclRule.fromJson(data));
   }
 
   /// Updates an access control rule.
@@ -399,23 +448,27 @@ class AclResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AclRule> update(
-      AclRule request, core.String calendarId, core.String ruleId,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AclRule request,
+    core.String calendarId,
+    core.String ruleId, {
+    core.bool sendNotifications,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (ruleId == null) {
-      throw new core.ArgumentError("Parameter ruleId is required.");
+      throw core.ArgumentError("Parameter ruleId is required.");
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
@@ -429,13 +482,16 @@ class AclResourceApi {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new AclRule.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AclRule.fromJson(data));
   }
 
   /// Watch for changes to ACL resources.
@@ -479,24 +535,27 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> watch(Channel request, core.String calendarId,
-      {core.bool showDeleted,
-      core.String pageToken,
-      core.String syncToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> watch(
+    Channel request,
+    core.String calendarId, {
+    core.bool showDeleted,
+    core.String pageToken,
+    core.String syncToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
@@ -518,13 +577,16 @@ class AclResourceApi {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -549,16 +611,19 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,12 +634,15 @@ class CalendarListResourceApi {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -596,17 +664,19 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CalendarListEntry> get(core.String calendarId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CalendarListEntry> get(
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -615,13 +685,16 @@ class CalendarListResourceApi {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CalendarListEntry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CalendarListEntry.fromJson(data));
   }
 
   /// Inserts an existing calendar into the user's calendar list.
@@ -645,17 +718,20 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CalendarListEntry> insert(CalendarListEntry request,
-      {core.bool colorRgbFormat, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CalendarListEntry> insert(
+    CalendarListEntry request, {
+    core.bool colorRgbFormat,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
@@ -666,13 +742,16 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CalendarListEntry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CalendarListEntry.fromJson(data));
   }
 
   /// Returns the calendars on the user's calendar list.
@@ -724,20 +803,21 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CalendarList> list(
-      {core.int maxResults,
-      core.bool showDeleted,
-      core.bool showHidden,
-      core.String minAccessRole,
-      core.String syncToken,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CalendarList> list({
+    core.int maxResults,
+    core.bool showDeleted,
+    core.bool showHidden,
+    core.String minAccessRole,
+    core.String syncToken,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -763,13 +843,16 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CalendarList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CalendarList.fromJson(data));
   }
 
   /// Updates an existing calendar on the user's calendar list. This method
@@ -799,20 +882,23 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> patch(
-      CalendarListEntry request, core.String calendarId,
-      {core.bool colorRgbFormat, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CalendarListEntry request,
+    core.String calendarId, {
+    core.bool colorRgbFormat,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
@@ -824,13 +910,16 @@ class CalendarListResourceApi {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CalendarListEntry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CalendarListEntry.fromJson(data));
   }
 
   /// Updates an existing calendar on the user's calendar list.
@@ -859,20 +948,23 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> update(
-      CalendarListEntry request, core.String calendarId,
-      {core.bool colorRgbFormat, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CalendarListEntry request,
+    core.String calendarId, {
+    core.bool colorRgbFormat,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
@@ -884,13 +976,16 @@ class CalendarListResourceApi {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CalendarListEntry.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CalendarListEntry.fromJson(data));
   }
 
   /// Watch for changes to CalendarList resources.
@@ -944,23 +1039,25 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> watch(Channel request,
-      {core.String pageToken,
-      core.bool showHidden,
-      core.String minAccessRole,
-      core.String syncToken,
-      core.bool showDeleted,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> watch(
+    Channel request, {
+    core.String pageToken,
+    core.bool showHidden,
+    core.String minAccessRole,
+    core.String syncToken,
+    core.bool showDeleted,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -986,13 +1083,16 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -1018,16 +1118,19 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(core.String calendarId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future clear(
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1038,12 +1141,15 @@ class CalendarsResourceApi {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1064,16 +1170,19 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1083,12 +1192,15 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1110,16 +1222,19 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> get(core.String calendarId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Calendar> get(
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1127,13 +1242,16 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Calendar.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Calendar.fromJson(data));
   }
 
   /// Creates a secondary calendar.
@@ -1152,16 +1270,19 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> insert(Calendar request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Calendar> insert(
+    Calendar request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1169,13 +1290,16 @@ class CalendarsResourceApi {
 
     _url = 'calendars';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Calendar.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Calendar.fromJson(data));
   }
 
   /// Updates metadata for a calendar. This method supports patch semantics.
@@ -1198,20 +1322,23 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> patch(Calendar request, core.String calendarId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Calendar> patch(
+    Calendar request,
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1219,13 +1346,16 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Calendar.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Calendar.fromJson(data));
   }
 
   /// Updates metadata for a calendar.
@@ -1248,20 +1378,23 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> update(Calendar request, core.String calendarId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Calendar> update(
+    Calendar request,
+    core.String calendarId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1269,13 +1402,16 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Calendar.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Calendar.fromJson(data));
   }
 }
 
@@ -1298,16 +1434,19 @@ class ChannelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future stop(
+    Channel request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1317,12 +1456,15 @@ class ChannelsResourceApi {
 
     _url = 'channels/stop';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 }
@@ -1346,13 +1488,15 @@ class ColorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Colors> get({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Colors> get({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1360,13 +1504,16 @@ class ColorsResourceApi {
 
     _url = 'colors';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Colors.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Colors.fromJson(data));
   }
 }
 
@@ -1409,22 +1556,25 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId, core.String eventId,
-      {core.bool sendNotifications,
-      core.String sendUpdates,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String calendarId,
+    core.String eventId, {
+    core.bool sendNotifications,
+    core.String sendUpdates,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
@@ -1443,12 +1593,15 @@ class EventsResourceApi {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1484,23 +1637,26 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Event> get(core.String calendarId, core.String eventId,
-      {core.String timeZone,
-      core.int maxAttendees,
-      core.bool alwaysIncludeEmail,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Event> get(
+    core.String calendarId,
+    core.String eventId, {
+    core.String timeZone,
+    core.int maxAttendees,
+    core.bool alwaysIncludeEmail,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
@@ -1520,13 +1676,16 @@ class EventsResourceApi {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Imports an event. This operation is used to add a private copy of an
@@ -1560,22 +1719,25 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Event> import(Event request, core.String calendarId,
-      {core.int conferenceDataVersion,
-      core.bool supportsAttachments,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Event> import(
+    Event request,
+    core.String calendarId, {
+    core.int conferenceDataVersion,
+    core.bool supportsAttachments,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (conferenceDataVersion != null) {
       _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
@@ -1591,13 +1753,16 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Creates an event.
@@ -1651,25 +1816,28 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Event> insert(Event request, core.String calendarId,
-      {core.int conferenceDataVersion,
-      core.String sendUpdates,
-      core.int maxAttendees,
-      core.bool sendNotifications,
-      core.bool supportsAttachments,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Event> insert(
+    Event request,
+    core.String calendarId, {
+    core.int conferenceDataVersion,
+    core.String sendUpdates,
+    core.int maxAttendees,
+    core.bool sendNotifications,
+    core.bool supportsAttachments,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (conferenceDataVersion != null) {
       _queryParams["conferenceDataVersion"] = ["${conferenceDataVersion}"];
@@ -1693,13 +1861,16 @@ class EventsResourceApi {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Returns instances of the specified recurring event.
@@ -1756,29 +1927,32 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Events> instances(core.String calendarId, core.String eventId,
-      {core.DateTime timeMin,
-      core.int maxAttendees,
-      core.bool showDeleted,
-      core.String originalStart,
-      core.String pageToken,
-      core.DateTime timeMax,
-      core.String timeZone,
-      core.int maxResults,
-      core.bool alwaysIncludeEmail,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Events> instances(
+    core.String calendarId,
+    core.String eventId, {
+    core.DateTime timeMin,
+    core.int maxAttendees,
+    core.bool showDeleted,
+    core.String originalStart,
+    core.String pageToken,
+    core.DateTime timeMax,
+    core.String timeZone,
+    core.int maxResults,
+    core.bool alwaysIncludeEmail,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (timeMin != null) {
       _queryParams["timeMin"] = [(timeMin).toIso8601String()];
@@ -1817,13 +1991,16 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$eventId') +
         '/instances';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Events.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Events.fromJson(data));
   }
 
   /// Returns events on the specified calendar.
@@ -1945,34 +2122,36 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Events> list(core.String calendarId,
-      {core.DateTime timeMax,
-      core.bool showDeleted,
-      core.bool alwaysIncludeEmail,
-      core.DateTime updatedMin,
-      core.String timeZone,
-      core.List<core.String> sharedExtendedProperty,
-      core.List<core.String> privateExtendedProperty,
-      core.DateTime timeMin,
-      core.String iCalUID,
-      core.bool showHiddenInvitations,
-      core.int maxResults,
-      core.String syncToken,
-      core.String pageToken,
-      core.String q,
-      core.bool singleEvents,
-      core.String orderBy,
-      core.int maxAttendees,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Events> list(
+    core.String calendarId, {
+    core.DateTime timeMax,
+    core.bool showDeleted,
+    core.bool alwaysIncludeEmail,
+    core.DateTime updatedMin,
+    core.String timeZone,
+    core.List<core.String> sharedExtendedProperty,
+    core.List<core.String> privateExtendedProperty,
+    core.DateTime timeMin,
+    core.String iCalUID,
+    core.bool showHiddenInvitations,
+    core.int maxResults,
+    core.String syncToken,
+    core.String pageToken,
+    core.String q,
+    core.bool singleEvents,
+    core.String orderBy,
+    core.int maxAttendees,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (timeMax != null) {
       _queryParams["timeMax"] = [(timeMax).toIso8601String()];
@@ -2032,13 +2211,16 @@ class EventsResourceApi {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Events.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Events.fromJson(data));
   }
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
@@ -2080,25 +2262,28 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> move(
-      core.String calendarId, core.String eventId, core.String destination,
-      {core.bool sendNotifications,
-      core.String sendUpdates,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String calendarId,
+    core.String eventId,
+    core.String destination, {
+    core.bool sendNotifications,
+    core.String sendUpdates,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (destination == null) {
-      throw new core.ArgumentError("Parameter destination is required.");
+      throw core.ArgumentError("Parameter destination is required.");
     }
     _queryParams["destination"] = [destination];
     if (sendNotifications != null) {
@@ -2117,13 +2302,16 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$eventId') +
         '/move';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Updates an event. This method supports patch semantics.
@@ -2184,29 +2372,32 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> patch(
-      Event request, core.String calendarId, core.String eventId,
-      {core.String sendUpdates,
-      core.bool alwaysIncludeEmail,
-      core.bool sendNotifications,
-      core.int conferenceDataVersion,
-      core.int maxAttendees,
-      core.bool supportsAttachments,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Event request,
+    core.String calendarId,
+    core.String eventId, {
+    core.String sendUpdates,
+    core.bool alwaysIncludeEmail,
+    core.bool sendNotifications,
+    core.int conferenceDataVersion,
+    core.int maxAttendees,
+    core.bool supportsAttachments,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (sendUpdates != null) {
       _queryParams["sendUpdates"] = [sendUpdates];
@@ -2235,13 +2426,16 @@ class EventsResourceApi {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Creates an event based on a simple text string.
@@ -2280,22 +2474,25 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Event> quickAdd(core.String calendarId, core.String text,
-      {core.String sendUpdates,
-      core.bool sendNotifications,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Event> quickAdd(
+    core.String calendarId,
+    core.String text, {
+    core.String sendUpdates,
+    core.bool sendNotifications,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (text == null) {
-      throw new core.ArgumentError("Parameter text is required.");
+      throw core.ArgumentError("Parameter text is required.");
     }
     _queryParams["text"] = [text];
     if (sendUpdates != null) {
@@ -2312,13 +2509,16 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/quickAdd';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Updates an event.
@@ -2379,29 +2579,32 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> update(
-      Event request, core.String calendarId, core.String eventId,
-      {core.bool alwaysIncludeEmail,
-      core.int conferenceDataVersion,
-      core.bool supportsAttachments,
-      core.bool sendNotifications,
-      core.int maxAttendees,
-      core.String sendUpdates,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Event request,
+    core.String calendarId,
+    core.String eventId, {
+    core.bool alwaysIncludeEmail,
+    core.int conferenceDataVersion,
+    core.bool supportsAttachments,
+    core.bool sendNotifications,
+    core.int maxAttendees,
+    core.String sendUpdates,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (eventId == null) {
-      throw new core.ArgumentError("Parameter eventId is required.");
+      throw core.ArgumentError("Parameter eventId is required.");
     }
     if (alwaysIncludeEmail != null) {
       _queryParams["alwaysIncludeEmail"] = ["${alwaysIncludeEmail}"];
@@ -2430,13 +2633,16 @@ class EventsResourceApi {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Event.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Event.fromJson(data));
   }
 
   /// Watch for changes to Events resources.
@@ -2560,37 +2766,40 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> watch(Channel request, core.String calendarId,
-      {core.String q,
-      core.DateTime timeMax,
-      core.String pageToken,
-      core.bool alwaysIncludeEmail,
-      core.List<core.String> sharedExtendedProperty,
-      core.String iCalUID,
-      core.bool showHiddenInvitations,
-      core.String timeZone,
-      core.String orderBy,
-      core.String syncToken,
-      core.List<core.String> privateExtendedProperty,
-      core.bool showDeleted,
-      core.DateTime updatedMin,
-      core.int maxResults,
-      core.int maxAttendees,
-      core.bool singleEvents,
-      core.DateTime timeMin,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> watch(
+    Channel request,
+    core.String calendarId, {
+    core.String q,
+    core.DateTime timeMax,
+    core.String pageToken,
+    core.bool alwaysIncludeEmail,
+    core.List<core.String> sharedExtendedProperty,
+    core.String iCalUID,
+    core.bool showHiddenInvitations,
+    core.String timeZone,
+    core.String orderBy,
+    core.String syncToken,
+    core.List<core.String> privateExtendedProperty,
+    core.bool showDeleted,
+    core.DateTime updatedMin,
+    core.int maxResults,
+    core.int maxAttendees,
+    core.bool singleEvents,
+    core.DateTime timeMin,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (calendarId == null) {
-      throw new core.ArgumentError("Parameter calendarId is required.");
+      throw core.ArgumentError("Parameter calendarId is required.");
     }
     if (q != null) {
       _queryParams["q"] = [q];
@@ -2651,13 +2860,16 @@ class EventsResourceApi {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -2682,17 +2894,19 @@ class FreebusyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FreeBusyResponse> query(FreeBusyRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FreeBusyResponse> query(
+    FreeBusyRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2700,13 +2914,16 @@ class FreebusyResourceApi {
 
     _url = 'freeBusy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FreeBusyResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FreeBusyResponse.fromJson(data));
   }
 }
 
@@ -2731,16 +2948,19 @@ class SettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Setting> get(core.String setting, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Setting> get(
+    core.String setting, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (setting == null) {
-      throw new core.ArgumentError("Parameter setting is required.");
+      throw core.ArgumentError("Parameter setting is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2748,13 +2968,16 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Setting.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Setting.fromJson(data));
   }
 
   /// Returns all user settings for the authenticated user.
@@ -2786,17 +3009,18 @@ class SettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Settings> list(
-      {core.String pageToken,
-      core.int maxResults,
-      core.String syncToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Settings> list({
+    core.String pageToken,
+    core.int maxResults,
+    core.String syncToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2813,13 +3037,16 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Settings.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Settings.fromJson(data));
   }
 
   /// Watch for changes to Settings resources.
@@ -2853,20 +3080,22 @@ class SettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Channel> watch(Channel request,
-      {core.String pageToken,
-      core.String syncToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Channel> watch(
+    Channel request, {
+    core.String pageToken,
+    core.String syncToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2883,13 +3112,16 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings/watch';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Channel.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Channel.fromJson(data));
   }
 }
 
@@ -2920,7 +3152,7 @@ class Acl {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<AclRule>((value) => new AclRule.fromJson(value))
+          .map<AclRule>((value) => AclRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2936,12 +3168,12 @@ class Acl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2984,7 +3216,7 @@ class AclRuleScope {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -3037,13 +3269,13 @@ class AclRule {
       role = _json["role"];
     }
     if (_json.containsKey("scope")) {
-      scope = new AclRuleScope.fromJson(_json["scope"]);
+      scope = AclRuleScope.fromJson(_json["scope"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -3057,7 +3289,7 @@ class AclRule {
       _json["role"] = role;
     }
     if (scope != null) {
-      _json["scope"] = (scope).toJson();
+      _json["scope"] = scope.toJson();
     }
     return _json;
   }
@@ -3096,7 +3328,7 @@ class Calendar {
   Calendar.fromJson(core.Map _json) {
     if (_json.containsKey("conferenceProperties")) {
       conferenceProperties =
-          new ConferenceProperties.fromJson(_json["conferenceProperties"]);
+          ConferenceProperties.fromJson(_json["conferenceProperties"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -3123,9 +3355,9 @@ class Calendar {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conferenceProperties != null) {
-      _json["conferenceProperties"] = (conferenceProperties).toJson();
+      _json["conferenceProperties"] = conferenceProperties.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -3179,8 +3411,7 @@ class CalendarList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<CalendarListEntry>(
-              (value) => new CalendarListEntry.fromJson(value))
+          .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3196,12 +3427,12 @@ class CalendarList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3228,17 +3459,17 @@ class CalendarListEntryNotificationSettings {
     if (_json.containsKey("notifications")) {
       notifications = (_json["notifications"] as core.List)
           .map<CalendarNotification>(
-              (value) => new CalendarNotification.fromJson(value))
+              (value) => CalendarNotification.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (notifications != null) {
       _json["notifications"] =
-          notifications.map((value) => (value).toJson()).toList();
+          notifications.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3344,11 +3575,11 @@ class CalendarListEntry {
     }
     if (_json.containsKey("conferenceProperties")) {
       conferenceProperties =
-          new ConferenceProperties.fromJson(_json["conferenceProperties"]);
+          ConferenceProperties.fromJson(_json["conferenceProperties"]);
     }
     if (_json.containsKey("defaultReminders")) {
       defaultReminders = (_json["defaultReminders"] as core.List)
-          .map<EventReminder>((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleted")) {
@@ -3376,7 +3607,7 @@ class CalendarListEntry {
       location = _json["location"];
     }
     if (_json.containsKey("notificationSettings")) {
-      notificationSettings = new CalendarListEntryNotificationSettings.fromJson(
+      notificationSettings = CalendarListEntryNotificationSettings.fromJson(
           _json["notificationSettings"]);
     }
     if (_json.containsKey("primary")) {
@@ -3398,7 +3629,7 @@ class CalendarListEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessRole != null) {
       _json["accessRole"] = accessRole;
     }
@@ -3409,11 +3640,11 @@ class CalendarListEntry {
       _json["colorId"] = colorId;
     }
     if (conferenceProperties != null) {
-      _json["conferenceProperties"] = (conferenceProperties).toJson();
+      _json["conferenceProperties"] = conferenceProperties.toJson();
     }
     if (defaultReminders != null) {
       _json["defaultReminders"] =
-          defaultReminders.map((value) => (value).toJson()).toList();
+          defaultReminders.map((value) => value.toJson()).toList();
     }
     if (deleted != null) {
       _json["deleted"] = deleted;
@@ -3440,7 +3671,7 @@ class CalendarListEntry {
       _json["location"] = location;
     }
     if (notificationSettings != null) {
-      _json["notificationSettings"] = (notificationSettings).toJson();
+      _json["notificationSettings"] = notificationSettings.toJson();
     }
     if (primary != null) {
       _json["primary"] = primary;
@@ -3492,7 +3723,7 @@ class CalendarNotification {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (method != null) {
       _json["method"] = method;
     }
@@ -3575,7 +3806,7 @@ class Channel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (address != null) {
       _json["address"] = address;
     }
@@ -3631,7 +3862,7 @@ class ColorDefinition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (background != null) {
       _json["background"] = background;
     }
@@ -3666,12 +3897,12 @@ class Colors {
     if (_json.containsKey("calendar")) {
       calendar = commons.mapMap<core.Map, ColorDefinition>(
           _json["calendar"].cast<core.String, core.Map>(),
-          (core.Map item) => new ColorDefinition.fromJson(item));
+          (core.Map item) => ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("event")) {
       event = commons.mapMap<core.Map, ColorDefinition>(
           _json["event"].cast<core.String, core.Map>(),
-          (core.Map item) => new ColorDefinition.fromJson(item));
+          (core.Map item) => ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3683,16 +3914,16 @@ class Colors {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (calendar != null) {
       _json["calendar"] =
           commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
-              calendar, (ColorDefinition item) => (item).toJson());
+              calendar, (ColorDefinition item) => item.toJson());
     }
     if (event != null) {
       _json["event"] =
           commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
-              event, (ColorDefinition item) => (item).toJson());
+              event, (ColorDefinition item) => item.toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3759,22 +3990,21 @@ class ConferenceData {
     }
     if (_json.containsKey("conferenceSolution")) {
       conferenceSolution =
-          new ConferenceSolution.fromJson(_json["conferenceSolution"]);
+          ConferenceSolution.fromJson(_json["conferenceSolution"]);
     }
     if (_json.containsKey("createRequest")) {
-      createRequest =
-          new CreateConferenceRequest.fromJson(_json["createRequest"]);
+      createRequest = CreateConferenceRequest.fromJson(_json["createRequest"]);
     }
     if (_json.containsKey("entryPoints")) {
       entryPoints = (_json["entryPoints"] as core.List)
-          .map<EntryPoint>((value) => new EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) => EntryPoint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
     }
     if (_json.containsKey("parameters")) {
-      parameters = new ConferenceParameters.fromJson(_json["parameters"]);
+      parameters = ConferenceParameters.fromJson(_json["parameters"]);
     }
     if (_json.containsKey("signature")) {
       signature = _json["signature"];
@@ -3783,25 +4013,25 @@ class ConferenceData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conferenceId != null) {
       _json["conferenceId"] = conferenceId;
     }
     if (conferenceSolution != null) {
-      _json["conferenceSolution"] = (conferenceSolution).toJson();
+      _json["conferenceSolution"] = conferenceSolution.toJson();
     }
     if (createRequest != null) {
-      _json["createRequest"] = (createRequest).toJson();
+      _json["createRequest"] = createRequest.toJson();
     }
     if (entryPoints != null) {
       _json["entryPoints"] =
-          entryPoints.map((value) => (value).toJson()).toList();
+          entryPoints.map((value) => value.toJson()).toList();
     }
     if (notes != null) {
       _json["notes"] = notes;
     }
     if (parameters != null) {
-      _json["parameters"] = (parameters).toJson();
+      _json["parameters"] = parameters.toJson();
     }
     if (signature != null) {
       _json["signature"] = signature;
@@ -3818,16 +4048,16 @@ class ConferenceParameters {
 
   ConferenceParameters.fromJson(core.Map _json) {
     if (_json.containsKey("addOnParameters")) {
-      addOnParameters = new ConferenceParametersAddOnParameters.fromJson(
+      addOnParameters = ConferenceParametersAddOnParameters.fromJson(
           _json["addOnParameters"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addOnParameters != null) {
-      _json["addOnParameters"] = (addOnParameters).toJson();
+      _json["addOnParameters"] = addOnParameters.toJson();
     }
     return _json;
   }
@@ -3847,7 +4077,7 @@ class ConferenceParametersAddOnParameters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parameters != null) {
       _json["parameters"] = parameters;
     }
@@ -3875,7 +4105,7 @@ class ConferenceProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowedConferenceSolutionTypes != null) {
       _json["allowedConferenceSolutionTypes"] = allowedConferenceSolutionTypes;
     }
@@ -3903,7 +4133,7 @@ class ConferenceRequestStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (statusCode != null) {
       _json["statusCode"] = statusCode;
     }
@@ -3929,7 +4159,7 @@ class ConferenceSolution {
       iconUri = _json["iconUri"];
     }
     if (_json.containsKey("key")) {
-      key = new ConferenceSolutionKey.fromJson(_json["key"]);
+      key = ConferenceSolutionKey.fromJson(_json["key"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3938,12 +4168,12 @@ class ConferenceSolution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iconUri != null) {
       _json["iconUri"] = iconUri;
     }
     if (key != null) {
-      _json["key"] = (key).toJson();
+      _json["key"] = key.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3975,7 +4205,7 @@ class ConferenceSolutionKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -4000,27 +4230,27 @@ class CreateConferenceRequest {
   CreateConferenceRequest.fromJson(core.Map _json) {
     if (_json.containsKey("conferenceSolutionKey")) {
       conferenceSolutionKey =
-          new ConferenceSolutionKey.fromJson(_json["conferenceSolutionKey"]);
+          ConferenceSolutionKey.fromJson(_json["conferenceSolutionKey"]);
     }
     if (_json.containsKey("requestId")) {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("status")) {
-      status = new ConferenceRequestStatus.fromJson(_json["status"]);
+      status = ConferenceRequestStatus.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (conferenceSolutionKey != null) {
-      _json["conferenceSolutionKey"] = (conferenceSolutionKey).toJson();
+      _json["conferenceSolutionKey"] = conferenceSolutionKey.toJson();
     }
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -4150,7 +4380,7 @@ class EntryPoint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessCode != null) {
       _json["accessCode"] = accessCode;
     }
@@ -4213,7 +4443,7 @@ class Error {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -4259,7 +4489,7 @@ class EventCreator {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -4299,7 +4529,7 @@ class EventExtendedProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (private != null) {
       _json["private"] = private;
     }
@@ -4374,7 +4604,7 @@ class EventGadget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (display != null) {
       _json["display"] = display;
     }
@@ -4442,7 +4672,7 @@ class EventOrganizer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -4474,7 +4704,7 @@ class EventReminders {
   EventReminders.fromJson(core.Map _json) {
     if (_json.containsKey("overrides")) {
       overrides = (_json["overrides"] as core.List)
-          .map<EventReminder>((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("useDefault")) {
@@ -4484,9 +4714,9 @@ class EventReminders {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (overrides != null) {
-      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
+      _json["overrides"] = overrides.map((value) => value.toJson()).toList();
     }
     if (useDefault != null) {
       _json["useDefault"] = useDefault;
@@ -4520,7 +4750,7 @@ class EventSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (title != null) {
       _json["title"] = title;
     }
@@ -4756,12 +4986,12 @@ class Event {
     }
     if (_json.containsKey("attachments")) {
       attachments = (_json["attachments"] as core.List)
-          .map<EventAttachment>((value) => new EventAttachment.fromJson(value))
+          .map<EventAttachment>((value) => EventAttachment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attendees")) {
       attendees = (_json["attendees"] as core.List)
-          .map<EventAttendee>((value) => new EventAttendee.fromJson(value))
+          .map<EventAttendee>((value) => EventAttendee.fromJson(value))
           .toList();
     }
     if (_json.containsKey("attendeesOmitted")) {
@@ -4771,19 +5001,19 @@ class Event {
       colorId = _json["colorId"];
     }
     if (_json.containsKey("conferenceData")) {
-      conferenceData = new ConferenceData.fromJson(_json["conferenceData"]);
+      conferenceData = ConferenceData.fromJson(_json["conferenceData"]);
     }
     if (_json.containsKey("created")) {
       created = core.DateTime.parse(_json["created"]);
     }
     if (_json.containsKey("creator")) {
-      creator = new EventCreator.fromJson(_json["creator"]);
+      creator = EventCreator.fromJson(_json["creator"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
     if (_json.containsKey("end")) {
-      end = new EventDateTime.fromJson(_json["end"]);
+      end = EventDateTime.fromJson(_json["end"]);
     }
     if (_json.containsKey("endTimeUnspecified")) {
       endTimeUnspecified = _json["endTimeUnspecified"];
@@ -4793,10 +5023,10 @@ class Event {
     }
     if (_json.containsKey("extendedProperties")) {
       extendedProperties =
-          new EventExtendedProperties.fromJson(_json["extendedProperties"]);
+          EventExtendedProperties.fromJson(_json["extendedProperties"]);
     }
     if (_json.containsKey("gadget")) {
-      gadget = new EventGadget.fromJson(_json["gadget"]);
+      gadget = EventGadget.fromJson(_json["gadget"]);
     }
     if (_json.containsKey("guestsCanInviteOthers")) {
       guestsCanInviteOthers = _json["guestsCanInviteOthers"];
@@ -4829,11 +5059,10 @@ class Event {
       locked = _json["locked"];
     }
     if (_json.containsKey("organizer")) {
-      organizer = new EventOrganizer.fromJson(_json["organizer"]);
+      organizer = EventOrganizer.fromJson(_json["organizer"]);
     }
     if (_json.containsKey("originalStartTime")) {
-      originalStartTime =
-          new EventDateTime.fromJson(_json["originalStartTime"]);
+      originalStartTime = EventDateTime.fromJson(_json["originalStartTime"]);
     }
     if (_json.containsKey("privateCopy")) {
       privateCopy = _json["privateCopy"];
@@ -4845,16 +5074,16 @@ class Event {
       recurringEventId = _json["recurringEventId"];
     }
     if (_json.containsKey("reminders")) {
-      reminders = new EventReminders.fromJson(_json["reminders"]);
+      reminders = EventReminders.fromJson(_json["reminders"]);
     }
     if (_json.containsKey("sequence")) {
       sequence = _json["sequence"];
     }
     if (_json.containsKey("source")) {
-      source = new EventSource.fromJson(_json["source"]);
+      source = EventSource.fromJson(_json["source"]);
     }
     if (_json.containsKey("start")) {
-      start = new EventDateTime.fromJson(_json["start"]);
+      start = EventDateTime.fromJson(_json["start"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -4875,16 +5104,16 @@ class Event {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (anyoneCanAddSelf != null) {
       _json["anyoneCanAddSelf"] = anyoneCanAddSelf;
     }
     if (attachments != null) {
       _json["attachments"] =
-          attachments.map((value) => (value).toJson()).toList();
+          attachments.map((value) => value.toJson()).toList();
     }
     if (attendees != null) {
-      _json["attendees"] = attendees.map((value) => (value).toJson()).toList();
+      _json["attendees"] = attendees.map((value) => value.toJson()).toList();
     }
     if (attendeesOmitted != null) {
       _json["attendeesOmitted"] = attendeesOmitted;
@@ -4893,19 +5122,19 @@ class Event {
       _json["colorId"] = colorId;
     }
     if (conferenceData != null) {
-      _json["conferenceData"] = (conferenceData).toJson();
+      _json["conferenceData"] = conferenceData.toJson();
     }
     if (created != null) {
       _json["created"] = (created).toIso8601String();
     }
     if (creator != null) {
-      _json["creator"] = (creator).toJson();
+      _json["creator"] = creator.toJson();
     }
     if (description != null) {
       _json["description"] = description;
     }
     if (end != null) {
-      _json["end"] = (end).toJson();
+      _json["end"] = end.toJson();
     }
     if (endTimeUnspecified != null) {
       _json["endTimeUnspecified"] = endTimeUnspecified;
@@ -4914,10 +5143,10 @@ class Event {
       _json["etag"] = etag;
     }
     if (extendedProperties != null) {
-      _json["extendedProperties"] = (extendedProperties).toJson();
+      _json["extendedProperties"] = extendedProperties.toJson();
     }
     if (gadget != null) {
-      _json["gadget"] = (gadget).toJson();
+      _json["gadget"] = gadget.toJson();
     }
     if (guestsCanInviteOthers != null) {
       _json["guestsCanInviteOthers"] = guestsCanInviteOthers;
@@ -4950,10 +5179,10 @@ class Event {
       _json["locked"] = locked;
     }
     if (organizer != null) {
-      _json["organizer"] = (organizer).toJson();
+      _json["organizer"] = organizer.toJson();
     }
     if (originalStartTime != null) {
-      _json["originalStartTime"] = (originalStartTime).toJson();
+      _json["originalStartTime"] = originalStartTime.toJson();
     }
     if (privateCopy != null) {
       _json["privateCopy"] = privateCopy;
@@ -4965,16 +5194,16 @@ class Event {
       _json["recurringEventId"] = recurringEventId;
     }
     if (reminders != null) {
-      _json["reminders"] = (reminders).toJson();
+      _json["reminders"] = reminders.toJson();
     }
     if (sequence != null) {
       _json["sequence"] = sequence;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     if (start != null) {
-      _json["start"] = (start).toJson();
+      _json["start"] = start.toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -5038,7 +5267,7 @@ class EventAttachment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fileId != null) {
       _json["fileId"] = fileId;
     }
@@ -5137,7 +5366,7 @@ class EventAttendee {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalGuests != null) {
       _json["additionalGuests"] = additionalGuests;
     }
@@ -5204,7 +5433,7 @@ class EventDateTime {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (date != null) {
       _json["date"] =
           "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
@@ -5244,7 +5473,7 @@ class EventReminder {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (method != null) {
       _json["method"] = method;
     }
@@ -5313,7 +5542,7 @@ class Events {
     }
     if (_json.containsKey("defaultReminders")) {
       defaultReminders = (_json["defaultReminders"] as core.List)
-          .map<EventReminder>((value) => new EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -5324,7 +5553,7 @@ class Events {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Event>((value) => new Event.fromJson(value))
+          .map<Event>((value) => Event.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5349,13 +5578,13 @@ class Events {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accessRole != null) {
       _json["accessRole"] = accessRole;
     }
     if (defaultReminders != null) {
       _json["defaultReminders"] =
-          defaultReminders.map((value) => (value).toJson()).toList();
+          defaultReminders.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -5364,7 +5593,7 @@ class Events {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5400,24 +5629,24 @@ class FreeBusyCalendar {
   FreeBusyCalendar.fromJson(core.Map _json) {
     if (_json.containsKey("busy")) {
       busy = (_json["busy"] as core.List)
-          .map<TimePeriod>((value) => new TimePeriod.fromJson(value))
+          .map<TimePeriod>((value) => TimePeriod.fromJson(value))
           .toList();
     }
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<Error>((value) => new Error.fromJson(value))
+          .map<Error>((value) => Error.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (busy != null) {
-      _json["busy"] = busy.map((value) => (value).toJson()).toList();
+      _json["busy"] = busy.map((value) => value.toJson()).toList();
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5438,19 +5667,19 @@ class FreeBusyGroup {
     }
     if (_json.containsKey("errors")) {
       errors = (_json["errors"] as core.List)
-          .map<Error>((value) => new Error.fromJson(value))
+          .map<Error>((value) => Error.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (calendars != null) {
       _json["calendars"] = calendars;
     }
     if (errors != null) {
-      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+      _json["errors"] = errors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5490,7 +5719,7 @@ class FreeBusyRequest {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<FreeBusyRequestItem>(
-              (value) => new FreeBusyRequestItem.fromJson(value))
+              (value) => FreeBusyRequestItem.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timeMax")) {
@@ -5506,7 +5735,7 @@ class FreeBusyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (calendarExpansionMax != null) {
       _json["calendarExpansionMax"] = calendarExpansionMax;
     }
@@ -5514,7 +5743,7 @@ class FreeBusyRequest {
       _json["groupExpansionMax"] = groupExpansionMax;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (timeMax != null) {
       _json["timeMax"] = (timeMax).toIso8601String();
@@ -5543,7 +5772,7 @@ class FreeBusyRequestItem {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -5573,12 +5802,12 @@ class FreeBusyResponse {
     if (_json.containsKey("calendars")) {
       calendars = commons.mapMap<core.Map, FreeBusyCalendar>(
           _json["calendars"].cast<core.String, core.Map>(),
-          (core.Map item) => new FreeBusyCalendar.fromJson(item));
+          (core.Map item) => FreeBusyCalendar.fromJson(item));
     }
     if (_json.containsKey("groups")) {
       groups = commons.mapMap<core.Map, FreeBusyGroup>(
           _json["groups"].cast<core.String, core.Map>(),
-          (core.Map item) => new FreeBusyGroup.fromJson(item));
+          (core.Map item) => FreeBusyGroup.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5593,16 +5822,16 @@ class FreeBusyResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (calendars != null) {
       _json["calendars"] =
           commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(
-              calendars, (FreeBusyCalendar item) => (item).toJson());
+              calendars, (FreeBusyCalendar item) => item.toJson());
     }
     if (groups != null) {
       _json["groups"] =
           commons.mapMap<FreeBusyGroup, core.Map<core.String, core.Object>>(
-              groups, (FreeBusyGroup item) => (item).toJson());
+              groups, (FreeBusyGroup item) => item.toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5651,7 +5880,7 @@ class Setting {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -5695,7 +5924,7 @@ class Settings {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Setting>((value) => new Setting.fromJson(value))
+          .map<Setting>((value) => Setting.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5711,12 +5940,12 @@ class Settings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5751,7 +5980,7 @@ class TimePeriod {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (end != null) {
       _json["end"] = (end).toIso8601String();
     }

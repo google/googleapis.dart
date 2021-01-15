@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.people.v1;
 
@@ -69,23 +87,23 @@ class PeopleApi {
   final commons.ApiRequester _requester;
 
   ContactGroupsResourceApi get contactGroups =>
-      new ContactGroupsResourceApi(_requester);
+      ContactGroupsResourceApi(_requester);
   OtherContactsResourceApi get otherContacts =>
-      new OtherContactsResourceApi(_requester);
-  PeopleResourceApi get people => new PeopleResourceApi(_requester);
+      OtherContactsResourceApi(_requester);
+  PeopleResourceApi get people => PeopleResourceApi(_requester);
 
   PeopleApi(http.Client client,
       {core.String rootUrl = "https://people.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ContactGroupsResourceApi {
   final commons.ApiRequester _requester;
 
   ContactGroupsMembersResourceApi get members =>
-      new ContactGroupsMembersResourceApi(_requester);
+      ContactGroupsMembersResourceApi(_requester);
 
   ContactGroupsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -110,16 +128,17 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BatchGetContactGroupsResponse> batchGet(
-      {core.int maxMembers,
-      core.List<core.String> resourceNames,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BatchGetContactGroupsResponse> batchGet({
+    core.int maxMembers,
+    core.List<core.String> resourceNames,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
@@ -133,14 +152,17 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/contactGroups:batchGet';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new BatchGetContactGroupsResponse.fromJson(data));
+        .then((data) => BatchGetContactGroupsResponse.fromJson(data));
   }
 
   /// Create a new contact group owned by the authenticated user.
@@ -159,17 +181,19 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContactGroup> create(CreateContactGroupRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContactGroup> create(
+    CreateContactGroupRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -177,13 +201,16 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/contactGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContactGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContactGroup.fromJson(data));
   }
 
   /// Delete an existing contact group owned by the authenticated user by
@@ -208,17 +235,20 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String resourceName,
-      {core.bool deleteContacts, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String resourceName, {
+    core.bool deleteContacts,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (deleteContacts != null) {
       _queryParams["deleteContacts"] = ["${deleteContacts}"];
@@ -229,13 +259,16 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Get a specific contact group owned by the authenticated user by specifying
@@ -259,17 +292,20 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContactGroup> get(core.String resourceName,
-      {core.int maxMembers, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContactGroup> get(
+    core.String resourceName, {
+    core.int maxMembers,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
@@ -280,13 +316,16 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContactGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContactGroup.fromJson(data));
   }
 
   /// List all contact groups owned by the authenticated user. Members of the
@@ -316,17 +355,18 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListContactGroupsResponse> list(
-      {core.int pageSize,
-      core.String pageToken,
-      core.String syncToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListContactGroupsResponse> list({
+    core.int pageSize,
+    core.String pageToken,
+    core.String syncToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -343,14 +383,16 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/contactGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListContactGroupsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListContactGroupsResponse.fromJson(data));
   }
 
   /// Update the name of an existing contact group owned by the authenticated
@@ -376,20 +418,22 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContactGroup> update(
-      UpdateContactGroupRequest request, core.String resourceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateContactGroupRequest request,
+    core.String resourceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -397,13 +441,16 @@ class ContactGroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContactGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContactGroup.fromJson(data));
   }
 }
 
@@ -437,20 +484,22 @@ class ContactGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ModifyContactGroupMembersResponse> modify(
-      ModifyContactGroupMembersRequest request, core.String resourceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyContactGroupMembersRequest request,
+    core.String resourceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -460,14 +509,17 @@ class ContactGroupsMembersResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/members:modify';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ModifyContactGroupMembersResponse.fromJson(data));
+        .then((data) => ModifyContactGroupMembersResponse.fromJson(data));
   }
 }
 
@@ -498,21 +550,22 @@ class OtherContactsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> copyOtherContactToMyContactsGroup(
-      CopyOtherContactToMyContactsGroupRequest request,
-      core.String resourceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CopyOtherContactToMyContactsGroupRequest request,
+    core.String resourceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -522,13 +575,16 @@ class OtherContactsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':copyOtherContactToMyContactsGroup';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Person.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Person.fromJson(data));
   }
 
   /// List all "Other contacts", that is contacts that are not in a contact
@@ -572,19 +628,20 @@ class OtherContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOtherContactsResponse> list(
-      {core.bool requestSyncToken,
-      core.String pageToken,
-      core.String readMask,
-      core.int pageSize,
-      core.String syncToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOtherContactsResponse> list({
+    core.bool requestSyncToken,
+    core.String pageToken,
+    core.String readMask,
+    core.int pageSize,
+    core.String syncToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
@@ -607,14 +664,16 @@ class OtherContactsResourceApi {
 
     _url = 'v1/otherContacts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListOtherContactsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOtherContactsResponse.fromJson(data));
   }
 }
 
@@ -622,7 +681,7 @@ class PeopleResourceApi {
   final commons.ApiRequester _requester;
 
   PeopleConnectionsResourceApi get connections =>
-      new PeopleConnectionsResourceApi(_requester);
+      PeopleConnectionsResourceApi(_requester);
 
   PeopleResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -658,19 +717,21 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> createContact(Person request,
-      {core.String personFields,
-      core.List<core.String> sources,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Person> createContact(
+    Person request, {
+    core.String personFields,
+    core.List<core.String> sources,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
@@ -684,13 +745,16 @@ class PeopleResourceApi {
 
     _url = 'v1/people:createContact';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Person.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Person.fromJson(data));
   }
 
   /// Delete a contact person. Any non-contact data will not be deleted.
@@ -710,17 +774,19 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> deleteContact(core.String resourceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> deleteContact(
+    core.String resourceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -730,13 +796,16 @@ class PeopleResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContact';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Delete a contact's photo.
@@ -771,19 +840,20 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteContactPhotoResponse> deleteContactPhoto(
-      core.String resourceName,
-      {core.List<core.String> sources,
-      core.String personFields,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String resourceName, {
+    core.List<core.String> sources,
+    core.String personFields,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (sources != null) {
       _queryParams["sources"] = sources;
@@ -799,14 +869,16 @@ class PeopleResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContactPhoto';
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new DeleteContactPhotoResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeleteContactPhotoResponse.fromJson(data));
   }
 
   /// Provides information about a person by specifying a resource name. Use
@@ -849,20 +921,22 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> get(core.String resourceName,
-      {core.List<core.String> sources,
-      core.String requestMask_includeField,
-      core.String personFields,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Person> get(
+    core.String resourceName, {
+    core.List<core.String> sources,
+    core.String requestMask_includeField,
+    core.String personFields,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (sources != null) {
       _queryParams["sources"] = sources;
@@ -879,13 +953,16 @@ class PeopleResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Person.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Person.fromJson(data));
   }
 
   /// Provides information about a list of specific people by specifying a list
@@ -930,18 +1007,19 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetPeopleResponse> getBatchGet(
-      {core.String requestMask_includeField,
-      core.String personFields,
-      core.List<core.String> resourceNames,
-      core.List<core.String> sources,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetPeopleResponse> getBatchGet({
+    core.String requestMask_includeField,
+    core.String personFields,
+    core.List<core.String> resourceNames,
+    core.List<core.String> sources,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
@@ -961,13 +1039,16 @@ class PeopleResourceApi {
 
     _url = 'v1/people:batchGet';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetPeopleResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetPeopleResponse.fromJson(data));
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1019,21 +1100,22 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListDirectoryPeopleResponse> listDirectoryPeople(
-      {core.String syncToken,
-      core.List<core.String> mergeSources,
-      core.String pageToken,
-      core.bool requestSyncToken,
-      core.List<core.String> sources,
-      core.String readMask,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListDirectoryPeopleResponse> listDirectoryPeople({
+    core.String syncToken,
+    core.List<core.String> mergeSources,
+    core.String pageToken,
+    core.bool requestSyncToken,
+    core.List<core.String> sources,
+    core.String readMask,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
@@ -1062,14 +1144,16 @@ class PeopleResourceApi {
 
     _url = 'v1/people:listDirectoryPeople';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListDirectoryPeopleResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListDirectoryPeopleResponse.fromJson(data));
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1114,20 +1198,21 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchDirectoryPeopleResponse> searchDirectoryPeople(
-      {core.List<core.String> mergeSources,
-      core.List<core.String> sources,
-      core.String query,
-      core.String pageToken,
-      core.String readMask,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SearchDirectoryPeopleResponse> searchDirectoryPeople({
+    core.List<core.String> mergeSources,
+    core.List<core.String> sources,
+    core.String query,
+    core.String pageToken,
+    core.String readMask,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (mergeSources != null) {
       _queryParams["mergeSources"] = mergeSources;
@@ -1153,14 +1238,17 @@ class PeopleResourceApi {
 
     _url = 'v1/people:searchDirectoryPeople';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new SearchDirectoryPeopleResponse.fromJson(data));
+        .then((data) => SearchDirectoryPeopleResponse.fromJson(data));
   }
 
   /// Update contact data for an existing contact person. Any non-contact data
@@ -1219,23 +1307,26 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> updateContact(Person request, core.String resourceName,
-      {core.String updatePersonFields,
-      core.List<core.String> sources,
-      core.String personFields,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Person> updateContact(
+    Person request,
+    core.String resourceName, {
+    core.String updatePersonFields,
+    core.List<core.String> sources,
+    core.String personFields,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (updatePersonFields != null) {
       _queryParams["updatePersonFields"] = [updatePersonFields];
@@ -1254,13 +1345,16 @@ class PeopleResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContact';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Person.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Person.fromJson(data));
   }
 
   /// Update a contact's photo.
@@ -1283,20 +1377,22 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UpdateContactPhotoResponse> updateContactPhoto(
-      UpdateContactPhotoRequest request, core.String resourceName,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateContactPhotoRequest request,
+    core.String resourceName, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1306,14 +1402,16 @@ class PeopleResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContactPhoto';
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new UpdateContactPhotoResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UpdateContactPhotoResponse.fromJson(data));
   }
 }
 
@@ -1389,25 +1487,27 @@ class PeopleConnectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String sortOrder,
-      core.bool requestSyncToken,
-      core.int pageSize,
-      core.List<core.String> sources,
-      core.String requestMask_includeField,
-      core.String pageToken,
-      core.String personFields,
-      core.String syncToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListConnectionsResponse> list(
+    core.String resourceName, {
+    core.String sortOrder,
+    core.bool requestSyncToken,
+    core.int pageSize,
+    core.List<core.String> sources,
+    core.String requestMask_includeField,
+    core.String pageToken,
+    core.String personFields,
+    core.String syncToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceName == null) {
-      throw new core.ArgumentError("Parameter resourceName is required.");
+      throw core.ArgumentError("Parameter resourceName is required.");
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -1441,13 +1541,16 @@ class PeopleConnectionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/connections';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListConnectionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListConnectionsResponse.fromJson(data));
   }
 }
 
@@ -1516,7 +1619,7 @@ class Address {
       formattedValue = _json["formattedValue"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("poBox")) {
       poBox = _json["poBox"];
@@ -1537,7 +1640,7 @@ class Address {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (city != null) {
       _json["city"] = city;
     }
@@ -1557,7 +1660,7 @@ class Address {
       _json["formattedValue"] = formattedValue;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (poBox != null) {
       _json["poBox"] = poBox;
@@ -1598,18 +1701,18 @@ class AgeRangeType {
       ageRange = _json["ageRange"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     return _json;
   }
@@ -1626,16 +1729,16 @@ class BatchGetContactGroupsResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<ContactGroupResponse>(
-              (value) => new ContactGroupResponse.fromJson(value))
+              (value) => ContactGroupResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1663,7 +1766,7 @@ class Biography {
       contentType = _json["contentType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1672,12 +1775,12 @@ class Biography {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -1703,10 +1806,10 @@ class Birthday {
 
   Birthday.fromJson(core.Map _json) {
     if (_json.containsKey("date")) {
-      date = new Date.fromJson(_json["date"]);
+      date = Date.fromJson(_json["date"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -1715,12 +1818,12 @@ class Birthday {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] = (date).toJson();
+      _json["date"] = date.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -1741,7 +1844,7 @@ class BraggingRights {
 
   BraggingRights.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1750,9 +1853,9 @@ class BraggingRights {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -1784,7 +1887,7 @@ class CalendarUrl {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -1796,12 +1899,12 @@ class CalendarUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -1832,7 +1935,7 @@ class ClientData {
       key = _json["key"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -1841,12 +1944,12 @@ class ClientData {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -1914,7 +2017,7 @@ class ContactGroup {
           (_json["memberResourceNames"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("metadata")) {
-      metadata = new ContactGroupMetadata.fromJson(_json["metadata"]);
+      metadata = ContactGroupMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1926,7 +2029,7 @@ class ContactGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1943,7 +2046,7 @@ class ContactGroup {
       _json["memberResourceNames"] = memberResourceNames;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1981,7 +2084,7 @@ class ContactGroupMembership {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroupId != null) {
       _json["contactGroupId"] = contactGroupId;
     }
@@ -2016,7 +2119,7 @@ class ContactGroupMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -2042,27 +2145,27 @@ class ContactGroupResponse {
 
   ContactGroupResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroup")) {
-      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+      contactGroup = ContactGroup.fromJson(_json["contactGroup"]);
     }
     if (_json.containsKey("requestedResourceName")) {
       requestedResourceName = _json["requestedResourceName"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroup != null) {
-      _json["contactGroup"] = (contactGroup).toJson();
+      _json["contactGroup"] = contactGroup.toJson();
     }
     if (requestedResourceName != null) {
       _json["requestedResourceName"] = requestedResourceName;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -2105,7 +2208,7 @@ class CopyOtherContactToMyContactsGroupRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (copyMask != null) {
       _json["copyMask"] = copyMask;
     }
@@ -2139,7 +2242,7 @@ class CoverPhoto {
       default_ = _json["default"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -2148,12 +2251,12 @@ class CoverPhoto {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (default_ != null) {
       _json["default"] = default_;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -2171,15 +2274,15 @@ class CreateContactGroupRequest {
 
   CreateContactGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroup")) {
-      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+      contactGroup = ContactGroup.fromJson(_json["contactGroup"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroup != null) {
-      _json["contactGroup"] = (contactGroup).toJson();
+      _json["contactGroup"] = contactGroup.toJson();
     }
     return _json;
   }
@@ -2223,7 +2326,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -2247,15 +2350,15 @@ class DeleteContactPhotoResponse {
 
   DeleteContactPhotoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("person")) {
-      person = new Person.fromJson(_json["person"]);
+      person = Person.fromJson(_json["person"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (person != null) {
-      _json["person"] = (person).toJson();
+      _json["person"] = person.toJson();
     }
     return _json;
   }
@@ -2276,7 +2379,7 @@ class DomainMembership {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inViewerDomain != null) {
       _json["inViewerDomain"] = inViewerDomain;
     }
@@ -2313,7 +2416,7 @@ class EmailAddress {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2325,7 +2428,7 @@ class EmailAddress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2333,7 +2436,7 @@ class EmailAddress {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -2357,7 +2460,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2382,13 +2485,13 @@ class Event {
 
   Event.fromJson(core.Map _json) {
     if (_json.containsKey("date")) {
-      date = new Date.fromJson(_json["date"]);
+      date = Date.fromJson(_json["date"]);
     }
     if (_json.containsKey("formattedType")) {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2397,15 +2500,15 @@ class Event {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (date != null) {
-      _json["date"] = (date).toJson();
+      _json["date"] = date.toJson();
     }
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -2438,7 +2541,7 @@ class ExternalId {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -2450,12 +2553,12 @@ class ExternalId {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -2488,7 +2591,7 @@ class FieldMetadata {
       primary = _json["primary"];
     }
     if (_json.containsKey("source")) {
-      source = new Source.fromJson(_json["source"]);
+      source = Source.fromJson(_json["source"]);
     }
     if (_json.containsKey("verified")) {
       verified = _json["verified"];
@@ -2497,12 +2600,12 @@ class FieldMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (primary != null) {
       _json["primary"] = primary;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     if (verified != null) {
       _json["verified"] = verified;
@@ -2523,7 +2626,7 @@ class FileAs {
 
   FileAs.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -2532,9 +2635,9 @@ class FileAs {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -2572,7 +2675,7 @@ class Gender {
       formattedValue = _json["formattedValue"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -2581,7 +2684,7 @@ class Gender {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addressMeAs != null) {
       _json["addressMeAs"] = addressMeAs;
     }
@@ -2589,7 +2692,7 @@ class Gender {
       _json["formattedValue"] = formattedValue;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -2608,16 +2711,16 @@ class GetPeopleResponse {
   GetPeopleResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
-          .map<PersonResponse>((value) => new PersonResponse.fromJson(value))
+          .map<PersonResponse>((value) => PersonResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2658,7 +2761,7 @@ class ImClient {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("protocol")) {
       protocol = _json["protocol"];
@@ -2673,7 +2776,7 @@ class ImClient {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedProtocol != null) {
       _json["formattedProtocol"] = formattedProtocol;
     }
@@ -2681,7 +2784,7 @@ class ImClient {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (protocol != null) {
       _json["protocol"] = protocol;
@@ -2708,7 +2811,7 @@ class Interest {
 
   Interest.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -2717,9 +2820,9 @@ class Interest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -2755,7 +2858,7 @@ class ListConnectionsResponse {
   ListConnectionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("connections")) {
       connections = (_json["connections"] as core.List)
-          .map<Person>((value) => new Person.fromJson(value))
+          .map<Person>((value) => Person.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2774,10 +2877,10 @@ class ListConnectionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (connections != null) {
       _json["connections"] =
-          connections.map((value) => (value).toJson()).toList();
+          connections.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2815,7 +2918,7 @@ class ListContactGroupsResponse {
   ListContactGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroups")) {
       contactGroups = (_json["contactGroups"] as core.List)
-          .map<ContactGroup>((value) => new ContactGroup.fromJson(value))
+          .map<ContactGroup>((value) => ContactGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2831,10 +2934,10 @@ class ListContactGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroups != null) {
       _json["contactGroups"] =
-          contactGroups.map((value) => (value).toJson()).toList();
+          contactGroups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2874,14 +2977,14 @@ class ListDirectoryPeopleResponse {
     }
     if (_json.containsKey("people")) {
       people = (_json["people"] as core.List)
-          .map<Person>((value) => new Person.fromJson(value))
+          .map<Person>((value) => Person.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2889,7 +2992,7 @@ class ListDirectoryPeopleResponse {
       _json["nextSyncToken"] = nextSyncToken;
     }
     if (people != null) {
-      _json["people"] = people.map((value) => (value).toJson()).toList();
+      _json["people"] = people.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2922,14 +3025,14 @@ class ListOtherContactsResponse {
     }
     if (_json.containsKey("otherContacts")) {
       otherContacts = (_json["otherContacts"] as core.List)
-          .map<Person>((value) => new Person.fromJson(value))
+          .map<Person>((value) => Person.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2938,7 +3041,7 @@ class ListOtherContactsResponse {
     }
     if (otherContacts != null) {
       _json["otherContacts"] =
-          otherContacts.map((value) => (value).toJson()).toList();
+          otherContacts.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2957,7 +3060,7 @@ class Locale {
 
   Locale.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -2966,9 +3069,9 @@ class Locale {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -3023,7 +3126,7 @@ class Location {
       floorSection = _json["floorSection"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -3035,7 +3138,7 @@ class Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (buildingId != null) {
       _json["buildingId"] = buildingId;
     }
@@ -3052,7 +3155,7 @@ class Location {
       _json["floorSection"] = floorSection;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -3081,28 +3184,27 @@ class Membership {
   Membership.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroupMembership")) {
       contactGroupMembership =
-          new ContactGroupMembership.fromJson(_json["contactGroupMembership"]);
+          ContactGroupMembership.fromJson(_json["contactGroupMembership"]);
     }
     if (_json.containsKey("domainMembership")) {
-      domainMembership =
-          new DomainMembership.fromJson(_json["domainMembership"]);
+      domainMembership = DomainMembership.fromJson(_json["domainMembership"]);
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroupMembership != null) {
-      _json["contactGroupMembership"] = (contactGroupMembership).toJson();
+      _json["contactGroupMembership"] = contactGroupMembership.toJson();
     }
     if (domainMembership != null) {
-      _json["domainMembership"] = (domainMembership).toJson();
+      _json["domainMembership"] = domainMembership.toJson();
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     return _json;
   }
@@ -3144,7 +3246,7 @@ class MiscKeyword {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -3156,12 +3258,12 @@ class MiscKeyword {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -3200,7 +3302,7 @@ class ModifyContactGroupMembersRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceNamesToAdd != null) {
       _json["resourceNamesToAdd"] = resourceNamesToAdd;
     }
@@ -3236,7 +3338,7 @@ class ModifyContactGroupMembersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (canNotRemoveLastContactGroupResourceNames != null) {
       _json["canNotRemoveLastContactGroupResourceNames"] =
           canNotRemoveLastContactGroupResourceNames;
@@ -3320,7 +3422,7 @@ class Name {
       honorificSuffix = _json["honorificSuffix"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("middleName")) {
       middleName = _json["middleName"];
@@ -3350,7 +3452,7 @@ class Name {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3370,7 +3472,7 @@ class Name {
       _json["honorificSuffix"] = honorificSuffix;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (middleName != null) {
       _json["middleName"] = middleName;
@@ -3425,7 +3527,7 @@ class Nickname {
 
   Nickname.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -3437,9 +3539,9 @@ class Nickname {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -3463,7 +3565,7 @@ class Occupation {
 
   Occupation.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -3472,9 +3574,9 @@ class Occupation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -3546,7 +3648,7 @@ class Organization {
       domain = _json["domain"];
     }
     if (_json.containsKey("endDate")) {
-      endDate = new Date.fromJson(_json["endDate"]);
+      endDate = Date.fromJson(_json["endDate"]);
     }
     if (_json.containsKey("formattedType")) {
       formattedType = _json["formattedType"];
@@ -3558,7 +3660,7 @@ class Organization {
       location = _json["location"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3567,7 +3669,7 @@ class Organization {
       phoneticName = _json["phoneticName"];
     }
     if (_json.containsKey("startDate")) {
-      startDate = new Date.fromJson(_json["startDate"]);
+      startDate = Date.fromJson(_json["startDate"]);
     }
     if (_json.containsKey("symbol")) {
       symbol = _json["symbol"];
@@ -3582,7 +3684,7 @@ class Organization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (current != null) {
       _json["current"] = current;
     }
@@ -3593,7 +3695,7 @@ class Organization {
       _json["domain"] = domain;
     }
     if (endDate != null) {
-      _json["endDate"] = (endDate).toJson();
+      _json["endDate"] = endDate.toJson();
     }
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
@@ -3605,7 +3707,7 @@ class Organization {
       _json["location"] = location;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3614,7 +3716,7 @@ class Organization {
       _json["phoneticName"] = phoneticName;
     }
     if (startDate != null) {
-      _json["startDate"] = (startDate).toJson();
+      _json["startDate"] = startDate.toJson();
     }
     if (symbol != null) {
       _json["symbol"] = symbol;
@@ -3766,7 +3868,7 @@ class Person {
   Person.fromJson(core.Map _json) {
     if (_json.containsKey("addresses")) {
       addresses = (_json["addresses"] as core.List)
-          .map<Address>((value) => new Address.fromJson(value))
+          .map<Address>((value) => Address.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ageRange")) {
@@ -3774,42 +3876,42 @@ class Person {
     }
     if (_json.containsKey("ageRanges")) {
       ageRanges = (_json["ageRanges"] as core.List)
-          .map<AgeRangeType>((value) => new AgeRangeType.fromJson(value))
+          .map<AgeRangeType>((value) => AgeRangeType.fromJson(value))
           .toList();
     }
     if (_json.containsKey("biographies")) {
       biographies = (_json["biographies"] as core.List)
-          .map<Biography>((value) => new Biography.fromJson(value))
+          .map<Biography>((value) => Biography.fromJson(value))
           .toList();
     }
     if (_json.containsKey("birthdays")) {
       birthdays = (_json["birthdays"] as core.List)
-          .map<Birthday>((value) => new Birthday.fromJson(value))
+          .map<Birthday>((value) => Birthday.fromJson(value))
           .toList();
     }
     if (_json.containsKey("braggingRights")) {
       braggingRights = (_json["braggingRights"] as core.List)
-          .map<BraggingRights>((value) => new BraggingRights.fromJson(value))
+          .map<BraggingRights>((value) => BraggingRights.fromJson(value))
           .toList();
     }
     if (_json.containsKey("calendarUrls")) {
       calendarUrls = (_json["calendarUrls"] as core.List)
-          .map<CalendarUrl>((value) => new CalendarUrl.fromJson(value))
+          .map<CalendarUrl>((value) => CalendarUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("clientData")) {
       clientData = (_json["clientData"] as core.List)
-          .map<ClientData>((value) => new ClientData.fromJson(value))
+          .map<ClientData>((value) => ClientData.fromJson(value))
           .toList();
     }
     if (_json.containsKey("coverPhotos")) {
       coverPhotos = (_json["coverPhotos"] as core.List)
-          .map<CoverPhoto>((value) => new CoverPhoto.fromJson(value))
+          .map<CoverPhoto>((value) => CoverPhoto.fromJson(value))
           .toList();
     }
     if (_json.containsKey("emailAddresses")) {
       emailAddresses = (_json["emailAddresses"] as core.List)
-          .map<EmailAddress>((value) => new EmailAddress.fromJson(value))
+          .map<EmailAddress>((value) => EmailAddress.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -3817,107 +3919,107 @@ class Person {
     }
     if (_json.containsKey("events")) {
       events = (_json["events"] as core.List)
-          .map<Event>((value) => new Event.fromJson(value))
+          .map<Event>((value) => Event.fromJson(value))
           .toList();
     }
     if (_json.containsKey("externalIds")) {
       externalIds = (_json["externalIds"] as core.List)
-          .map<ExternalId>((value) => new ExternalId.fromJson(value))
+          .map<ExternalId>((value) => ExternalId.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fileAses")) {
       fileAses = (_json["fileAses"] as core.List)
-          .map<FileAs>((value) => new FileAs.fromJson(value))
+          .map<FileAs>((value) => FileAs.fromJson(value))
           .toList();
     }
     if (_json.containsKey("genders")) {
       genders = (_json["genders"] as core.List)
-          .map<Gender>((value) => new Gender.fromJson(value))
+          .map<Gender>((value) => Gender.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imClients")) {
       imClients = (_json["imClients"] as core.List)
-          .map<ImClient>((value) => new ImClient.fromJson(value))
+          .map<ImClient>((value) => ImClient.fromJson(value))
           .toList();
     }
     if (_json.containsKey("interests")) {
       interests = (_json["interests"] as core.List)
-          .map<Interest>((value) => new Interest.fromJson(value))
+          .map<Interest>((value) => Interest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("locales")) {
       locales = (_json["locales"] as core.List)
-          .map<Locale>((value) => new Locale.fromJson(value))
+          .map<Locale>((value) => Locale.fromJson(value))
           .toList();
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<Location>((value) => new Location.fromJson(value))
+          .map<Location>((value) => Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("memberships")) {
       memberships = (_json["memberships"] as core.List)
-          .map<Membership>((value) => new Membership.fromJson(value))
+          .map<Membership>((value) => Membership.fromJson(value))
           .toList();
     }
     if (_json.containsKey("metadata")) {
-      metadata = new PersonMetadata.fromJson(_json["metadata"]);
+      metadata = PersonMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("miscKeywords")) {
       miscKeywords = (_json["miscKeywords"] as core.List)
-          .map<MiscKeyword>((value) => new MiscKeyword.fromJson(value))
+          .map<MiscKeyword>((value) => MiscKeyword.fromJson(value))
           .toList();
     }
     if (_json.containsKey("names")) {
       names = (_json["names"] as core.List)
-          .map<Name>((value) => new Name.fromJson(value))
+          .map<Name>((value) => Name.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nicknames")) {
       nicknames = (_json["nicknames"] as core.List)
-          .map<Nickname>((value) => new Nickname.fromJson(value))
+          .map<Nickname>((value) => Nickname.fromJson(value))
           .toList();
     }
     if (_json.containsKey("occupations")) {
       occupations = (_json["occupations"] as core.List)
-          .map<Occupation>((value) => new Occupation.fromJson(value))
+          .map<Occupation>((value) => Occupation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("organizations")) {
       organizations = (_json["organizations"] as core.List)
-          .map<Organization>((value) => new Organization.fromJson(value))
+          .map<Organization>((value) => Organization.fromJson(value))
           .toList();
     }
     if (_json.containsKey("phoneNumbers")) {
       phoneNumbers = (_json["phoneNumbers"] as core.List)
-          .map<PhoneNumber>((value) => new PhoneNumber.fromJson(value))
+          .map<PhoneNumber>((value) => PhoneNumber.fromJson(value))
           .toList();
     }
     if (_json.containsKey("photos")) {
       photos = (_json["photos"] as core.List)
-          .map<Photo>((value) => new Photo.fromJson(value))
+          .map<Photo>((value) => Photo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relations")) {
       relations = (_json["relations"] as core.List)
-          .map<Relation>((value) => new Relation.fromJson(value))
+          .map<Relation>((value) => Relation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relationshipInterests")) {
       relationshipInterests = (_json["relationshipInterests"] as core.List)
           .map<RelationshipInterest>(
-              (value) => new RelationshipInterest.fromJson(value))
+              (value) => RelationshipInterest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("relationshipStatuses")) {
       relationshipStatuses = (_json["relationshipStatuses"] as core.List)
           .map<RelationshipStatus>(
-              (value) => new RelationshipStatus.fromJson(value))
+              (value) => RelationshipStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("residences")) {
       residences = (_json["residences"] as core.List)
-          .map<Residence>((value) => new Residence.fromJson(value))
+          .map<Residence>((value) => Residence.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resourceName")) {
@@ -3925,164 +4027,162 @@ class Person {
     }
     if (_json.containsKey("sipAddresses")) {
       sipAddresses = (_json["sipAddresses"] as core.List)
-          .map<SipAddress>((value) => new SipAddress.fromJson(value))
+          .map<SipAddress>((value) => SipAddress.fromJson(value))
           .toList();
     }
     if (_json.containsKey("skills")) {
       skills = (_json["skills"] as core.List)
-          .map<Skill>((value) => new Skill.fromJson(value))
+          .map<Skill>((value) => Skill.fromJson(value))
           .toList();
     }
     if (_json.containsKey("taglines")) {
       taglines = (_json["taglines"] as core.List)
-          .map<Tagline>((value) => new Tagline.fromJson(value))
+          .map<Tagline>((value) => Tagline.fromJson(value))
           .toList();
     }
     if (_json.containsKey("urls")) {
       urls = (_json["urls"] as core.List)
-          .map<Url>((value) => new Url.fromJson(value))
+          .map<Url>((value) => Url.fromJson(value))
           .toList();
     }
     if (_json.containsKey("userDefined")) {
       userDefined = (_json["userDefined"] as core.List)
-          .map<UserDefined>((value) => new UserDefined.fromJson(value))
+          .map<UserDefined>((value) => UserDefined.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addresses != null) {
-      _json["addresses"] = addresses.map((value) => (value).toJson()).toList();
+      _json["addresses"] = addresses.map((value) => value.toJson()).toList();
     }
     if (ageRange != null) {
       _json["ageRange"] = ageRange;
     }
     if (ageRanges != null) {
-      _json["ageRanges"] = ageRanges.map((value) => (value).toJson()).toList();
+      _json["ageRanges"] = ageRanges.map((value) => value.toJson()).toList();
     }
     if (biographies != null) {
       _json["biographies"] =
-          biographies.map((value) => (value).toJson()).toList();
+          biographies.map((value) => value.toJson()).toList();
     }
     if (birthdays != null) {
-      _json["birthdays"] = birthdays.map((value) => (value).toJson()).toList();
+      _json["birthdays"] = birthdays.map((value) => value.toJson()).toList();
     }
     if (braggingRights != null) {
       _json["braggingRights"] =
-          braggingRights.map((value) => (value).toJson()).toList();
+          braggingRights.map((value) => value.toJson()).toList();
     }
     if (calendarUrls != null) {
       _json["calendarUrls"] =
-          calendarUrls.map((value) => (value).toJson()).toList();
+          calendarUrls.map((value) => value.toJson()).toList();
     }
     if (clientData != null) {
-      _json["clientData"] =
-          clientData.map((value) => (value).toJson()).toList();
+      _json["clientData"] = clientData.map((value) => value.toJson()).toList();
     }
     if (coverPhotos != null) {
       _json["coverPhotos"] =
-          coverPhotos.map((value) => (value).toJson()).toList();
+          coverPhotos.map((value) => value.toJson()).toList();
     }
     if (emailAddresses != null) {
       _json["emailAddresses"] =
-          emailAddresses.map((value) => (value).toJson()).toList();
+          emailAddresses.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (events != null) {
-      _json["events"] = events.map((value) => (value).toJson()).toList();
+      _json["events"] = events.map((value) => value.toJson()).toList();
     }
     if (externalIds != null) {
       _json["externalIds"] =
-          externalIds.map((value) => (value).toJson()).toList();
+          externalIds.map((value) => value.toJson()).toList();
     }
     if (fileAses != null) {
-      _json["fileAses"] = fileAses.map((value) => (value).toJson()).toList();
+      _json["fileAses"] = fileAses.map((value) => value.toJson()).toList();
     }
     if (genders != null) {
-      _json["genders"] = genders.map((value) => (value).toJson()).toList();
+      _json["genders"] = genders.map((value) => value.toJson()).toList();
     }
     if (imClients != null) {
-      _json["imClients"] = imClients.map((value) => (value).toJson()).toList();
+      _json["imClients"] = imClients.map((value) => value.toJson()).toList();
     }
     if (interests != null) {
-      _json["interests"] = interests.map((value) => (value).toJson()).toList();
+      _json["interests"] = interests.map((value) => value.toJson()).toList();
     }
     if (locales != null) {
-      _json["locales"] = locales.map((value) => (value).toJson()).toList();
+      _json["locales"] = locales.map((value) => value.toJson()).toList();
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (memberships != null) {
       _json["memberships"] =
-          memberships.map((value) => (value).toJson()).toList();
+          memberships.map((value) => value.toJson()).toList();
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (miscKeywords != null) {
       _json["miscKeywords"] =
-          miscKeywords.map((value) => (value).toJson()).toList();
+          miscKeywords.map((value) => value.toJson()).toList();
     }
     if (names != null) {
-      _json["names"] = names.map((value) => (value).toJson()).toList();
+      _json["names"] = names.map((value) => value.toJson()).toList();
     }
     if (nicknames != null) {
-      _json["nicknames"] = nicknames.map((value) => (value).toJson()).toList();
+      _json["nicknames"] = nicknames.map((value) => value.toJson()).toList();
     }
     if (occupations != null) {
       _json["occupations"] =
-          occupations.map((value) => (value).toJson()).toList();
+          occupations.map((value) => value.toJson()).toList();
     }
     if (organizations != null) {
       _json["organizations"] =
-          organizations.map((value) => (value).toJson()).toList();
+          organizations.map((value) => value.toJson()).toList();
     }
     if (phoneNumbers != null) {
       _json["phoneNumbers"] =
-          phoneNumbers.map((value) => (value).toJson()).toList();
+          phoneNumbers.map((value) => value.toJson()).toList();
     }
     if (photos != null) {
-      _json["photos"] = photos.map((value) => (value).toJson()).toList();
+      _json["photos"] = photos.map((value) => value.toJson()).toList();
     }
     if (relations != null) {
-      _json["relations"] = relations.map((value) => (value).toJson()).toList();
+      _json["relations"] = relations.map((value) => value.toJson()).toList();
     }
     if (relationshipInterests != null) {
       _json["relationshipInterests"] =
-          relationshipInterests.map((value) => (value).toJson()).toList();
+          relationshipInterests.map((value) => value.toJson()).toList();
     }
     if (relationshipStatuses != null) {
       _json["relationshipStatuses"] =
-          relationshipStatuses.map((value) => (value).toJson()).toList();
+          relationshipStatuses.map((value) => value.toJson()).toList();
     }
     if (residences != null) {
-      _json["residences"] =
-          residences.map((value) => (value).toJson()).toList();
+      _json["residences"] = residences.map((value) => value.toJson()).toList();
     }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
     }
     if (sipAddresses != null) {
       _json["sipAddresses"] =
-          sipAddresses.map((value) => (value).toJson()).toList();
+          sipAddresses.map((value) => value.toJson()).toList();
     }
     if (skills != null) {
-      _json["skills"] = skills.map((value) => (value).toJson()).toList();
+      _json["skills"] = skills.map((value) => value.toJson()).toList();
     }
     if (taglines != null) {
-      _json["taglines"] = taglines.map((value) => (value).toJson()).toList();
+      _json["taglines"] = taglines.map((value) => value.toJson()).toList();
     }
     if (urls != null) {
-      _json["urls"] = urls.map((value) => (value).toJson()).toList();
+      _json["urls"] = urls.map((value) => value.toJson()).toList();
     }
     if (userDefined != null) {
       _json["userDefined"] =
-          userDefined.map((value) => (value).toJson()).toList();
+          userDefined.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4136,14 +4236,14 @@ class PersonMetadata {
     }
     if (_json.containsKey("sources")) {
       sources = (_json["sources"] as core.List)
-          .map<Source>((value) => new Source.fromJson(value))
+          .map<Source>((value) => Source.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -4157,7 +4257,7 @@ class PersonMetadata {
       _json["previousResourceNames"] = previousResourceNames;
     }
     if (sources != null) {
-      _json["sources"] = sources.map((value) => (value).toJson()).toList();
+      _json["sources"] = sources.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4188,30 +4288,30 @@ class PersonResponse {
       httpStatusCode = _json["httpStatusCode"];
     }
     if (_json.containsKey("person")) {
-      person = new Person.fromJson(_json["person"]);
+      person = Person.fromJson(_json["person"]);
     }
     if (_json.containsKey("requestedResourceName")) {
       requestedResourceName = _json["requestedResourceName"];
     }
     if (_json.containsKey("status")) {
-      status = new Status.fromJson(_json["status"]);
+      status = Status.fromJson(_json["status"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpStatusCode != null) {
       _json["httpStatusCode"] = httpStatusCode;
     }
     if (person != null) {
-      _json["person"] = (person).toJson();
+      _json["person"] = person.toJson();
     }
     if (requestedResourceName != null) {
       _json["requestedResourceName"] = requestedResourceName;
     }
     if (status != null) {
-      _json["status"] = (status).toJson();
+      _json["status"] = status.toJson();
     }
     return _json;
   }
@@ -4250,7 +4350,7 @@ class PhoneNumber {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4262,7 +4362,7 @@ class PhoneNumber {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (canonicalForm != null) {
       _json["canonicalForm"] = canonicalForm;
     }
@@ -4270,7 +4370,7 @@ class PhoneNumber {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4305,7 +4405,7 @@ class Photo {
       default_ = _json["default"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -4314,12 +4414,12 @@ class Photo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (default_ != null) {
       _json["default"] = default_;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -4353,7 +4453,7 @@ class ProfileMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (objectType != null) {
       _json["objectType"] = objectType;
     }
@@ -4390,7 +4490,7 @@ class Relation {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("person")) {
       person = _json["person"];
@@ -4402,12 +4502,12 @@ class Relation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (person != null) {
       _json["person"] = person;
@@ -4441,7 +4541,7 @@ class RelationshipInterest {
       formattedValue = _json["formattedValue"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4450,12 +4550,12 @@ class RelationshipInterest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedValue != null) {
       _json["formattedValue"] = formattedValue;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -4487,7 +4587,7 @@ class RelationshipStatus {
       formattedValue = _json["formattedValue"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4496,12 +4596,12 @@ class RelationshipStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedValue != null) {
       _json["formattedValue"] = formattedValue;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -4530,7 +4630,7 @@ class Residence {
       current = _json["current"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4539,12 +4639,12 @@ class Residence {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (current != null) {
       _json["current"] = current;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -4574,7 +4674,7 @@ class SearchDirectoryPeopleResponse {
     }
     if (_json.containsKey("people")) {
       people = (_json["people"] as core.List)
-          .map<Person>((value) => new Person.fromJson(value))
+          .map<Person>((value) => Person.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalSize")) {
@@ -4584,12 +4684,12 @@ class SearchDirectoryPeopleResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (people != null) {
-      _json["people"] = people.map((value) => (value).toJson()).toList();
+      _json["people"] = people.map((value) => value.toJson()).toList();
     }
     if (totalSize != null) {
       _json["totalSize"] = totalSize;
@@ -4623,7 +4723,7 @@ class SipAddress {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4635,12 +4735,12 @@ class SipAddress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4664,7 +4764,7 @@ class Skill {
 
   Skill.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4673,9 +4773,9 @@ class Skill {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -4732,7 +4832,7 @@ class Source {
       id = _json["id"];
     }
     if (_json.containsKey("profileMetadata")) {
-      profileMetadata = new ProfileMetadata.fromJson(_json["profileMetadata"]);
+      profileMetadata = ProfileMetadata.fromJson(_json["profileMetadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4744,7 +4844,7 @@ class Source {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -4752,7 +4852,7 @@ class Source {
       _json["id"] = id;
     }
     if (profileMetadata != null) {
-      _json["profileMetadata"] = (profileMetadata).toJson();
+      _json["profileMetadata"] = profileMetadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4805,7 +4905,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -4832,7 +4932,7 @@ class Tagline {
 
   Tagline.fromJson(core.Map _json) {
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -4841,9 +4941,9 @@ class Tagline {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;
@@ -4862,15 +4962,15 @@ class UpdateContactGroupRequest {
 
   UpdateContactGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroup")) {
-      contactGroup = new ContactGroup.fromJson(_json["contactGroup"]);
+      contactGroup = ContactGroup.fromJson(_json["contactGroup"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contactGroup != null) {
-      _json["contactGroup"] = (contactGroup).toJson();
+      _json["contactGroup"] = contactGroup.toJson();
     }
     return _json;
   }
@@ -4892,9 +4992,8 @@ class UpdateContactPhotoRequest {
 
   /// Required. Raw photo bytes
   core.String photoBytes;
-  core.List<core.int> get photoBytesAsBytes {
-    return convert.base64.decode(photoBytes);
-  }
+  core.List<core.int> get photoBytesAsBytes =>
+      convert.base64.decode(photoBytes);
 
   set photoBytesAsBytes(core.List<core.int> _bytes) {
     photoBytes =
@@ -4921,7 +5020,7 @@ class UpdateContactPhotoRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (personFields != null) {
       _json["personFields"] = personFields;
     }
@@ -4945,15 +5044,15 @@ class UpdateContactPhotoResponse {
 
   UpdateContactPhotoResponse.fromJson(core.Map _json) {
     if (_json.containsKey("person")) {
-      person = new Person.fromJson(_json["person"]);
+      person = Person.fromJson(_json["person"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (person != null) {
-      _json["person"] = (person).toJson();
+      _json["person"] = person.toJson();
     }
     return _json;
   }
@@ -4984,7 +5083,7 @@ class Url {
       formattedType = _json["formattedType"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4996,12 +5095,12 @@ class Url {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedType != null) {
       _json["formattedType"] = formattedType;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -5031,7 +5130,7 @@ class UserDefined {
       key = _json["key"];
     }
     if (_json.containsKey("metadata")) {
-      metadata = new FieldMetadata.fromJson(_json["metadata"]);
+      metadata = FieldMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("value")) {
       value = _json["value"];
@@ -5040,12 +5139,12 @@ class UserDefined {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
     if (metadata != null) {
-      _json["metadata"] = (metadata).toJson();
+      _json["metadata"] = metadata.toJson();
     }
     if (value != null) {
       _json["value"] = value;

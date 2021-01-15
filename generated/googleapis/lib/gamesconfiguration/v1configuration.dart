@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.gamesConfiguration.v1configuration;
 
@@ -35,17 +53,17 @@ class GamesConfigurationApi {
   final commons.ApiRequester _requester;
 
   AchievementConfigurationsResourceApi get achievementConfigurations =>
-      new AchievementConfigurationsResourceApi(_requester);
+      AchievementConfigurationsResourceApi(_requester);
   ImageConfigurationsResourceApi get imageConfigurations =>
-      new ImageConfigurationsResourceApi(_requester);
+      ImageConfigurationsResourceApi(_requester);
   LeaderboardConfigurationsResourceApi get leaderboardConfigurations =>
-      new LeaderboardConfigurationsResourceApi(_requester);
+      LeaderboardConfigurationsResourceApi(_requester);
 
   GamesConfigurationApi(http.Client client,
       {core.String rootUrl = "https://gamesconfiguration.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AchievementConfigurationsResourceApi {
@@ -68,16 +86,19 @@ class AchievementConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String achievementId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -88,12 +109,15 @@ class AchievementConfigurationsResourceApi {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -113,17 +137,19 @@ class AchievementConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementConfiguration> get(core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementConfiguration> get(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -132,14 +158,16 @@ class AchievementConfigurationsResourceApi {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementConfiguration.fromJson(data));
   }
 
   /// Insert a new achievement configuration in this application.
@@ -162,20 +190,22 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> insert(
-      AchievementConfiguration request, core.String applicationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AchievementConfiguration request,
+    core.String applicationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -185,14 +215,16 @@ class AchievementConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementConfiguration.fromJson(data));
   }
 
   /// Returns a list of the achievement configurations in this application.
@@ -219,19 +251,20 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfigurationListResponse> list(
-      core.String applicationId,
-      {core.String pageToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String applicationId, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -247,14 +280,17 @@ class AchievementConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new AchievementConfigurationListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => AchievementConfigurationListResponse.fromJson(data));
   }
 
   /// Update the metadata of the achievement configuration with the given ID.
@@ -276,20 +312,22 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> update(
-      AchievementConfiguration request, core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AchievementConfiguration request,
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -298,14 +336,16 @@ class AchievementConfigurationsResourceApi {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementConfiguration.fromJson(data));
   }
 }
 
@@ -340,20 +380,23 @@ class ImageConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ImageConfiguration> upload(
-      core.String resourceId, core.String imageType,
-      {core.String $fields, commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String resourceId,
+    core.String imageType, {
+    core.String $fields,
+    commons.Media uploadMedia,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resourceId == null) {
-      throw new core.ArgumentError("Parameter resourceId is required.");
+      throw core.ArgumentError("Parameter resourceId is required.");
     }
     if (imageType == null) {
-      throw new core.ArgumentError("Parameter imageType is required.");
+      throw core.ArgumentError("Parameter imageType is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -374,13 +417,16 @@ class ImageConfigurationsResourceApi {
           commons.Escaper.ecapeVariable('$imageType');
     }
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ImageConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ImageConfiguration.fromJson(data));
   }
 }
 
@@ -404,16 +450,19 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String leaderboardId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String leaderboardId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -424,12 +473,15 @@ class LeaderboardConfigurationsResourceApi {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -449,17 +501,19 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LeaderboardConfiguration> get(core.String leaderboardId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LeaderboardConfiguration> get(
+    core.String leaderboardId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -468,14 +522,16 @@ class LeaderboardConfigurationsResourceApi {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LeaderboardConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
   }
 
   /// Insert a new leaderboard configuration in this application.
@@ -498,20 +554,22 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> insert(
-      LeaderboardConfiguration request, core.String applicationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LeaderboardConfiguration request,
+    core.String applicationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -521,14 +579,16 @@ class LeaderboardConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LeaderboardConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
   }
 
   /// Returns a list of the leaderboard configurations in this application.
@@ -555,19 +615,20 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfigurationListResponse> list(
-      core.String applicationId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String applicationId, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -583,14 +644,17 @@ class LeaderboardConfigurationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new LeaderboardConfigurationListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => LeaderboardConfigurationListResponse.fromJson(data));
   }
 
   /// Update the metadata of the leaderboard configuration with the given ID.
@@ -612,20 +676,22 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> update(
-      LeaderboardConfiguration request, core.String leaderboardId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    LeaderboardConfiguration request,
+    core.String leaderboardId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -634,14 +700,16 @@ class LeaderboardConfigurationsResourceApi {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LeaderboardConfiguration.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
   }
 }
 
@@ -687,7 +755,7 @@ class AchievementConfiguration {
       achievementType = _json["achievementType"];
     }
     if (_json.containsKey("draft")) {
-      draft = new AchievementConfigurationDetail.fromJson(_json["draft"]);
+      draft = AchievementConfigurationDetail.fromJson(_json["draft"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -699,8 +767,7 @@ class AchievementConfiguration {
       kind = _json["kind"];
     }
     if (_json.containsKey("published")) {
-      published =
-          new AchievementConfigurationDetail.fromJson(_json["published"]);
+      published = AchievementConfigurationDetail.fromJson(_json["published"]);
     }
     if (_json.containsKey("stepsToUnlock")) {
       stepsToUnlock = _json["stepsToUnlock"];
@@ -712,12 +779,12 @@ class AchievementConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementType != null) {
       _json["achievementType"] = achievementType;
     }
     if (draft != null) {
-      _json["draft"] = (draft).toJson();
+      _json["draft"] = draft.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -729,7 +796,7 @@ class AchievementConfiguration {
       _json["kind"] = kind;
     }
     if (published != null) {
-      _json["published"] = (published).toJson();
+      _json["published"] = published.toJson();
     }
     if (stepsToUnlock != null) {
       _json["stepsToUnlock"] = stepsToUnlock;
@@ -766,7 +833,7 @@ class AchievementConfigurationDetail {
 
   AchievementConfigurationDetail.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
-      description = new LocalizedStringBundle.fromJson(_json["description"]);
+      description = LocalizedStringBundle.fromJson(_json["description"]);
     }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
@@ -775,7 +842,7 @@ class AchievementConfigurationDetail {
       kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
-      name = new LocalizedStringBundle.fromJson(_json["name"]);
+      name = LocalizedStringBundle.fromJson(_json["name"]);
     }
     if (_json.containsKey("pointValue")) {
       pointValue = _json["pointValue"];
@@ -787,9 +854,9 @@ class AchievementConfigurationDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
-      _json["description"] = (description).toJson();
+      _json["description"] = description.toJson();
     }
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
@@ -798,7 +865,7 @@ class AchievementConfigurationDetail {
       _json["kind"] = kind;
     }
     if (name != null) {
-      _json["name"] = (name).toJson();
+      _json["name"] = name.toJson();
     }
     if (pointValue != null) {
       _json["pointValue"] = pointValue;
@@ -828,7 +895,7 @@ class AchievementConfigurationListResponse {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<AchievementConfiguration>(
-              (value) => new AchievementConfiguration.fromJson(value))
+              (value) => AchievementConfiguration.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -841,9 +908,9 @@ class AchievementConfigurationListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -887,45 +954,45 @@ class GamesNumberAffixConfiguration {
 
   GamesNumberAffixConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("few")) {
-      few = new LocalizedStringBundle.fromJson(_json["few"]);
+      few = LocalizedStringBundle.fromJson(_json["few"]);
     }
     if (_json.containsKey("many")) {
-      many = new LocalizedStringBundle.fromJson(_json["many"]);
+      many = LocalizedStringBundle.fromJson(_json["many"]);
     }
     if (_json.containsKey("one")) {
-      one = new LocalizedStringBundle.fromJson(_json["one"]);
+      one = LocalizedStringBundle.fromJson(_json["one"]);
     }
     if (_json.containsKey("other")) {
-      other = new LocalizedStringBundle.fromJson(_json["other"]);
+      other = LocalizedStringBundle.fromJson(_json["other"]);
     }
     if (_json.containsKey("two")) {
-      two = new LocalizedStringBundle.fromJson(_json["two"]);
+      two = LocalizedStringBundle.fromJson(_json["two"]);
     }
     if (_json.containsKey("zero")) {
-      zero = new LocalizedStringBundle.fromJson(_json["zero"]);
+      zero = LocalizedStringBundle.fromJson(_json["zero"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (few != null) {
-      _json["few"] = (few).toJson();
+      _json["few"] = few.toJson();
     }
     if (many != null) {
-      _json["many"] = (many).toJson();
+      _json["many"] = many.toJson();
     }
     if (one != null) {
-      _json["one"] = (one).toJson();
+      _json["one"] = one.toJson();
     }
     if (other != null) {
-      _json["other"] = (other).toJson();
+      _json["other"] = other.toJson();
     }
     if (two != null) {
-      _json["two"] = (two).toJson();
+      _json["two"] = two.toJson();
     }
     if (zero != null) {
-      _json["zero"] = (zero).toJson();
+      _json["zero"] = zero.toJson();
     }
     return _json;
   }
@@ -967,13 +1034,13 @@ class GamesNumberFormatConfiguration {
       numberFormatType = _json["numberFormatType"];
     }
     if (_json.containsKey("suffix")) {
-      suffix = new GamesNumberAffixConfiguration.fromJson(_json["suffix"]);
+      suffix = GamesNumberAffixConfiguration.fromJson(_json["suffix"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -984,7 +1051,7 @@ class GamesNumberFormatConfiguration {
       _json["numberFormatType"] = numberFormatType;
     }
     if (suffix != null) {
-      _json["suffix"] = (suffix).toJson();
+      _json["suffix"] = suffix.toJson();
     }
     return _json;
   }
@@ -1028,7 +1095,7 @@ class ImageConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageType != null) {
       _json["imageType"] = imageType;
     }
@@ -1080,7 +1147,7 @@ class LeaderboardConfiguration {
 
   LeaderboardConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey("draft")) {
-      draft = new LeaderboardConfigurationDetail.fromJson(_json["draft"]);
+      draft = LeaderboardConfigurationDetail.fromJson(_json["draft"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1089,8 +1156,7 @@ class LeaderboardConfiguration {
       kind = _json["kind"];
     }
     if (_json.containsKey("published")) {
-      published =
-          new LeaderboardConfigurationDetail.fromJson(_json["published"]);
+      published = LeaderboardConfigurationDetail.fromJson(_json["published"]);
     }
     if (_json.containsKey("scoreMax")) {
       scoreMax = _json["scoreMax"];
@@ -1108,9 +1174,9 @@ class LeaderboardConfiguration {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (draft != null) {
-      _json["draft"] = (draft).toJson();
+      _json["draft"] = draft.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1119,7 +1185,7 @@ class LeaderboardConfiguration {
       _json["kind"] = kind;
     }
     if (published != null) {
-      _json["published"] = (published).toJson();
+      _json["published"] = published.toJson();
     }
     if (scoreMax != null) {
       _json["scoreMax"] = scoreMax;
@@ -1165,11 +1231,11 @@ class LeaderboardConfigurationDetail {
       kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
-      name = new LocalizedStringBundle.fromJson(_json["name"]);
+      name = LocalizedStringBundle.fromJson(_json["name"]);
     }
     if (_json.containsKey("scoreFormat")) {
       scoreFormat =
-          new GamesNumberFormatConfiguration.fromJson(_json["scoreFormat"]);
+          GamesNumberFormatConfiguration.fromJson(_json["scoreFormat"]);
     }
     if (_json.containsKey("sortRank")) {
       sortRank = _json["sortRank"];
@@ -1178,7 +1244,7 @@ class LeaderboardConfigurationDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
     }
@@ -1186,10 +1252,10 @@ class LeaderboardConfigurationDetail {
       _json["kind"] = kind;
     }
     if (name != null) {
-      _json["name"] = (name).toJson();
+      _json["name"] = name.toJson();
     }
     if (scoreFormat != null) {
-      _json["scoreFormat"] = (scoreFormat).toJson();
+      _json["scoreFormat"] = scoreFormat.toJson();
     }
     if (sortRank != null) {
       _json["sortRank"] = sortRank;
@@ -1216,7 +1282,7 @@ class LeaderboardConfigurationListResponse {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<LeaderboardConfiguration>(
-              (value) => new LeaderboardConfiguration.fromJson(value))
+              (value) => LeaderboardConfiguration.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1229,9 +1295,9 @@ class LeaderboardConfigurationListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1271,7 +1337,7 @@ class LocalizedString {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1302,20 +1368,20 @@ class LocalizedStringBundle {
     }
     if (_json.containsKey("translations")) {
       translations = (_json["translations"] as core.List)
-          .map<LocalizedString>((value) => new LocalizedString.fromJson(value))
+          .map<LocalizedString>((value) => LocalizedString.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (translations != null) {
       _json["translations"] =
-          translations.map((value) => (value).toJson()).toList();
+          translations.map((value) => value.toJson()).toList();
     }
     return _json;
   }

@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.dns.v1;
 
@@ -35,22 +53,22 @@ class DnsApi {
 
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi get changes => new ChangesResourceApi(_requester);
-  DnsKeysResourceApi get dnsKeys => new DnsKeysResourceApi(_requester);
+  ChangesResourceApi get changes => ChangesResourceApi(_requester);
+  DnsKeysResourceApi get dnsKeys => DnsKeysResourceApi(_requester);
   ManagedZoneOperationsResourceApi get managedZoneOperations =>
-      new ManagedZoneOperationsResourceApi(_requester);
+      ManagedZoneOperationsResourceApi(_requester);
   ManagedZonesResourceApi get managedZones =>
-      new ManagedZonesResourceApi(_requester);
-  PoliciesResourceApi get policies => new PoliciesResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+      ManagedZonesResourceApi(_requester);
+  PoliciesResourceApi get policies => PoliciesResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
   ResourceRecordSetsResourceApi get resourceRecordSets =>
-      new ResourceRecordSetsResourceApi(_requester);
+      ResourceRecordSetsResourceApi(_requester);
 
   DnsApi(http.Client client,
       {core.String rootUrl = "https://dns.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ChangesResourceApi {
@@ -84,23 +102,27 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Change> create(
-      Change request, core.String project, core.String managedZone,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Change request,
+    core.String project,
+    core.String managedZone, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -115,13 +137,16 @@ class ChangesResourceApi {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Change.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Change.fromJson(data));
   }
 
   /// Fetch the representation of an existing Change.
@@ -151,23 +176,27 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Change> get(
-      core.String project, core.String managedZone, core.String changeId,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone,
+    core.String changeId, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (changeId == null) {
-      throw new core.ArgumentError("Parameter changeId is required.");
+      throw core.ArgumentError("Parameter changeId is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -183,13 +212,16 @@ class ChangesResourceApi {
         '/changes/' +
         commons.Escaper.ecapeVariable('$changeId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Change.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Change.fromJson(data));
   }
 
   /// Enumerate Changes to a ResourceRecordSet collection.
@@ -224,24 +256,26 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChangesListResponse> list(
-      core.String project, core.String managedZone,
-      {core.String sortBy,
-      core.String sortOrder,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone, {
+    core.String sortBy,
+    core.String sortOrder,
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (sortBy != null) {
       _queryParams["sortBy"] = [sortBy];
@@ -265,13 +299,16 @@ class ChangesResourceApi {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ChangesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ChangesListResponse.fromJson(data));
   }
 }
 
@@ -310,25 +347,28 @@ class DnsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DnsKey> get(
-      core.String project, core.String managedZone, core.String dnsKeyId,
-      {core.String clientOperationId,
-      core.String digestType,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone,
+    core.String dnsKeyId, {
+    core.String clientOperationId,
+    core.String digestType,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (dnsKeyId == null) {
-      throw new core.ArgumentError("Parameter dnsKeyId is required.");
+      throw core.ArgumentError("Parameter dnsKeyId is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -347,13 +387,16 @@ class DnsKeysResourceApi {
         '/dnsKeys/' +
         commons.Escaper.ecapeVariable('$dnsKeyId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DnsKey.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DnsKey.fromJson(data));
   }
 
   /// Enumerate DnsKeys to a ResourceRecordSet collection.
@@ -386,23 +429,25 @@ class DnsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DnsKeysListResponse> list(
-      core.String project, core.String managedZone,
-      {core.String digestType,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone, {
+    core.String digestType,
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (digestType != null) {
       _queryParams["digestType"] = [digestType];
@@ -423,13 +468,16 @@ class DnsKeysResourceApi {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/dnsKeys';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DnsKeysListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DnsKeysListResponse.fromJson(data));
   }
 }
 
@@ -464,23 +512,27 @@ class ManagedZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String project, core.String managedZone, core.String operation,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone,
+    core.String operation, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (operation == null) {
-      throw new core.ArgumentError("Parameter operation is required.");
+      throw core.ArgumentError("Parameter operation is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -496,13 +548,16 @@ class ManagedZoneOperationsResourceApi {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Enumerate Operations for the given ManagedZone.
@@ -536,23 +591,25 @@ class ManagedZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZoneOperationsListResponse> list(
-      core.String project, core.String managedZone,
-      {core.String pageToken,
-      core.int maxResults,
-      core.String sortBy,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String sortBy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -573,14 +630,17 @@ class ManagedZoneOperationsResourceApi {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ManagedZoneOperationsListResponse.fromJson(data));
+        .then((data) => ManagedZoneOperationsListResponse.fromJson(data));
   }
 }
 
@@ -611,20 +671,24 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZone> create(ManagedZone request, core.String project,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ManagedZone> create(
+    ManagedZone request,
+    core.String project, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -637,13 +701,16 @@ class ManagedZonesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedZone.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ManagedZone.fromJson(data));
   }
 
   /// Delete a previously created ManagedZone.
@@ -667,20 +734,24 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String managedZone,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String project,
+    core.String managedZone, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -696,12 +767,15 @@ class ManagedZonesResourceApi {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -728,20 +802,24 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZone> get(core.String project, core.String managedZone,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ManagedZone> get(
+    core.String project,
+    core.String managedZone, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -755,13 +833,16 @@ class ManagedZonesResourceApi {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedZone.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ManagedZone.fromJson(data));
   }
 
   /// Enumerate ManagedZones that have been created but not yet deleted.
@@ -788,20 +869,22 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZonesListResponse> list(core.String project,
-      {core.int maxResults,
-      core.String pageToken,
-      core.String dnsName,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ManagedZonesListResponse> list(
+    core.String project, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String dnsName,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -820,14 +903,16 @@ class ManagedZonesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ManagedZonesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ManagedZonesListResponse.fromJson(data));
   }
 
   /// Apply a partial update to an existing ManagedZone.
@@ -856,23 +941,27 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      ManagedZone request, core.String project, core.String managedZone,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ManagedZone request,
+    core.String project,
+    core.String managedZone, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -886,13 +975,16 @@ class ManagedZonesResourceApi {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Update an existing ManagedZone.
@@ -921,23 +1013,27 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      ManagedZone request, core.String project, core.String managedZone,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ManagedZone request,
+    core.String project,
+    core.String managedZone, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -951,13 +1047,16 @@ class ManagedZonesResourceApi {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -988,20 +1087,24 @@ class PoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> create(Policy request, core.String project,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> create(
+    Policy request,
+    core.String project, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1014,13 +1117,16 @@ class PoliciesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Delete a previously created Policy. Will fail if the policy is still being
@@ -1045,20 +1151,24 @@ class PoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String policy,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String project,
+    core.String policy, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (policy == null) {
-      throw new core.ArgumentError("Parameter policy is required.");
+      throw core.ArgumentError("Parameter policy is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1074,12 +1184,15 @@ class PoliciesResourceApi {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1106,20 +1219,24 @@ class PoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(core.String project, core.String policy,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Policy> get(
+    core.String project,
+    core.String policy, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (policy == null) {
-      throw new core.ArgumentError("Parameter policy is required.");
+      throw core.ArgumentError("Parameter policy is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1133,13 +1250,16 @@ class PoliciesResourceApi {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Enumerate all Policies associated with a project.
@@ -1164,17 +1284,21 @@ class PoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PoliciesListResponse> list(core.String project,
-      {core.String pageToken, core.int maxResults, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PoliciesListResponse> list(
+    core.String project, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1190,13 +1314,16 @@ class PoliciesResourceApi {
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PoliciesListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PoliciesListResponse.fromJson(data));
   }
 
   /// Apply a partial update to an existing Policy.
@@ -1225,23 +1352,27 @@ class PoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PoliciesPatchResponse> patch(
-      Policy request, core.String project, core.String policy,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Policy request,
+    core.String project,
+    core.String policy, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (policy == null) {
-      throw new core.ArgumentError("Parameter policy is required.");
+      throw core.ArgumentError("Parameter policy is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1255,13 +1386,16 @@ class PoliciesResourceApi {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PoliciesPatchResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PoliciesPatchResponse.fromJson(data));
   }
 
   /// Update an existing Policy.
@@ -1290,23 +1424,27 @@ class PoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PoliciesUpdateResponse> update(
-      Policy request, core.String project, core.String policy,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Policy request,
+    core.String project,
+    core.String policy, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (policy == null) {
-      throw new core.ArgumentError("Parameter policy is required.");
+      throw core.ArgumentError("Parameter policy is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1320,13 +1458,16 @@ class PoliciesResourceApi {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PoliciesUpdateResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PoliciesUpdateResponse.fromJson(data));
   }
 }
 
@@ -1355,17 +1496,20 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String project,
-      {core.String clientOperationId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Project> get(
+    core.String project, {
+    core.String clientOperationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
@@ -1376,13 +1520,16 @@ class ProjectsResourceApi {
 
     _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Project.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Project.fromJson(data));
   }
 }
 
@@ -1424,24 +1571,26 @@ class ResourceRecordSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResourceRecordSetsListResponse> list(
-      core.String project, core.String managedZone,
-      {core.int maxResults,
-      core.String type,
-      core.String name,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String project,
+    core.String managedZone, {
+    core.int maxResults,
+    core.String type,
+    core.String name,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (project == null) {
-      throw new core.ArgumentError("Parameter project is required.");
+      throw core.ArgumentError("Parameter project is required.");
     }
     if (managedZone == null) {
-      throw new core.ArgumentError("Parameter managedZone is required.");
+      throw core.ArgumentError("Parameter managedZone is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1465,14 +1614,17 @@ class ResourceRecordSetsResourceApi {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/rrsets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ResourceRecordSetsListResponse.fromJson(data));
+        .then((data) => ResourceRecordSetsListResponse.fromJson(data));
   }
 }
 
@@ -1514,14 +1666,12 @@ class Change {
   Change.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
       additions = (_json["additions"] as core.List)
-          .map<ResourceRecordSet>(
-              (value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deletions")) {
       deletions = (_json["deletions"] as core.List)
-          .map<ResourceRecordSet>(
-              (value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1543,12 +1693,12 @@ class Change {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additions != null) {
-      _json["additions"] = additions.map((value) => (value).toJson()).toList();
+      _json["additions"] = additions.map((value) => value.toJson()).toList();
     }
     if (deletions != null) {
-      _json["deletions"] = deletions.map((value) => (value).toJson()).toList();
+      _json["deletions"] = deletions.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1595,11 +1745,11 @@ class ChangesListResponse {
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
       changes = (_json["changes"] as core.List)
-          .map<Change>((value) => new Change.fromJson(value))
+          .map<Change>((value) => Change.fromJson(value))
           .toList();
     }
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1611,12 +1761,12 @@ class ChangesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (changes != null) {
-      _json["changes"] = changes.map((value) => (value).toJson()).toList();
+      _json["changes"] = changes.map((value) => value.toJson()).toList();
     }
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1700,7 +1850,7 @@ class DnsKey {
     }
     if (_json.containsKey("digests")) {
       digests = (_json["digests"] as core.List)
-          .map<DnsKeyDigest>((value) => new DnsKeyDigest.fromJson(value))
+          .map<DnsKeyDigest>((value) => DnsKeyDigest.fromJson(value))
           .toList();
     }
     if (_json.containsKey("id")) {
@@ -1728,7 +1878,7 @@ class DnsKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1739,7 +1889,7 @@ class DnsKey {
       _json["description"] = description;
     }
     if (digests != null) {
-      _json["digests"] = digests.map((value) => (value).toJson()).toList();
+      _json["digests"] = digests.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -1791,7 +1941,7 @@ class DnsKeyDigest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -1847,7 +1997,7 @@ class DnsKeySpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1889,11 +2039,11 @@ class DnsKeysListResponse {
   DnsKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeys")) {
       dnsKeys = (_json["dnsKeys"] as core.List)
-          .map<DnsKey>((value) => new DnsKey.fromJson(value))
+          .map<DnsKey>((value) => DnsKey.fromJson(value))
           .toList();
     }
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1905,12 +2055,12 @@ class DnsKeysListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dnsKeys != null) {
-      _json["dnsKeys"] = dnsKeys.map((value) => (value).toJson()).toList();
+      _json["dnsKeys"] = dnsKeys.map((value) => value.toJson()).toList();
     }
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2000,12 +2150,11 @@ class ManagedZone {
       dnsName = _json["dnsName"];
     }
     if (_json.containsKey("dnssecConfig")) {
-      dnssecConfig =
-          new ManagedZoneDnsSecConfig.fromJson(_json["dnssecConfig"]);
+      dnssecConfig = ManagedZoneDnsSecConfig.fromJson(_json["dnssecConfig"]);
     }
     if (_json.containsKey("forwardingConfig")) {
       forwardingConfig =
-          new ManagedZoneForwardingConfig.fromJson(_json["forwardingConfig"]);
+          ManagedZoneForwardingConfig.fromJson(_json["forwardingConfig"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2026,16 +2175,15 @@ class ManagedZone {
       nameServers = (_json["nameServers"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("peeringConfig")) {
-      peeringConfig =
-          new ManagedZonePeeringConfig.fromJson(_json["peeringConfig"]);
+      peeringConfig = ManagedZonePeeringConfig.fromJson(_json["peeringConfig"]);
     }
     if (_json.containsKey("privateVisibilityConfig")) {
-      privateVisibilityConfig = new ManagedZonePrivateVisibilityConfig.fromJson(
+      privateVisibilityConfig = ManagedZonePrivateVisibilityConfig.fromJson(
           _json["privateVisibilityConfig"]);
     }
     if (_json.containsKey("reverseLookupConfig")) {
-      reverseLookupConfig = new ManagedZoneReverseLookupConfig.fromJson(
-          _json["reverseLookupConfig"]);
+      reverseLookupConfig =
+          ManagedZoneReverseLookupConfig.fromJson(_json["reverseLookupConfig"]);
     }
     if (_json.containsKey("visibility")) {
       visibility = _json["visibility"];
@@ -2044,7 +2192,7 @@ class ManagedZone {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -2055,10 +2203,10 @@ class ManagedZone {
       _json["dnsName"] = dnsName;
     }
     if (dnssecConfig != null) {
-      _json["dnssecConfig"] = (dnssecConfig).toJson();
+      _json["dnssecConfig"] = dnssecConfig.toJson();
     }
     if (forwardingConfig != null) {
-      _json["forwardingConfig"] = (forwardingConfig).toJson();
+      _json["forwardingConfig"] = forwardingConfig.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2079,13 +2227,13 @@ class ManagedZone {
       _json["nameServers"] = nameServers;
     }
     if (peeringConfig != null) {
-      _json["peeringConfig"] = (peeringConfig).toJson();
+      _json["peeringConfig"] = peeringConfig.toJson();
     }
     if (privateVisibilityConfig != null) {
-      _json["privateVisibilityConfig"] = (privateVisibilityConfig).toJson();
+      _json["privateVisibilityConfig"] = privateVisibilityConfig.toJson();
     }
     if (reverseLookupConfig != null) {
-      _json["reverseLookupConfig"] = (reverseLookupConfig).toJson();
+      _json["reverseLookupConfig"] = reverseLookupConfig.toJson();
     }
     if (visibility != null) {
       _json["visibility"] = visibility;
@@ -2119,7 +2267,7 @@ class ManagedZoneDnsSecConfig {
   ManagedZoneDnsSecConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultKeySpecs")) {
       defaultKeySpecs = (_json["defaultKeySpecs"] as core.List)
-          .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) => DnsKeySpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2135,10 +2283,10 @@ class ManagedZoneDnsSecConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultKeySpecs != null) {
       _json["defaultKeySpecs"] =
-          defaultKeySpecs.map((value) => (value).toJson()).toList();
+          defaultKeySpecs.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2169,20 +2317,20 @@ class ManagedZoneForwardingConfig {
     if (_json.containsKey("targetNameServers")) {
       targetNameServers = (_json["targetNameServers"] as core.List)
           .map<ManagedZoneForwardingConfigNameServerTarget>((value) =>
-              new ManagedZoneForwardingConfigNameServerTarget.fromJson(value))
+              ManagedZoneForwardingConfigNameServerTarget.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (targetNameServers != null) {
       _json["targetNameServers"] =
-          targetNameServers.map((value) => (value).toJson()).toList();
+          targetNameServers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2222,7 +2370,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (forwardingPath != null) {
       _json["forwardingPath"] = forwardingPath;
     }
@@ -2258,7 +2406,7 @@ class ManagedZoneOperationsListResponse {
 
   ManagedZoneOperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2268,16 +2416,16 @@ class ManagedZoneOperationsListResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2286,8 +2434,7 @@ class ManagedZoneOperationsListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2306,19 +2453,19 @@ class ManagedZonePeeringConfig {
       kind = _json["kind"];
     }
     if (_json.containsKey("targetNetwork")) {
-      targetNetwork = new ManagedZonePeeringConfigTargetNetwork.fromJson(
+      targetNetwork = ManagedZonePeeringConfigTargetNetwork.fromJson(
           _json["targetNetwork"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (targetNetwork != null) {
-      _json["targetNetwork"] = (targetNetwork).toJson();
+      _json["targetNetwork"] = targetNetwork.toJson();
     }
     return _json;
   }
@@ -2354,7 +2501,7 @@ class ManagedZonePeeringConfigTargetNetwork {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deactivateTime != null) {
       _json["deactivateTime"] = deactivateTime;
     }
@@ -2383,19 +2530,19 @@ class ManagedZonePrivateVisibilityConfig {
     if (_json.containsKey("networks")) {
       networks = (_json["networks"] as core.List)
           .map<ManagedZonePrivateVisibilityConfigNetwork>((value) =>
-              new ManagedZonePrivateVisibilityConfigNetwork.fromJson(value))
+              ManagedZonePrivateVisibilityConfigNetwork.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (networks != null) {
-      _json["networks"] = networks.map((value) => (value).toJson()).toList();
+      _json["networks"] = networks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2422,7 +2569,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2446,7 +2593,7 @@ class ManagedZoneReverseLookupConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2478,14 +2625,14 @@ class ManagedZonesListResponse {
 
   ManagedZonesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("managedZones")) {
       managedZones = (_json["managedZones"] as core.List)
-          .map<ManagedZone>((value) => new ManagedZone.fromJson(value))
+          .map<ManagedZone>((value) => ManagedZone.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -2495,16 +2642,16 @@ class ManagedZonesListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (managedZones != null) {
       _json["managedZones"] =
-          managedZones.map((value) => (value).toJson()).toList();
+          managedZones.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -2557,8 +2704,7 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeyContext")) {
-      dnsKeyContext =
-          new OperationDnsKeyContext.fromJson(_json["dnsKeyContext"]);
+      dnsKeyContext = OperationDnsKeyContext.fromJson(_json["dnsKeyContext"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2579,16 +2725,15 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("zoneContext")) {
-      zoneContext =
-          new OperationManagedZoneContext.fromJson(_json["zoneContext"]);
+      zoneContext = OperationManagedZoneContext.fromJson(_json["zoneContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dnsKeyContext != null) {
-      _json["dnsKeyContext"] = (dnsKeyContext).toJson();
+      _json["dnsKeyContext"] = dnsKeyContext.toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -2609,7 +2754,7 @@ class Operation {
       _json["user"] = user;
     }
     if (zoneContext != null) {
-      _json["zoneContext"] = (zoneContext).toJson();
+      _json["zoneContext"] = zoneContext.toJson();
     }
     return _json;
   }
@@ -2626,21 +2771,21 @@ class OperationDnsKeyContext {
 
   OperationDnsKeyContext.fromJson(core.Map _json) {
     if (_json.containsKey("newValue")) {
-      newValue = new DnsKey.fromJson(_json["newValue"]);
+      newValue = DnsKey.fromJson(_json["newValue"]);
     }
     if (_json.containsKey("oldValue")) {
-      oldValue = new DnsKey.fromJson(_json["oldValue"]);
+      oldValue = DnsKey.fromJson(_json["oldValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newValue != null) {
-      _json["newValue"] = (newValue).toJson();
+      _json["newValue"] = newValue.toJson();
     }
     if (oldValue != null) {
-      _json["oldValue"] = (oldValue).toJson();
+      _json["oldValue"] = oldValue.toJson();
     }
     return _json;
   }
@@ -2657,21 +2802,21 @@ class OperationManagedZoneContext {
 
   OperationManagedZoneContext.fromJson(core.Map _json) {
     if (_json.containsKey("newValue")) {
-      newValue = new ManagedZone.fromJson(_json["newValue"]);
+      newValue = ManagedZone.fromJson(_json["newValue"]);
     }
     if (_json.containsKey("oldValue")) {
-      oldValue = new ManagedZone.fromJson(_json["oldValue"]);
+      oldValue = ManagedZone.fromJson(_json["oldValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newValue != null) {
-      _json["newValue"] = (newValue).toJson();
+      _json["newValue"] = newValue.toJson();
     }
     if (oldValue != null) {
-      _json["oldValue"] = (oldValue).toJson();
+      _json["oldValue"] = oldValue.toJson();
     }
     return _json;
   }
@@ -2701,7 +2846,7 @@ class PoliciesListResponse {
 
   PoliciesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2711,16 +2856,16 @@ class PoliciesListResponse {
     }
     if (_json.containsKey("policies")) {
       policies = (_json["policies"] as core.List)
-          .map<Policy>((value) => new Policy.fromJson(value))
+          .map<Policy>((value) => Policy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2729,7 +2874,7 @@ class PoliciesListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (policies != null) {
-      _json["policies"] = policies.map((value) => (value).toJson()).toList();
+      _json["policies"] = policies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2743,21 +2888,21 @@ class PoliciesPatchResponse {
 
   PoliciesPatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -2771,21 +2916,21 @@ class PoliciesUpdateResponse {
 
   PoliciesUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -2827,9 +2972,8 @@ class Policy {
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("alternativeNameServerConfig")) {
-      alternativeNameServerConfig =
-          new PolicyAlternativeNameServerConfig.fromJson(
-              _json["alternativeNameServerConfig"]);
+      alternativeNameServerConfig = PolicyAlternativeNameServerConfig.fromJson(
+          _json["alternativeNameServerConfig"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2851,17 +2995,17 @@ class Policy {
     }
     if (_json.containsKey("networks")) {
       networks = (_json["networks"] as core.List)
-          .map<PolicyNetwork>((value) => new PolicyNetwork.fromJson(value))
+          .map<PolicyNetwork>((value) => PolicyNetwork.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alternativeNameServerConfig != null) {
       _json["alternativeNameServerConfig"] =
-          (alternativeNameServerConfig).toJson();
+          alternativeNameServerConfig.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -2882,7 +3026,7 @@ class Policy {
       _json["name"] = name;
     }
     if (networks != null) {
-      _json["networks"] = networks.map((value) => (value).toJson()).toList();
+      _json["networks"] = networks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2907,21 +3051,20 @@ class PolicyAlternativeNameServerConfig {
     if (_json.containsKey("targetNameServers")) {
       targetNameServers = (_json["targetNameServers"] as core.List)
           .map<PolicyAlternativeNameServerConfigTargetNameServer>((value) =>
-              new PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
-                  value))
+              PolicyAlternativeNameServerConfigTargetNameServer.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (targetNameServers != null) {
       _json["targetNameServers"] =
-          targetNameServers.map((value) => (value).toJson()).toList();
+          targetNameServers.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2961,7 +3104,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (forwardingPath != null) {
       _json["forwardingPath"] = forwardingPath;
     }
@@ -2996,7 +3139,7 @@ class PolicyNetwork {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3035,13 +3178,13 @@ class Project {
       number = _json["number"];
     }
     if (_json.containsKey("quota")) {
-      quota = new Quota.fromJson(_json["quota"]);
+      quota = Quota.fromJson(_json["quota"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3052,7 +3195,7 @@ class Project {
       _json["number"] = number;
     }
     if (quota != null) {
-      _json["quota"] = (quota).toJson();
+      _json["quota"] = quota.toJson();
     }
     return _json;
   }
@@ -3156,14 +3299,14 @@ class Quota {
     }
     if (_json.containsKey("whitelistedKeySpecs")) {
       whitelistedKeySpecs = (_json["whitelistedKeySpecs"] as core.List)
-          .map<DnsKeySpec>((value) => new DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) => DnsKeySpec.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }
@@ -3209,7 +3352,7 @@ class Quota {
     }
     if (whitelistedKeySpecs != null) {
       _json["whitelistedKeySpecs"] =
-          whitelistedKeySpecs.map((value) => (value).toJson()).toList();
+          whitelistedKeySpecs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3262,7 +3405,7 @@ class ResourceRecordSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3309,7 +3452,7 @@ class ResourceRecordSetsListResponse {
 
   ResourceRecordSetsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("header")) {
-      header = new ResponseHeader.fromJson(_json["header"]);
+      header = ResponseHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3319,17 +3462,16 @@ class ResourceRecordSetsListResponse {
     }
     if (_json.containsKey("rrsets")) {
       rrsets = (_json["rrsets"] as core.List)
-          .map<ResourceRecordSet>(
-              (value) => new ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3338,7 +3480,7 @@ class ResourceRecordSetsListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (rrsets != null) {
-      _json["rrsets"] = rrsets.map((value) => (value).toJson()).toList();
+      _json["rrsets"] = rrsets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3361,7 +3503,7 @@ class ResponseHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (operationId != null) {
       _json["operationId"] = operationId;
     }

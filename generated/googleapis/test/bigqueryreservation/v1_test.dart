@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.bigqueryreservation.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,13 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterAssignment = 0;
-buildAssignment() {
-  var o = new api.Assignment();
+api.Assignment buildAssignment() {
+  var o = api.Assignment();
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
     o.assignee = "foo";
@@ -64,7 +84,7 @@ buildAssignment() {
   return o;
 }
 
-checkAssignment(api.Assignment o) {
+void checkAssignment(api.Assignment o) {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
     unittest.expect(o.assignee, unittest.equals('foo'));
@@ -76,8 +96,8 @@ checkAssignment(api.Assignment o) {
 }
 
 core.int buildCounterBiReservation = 0;
-buildBiReservation() {
-  var o = new api.BiReservation();
+api.BiReservation buildBiReservation() {
+  var o = api.BiReservation();
   buildCounterBiReservation++;
   if (buildCounterBiReservation < 3) {
     o.name = "foo";
@@ -88,7 +108,7 @@ buildBiReservation() {
   return o;
 }
 
-checkBiReservation(api.BiReservation o) {
+void checkBiReservation(api.BiReservation o) {
   buildCounterBiReservation++;
   if (buildCounterBiReservation < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -99,8 +119,8 @@ checkBiReservation(api.BiReservation o) {
 }
 
 core.int buildCounterCapacityCommitment = 0;
-buildCapacityCommitment() {
-  var o = new api.CapacityCommitment();
+api.CapacityCommitment buildCapacityCommitment() {
+  var o = api.CapacityCommitment();
   buildCounterCapacityCommitment++;
   if (buildCounterCapacityCommitment < 3) {
     o.commitmentEndTime = "foo";
@@ -116,7 +136,7 @@ buildCapacityCommitment() {
   return o;
 }
 
-checkCapacityCommitment(api.CapacityCommitment o) {
+void checkCapacityCommitment(api.CapacityCommitment o) {
   buildCounterCapacityCommitment++;
   if (buildCounterCapacityCommitment < 3) {
     unittest.expect(o.commitmentEndTime, unittest.equals('foo'));
@@ -132,8 +152,8 @@ checkCapacityCommitment(api.CapacityCommitment o) {
 }
 
 core.int buildCounterCreateSlotPoolMetadata = 0;
-buildCreateSlotPoolMetadata() {
-  var o = new api.CreateSlotPoolMetadata();
+api.CreateSlotPoolMetadata buildCreateSlotPoolMetadata() {
+  var o = api.CreateSlotPoolMetadata();
   buildCounterCreateSlotPoolMetadata++;
   if (buildCounterCreateSlotPoolMetadata < 3) {
     o.slotPool = "foo";
@@ -142,7 +162,7 @@ buildCreateSlotPoolMetadata() {
   return o;
 }
 
-checkCreateSlotPoolMetadata(api.CreateSlotPoolMetadata o) {
+void checkCreateSlotPoolMetadata(api.CreateSlotPoolMetadata o) {
   buildCounterCreateSlotPoolMetadata++;
   if (buildCounterCreateSlotPoolMetadata < 3) {
     unittest.expect(o.slotPool, unittest.equals('foo'));
@@ -151,191 +171,193 @@ checkCreateSlotPoolMetadata(api.CreateSlotPoolMetadata o) {
 }
 
 core.int buildCounterEmpty = 0;
-buildEmpty() {
-  var o = new api.Empty();
+api.Empty buildEmpty() {
+  var o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
   return o;
 }
 
-checkEmpty(api.Empty o) {
+void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
 }
 
-buildUnnamed5804() {
-  var o = new core.List<api.Assignment>();
+core.List<api.Assignment> buildUnnamed3879() {
+  var o = <api.Assignment>[];
   o.add(buildAssignment());
   o.add(buildAssignment());
   return o;
 }
 
-checkUnnamed5804(core.List<api.Assignment> o) {
+void checkUnnamed3879(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
 }
 
 core.int buildCounterListAssignmentsResponse = 0;
-buildListAssignmentsResponse() {
-  var o = new api.ListAssignmentsResponse();
+api.ListAssignmentsResponse buildListAssignmentsResponse() {
+  var o = api.ListAssignmentsResponse();
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5804();
+    o.assignments = buildUnnamed3879();
     o.nextPageToken = "foo";
   }
   buildCounterListAssignmentsResponse--;
   return o;
 }
 
-checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
+void checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    checkUnnamed5804(o.assignments);
+    checkUnnamed3879(o.assignments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAssignmentsResponse--;
 }
 
-buildUnnamed5805() {
-  var o = new core.List<api.CapacityCommitment>();
+core.List<api.CapacityCommitment> buildUnnamed3880() {
+  var o = <api.CapacityCommitment>[];
   o.add(buildCapacityCommitment());
   o.add(buildCapacityCommitment());
   return o;
 }
 
-checkUnnamed5805(core.List<api.CapacityCommitment> o) {
+void checkUnnamed3880(core.List<api.CapacityCommitment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCapacityCommitment(o[0]);
   checkCapacityCommitment(o[1]);
 }
 
 core.int buildCounterListCapacityCommitmentsResponse = 0;
-buildListCapacityCommitmentsResponse() {
-  var o = new api.ListCapacityCommitmentsResponse();
+api.ListCapacityCommitmentsResponse buildListCapacityCommitmentsResponse() {
+  var o = api.ListCapacityCommitmentsResponse();
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    o.capacityCommitments = buildUnnamed5805();
+    o.capacityCommitments = buildUnnamed3880();
     o.nextPageToken = "foo";
   }
   buildCounterListCapacityCommitmentsResponse--;
   return o;
 }
 
-checkListCapacityCommitmentsResponse(api.ListCapacityCommitmentsResponse o) {
+void checkListCapacityCommitmentsResponse(
+    api.ListCapacityCommitmentsResponse o) {
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    checkUnnamed5805(o.capacityCommitments);
+    checkUnnamed3880(o.capacityCommitments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCapacityCommitmentsResponse--;
 }
 
-buildUnnamed5806() {
-  var o = new core.List<api.Operation>();
+core.List<api.Operation> buildUnnamed3881() {
+  var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed5806(core.List<api.Operation> o) {
+void checkUnnamed3881(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
 }
 
 core.int buildCounterListOperationsResponse = 0;
-buildListOperationsResponse() {
-  var o = new api.ListOperationsResponse();
+api.ListOperationsResponse buildListOperationsResponse() {
+  var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed5806();
+    o.operations = buildUnnamed3881();
   }
   buildCounterListOperationsResponse--;
   return o;
 }
 
-checkListOperationsResponse(api.ListOperationsResponse o) {
+void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5806(o.operations);
+    checkUnnamed3881(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed5807() {
-  var o = new core.List<api.Reservation>();
+core.List<api.Reservation> buildUnnamed3882() {
+  var o = <api.Reservation>[];
   o.add(buildReservation());
   o.add(buildReservation());
   return o;
 }
 
-checkUnnamed5807(core.List<api.Reservation> o) {
+void checkUnnamed3882(core.List<api.Reservation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReservation(o[0]);
   checkReservation(o[1]);
 }
 
 core.int buildCounterListReservationsResponse = 0;
-buildListReservationsResponse() {
-  var o = new api.ListReservationsResponse();
+api.ListReservationsResponse buildListReservationsResponse() {
+  var o = api.ListReservationsResponse();
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reservations = buildUnnamed5807();
+    o.reservations = buildUnnamed3882();
   }
   buildCounterListReservationsResponse--;
   return o;
 }
 
-checkListReservationsResponse(api.ListReservationsResponse o) {
+void checkListReservationsResponse(api.ListReservationsResponse o) {
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5807(o.reservations);
+    checkUnnamed3882(o.reservations);
   }
   buildCounterListReservationsResponse--;
 }
 
-buildUnnamed5808() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3883() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5808(core.List<core.String> o) {
+void checkUnnamed3883(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterMergeCapacityCommitmentsRequest = 0;
-buildMergeCapacityCommitmentsRequest() {
-  var o = new api.MergeCapacityCommitmentsRequest();
+api.MergeCapacityCommitmentsRequest buildMergeCapacityCommitmentsRequest() {
+  var o = api.MergeCapacityCommitmentsRequest();
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    o.capacityCommitmentIds = buildUnnamed5808();
+    o.capacityCommitmentIds = buildUnnamed3883();
   }
   buildCounterMergeCapacityCommitmentsRequest--;
   return o;
 }
 
-checkMergeCapacityCommitmentsRequest(api.MergeCapacityCommitmentsRequest o) {
+void checkMergeCapacityCommitmentsRequest(
+    api.MergeCapacityCommitmentsRequest o) {
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    checkUnnamed5808(o.capacityCommitmentIds);
+    checkUnnamed3883(o.capacityCommitmentIds);
   }
   buildCounterMergeCapacityCommitmentsRequest--;
 }
 
 core.int buildCounterMoveAssignmentRequest = 0;
-buildMoveAssignmentRequest() {
-  var o = new api.MoveAssignmentRequest();
+api.MoveAssignmentRequest buildMoveAssignmentRequest() {
+  var o = api.MoveAssignmentRequest();
   buildCounterMoveAssignmentRequest++;
   if (buildCounterMoveAssignmentRequest < 3) {
     o.destinationId = "foo";
@@ -344,7 +366,7 @@ buildMoveAssignmentRequest() {
   return o;
 }
 
-checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
+void checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest++;
   if (buildCounterMoveAssignmentRequest < 3) {
     unittest.expect(o.destinationId, unittest.equals('foo'));
@@ -352,8 +374,8 @@ checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest--;
 }
 
-buildUnnamed5809() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed3884() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -367,7 +389,7 @@ buildUnnamed5809() {
   return o;
 }
 
-checkUnnamed5809(core.Map<core.String, core.Object> o) {
+void checkUnnamed3884(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -381,8 +403,8 @@ checkUnnamed5809(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5810() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed3885() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -396,7 +418,7 @@ buildUnnamed5810() {
   return o;
 }
 
-checkUnnamed5810(core.Map<core.String, core.Object> o) {
+void checkUnnamed3885(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -411,35 +433,35 @@ checkUnnamed5810(core.Map<core.String, core.Object> o) {
 }
 
 core.int buildCounterOperation = 0;
-buildOperation() {
-  var o = new api.Operation();
+api.Operation buildOperation() {
+  var o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed5809();
+    o.metadata = buildUnnamed3884();
     o.name = "foo";
-    o.response = buildUnnamed5810();
+    o.response = buildUnnamed3885();
   }
   buildCounterOperation--;
   return o;
 }
 
-checkOperation(api.Operation o) {
+void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed5809(o.metadata);
+    checkUnnamed3884(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5810(o.response);
+    checkUnnamed3885(o.response);
   }
   buildCounterOperation--;
 }
 
 core.int buildCounterReservation = 0;
-buildReservation() {
-  var o = new api.Reservation();
+api.Reservation buildReservation() {
+  var o = api.Reservation();
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
     o.creationTime = "foo";
@@ -452,7 +474,7 @@ buildReservation() {
   return o;
 }
 
-checkReservation(api.Reservation o) {
+void checkReservation(api.Reservation o) {
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
     unittest.expect(o.creationTime, unittest.equals('foo'));
@@ -464,77 +486,77 @@ checkReservation(api.Reservation o) {
   buildCounterReservation--;
 }
 
-buildUnnamed5811() {
-  var o = new core.List<api.Assignment>();
+core.List<api.Assignment> buildUnnamed3886() {
+  var o = <api.Assignment>[];
   o.add(buildAssignment());
   o.add(buildAssignment());
   return o;
 }
 
-checkUnnamed5811(core.List<api.Assignment> o) {
+void checkUnnamed3886(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
 }
 
 core.int buildCounterSearchAllAssignmentsResponse = 0;
-buildSearchAllAssignmentsResponse() {
-  var o = new api.SearchAllAssignmentsResponse();
+api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
+  var o = api.SearchAllAssignmentsResponse();
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5811();
+    o.assignments = buildUnnamed3886();
     o.nextPageToken = "foo";
   }
   buildCounterSearchAllAssignmentsResponse--;
   return o;
 }
 
-checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
+void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    checkUnnamed5811(o.assignments);
+    checkUnnamed3886(o.assignments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchAllAssignmentsResponse--;
 }
 
-buildUnnamed5812() {
-  var o = new core.List<api.Assignment>();
+core.List<api.Assignment> buildUnnamed3887() {
+  var o = <api.Assignment>[];
   o.add(buildAssignment());
   o.add(buildAssignment());
   return o;
 }
 
-checkUnnamed5812(core.List<api.Assignment> o) {
+void checkUnnamed3887(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
 }
 
 core.int buildCounterSearchAssignmentsResponse = 0;
-buildSearchAssignmentsResponse() {
-  var o = new api.SearchAssignmentsResponse();
+api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
+  var o = api.SearchAssignmentsResponse();
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed5812();
+    o.assignments = buildUnnamed3887();
     o.nextPageToken = "foo";
   }
   buildCounterSearchAssignmentsResponse--;
   return o;
 }
 
-checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
+void checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    checkUnnamed5812(o.assignments);
+    checkUnnamed3887(o.assignments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterSearchAssignmentsResponse--;
 }
 
 core.int buildCounterSplitCapacityCommitmentRequest = 0;
-buildSplitCapacityCommitmentRequest() {
-  var o = new api.SplitCapacityCommitmentRequest();
+api.SplitCapacityCommitmentRequest buildSplitCapacityCommitmentRequest() {
+  var o = api.SplitCapacityCommitmentRequest();
   buildCounterSplitCapacityCommitmentRequest++;
   if (buildCounterSplitCapacityCommitmentRequest < 3) {
     o.slotCount = "foo";
@@ -543,7 +565,7 @@ buildSplitCapacityCommitmentRequest() {
   return o;
 }
 
-checkSplitCapacityCommitmentRequest(api.SplitCapacityCommitmentRequest o) {
+void checkSplitCapacityCommitmentRequest(api.SplitCapacityCommitmentRequest o) {
   buildCounterSplitCapacityCommitmentRequest++;
   if (buildCounterSplitCapacityCommitmentRequest < 3) {
     unittest.expect(o.slotCount, unittest.equals('foo'));
@@ -552,8 +574,8 @@ checkSplitCapacityCommitmentRequest(api.SplitCapacityCommitmentRequest o) {
 }
 
 core.int buildCounterSplitCapacityCommitmentResponse = 0;
-buildSplitCapacityCommitmentResponse() {
-  var o = new api.SplitCapacityCommitmentResponse();
+api.SplitCapacityCommitmentResponse buildSplitCapacityCommitmentResponse() {
+  var o = api.SplitCapacityCommitmentResponse();
   buildCounterSplitCapacityCommitmentResponse++;
   if (buildCounterSplitCapacityCommitmentResponse < 3) {
     o.first = buildCapacityCommitment();
@@ -563,7 +585,8 @@ buildSplitCapacityCommitmentResponse() {
   return o;
 }
 
-checkSplitCapacityCommitmentResponse(api.SplitCapacityCommitmentResponse o) {
+void checkSplitCapacityCommitmentResponse(
+    api.SplitCapacityCommitmentResponse o) {
   buildCounterSplitCapacityCommitmentResponse++;
   if (buildCounterSplitCapacityCommitmentResponse < 3) {
     checkCapacityCommitment(o.first);
@@ -572,8 +595,8 @@ checkSplitCapacityCommitmentResponse(api.SplitCapacityCommitmentResponse o) {
   buildCounterSplitCapacityCommitmentResponse--;
 }
 
-buildUnnamed5813() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed3888() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -587,7 +610,7 @@ buildUnnamed5813() {
   return o;
 }
 
-checkUnnamed5813(core.Map<core.String, core.Object> o) {
+void checkUnnamed3888(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -601,47 +624,47 @@ checkUnnamed5813(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5814() {
-  var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed5813());
-  o.add(buildUnnamed5813());
+core.List<core.Map<core.String, core.Object>> buildUnnamed3889() {
+  var o = <core.Map<core.String, core.Object>>[];
+  o.add(buildUnnamed3888());
+  o.add(buildUnnamed3888());
   return o;
 }
 
-checkUnnamed5814(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed3889(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5813(o[0]);
-  checkUnnamed5813(o[1]);
+  checkUnnamed3888(o[0]);
+  checkUnnamed3888(o[1]);
 }
 
 core.int buildCounterStatus = 0;
-buildStatus() {
-  var o = new api.Status();
+api.Status buildStatus() {
+  var o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed5814();
+    o.details = buildUnnamed3889();
     o.message = "foo";
   }
   buildCounterStatus--;
   return o;
 }
 
-checkStatus(api.Status o) {
+void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed5814(o.details);
+    checkUnnamed3889(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-Assignment", () {
     unittest.test("to-json--from-json", () {
       var o = buildAssignment();
-      var od = new api.Assignment.fromJson(o.toJson());
+      var od = api.Assignment.fromJson(o.toJson());
       checkAssignment(od);
     });
   });
@@ -649,7 +672,7 @@ main() {
   unittest.group("obj-schema-BiReservation", () {
     unittest.test("to-json--from-json", () {
       var o = buildBiReservation();
-      var od = new api.BiReservation.fromJson(o.toJson());
+      var od = api.BiReservation.fromJson(o.toJson());
       checkBiReservation(od);
     });
   });
@@ -657,7 +680,7 @@ main() {
   unittest.group("obj-schema-CapacityCommitment", () {
     unittest.test("to-json--from-json", () {
       var o = buildCapacityCommitment();
-      var od = new api.CapacityCommitment.fromJson(o.toJson());
+      var od = api.CapacityCommitment.fromJson(o.toJson());
       checkCapacityCommitment(od);
     });
   });
@@ -665,7 +688,7 @@ main() {
   unittest.group("obj-schema-CreateSlotPoolMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildCreateSlotPoolMetadata();
-      var od = new api.CreateSlotPoolMetadata.fromJson(o.toJson());
+      var od = api.CreateSlotPoolMetadata.fromJson(o.toJson());
       checkCreateSlotPoolMetadata(od);
     });
   });
@@ -673,7 +696,7 @@ main() {
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
       var o = buildEmpty();
-      var od = new api.Empty.fromJson(o.toJson());
+      var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
@@ -681,7 +704,7 @@ main() {
   unittest.group("obj-schema-ListAssignmentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListAssignmentsResponse();
-      var od = new api.ListAssignmentsResponse.fromJson(o.toJson());
+      var od = api.ListAssignmentsResponse.fromJson(o.toJson());
       checkListAssignmentsResponse(od);
     });
   });
@@ -689,7 +712,7 @@ main() {
   unittest.group("obj-schema-ListCapacityCommitmentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListCapacityCommitmentsResponse();
-      var od = new api.ListCapacityCommitmentsResponse.fromJson(o.toJson());
+      var od = api.ListCapacityCommitmentsResponse.fromJson(o.toJson());
       checkListCapacityCommitmentsResponse(od);
     });
   });
@@ -697,7 +720,7 @@ main() {
   unittest.group("obj-schema-ListOperationsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListOperationsResponse();
-      var od = new api.ListOperationsResponse.fromJson(o.toJson());
+      var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
@@ -705,7 +728,7 @@ main() {
   unittest.group("obj-schema-ListReservationsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListReservationsResponse();
-      var od = new api.ListReservationsResponse.fromJson(o.toJson());
+      var od = api.ListReservationsResponse.fromJson(o.toJson());
       checkListReservationsResponse(od);
     });
   });
@@ -713,7 +736,7 @@ main() {
   unittest.group("obj-schema-MergeCapacityCommitmentsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildMergeCapacityCommitmentsRequest();
-      var od = new api.MergeCapacityCommitmentsRequest.fromJson(o.toJson());
+      var od = api.MergeCapacityCommitmentsRequest.fromJson(o.toJson());
       checkMergeCapacityCommitmentsRequest(od);
     });
   });
@@ -721,7 +744,7 @@ main() {
   unittest.group("obj-schema-MoveAssignmentRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildMoveAssignmentRequest();
-      var od = new api.MoveAssignmentRequest.fromJson(o.toJson());
+      var od = api.MoveAssignmentRequest.fromJson(o.toJson());
       checkMoveAssignmentRequest(od);
     });
   });
@@ -729,7 +752,7 @@ main() {
   unittest.group("obj-schema-Operation", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperation();
-      var od = new api.Operation.fromJson(o.toJson());
+      var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
@@ -737,7 +760,7 @@ main() {
   unittest.group("obj-schema-Reservation", () {
     unittest.test("to-json--from-json", () {
       var o = buildReservation();
-      var od = new api.Reservation.fromJson(o.toJson());
+      var od = api.Reservation.fromJson(o.toJson());
       checkReservation(od);
     });
   });
@@ -745,7 +768,7 @@ main() {
   unittest.group("obj-schema-SearchAllAssignmentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSearchAllAssignmentsResponse();
-      var od = new api.SearchAllAssignmentsResponse.fromJson(o.toJson());
+      var od = api.SearchAllAssignmentsResponse.fromJson(o.toJson());
       checkSearchAllAssignmentsResponse(od);
     });
   });
@@ -753,7 +776,7 @@ main() {
   unittest.group("obj-schema-SearchAssignmentsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSearchAssignmentsResponse();
-      var od = new api.SearchAssignmentsResponse.fromJson(o.toJson());
+      var od = api.SearchAssignmentsResponse.fromJson(o.toJson());
       checkSearchAssignmentsResponse(od);
     });
   });
@@ -761,7 +784,7 @@ main() {
   unittest.group("obj-schema-SplitCapacityCommitmentRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSplitCapacityCommitmentRequest();
-      var od = new api.SplitCapacityCommitmentRequest.fromJson(o.toJson());
+      var od = api.SplitCapacityCommitmentRequest.fromJson(o.toJson());
       checkSplitCapacityCommitmentRequest(od);
     });
   });
@@ -769,7 +792,7 @@ main() {
   unittest.group("obj-schema-SplitCapacityCommitmentResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSplitCapacityCommitmentResponse();
-      var od = new api.SplitCapacityCommitmentResponse.fromJson(o.toJson());
+      var od = api.SplitCapacityCommitmentResponse.fromJson(o.toJson());
       checkSplitCapacityCommitmentResponse(od);
     });
   });
@@ -777,23 +800,23 @@ main() {
   unittest.group("obj-schema-Status", () {
     unittest.test("to-json--from-json", () {
       var o = buildStatus();
-      var od = new api.Status.fromJson(o.toJson());
+      var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
 
   unittest.group("resource-OperationsResourceApi", () {
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.OperationsResourceApi res =
-          new api.BigqueryreservationApi(mock).operations;
+          api.BigqueryreservationApi(mock).operations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -805,19 +828,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -826,7 +845,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -836,9 +855,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.OperationsResourceApi res =
-          new api.BigqueryreservationApi(mock).operations;
+          api.BigqueryreservationApi(mock).operations;
       var arg_name = "foo";
       var arg_filter = "foo";
       var arg_pageSize = 42;
@@ -847,8 +866,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -860,19 +879,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
@@ -886,7 +901,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListOperationsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_name,
@@ -902,16 +917,16 @@ main() {
 
   unittest.group("resource-ProjectsLocationsResourceApi", () {
     unittest.test("method--getBiReservation", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations;
+          api.BigqueryreservationApi(mock).projects.locations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -923,19 +938,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -944,7 +955,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildBiReservation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getBiReservation(arg_name, $fields: arg_$fields)
@@ -954,9 +965,9 @@ main() {
     });
 
     unittest.test("method--searchAllAssignments", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations;
+          api.BigqueryreservationApi(mock).projects.locations;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_query = "foo";
@@ -965,8 +976,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -978,19 +989,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1004,7 +1011,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSearchAllAssignmentsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .searchAllAssignments(arg_parent,
@@ -1018,9 +1025,9 @@ main() {
     });
 
     unittest.test("method--searchAssignments", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations;
+          api.BigqueryreservationApi(mock).projects.locations;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -1029,8 +1036,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1042,19 +1049,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1068,7 +1071,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSearchAssignmentsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .searchAssignments(arg_parent,
@@ -1082,21 +1085,21 @@ main() {
     });
 
     unittest.test("method--updateBiReservation", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations;
+          api.BigqueryreservationApi(mock).projects.locations;
       var arg_request = buildBiReservation();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.BiReservation.fromJson(json);
+        var obj = api.BiReservation.fromJson(json);
         checkBiReservation(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1108,19 +1111,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1131,7 +1130,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildBiReservation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updateBiReservation(arg_request, arg_name,
@@ -1145,9 +1144,9 @@ main() {
   unittest.group("resource-ProjectsLocationsCapacityCommitmentsResourceApi",
       () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1156,13 +1155,13 @@ main() {
       var arg_enforceSingleAdminProjectPerOrg = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.CapacityCommitment.fromJson(json);
+        var obj = api.CapacityCommitment.fromJson(json);
         checkCapacityCommitment(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1174,19 +1173,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["enforceSingleAdminProjectPerOrg"].first,
@@ -1197,7 +1192,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildCapacityCommitment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -1210,9 +1205,9 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1221,8 +1216,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1234,19 +1229,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1255,7 +1246,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -1265,9 +1256,9 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1276,8 +1267,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1289,19 +1280,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1310,7 +1297,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildCapacityCommitment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1320,9 +1307,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1333,8 +1320,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1346,19 +1333,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1371,7 +1354,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListCapacityCommitmentsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -1384,9 +1367,9 @@ main() {
     });
 
     unittest.test("method--merge", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1394,13 +1377,13 @@ main() {
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.MergeCapacityCommitmentsRequest.fromJson(json);
+        var obj = api.MergeCapacityCommitmentsRequest.fromJson(json);
         checkMergeCapacityCommitmentsRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1412,19 +1395,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1433,7 +1412,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildCapacityCommitment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .merge(arg_request, arg_parent, $fields: arg_$fields)
@@ -1443,9 +1422,9 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1454,13 +1433,13 @@ main() {
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.CapacityCommitment.fromJson(json);
+        var obj = api.CapacityCommitment.fromJson(json);
         checkCapacityCommitment(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1472,19 +1451,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1495,7 +1470,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildCapacityCommitment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -1506,9 +1481,9 @@ main() {
     });
 
     unittest.test("method--split", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsCapacityCommitmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .capacityCommitments;
@@ -1516,13 +1491,13 @@ main() {
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SplitCapacityCommitmentRequest.fromJson(json);
+        var obj = api.SplitCapacityCommitmentRequest.fromJson(json);
         checkSplitCapacityCommitmentRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1534,19 +1509,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1555,7 +1526,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSplitCapacityCommitmentResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .split(arg_request, arg_name, $fields: arg_$fields)
@@ -1567,21 +1538,21 @@ main() {
 
   unittest.group("resource-ProjectsLocationsReservationsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_request = buildReservation();
       var arg_parent = "foo";
       var arg_reservationId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Reservation.fromJson(json);
+        var obj = api.Reservation.fromJson(json);
         checkReservation(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1593,19 +1564,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["reservationId"].first,
@@ -1616,7 +1583,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildReservation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent,
@@ -1627,16 +1594,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1648,19 +1615,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1669,7 +1632,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -1679,16 +1642,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1700,19 +1663,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1721,7 +1680,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildReservation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1731,9 +1690,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_parent = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -1741,8 +1700,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1754,19 +1713,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1779,7 +1734,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListReservationsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -1792,21 +1747,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsResourceApi res =
-          new api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigqueryreservationApi(mock).projects.locations.reservations;
       var arg_request = buildReservation();
       var arg_name = "foo";
       var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Reservation.fromJson(json);
+        var obj = api.Reservation.fromJson(json);
         checkReservation(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1818,19 +1773,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1841,7 +1792,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildReservation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_name,
@@ -1855,9 +1806,9 @@ main() {
   unittest.group("resource-ProjectsLocationsReservationsAssignmentsResourceApi",
       () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsAssignmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .reservations
@@ -1866,13 +1817,13 @@ main() {
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Assignment.fromJson(json);
+        var obj = api.Assignment.fromJson(json);
         checkAssignment(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1884,19 +1835,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1905,7 +1852,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildAssignment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -1915,9 +1862,9 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsAssignmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .reservations
@@ -1927,8 +1874,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1940,19 +1887,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1961,7 +1904,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -1971,9 +1914,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsAssignmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .reservations
@@ -1985,8 +1928,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1998,19 +1941,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -2023,7 +1962,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListAssignmentsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -2036,9 +1975,9 @@ main() {
     });
 
     unittest.test("method--move", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsReservationsAssignmentsResourceApi res =
-          new api.BigqueryreservationApi(mock)
+          api.BigqueryreservationApi(mock)
               .projects
               .locations
               .reservations
@@ -2047,13 +1986,13 @@ main() {
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.MoveAssignmentRequest.fromJson(json);
+        var obj = api.MoveAssignmentRequest.fromJson(json);
         checkMoveAssignmentRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2065,19 +2004,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2086,7 +2021,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildAssignment());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .move(arg_request, arg_name, $fields: arg_$fields)

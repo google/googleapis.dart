@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.manufacturers.v1;
 
@@ -24,20 +42,20 @@ class ManufacturersApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
+  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   ManufacturersApi(http.Client client,
       {core.String rootUrl = "https://manufacturers.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsProductsResourceApi get products =>
-      new AccountsProductsResourceApi(_requester);
+      AccountsProductsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -75,20 +93,23 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String parent, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String parent,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -99,13 +120,16 @@ class AccountsProductsResourceApi {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the product from a Manufacturer Center account, including product
@@ -142,20 +166,24 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> get(core.String parent, core.String name,
-      {core.List<core.String> include, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Product> get(
+    core.String parent,
+    core.String name, {
+    core.List<core.String> include,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (include != null) {
       _queryParams["include"] = include;
@@ -169,13 +197,16 @@ class AccountsProductsResourceApi {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Product.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Product.fromJson(data));
   }
 
   /// Lists all the products in a Manufacturer Center account.
@@ -204,20 +235,22 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListProductsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.List<core.String> include,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListProductsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.List<core.String> include,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -235,13 +268,16 @@ class AccountsProductsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListProductsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListProductsResponse.fromJson(data));
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
@@ -285,23 +321,26 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> update(
-      Attributes request, core.String parent, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Attributes request,
+    core.String parent,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -312,13 +351,16 @@ class AccountsProductsResourceApi {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -473,7 +515,7 @@ class Attributes {
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey("additionalImageLink")) {
       additionalImageLink = (_json["additionalImageLink"] as core.List)
-          .map<Image>((value) => new Image.fromJson(value))
+          .map<Image>((value) => Image.fromJson(value))
           .toList();
     }
     if (_json.containsKey("ageGroup")) {
@@ -483,13 +525,13 @@ class Attributes {
       brand = _json["brand"];
     }
     if (_json.containsKey("capacity")) {
-      capacity = new Capacity.fromJson(_json["capacity"]);
+      capacity = Capacity.fromJson(_json["capacity"]);
     }
     if (_json.containsKey("color")) {
       color = _json["color"];
     }
     if (_json.containsKey("count")) {
-      count = new Count.fromJson(_json["count"]);
+      count = Count.fromJson(_json["count"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -504,7 +546,7 @@ class Attributes {
     if (_json.containsKey("featureDescription")) {
       featureDescription = (_json["featureDescription"] as core.List)
           .map<FeatureDescription>(
-              (value) => new FeatureDescription.fromJson(value))
+              (value) => FeatureDescription.fromJson(value))
           .toList();
     }
     if (_json.containsKey("flavor")) {
@@ -520,7 +562,7 @@ class Attributes {
       gtin = (_json["gtin"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("imageLink")) {
-      imageLink = new Image.fromJson(_json["imageLink"]);
+      imageLink = Image.fromJson(_json["imageLink"]);
     }
     if (_json.containsKey("includedDestination")) {
       includedDestination =
@@ -540,7 +582,7 @@ class Attributes {
     }
     if (_json.containsKey("productDetail")) {
       productDetail = (_json["productDetail"] as core.List)
-          .map<ProductDetail>((value) => new ProductDetail.fromJson(value))
+          .map<ProductDetail>((value) => ProductDetail.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productLine")) {
@@ -575,7 +617,7 @@ class Attributes {
       sizeType = _json["sizeType"];
     }
     if (_json.containsKey("suggestedRetailPrice")) {
-      suggestedRetailPrice = new Price.fromJson(_json["suggestedRetailPrice"]);
+      suggestedRetailPrice = Price.fromJson(_json["suggestedRetailPrice"]);
     }
     if (_json.containsKey("targetClientId")) {
       targetClientId = _json["targetClientId"];
@@ -593,10 +635,10 @@ class Attributes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (additionalImageLink != null) {
       _json["additionalImageLink"] =
-          additionalImageLink.map((value) => (value).toJson()).toList();
+          additionalImageLink.map((value) => value.toJson()).toList();
     }
     if (ageGroup != null) {
       _json["ageGroup"] = ageGroup;
@@ -605,13 +647,13 @@ class Attributes {
       _json["brand"] = brand;
     }
     if (capacity != null) {
-      _json["capacity"] = (capacity).toJson();
+      _json["capacity"] = capacity.toJson();
     }
     if (color != null) {
       _json["color"] = color;
     }
     if (count != null) {
-      _json["count"] = (count).toJson();
+      _json["count"] = count.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -624,7 +666,7 @@ class Attributes {
     }
     if (featureDescription != null) {
       _json["featureDescription"] =
-          featureDescription.map((value) => (value).toJson()).toList();
+          featureDescription.map((value) => value.toJson()).toList();
     }
     if (flavor != null) {
       _json["flavor"] = flavor;
@@ -639,7 +681,7 @@ class Attributes {
       _json["gtin"] = gtin;
     }
     if (imageLink != null) {
-      _json["imageLink"] = (imageLink).toJson();
+      _json["imageLink"] = imageLink.toJson();
     }
     if (includedDestination != null) {
       _json["includedDestination"] = includedDestination;
@@ -658,7 +700,7 @@ class Attributes {
     }
     if (productDetail != null) {
       _json["productDetail"] =
-          productDetail.map((value) => (value).toJson()).toList();
+          productDetail.map((value) => value.toJson()).toList();
     }
     if (productLine != null) {
       _json["productLine"] = productLine;
@@ -691,7 +733,7 @@ class Attributes {
       _json["sizeType"] = sizeType;
     }
     if (suggestedRetailPrice != null) {
-      _json["suggestedRetailPrice"] = (suggestedRetailPrice).toJson();
+      _json["suggestedRetailPrice"] = suggestedRetailPrice.toJson();
     }
     if (targetClientId != null) {
       _json["targetClientId"] = targetClientId;
@@ -731,7 +773,7 @@ class Capacity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -764,7 +806,7 @@ class Count {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -801,7 +843,7 @@ class DestinationStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (destination != null) {
       _json["destination"] = destination;
     }
@@ -824,7 +866,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -848,7 +890,7 @@ class FeatureDescription {
       headline = _json["headline"];
     }
     if (_json.containsKey("image")) {
-      image = new Image.fromJson(_json["image"]);
+      image = Image.fromJson(_json["image"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -857,12 +899,12 @@ class FeatureDescription {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (headline != null) {
       _json["headline"] = headline;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -923,7 +965,7 @@ class Image {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
     }
@@ -1014,7 +1056,7 @@ class Issue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attribute != null) {
       _json["attribute"] = attribute;
     }
@@ -1058,19 +1100,19 @@ class ListProductsResponse {
     }
     if (_json.containsKey("products")) {
       products = (_json["products"] as core.List)
-          .map<Product>((value) => new Product.fromJson(value))
+          .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => (value).toJson()).toList();
+      _json["products"] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1097,7 +1139,7 @@ class Price {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -1148,20 +1190,19 @@ class Product {
 
   Product.fromJson(core.Map _json) {
     if (_json.containsKey("attributes")) {
-      attributes = new Attributes.fromJson(_json["attributes"]);
+      attributes = Attributes.fromJson(_json["attributes"]);
     }
     if (_json.containsKey("contentLanguage")) {
       contentLanguage = _json["contentLanguage"];
     }
     if (_json.containsKey("destinationStatuses")) {
       destinationStatuses = (_json["destinationStatuses"] as core.List)
-          .map<DestinationStatus>(
-              (value) => new DestinationStatus.fromJson(value))
+          .map<DestinationStatus>((value) => DestinationStatus.fromJson(value))
           .toList();
     }
     if (_json.containsKey("issues")) {
       issues = (_json["issues"] as core.List)
-          .map<Issue>((value) => new Issue.fromJson(value))
+          .map<Issue>((value) => Issue.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -1180,19 +1221,19 @@ class Product {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributes != null) {
-      _json["attributes"] = (attributes).toJson();
+      _json["attributes"] = attributes.toJson();
     }
     if (contentLanguage != null) {
       _json["contentLanguage"] = contentLanguage;
     }
     if (destinationStatuses != null) {
       _json["destinationStatuses"] =
-          destinationStatuses.map((value) => (value).toJson()).toList();
+          destinationStatuses.map((value) => value.toJson()).toList();
     }
     if (issues != null) {
-      _json["issues"] = issues.map((value) => (value).toJson()).toList();
+      _json["issues"] = issues.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1238,7 +1279,7 @@ class ProductDetail {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attributeName != null) {
       _json["attributeName"] = attributeName;
     }

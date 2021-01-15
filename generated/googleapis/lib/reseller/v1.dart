@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.reseller.v1;
 
@@ -27,17 +45,17 @@ class ResellerApi {
 
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi get customers => new CustomersResourceApi(_requester);
+  CustomersResourceApi get customers => CustomersResourceApi(_requester);
   ResellernotifyResourceApi get resellernotify =>
-      new ResellernotifyResourceApi(_requester);
+      ResellernotifyResourceApi(_requester);
   SubscriptionsResourceApi get subscriptions =>
-      new SubscriptionsResourceApi(_requester);
+      SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = "apps/reseller/v1/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class CustomersResourceApi {
@@ -64,16 +82,19 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> get(core.String customerId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Customer> get(
+    core.String customerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -81,13 +102,16 @@ class CustomersResourceApi {
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Customer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Customer.fromJson(data));
   }
 
   /// Order a new customer's account.
@@ -113,17 +137,20 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> insert(Customer request,
-      {core.String customerAuthToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Customer> insert(
+    Customer request, {
+    core.String customerAuthToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
@@ -134,13 +161,16 @@ class CustomersResourceApi {
 
     _url = 'customers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Customer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Customer.fromJson(data));
   }
 
   /// Update a customer account's settings. This method supports patch
@@ -165,20 +195,23 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> patch(Customer request, core.String customerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Customer> patch(
+    Customer request,
+    core.String customerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -186,13 +219,16 @@ class CustomersResourceApi {
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Customer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Customer.fromJson(data));
   }
 
   /// Update a customer account's settings.
@@ -216,20 +252,23 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> update(Customer request, core.String customerId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Customer> update(
+    Customer request,
+    core.String customerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -237,13 +276,16 @@ class CustomersResourceApi {
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Customer.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Customer.fromJson(data));
   }
 }
 
@@ -266,14 +308,15 @@ class ResellernotifyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails(
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -281,14 +324,17 @@ class ResellernotifyResourceApi {
 
     _url = 'resellernotify/getwatchdetails';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new ResellernotifyGetwatchdetailsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => ResellernotifyGetwatchdetailsResponse.fromJson(data));
   }
 
   /// Registers a Reseller for receiving notifications.
@@ -308,14 +354,16 @@ class ResellernotifyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ResellernotifyResource> register(
-      {core.String serviceAccountEmailAddress, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ResellernotifyResource> register({
+    core.String serviceAccountEmailAddress,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
@@ -326,13 +374,16 @@ class ResellernotifyResourceApi {
 
     _url = 'resellernotify/register';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ResellernotifyResource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ResellernotifyResource.fromJson(data));
   }
 
   /// Unregisters a Reseller for receiving notifications.
@@ -352,14 +403,16 @@ class ResellernotifyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ResellernotifyResource> unregister(
-      {core.String serviceAccountEmailAddress, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ResellernotifyResource> unregister({
+    core.String serviceAccountEmailAddress,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
@@ -370,13 +423,16 @@ class ResellernotifyResourceApi {
 
     _url = 'resellernotify/unregister';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ResellernotifyResource.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ResellernotifyResource.fromJson(data));
   }
 }
 
@@ -411,20 +467,22 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> activate(
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -436,13 +494,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/activate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Update a subscription plan. Use this method to update a plan for a 30-day
@@ -474,24 +535,27 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> changePlan(ChangePlanRequest request,
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subscription> changePlan(
+    ChangePlanRequest request,
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -503,13 +567,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changePlan';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Update a user license's renewal settings. This is applicable for accounts
@@ -540,24 +607,27 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> changeRenewalSettings(RenewalSettings request,
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subscription> changeRenewalSettings(
+    RenewalSettings request,
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,13 +639,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changeRenewalSettings';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Update a subscription's user license settings.
@@ -606,23 +679,26 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> changeSeats(
-      Seats request, core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Seats request,
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -634,13 +710,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changeSeats';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Cancel, suspend, or transfer a subscription to direct.
@@ -677,24 +756,27 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customerId, core.String subscriptionId,
-      core.String deletionType,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String customerId,
+    core.String subscriptionId,
+    core.String deletionType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if (deletionType == null) {
-      throw new core.ArgumentError("Parameter deletionType is required.");
+      throw core.ArgumentError("Parameter deletionType is required.");
     }
     _queryParams["deletionType"] = [deletionType];
     if ($fields != null) {
@@ -708,12 +790,15 @@ class SubscriptionsResourceApi {
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -743,20 +828,22 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> get(
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -767,13 +854,16 @@ class SubscriptionsResourceApi {
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Create or transfer a subscription.
@@ -805,20 +895,23 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> insert(
-      Subscription request, core.String customerId,
-      {core.String customerAuthToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Subscription request,
+    core.String customerId, {
+    core.String customerAuthToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
@@ -831,13 +924,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// List of subscriptions managed by the reseller. The list can be all
@@ -884,19 +980,20 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscriptions> list(
-      {core.int maxResults,
-      core.String customerNamePrefix,
-      core.String customerAuthToken,
-      core.String customerId,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Subscriptions> list({
+    core.int maxResults,
+    core.String customerNamePrefix,
+    core.String customerAuthToken,
+    core.String customerId,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -919,13 +1016,16 @@ class SubscriptionsResourceApi {
 
     _url = 'subscriptions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscriptions.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscriptions.fromJson(data));
   }
 
   /// Immediately move a 30-day free trial subscription to a paid service
@@ -955,20 +1055,22 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> startPaidService(
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -980,13 +1082,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/startPaidService';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 
   /// Suspends an active subscription.
@@ -1015,20 +1120,22 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> suspend(
-      core.String customerId, core.String subscriptionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String customerId,
+    core.String subscriptionId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (customerId == null) {
-      throw new core.ArgumentError("Parameter customerId is required.");
+      throw core.ArgumentError("Parameter customerId is required.");
     }
     if (subscriptionId == null) {
-      throw new core.ArgumentError("Parameter subscriptionId is required.");
+      throw core.ArgumentError("Parameter subscriptionId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1040,13 +1147,16 @@ class SubscriptionsResourceApi {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/suspend';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Subscription.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Subscription.fromJson(data));
   }
 }
 
@@ -1123,7 +1233,7 @@ class Address {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addressLine1 != null) {
       _json["addressLine1"] = addressLine1;
     }
@@ -1212,13 +1322,13 @@ class ChangePlanRequest {
       purchaseOrderId = _json["purchaseOrderId"];
     }
     if (_json.containsKey("seats")) {
-      seats = new Seats.fromJson(_json["seats"]);
+      seats = Seats.fromJson(_json["seats"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dealCode != null) {
       _json["dealCode"] = dealCode;
     }
@@ -1232,7 +1342,7 @@ class ChangePlanRequest {
       _json["purchaseOrderId"] = purchaseOrderId;
     }
     if (seats != null) {
-      _json["seats"] = (seats).toJson();
+      _json["seats"] = seats.toJson();
     }
     return _json;
   }
@@ -1299,7 +1409,7 @@ class Customer {
       phoneNumber = _json["phoneNumber"];
     }
     if (_json.containsKey("postalAddress")) {
-      postalAddress = new Address.fromJson(_json["postalAddress"]);
+      postalAddress = Address.fromJson(_json["postalAddress"]);
     }
     if (_json.containsKey("resourceUiUrl")) {
       resourceUiUrl = _json["resourceUiUrl"];
@@ -1308,7 +1418,7 @@ class Customer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alternateEmail != null) {
       _json["alternateEmail"] = alternateEmail;
     }
@@ -1328,7 +1438,7 @@ class Customer {
       _json["phoneNumber"] = phoneNumber;
     }
     if (postalAddress != null) {
-      _json["postalAddress"] = (postalAddress).toJson();
+      _json["postalAddress"] = postalAddress.toJson();
     }
     if (resourceUiUrl != null) {
       _json["resourceUiUrl"] = resourceUiUrl;
@@ -1361,7 +1471,7 @@ class RenewalSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1395,7 +1505,7 @@ class ResellernotifyGetwatchdetailsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (serviceAccountEmailAddresses != null) {
       _json["serviceAccountEmailAddresses"] = serviceAccountEmailAddresses;
     }
@@ -1421,7 +1531,7 @@ class ResellernotifyResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (topicName != null) {
       _json["topicName"] = topicName;
     }
@@ -1477,7 +1587,7 @@ class Seats {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1519,7 +1629,7 @@ class SubscriptionPlanCommitmentInterval {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -1568,7 +1678,7 @@ class SubscriptionPlan {
 
   SubscriptionPlan.fromJson(core.Map _json) {
     if (_json.containsKey("commitmentInterval")) {
-      commitmentInterval = new SubscriptionPlanCommitmentInterval.fromJson(
+      commitmentInterval = SubscriptionPlanCommitmentInterval.fromJson(
           _json["commitmentInterval"]);
     }
     if (_json.containsKey("isCommitmentPlan")) {
@@ -1581,9 +1691,9 @@ class SubscriptionPlan {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (commitmentInterval != null) {
-      _json["commitmentInterval"] = (commitmentInterval).toJson();
+      _json["commitmentInterval"] = commitmentInterval.toJson();
     }
     if (isCommitmentPlan != null) {
       _json["isCommitmentPlan"] = isCommitmentPlan;
@@ -1621,7 +1731,7 @@ class SubscriptionTransferInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (minimumTransferableSeats != null) {
       _json["minimumTransferableSeats"] = minimumTransferableSeats;
     }
@@ -1657,7 +1767,7 @@ class SubscriptionTrialSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isInTrial != null) {
       _json["isInTrial"] = isInTrial;
     }
@@ -1788,19 +1898,19 @@ class Subscription {
       kind = _json["kind"];
     }
     if (_json.containsKey("plan")) {
-      plan = new SubscriptionPlan.fromJson(_json["plan"]);
+      plan = SubscriptionPlan.fromJson(_json["plan"]);
     }
     if (_json.containsKey("purchaseOrderId")) {
       purchaseOrderId = _json["purchaseOrderId"];
     }
     if (_json.containsKey("renewalSettings")) {
-      renewalSettings = new RenewalSettings.fromJson(_json["renewalSettings"]);
+      renewalSettings = RenewalSettings.fromJson(_json["renewalSettings"]);
     }
     if (_json.containsKey("resourceUiUrl")) {
       resourceUiUrl = _json["resourceUiUrl"];
     }
     if (_json.containsKey("seats")) {
-      seats = new Seats.fromJson(_json["seats"]);
+      seats = Seats.fromJson(_json["seats"]);
     }
     if (_json.containsKey("skuId")) {
       skuId = _json["skuId"];
@@ -1819,18 +1929,17 @@ class Subscription {
           (_json["suspensionReasons"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("transferInfo")) {
-      transferInfo =
-          new SubscriptionTransferInfo.fromJson(_json["transferInfo"]);
+      transferInfo = SubscriptionTransferInfo.fromJson(_json["transferInfo"]);
     }
     if (_json.containsKey("trialSettings")) {
       trialSettings =
-          new SubscriptionTrialSettings.fromJson(_json["trialSettings"]);
+          SubscriptionTrialSettings.fromJson(_json["trialSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (billingMethod != null) {
       _json["billingMethod"] = billingMethod;
     }
@@ -1850,19 +1959,19 @@ class Subscription {
       _json["kind"] = kind;
     }
     if (plan != null) {
-      _json["plan"] = (plan).toJson();
+      _json["plan"] = plan.toJson();
     }
     if (purchaseOrderId != null) {
       _json["purchaseOrderId"] = purchaseOrderId;
     }
     if (renewalSettings != null) {
-      _json["renewalSettings"] = (renewalSettings).toJson();
+      _json["renewalSettings"] = renewalSettings.toJson();
     }
     if (resourceUiUrl != null) {
       _json["resourceUiUrl"] = resourceUiUrl;
     }
     if (seats != null) {
-      _json["seats"] = (seats).toJson();
+      _json["seats"] = seats.toJson();
     }
     if (skuId != null) {
       _json["skuId"] = skuId;
@@ -1880,10 +1989,10 @@ class Subscription {
       _json["suspensionReasons"] = suspensionReasons;
     }
     if (transferInfo != null) {
-      _json["transferInfo"] = (transferInfo).toJson();
+      _json["transferInfo"] = transferInfo.toJson();
     }
     if (trialSettings != null) {
-      _json["trialSettings"] = (trialSettings).toJson();
+      _json["trialSettings"] = trialSettings.toJson();
     }
     return _json;
   }
@@ -1913,14 +2022,14 @@ class Subscriptions {
     }
     if (_json.containsKey("subscriptions")) {
       subscriptions = (_json["subscriptions"] as core.List)
-          .map<Subscription>((value) => new Subscription.fromJson(value))
+          .map<Subscription>((value) => Subscription.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1929,7 +2038,7 @@ class Subscriptions {
     }
     if (subscriptions != null) {
       _json["subscriptions"] =
-          subscriptions.map((value) => (value).toJson()).toList();
+          subscriptions.map((value) => value.toJson()).toList();
     }
     return _json;
   }

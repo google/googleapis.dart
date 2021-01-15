@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.cloudidentity.v1;
 
@@ -38,21 +56,21 @@ class CloudidentityApi {
 
   final commons.ApiRequester _requester;
 
-  DevicesResourceApi get devices => new DevicesResourceApi(_requester);
-  GroupsResourceApi get groups => new GroupsResourceApi(_requester);
+  DevicesResourceApi get devices => DevicesResourceApi(_requester);
+  GroupsResourceApi get groups => GroupsResourceApi(_requester);
 
   CloudidentityApi(http.Client client,
       {core.String rootUrl = "https://cloudidentity.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class DevicesResourceApi {
   final commons.ApiRequester _requester;
 
   DevicesDeviceUsersResourceApi get deviceUsers =>
-      new DevicesDeviceUsersResourceApi(_requester);
+      DevicesDeviceUsersResourceApi(_requester);
 
   DevicesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -86,21 +104,22 @@ class DevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> cancelWipe(
-      GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -109,13 +128,16 @@ class DevicesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a device. Only company-owned device may be created.
@@ -141,17 +163,20 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(GoogleAppsCloudidentityDevicesV1Device request,
-      {core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    GoogleAppsCloudidentityDevicesV1Device request, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -162,13 +187,16 @@ class DevicesResourceApi {
 
     _url = 'v1/devices';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified device.
@@ -198,17 +226,20 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name,
-      {core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -219,13 +250,16 @@ class DevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves the specified device.
@@ -256,17 +290,20 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleAppsCloudidentityDevicesV1Device> get(core.String name,
-      {core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleAppsCloudidentityDevicesV1Device> get(
+    core.String name, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -277,14 +314,17 @@ class DevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleAppsCloudidentityDevicesV1Device.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleAppsCloudidentityDevicesV1Device.fromJson(data));
   }
 
   /// Lists/Searches devices.
@@ -339,20 +379,21 @@ class DevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> list(
-      {core.int pageSize,
-      core.String filter,
-      core.String orderBy,
-      core.String customer,
-      core.String pageToken,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> list({
+    core.int pageSize,
+    core.String filter,
+    core.String orderBy,
+    core.String customer,
+    core.String pageToken,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -378,14 +419,17 @@ class DevicesResourceApi {
 
     _url = 'v1/devices';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(data));
+        GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(data));
   }
 
   /// Wipes all data on the specified device.
@@ -412,21 +456,22 @@ class DevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> wipe(
-      GoogleAppsCloudidentityDevicesV1WipeDeviceRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1WipeDeviceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -434,13 +479,16 @@ class DevicesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -448,7 +496,7 @@ class DevicesDeviceUsersResourceApi {
   final commons.ApiRequester _requester;
 
   DevicesDeviceUsersClientStatesResourceApi get clientStates =>
-      new DevicesDeviceUsersClientStatesResourceApi(_requester);
+      DevicesDeviceUsersClientStatesResourceApi(_requester);
 
   DevicesDeviceUsersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -477,21 +525,22 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> approve(
-      GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -499,13 +548,16 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Blocks device from accessing user data
@@ -532,21 +584,22 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> block(
-      GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -554,13 +607,16 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':block';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Cancels an unfinished user account wipe. This operation can be used to
@@ -589,21 +645,22 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> cancelWipe(
-      GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -612,13 +669,16 @@ class DevicesDeviceUsersResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the specified DeviceUser. This also revokes the user's access to
@@ -650,17 +710,20 @@ class DevicesDeviceUsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name,
-      {core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -671,13 +734,16 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves the specified DeviceUser
@@ -708,17 +774,20 @@ class DevicesDeviceUsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleAppsCloudidentityDevicesV1DeviceUser> get(core.String name,
-      {core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleAppsCloudidentityDevicesV1DeviceUser> get(
+    core.String name, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -729,14 +798,17 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(data));
   }
 
   /// Lists/Searches DeviceUsers.
@@ -781,22 +853,23 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
-      core.String customer,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String orderBy,
+    core.String customer,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -821,15 +894,17 @@ class DevicesDeviceUsersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deviceUsers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-            data));
+        GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(data));
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
@@ -885,22 +960,24 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>
-      lookup(core.String parent,
-          {core.String rawResourceId,
-          core.String userId,
-          core.String pageToken,
-          core.String androidId,
-          core.int pageSize,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      lookup(
+    core.String parent, {
+    core.String rawResourceId,
+    core.String userId,
+    core.String pageToken,
+    core.String androidId,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (rawResourceId != null) {
       _queryParams["rawResourceId"] = [rawResourceId];
@@ -923,15 +1000,18 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':lookup';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
-            .fromJson(data));
+        GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
+            data));
   }
 
   /// Wipes the user's account on a device. Other data on the device that is not
@@ -964,21 +1044,22 @@ class DevicesDeviceUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> wipe(
-      GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -986,13 +1067,16 @@ class DevicesDeviceUsersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1034,18 +1118,19 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ClientState> get(
-      core.String name,
-      {core.String customer,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String name, {
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -1056,14 +1141,17 @@ class DevicesDeviceUsersClientStatesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1ClientState.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleAppsCloudidentityDevicesV1ClientState.fromJson(data));
   }
 
   /// Lists the client states for the given search query.
@@ -1106,21 +1194,22 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse> list(
-      core.String parent,
-      {core.String orderBy,
-      core.String filter,
-      core.String pageToken,
-      core.String customer,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String orderBy,
+    core.String filter,
+    core.String pageToken,
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1142,14 +1231,17 @@ class DevicesDeviceUsersClientStatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/clientStates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
+        GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
             data));
   }
 
@@ -1200,20 +1292,24 @@ class DevicesDeviceUsersClientStatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      GoogleAppsCloudidentityDevicesV1ClientState request, core.String name,
-      {core.String updateMask, core.String customer, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleAppsCloudidentityDevicesV1ClientState request,
+    core.String name, {
+    core.String updateMask,
+    core.String customer,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1227,13 +1323,16 @@ class DevicesDeviceUsersClientStatesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1241,7 +1340,7 @@ class GroupsResourceApi {
   final commons.ApiRequester _requester;
 
   GroupsMembershipsResourceApi get memberships =>
-      new GroupsMembershipsResourceApi(_requester);
+      GroupsMembershipsResourceApi(_requester);
 
   GroupsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -1270,17 +1369,20 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Group request,
-      {core.String initialGroupConfig, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Group request, {
+    core.String initialGroupConfig,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (initialGroupConfig != null) {
       _queryParams["initialGroupConfig"] = [initialGroupConfig];
@@ -1291,13 +1393,16 @@ class GroupsResourceApi {
 
     _url = 'v1/groups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a Group.
@@ -1320,16 +1425,19 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1337,13 +1445,16 @@ class GroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a Group.
@@ -1366,16 +1477,19 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Group> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1383,13 +1497,16 @@ class GroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Group.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Group.fromJson(data));
   }
 
   /// Lists groups within a customer or a domain.
@@ -1420,18 +1537,19 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListGroupsResponse> list(
-      {core.int pageSize,
-      core.String view,
-      core.String parent,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListGroupsResponse> list({
+    core.int pageSize,
+    core.String view,
+    core.String parent,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1451,13 +1569,16 @@ class GroupsResourceApi {
 
     _url = 'v1/groups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListGroupsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListGroupsResponse.fromJson(data));
   }
 
   /// Looks up [resource
@@ -1485,16 +1606,17 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LookupGroupNameResponse> lookup(
-      {core.String groupKey_namespace,
-      core.String groupKey_id,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LookupGroupNameResponse> lookup({
+    core.String groupKey_namespace,
+    core.String groupKey_id,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (groupKey_namespace != null) {
       _queryParams["groupKey.namespace"] = [groupKey_namespace];
@@ -1508,13 +1630,16 @@ class GroupsResourceApi {
 
     _url = 'v1/groups:lookup';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LookupGroupNameResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LookupGroupNameResponse.fromJson(data));
   }
 
   /// Updates a Group.
@@ -1541,20 +1666,24 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> patch(Group request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> patch(
+    Group request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1565,13 +1694,16 @@ class GroupsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Searches for Groups.
@@ -1605,18 +1737,19 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchGroupsResponse> search(
-      {core.String view,
-      core.String query,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SearchGroupsResponse> search({
+    core.String view,
+    core.String query,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (view != null) {
       _queryParams["view"] = [view];
@@ -1636,13 +1769,16 @@ class GroupsResourceApi {
 
     _url = 'v1/groups:search';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SearchGroupsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SearchGroupsResponse.fromJson(data));
   }
 }
 
@@ -1674,20 +1810,23 @@ class GroupsMembershipsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Membership request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    Membership request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1697,13 +1836,16 @@ class GroupsMembershipsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a Membership.
@@ -1728,16 +1870,19 @@ class GroupsMembershipsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1745,13 +1890,16 @@ class GroupsMembershipsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves a Membership.
@@ -1776,16 +1924,19 @@ class GroupsMembershipsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Membership> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Membership> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1793,13 +1944,16 @@ class GroupsMembershipsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Membership.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Membership.fromJson(data));
   }
 
   /// Lists Memberships within a Group.
@@ -1834,20 +1988,22 @@ class GroupsMembershipsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListMembershipsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String view,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListMembershipsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String view,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1866,13 +2022,16 @@ class GroupsMembershipsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListMembershipsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListMembershipsResponse.fromJson(data));
   }
 
   /// Looks up [resource
@@ -1906,19 +2065,21 @@ class GroupsMembershipsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LookupMembershipNameResponse> lookup(core.String parent,
-      {core.String memberKey_id,
-      core.String memberKey_namespace,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LookupMembershipNameResponse> lookup(
+    core.String parent, {
+    core.String memberKey_id,
+    core.String memberKey_namespace,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (memberKey_id != null) {
       _queryParams["memberKey.id"] = [memberKey_id];
@@ -1934,14 +2095,17 @@ class GroupsMembershipsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:lookup';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new LookupMembershipNameResponse.fromJson(data));
+        .then((data) => LookupMembershipNameResponse.fromJson(data));
   }
 
   /// Modifies the `MembershipRole`s of a `Membership`.
@@ -1967,20 +2131,22 @@ class GroupsMembershipsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ModifyMembershipRolesResponse> modifyMembershipRoles(
-      ModifyMembershipRolesRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ModifyMembershipRolesRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1990,14 +2156,17 @@ class GroupsMembershipsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':modifyMembershipRoles';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ModifyMembershipRolesResponse.fromJson(data));
+        .then((data) => ModifyMembershipRolesResponse.fromJson(data));
   }
 }
 
@@ -2029,7 +2198,7 @@ class EntityKey {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2084,7 +2253,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabledUnknownSources != null) {
       _json["enabledUnknownSources"] = enabledUnknownSources;
     }
@@ -2122,7 +2291,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -2140,16 +2309,16 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("deviceUser")) {
-      deviceUser = new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
           _json["deviceUser"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceUser != null) {
-      _json["deviceUser"] = (deviceUser).toJson();
+      _json["deviceUser"] = deviceUser.toJson();
     }
     return _json;
   }
@@ -2176,7 +2345,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -2194,16 +2363,16 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("deviceUser")) {
-      deviceUser = new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
           _json["deviceUser"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceUser != null) {
-      _json["deviceUser"] = (deviceUser).toJson();
+      _json["deviceUser"] = deviceUser.toJson();
     }
     return _json;
   }
@@ -2230,7 +2399,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -2249,16 +2418,15 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("device")) {
-      device =
-          new GoogleAppsCloudidentityDevicesV1Device.fromJson(_json["device"]);
+      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(_json["device"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (device != null) {
-      _json["device"] = (device).toJson();
+      _json["device"] = device.toJson();
     }
     return _json;
   }
@@ -2285,7 +2453,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -2303,16 +2471,16 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("deviceUser")) {
-      deviceUser = new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
           _json["deviceUser"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceUser != null) {
-      _json["deviceUser"] = (deviceUser).toJson();
+      _json["deviceUser"] = deviceUser.toJson();
     }
     return _json;
   }
@@ -2430,7 +2598,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
               GoogleAppsCloudidentityDevicesV1CustomAttributeValue>(
           _json["keyValuePairs"].cast<core.String, core.Map>(),
           (core.Map item) =>
-              new GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
+              GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
                   item));
     }
     if (_json.containsKey("lastUpdateTime")) {
@@ -2452,7 +2620,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (assetTags != null) {
       _json["assetTags"] = assetTags;
     }
@@ -2477,7 +2645,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
               core.Map<core.String, core.Object>>(
           keyValuePairs,
           (GoogleAppsCloudidentityDevicesV1CustomAttributeValue item) =>
-              (item).toJson());
+              item.toJson());
     }
     if (lastUpdateTime != null) {
       _json["lastUpdateTime"] = lastUpdateTime;
@@ -2526,7 +2694,7 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -2675,7 +2843,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
   GoogleAppsCloudidentityDevicesV1Device.fromJson(core.Map _json) {
     if (_json.containsKey("androidSpecificAttributes")) {
       androidSpecificAttributes =
-          new GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
+          GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
               _json["androidSpecificAttributes"]);
     }
     if (_json.containsKey("assetTag")) {
@@ -2764,9 +2932,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidSpecificAttributes != null) {
-      _json["androidSpecificAttributes"] = (androidSpecificAttributes).toJson();
+      _json["androidSpecificAttributes"] = androidSpecificAttributes.toJson();
     }
     if (assetTag != null) {
       _json["assetTag"] = assetTag;
@@ -2945,7 +3113,7 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compromisedState != null) {
       _json["compromisedState"] = compromisedState;
     }
@@ -2996,7 +3164,7 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
     if (_json.containsKey("clientStates")) {
       clientStates = (_json["clientStates"] as core.List)
           .map<GoogleAppsCloudidentityDevicesV1ClientState>((value) =>
-              new GoogleAppsCloudidentityDevicesV1ClientState.fromJson(value))
+              GoogleAppsCloudidentityDevicesV1ClientState.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3006,10 +3174,10 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientStates != null) {
       _json["clientStates"] =
-          clientStates.map((value) => (value).toJson()).toList();
+          clientStates.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3034,7 +3202,7 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
     if (_json.containsKey("deviceUsers")) {
       deviceUsers = (_json["deviceUsers"] as core.List)
           .map<GoogleAppsCloudidentityDevicesV1DeviceUser>((value) =>
-              new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(value))
+              GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3044,10 +3212,10 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceUsers != null) {
       _json["deviceUsers"] =
-          deviceUsers.map((value) => (value).toJson()).toList();
+          deviceUsers.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3070,8 +3238,8 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("devices")) {
       devices = (_json["devices"] as core.List)
-          .map<GoogleAppsCloudidentityDevicesV1Device>((value) =>
-              new GoogleAppsCloudidentityDevicesV1Device.fromJson(value))
+          .map<GoogleAppsCloudidentityDevicesV1Device>(
+              (value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3081,9 +3249,9 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (devices != null) {
-      _json["devices"] = devices.map((value) => (value).toJson()).toList();
+      _json["devices"] = devices.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3127,7 +3295,7 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -3161,7 +3329,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -3179,16 +3347,15 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(core.Map _json) {
     if (_json.containsKey("device")) {
-      device =
-          new GoogleAppsCloudidentityDevicesV1Device.fromJson(_json["device"]);
+      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(_json["device"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (device != null) {
-      _json["device"] = (device).toJson();
+      _json["device"] = device.toJson();
     }
     return _json;
   }
@@ -3215,7 +3382,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customer != null) {
       _json["customer"] = customer;
     }
@@ -3233,16 +3400,16 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("deviceUser")) {
-      deviceUser = new GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+      deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
           _json["deviceUser"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deviceUser != null) {
-      _json["deviceUser"] = (deviceUser).toJson();
+      _json["deviceUser"] = deviceUser.toJson();
     }
     return _json;
   }
@@ -3298,7 +3465,7 @@ class Group {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("groupKey")) {
-      groupKey = new EntityKey.fromJson(_json["groupKey"]);
+      groupKey = EntityKey.fromJson(_json["groupKey"]);
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -3316,7 +3483,7 @@ class Group {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3327,7 +3494,7 @@ class Group {
       _json["displayName"] = displayName;
     }
     if (groupKey != null) {
-      _json["groupKey"] = (groupKey).toJson();
+      _json["groupKey"] = groupKey.toJson();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -3359,7 +3526,7 @@ class ListGroupsResponse {
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("groups")) {
       groups = (_json["groups"] as core.List)
-          .map<Group>((value) => new Group.fromJson(value))
+          .map<Group>((value) => Group.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3369,9 +3536,9 @@ class ListGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (groups != null) {
-      _json["groups"] = groups.map((value) => (value).toJson()).toList();
+      _json["groups"] = groups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3393,7 +3560,7 @@ class ListMembershipsResponse {
   ListMembershipsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("memberships")) {
       memberships = (_json["memberships"] as core.List)
-          .map<Membership>((value) => new Membership.fromJson(value))
+          .map<Membership>((value) => Membership.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3403,10 +3570,10 @@ class ListMembershipsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (memberships != null) {
       _json["memberships"] =
-          memberships.map((value) => (value).toJson()).toList();
+          memberships.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3431,7 +3598,7 @@ class LookupGroupNameResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3457,7 +3624,7 @@ class LookupMembershipNameResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3509,11 +3676,11 @@ class Membership {
       name = _json["name"];
     }
     if (_json.containsKey("preferredMemberKey")) {
-      preferredMemberKey = new EntityKey.fromJson(_json["preferredMemberKey"]);
+      preferredMemberKey = EntityKey.fromJson(_json["preferredMemberKey"]);
     }
     if (_json.containsKey("roles")) {
       roles = (_json["roles"] as core.List)
-          .map<MembershipRole>((value) => new MembershipRole.fromJson(value))
+          .map<MembershipRole>((value) => MembershipRole.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -3526,7 +3693,7 @@ class Membership {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3534,10 +3701,10 @@ class Membership {
       _json["name"] = name;
     }
     if (preferredMemberKey != null) {
-      _json["preferredMemberKey"] = (preferredMemberKey).toJson();
+      _json["preferredMemberKey"] = preferredMemberKey.toJson();
     }
     if (roles != null) {
-      _json["roles"] = roles.map((value) => (value).toJson()).toList();
+      _json["roles"] = roles.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -3565,7 +3732,7 @@ class MembershipRole {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3592,7 +3759,7 @@ class ModifyMembershipRolesRequest {
   ModifyMembershipRolesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addRoles")) {
       addRoles = (_json["addRoles"] as core.List)
-          .map<MembershipRole>((value) => new MembershipRole.fromJson(value))
+          .map<MembershipRole>((value) => MembershipRole.fromJson(value))
           .toList();
     }
     if (_json.containsKey("removeRoles")) {
@@ -3602,9 +3769,9 @@ class ModifyMembershipRolesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addRoles != null) {
-      _json["addRoles"] = addRoles.map((value) => (value).toJson()).toList();
+      _json["addRoles"] = addRoles.map((value) => value.toJson()).toList();
     }
     if (removeRoles != null) {
       _json["removeRoles"] = removeRoles;
@@ -3622,15 +3789,15 @@ class ModifyMembershipRolesResponse {
 
   ModifyMembershipRolesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("membership")) {
-      membership = new Membership.fromJson(_json["membership"]);
+      membership = Membership.fromJson(_json["membership"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (membership != null) {
-      _json["membership"] = (membership).toJson();
+      _json["membership"] = membership.toJson();
     }
     return _json;
   }
@@ -3680,7 +3847,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -3697,12 +3864,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -3730,7 +3897,7 @@ class SearchGroupsResponse {
   SearchGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("groups")) {
       groups = (_json["groups"] as core.List)
-          .map<Group>((value) => new Group.fromJson(value))
+          .map<Group>((value) => Group.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -3740,9 +3907,9 @@ class SearchGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (groups != null) {
-      _json["groups"] = groups.map((value) => (value).toJson()).toList();
+      _json["groups"] = groups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3792,7 +3959,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }

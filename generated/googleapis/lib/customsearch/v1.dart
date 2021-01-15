@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.customsearch.v1;
 
@@ -19,20 +37,20 @@ const core.String USER_AGENT = 'dart-api-client customsearch/v1';
 class CustomsearchApi {
   final commons.ApiRequester _requester;
 
-  CseResourceApi get cse => new CseResourceApi(_requester);
+  CseResourceApi get cse => CseResourceApi(_requester);
 
   CustomsearchApi(http.Client client,
       {core.String rootUrl = "https://customsearch.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class CseResourceApi {
   final commons.ApiRequester _requester;
 
   CseSiterestrictResourceApi get siterestrict =>
-      new CseSiterestrictResourceApi(_requester);
+      CseSiterestrictResourceApi(_requester);
 
   CseResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -257,45 +275,46 @@ class CseResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Search> list(
-      {core.String dateRestrict,
-      core.String relatedSite,
-      core.String hl,
-      core.String fileType,
-      core.String googlehost,
-      core.String imgType,
-      core.String q,
-      core.String imgColorType,
-      core.String rights,
-      core.String cr,
-      core.String cx,
-      core.String siteSearchFilter,
-      core.String orTerms,
-      core.String sort,
-      core.String highRange,
-      core.String imgDominantColor,
-      core.String safe,
-      core.int num,
-      core.String filter,
-      core.String searchType,
-      core.String exactTerms,
-      core.String linkSite,
-      core.String lowRange,
-      core.String gl,
-      core.String excludeTerms,
-      core.String c2coff,
-      core.int start,
-      core.String lr,
-      core.String imgSize,
-      core.String siteSearch,
-      core.String hq,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Search> list({
+    core.String dateRestrict,
+    core.String relatedSite,
+    core.String hl,
+    core.String fileType,
+    core.String googlehost,
+    core.String imgType,
+    core.String q,
+    core.String imgColorType,
+    core.String rights,
+    core.String cr,
+    core.String cx,
+    core.String siteSearchFilter,
+    core.String orTerms,
+    core.String sort,
+    core.String highRange,
+    core.String imgDominantColor,
+    core.String safe,
+    core.int num,
+    core.String filter,
+    core.String searchType,
+    core.String exactTerms,
+    core.String linkSite,
+    core.String lowRange,
+    core.String gl,
+    core.String excludeTerms,
+    core.String c2coff,
+    core.int start,
+    core.String lr,
+    core.String imgSize,
+    core.String siteSearch,
+    core.String hq,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (dateRestrict != null) {
       _queryParams["dateRestrict"] = [dateRestrict];
@@ -396,13 +415,16 @@ class CseResourceApi {
 
     _url = 'customsearch/v1';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Search.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Search.fromJson(data));
   }
 }
 
@@ -633,45 +655,46 @@ class CseSiterestrictResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Search> list(
-      {core.String relatedSite,
-      core.String cx,
-      core.String hl,
-      core.String imgType,
-      core.String siteSearch,
-      core.String lowRange,
-      core.String gl,
-      core.String filter,
-      core.String q,
-      core.String siteSearchFilter,
-      core.String hq,
-      core.int num,
-      core.String orTerms,
-      core.String lr,
-      core.String rights,
-      core.String sort,
-      core.String imgSize,
-      core.String cr,
-      core.String dateRestrict,
-      core.int start,
-      core.String linkSite,
-      core.String searchType,
-      core.String fileType,
-      core.String highRange,
-      core.String exactTerms,
-      core.String c2coff,
-      core.String excludeTerms,
-      core.String imgDominantColor,
-      core.String safe,
-      core.String imgColorType,
-      core.String googlehost,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Search> list({
+    core.String relatedSite,
+    core.String cx,
+    core.String hl,
+    core.String imgType,
+    core.String siteSearch,
+    core.String lowRange,
+    core.String gl,
+    core.String filter,
+    core.String q,
+    core.String siteSearchFilter,
+    core.String hq,
+    core.int num,
+    core.String orTerms,
+    core.String lr,
+    core.String rights,
+    core.String sort,
+    core.String imgSize,
+    core.String cr,
+    core.String dateRestrict,
+    core.int start,
+    core.String linkSite,
+    core.String searchType,
+    core.String fileType,
+    core.String highRange,
+    core.String exactTerms,
+    core.String c2coff,
+    core.String excludeTerms,
+    core.String imgDominantColor,
+    core.String safe,
+    core.String imgColorType,
+    core.String googlehost,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (relatedSite != null) {
       _queryParams["relatedSite"] = [relatedSite];
@@ -772,13 +795,16 @@ class CseSiterestrictResourceApi {
 
     _url = 'customsearch/v1/siterestrict';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Search.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Search.fromJson(data));
   }
 }
 
@@ -815,7 +841,7 @@ class PromotionBodyLines {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (htmlTitle != null) {
       _json["htmlTitle"] = htmlTitle;
     }
@@ -859,7 +885,7 @@ class PromotionImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -902,7 +928,7 @@ class Promotion {
     if (_json.containsKey("bodyLines")) {
       bodyLines = (_json["bodyLines"] as core.List)
           .map<PromotionBodyLines>(
-              (value) => new PromotionBodyLines.fromJson(value))
+              (value) => PromotionBodyLines.fromJson(value))
           .toList();
     }
     if (_json.containsKey("displayLink")) {
@@ -912,7 +938,7 @@ class Promotion {
       htmlTitle = _json["htmlTitle"];
     }
     if (_json.containsKey("image")) {
-      image = new PromotionImage.fromJson(_json["image"]);
+      image = PromotionImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("link")) {
       link = _json["link"];
@@ -924,9 +950,9 @@ class Promotion {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bodyLines != null) {
-      _json["bodyLines"] = bodyLines.map((value) => (value).toJson()).toList();
+      _json["bodyLines"] = bodyLines.map((value) => value.toJson()).toList();
     }
     if (displayLink != null) {
       _json["displayLink"] = displayLink;
@@ -935,7 +961,7 @@ class Promotion {
       _json["htmlTitle"] = htmlTitle;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (link != null) {
       _json["link"] = link;
@@ -998,7 +1024,7 @@ class ResultImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (byteSize != null) {
       _json["byteSize"] = byteSize;
     }
@@ -1053,7 +1079,7 @@ class ResultLabels {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -1147,14 +1173,14 @@ class Result {
       htmlTitle = _json["htmlTitle"];
     }
     if (_json.containsKey("image")) {
-      image = new ResultImage.fromJson(_json["image"]);
+      image = ResultImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.List)
-          .map<ResultLabels>((value) => new ResultLabels.fromJson(value))
+          .map<ResultLabels>((value) => ResultLabels.fromJson(value))
           .toList();
     }
     if (_json.containsKey("link")) {
@@ -1176,7 +1202,7 @@ class Result {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cacheId != null) {
       _json["cacheId"] = cacheId;
     }
@@ -1199,13 +1225,13 @@ class Result {
       _json["htmlTitle"] = htmlTitle;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (labels != null) {
-      _json["labels"] = labels.map((value) => (value).toJson()).toList();
+      _json["labels"] = labels.map((value) => value.toJson()).toList();
     }
     if (link != null) {
       _json["link"] = link;
@@ -1527,7 +1553,7 @@ class SearchQueriesNextPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -1941,7 +1967,7 @@ class SearchQueriesPreviousPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -2355,7 +2381,7 @@ class SearchQueriesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -2485,35 +2511,35 @@ class SearchQueries {
     if (_json.containsKey("nextPage")) {
       nextPage = (_json["nextPage"] as core.List)
           .map<SearchQueriesNextPage>(
-              (value) => new SearchQueriesNextPage.fromJson(value))
+              (value) => SearchQueriesNextPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("previousPage")) {
       previousPage = (_json["previousPage"] as core.List)
           .map<SearchQueriesPreviousPage>(
-              (value) => new SearchQueriesPreviousPage.fromJson(value))
+              (value) => SearchQueriesPreviousPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("request")) {
       request = (_json["request"] as core.List)
           .map<SearchQueriesRequest>(
-              (value) => new SearchQueriesRequest.fromJson(value))
+              (value) => SearchQueriesRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPage != null) {
-      _json["nextPage"] = nextPage.map((value) => (value).toJson()).toList();
+      _json["nextPage"] = nextPage.map((value) => value.toJson()).toList();
     }
     if (previousPage != null) {
       _json["previousPage"] =
-          previousPage.map((value) => (value).toJson()).toList();
+          previousPage.map((value) => value.toJson()).toList();
     }
     if (request != null) {
-      _json["request"] = request.map((value) => (value).toJson()).toList();
+      _json["request"] = request.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2553,7 +2579,7 @@ class SearchSearchInformation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedSearchTime != null) {
       _json["formattedSearchTime"] = formattedSearchTime;
     }
@@ -2591,7 +2617,7 @@ class SearchSpelling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (correctedQuery != null) {
       _json["correctedQuery"] = correctedQuery;
     }
@@ -2626,7 +2652,7 @@ class SearchUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (template != null) {
       _json["template"] = template;
     }
@@ -2682,7 +2708,7 @@ class Search {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Result>((value) => new Result.fromJson(value))
+          .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2690,51 +2716,50 @@ class Search {
     }
     if (_json.containsKey("promotions")) {
       promotions = (_json["promotions"] as core.List)
-          .map<Promotion>((value) => new Promotion.fromJson(value))
+          .map<Promotion>((value) => Promotion.fromJson(value))
           .toList();
     }
     if (_json.containsKey("queries")) {
-      queries = new SearchQueries.fromJson(_json["queries"]);
+      queries = SearchQueries.fromJson(_json["queries"]);
     }
     if (_json.containsKey("searchInformation")) {
       searchInformation =
-          new SearchSearchInformation.fromJson(_json["searchInformation"]);
+          SearchSearchInformation.fromJson(_json["searchInformation"]);
     }
     if (_json.containsKey("spelling")) {
-      spelling = new SearchSpelling.fromJson(_json["spelling"]);
+      spelling = SearchSpelling.fromJson(_json["spelling"]);
     }
     if (_json.containsKey("url")) {
-      url = new SearchUrl.fromJson(_json["url"]);
+      url = SearchUrl.fromJson(_json["url"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
       _json["context"] = context;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (promotions != null) {
-      _json["promotions"] =
-          promotions.map((value) => (value).toJson()).toList();
+      _json["promotions"] = promotions.map((value) => value.toJson()).toList();
     }
     if (queries != null) {
-      _json["queries"] = (queries).toJson();
+      _json["queries"] = queries.toJson();
     }
     if (searchInformation != null) {
-      _json["searchInformation"] = (searchInformation).toJson();
+      _json["searchInformation"] = searchInformation.toJson();
     }
     if (spelling != null) {
-      _json["spelling"] = (spelling).toJson();
+      _json["spelling"] = spelling.toJson();
     }
     if (url != null) {
-      _json["url"] = (url).toJson();
+      _json["url"] = url.toJson();
     }
     return _json;
   }

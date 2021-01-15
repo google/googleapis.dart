@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.websecurityscanner.v1;
 
@@ -24,20 +42,20 @@ class WebsecurityscannerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   WebsecurityscannerApi(http.Client client,
       {core.String rootUrl = "https://websecurityscanner.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsScanConfigsResourceApi get scanConfigs =>
-      new ProjectsScanConfigsResourceApi(_requester);
+      ProjectsScanConfigsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -46,7 +64,7 @@ class ProjectsScanConfigsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsScanConfigsScanRunsResourceApi get scanRuns =>
-      new ProjectsScanConfigsScanRunsResourceApi(_requester);
+      ProjectsScanConfigsScanRunsResourceApi(_requester);
 
   ProjectsScanConfigsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -72,20 +90,23 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanConfig> create(ScanConfig request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanConfig> create(
+    ScanConfig request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -95,13 +116,16 @@ class ProjectsScanConfigsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/scanConfigs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanConfig.fromJson(data));
   }
 
   /// Deletes an existing ScanConfig and its child resources.
@@ -123,16 +147,19 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -140,13 +167,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a ScanConfig.
@@ -168,16 +198,19 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanConfig> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanConfig> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -185,13 +218,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanConfig.fromJson(data));
   }
 
   /// Lists ScanConfigs under a given project.
@@ -220,17 +256,21 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListScanConfigsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListScanConfigsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -246,13 +286,16 @@ class ProjectsScanConfigsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/scanConfigs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListScanConfigsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListScanConfigsResponse.fromJson(data));
   }
 
   /// Updates a ScanConfig. This method support partial update of a ScanConfig.
@@ -280,20 +323,24 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanConfig> patch(ScanConfig request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanConfig> patch(
+    ScanConfig request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -304,13 +351,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanConfig.fromJson(data));
   }
 
   /// Start a ScanRun according to the given ScanConfig.
@@ -334,20 +384,23 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanRun> start(StartScanRunRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanRun> start(
+    StartScanRunRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -355,13 +408,16 @@ class ProjectsScanConfigsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanRun.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanRun.fromJson(data));
   }
 }
 
@@ -369,11 +425,11 @@ class ProjectsScanConfigsScanRunsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsScanConfigsScanRunsCrawledUrlsResourceApi get crawledUrls =>
-      new ProjectsScanConfigsScanRunsCrawledUrlsResourceApi(_requester);
+      ProjectsScanConfigsScanRunsCrawledUrlsResourceApi(_requester);
   ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi get findingTypeStats =>
-      new ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi(_requester);
+      ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi(_requester);
   ProjectsScanConfigsScanRunsFindingsResourceApi get findings =>
-      new ProjectsScanConfigsScanRunsFindingsResourceApi(_requester);
+      ProjectsScanConfigsScanRunsFindingsResourceApi(_requester);
 
   ProjectsScanConfigsScanRunsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -398,16 +454,19 @@ class ProjectsScanConfigsScanRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanRun> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanRun> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -415,13 +474,16 @@ class ProjectsScanConfigsScanRunsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanRun.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanRun.fromJson(data));
   }
 
   /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun
@@ -452,17 +514,21 @@ class ProjectsScanConfigsScanRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListScanRunsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListScanRunsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -477,13 +543,16 @@ class ProjectsScanConfigsScanRunsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/scanRuns';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListScanRunsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListScanRunsResponse.fromJson(data));
   }
 
   /// Stops a ScanRun. The stopped ScanRun is returned.
@@ -508,20 +577,23 @@ class ProjectsScanConfigsScanRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ScanRun> stop(StopScanRunRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ScanRun> stop(
+    StopScanRunRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -529,13 +601,16 @@ class ProjectsScanConfigsScanRunsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ScanRun.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ScanRun.fromJson(data));
   }
 }
 
@@ -573,17 +648,21 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCrawledUrlsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListCrawledUrlsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -599,13 +678,16 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/crawledUrls';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListCrawledUrlsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListCrawledUrlsResponse.fromJson(data));
   }
 }
 
@@ -636,17 +718,19 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFindingTypeStatsResponse> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFindingTypeStatsResponse> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -656,14 +740,17 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/findingTypeStats';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListFindingTypeStatsResponse.fromJson(data));
+        .then((data) => ListFindingTypeStatsResponse.fromJson(data));
   }
 }
 
@@ -693,16 +780,19 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Finding> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Finding> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -710,13 +800,16 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Finding.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Finding.fromJson(data));
   }
 
   /// List Findings under a given ScanRun.
@@ -750,20 +843,22 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFindingsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFindingsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String filter,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -781,13 +876,16 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListFindingsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListFindingsResponse.fromJson(data));
   }
 }
 
@@ -806,27 +904,27 @@ class Authentication {
 
   Authentication.fromJson(core.Map _json) {
     if (_json.containsKey("customAccount")) {
-      customAccount = new CustomAccount.fromJson(_json["customAccount"]);
+      customAccount = CustomAccount.fromJson(_json["customAccount"]);
     }
     if (_json.containsKey("googleAccount")) {
-      googleAccount = new GoogleAccount.fromJson(_json["googleAccount"]);
+      googleAccount = GoogleAccount.fromJson(_json["googleAccount"]);
     }
     if (_json.containsKey("iapCredential")) {
-      iapCredential = new IapCredential.fromJson(_json["iapCredential"]);
+      iapCredential = IapCredential.fromJson(_json["iapCredential"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customAccount != null) {
-      _json["customAccount"] = (customAccount).toJson();
+      _json["customAccount"] = customAccount.toJson();
     }
     if (googleAccount != null) {
-      _json["googleAccount"] = (googleAccount).toJson();
+      _json["googleAccount"] = googleAccount.toJson();
     }
     if (iapCredential != null) {
-      _json["iapCredential"] = (iapCredential).toJson();
+      _json["iapCredential"] = iapCredential.toJson();
     }
     return _json;
   }
@@ -862,7 +960,7 @@ class CrawledUrl {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -905,7 +1003,7 @@ class CustomAccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (loginUrl != null) {
       _json["loginUrl"] = loginUrl;
     }
@@ -931,7 +1029,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1028,7 +1126,7 @@ class Finding {
       findingType = _json["findingType"];
     }
     if (_json.containsKey("form")) {
-      form = new Form.fromJson(_json["form"]);
+      form = Form.fromJson(_json["form"]);
     }
     if (_json.containsKey("frameUrl")) {
       frameUrl = _json["frameUrl"];
@@ -1043,7 +1141,7 @@ class Finding {
       name = _json["name"];
     }
     if (_json.containsKey("outdatedLibrary")) {
-      outdatedLibrary = new OutdatedLibrary.fromJson(_json["outdatedLibrary"]);
+      outdatedLibrary = OutdatedLibrary.fromJson(_json["outdatedLibrary"]);
     }
     if (_json.containsKey("reproductionUrl")) {
       reproductionUrl = _json["reproductionUrl"];
@@ -1056,24 +1154,24 @@ class Finding {
     }
     if (_json.containsKey("violatingResource")) {
       violatingResource =
-          new ViolatingResource.fromJson(_json["violatingResource"]);
+          ViolatingResource.fromJson(_json["violatingResource"]);
     }
     if (_json.containsKey("vulnerableHeaders")) {
       vulnerableHeaders =
-          new VulnerableHeaders.fromJson(_json["vulnerableHeaders"]);
+          VulnerableHeaders.fromJson(_json["vulnerableHeaders"]);
     }
     if (_json.containsKey("vulnerableParameters")) {
       vulnerableParameters =
-          new VulnerableParameters.fromJson(_json["vulnerableParameters"]);
+          VulnerableParameters.fromJson(_json["vulnerableParameters"]);
     }
     if (_json.containsKey("xss")) {
-      xss = new Xss.fromJson(_json["xss"]);
+      xss = Xss.fromJson(_json["xss"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -1087,7 +1185,7 @@ class Finding {
       _json["findingType"] = findingType;
     }
     if (form != null) {
-      _json["form"] = (form).toJson();
+      _json["form"] = form.toJson();
     }
     if (frameUrl != null) {
       _json["frameUrl"] = frameUrl;
@@ -1102,7 +1200,7 @@ class Finding {
       _json["name"] = name;
     }
     if (outdatedLibrary != null) {
-      _json["outdatedLibrary"] = (outdatedLibrary).toJson();
+      _json["outdatedLibrary"] = outdatedLibrary.toJson();
     }
     if (reproductionUrl != null) {
       _json["reproductionUrl"] = reproductionUrl;
@@ -1114,16 +1212,16 @@ class Finding {
       _json["trackingId"] = trackingId;
     }
     if (violatingResource != null) {
-      _json["violatingResource"] = (violatingResource).toJson();
+      _json["violatingResource"] = violatingResource.toJson();
     }
     if (vulnerableHeaders != null) {
-      _json["vulnerableHeaders"] = (vulnerableHeaders).toJson();
+      _json["vulnerableHeaders"] = vulnerableHeaders.toJson();
     }
     if (vulnerableParameters != null) {
-      _json["vulnerableParameters"] = (vulnerableParameters).toJson();
+      _json["vulnerableParameters"] = vulnerableParameters.toJson();
     }
     if (xss != null) {
-      _json["xss"] = (xss).toJson();
+      _json["xss"] = xss.toJson();
     }
     return _json;
   }
@@ -1151,7 +1249,7 @@ class FindingTypeStats {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (findingCount != null) {
       _json["findingCount"] = findingCount;
     }
@@ -1183,7 +1281,7 @@ class Form {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (actionUri != null) {
       _json["actionUri"] = actionUri;
     }
@@ -1217,7 +1315,7 @@ class GoogleAccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (password != null) {
       _json["password"] = password;
     }
@@ -1249,7 +1347,7 @@ class Header {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -1270,16 +1368,16 @@ class IapCredential {
 
   IapCredential.fromJson(core.Map _json) {
     if (_json.containsKey("iapTestServiceAccountInfo")) {
-      iapTestServiceAccountInfo = new IapTestServiceAccountInfo.fromJson(
+      iapTestServiceAccountInfo = IapTestServiceAccountInfo.fromJson(
           _json["iapTestServiceAccountInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iapTestServiceAccountInfo != null) {
-      _json["iapTestServiceAccountInfo"] = (iapTestServiceAccountInfo).toJson();
+      _json["iapTestServiceAccountInfo"] = iapTestServiceAccountInfo.toJson();
     }
     return _json;
   }
@@ -1302,7 +1400,7 @@ class IapTestServiceAccountInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (targetAudienceClientId != null) {
       _json["targetAudienceClientId"] = targetAudienceClientId;
     }
@@ -1324,7 +1422,7 @@ class ListCrawledUrlsResponse {
   ListCrawledUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("crawledUrls")) {
       crawledUrls = (_json["crawledUrls"] as core.List)
-          .map<CrawledUrl>((value) => new CrawledUrl.fromJson(value))
+          .map<CrawledUrl>((value) => CrawledUrl.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1334,10 +1432,10 @@ class ListCrawledUrlsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (crawledUrls != null) {
       _json["crawledUrls"] =
-          crawledUrls.map((value) => (value).toJson()).toList();
+          crawledUrls.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1356,18 +1454,17 @@ class ListFindingTypeStatsResponse {
   ListFindingTypeStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("findingTypeStats")) {
       findingTypeStats = (_json["findingTypeStats"] as core.List)
-          .map<FindingTypeStats>(
-              (value) => new FindingTypeStats.fromJson(value))
+          .map<FindingTypeStats>((value) => FindingTypeStats.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (findingTypeStats != null) {
       _json["findingTypeStats"] =
-          findingTypeStats.map((value) => (value).toJson()).toList();
+          findingTypeStats.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1387,7 +1484,7 @@ class ListFindingsResponse {
   ListFindingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("findings")) {
       findings = (_json["findings"] as core.List)
-          .map<Finding>((value) => new Finding.fromJson(value))
+          .map<Finding>((value) => Finding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -1397,9 +1494,9 @@ class ListFindingsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (findings != null) {
-      _json["findings"] = findings.map((value) => (value).toJson()).toList();
+      _json["findings"] = findings.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1425,20 +1522,20 @@ class ListScanConfigsResponse {
     }
     if (_json.containsKey("scanConfigs")) {
       scanConfigs = (_json["scanConfigs"] as core.List)
-          .map<ScanConfig>((value) => new ScanConfig.fromJson(value))
+          .map<ScanConfig>((value) => ScanConfig.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (scanConfigs != null) {
       _json["scanConfigs"] =
-          scanConfigs.map((value) => (value).toJson()).toList();
+          scanConfigs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1461,19 +1558,19 @@ class ListScanRunsResponse {
     }
     if (_json.containsKey("scanRuns")) {
       scanRuns = (_json["scanRuns"] as core.List)
-          .map<ScanRun>((value) => new ScanRun.fromJson(value))
+          .map<ScanRun>((value) => ScanRun.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (scanRuns != null) {
-      _json["scanRuns"] = scanRuns.map((value) => (value).toJson()).toList();
+      _json["scanRuns"] = scanRuns.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1506,7 +1603,7 @@ class OutdatedLibrary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (learnMoreUrls != null) {
       _json["learnMoreUrls"] = learnMoreUrls;
     }
@@ -1588,7 +1685,7 @@ class ScanConfig {
 
   ScanConfig.fromJson(core.Map _json) {
     if (_json.containsKey("authentication")) {
-      authentication = new Authentication.fromJson(_json["authentication"]);
+      authentication = Authentication.fromJson(_json["authentication"]);
     }
     if (_json.containsKey("blacklistPatterns")) {
       blacklistPatterns =
@@ -1613,7 +1710,7 @@ class ScanConfig {
       riskLevel = _json["riskLevel"];
     }
     if (_json.containsKey("schedule")) {
-      schedule = new Schedule.fromJson(_json["schedule"]);
+      schedule = Schedule.fromJson(_json["schedule"]);
     }
     if (_json.containsKey("startingUrls")) {
       startingUrls = (_json["startingUrls"] as core.List).cast<core.String>();
@@ -1628,9 +1725,9 @@ class ScanConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (authentication != null) {
-      _json["authentication"] = (authentication).toJson();
+      _json["authentication"] = authentication.toJson();
     }
     if (blacklistPatterns != null) {
       _json["blacklistPatterns"] = blacklistPatterns;
@@ -1654,7 +1751,7 @@ class ScanConfig {
       _json["riskLevel"] = riskLevel;
     }
     if (schedule != null) {
-      _json["schedule"] = (schedule).toJson();
+      _json["schedule"] = schedule.toJson();
     }
     if (startingUrls != null) {
       _json["startingUrls"] = startingUrls;
@@ -1776,7 +1873,7 @@ class ScanConfigError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1854,7 +1951,7 @@ class ScanRun {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("errorTrace")) {
-      errorTrace = new ScanRunErrorTrace.fromJson(_json["errorTrace"]);
+      errorTrace = ScanRunErrorTrace.fromJson(_json["errorTrace"]);
     }
     if (_json.containsKey("executionState")) {
       executionState = _json["executionState"];
@@ -1883,19 +1980,19 @@ class ScanRun {
     if (_json.containsKey("warningTraces")) {
       warningTraces = (_json["warningTraces"] as core.List)
           .map<ScanRunWarningTrace>(
-              (value) => new ScanRunWarningTrace.fromJson(value))
+              (value) => ScanRunWarningTrace.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (errorTrace != null) {
-      _json["errorTrace"] = (errorTrace).toJson();
+      _json["errorTrace"] = errorTrace.toJson();
     }
     if (executionState != null) {
       _json["executionState"] = executionState;
@@ -1923,7 +2020,7 @@ class ScanRun {
     }
     if (warningTraces != null) {
       _json["warningTraces"] =
-          warningTraces.map((value) => (value).toJson()).toList();
+          warningTraces.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1973,13 +2070,13 @@ class ScanRunErrorTrace {
       mostCommonHttpErrorCode = _json["mostCommonHttpErrorCode"];
     }
     if (_json.containsKey("scanConfigError")) {
-      scanConfigError = new ScanConfigError.fromJson(_json["scanConfigError"]);
+      scanConfigError = ScanConfigError.fromJson(_json["scanConfigError"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -1987,7 +2084,7 @@ class ScanRunErrorTrace {
       _json["mostCommonHttpErrorCode"] = mostCommonHttpErrorCode;
     }
     if (scanConfigError != null) {
-      _json["scanConfigError"] = (scanConfigError).toJson();
+      _json["scanConfigError"] = scanConfigError.toJson();
     }
     return _json;
   }
@@ -2024,7 +2121,7 @@ class ScanRunWarningTrace {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -2056,7 +2153,7 @@ class Schedule {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (intervalDurationDays != null) {
       _json["intervalDurationDays"] = intervalDurationDays;
     }
@@ -2075,7 +2172,7 @@ class StartScanRunRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2088,7 +2185,7 @@ class StopScanRunRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2115,7 +2212,7 @@ class ViolatingResource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -2139,25 +2236,25 @@ class VulnerableHeaders {
   VulnerableHeaders.fromJson(core.Map _json) {
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.List)
-          .map<Header>((value) => new Header.fromJson(value))
+          .map<Header>((value) => Header.fromJson(value))
           .toList();
     }
     if (_json.containsKey("missingHeaders")) {
       missingHeaders = (_json["missingHeaders"] as core.List)
-          .map<Header>((value) => new Header.fromJson(value))
+          .map<Header>((value) => Header.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (headers != null) {
-      _json["headers"] = headers.map((value) => (value).toJson()).toList();
+      _json["headers"] = headers.map((value) => value.toJson()).toList();
     }
     if (missingHeaders != null) {
       _json["missingHeaders"] =
-          missingHeaders.map((value) => (value).toJson()).toList();
+          missingHeaders.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2179,7 +2276,7 @@ class VulnerableParameters {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parameterNames != null) {
       _json["parameterNames"] = parameterNames;
     }
@@ -2243,7 +2340,7 @@ class Xss {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (attackVector != null) {
       _json["attackVector"] = attackVector;
     }

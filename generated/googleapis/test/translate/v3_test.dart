@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.translate.v3.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,141 +66,142 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4951() {
-  var o = new core.Map<core.String, api.TranslateTextGlossaryConfig>();
+core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed5103() {
+  var o = <core.String, api.TranslateTextGlossaryConfig>{};
   o["x"] = buildTranslateTextGlossaryConfig();
   o["y"] = buildTranslateTextGlossaryConfig();
   return o;
 }
 
-checkUnnamed4951(core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
+void checkUnnamed5103(
+    core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslateTextGlossaryConfig(o["x"]);
   checkTranslateTextGlossaryConfig(o["y"]);
 }
 
-buildUnnamed4952() {
-  var o = new core.List<api.InputConfig>();
+core.List<api.InputConfig> buildUnnamed5104() {
+  var o = <api.InputConfig>[];
   o.add(buildInputConfig());
   o.add(buildInputConfig());
   return o;
 }
 
-checkUnnamed4952(core.List<api.InputConfig> o) {
+void checkUnnamed5104(core.List<api.InputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInputConfig(o[0]);
   checkInputConfig(o[1]);
 }
 
-buildUnnamed4953() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed5105() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4953(core.Map<core.String, core.String> o) {
+void checkUnnamed5105(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed4954() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed5106() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4954(core.Map<core.String, core.String> o) {
+void checkUnnamed5106(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed4955() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5107() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4955(core.List<core.String> o) {
+void checkUnnamed5107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchTranslateTextRequest = 0;
-buildBatchTranslateTextRequest() {
-  var o = new api.BatchTranslateTextRequest();
+api.BatchTranslateTextRequest buildBatchTranslateTextRequest() {
+  var o = api.BatchTranslateTextRequest();
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    o.glossaries = buildUnnamed4951();
-    o.inputConfigs = buildUnnamed4952();
-    o.labels = buildUnnamed4953();
-    o.models = buildUnnamed4954();
+    o.glossaries = buildUnnamed5103();
+    o.inputConfigs = buildUnnamed5104();
+    o.labels = buildUnnamed5105();
+    o.models = buildUnnamed5106();
     o.outputConfig = buildOutputConfig();
     o.sourceLanguageCode = "foo";
-    o.targetLanguageCodes = buildUnnamed4955();
+    o.targetLanguageCodes = buildUnnamed5107();
   }
   buildCounterBatchTranslateTextRequest--;
   return o;
 }
 
-checkBatchTranslateTextRequest(api.BatchTranslateTextRequest o) {
+void checkBatchTranslateTextRequest(api.BatchTranslateTextRequest o) {
   buildCounterBatchTranslateTextRequest++;
   if (buildCounterBatchTranslateTextRequest < 3) {
-    checkUnnamed4951(o.glossaries);
-    checkUnnamed4952(o.inputConfigs);
-    checkUnnamed4953(o.labels);
-    checkUnnamed4954(o.models);
+    checkUnnamed5103(o.glossaries);
+    checkUnnamed5104(o.inputConfigs);
+    checkUnnamed5105(o.labels);
+    checkUnnamed5106(o.models);
     checkOutputConfig(o.outputConfig);
     unittest.expect(o.sourceLanguageCode, unittest.equals('foo'));
-    checkUnnamed4955(o.targetLanguageCodes);
+    checkUnnamed5107(o.targetLanguageCodes);
   }
   buildCounterBatchTranslateTextRequest--;
 }
 
 core.int buildCounterCancelOperationRequest = 0;
-buildCancelOperationRequest() {
-  var o = new api.CancelOperationRequest();
+api.CancelOperationRequest buildCancelOperationRequest() {
+  var o = api.CancelOperationRequest();
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
   return o;
 }
 
-checkCancelOperationRequest(api.CancelOperationRequest o) {
+void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
 }
 
-buildUnnamed4956() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed5108() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4956(core.Map<core.String, core.String> o) {
+void checkUnnamed5108(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
 core.int buildCounterDetectLanguageRequest = 0;
-buildDetectLanguageRequest() {
-  var o = new api.DetectLanguageRequest();
+api.DetectLanguageRequest buildDetectLanguageRequest() {
+  var o = api.DetectLanguageRequest();
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     o.content = "foo";
-    o.labels = buildUnnamed4956();
+    o.labels = buildUnnamed5108();
     o.mimeType = "foo";
     o.model = "foo";
   }
@@ -188,52 +209,52 @@ buildDetectLanguageRequest() {
   return o;
 }
 
-checkDetectLanguageRequest(api.DetectLanguageRequest o) {
+void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
-    checkUnnamed4956(o.labels);
+    checkUnnamed5108(o.labels);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.model, unittest.equals('foo'));
   }
   buildCounterDetectLanguageRequest--;
 }
 
-buildUnnamed4957() {
-  var o = new core.List<api.DetectedLanguage>();
+core.List<api.DetectedLanguage> buildUnnamed5109() {
+  var o = <api.DetectedLanguage>[];
   o.add(buildDetectedLanguage());
   o.add(buildDetectedLanguage());
   return o;
 }
 
-checkUnnamed4957(core.List<api.DetectedLanguage> o) {
+void checkUnnamed5109(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDetectedLanguage(o[0]);
   checkDetectedLanguage(o[1]);
 }
 
 core.int buildCounterDetectLanguageResponse = 0;
-buildDetectLanguageResponse() {
-  var o = new api.DetectLanguageResponse();
+api.DetectLanguageResponse buildDetectLanguageResponse() {
+  var o = api.DetectLanguageResponse();
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    o.languages = buildUnnamed4957();
+    o.languages = buildUnnamed5109();
   }
   buildCounterDetectLanguageResponse--;
   return o;
 }
 
-checkDetectLanguageResponse(api.DetectLanguageResponse o) {
+void checkDetectLanguageResponse(api.DetectLanguageResponse o) {
   buildCounterDetectLanguageResponse++;
   if (buildCounterDetectLanguageResponse < 3) {
-    checkUnnamed4957(o.languages);
+    checkUnnamed5109(o.languages);
   }
   buildCounterDetectLanguageResponse--;
 }
 
 core.int buildCounterDetectedLanguage = 0;
-buildDetectedLanguage() {
-  var o = new api.DetectedLanguage();
+api.DetectedLanguage buildDetectedLanguage() {
+  var o = api.DetectedLanguage();
   buildCounterDetectedLanguage++;
   if (buildCounterDetectedLanguage < 3) {
     o.confidence = 42.0;
@@ -243,7 +264,7 @@ buildDetectedLanguage() {
   return o;
 }
 
-checkDetectedLanguage(api.DetectedLanguage o) {
+void checkDetectedLanguage(api.DetectedLanguage o) {
   buildCounterDetectedLanguage++;
   if (buildCounterDetectedLanguage < 3) {
     unittest.expect(o.confidence, unittest.equals(42.0));
@@ -253,23 +274,23 @@ checkDetectedLanguage(api.DetectedLanguage o) {
 }
 
 core.int buildCounterEmpty = 0;
-buildEmpty() {
-  var o = new api.Empty();
+api.Empty buildEmpty() {
+  var o = api.Empty();
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
   return o;
 }
 
-checkEmpty(api.Empty o) {
+void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
 }
 
 core.int buildCounterGcsDestination = 0;
-buildGcsDestination() {
-  var o = new api.GcsDestination();
+api.GcsDestination buildGcsDestination() {
+  var o = api.GcsDestination();
   buildCounterGcsDestination++;
   if (buildCounterGcsDestination < 3) {
     o.outputUriPrefix = "foo";
@@ -278,7 +299,7 @@ buildGcsDestination() {
   return o;
 }
 
-checkGcsDestination(api.GcsDestination o) {
+void checkGcsDestination(api.GcsDestination o) {
   buildCounterGcsDestination++;
   if (buildCounterGcsDestination < 3) {
     unittest.expect(o.outputUriPrefix, unittest.equals('foo'));
@@ -287,8 +308,8 @@ checkGcsDestination(api.GcsDestination o) {
 }
 
 core.int buildCounterGcsSource = 0;
-buildGcsSource() {
-  var o = new api.GcsSource();
+api.GcsSource buildGcsSource() {
+  var o = api.GcsSource();
   buildCounterGcsSource++;
   if (buildCounterGcsSource < 3) {
     o.inputUri = "foo";
@@ -297,7 +318,7 @@ buildGcsSource() {
   return o;
 }
 
-checkGcsSource(api.GcsSource o) {
+void checkGcsSource(api.GcsSource o) {
   buildCounterGcsSource++;
   if (buildCounterGcsSource < 3) {
     unittest.expect(o.inputUri, unittest.equals('foo'));
@@ -306,8 +327,8 @@ checkGcsSource(api.GcsSource o) {
 }
 
 core.int buildCounterGlossary = 0;
-buildGlossary() {
-  var o = new api.Glossary();
+api.Glossary buildGlossary() {
+  var o = api.Glossary();
   buildCounterGlossary++;
   if (buildCounterGlossary < 3) {
     o.endTime = "foo";
@@ -322,7 +343,7 @@ buildGlossary() {
   return o;
 }
 
-checkGlossary(api.Glossary o) {
+void checkGlossary(api.Glossary o) {
   buildCounterGlossary++;
   if (buildCounterGlossary < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
@@ -337,8 +358,8 @@ checkGlossary(api.Glossary o) {
 }
 
 core.int buildCounterGlossaryInputConfig = 0;
-buildGlossaryInputConfig() {
-  var o = new api.GlossaryInputConfig();
+api.GlossaryInputConfig buildGlossaryInputConfig() {
+  var o = api.GlossaryInputConfig();
   buildCounterGlossaryInputConfig++;
   if (buildCounterGlossaryInputConfig < 3) {
     o.gcsSource = buildGcsSource();
@@ -347,7 +368,7 @@ buildGlossaryInputConfig() {
   return o;
 }
 
-checkGlossaryInputConfig(api.GlossaryInputConfig o) {
+void checkGlossaryInputConfig(api.GlossaryInputConfig o) {
   buildCounterGlossaryInputConfig++;
   if (buildCounterGlossaryInputConfig < 3) {
     checkGcsSource(o.gcsSource);
@@ -356,8 +377,8 @@ checkGlossaryInputConfig(api.GlossaryInputConfig o) {
 }
 
 core.int buildCounterInputConfig = 0;
-buildInputConfig() {
-  var o = new api.InputConfig();
+api.InputConfig buildInputConfig() {
+  var o = api.InputConfig();
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
     o.gcsSource = buildGcsSource();
@@ -367,7 +388,7 @@ buildInputConfig() {
   return o;
 }
 
-checkInputConfig(api.InputConfig o) {
+void checkInputConfig(api.InputConfig o) {
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
     checkGcsSource(o.gcsSource);
@@ -377,8 +398,8 @@ checkInputConfig(api.InputConfig o) {
 }
 
 core.int buildCounterLanguageCodePair = 0;
-buildLanguageCodePair() {
-  var o = new api.LanguageCodePair();
+api.LanguageCodePair buildLanguageCodePair() {
+  var o = api.LanguageCodePair();
   buildCounterLanguageCodePair++;
   if (buildCounterLanguageCodePair < 3) {
     o.sourceLanguageCode = "foo";
@@ -388,7 +409,7 @@ buildLanguageCodePair() {
   return o;
 }
 
-checkLanguageCodePair(api.LanguageCodePair o) {
+void checkLanguageCodePair(api.LanguageCodePair o) {
   buildCounterLanguageCodePair++;
   if (buildCounterLanguageCodePair < 3) {
     unittest.expect(o.sourceLanguageCode, unittest.equals('foo'));
@@ -397,155 +418,155 @@ checkLanguageCodePair(api.LanguageCodePair o) {
   buildCounterLanguageCodePair--;
 }
 
-buildUnnamed4958() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5110() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4958(core.List<core.String> o) {
+void checkUnnamed5110(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterLanguageCodesSet = 0;
-buildLanguageCodesSet() {
-  var o = new api.LanguageCodesSet();
+api.LanguageCodesSet buildLanguageCodesSet() {
+  var o = api.LanguageCodesSet();
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    o.languageCodes = buildUnnamed4958();
+    o.languageCodes = buildUnnamed5110();
   }
   buildCounterLanguageCodesSet--;
   return o;
 }
 
-checkLanguageCodesSet(api.LanguageCodesSet o) {
+void checkLanguageCodesSet(api.LanguageCodesSet o) {
   buildCounterLanguageCodesSet++;
   if (buildCounterLanguageCodesSet < 3) {
-    checkUnnamed4958(o.languageCodes);
+    checkUnnamed5110(o.languageCodes);
   }
   buildCounterLanguageCodesSet--;
 }
 
-buildUnnamed4959() {
-  var o = new core.List<api.Glossary>();
+core.List<api.Glossary> buildUnnamed5111() {
+  var o = <api.Glossary>[];
   o.add(buildGlossary());
   o.add(buildGlossary());
   return o;
 }
 
-checkUnnamed4959(core.List<api.Glossary> o) {
+void checkUnnamed5111(core.List<api.Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlossary(o[0]);
   checkGlossary(o[1]);
 }
 
 core.int buildCounterListGlossariesResponse = 0;
-buildListGlossariesResponse() {
-  var o = new api.ListGlossariesResponse();
+api.ListGlossariesResponse buildListGlossariesResponse() {
+  var o = api.ListGlossariesResponse();
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    o.glossaries = buildUnnamed4959();
+    o.glossaries = buildUnnamed5111();
     o.nextPageToken = "foo";
   }
   buildCounterListGlossariesResponse--;
   return o;
 }
 
-checkListGlossariesResponse(api.ListGlossariesResponse o) {
+void checkListGlossariesResponse(api.ListGlossariesResponse o) {
   buildCounterListGlossariesResponse++;
   if (buildCounterListGlossariesResponse < 3) {
-    checkUnnamed4959(o.glossaries);
+    checkUnnamed5111(o.glossaries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListGlossariesResponse--;
 }
 
-buildUnnamed4960() {
-  var o = new core.List<api.Location>();
+core.List<api.Location> buildUnnamed5112() {
+  var o = <api.Location>[];
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed4960(core.List<api.Location> o) {
+void checkUnnamed5112(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
 }
 
 core.int buildCounterListLocationsResponse = 0;
-buildListLocationsResponse() {
-  var o = new api.ListLocationsResponse();
+api.ListLocationsResponse buildListLocationsResponse() {
+  var o = api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed4960();
+    o.locations = buildUnnamed5112();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
   return o;
 }
 
-checkListLocationsResponse(api.ListLocationsResponse o) {
+void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed4960(o.locations);
+    checkUnnamed5112(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed4961() {
-  var o = new core.List<api.Operation>();
+core.List<api.Operation> buildUnnamed5113() {
+  var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed4961(core.List<api.Operation> o) {
+void checkUnnamed5113(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
 }
 
 core.int buildCounterListOperationsResponse = 0;
-buildListOperationsResponse() {
-  var o = new api.ListOperationsResponse();
+api.ListOperationsResponse buildListOperationsResponse() {
+  var o = api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed4961();
+    o.operations = buildUnnamed5113();
   }
   buildCounterListOperationsResponse--;
   return o;
 }
 
-checkListOperationsResponse(api.ListOperationsResponse o) {
+void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4961(o.operations);
+    checkUnnamed5113(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
 
-buildUnnamed4962() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed5114() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4962(core.Map<core.String, core.String> o) {
+void checkUnnamed5114(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed4963() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed5115() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -559,7 +580,7 @@ buildUnnamed4963() {
   return o;
 }
 
-checkUnnamed4963(core.Map<core.String, core.Object> o) {
+void checkUnnamed5115(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -574,34 +595,34 @@ checkUnnamed4963(core.Map<core.String, core.Object> o) {
 }
 
 core.int buildCounterLocation = 0;
-buildLocation() {
-  var o = new api.Location();
+api.Location buildLocation() {
+  var o = api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = "foo";
-    o.labels = buildUnnamed4962();
+    o.labels = buildUnnamed5114();
     o.locationId = "foo";
-    o.metadata = buildUnnamed4963();
+    o.metadata = buildUnnamed5115();
     o.name = "foo";
   }
   buildCounterLocation--;
   return o;
 }
 
-checkLocation(api.Location o) {
+void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed4962(o.labels);
+    checkUnnamed5114(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed4963(o.metadata);
+    checkUnnamed5115(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
 }
 
-buildUnnamed4964() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed5116() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -615,7 +636,7 @@ buildUnnamed4964() {
   return o;
 }
 
-checkUnnamed4964(core.Map<core.String, core.Object> o) {
+void checkUnnamed5116(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -629,8 +650,8 @@ checkUnnamed4964(core.Map<core.String, core.Object> o) {
   unittest.expect(casted4["string"], unittest.equals('foo'));
 }
 
-buildUnnamed4965() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed5117() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -644,7 +665,7 @@ buildUnnamed4965() {
   return o;
 }
 
-checkUnnamed4965(core.Map<core.String, core.Object> o) {
+void checkUnnamed5117(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -659,35 +680,35 @@ checkUnnamed4965(core.Map<core.String, core.Object> o) {
 }
 
 core.int buildCounterOperation = 0;
-buildOperation() {
-  var o = new api.Operation();
+api.Operation buildOperation() {
+  var o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed4964();
+    o.metadata = buildUnnamed5116();
     o.name = "foo";
-    o.response = buildUnnamed4965();
+    o.response = buildUnnamed5117();
   }
   buildCounterOperation--;
   return o;
 }
 
-checkOperation(api.Operation o) {
+void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed4964(o.metadata);
+    checkUnnamed5116(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4965(o.response);
+    checkUnnamed5117(o.response);
   }
   buildCounterOperation--;
 }
 
 core.int buildCounterOutputConfig = 0;
-buildOutputConfig() {
-  var o = new api.OutputConfig();
+api.OutputConfig buildOutputConfig() {
+  var o = api.OutputConfig();
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
     o.gcsDestination = buildGcsDestination();
@@ -696,7 +717,7 @@ buildOutputConfig() {
   return o;
 }
 
-checkOutputConfig(api.OutputConfig o) {
+void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
     checkGcsDestination(o.gcsDestination);
@@ -704,8 +725,8 @@ checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-buildUnnamed4966() {
-  var o = new core.Map<core.String, core.Object>();
+core.Map<core.String, core.Object> buildUnnamed5118() {
+  var o = <core.String, core.Object>{};
   o["x"] = {
     'list': [1, 2, 3],
     'bool': true,
@@ -719,7 +740,7 @@ buildUnnamed4966() {
   return o;
 }
 
-checkUnnamed4966(core.Map<core.String, core.Object> o) {
+void checkUnnamed5118(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o["x"]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -733,45 +754,45 @@ checkUnnamed4966(core.Map<core.String, core.Object> o) {
   unittest.expect(casted8["string"], unittest.equals('foo'));
 }
 
-buildUnnamed4967() {
-  var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed4966());
-  o.add(buildUnnamed4966());
+core.List<core.Map<core.String, core.Object>> buildUnnamed5119() {
+  var o = <core.Map<core.String, core.Object>>[];
+  o.add(buildUnnamed5118());
+  o.add(buildUnnamed5118());
   return o;
 }
 
-checkUnnamed4967(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed5119(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4966(o[0]);
-  checkUnnamed4966(o[1]);
+  checkUnnamed5118(o[0]);
+  checkUnnamed5118(o[1]);
 }
 
 core.int buildCounterStatus = 0;
-buildStatus() {
-  var o = new api.Status();
+api.Status buildStatus() {
+  var o = api.Status();
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed4967();
+    o.details = buildUnnamed5119();
     o.message = "foo";
   }
   buildCounterStatus--;
   return o;
 }
 
-checkStatus(api.Status o) {
+void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed4967(o.details);
+    checkUnnamed5119(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
 core.int buildCounterSupportedLanguage = 0;
-buildSupportedLanguage() {
-  var o = new api.SupportedLanguage();
+api.SupportedLanguage buildSupportedLanguage() {
+  var o = api.SupportedLanguage();
   buildCounterSupportedLanguage++;
   if (buildCounterSupportedLanguage < 3) {
     o.displayName = "foo";
@@ -783,7 +804,7 @@ buildSupportedLanguage() {
   return o;
 }
 
-checkSupportedLanguage(api.SupportedLanguage o) {
+void checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage++;
   if (buildCounterSupportedLanguage < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
@@ -794,41 +815,41 @@ checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage--;
 }
 
-buildUnnamed4968() {
-  var o = new core.List<api.SupportedLanguage>();
+core.List<api.SupportedLanguage> buildUnnamed5120() {
+  var o = <api.SupportedLanguage>[];
   o.add(buildSupportedLanguage());
   o.add(buildSupportedLanguage());
   return o;
 }
 
-checkUnnamed4968(core.List<api.SupportedLanguage> o) {
+void checkUnnamed5120(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSupportedLanguage(o[0]);
   checkSupportedLanguage(o[1]);
 }
 
 core.int buildCounterSupportedLanguages = 0;
-buildSupportedLanguages() {
-  var o = new api.SupportedLanguages();
+api.SupportedLanguages buildSupportedLanguages() {
+  var o = api.SupportedLanguages();
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    o.languages = buildUnnamed4968();
+    o.languages = buildUnnamed5120();
   }
   buildCounterSupportedLanguages--;
   return o;
 }
 
-checkSupportedLanguages(api.SupportedLanguages o) {
+void checkSupportedLanguages(api.SupportedLanguages o) {
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    checkUnnamed4968(o.languages);
+    checkUnnamed5120(o.languages);
   }
   buildCounterSupportedLanguages--;
 }
 
 core.int buildCounterTranslateTextGlossaryConfig = 0;
-buildTranslateTextGlossaryConfig() {
-  var o = new api.TranslateTextGlossaryConfig();
+api.TranslateTextGlossaryConfig buildTranslateTextGlossaryConfig() {
+  var o = api.TranslateTextGlossaryConfig();
   buildCounterTranslateTextGlossaryConfig++;
   if (buildCounterTranslateTextGlossaryConfig < 3) {
     o.glossary = "foo";
@@ -838,7 +859,7 @@ buildTranslateTextGlossaryConfig() {
   return o;
 }
 
-checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
+void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig++;
   if (buildCounterTranslateTextGlossaryConfig < 3) {
     unittest.expect(o.glossary, unittest.equals('foo'));
@@ -847,40 +868,40 @@ checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig--;
 }
 
-buildUnnamed4969() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed5121() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4969(core.List<core.String> o) {
+void checkUnnamed5121(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4970() {
-  var o = new core.Map<core.String, core.String>();
+core.Map<core.String, core.String> buildUnnamed5122() {
+  var o = <core.String, core.String>{};
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4970(core.Map<core.String, core.String> o) {
+void checkUnnamed5122(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
 core.int buildCounterTranslateTextRequest = 0;
-buildTranslateTextRequest() {
-  var o = new api.TranslateTextRequest();
+api.TranslateTextRequest buildTranslateTextRequest() {
+  var o = api.TranslateTextRequest();
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    o.contents = buildUnnamed4969();
+    o.contents = buildUnnamed5121();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed4970();
+    o.labels = buildUnnamed5122();
     o.mimeType = "foo";
     o.model = "foo";
     o.sourceLanguageCode = "foo";
@@ -890,12 +911,12 @@ buildTranslateTextRequest() {
   return o;
 }
 
-checkTranslateTextRequest(api.TranslateTextRequest o) {
+void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    checkUnnamed4969(o.contents);
+    checkUnnamed5121(o.contents);
     checkTranslateTextGlossaryConfig(o.glossaryConfig);
-    checkUnnamed4970(o.labels);
+    checkUnnamed5122(o.labels);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.model, unittest.equals('foo'));
     unittest.expect(o.sourceLanguageCode, unittest.equals('foo'));
@@ -904,56 +925,56 @@ checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest--;
 }
 
-buildUnnamed4971() {
-  var o = new core.List<api.Translation>();
+core.List<api.Translation> buildUnnamed5123() {
+  var o = <api.Translation>[];
   o.add(buildTranslation());
   o.add(buildTranslation());
   return o;
 }
 
-checkUnnamed4971(core.List<api.Translation> o) {
+void checkUnnamed5123(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
 }
 
-buildUnnamed4972() {
-  var o = new core.List<api.Translation>();
+core.List<api.Translation> buildUnnamed5124() {
+  var o = <api.Translation>[];
   o.add(buildTranslation());
   o.add(buildTranslation());
   return o;
 }
 
-checkUnnamed4972(core.List<api.Translation> o) {
+void checkUnnamed5124(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
 }
 
 core.int buildCounterTranslateTextResponse = 0;
-buildTranslateTextResponse() {
-  var o = new api.TranslateTextResponse();
+api.TranslateTextResponse buildTranslateTextResponse() {
+  var o = api.TranslateTextResponse();
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    o.glossaryTranslations = buildUnnamed4971();
-    o.translations = buildUnnamed4972();
+    o.glossaryTranslations = buildUnnamed5123();
+    o.translations = buildUnnamed5124();
   }
   buildCounterTranslateTextResponse--;
   return o;
 }
 
-checkTranslateTextResponse(api.TranslateTextResponse o) {
+void checkTranslateTextResponse(api.TranslateTextResponse o) {
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    checkUnnamed4971(o.glossaryTranslations);
-    checkUnnamed4972(o.translations);
+    checkUnnamed5123(o.glossaryTranslations);
+    checkUnnamed5124(o.translations);
   }
   buildCounterTranslateTextResponse--;
 }
 
 core.int buildCounterTranslation = 0;
-buildTranslation() {
-  var o = new api.Translation();
+api.Translation buildTranslation() {
+  var o = api.Translation();
   buildCounterTranslation++;
   if (buildCounterTranslation < 3) {
     o.detectedLanguageCode = "foo";
@@ -965,7 +986,7 @@ buildTranslation() {
   return o;
 }
 
-checkTranslation(api.Translation o) {
+void checkTranslation(api.Translation o) {
   buildCounterTranslation++;
   if (buildCounterTranslation < 3) {
     unittest.expect(o.detectedLanguageCode, unittest.equals('foo'));
@@ -977,8 +998,8 @@ checkTranslation(api.Translation o) {
 }
 
 core.int buildCounterWaitOperationRequest = 0;
-buildWaitOperationRequest() {
-  var o = new api.WaitOperationRequest();
+api.WaitOperationRequest buildWaitOperationRequest() {
+  var o = api.WaitOperationRequest();
   buildCounterWaitOperationRequest++;
   if (buildCounterWaitOperationRequest < 3) {
     o.timeout = "foo";
@@ -987,7 +1008,7 @@ buildWaitOperationRequest() {
   return o;
 }
 
-checkWaitOperationRequest(api.WaitOperationRequest o) {
+void checkWaitOperationRequest(api.WaitOperationRequest o) {
   buildCounterWaitOperationRequest++;
   if (buildCounterWaitOperationRequest < 3) {
     unittest.expect(o.timeout, unittest.equals('foo'));
@@ -995,11 +1016,11 @@ checkWaitOperationRequest(api.WaitOperationRequest o) {
   buildCounterWaitOperationRequest--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-BatchTranslateTextRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchTranslateTextRequest();
-      var od = new api.BatchTranslateTextRequest.fromJson(o.toJson());
+      var od = api.BatchTranslateTextRequest.fromJson(o.toJson());
       checkBatchTranslateTextRequest(od);
     });
   });
@@ -1007,7 +1028,7 @@ main() {
   unittest.group("obj-schema-CancelOperationRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildCancelOperationRequest();
-      var od = new api.CancelOperationRequest.fromJson(o.toJson());
+      var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od);
     });
   });
@@ -1015,7 +1036,7 @@ main() {
   unittest.group("obj-schema-DetectLanguageRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildDetectLanguageRequest();
-      var od = new api.DetectLanguageRequest.fromJson(o.toJson());
+      var od = api.DetectLanguageRequest.fromJson(o.toJson());
       checkDetectLanguageRequest(od);
     });
   });
@@ -1023,7 +1044,7 @@ main() {
   unittest.group("obj-schema-DetectLanguageResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDetectLanguageResponse();
-      var od = new api.DetectLanguageResponse.fromJson(o.toJson());
+      var od = api.DetectLanguageResponse.fromJson(o.toJson());
       checkDetectLanguageResponse(od);
     });
   });
@@ -1031,7 +1052,7 @@ main() {
   unittest.group("obj-schema-DetectedLanguage", () {
     unittest.test("to-json--from-json", () {
       var o = buildDetectedLanguage();
-      var od = new api.DetectedLanguage.fromJson(o.toJson());
+      var od = api.DetectedLanguage.fromJson(o.toJson());
       checkDetectedLanguage(od);
     });
   });
@@ -1039,7 +1060,7 @@ main() {
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
       var o = buildEmpty();
-      var od = new api.Empty.fromJson(o.toJson());
+      var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od);
     });
   });
@@ -1047,7 +1068,7 @@ main() {
   unittest.group("obj-schema-GcsDestination", () {
     unittest.test("to-json--from-json", () {
       var o = buildGcsDestination();
-      var od = new api.GcsDestination.fromJson(o.toJson());
+      var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od);
     });
   });
@@ -1055,7 +1076,7 @@ main() {
   unittest.group("obj-schema-GcsSource", () {
     unittest.test("to-json--from-json", () {
       var o = buildGcsSource();
-      var od = new api.GcsSource.fromJson(o.toJson());
+      var od = api.GcsSource.fromJson(o.toJson());
       checkGcsSource(od);
     });
   });
@@ -1063,7 +1084,7 @@ main() {
   unittest.group("obj-schema-Glossary", () {
     unittest.test("to-json--from-json", () {
       var o = buildGlossary();
-      var od = new api.Glossary.fromJson(o.toJson());
+      var od = api.Glossary.fromJson(o.toJson());
       checkGlossary(od);
     });
   });
@@ -1071,7 +1092,7 @@ main() {
   unittest.group("obj-schema-GlossaryInputConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildGlossaryInputConfig();
-      var od = new api.GlossaryInputConfig.fromJson(o.toJson());
+      var od = api.GlossaryInputConfig.fromJson(o.toJson());
       checkGlossaryInputConfig(od);
     });
   });
@@ -1079,7 +1100,7 @@ main() {
   unittest.group("obj-schema-InputConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildInputConfig();
-      var od = new api.InputConfig.fromJson(o.toJson());
+      var od = api.InputConfig.fromJson(o.toJson());
       checkInputConfig(od);
     });
   });
@@ -1087,7 +1108,7 @@ main() {
   unittest.group("obj-schema-LanguageCodePair", () {
     unittest.test("to-json--from-json", () {
       var o = buildLanguageCodePair();
-      var od = new api.LanguageCodePair.fromJson(o.toJson());
+      var od = api.LanguageCodePair.fromJson(o.toJson());
       checkLanguageCodePair(od);
     });
   });
@@ -1095,7 +1116,7 @@ main() {
   unittest.group("obj-schema-LanguageCodesSet", () {
     unittest.test("to-json--from-json", () {
       var o = buildLanguageCodesSet();
-      var od = new api.LanguageCodesSet.fromJson(o.toJson());
+      var od = api.LanguageCodesSet.fromJson(o.toJson());
       checkLanguageCodesSet(od);
     });
   });
@@ -1103,7 +1124,7 @@ main() {
   unittest.group("obj-schema-ListGlossariesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListGlossariesResponse();
-      var od = new api.ListGlossariesResponse.fromJson(o.toJson());
+      var od = api.ListGlossariesResponse.fromJson(o.toJson());
       checkListGlossariesResponse(od);
     });
   });
@@ -1111,7 +1132,7 @@ main() {
   unittest.group("obj-schema-ListLocationsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListLocationsResponse();
-      var od = new api.ListLocationsResponse.fromJson(o.toJson());
+      var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od);
     });
   });
@@ -1119,7 +1140,7 @@ main() {
   unittest.group("obj-schema-ListOperationsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListOperationsResponse();
-      var od = new api.ListOperationsResponse.fromJson(o.toJson());
+      var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od);
     });
   });
@@ -1127,7 +1148,7 @@ main() {
   unittest.group("obj-schema-Location", () {
     unittest.test("to-json--from-json", () {
       var o = buildLocation();
-      var od = new api.Location.fromJson(o.toJson());
+      var od = api.Location.fromJson(o.toJson());
       checkLocation(od);
     });
   });
@@ -1135,7 +1156,7 @@ main() {
   unittest.group("obj-schema-Operation", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperation();
-      var od = new api.Operation.fromJson(o.toJson());
+      var od = api.Operation.fromJson(o.toJson());
       checkOperation(od);
     });
   });
@@ -1143,7 +1164,7 @@ main() {
   unittest.group("obj-schema-OutputConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildOutputConfig();
-      var od = new api.OutputConfig.fromJson(o.toJson());
+      var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od);
     });
   });
@@ -1151,7 +1172,7 @@ main() {
   unittest.group("obj-schema-Status", () {
     unittest.test("to-json--from-json", () {
       var o = buildStatus();
-      var od = new api.Status.fromJson(o.toJson());
+      var od = api.Status.fromJson(o.toJson());
       checkStatus(od);
     });
   });
@@ -1159,7 +1180,7 @@ main() {
   unittest.group("obj-schema-SupportedLanguage", () {
     unittest.test("to-json--from-json", () {
       var o = buildSupportedLanguage();
-      var od = new api.SupportedLanguage.fromJson(o.toJson());
+      var od = api.SupportedLanguage.fromJson(o.toJson());
       checkSupportedLanguage(od);
     });
   });
@@ -1167,7 +1188,7 @@ main() {
   unittest.group("obj-schema-SupportedLanguages", () {
     unittest.test("to-json--from-json", () {
       var o = buildSupportedLanguages();
-      var od = new api.SupportedLanguages.fromJson(o.toJson());
+      var od = api.SupportedLanguages.fromJson(o.toJson());
       checkSupportedLanguages(od);
     });
   });
@@ -1175,7 +1196,7 @@ main() {
   unittest.group("obj-schema-TranslateTextGlossaryConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildTranslateTextGlossaryConfig();
-      var od = new api.TranslateTextGlossaryConfig.fromJson(o.toJson());
+      var od = api.TranslateTextGlossaryConfig.fromJson(o.toJson());
       checkTranslateTextGlossaryConfig(od);
     });
   });
@@ -1183,7 +1204,7 @@ main() {
   unittest.group("obj-schema-TranslateTextRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildTranslateTextRequest();
-      var od = new api.TranslateTextRequest.fromJson(o.toJson());
+      var od = api.TranslateTextRequest.fromJson(o.toJson());
       checkTranslateTextRequest(od);
     });
   });
@@ -1191,7 +1212,7 @@ main() {
   unittest.group("obj-schema-TranslateTextResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildTranslateTextResponse();
-      var od = new api.TranslateTextResponse.fromJson(o.toJson());
+      var od = api.TranslateTextResponse.fromJson(o.toJson());
       checkTranslateTextResponse(od);
     });
   });
@@ -1199,7 +1220,7 @@ main() {
   unittest.group("obj-schema-Translation", () {
     unittest.test("to-json--from-json", () {
       var o = buildTranslation();
-      var od = new api.Translation.fromJson(o.toJson());
+      var od = api.Translation.fromJson(o.toJson());
       checkTranslation(od);
     });
   });
@@ -1207,26 +1228,26 @@ main() {
   unittest.group("obj-schema-WaitOperationRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildWaitOperationRequest();
-      var od = new api.WaitOperationRequest.fromJson(o.toJson());
+      var od = api.WaitOperationRequest.fromJson(o.toJson());
       checkWaitOperationRequest(od);
     });
   });
 
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--detectLanguage", () {
-      var mock = new HttpServerMock();
-      api.ProjectsResourceApi res = new api.TranslateApi(mock).projects;
+      var mock = HttpServerMock();
+      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
       var arg_request = buildDetectLanguageRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.DetectLanguageRequest.fromJson(json);
+        var obj = api.DetectLanguageRequest.fromJson(json);
         checkDetectLanguageRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1238,19 +1259,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1259,7 +1276,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDetectLanguageResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
@@ -1269,8 +1286,8 @@ main() {
     });
 
     unittest.test("method--getSupportedLanguages", () {
-      var mock = new HttpServerMock();
-      api.ProjectsResourceApi res = new api.TranslateApi(mock).projects;
+      var mock = HttpServerMock();
+      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
       var arg_parent = "foo";
       var arg_model = "foo";
       var arg_displayLanguageCode = "foo";
@@ -1278,8 +1295,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1291,19 +1308,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["model"].first, unittest.equals(arg_model));
@@ -1315,7 +1328,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSupportedLanguages());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getSupportedLanguages(arg_parent,
@@ -1328,19 +1341,19 @@ main() {
     });
 
     unittest.test("method--translateText", () {
-      var mock = new HttpServerMock();
-      api.ProjectsResourceApi res = new api.TranslateApi(mock).projects;
+      var mock = HttpServerMock();
+      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
       var arg_request = buildTranslateTextRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TranslateTextRequest.fromJson(json);
+        var obj = api.TranslateTextRequest.fromJson(json);
         checkTranslateTextRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1352,19 +1365,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1373,7 +1382,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTranslateTextResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .translateText(arg_request, arg_parent, $fields: arg_$fields)
@@ -1385,20 +1394,20 @@ main() {
 
   unittest.group("resource-ProjectsLocationsResourceApi", () {
     unittest.test("method--batchTranslateText", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_request = buildBatchTranslateTextRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.BatchTranslateTextRequest.fromJson(json);
+        var obj = api.BatchTranslateTextRequest.fromJson(json);
         checkBatchTranslateTextRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1410,19 +1419,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1431,7 +1436,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .batchTranslateText(arg_request, arg_parent, $fields: arg_$fields)
@@ -1441,20 +1446,20 @@ main() {
     });
 
     unittest.test("method--detectLanguage", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_request = buildDetectLanguageRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.DetectLanguageRequest.fromJson(json);
+        var obj = api.DetectLanguageRequest.fromJson(json);
         checkDetectLanguageRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1466,19 +1471,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1487,7 +1488,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDetectLanguageResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
@@ -1497,16 +1498,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1518,19 +1519,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1539,7 +1536,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLocation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1549,9 +1546,9 @@ main() {
     });
 
     unittest.test("method--getSupportedLanguages", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_parent = "foo";
       var arg_displayLanguageCode = "foo";
       var arg_model = "foo";
@@ -1559,8 +1556,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1572,19 +1569,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["displayLanguageCode"].first,
@@ -1596,7 +1589,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSupportedLanguages());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getSupportedLanguages(arg_parent,
@@ -1609,9 +1602,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_name = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
@@ -1620,8 +1613,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1633,19 +1626,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -1659,7 +1648,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListLocationsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_name,
@@ -1673,20 +1662,20 @@ main() {
     });
 
     unittest.test("method--translateText", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations;
+          api.TranslateApi(mock).projects.locations;
       var arg_request = buildTranslateTextRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.TranslateTextRequest.fromJson(json);
+        var obj = api.TranslateTextRequest.fromJson(json);
         checkTranslateTextRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1698,19 +1687,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1719,7 +1704,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildTranslateTextResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .translateText(arg_request, arg_parent, $fields: arg_$fields)
@@ -1731,20 +1716,20 @@ main() {
 
   unittest.group("resource-ProjectsLocationsGlossariesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsGlossariesResourceApi res =
-          new api.TranslateApi(mock).projects.locations.glossaries;
+          api.TranslateApi(mock).projects.locations.glossaries;
       var arg_request = buildGlossary();
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Glossary.fromJson(json);
+        var obj = api.Glossary.fromJson(json);
         checkGlossary(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1756,19 +1741,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1777,7 +1758,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
@@ -1787,16 +1768,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsGlossariesResourceApi res =
-          new api.TranslateApi(mock).projects.locations.glossaries;
+          api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1808,19 +1789,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1829,7 +1806,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -1839,16 +1816,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsGlossariesResourceApi res =
-          new api.TranslateApi(mock).projects.locations.glossaries;
+          api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1860,19 +1837,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1881,7 +1854,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildGlossary());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -1891,9 +1864,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsGlossariesResourceApi res =
-          new api.TranslateApi(mock).projects.locations.glossaries;
+          api.TranslateApi(mock).projects.locations.glossaries;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_filter = "foo";
@@ -1902,8 +1875,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1915,19 +1888,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -1941,7 +1910,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListGlossariesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_parent,
@@ -1957,20 +1926,20 @@ main() {
 
   unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
     unittest.test("method--cancel", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations.operations;
+          api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.CancelOperationRequest.fromJson(json);
+        var obj = api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1982,19 +1951,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2003,7 +1968,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
@@ -2013,16 +1978,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations.operations;
+          api.TranslateApi(mock).projects.locations.operations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2034,19 +1999,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2055,7 +2016,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_name, $fields: arg_$fields)
@@ -2065,16 +2026,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations.operations;
+          api.TranslateApi(mock).projects.locations.operations;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2086,19 +2047,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2107,7 +2064,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_name, $fields: arg_$fields)
@@ -2117,9 +2074,9 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations.operations;
+          api.TranslateApi(mock).projects.locations.operations;
       var arg_name = "foo";
       var arg_filter = "foo";
       var arg_pageToken = "foo";
@@ -2128,8 +2085,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2141,19 +2098,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
@@ -2167,7 +2120,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListOperationsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_name,
@@ -2181,20 +2134,20 @@ main() {
     });
 
     unittest.test("method--wait", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.ProjectsLocationsOperationsResourceApi res =
-          new api.TranslateApi(mock).projects.locations.operations;
+          api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildWaitOperationRequest();
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.WaitOperationRequest.fromJson(json);
+        var obj = api.WaitOperationRequest.fromJson(json);
         checkWaitOperationRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2206,19 +2159,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2227,7 +2176,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildOperation());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .wait(arg_request, arg_name, $fields: arg_$fields)

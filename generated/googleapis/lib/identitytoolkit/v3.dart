@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.identitytoolkit.v3;
 
@@ -29,13 +47,13 @@ class IdentitytoolkitApi {
   final commons.ApiRequester _requester;
 
   RelyingpartyResourceApi get relyingparty =>
-      new RelyingpartyResourceApi(_requester);
+      RelyingpartyResourceApi(_requester);
 
   IdentitytoolkitApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
       core.String servicePath = "identitytoolkit/v3/relyingparty/"})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class RelyingpartyResourceApi {
@@ -60,17 +78,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateAuthUriResponse> createAuthUri(
-      IdentitytoolkitRelyingpartyCreateAuthUriRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyCreateAuthUriRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -78,13 +97,16 @@ class RelyingpartyResourceApi {
 
     _url = 'createAuthUri';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CreateAuthUriResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CreateAuthUriResponse.fromJson(data));
   }
 
   /// Delete user account.
@@ -104,17 +126,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAccountResponse> deleteAccount(
-      IdentitytoolkitRelyingpartyDeleteAccountRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyDeleteAccountRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -122,13 +145,16 @@ class RelyingpartyResourceApi {
 
     _url = 'deleteAccount';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeleteAccountResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DeleteAccountResponse.fromJson(data));
   }
 
   /// Batch download user accounts.
@@ -148,17 +174,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DownloadAccountResponse> downloadAccount(
-      IdentitytoolkitRelyingpartyDownloadAccountRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyDownloadAccountRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -166,13 +193,16 @@ class RelyingpartyResourceApi {
 
     _url = 'downloadAccount';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DownloadAccountResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => DownloadAccountResponse.fromJson(data));
   }
 
   /// Reset password for a user.
@@ -192,17 +222,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmailLinkSigninResponse> emailLinkSignin(
-      IdentitytoolkitRelyingpartyEmailLinkSigninRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyEmailLinkSigninRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -210,13 +241,16 @@ class RelyingpartyResourceApi {
 
     _url = 'emailLinkSignin';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EmailLinkSigninResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EmailLinkSigninResponse.fromJson(data));
   }
 
   /// Returns the account info.
@@ -236,17 +270,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetAccountInfoResponse> getAccountInfo(
-      IdentitytoolkitRelyingpartyGetAccountInfoRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyGetAccountInfoRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -254,13 +289,16 @@ class RelyingpartyResourceApi {
 
     _url = 'getAccountInfo';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetAccountInfoResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetAccountInfoResponse.fromJson(data));
   }
 
   /// Get a code for user action confirmation.
@@ -280,17 +318,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetOobConfirmationCodeResponse> getOobConfirmationCode(
-      Relyingparty request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Relyingparty request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -298,14 +337,17 @@ class RelyingpartyResourceApi {
 
     _url = 'getOobConfirmationCode';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GetOobConfirmationCodeResponse.fromJson(data));
+        .then((data) => GetOobConfirmationCodeResponse.fromJson(data));
   }
 
   /// Get project configuration.
@@ -327,16 +369,17 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse>
-      getProjectConfig(
-          {core.String delegatedProjectNumber,
-          core.String projectNumber,
-          core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+      getProjectConfig({
+    core.String delegatedProjectNumber,
+    core.String projectNumber,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (delegatedProjectNumber != null) {
       _queryParams["delegatedProjectNumber"] = [delegatedProjectNumber];
@@ -350,14 +393,17 @@ class RelyingpartyResourceApi {
 
     _url = 'getProjectConfig';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(data));
+        IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(data));
   }
 
   /// Get token signing public key.
@@ -374,14 +420,15 @@ class RelyingpartyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys(
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -389,14 +436,17 @@ class RelyingpartyResourceApi {
 
     _url = 'publicKeys';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(data));
+        IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(data));
   }
 
   /// Get recaptcha secure param.
@@ -413,14 +463,15 @@ class RelyingpartyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetRecaptchaParamResponse> getRecaptchaParam(
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetRecaptchaParamResponse> getRecaptchaParam({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -428,14 +479,16 @@ class RelyingpartyResourceApi {
 
     _url = 'getRecaptchaParam';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GetRecaptchaParamResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetRecaptchaParamResponse.fromJson(data));
   }
 
   /// Reset password for a user.
@@ -455,17 +508,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResetPasswordResponse> resetPassword(
-      IdentitytoolkitRelyingpartyResetPasswordRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyResetPasswordRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -473,13 +527,16 @@ class RelyingpartyResourceApi {
 
     _url = 'resetPassword';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ResetPasswordResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ResetPasswordResponse.fromJson(data));
   }
 
   /// Send SMS verification code.
@@ -501,17 +558,18 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySendVerificationCodeResponse>
       sendVerificationCode(
-          IdentitytoolkitRelyingpartySendVerificationCodeRequest request,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartySendVerificationCodeRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -519,15 +577,17 @@ class RelyingpartyResourceApi {
 
     _url = 'sendVerificationCode';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-            data));
+        IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(data));
   }
 
   /// Set account info for a user.
@@ -547,17 +607,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SetAccountInfoResponse> setAccountInfo(
-      IdentitytoolkitRelyingpartySetAccountInfoRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartySetAccountInfoRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -565,13 +626,16 @@ class RelyingpartyResourceApi {
 
     _url = 'setAccountInfo';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SetAccountInfoResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SetAccountInfoResponse.fromJson(data));
   }
 
   /// Set project configuration.
@@ -592,17 +656,18 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySetProjectConfigResponse>
       setProjectConfig(
-          IdentitytoolkitRelyingpartySetProjectConfigRequest request,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartySetProjectConfigRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -610,14 +675,17 @@ class RelyingpartyResourceApi {
 
     _url = 'setProjectConfig';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(data));
+        IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(data));
   }
 
   /// Sign out user.
@@ -637,17 +705,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySignOutUserResponse> signOutUser(
-      IdentitytoolkitRelyingpartySignOutUserRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartySignOutUserRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -655,14 +724,17 @@ class RelyingpartyResourceApi {
 
     _url = 'signOutUser';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(data));
+        IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(data));
   }
 
   /// Signup new user.
@@ -682,17 +754,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupNewUserResponse> signupNewUser(
-      IdentitytoolkitRelyingpartySignupNewUserRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartySignupNewUserRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -700,13 +773,16 @@ class RelyingpartyResourceApi {
 
     _url = 'signupNewUser';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SignupNewUserResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SignupNewUserResponse.fromJson(data));
   }
 
   /// Batch upload existing user accounts.
@@ -726,17 +802,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UploadAccountResponse> uploadAccount(
-      IdentitytoolkitRelyingpartyUploadAccountRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyUploadAccountRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -744,13 +821,16 @@ class RelyingpartyResourceApi {
 
     _url = 'uploadAccount';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UploadAccountResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UploadAccountResponse.fromJson(data));
   }
 
   /// Verifies the assertion returned by the IdP.
@@ -770,17 +850,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyAssertionResponse> verifyAssertion(
-      IdentitytoolkitRelyingpartyVerifyAssertionRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyVerifyAssertionRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -788,13 +869,16 @@ class RelyingpartyResourceApi {
 
     _url = 'verifyAssertion';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VerifyAssertionResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VerifyAssertionResponse.fromJson(data));
   }
 
   /// Verifies the developer asserted ID token.
@@ -814,17 +898,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyCustomTokenResponse> verifyCustomToken(
-      IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -832,14 +917,16 @@ class RelyingpartyResourceApi {
 
     _url = 'verifyCustomToken';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new VerifyCustomTokenResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VerifyCustomTokenResponse.fromJson(data));
   }
 
   /// Verifies the user entered password.
@@ -859,17 +946,18 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyPasswordResponse> verifyPassword(
-      IdentitytoolkitRelyingpartyVerifyPasswordRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyVerifyPasswordRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -877,13 +965,16 @@ class RelyingpartyResourceApi {
 
     _url = 'verifyPassword';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new VerifyPasswordResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => VerifyPasswordResponse.fromJson(data));
   }
 
   /// Verifies ownership of a phone number and creates/updates the user account
@@ -905,17 +996,18 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>
       verifyPhoneNumber(
-          IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -923,15 +1015,17 @@ class RelyingpartyResourceApi {
 
     _url = 'verifyPhoneNumber';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-            data));
+        IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(data));
   }
 }
 
@@ -999,7 +1093,7 @@ class CreateAuthUriResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allProviders != null) {
       _json["allProviders"] = allProviders;
     }
@@ -1046,7 +1140,7 @@ class DeleteAccountResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1077,14 +1171,14 @@ class DownloadAccountResponse {
     }
     if (_json.containsKey("users")) {
       users = (_json["users"] as core.List)
-          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1092,7 +1186,7 @@ class DownloadAccountResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => (value).toJson()).toList();
+      _json["users"] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1149,7 +1243,7 @@ class EmailLinkSigninResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -1220,7 +1314,7 @@ class EmailTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (body != null) {
       _json["body"] = body;
     }
@@ -1259,19 +1353,19 @@ class GetAccountInfoResponse {
     }
     if (_json.containsKey("users")) {
       users = (_json["users"] as core.List)
-          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => (value).toJson()).toList();
+      _json["users"] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1305,7 +1399,7 @@ class GetOobConfirmationCodeResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -1347,7 +1441,7 @@ class GetRecaptchaParamResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1481,7 +1575,7 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (appId != null) {
       _json["appId"] = appId;
     }
@@ -1562,7 +1656,7 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1612,7 +1706,7 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1656,7 +1750,7 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -1710,7 +1804,7 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -1781,7 +1875,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate =
-          new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+          EmailTemplate.fromJson(_json["changeEmailTemplate"]);
     }
     if (_json.containsKey("dynamicLinksDomain")) {
       dynamicLinksDomain = _json["dynamicLinksDomain"];
@@ -1791,32 +1885,32 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (_json.containsKey("idpConfig")) {
       idpConfig = (_json["idpConfig"] as core.List)
-          .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) => IdpConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("legacyResetPasswordTemplate")) {
       legacyResetPasswordTemplate =
-          new EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("resetPasswordTemplate")) {
       resetPasswordTemplate =
-          new EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
     }
     if (_json.containsKey("useEmailSending")) {
       useEmailSending = _json["useEmailSending"];
     }
     if (_json.containsKey("verifyEmailTemplate")) {
       verifyEmailTemplate =
-          new EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
+          EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowPasswordUser != null) {
       _json["allowPasswordUser"] = allowPasswordUser;
     }
@@ -1827,7 +1921,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
       _json["authorizedDomains"] = authorizedDomains;
     }
     if (changeEmailTemplate != null) {
-      _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
+      _json["changeEmailTemplate"] = changeEmailTemplate.toJson();
     }
     if (dynamicLinksDomain != null) {
       _json["dynamicLinksDomain"] = dynamicLinksDomain;
@@ -1836,23 +1930,23 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
       _json["enableAnonymousUser"] = enableAnonymousUser;
     }
     if (idpConfig != null) {
-      _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+      _json["idpConfig"] = idpConfig.map((value) => value.toJson()).toList();
     }
     if (legacyResetPasswordTemplate != null) {
       _json["legacyResetPasswordTemplate"] =
-          (legacyResetPasswordTemplate).toJson();
+          legacyResetPasswordTemplate.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
     if (resetPasswordTemplate != null) {
-      _json["resetPasswordTemplate"] = (resetPasswordTemplate).toJson();
+      _json["resetPasswordTemplate"] = resetPasswordTemplate.toJson();
     }
     if (useEmailSending != null) {
       _json["useEmailSending"] = useEmailSending;
     }
     if (verifyEmailTemplate != null) {
-      _json["verifyEmailTemplate"] = (verifyEmailTemplate).toJson();
+      _json["verifyEmailTemplate"] = verifyEmailTemplate.toJson();
     }
     return _json;
   }
@@ -1872,27 +1966,26 @@ class IdentitytoolkitRelyingpartyGetPublicKeysResponse
     });
   }
 
-  core.Map<core.String, core.String> toJson() {
-    final core.Map<core.String, core.String> _json =
-        <core.String, core.String>{};
-    this.forEach((core.String key, value) {
-      _json[key] = value;
-    });
-    return _json;
-  }
+  core.Map<core.String, core.dynamic> toJson() =>
+      core.Map<core.String, core.dynamic>.of(this);
 
+  @core.override
   core.String operator [](core.Object key) => _innerMap[key];
 
-  operator []=(core.String key, core.String value) {
+  @core.override
+  void operator []=(core.String key, core.String value) {
     _innerMap[key] = value;
   }
 
+  @core.override
   void clear() {
     _innerMap.clear();
   }
 
+  @core.override
   core.Iterable<core.String> get keys => _innerMap.keys;
 
+  @core.override
   core.String remove(core.Object key) => _innerMap.remove(key);
 }
 
@@ -1929,7 +2022,7 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -1980,7 +2073,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iosReceipt != null) {
       _json["iosReceipt"] = iosReceipt;
     }
@@ -2013,7 +2106,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sessionInfo != null) {
       _json["sessionInfo"] = sessionInfo;
     }
@@ -2171,7 +2264,7 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -2296,7 +2389,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (_json.containsKey("changeEmailTemplate")) {
       changeEmailTemplate =
-          new EmailTemplate.fromJson(_json["changeEmailTemplate"]);
+          EmailTemplate.fromJson(_json["changeEmailTemplate"]);
     }
     if (_json.containsKey("delegatedProjectNumber")) {
       delegatedProjectNumber = _json["delegatedProjectNumber"];
@@ -2306,29 +2399,29 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (_json.containsKey("idpConfig")) {
       idpConfig = (_json["idpConfig"] as core.List)
-          .map<IdpConfig>((value) => new IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) => IdpConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("legacyResetPasswordTemplate")) {
       legacyResetPasswordTemplate =
-          new EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json["legacyResetPasswordTemplate"]);
     }
     if (_json.containsKey("resetPasswordTemplate")) {
       resetPasswordTemplate =
-          new EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
+          EmailTemplate.fromJson(_json["resetPasswordTemplate"]);
     }
     if (_json.containsKey("useEmailSending")) {
       useEmailSending = _json["useEmailSending"];
     }
     if (_json.containsKey("verifyEmailTemplate")) {
       verifyEmailTemplate =
-          new EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
+          EmailTemplate.fromJson(_json["verifyEmailTemplate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowPasswordUser != null) {
       _json["allowPasswordUser"] = allowPasswordUser;
     }
@@ -2339,7 +2432,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
       _json["authorizedDomains"] = authorizedDomains;
     }
     if (changeEmailTemplate != null) {
-      _json["changeEmailTemplate"] = (changeEmailTemplate).toJson();
+      _json["changeEmailTemplate"] = changeEmailTemplate.toJson();
     }
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
@@ -2348,20 +2441,20 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
       _json["enableAnonymousUser"] = enableAnonymousUser;
     }
     if (idpConfig != null) {
-      _json["idpConfig"] = idpConfig.map((value) => (value).toJson()).toList();
+      _json["idpConfig"] = idpConfig.map((value) => value.toJson()).toList();
     }
     if (legacyResetPasswordTemplate != null) {
       _json["legacyResetPasswordTemplate"] =
-          (legacyResetPasswordTemplate).toJson();
+          legacyResetPasswordTemplate.toJson();
     }
     if (resetPasswordTemplate != null) {
-      _json["resetPasswordTemplate"] = (resetPasswordTemplate).toJson();
+      _json["resetPasswordTemplate"] = resetPasswordTemplate.toJson();
     }
     if (useEmailSending != null) {
       _json["useEmailSending"] = useEmailSending;
     }
     if (verifyEmailTemplate != null) {
-      _json["verifyEmailTemplate"] = (verifyEmailTemplate).toJson();
+      _json["verifyEmailTemplate"] = verifyEmailTemplate.toJson();
     }
     return _json;
   }
@@ -2382,7 +2475,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -2411,7 +2504,7 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
     }
@@ -2437,7 +2530,7 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (localId != null) {
       _json["localId"] = localId;
     }
@@ -2540,7 +2633,7 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -2613,9 +2706,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   /// The salt separator.
   core.String saltSeparator;
-  core.List<core.int> get saltSeparatorAsBytes {
-    return convert.base64.decode(saltSeparator);
-  }
+  core.List<core.int> get saltSeparatorAsBytes =>
+      convert.base64.decode(saltSeparator);
 
   set saltSeparatorAsBytes(core.List<core.int> _bytes) {
     saltSeparator =
@@ -2628,9 +2720,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 
   /// The key for to hash the password.
   core.String signerKey;
-  core.List<core.int> get signerKeyAsBytes {
-    return convert.base64.decode(signerKey);
-  }
+  core.List<core.int> get signerKeyAsBytes => convert.base64.decode(signerKey);
 
   set signerKeyAsBytes(core.List<core.int> _bytes) {
     signerKey =
@@ -2688,14 +2778,14 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     }
     if (_json.containsKey("users")) {
       users = (_json["users"] as core.List)
-          .map<UserInfo>((value) => new UserInfo.fromJson(value))
+          .map<UserInfo>((value) => UserInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowOverwrite != null) {
       _json["allowOverwrite"] = allowOverwrite;
     }
@@ -2736,7 +2826,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
       _json["targetProjectId"] = targetProjectId;
     }
     if (users != null) {
-      _json["users"] = users.map((value) => (value).toJson()).toList();
+      _json["users"] = users.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2837,7 +2927,7 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoCreate != null) {
       _json["autoCreate"] = autoCreate;
     }
@@ -2915,7 +3005,7 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json["delegatedProjectNumber"] = delegatedProjectNumber;
     }
@@ -3011,7 +3101,7 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json["captchaChallenge"] = captchaChallenge;
     }
@@ -3090,7 +3180,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -3167,7 +3257,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expiresIn != null) {
       _json["expiresIn"] = expiresIn;
     }
@@ -3249,7 +3339,7 @@ class IdpConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -3374,7 +3464,7 @@ class Relyingparty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidInstallApp != null) {
       _json["androidInstallApp"] = androidInstallApp;
     }
@@ -3458,7 +3548,7 @@ class ResetPasswordResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (email != null) {
       _json["email"] = email;
     }
@@ -3509,7 +3599,7 @@ class SetAccountInfoResponseProviderUserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3555,9 +3645,8 @@ class SetAccountInfoResponse {
 
   /// The user's hashed password.
   core.String passwordHash;
-  core.List<core.int> get passwordHashAsBytes {
-    return convert.base64.decode(passwordHash);
-  }
+  core.List<core.int> get passwordHashAsBytes =>
+      convert.base64.decode(passwordHash);
 
   set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
@@ -3608,8 +3697,8 @@ class SetAccountInfoResponse {
     }
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = (_json["providerUserInfo"] as core.List)
-          .map<SetAccountInfoResponseProviderUserInfo>((value) =>
-              new SetAccountInfoResponseProviderUserInfo.fromJson(value))
+          .map<SetAccountInfoResponseProviderUserInfo>(
+              (value) => SetAccountInfoResponseProviderUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("refreshToken")) {
@@ -3619,7 +3708,7 @@ class SetAccountInfoResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3652,7 +3741,7 @@ class SetAccountInfoResponse {
     }
     if (providerUserInfo != null) {
       _json["providerUserInfo"] =
-          providerUserInfo.map((value) => (value).toJson()).toList();
+          providerUserInfo.map((value) => value.toJson()).toList();
     }
     if (refreshToken != null) {
       _json["refreshToken"] = refreshToken;
@@ -3714,7 +3803,7 @@ class SignupNewUserResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3760,7 +3849,7 @@ class UploadAccountResponseError {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (index != null) {
       _json["index"] = index;
     }
@@ -3785,7 +3874,7 @@ class UploadAccountResponse {
     if (_json.containsKey("error")) {
       error = (_json["error"] as core.List)
           .map<UploadAccountResponseError>(
-              (value) => new UploadAccountResponseError.fromJson(value))
+              (value) => UploadAccountResponseError.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3795,9 +3884,9 @@ class UploadAccountResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = error.map((value) => (value).toJson()).toList();
+      _json["error"] = error.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3864,7 +3953,7 @@ class UserInfoProviderUserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3924,9 +4013,8 @@ class UserInfo {
 
   /// The user's hashed password.
   core.String passwordHash;
-  core.List<core.int> get passwordHashAsBytes {
-    return convert.base64.decode(passwordHash);
-  }
+  core.List<core.int> get passwordHashAsBytes =>
+      convert.base64.decode(passwordHash);
 
   set passwordHashAsBytes(core.List<core.int> _bytes) {
     passwordHash =
@@ -3950,9 +4038,7 @@ class UserInfo {
 
   /// The user's password salt.
   core.String salt;
-  core.List<core.int> get saltAsBytes {
-    return convert.base64.decode(salt);
-  }
+  core.List<core.int> get saltAsBytes => convert.base64.decode(salt);
 
   set saltAsBytes(core.List<core.int> _bytes) {
     salt =
@@ -4013,7 +4099,7 @@ class UserInfo {
     if (_json.containsKey("providerUserInfo")) {
       providerUserInfo = (_json["providerUserInfo"] as core.List)
           .map<UserInfoProviderUserInfo>(
-              (value) => new UserInfoProviderUserInfo.fromJson(value))
+              (value) => UserInfoProviderUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rawPassword")) {
@@ -4035,7 +4121,7 @@ class UserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createdAt != null) {
       _json["createdAt"] = createdAt;
     }
@@ -4077,7 +4163,7 @@ class UserInfo {
     }
     if (providerUserInfo != null) {
       _json["providerUserInfo"] =
-          providerUserInfo.map((value) => (value).toJson()).toList();
+          providerUserInfo.map((value) => value.toJson()).toList();
     }
     if (rawPassword != null) {
       _json["rawPassword"] = rawPassword;
@@ -4356,7 +4442,7 @@ class VerifyAssertionResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -4518,7 +4604,7 @@ class VerifyCustomTokenResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (expiresIn != null) {
       _json["expiresIn"] = expiresIn;
     }
@@ -4622,7 +4708,7 @@ class VerifyPasswordResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

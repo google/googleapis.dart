@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.siteVerification.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,14 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterSiteVerificationWebResourceGettokenRequestSite = 0;
-buildSiteVerificationWebResourceGettokenRequestSite() {
-  var o = new api.SiteVerificationWebResourceGettokenRequestSite();
+api.SiteVerificationWebResourceGettokenRequestSite
+    buildSiteVerificationWebResourceGettokenRequestSite() {
+  var o = api.SiteVerificationWebResourceGettokenRequestSite();
   buildCounterSiteVerificationWebResourceGettokenRequestSite++;
   if (buildCounterSiteVerificationWebResourceGettokenRequestSite < 3) {
     o.identifier = "foo";
@@ -62,7 +83,7 @@ buildSiteVerificationWebResourceGettokenRequestSite() {
   return o;
 }
 
-checkSiteVerificationWebResourceGettokenRequestSite(
+void checkSiteVerificationWebResourceGettokenRequestSite(
     api.SiteVerificationWebResourceGettokenRequestSite o) {
   buildCounterSiteVerificationWebResourceGettokenRequestSite++;
   if (buildCounterSiteVerificationWebResourceGettokenRequestSite < 3) {
@@ -73,8 +94,9 @@ checkSiteVerificationWebResourceGettokenRequestSite(
 }
 
 core.int buildCounterSiteVerificationWebResourceGettokenRequest = 0;
-buildSiteVerificationWebResourceGettokenRequest() {
-  var o = new api.SiteVerificationWebResourceGettokenRequest();
+api.SiteVerificationWebResourceGettokenRequest
+    buildSiteVerificationWebResourceGettokenRequest() {
+  var o = api.SiteVerificationWebResourceGettokenRequest();
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
     o.site = buildSiteVerificationWebResourceGettokenRequestSite();
@@ -84,7 +106,7 @@ buildSiteVerificationWebResourceGettokenRequest() {
   return o;
 }
 
-checkSiteVerificationWebResourceGettokenRequest(
+void checkSiteVerificationWebResourceGettokenRequest(
     api.SiteVerificationWebResourceGettokenRequest o) {
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
@@ -95,8 +117,9 @@ checkSiteVerificationWebResourceGettokenRequest(
 }
 
 core.int buildCounterSiteVerificationWebResourceGettokenResponse = 0;
-buildSiteVerificationWebResourceGettokenResponse() {
-  var o = new api.SiteVerificationWebResourceGettokenResponse();
+api.SiteVerificationWebResourceGettokenResponse
+    buildSiteVerificationWebResourceGettokenResponse() {
+  var o = api.SiteVerificationWebResourceGettokenResponse();
   buildCounterSiteVerificationWebResourceGettokenResponse++;
   if (buildCounterSiteVerificationWebResourceGettokenResponse < 3) {
     o.method = "foo";
@@ -106,7 +129,7 @@ buildSiteVerificationWebResourceGettokenResponse() {
   return o;
 }
 
-checkSiteVerificationWebResourceGettokenResponse(
+void checkSiteVerificationWebResourceGettokenResponse(
     api.SiteVerificationWebResourceGettokenResponse o) {
   buildCounterSiteVerificationWebResourceGettokenResponse++;
   if (buildCounterSiteVerificationWebResourceGettokenResponse < 3) {
@@ -116,55 +139,57 @@ checkSiteVerificationWebResourceGettokenResponse(
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed4389() {
-  var o = new core.List<api.SiteVerificationWebResourceResource>();
+core.List<api.SiteVerificationWebResourceResource> buildUnnamed4336() {
+  var o = <api.SiteVerificationWebResourceResource>[];
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed4389(core.List<api.SiteVerificationWebResourceResource> o) {
+void checkUnnamed4336(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
 }
 
 core.int buildCounterSiteVerificationWebResourceListResponse = 0;
-buildSiteVerificationWebResourceListResponse() {
-  var o = new api.SiteVerificationWebResourceListResponse();
+api.SiteVerificationWebResourceListResponse
+    buildSiteVerificationWebResourceListResponse() {
+  var o = api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed4389();
+    o.items = buildUnnamed4336();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
 }
 
-checkSiteVerificationWebResourceListResponse(
+void checkSiteVerificationWebResourceListResponse(
     api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed4389(o.items);
+    checkUnnamed4336(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed4390() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed4337() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4390(core.List<core.String> o) {
+void checkUnnamed4337(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterSiteVerificationWebResourceResourceSite = 0;
-buildSiteVerificationWebResourceResourceSite() {
-  var o = new api.SiteVerificationWebResourceResourceSite();
+api.SiteVerificationWebResourceResourceSite
+    buildSiteVerificationWebResourceResourceSite() {
+  var o = api.SiteVerificationWebResourceResourceSite();
   buildCounterSiteVerificationWebResourceResourceSite++;
   if (buildCounterSiteVerificationWebResourceResourceSite < 3) {
     o.identifier = "foo";
@@ -174,7 +199,7 @@ buildSiteVerificationWebResourceResourceSite() {
   return o;
 }
 
-checkSiteVerificationWebResourceResourceSite(
+void checkSiteVerificationWebResourceResourceSite(
     api.SiteVerificationWebResourceResourceSite o) {
   buildCounterSiteVerificationWebResourceResourceSite++;
   if (buildCounterSiteVerificationWebResourceResourceSite < 3) {
@@ -185,35 +210,36 @@ checkSiteVerificationWebResourceResourceSite(
 }
 
 core.int buildCounterSiteVerificationWebResourceResource = 0;
-buildSiteVerificationWebResourceResource() {
-  var o = new api.SiteVerificationWebResourceResource();
+api.SiteVerificationWebResourceResource
+    buildSiteVerificationWebResourceResource() {
+  var o = api.SiteVerificationWebResourceResource();
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed4390();
+    o.owners = buildUnnamed4337();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
   return o;
 }
 
-checkSiteVerificationWebResourceResource(
+void checkSiteVerificationWebResourceResource(
     api.SiteVerificationWebResourceResource o) {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed4390(o.owners);
+    checkUnnamed4337(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-SiteVerificationWebResourceGettokenRequestSite",
       () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceGettokenRequestSite();
-      var od = new api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
+      var od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
           o.toJson());
       checkSiteVerificationWebResourceGettokenRequestSite(od);
     });
@@ -222,8 +248,8 @@ main() {
   unittest.group("obj-schema-SiteVerificationWebResourceGettokenRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceGettokenRequest();
-      var od = new api.SiteVerificationWebResourceGettokenRequest.fromJson(
-          o.toJson());
+      var od =
+          api.SiteVerificationWebResourceGettokenRequest.fromJson(o.toJson());
       checkSiteVerificationWebResourceGettokenRequest(od);
     });
   });
@@ -231,8 +257,8 @@ main() {
   unittest.group("obj-schema-SiteVerificationWebResourceGettokenResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceGettokenResponse();
-      var od = new api.SiteVerificationWebResourceGettokenResponse.fromJson(
-          o.toJson());
+      var od =
+          api.SiteVerificationWebResourceGettokenResponse.fromJson(o.toJson());
       checkSiteVerificationWebResourceGettokenResponse(od);
     });
   });
@@ -240,8 +266,7 @@ main() {
   unittest.group("obj-schema-SiteVerificationWebResourceListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceListResponse();
-      var od =
-          new api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
+      var od = api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
       checkSiteVerificationWebResourceListResponse(od);
     });
   });
@@ -249,8 +274,7 @@ main() {
   unittest.group("obj-schema-SiteVerificationWebResourceResourceSite", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceResourceSite();
-      var od =
-          new api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
+      var od = api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
       checkSiteVerificationWebResourceResourceSite(od);
     });
   });
@@ -258,23 +282,23 @@ main() {
   unittest.group("obj-schema-SiteVerificationWebResourceResource", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteVerificationWebResourceResource();
-      var od = new api.SiteVerificationWebResourceResource.fromJson(o.toJson());
+      var od = api.SiteVerificationWebResourceResource.fromJson(o.toJson());
       checkSiteVerificationWebResourceResource(od);
     });
   });
 
   unittest.group("resource-WebResourceResourceApi", () {
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -291,19 +315,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -312,7 +332,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_id, $fields: arg_$fields)
@@ -320,16 +340,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -346,19 +366,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -368,7 +384,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_id, $fields: arg_$fields)
@@ -378,20 +394,19 @@ main() {
     });
 
     unittest.test("method--getToken", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
+        var obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
         checkSiteVerificationWebResourceGettokenRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -405,19 +420,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -427,7 +438,7 @@ main() {
         };
         var resp = convert.json
             .encode(buildSiteVerificationWebResourceGettokenResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getToken(arg_request, $fields: arg_$fields)
@@ -437,20 +448,20 @@ main() {
     });
 
     unittest.test("method--insert", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_verificationMethod = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -464,19 +475,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["verificationMethod"].first,
@@ -488,7 +495,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .insert(arg_request, arg_verificationMethod, $fields: arg_$fields)
@@ -498,15 +505,15 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -520,19 +527,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -542,7 +545,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceListResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
         checkSiteVerificationWebResourceListResponse(response);
@@ -550,20 +553,20 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -580,19 +583,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -602,7 +601,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_id, $fields: arg_$fields)
@@ -612,20 +611,20 @@ main() {
     });
 
     unittest.test("method--update", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.WebResourceResourceApi res =
-          new api.SiteVerificationApi(mock).webResource;
+          api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -642,19 +641,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -664,7 +659,7 @@ main() {
         };
         var resp =
             convert.json.encode(buildSiteVerificationWebResourceResource());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .update(arg_request, arg_id, $fields: arg_$fields)

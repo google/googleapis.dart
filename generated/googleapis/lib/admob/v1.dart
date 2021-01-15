@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.admob.v1;
 
@@ -25,22 +43,22 @@ class AdmobApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
+  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   AdmobApi(http.Client client,
       {core.String rootUrl = "https://admob.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsMediationReportResourceApi get mediationReport =>
-      new AccountsMediationReportResourceApi(_requester);
+      AccountsMediationReportResourceApi(_requester);
   AccountsNetworkReportResourceApi get networkReport =>
-      new AccountsNetworkReportResourceApi(_requester);
+      AccountsNetworkReportResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -62,16 +80,19 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PublisherAccount> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PublisherAccount> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -79,13 +100,16 @@ class AccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PublisherAccount.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PublisherAccount.fromJson(data));
   }
 
   /// Lists the AdMob publisher account accessible with the client credential.
@@ -110,14 +134,17 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListPublisherAccountsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListPublisherAccountsResponse> list({
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -131,14 +158,17 @@ class AccountsResourceApi {
 
     _url = 'v1/accounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListPublisherAccountsResponse.fromJson(data));
+        .then((data) => ListPublisherAccountsResponse.fromJson(data));
   }
 }
 
@@ -170,20 +200,22 @@ class AccountsMediationReportResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GenerateMediationReportResponse> generate(
-      GenerateMediationReportRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GenerateMediationReportRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -193,14 +225,17 @@ class AccountsMediationReportResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/mediationReport:generate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GenerateMediationReportResponse.fromJson(data));
+        .then((data) => GenerateMediationReportResponse.fromJson(data));
   }
 }
 
@@ -232,20 +267,22 @@ class AccountsNetworkReportResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GenerateNetworkReportResponse> generate(
-      GenerateNetworkReportRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GenerateNetworkReportRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -255,14 +292,17 @@ class AccountsNetworkReportResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/networkReport:generate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GenerateNetworkReportResponse.fromJson(data));
+        .then((data) => GenerateNetworkReportResponse.fromJson(data));
   }
 }
 
@@ -304,7 +344,7 @@ class Date {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (day != null) {
       _json["day"] = day;
     }
@@ -332,21 +372,21 @@ class DateRange {
 
   DateRange.fromJson(core.Map _json) {
     if (_json.containsKey("endDate")) {
-      endDate = new Date.fromJson(_json["endDate"]);
+      endDate = Date.fromJson(_json["endDate"]);
     }
     if (_json.containsKey("startDate")) {
-      startDate = new Date.fromJson(_json["startDate"]);
+      startDate = Date.fromJson(_json["startDate"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endDate != null) {
-      _json["endDate"] = (endDate).toJson();
+      _json["endDate"] = endDate.toJson();
     }
     if (startDate != null) {
-      _json["startDate"] = (startDate).toJson();
+      _json["startDate"] = startDate.toJson();
     }
     return _json;
   }
@@ -361,15 +401,15 @@ class GenerateMediationReportRequest {
 
   GenerateMediationReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("reportSpec")) {
-      reportSpec = new MediationReportSpec.fromJson(_json["reportSpec"]);
+      reportSpec = MediationReportSpec.fromJson(_json["reportSpec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (reportSpec != null) {
-      _json["reportSpec"] = (reportSpec).toJson();
+      _json["reportSpec"] = reportSpec.toJson();
     }
     return _json;
   }
@@ -401,27 +441,27 @@ class GenerateMediationReportResponse {
 
   GenerateMediationReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey("footer")) {
-      footer = new ReportFooter.fromJson(_json["footer"]);
+      footer = ReportFooter.fromJson(_json["footer"]);
     }
     if (_json.containsKey("header")) {
-      header = new ReportHeader.fromJson(_json["header"]);
+      header = ReportHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("row")) {
-      row = new ReportRow.fromJson(_json["row"]);
+      row = ReportRow.fromJson(_json["row"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (footer != null) {
-      _json["footer"] = (footer).toJson();
+      _json["footer"] = footer.toJson();
     }
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (row != null) {
-      _json["row"] = (row).toJson();
+      _json["row"] = row.toJson();
     }
     return _json;
   }
@@ -436,15 +476,15 @@ class GenerateNetworkReportRequest {
 
   GenerateNetworkReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("reportSpec")) {
-      reportSpec = new NetworkReportSpec.fromJson(_json["reportSpec"]);
+      reportSpec = NetworkReportSpec.fromJson(_json["reportSpec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (reportSpec != null) {
-      _json["reportSpec"] = (reportSpec).toJson();
+      _json["reportSpec"] = reportSpec.toJson();
     }
     return _json;
   }
@@ -476,27 +516,27 @@ class GenerateNetworkReportResponse {
 
   GenerateNetworkReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey("footer")) {
-      footer = new ReportFooter.fromJson(_json["footer"]);
+      footer = ReportFooter.fromJson(_json["footer"]);
     }
     if (_json.containsKey("header")) {
-      header = new ReportHeader.fromJson(_json["header"]);
+      header = ReportHeader.fromJson(_json["header"]);
     }
     if (_json.containsKey("row")) {
-      row = new ReportRow.fromJson(_json["row"]);
+      row = ReportRow.fromJson(_json["row"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (footer != null) {
-      _json["footer"] = (footer).toJson();
+      _json["footer"] = footer.toJson();
     }
     if (header != null) {
-      _json["header"] = (header).toJson();
+      _json["header"] = header.toJson();
     }
     if (row != null) {
-      _json["row"] = (row).toJson();
+      _json["row"] = row.toJson();
     }
     return _json;
   }
@@ -516,8 +556,7 @@ class ListPublisherAccountsResponse {
   ListPublisherAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
       account = (_json["account"] as core.List)
-          .map<PublisherAccount>(
-              (value) => new PublisherAccount.fromJson(value))
+          .map<PublisherAccount>((value) => PublisherAccount.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -527,9 +566,9 @@ class ListPublisherAccountsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = account.map((value) => (value).toJson()).toList();
+      _json["account"] = account.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -564,7 +603,7 @@ class LocalizationSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -629,12 +668,12 @@ class MediationReportSpec {
 
   MediationReportSpec.fromJson(core.Map _json) {
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
           .map<MediationReportSpecDimensionFilter>(
-              (value) => new MediationReportSpecDimensionFilter.fromJson(value))
+              (value) => MediationReportSpecDimensionFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
@@ -642,7 +681,7 @@ class MediationReportSpec {
     }
     if (_json.containsKey("localizationSettings")) {
       localizationSettings =
-          new LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json["localizationSettings"]);
     }
     if (_json.containsKey("maxReportRows")) {
       maxReportRows = _json["maxReportRows"];
@@ -653,7 +692,7 @@ class MediationReportSpec {
     if (_json.containsKey("sortConditions")) {
       sortConditions = (_json["sortConditions"] as core.List)
           .map<MediationReportSpecSortCondition>(
-              (value) => new MediationReportSpecSortCondition.fromJson(value))
+              (value) => MediationReportSpecSortCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timeZone")) {
@@ -663,19 +702,19 @@ class MediationReportSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = (localizationSettings).toJson();
+      _json["localizationSettings"] = localizationSettings.toJson();
     }
     if (maxReportRows != null) {
       _json["maxReportRows"] = maxReportRows;
@@ -685,7 +724,7 @@ class MediationReportSpec {
     }
     if (sortConditions != null) {
       _json["sortConditions"] =
-          sortConditions.map((value) => (value).toJson()).toList();
+          sortConditions.map((value) => value.toJson()).toList();
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
@@ -736,18 +775,18 @@ class MediationReportSpecDimensionFilter {
       dimension = _json["dimension"];
     }
     if (_json.containsKey("matchesAny")) {
-      matchesAny = new StringList.fromJson(_json["matchesAny"]);
+      matchesAny = StringList.fromJson(_json["matchesAny"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
     if (matchesAny != null) {
-      _json["matchesAny"] = (matchesAny).toJson();
+      _json["matchesAny"] = matchesAny.toJson();
     }
     return _json;
   }
@@ -837,7 +876,7 @@ class MediationReportSpecSortCondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
@@ -906,12 +945,12 @@ class NetworkReportSpec {
 
   NetworkReportSpec.fromJson(core.Map _json) {
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("dimensionFilters")) {
       dimensionFilters = (_json["dimensionFilters"] as core.List)
           .map<NetworkReportSpecDimensionFilter>(
-              (value) => new NetworkReportSpecDimensionFilter.fromJson(value))
+              (value) => NetworkReportSpecDimensionFilter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("dimensions")) {
@@ -919,7 +958,7 @@ class NetworkReportSpec {
     }
     if (_json.containsKey("localizationSettings")) {
       localizationSettings =
-          new LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json["localizationSettings"]);
     }
     if (_json.containsKey("maxReportRows")) {
       maxReportRows = _json["maxReportRows"];
@@ -930,7 +969,7 @@ class NetworkReportSpec {
     if (_json.containsKey("sortConditions")) {
       sortConditions = (_json["sortConditions"] as core.List)
           .map<NetworkReportSpecSortCondition>(
-              (value) => new NetworkReportSpecSortCondition.fromJson(value))
+              (value) => NetworkReportSpecSortCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("timeZone")) {
@@ -940,19 +979,19 @@ class NetworkReportSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (dimensionFilters != null) {
       _json["dimensionFilters"] =
-          dimensionFilters.map((value) => (value).toJson()).toList();
+          dimensionFilters.map((value) => value.toJson()).toList();
     }
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = (localizationSettings).toJson();
+      _json["localizationSettings"] = localizationSettings.toJson();
     }
     if (maxReportRows != null) {
       _json["maxReportRows"] = maxReportRows;
@@ -962,7 +1001,7 @@ class NetworkReportSpec {
     }
     if (sortConditions != null) {
       _json["sortConditions"] =
-          sortConditions.map((value) => (value).toJson()).toList();
+          sortConditions.map((value) => value.toJson()).toList();
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
@@ -1012,18 +1051,18 @@ class NetworkReportSpecDimensionFilter {
       dimension = _json["dimension"];
     }
     if (_json.containsKey("matchesAny")) {
-      matchesAny = new StringList.fromJson(_json["matchesAny"]);
+      matchesAny = StringList.fromJson(_json["matchesAny"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
     if (matchesAny != null) {
-      _json["matchesAny"] = (matchesAny).toJson();
+      _json["matchesAny"] = matchesAny.toJson();
     }
     return _json;
   }
@@ -1113,7 +1152,7 @@ class NetworkReportSpecSortCondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
@@ -1166,7 +1205,7 @@ class PublisherAccount {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -1202,19 +1241,19 @@ class ReportFooter {
     }
     if (_json.containsKey("warnings")) {
       warnings = (_json["warnings"] as core.List)
-          .map<ReportWarning>((value) => new ReportWarning.fromJson(value))
+          .map<ReportWarning>((value) => ReportWarning.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (matchingRowCount != null) {
       _json["matchingRowCount"] = matchingRowCount;
     }
     if (warnings != null) {
-      _json["warnings"] = warnings.map((value) => (value).toJson()).toList();
+      _json["warnings"] = warnings.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -1239,11 +1278,11 @@ class ReportHeader {
 
   ReportHeader.fromJson(core.Map _json) {
     if (_json.containsKey("dateRange")) {
-      dateRange = new DateRange.fromJson(_json["dateRange"]);
+      dateRange = DateRange.fromJson(_json["dateRange"]);
     }
     if (_json.containsKey("localizationSettings")) {
       localizationSettings =
-          new LocalizationSettings.fromJson(_json["localizationSettings"]);
+          LocalizationSettings.fromJson(_json["localizationSettings"]);
     }
     if (_json.containsKey("reportingTimeZone")) {
       reportingTimeZone = _json["reportingTimeZone"];
@@ -1252,12 +1291,12 @@ class ReportHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dateRange != null) {
-      _json["dateRange"] = (dateRange).toJson();
+      _json["dateRange"] = dateRange.toJson();
     }
     if (localizationSettings != null) {
-      _json["localizationSettings"] = (localizationSettings).toJson();
+      _json["localizationSettings"] = localizationSettings.toJson();
     }
     if (reportingTimeZone != null) {
       _json["reportingTimeZone"] = reportingTimeZone;
@@ -1282,28 +1321,27 @@ class ReportRow {
     if (_json.containsKey("dimensionValues")) {
       dimensionValues = commons.mapMap<core.Map, ReportRowDimensionValue>(
           _json["dimensionValues"].cast<core.String, core.Map>(),
-          (core.Map item) => new ReportRowDimensionValue.fromJson(item));
+          (core.Map item) => ReportRowDimensionValue.fromJson(item));
     }
     if (_json.containsKey("metricValues")) {
       metricValues = commons.mapMap<core.Map, ReportRowMetricValue>(
           _json["metricValues"].cast<core.String, core.Map>(),
-          (core.Map item) => new ReportRowMetricValue.fromJson(item));
+          (core.Map item) => ReportRowMetricValue.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dimensionValues != null) {
       _json["dimensionValues"] = commons
           .mapMap<ReportRowDimensionValue, core.Map<core.String, core.Object>>(
-              dimensionValues,
-              (ReportRowDimensionValue item) => (item).toJson());
+              dimensionValues, (ReportRowDimensionValue item) => item.toJson());
     }
     if (metricValues != null) {
       _json["metricValues"] = commons
           .mapMap<ReportRowMetricValue, core.Map<core.String, core.Object>>(
-              metricValues, (ReportRowMetricValue item) => (item).toJson());
+              metricValues, (ReportRowMetricValue item) => item.toJson());
     }
     return _json;
   }
@@ -1332,7 +1370,7 @@ class ReportRowDimensionValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayLabel != null) {
       _json["displayLabel"] = displayLabel;
     }
@@ -1372,7 +1410,7 @@ class ReportRowMetricValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (doubleValue != null) {
       _json["doubleValue"] = doubleValue;
     }
@@ -1424,7 +1462,7 @@ class ReportWarning {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -1450,7 +1488,7 @@ class StringList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }

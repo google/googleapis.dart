@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis_beta.datacatalog.v1beta1;
 
@@ -25,15 +43,15 @@ class DatacatalogApi {
 
   final commons.ApiRequester _requester;
 
-  CatalogResourceApi get catalog => new CatalogResourceApi(_requester);
-  EntriesResourceApi get entries => new EntriesResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  CatalogResourceApi get catalog => CatalogResourceApi(_requester);
+  EntriesResourceApi get entries => EntriesResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   DatacatalogApi(http.Client client,
       {core.String rootUrl = "https://datacatalog.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class CatalogResourceApi {
@@ -68,17 +86,18 @@ class CatalogResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> search(
-      GoogleCloudDatacatalogV1beta1SearchCatalogRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1SearchCatalogRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -86,14 +105,17 @@ class CatalogResourceApi {
 
     _url = 'v1beta1/catalog:search';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(data));
+        GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(data));
   }
 }
 
@@ -134,16 +156,17 @@ class EntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1Entry> lookup(
-      {core.String sqlResource,
-      core.String linkedResource,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1Entry> lookup({
+    core.String sqlResource,
+    core.String linkedResource,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (sqlResource != null) {
       _queryParams["sqlResource"] = [sqlResource];
@@ -157,14 +180,17 @@ class EntriesResourceApi {
 
     _url = 'v1beta1/entries:lookup';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
   }
 }
 
@@ -172,7 +198,7 @@ class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -181,11 +207,11 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEntryGroupsResourceApi get entryGroups =>
-      new ProjectsLocationsEntryGroupsResourceApi(_requester);
+      ProjectsLocationsEntryGroupsResourceApi(_requester);
   ProjectsLocationsTagTemplatesResourceApi get tagTemplates =>
-      new ProjectsLocationsTagTemplatesResourceApi(_requester);
+      ProjectsLocationsTagTemplatesResourceApi(_requester);
   ProjectsLocationsTaxonomiesResourceApi get taxonomies =>
-      new ProjectsLocationsTaxonomiesResourceApi(_requester);
+      ProjectsLocationsTaxonomiesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -195,9 +221,9 @@ class ProjectsLocationsEntryGroupsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEntryGroupsEntriesResourceApi get entries =>
-      new ProjectsLocationsEntryGroupsEntriesResourceApi(_requester);
+      ProjectsLocationsEntryGroupsEntriesResourceApi(_requester);
   ProjectsLocationsEntryGroupsTagsResourceApi get tags =>
-      new ProjectsLocationsEntryGroupsTagsResourceApi(_requester);
+      ProjectsLocationsEntryGroupsTagsResourceApi(_requester);
 
   ProjectsLocationsEntryGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -233,20 +259,23 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> create(
-      GoogleCloudDatacatalogV1beta1EntryGroup request, core.String parent,
-      {core.String entryGroupId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1EntryGroup request,
+    core.String parent, {
+    core.String entryGroupId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (entryGroupId != null) {
       _queryParams["entryGroupId"] = [entryGroupId];
@@ -259,14 +288,17 @@ class ProjectsLocationsEntryGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entryGroups';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
   }
 
   /// Deletes an EntryGroup. Only entry groups that do not contain entries can
@@ -294,17 +326,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name,
-      {core.bool force, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool force,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (force != null) {
       _queryParams["force"] = ["${force}"];
@@ -315,13 +350,16 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an EntryGroup.
@@ -346,17 +384,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> get(core.String name,
-      {core.String readMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> get(
+    core.String name, {
+    core.String readMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (readMask != null) {
       _queryParams["readMask"] = [readMask];
@@ -367,14 +408,17 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -409,20 +453,22 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -432,13 +478,16 @@ class ProjectsLocationsEntryGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists entry groups.
@@ -467,19 +516,20 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -495,15 +545,17 @@ class ProjectsLocationsEntryGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entryGroups';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
-            data));
+        GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(data));
   }
 
   /// Updates an EntryGroup. The user should enable the Data Catalog API in the
@@ -537,20 +589,23 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> patch(
-      GoogleCloudDatacatalogV1beta1EntryGroup request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1EntryGroup request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -561,14 +616,17 @@ class ProjectsLocationsEntryGroupsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
   }
 
   /// Sets the access control policy for a resource. Replaces any existing
@@ -601,20 +659,22 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -624,13 +684,16 @@ class ProjectsLocationsEntryGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -662,20 +725,22 @@ class ProjectsLocationsEntryGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -685,14 +750,16 @@ class ProjectsLocationsEntryGroupsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -700,7 +767,7 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsEntryGroupsEntriesTagsResourceApi get tags =>
-      new ProjectsLocationsEntryGroupsEntriesTagsResourceApi(_requester);
+      ProjectsLocationsEntryGroupsEntriesTagsResourceApi(_requester);
 
   ProjectsLocationsEntryGroupsEntriesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -737,20 +804,23 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Entry> create(
-      GoogleCloudDatacatalogV1beta1Entry request, core.String parent,
-      {core.String entryId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Entry request,
+    core.String parent, {
+    core.String entryId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (entryId != null) {
       _queryParams["entryId"] = [entryId];
@@ -763,14 +833,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entries';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
   }
 
   /// Deletes an existing entry. Only entries created through CreateEntry method
@@ -796,16 +869,19 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -813,13 +889,16 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets an entry.
@@ -841,17 +920,19 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1Entry> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1Entry> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -859,14 +940,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -901,20 +985,22 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -924,13 +1010,16 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists entries.
@@ -965,20 +1054,21 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntriesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.String readMask,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.String readMask,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -997,14 +1087,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entries';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(data));
+        GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(data));
   }
 
   /// Updates an existing entry. Users should enable the Data Catalog API in the
@@ -1045,20 +1138,23 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Entry> patch(
-      GoogleCloudDatacatalogV1beta1Entry request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Entry request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1069,14 +1165,17 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -1108,20 +1207,22 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1131,14 +1232,16 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1179,20 +1282,22 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Tag> create(
-      GoogleCloudDatacatalogV1beta1Tag request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Tag request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1201,14 +1306,17 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
   }
 
   /// Deletes a tag.
@@ -1230,16 +1338,19 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1247,13 +1358,16 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists the tags on an Entry.
@@ -1284,19 +1398,20 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTagsResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1311,14 +1426,17 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
   }
 
   /// Updates an existing tag.
@@ -1349,20 +1467,23 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Tag> patch(
-      GoogleCloudDatacatalogV1beta1Tag request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Tag request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1373,14 +1494,17 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
   }
 }
 
@@ -1420,20 +1544,22 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Tag> create(
-      GoogleCloudDatacatalogV1beta1Tag request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Tag request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1442,14 +1568,17 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
   }
 
   /// Deletes a tag.
@@ -1471,16 +1600,19 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1488,13 +1620,16 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Lists the tags on an Entry.
@@ -1525,19 +1660,20 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTagsResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1552,14 +1688,17 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
   }
 
   /// Updates an existing tag.
@@ -1590,20 +1729,23 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Tag> patch(
-      GoogleCloudDatacatalogV1beta1Tag request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Tag request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1614,14 +1756,17 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
   }
 }
 
@@ -1629,7 +1774,7 @@ class ProjectsLocationsTagTemplatesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTagTemplatesFieldsResourceApi get fields =>
-      new ProjectsLocationsTagTemplatesFieldsResourceApi(_requester);
+      ProjectsLocationsTagTemplatesFieldsResourceApi(_requester);
 
   ProjectsLocationsTagTemplatesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1661,20 +1806,23 @@ class ProjectsLocationsTagTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> create(
-      GoogleCloudDatacatalogV1beta1TagTemplate request, core.String parent,
-      {core.String tagTemplateId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1TagTemplate request,
+    core.String parent, {
+    core.String tagTemplateId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (tagTemplateId != null) {
       _queryParams["tagTemplateId"] = [tagTemplateId];
@@ -1687,14 +1835,17 @@ class ProjectsLocationsTagTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tagTemplates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
   }
 
   /// Deletes a tag template and all tags using the template. Users should
@@ -1724,17 +1875,20 @@ class ProjectsLocationsTagTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name,
-      {core.bool force, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool force,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (force != null) {
       _queryParams["force"] = ["${force}"];
@@ -1745,13 +1899,16 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a tag template.
@@ -1773,17 +1930,19 @@ class ProjectsLocationsTagTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1791,14 +1950,17 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -1833,20 +1995,22 @@ class ProjectsLocationsTagTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1856,13 +2020,16 @@ class ProjectsLocationsTagTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Updates a tag template. This method cannot be used to update the fields of
@@ -1899,20 +2066,23 @@ class ProjectsLocationsTagTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> patch(
-      GoogleCloudDatacatalogV1beta1TagTemplate request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1TagTemplate request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1923,14 +2093,17 @@ class ProjectsLocationsTagTemplatesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
   }
 
   /// Sets the access control policy for a resource. Replaces any existing
@@ -1963,20 +2136,22 @@ class ProjectsLocationsTagTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1986,13 +2161,16 @@ class ProjectsLocationsTagTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -2024,20 +2202,22 @@ class ProjectsLocationsTagTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2047,14 +2227,16 @@ class ProjectsLocationsTagTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -2062,7 +2244,7 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi get enumValues =>
-      new ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi(_requester);
+      ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi(_requester);
 
   ProjectsLocationsTagTemplatesFieldsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2101,20 +2283,23 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> create(
-      GoogleCloudDatacatalogV1beta1TagTemplateField request, core.String parent,
-      {core.String tagTemplateFieldId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1TagTemplateField request,
+    core.String parent, {
+    core.String tagTemplateFieldId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (tagTemplateFieldId != null) {
       _queryParams["tagTemplateFieldId"] = [tagTemplateFieldId];
@@ -2127,14 +2312,17 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fields';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
   }
 
   /// Deletes a field in a tag template and all uses of that field. Users should
@@ -2165,17 +2353,20 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name,
-      {core.bool force, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.bool force,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (force != null) {
       _queryParams["force"] = ["${force}"];
@@ -2186,13 +2377,16 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Updates a field in a tag template. This method cannot be used to update
@@ -2230,20 +2424,23 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> patch(
-      GoogleCloudDatacatalogV1beta1TagTemplateField request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1TagTemplateField request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2254,14 +2451,17 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
   }
 
   /// Renames a field in a tag template. The user should enable the Data Catalog
@@ -2290,21 +2490,22 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> rename(
-      GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2313,14 +2514,17 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rename';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
   }
 }
 
@@ -2355,22 +2559,22 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> rename(
-      GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
-          request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2379,14 +2583,17 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rename';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
   }
 }
 
@@ -2394,7 +2601,7 @@ class ProjectsLocationsTaxonomiesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTaxonomiesPolicyTagsResourceApi get policyTags =>
-      new ProjectsLocationsTaxonomiesPolicyTagsResourceApi(_requester);
+      ProjectsLocationsTaxonomiesPolicyTagsResourceApi(_requester);
 
   ProjectsLocationsTaxonomiesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2420,20 +2627,22 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> create(
-      GoogleCloudDatacatalogV1beta1Taxonomy request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Taxonomy request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2443,14 +2652,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
   }
 
   /// Deletes a taxonomy. This operation will also delete all policy tags in
@@ -2473,16 +2685,19 @@ class ProjectsLocationsTaxonomiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2490,13 +2705,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Exports all taxonomies and their policy tags in a project. This method
@@ -2524,19 +2742,20 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> export(
-      core.String parent,
-      {core.List<core.String> taxonomies,
-      core.bool serializedTaxonomies,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.List<core.String> taxonomies,
+    core.bool serializedTaxonomies,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (taxonomies != null) {
       _queryParams["taxonomies"] = taxonomies;
@@ -2552,15 +2771,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies:export';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
-            data));
+        GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(data));
   }
 
   /// Gets a taxonomy.
@@ -2581,17 +2802,19 @@ class ProjectsLocationsTaxonomiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2599,14 +2822,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -2632,20 +2858,22 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2655,13 +2883,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Imports all taxonomies and their policy tags to a project as new
@@ -2687,21 +2918,22 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse> import(
-      GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest request,
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2711,15 +2943,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies:import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
-            data));
+        GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(data));
   }
 
   /// Lists all taxonomies in a project in a particular location that the caller
@@ -2748,19 +2982,20 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> list(
-      core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2776,14 +3011,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(data));
+        GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(data));
   }
 
   /// Updates a taxonomy.
@@ -2813,20 +3051,23 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> patch(
-      GoogleCloudDatacatalogV1beta1Taxonomy request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1Taxonomy request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2837,14 +3078,17 @@ class ProjectsLocationsTaxonomiesResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -2870,20 +3114,22 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2893,13 +3139,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -2926,20 +3175,22 @@ class ProjectsLocationsTaxonomiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2949,14 +3200,16 @@ class ProjectsLocationsTaxonomiesResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -2988,20 +3241,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> create(
-      GoogleCloudDatacatalogV1beta1PolicyTag request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1PolicyTag request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3011,14 +3266,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/policyTags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
   }
 
   /// Deletes a policy tag. Also deletes all of its descendant policy tags.
@@ -3040,16 +3298,19 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3057,13 +3318,16 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets a policy tag.
@@ -3084,17 +3348,19 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3102,14 +3368,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -3135,20 +3404,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3158,13 +3429,16 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Lists all policy tags in a taxonomy.
@@ -3193,19 +3467,20 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse> list(
-      core.String parent,
-      {core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -3221,14 +3496,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/policyTags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) =>
-        new GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(data));
+        GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(data));
   }
 
   /// Updates a policy tag.
@@ -3261,20 +3539,23 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> patch(
-      GoogleCloudDatacatalogV1beta1PolicyTag request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudDatacatalogV1beta1PolicyTag request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -3285,14 +3566,17 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -3318,20 +3602,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3341,13 +3627,16 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Policy.fromJson(data));
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -3374,20 +3663,22 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3397,14 +3688,16 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -3465,7 +3758,7 @@ class Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new Expr.fromJson(_json["condition"]);
+      condition = Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -3477,12 +3770,12 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -3506,7 +3799,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3563,7 +3856,7 @@ class Expr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -3590,15 +3883,15 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("options")) {
-      options = new GetPolicyOptions.fromJson(_json["options"]);
+      options = GetPolicyOptions.fromJson(_json["options"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (options != null) {
-      _json["options"] = (options).toJson();
+      _json["options"] = options.toJson();
     }
     return _json;
   }
@@ -3625,7 +3918,7 @@ class GetPolicyOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json["requestedPolicyVersion"] = requestedPolicyVersion;
     }
@@ -3667,7 +3960,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataset != null) {
       _json["dataset"] = dataset;
     }
@@ -3706,26 +3999,26 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
       tableSourceType = _json["tableSourceType"];
     }
     if (_json.containsKey("tableSpec")) {
-      tableSpec = new GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
-          _json["tableSpec"]);
+      tableSpec =
+          GoogleCloudDatacatalogV1beta1TableSpec.fromJson(_json["tableSpec"]);
     }
     if (_json.containsKey("viewSpec")) {
       viewSpec =
-          new GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(_json["viewSpec"]);
+          GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(_json["viewSpec"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tableSourceType != null) {
       _json["tableSourceType"] = tableSourceType;
     }
     if (tableSpec != null) {
-      _json["tableSpec"] = (tableSpec).toJson();
+      _json["tableSpec"] = tableSpec.toJson();
     }
     if (viewSpec != null) {
-      _json["viewSpec"] = (viewSpec).toJson();
+      _json["viewSpec"] = viewSpec.toJson();
     }
     return _json;
   }
@@ -3767,7 +4060,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     if (_json.containsKey("subcolumns")) {
       subcolumns = (_json["subcolumns"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
-              new GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
+              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -3777,7 +4070,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (column != null) {
       _json["column"] = column;
     }
@@ -3788,8 +4081,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
       _json["mode"] = mode;
     }
     if (subcolumns != null) {
-      _json["subcolumns"] =
-          subcolumns.map((value) => (value).toJson()).toList();
+      _json["subcolumns"] = subcolumns.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -3899,12 +4191,12 @@ class GoogleCloudDatacatalogV1beta1Entry {
   GoogleCloudDatacatalogV1beta1Entry.fromJson(core.Map _json) {
     if (_json.containsKey("bigqueryDateShardedSpec")) {
       bigqueryDateShardedSpec =
-          new GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
+          GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
               _json["bigqueryDateShardedSpec"]);
     }
     if (_json.containsKey("bigqueryTableSpec")) {
       bigqueryTableSpec =
-          new GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
+          GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
               _json["bigqueryTableSpec"]);
     }
     if (_json.containsKey("description")) {
@@ -3914,7 +4206,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("gcsFilesetSpec")) {
-      gcsFilesetSpec = new GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
+      gcsFilesetSpec = GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
           _json["gcsFilesetSpec"]);
     }
     if (_json.containsKey("integratedSystem")) {
@@ -3927,12 +4219,11 @@ class GoogleCloudDatacatalogV1beta1Entry {
       name = _json["name"];
     }
     if (_json.containsKey("schema")) {
-      schema =
-          new GoogleCloudDatacatalogV1beta1Schema.fromJson(_json["schema"]);
+      schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(_json["schema"]);
     }
     if (_json.containsKey("sourceSystemTimestamps")) {
       sourceSystemTimestamps =
-          new GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+          GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
               _json["sourceSystemTimestamps"]);
     }
     if (_json.containsKey("type")) {
@@ -3948,12 +4239,12 @@ class GoogleCloudDatacatalogV1beta1Entry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryDateShardedSpec != null) {
-      _json["bigqueryDateShardedSpec"] = (bigqueryDateShardedSpec).toJson();
+      _json["bigqueryDateShardedSpec"] = bigqueryDateShardedSpec.toJson();
     }
     if (bigqueryTableSpec != null) {
-      _json["bigqueryTableSpec"] = (bigqueryTableSpec).toJson();
+      _json["bigqueryTableSpec"] = bigqueryTableSpec.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -3962,7 +4253,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
       _json["displayName"] = displayName;
     }
     if (gcsFilesetSpec != null) {
-      _json["gcsFilesetSpec"] = (gcsFilesetSpec).toJson();
+      _json["gcsFilesetSpec"] = gcsFilesetSpec.toJson();
     }
     if (integratedSystem != null) {
       _json["integratedSystem"] = integratedSystem;
@@ -3974,10 +4265,10 @@ class GoogleCloudDatacatalogV1beta1Entry {
       _json["name"] = name;
     }
     if (schema != null) {
-      _json["schema"] = (schema).toJson();
+      _json["schema"] = schema.toJson();
     }
     if (sourceSystemTimestamps != null) {
-      _json["sourceSystemTimestamps"] = (sourceSystemTimestamps).toJson();
+      _json["sourceSystemTimestamps"] = sourceSystemTimestamps.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4019,7 +4310,7 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
   GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(core.Map _json) {
     if (_json.containsKey("dataCatalogTimestamps")) {
       dataCatalogTimestamps =
-          new GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+          GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
               _json["dataCatalogTimestamps"]);
     }
     if (_json.containsKey("description")) {
@@ -4035,9 +4326,9 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dataCatalogTimestamps != null) {
-      _json["dataCatalogTimestamps"] = (dataCatalogTimestamps).toJson();
+      _json["dataCatalogTimestamps"] = dataCatalogTimestamps.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -4064,18 +4355,16 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     if (_json.containsKey("taxonomies")) {
       taxonomies = (_json["taxonomies"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
-              new GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
-                  value))
+              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] =
-          taxonomies.map((value) => (value).toJson()).toList();
+      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4099,7 +4388,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
 
   GoogleCloudDatacatalogV1beta1FieldType.fromJson(core.Map _json) {
     if (_json.containsKey("enumType")) {
-      enumType = new GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
+      enumType = GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
           _json["enumType"]);
     }
     if (_json.containsKey("primitiveType")) {
@@ -4109,9 +4398,9 @@ class GoogleCloudDatacatalogV1beta1FieldType {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enumType != null) {
-      _json["enumType"] = (enumType).toJson();
+      _json["enumType"] = enumType.toJson();
     }
     if (primitiveType != null) {
       _json["primitiveType"] = primitiveType;
@@ -4140,19 +4429,18 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     if (_json.containsKey("allowedValues")) {
       allowedValues = (_json["allowedValues"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>(
-              (value) =>
-                  new GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
-                      .fromJson(value))
+              (value) => GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
+                  .fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allowedValues != null) {
       _json["allowedValues"] =
-          allowedValues.map((value) => (value).toJson()).toList();
+          allowedValues.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4173,7 +4461,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -4199,9 +4487,8 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
       filePath = _json["filePath"];
     }
     if (_json.containsKey("gcsTimestamps")) {
-      gcsTimestamps =
-          new GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-              _json["gcsTimestamps"]);
+      gcsTimestamps = GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+          _json["gcsTimestamps"]);
     }
     if (_json.containsKey("sizeBytes")) {
       sizeBytes = _json["sizeBytes"];
@@ -4210,12 +4497,12 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filePath != null) {
       _json["filePath"] = filePath;
     }
     if (gcsTimestamps != null) {
-      _json["gcsTimestamps"] = (gcsTimestamps).toJson();
+      _json["gcsTimestamps"] = gcsTimestamps.toJson();
     }
     if (sizeBytes != null) {
       _json["sizeBytes"] = sizeBytes;
@@ -4259,20 +4546,20 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     if (_json.containsKey("sampleGcsFileSpecs")) {
       sampleGcsFileSpecs = (_json["sampleGcsFileSpecs"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1GcsFileSpec>((value) =>
-              new GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(value))
+              GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (filePatterns != null) {
       _json["filePatterns"] = filePatterns;
     }
     if (sampleGcsFileSpecs != null) {
       _json["sampleGcsFileSpecs"] =
-          sampleGcsFileSpecs.map((value) => (value).toJson()).toList();
+          sampleGcsFileSpecs.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4288,16 +4575,16 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey("inlineSource")) {
-      inlineSource = new GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
+      inlineSource = GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
           _json["inlineSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inlineSource != null) {
-      _json["inlineSource"] = (inlineSource).toJson();
+      _json["inlineSource"] = inlineSource.toJson();
     }
     return _json;
   }
@@ -4314,18 +4601,17 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
       core.Map _json) {
     if (_json.containsKey("taxonomies")) {
       taxonomies = (_json["taxonomies"] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Taxonomy>((value) =>
-              new GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
+              (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] =
-          taxonomies.map((value) => (value).toJson()).toList();
+      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4342,18 +4628,16 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     if (_json.containsKey("taxonomies")) {
       taxonomies = (_json["taxonomies"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
-              new GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
-                  value))
+              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (taxonomies != null) {
-      _json["taxonomies"] =
-          taxonomies.map((value) => (value).toJson()).toList();
+      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4374,7 +4658,7 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     if (_json.containsKey("entries")) {
       entries = (_json["entries"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Entry>(
-              (value) => new GoogleCloudDatacatalogV1beta1Entry.fromJson(value))
+              (value) => GoogleCloudDatacatalogV1beta1Entry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4384,9 +4668,9 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entries != null) {
-      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+      _json["entries"] = entries.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4411,7 +4695,7 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     if (_json.containsKey("entryGroups")) {
       entryGroups = (_json["entryGroups"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1EntryGroup>((value) =>
-              new GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(value))
+              GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4421,10 +4705,10 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entryGroups != null) {
       _json["entryGroups"] =
-          entryGroups.map((value) => (value).toJson()).toList();
+          entryGroups.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4450,21 +4734,20 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     }
     if (_json.containsKey("policyTags")) {
       policyTags = (_json["policyTags"] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1PolicyTag>((value) =>
-              new GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1PolicyTag>(
+              (value) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (policyTags != null) {
-      _json["policyTags"] =
-          policyTags.map((value) => (value).toJson()).toList();
+      _json["policyTags"] = policyTags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4488,19 +4771,19 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1Tag>(
-              (value) => new GoogleCloudDatacatalogV1beta1Tag.fromJson(value))
+              (value) => GoogleCloudDatacatalogV1beta1Tag.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (tags != null) {
-      _json["tags"] = tags.map((value) => (value).toJson()).toList();
+      _json["tags"] = tags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4523,21 +4806,20 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     }
     if (_json.containsKey("taxonomies")) {
       taxonomies = (_json["taxonomies"] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Taxonomy>((value) =>
-              new GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
+              (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (taxonomies != null) {
-      _json["taxonomies"] =
-          taxonomies.map((value) => (value).toJson()).toList();
+      _json["taxonomies"] = taxonomies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4598,7 +4880,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (childPolicyTags != null) {
       _json["childPolicyTags"] = childPolicyTags;
     }
@@ -4635,7 +4917,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newEnumValueDisplayName != null) {
       _json["newEnumValueDisplayName"] = newEnumValueDisplayName;
     }
@@ -4660,7 +4942,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (newTagTemplateFieldId != null) {
       _json["newTagTemplateFieldId"] = newTagTemplateFieldId;
     }
@@ -4680,16 +4962,16 @@ class GoogleCloudDatacatalogV1beta1Schema {
     if (_json.containsKey("columns")) {
       columns = (_json["columns"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
-              new GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
+              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (columns != null) {
-      _json["columns"] = columns.map((value) => (value).toJson()).toList();
+      _json["columns"] = columns.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4746,15 +5028,14 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
       query = _json["query"];
     }
     if (_json.containsKey("scope")) {
-      scope =
-          new GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-              _json["scope"]);
+      scope = GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
+          _json["scope"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (orderBy != null) {
       _json["orderBy"] = orderBy;
     }
@@ -4768,7 +5049,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
       _json["query"] = query;
     }
     if (scope != null) {
-      _json["scope"] = (scope).toJson();
+      _json["scope"] = scope.toJson();
     }
     return _json;
   }
@@ -4829,7 +5110,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeGcpPublicDatasets != null) {
       _json["includeGcpPublicDatasets"] = includeGcpPublicDatasets;
     }
@@ -4869,8 +5150,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SearchCatalogResult>((value) =>
-              new GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
-                  value))
+              GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("unreachable")) {
@@ -4880,12 +5160,12 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     if (unreachable != null) {
       _json["unreachable"] = unreachable;
@@ -4942,7 +5222,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (linkedResource != null) {
       _json["linkedResource"] = linkedResource;
     }
@@ -4983,8 +5263,7 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     if (_json.containsKey("childPolicyTags")) {
       childPolicyTags = (_json["childPolicyTags"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
-              new GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
-                  value))
+              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -5000,10 +5279,10 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (childPolicyTags != null) {
       _json["childPolicyTags"] =
-          childPolicyTags.map((value) => (value).toJson()).toList();
+          childPolicyTags.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -5045,15 +5324,14 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     if (_json.containsKey("policyTags")) {
       policyTags = (_json["policyTags"] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
-              new GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
-                  value))
+              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -5061,8 +5339,7 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
       _json["displayName"] = displayName;
     }
     if (policyTags != null) {
-      _json["policyTags"] =
-          policyTags.map((value) => (value).toJson()).toList();
+      _json["policyTags"] = policyTags.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5096,7 +5373,7 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -5129,7 +5406,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (groupedEntry != null) {
       _json["groupedEntry"] = groupedEntry;
     }
@@ -5178,7 +5455,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
       fields = commons.mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagField>(
           _json["fields"].cast<core.String, core.Map>(),
           (core.Map item) =>
-              new GoogleCloudDatacatalogV1beta1TagField.fromJson(item));
+              GoogleCloudDatacatalogV1beta1TagField.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5193,14 +5470,14 @@ class GoogleCloudDatacatalogV1beta1Tag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (column != null) {
       _json["column"] = column;
     }
     if (fields != null) {
       _json["fields"] = commons.mapMap<GoogleCloudDatacatalogV1beta1TagField,
               core.Map<core.String, core.Object>>(fields,
-          (GoogleCloudDatacatalogV1beta1TagField item) => (item).toJson());
+          (GoogleCloudDatacatalogV1beta1TagField item) => item.toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -5255,7 +5532,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
       doubleValue = _json["doubleValue"].toDouble();
     }
     if (_json.containsKey("enumValue")) {
-      enumValue = new GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
+      enumValue = GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
           _json["enumValue"]);
     }
     if (_json.containsKey("order")) {
@@ -5271,7 +5548,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boolValue != null) {
       _json["boolValue"] = boolValue;
     }
@@ -5282,7 +5559,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
       _json["doubleValue"] = doubleValue;
     }
     if (enumValue != null) {
-      _json["enumValue"] = (enumValue).toJson();
+      _json["enumValue"] = enumValue.toJson();
     }
     if (order != null) {
       _json["order"] = order;
@@ -5312,7 +5589,7 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -5354,11 +5631,11 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("fields")) {
-      fields = commons.mapMap<core.Map,
-              GoogleCloudDatacatalogV1beta1TagTemplateField>(
-          _json["fields"].cast<core.String, core.Map>(),
-          (core.Map item) =>
-              new GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(item));
+      fields = commons
+          .mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagTemplateField>(
+              _json["fields"].cast<core.String, core.Map>(),
+              (core.Map item) =>
+                  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(item));
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5367,7 +5644,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -5377,7 +5654,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
               core.Map<core.String, core.Object>>(
           fields,
           (GoogleCloudDatacatalogV1beta1TagTemplateField item) =>
-              (item).toJson());
+              item.toJson());
     }
     if (name != null) {
       _json["name"] = name;
@@ -5426,13 +5703,13 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
       order = _json["order"];
     }
     if (_json.containsKey("type")) {
-      type = new GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json["type"]);
+      type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json["type"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -5446,7 +5723,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
       _json["order"] = order;
     }
     if (type != null) {
-      _json["type"] = (type).toJson();
+      _json["type"] = type.toJson();
     }
     return _json;
   }
@@ -5497,7 +5774,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (activatedPolicyTypes != null) {
       _json["activatedPolicyTypes"] = activatedPolicyTypes;
     }
@@ -5529,7 +5806,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (viewQuery != null) {
       _json["viewQuery"] = viewQuery;
     }
@@ -5584,9 +5861,7 @@ class Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5615,7 +5890,7 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
-          .map<Binding>((value) => new Binding.fromJson(value))
+          .map<Binding>((value) => Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -5628,9 +5903,9 @@ class Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -5654,15 +5929,15 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new Policy.fromJson(_json["policy"]);
+      policy = Policy.fromJson(_json["policy"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     return _json;
   }
@@ -5686,7 +5961,7 @@ class TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -5710,7 +5985,7 @@ class TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

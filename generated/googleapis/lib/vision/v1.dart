@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.vision.v1;
 
@@ -30,17 +48,17 @@ class VisionApi {
 
   final commons.ApiRequester _requester;
 
-  FilesResourceApi get files => new FilesResourceApi(_requester);
-  ImagesResourceApi get images => new ImagesResourceApi(_requester);
-  LocationsResourceApi get locations => new LocationsResourceApi(_requester);
-  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  FilesResourceApi get files => FilesResourceApi(_requester);
+  ImagesResourceApi get images => ImagesResourceApi(_requester);
+  LocationsResourceApi get locations => LocationsResourceApi(_requester);
+  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   VisionApi(http.Client client,
       {core.String rootUrl = "https://vision.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class FilesResourceApi {
@@ -70,17 +88,18 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateFilesResponse> annotate(
-      BatchAnnotateFilesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateFilesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -88,14 +107,16 @@ class FilesResourceApi {
 
     _url = 'v1/files:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateFilesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -120,17 +141,18 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateFilesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateFilesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -138,13 +160,16 @@ class FilesResourceApi {
 
     _url = 'v1/files:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -170,17 +195,18 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateImagesResponse> annotate(
-      BatchAnnotateImagesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateImagesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -188,14 +214,16 @@ class ImagesResourceApi {
 
     _url = 'v1/images:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateImagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -221,17 +249,18 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateImagesRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateImagesRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -239,13 +268,16 @@ class ImagesResourceApi {
 
     _url = 'v1/images:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -253,7 +285,7 @@ class LocationsResourceApi {
   final commons.ApiRequester _requester;
 
   LocationsOperationsResourceApi get operations =>
-      new LocationsOperationsResourceApi(_requester);
+      LocationsOperationsResourceApi(_requester);
 
   LocationsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -283,16 +315,19 @@ class LocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -300,13 +335,16 @@ class LocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -342,20 +380,23 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -363,13 +404,16 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -392,16 +436,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -409,13 +456,16 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -437,16 +487,19 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -454,13 +507,16 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -494,20 +550,22 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -524,27 +582,28 @@ class OperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsFilesResourceApi get files =>
-      new ProjectsFilesResourceApi(_requester);
-  ProjectsImagesResourceApi get images =>
-      new ProjectsImagesResourceApi(_requester);
+  ProjectsFilesResourceApi get files => ProjectsFilesResourceApi(_requester);
+  ProjectsImagesResourceApi get images => ProjectsImagesResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
   ProjectsOperationsResourceApi get operations =>
-      new ProjectsOperationsResourceApi(_requester);
+      ProjectsOperationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -583,20 +642,22 @@ class ProjectsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateFilesResponse> annotate(
-      BatchAnnotateFilesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateFilesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -606,14 +667,16 @@ class ProjectsFilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/files:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateFilesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -645,20 +708,22 @@ class ProjectsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateFilesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateFilesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -668,13 +733,16 @@ class ProjectsFilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/files:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -707,20 +775,22 @@ class ProjectsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateImagesResponse> annotate(
-      BatchAnnotateImagesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateImagesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -730,14 +800,16 @@ class ProjectsImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/images:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateImagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -770,20 +842,22 @@ class ProjectsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateImagesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateImagesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -793,13 +867,16 @@ class ProjectsImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/images:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -807,15 +884,15 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsFilesResourceApi get files =>
-      new ProjectsLocationsFilesResourceApi(_requester);
+      ProjectsLocationsFilesResourceApi(_requester);
   ProjectsLocationsImagesResourceApi get images =>
-      new ProjectsLocationsImagesResourceApi(_requester);
+      ProjectsLocationsImagesResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
   ProjectsLocationsProductSetsResourceApi get productSets =>
-      new ProjectsLocationsProductSetsResourceApi(_requester);
+      ProjectsLocationsProductSetsResourceApi(_requester);
   ProjectsLocationsProductsResourceApi get products =>
-      new ProjectsLocationsProductsResourceApi(_requester);
+      ProjectsLocationsProductsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -856,20 +933,22 @@ class ProjectsLocationsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateFilesResponse> annotate(
-      BatchAnnotateFilesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateFilesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -879,14 +958,16 @@ class ProjectsLocationsFilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/files:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateFilesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -918,20 +999,22 @@ class ProjectsLocationsFilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateFilesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateFilesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -941,13 +1024,16 @@ class ProjectsLocationsFilesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/files:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -981,20 +1067,22 @@ class ProjectsLocationsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateImagesResponse> annotate(
-      BatchAnnotateImagesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    BatchAnnotateImagesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1004,14 +1092,16 @@ class ProjectsLocationsImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/images:annotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BatchAnnotateImagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -1044,20 +1134,22 @@ class ProjectsLocationsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> asyncBatchAnnotate(
-      AsyncBatchAnnotateImagesRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AsyncBatchAnnotateImagesRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1067,13 +1159,16 @@ class ProjectsLocationsImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/images:asyncBatchAnnotate';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1103,16 +1198,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1120,13 +1218,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1134,7 +1235,7 @@ class ProjectsLocationsProductSetsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProductSetsProductsResourceApi get products =>
-      new ProjectsLocationsProductSetsProductsResourceApi(_requester);
+      ProjectsLocationsProductSetsProductsResourceApi(_requester);
 
   ProjectsLocationsProductSetsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1164,20 +1265,22 @@ class ProjectsLocationsProductSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> addProduct(
-      AddProductToProductSetRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AddProductToProductSetRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1186,13 +1289,16 @@ class ProjectsLocationsProductSetsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':addProduct';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Creates and returns a new ProductSet resource. Possible errors: * Returns
@@ -1222,20 +1328,24 @@ class ProjectsLocationsProductSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProductSet> create(ProductSet request, core.String parent,
-      {core.String productSetId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ProductSet> create(
+    ProductSet request,
+    core.String parent, {
+    core.String productSetId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (productSetId != null) {
       _queryParams["productSetId"] = [productSetId];
@@ -1248,13 +1358,16 @@ class ProjectsLocationsProductSetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/productSets';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProductSet.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ProductSet.fromJson(data));
   }
 
   /// Permanently deletes a ProductSet. Products and ReferenceImages in the
@@ -1278,16 +1391,19 @@ class ProjectsLocationsProductSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1295,13 +1411,16 @@ class ProjectsLocationsProductSetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets information associated with a ProductSet. Possible errors: * Returns
@@ -1324,16 +1443,19 @@ class ProjectsLocationsProductSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProductSet> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ProductSet> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1341,13 +1463,16 @@ class ProjectsLocationsProductSetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProductSet.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ProductSet.fromJson(data));
   }
 
   /// Asynchronous API that imports a list of reference images to specified
@@ -1378,20 +1503,22 @@ class ProjectsLocationsProductSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> import(
-      ImportProductSetsRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ImportProductSetsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1401,13 +1528,16 @@ class ProjectsLocationsProductSetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/productSets:import';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists ProductSets in an unspecified order. Possible errors: * Returns
@@ -1435,17 +1565,21 @@ class ProjectsLocationsProductSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListProductSetsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListProductSetsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1461,13 +1595,16 @@ class ProjectsLocationsProductSetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/productSets';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListProductSetsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListProductSetsResponse.fromJson(data));
   }
 
   /// Makes changes to a ProductSet resource. Only display_name can be updated
@@ -1499,20 +1636,24 @@ class ProjectsLocationsProductSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProductSet> patch(ProductSet request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ProductSet> patch(
+    ProductSet request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1523,13 +1664,16 @@ class ProjectsLocationsProductSetsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProductSet.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ProductSet.fromJson(data));
   }
 
   /// Removes a Product from the specified ProductSet.
@@ -1554,20 +1698,22 @@ class ProjectsLocationsProductSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> removeProduct(
-      RemoveProductFromProductSetRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RemoveProductFromProductSetRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1577,13 +1723,16 @@ class ProjectsLocationsProductSetsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':removeProduct';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 }
 
@@ -1622,17 +1771,21 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListProductsInProductSetResponse> list(core.String name,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListProductsInProductSetResponse> list(
+    core.String name, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1646,14 +1799,17 @@ class ProjectsLocationsProductSetsProductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/products';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListProductsInProductSetResponse.fromJson(data));
+        .then((data) => ListProductsInProductSetResponse.fromJson(data));
   }
 }
 
@@ -1661,7 +1817,7 @@ class ProjectsLocationsProductsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsProductsReferenceImagesResourceApi get referenceImages =>
-      new ProjectsLocationsProductsReferenceImagesResourceApi(_requester);
+      ProjectsLocationsProductsReferenceImagesResourceApi(_requester);
 
   ProjectsLocationsProductsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1695,20 +1851,24 @@ class ProjectsLocationsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> create(Product request, core.String parent,
-      {core.String productId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Product> create(
+    Product request,
+    core.String parent, {
+    core.String productId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (productId != null) {
       _queryParams["productId"] = [productId];
@@ -1720,13 +1880,16 @@ class ProjectsLocationsProductsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Product.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Product.fromJson(data));
   }
 
   /// Permanently deletes a product and its reference images. Metadata of the
@@ -1750,16 +1913,19 @@ class ProjectsLocationsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1767,13 +1933,16 @@ class ProjectsLocationsProductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets information associated with a Product. Possible errors: * Returns
@@ -1795,16 +1964,19 @@ class ProjectsLocationsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Product> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1812,13 +1984,16 @@ class ProjectsLocationsProductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Product.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Product.fromJson(data));
   }
 
   /// Lists products in an unspecified order. Possible errors: * Returns
@@ -1846,17 +2021,21 @@ class ProjectsLocationsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListProductsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListProductsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1871,13 +2050,16 @@ class ProjectsLocationsProductsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListProductsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListProductsResponse.fromJson(data));
   }
 
   /// Makes changes to a Product resource. Only the `display_name`,
@@ -1913,20 +2095,24 @@ class ProjectsLocationsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> patch(Product request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Product> patch(
+    Product request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1937,13 +2123,16 @@ class ProjectsLocationsProductsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Product.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Product.fromJson(data));
   }
 
   /// Asynchronous API to delete all Products in a ProductSet or all Products
@@ -1983,20 +2172,22 @@ class ProjectsLocationsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> purge(
-      PurgeProductsRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PurgeProductsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2006,13 +2197,16 @@ class ProjectsLocationsProductsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/products:purge';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -2062,20 +2256,23 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReferenceImage> create(
-      ReferenceImage request, core.String parent,
-      {core.String referenceImageId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ReferenceImage request,
+    core.String parent, {
+    core.String referenceImageId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (referenceImageId != null) {
       _queryParams["referenceImageId"] = [referenceImageId];
@@ -2088,13 +2285,16 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/referenceImages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReferenceImage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReferenceImage.fromJson(data));
   }
 
   /// Permanently deletes a reference image. The image metadata will be deleted
@@ -2120,16 +2320,19 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2137,13 +2340,16 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets information associated with a ReferenceImage. Possible errors: *
@@ -2167,16 +2373,19 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ReferenceImage> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ReferenceImage> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2184,13 +2393,16 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReferenceImage.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ReferenceImage.fromJson(data));
   }
 
   /// Lists reference images. Possible errors: * Returns NOT_FOUND if the parent
@@ -2221,17 +2433,21 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListReferenceImagesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListReferenceImagesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2247,14 +2463,16 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/referenceImages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListReferenceImagesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListReferenceImagesResponse.fromJson(data));
   }
 }
 
@@ -2283,16 +2501,19 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2300,13 +2521,16 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -2327,7 +2551,7 @@ class AddProductToProductSetRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (product != null) {
       _json["product"] = product;
     }
@@ -2360,14 +2584,14 @@ class AnnotateFileRequest {
   AnnotateFileRequest.fromJson(core.Map _json) {
     if (_json.containsKey("features")) {
       features = (_json["features"] as core.List)
-          .map<Feature>((value) => new Feature.fromJson(value))
+          .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imageContext")) {
-      imageContext = new ImageContext.fromJson(_json["imageContext"]);
+      imageContext = ImageContext.fromJson(_json["imageContext"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new InputConfig.fromJson(_json["inputConfig"]);
+      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List).cast<core.int>();
@@ -2376,15 +2600,15 @@ class AnnotateFileRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => (value).toJson()).toList();
+      _json["features"] = features.map((value) => value.toJson()).toList();
     }
     if (imageContext != null) {
-      _json["imageContext"] = (imageContext).toJson();
+      _json["imageContext"] = imageContext.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (pages != null) {
       _json["pages"] = pages;
@@ -2414,15 +2638,15 @@ class AnnotateFileResponse {
 
   AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new InputConfig.fromJson(_json["inputConfig"]);
+      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<AnnotateImageResponse>(
-              (value) => new AnnotateImageResponse.fromJson(value))
+              (value) => AnnotateImageResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalPages")) {
@@ -2432,15 +2656,15 @@ class AnnotateFileResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
       _json["totalPages"] = totalPages;
@@ -2466,28 +2690,28 @@ class AnnotateImageRequest {
   AnnotateImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey("features")) {
       features = (_json["features"] as core.List)
-          .map<Feature>((value) => new Feature.fromJson(value))
+          .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
     if (_json.containsKey("image")) {
-      image = new Image.fromJson(_json["image"]);
+      image = Image.fromJson(_json["image"]);
     }
     if (_json.containsKey("imageContext")) {
-      imageContext = new ImageContext.fromJson(_json["imageContext"]);
+      imageContext = ImageContext.fromJson(_json["imageContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => (value).toJson()).toList();
+      _json["features"] = features.map((value) => value.toJson()).toList();
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (imageContext != null) {
-      _json["imageContext"] = (imageContext).toJson();
+      _json["imageContext"] = imageContext.toJson();
     }
     return _json;
   }
@@ -2547,122 +2771,117 @@ class AnnotateImageResponse {
 
   AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new ImageAnnotationContext.fromJson(_json["context"]);
+      context = ImageAnnotationContext.fromJson(_json["context"]);
     }
     if (_json.containsKey("cropHintsAnnotation")) {
       cropHintsAnnotation =
-          new CropHintsAnnotation.fromJson(_json["cropHintsAnnotation"]);
+          CropHintsAnnotation.fromJson(_json["cropHintsAnnotation"]);
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = (_json["faceAnnotations"] as core.List)
-          .map<FaceAnnotation>((value) => new FaceAnnotation.fromJson(value))
+          .map<FaceAnnotation>((value) => FaceAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation =
-          new TextAnnotation.fromJson(_json["fullTextAnnotation"]);
+      fullTextAnnotation = TextAnnotation.fromJson(_json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation =
-          new ImageProperties.fromJson(_json["imagePropertiesAnnotation"]);
+          ImageProperties.fromJson(_json["imagePropertiesAnnotation"]);
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
-          .map<EntityAnnotation>(
-              (value) => new EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("landmarkAnnotations")) {
       landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
-          .map<EntityAnnotation>(
-              (value) => new EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("localizedObjectAnnotations")) {
       localizedObjectAnnotations =
           (_json["localizedObjectAnnotations"] as core.List)
               .map<LocalizedObjectAnnotation>(
-                  (value) => new LocalizedObjectAnnotation.fromJson(value))
+                  (value) => LocalizedObjectAnnotation.fromJson(value))
               .toList();
     }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
-          .map<EntityAnnotation>(
-              (value) => new EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productSearchResults")) {
       productSearchResults =
-          new ProductSearchResults.fromJson(_json["productSearchResults"]);
+          ProductSearchResults.fromJson(_json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
-          new SafeSearchAnnotation.fromJson(_json["safeSearchAnnotation"]);
+          SafeSearchAnnotation.fromJson(_json["safeSearchAnnotation"]);
     }
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = (_json["textAnnotations"] as core.List)
-          .map<EntityAnnotation>(
-              (value) => new EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webDetection")) {
-      webDetection = new WebDetection.fromJson(_json["webDetection"]);
+      webDetection = WebDetection.fromJson(_json["webDetection"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] =
-          faceAnnotations.map((value) => (value).toJson()).toList();
+          faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
+      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
+      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
-          labelAnnotations.map((value) => (value).toJson()).toList();
+          labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
       _json["landmarkAnnotations"] =
-          landmarkAnnotations.map((value) => (value).toJson()).toList();
+          landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
       _json["localizedObjectAnnotations"] =
-          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+          localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
-          logoAnnotations.map((value) => (value).toJson()).toList();
+          logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = (productSearchResults).toJson();
+      _json["productSearchResults"] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
+      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] =
-          textAnnotations.map((value) => (value).toJson()).toList();
+          textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = (webDetection).toJson();
+      _json["webDetection"] = webDetection.toJson();
     }
     return _json;
   }
@@ -2687,34 +2906,34 @@ class AsyncAnnotateFileRequest {
   AsyncAnnotateFileRequest.fromJson(core.Map _json) {
     if (_json.containsKey("features")) {
       features = (_json["features"] as core.List)
-          .map<Feature>((value) => new Feature.fromJson(value))
+          .map<Feature>((value) => Feature.fromJson(value))
           .toList();
     }
     if (_json.containsKey("imageContext")) {
-      imageContext = new ImageContext.fromJson(_json["imageContext"]);
+      imageContext = ImageContext.fromJson(_json["imageContext"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new InputConfig.fromJson(_json["inputConfig"]);
+      inputConfig = InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new OutputConfig.fromJson(_json["outputConfig"]);
+      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (features != null) {
-      _json["features"] = features.map((value) => (value).toJson()).toList();
+      _json["features"] = features.map((value) => value.toJson()).toList();
     }
     if (imageContext != null) {
-      _json["imageContext"] = (imageContext).toJson();
+      _json["imageContext"] = imageContext.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -2729,15 +2948,15 @@ class AsyncAnnotateFileResponse {
 
   AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new OutputConfig.fromJson(_json["outputConfig"]);
+      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -2765,19 +2984,19 @@ class AsyncBatchAnnotateFilesRequest {
     if (_json.containsKey("requests")) {
       requests = (_json["requests"] as core.List)
           .map<AsyncAnnotateFileRequest>(
-              (value) => new AsyncAnnotateFileRequest.fromJson(value))
+              (value) => AsyncAnnotateFileRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parent != null) {
       _json["parent"] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => (value).toJson()).toList();
+      _json["requests"] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2795,16 +3014,16 @@ class AsyncBatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<AsyncAnnotateFileResponse>(
-              (value) => new AsyncAnnotateFileResponse.fromJson(value))
+              (value) => AsyncAnnotateFileResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2829,7 +3048,7 @@ class AsyncBatchAnnotateImagesRequest {
 
   AsyncBatchAnnotateImagesRequest.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new OutputConfig.fromJson(_json["outputConfig"]);
+      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
     }
     if (_json.containsKey("parent")) {
       parent = _json["parent"];
@@ -2837,22 +3056,22 @@ class AsyncBatchAnnotateImagesRequest {
     if (_json.containsKey("requests")) {
       requests = (_json["requests"] as core.List)
           .map<AnnotateImageRequest>(
-              (value) => new AnnotateImageRequest.fromJson(value))
+              (value) => AnnotateImageRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     if (parent != null) {
       _json["parent"] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => (value).toJson()).toList();
+      _json["requests"] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2867,15 +3086,15 @@ class AsyncBatchAnnotateImagesResponse {
 
   AsyncBatchAnnotateImagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new OutputConfig.fromJson(_json["outputConfig"]);
+      outputConfig = OutputConfig.fromJson(_json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -2903,19 +3122,19 @@ class BatchAnnotateFilesRequest {
     if (_json.containsKey("requests")) {
       requests = (_json["requests"] as core.List)
           .map<AnnotateFileRequest>(
-              (value) => new AnnotateFileRequest.fromJson(value))
+              (value) => AnnotateFileRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parent != null) {
       _json["parent"] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => (value).toJson()).toList();
+      _json["requests"] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2933,16 +3152,16 @@ class BatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<AnnotateFileResponse>(
-              (value) => new AnnotateFileResponse.fromJson(value))
+              (value) => AnnotateFileResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2969,19 +3188,19 @@ class BatchAnnotateImagesRequest {
     if (_json.containsKey("requests")) {
       requests = (_json["requests"] as core.List)
           .map<AnnotateImageRequest>(
-              (value) => new AnnotateImageRequest.fromJson(value))
+              (value) => AnnotateImageRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parent != null) {
       _json["parent"] = parent;
     }
     if (requests != null) {
-      _json["requests"] = requests.map((value) => (value).toJson()).toList();
+      _json["requests"] = requests.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2998,16 +3217,16 @@ class BatchAnnotateImagesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<AnnotateImageResponse>(
-              (value) => new AnnotateImageResponse.fromJson(value))
+              (value) => AnnotateImageResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3054,7 +3273,7 @@ class BatchOperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3105,39 +3324,38 @@ class Block {
       blockType = _json["blockType"];
     }
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = (_json["paragraphs"] as core.List)
-          .map<Paragraph>((value) => new Paragraph.fromJson(value))
+          .map<Paragraph>((value) => Paragraph.fromJson(value))
           .toList();
     }
     if (_json.containsKey("property")) {
-      property = new TextProperty.fromJson(_json["property"]);
+      property = TextProperty.fromJson(_json["property"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] =
-          paragraphs.map((value) => (value).toJson()).toList();
+      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     return _json;
   }
@@ -3156,26 +3374,25 @@ class BoundingPoly {
   BoundingPoly.fromJson(core.Map _json) {
     if (_json.containsKey("normalizedVertices")) {
       normalizedVertices = (_json["normalizedVertices"] as core.List)
-          .map<NormalizedVertex>(
-              (value) => new NormalizedVertex.fromJson(value))
+          .map<NormalizedVertex>((value) => NormalizedVertex.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
-          .map<Vertex>((value) => new Vertex.fromJson(value))
+          .map<Vertex>((value) => Vertex.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json["normalizedVertices"] =
-          normalizedVertices.map((value) => (value).toJson()).toList();
+          normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3189,7 +3406,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3282,7 +3499,7 @@ class Color {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alpha != null) {
       _json["alpha"] = alpha;
     }
@@ -3316,7 +3533,7 @@ class ColorInfo {
 
   ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("pixelFraction")) {
       pixelFraction = _json["pixelFraction"].toDouble();
@@ -3328,9 +3545,9 @@ class ColorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (pixelFraction != null) {
       _json["pixelFraction"] = pixelFraction;
@@ -3359,7 +3576,7 @@ class CropHint {
 
   CropHint.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
@@ -3371,9 +3588,9 @@ class CropHint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -3395,16 +3612,16 @@ class CropHintsAnnotation {
   CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("cropHints")) {
       cropHints = (_json["cropHints"] as core.List)
-          .map<CropHint>((value) => new CropHint.fromJson(value))
+          .map<CropHint>((value) => CropHint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3431,7 +3648,7 @@ class CropHintsParams {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (aspectRatios != null) {
       _json["aspectRatios"] = aspectRatios;
     }
@@ -3468,7 +3685,7 @@ class DetectedBreak {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -3502,7 +3719,7 @@ class DetectedLanguage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -3523,16 +3740,16 @@ class DominantColorsAnnotation {
   DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = (_json["colors"] as core.List)
-          .map<ColorInfo>((value) => new ColorInfo.fromJson(value))
+          .map<ColorInfo>((value) => ColorInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => (value).toJson()).toList();
+      _json["colors"] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3550,7 +3767,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3603,7 +3820,7 @@ class EntityAnnotation {
 
   EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
@@ -3616,7 +3833,7 @@ class EntityAnnotation {
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<LocationInfo>((value) => new LocationInfo.fromJson(value))
+          .map<LocationInfo>((value) => LocationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mid")) {
@@ -3624,7 +3841,7 @@ class EntityAnnotation {
     }
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
-          .map<Property>((value) => new Property.fromJson(value))
+          .map<Property>((value) => Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -3637,9 +3854,9 @@ class EntityAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -3651,14 +3868,13 @@ class EntityAnnotation {
       _json["locale"] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
       _json["mid"] = mid;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -3791,13 +4007,13 @@ class FaceAnnotation {
       blurredLikelihood = _json["blurredLikelihood"];
     }
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("detectionConfidence")) {
       detectionConfidence = _json["detectionConfidence"].toDouble();
     }
     if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = new BoundingPoly.fromJson(_json["fdBoundingPoly"]);
+      fdBoundingPoly = BoundingPoly.fromJson(_json["fdBoundingPoly"]);
     }
     if (_json.containsKey("headwearLikelihood")) {
       headwearLikelihood = _json["headwearLikelihood"];
@@ -3810,7 +4026,7 @@ class FaceAnnotation {
     }
     if (_json.containsKey("landmarks")) {
       landmarks = (_json["landmarks"] as core.List)
-          .map<Landmark>((value) => new Landmark.fromJson(value))
+          .map<Landmark>((value) => Landmark.fromJson(value))
           .toList();
     }
     if (_json.containsKey("panAngle")) {
@@ -3835,7 +4051,7 @@ class FaceAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -3843,13 +4059,13 @@ class FaceAnnotation {
       _json["blurredLikelihood"] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
       _json["detectionConfidence"] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = (fdBoundingPoly).toJson();
+      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
       _json["headwearLikelihood"] = headwearLikelihood;
@@ -3861,7 +4077,7 @@ class FaceAnnotation {
       _json["landmarkingConfidence"] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => (value).toJson()).toList();
+      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
       _json["panAngle"] = panAngle;
@@ -3936,7 +4152,7 @@ class Feature {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxResults != null) {
       _json["maxResults"] = maxResults;
     }
@@ -3979,7 +4195,7 @@ class GcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -4003,7 +4219,7 @@ class GcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -4032,17 +4248,16 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new GoogleCloudVisionV1p1beta1InputConfig.fromJson(
-          _json["inputConfig"]);
+      inputConfig =
+          GoogleCloudVisionV1p1beta1InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p1beta1AnnotateImageResponse>((value) =>
-              new GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalPages")) {
@@ -4052,15 +4267,15 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
       _json["totalPages"] = totalPages;
@@ -4124,131 +4339,130 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
 
   GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
+      context = GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
           _json["context"]);
     }
     if (_json.containsKey("cropHintsAnnotation")) {
       cropHintsAnnotation =
-          new GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
+          GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
               _json["cropHintsAnnotation"]);
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = (_json["faceAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation =
-          new GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
-              _json["fullTextAnnotation"]);
+      fullTextAnnotation = GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
+          _json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation =
-          new GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
+          GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
               _json["imagePropertiesAnnotation"]);
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("landmarkAnnotations")) {
       landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("localizedObjectAnnotations")) {
       localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
               as core.List)
           .map<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
+              GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productSearchResults")) {
       productSearchResults =
-          new GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
+          GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
               _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
-          new GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
+          GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
               _json["safeSearchAnnotation"]);
     }
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = (_json["textAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webDetection")) {
-      webDetection = new GoogleCloudVisionV1p1beta1WebDetection.fromJson(
+      webDetection = GoogleCloudVisionV1p1beta1WebDetection.fromJson(
           _json["webDetection"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] =
-          faceAnnotations.map((value) => (value).toJson()).toList();
+          faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
+      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
+      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
-          labelAnnotations.map((value) => (value).toJson()).toList();
+          labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
       _json["landmarkAnnotations"] =
-          landmarkAnnotations.map((value) => (value).toJson()).toList();
+          landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
       _json["localizedObjectAnnotations"] =
-          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+          localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
-          logoAnnotations.map((value) => (value).toJson()).toList();
+          logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = (productSearchResults).toJson();
+      _json["productSearchResults"] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
+      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] =
-          textAnnotations.map((value) => (value).toJson()).toList();
+          textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = (webDetection).toJson();
+      _json["webDetection"] = webDetection.toJson();
     }
     return _json;
   }
@@ -4263,16 +4477,16 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
 
   GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
+      outputConfig = GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
           _json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -4291,7 +4505,7 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>((value) =>
-              new GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
+              GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
                   value))
           .toList();
     }
@@ -4299,9 +4513,9 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4344,43 +4558,41 @@ class GoogleCloudVisionV1p1beta1Block {
       blockType = _json["blockType"];
     }
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = (_json["paragraphs"] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Paragraph>((value) =>
-              new GoogleCloudVisionV1p1beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Paragraph>(
+              (value) => GoogleCloudVisionV1p1beta1Paragraph.fromJson(value))
           .toList();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] =
-          paragraphs.map((value) => (value).toJson()).toList();
+      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     return _json;
   }
@@ -4400,26 +4612,26 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
     if (_json.containsKey("normalizedVertices")) {
       normalizedVertices = (_json["normalizedVertices"] as core.List)
           .map<GoogleCloudVisionV1p1beta1NormalizedVertex>((value) =>
-              new GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Vertex>(
-              (value) => new GoogleCloudVisionV1p1beta1Vertex.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Vertex.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json["normalizedVertices"] =
-          normalizedVertices.map((value) => (value).toJson()).toList();
+          normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4442,7 +4654,7 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
 
   GoogleCloudVisionV1p1beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("pixelFraction")) {
       pixelFraction = _json["pixelFraction"].toDouble();
@@ -4454,9 +4666,9 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (pixelFraction != null) {
       _json["pixelFraction"] = pixelFraction;
@@ -4485,7 +4697,7 @@ class GoogleCloudVisionV1p1beta1CropHint {
 
   GoogleCloudVisionV1p1beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -4498,9 +4710,9 @@ class GoogleCloudVisionV1p1beta1CropHint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -4523,16 +4735,16 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
     if (_json.containsKey("cropHints")) {
       cropHints = (_json["cropHints"] as core.List)
           .map<GoogleCloudVisionV1p1beta1CropHint>(
-              (value) => new GoogleCloudVisionV1p1beta1CropHint.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1CropHint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4548,17 +4760,17 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = (_json["colors"] as core.List)
-          .map<GoogleCloudVisionV1p1beta1ColorInfo>((value) =>
-              new GoogleCloudVisionV1p1beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1ColorInfo>(
+              (value) => GoogleCloudVisionV1p1beta1ColorInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => (value).toJson()).toList();
+      _json["colors"] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4612,7 +4824,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
 
   GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -4626,8 +4838,8 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<GoogleCloudVisionV1p1beta1LocationInfo>((value) =>
-              new GoogleCloudVisionV1p1beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1LocationInfo>(
+              (value) => GoogleCloudVisionV1p1beta1LocationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mid")) {
@@ -4636,7 +4848,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Property>(
-              (value) => new GoogleCloudVisionV1p1beta1Property.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -4649,9 +4861,9 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -4663,14 +4875,13 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
       _json["locale"] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
       _json["mid"] = mid;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -4803,14 +5014,14 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
       blurredLikelihood = _json["blurredLikelihood"];
     }
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("detectionConfidence")) {
       detectionConfidence = _json["detectionConfidence"].toDouble();
     }
     if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      fdBoundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["fdBoundingPoly"]);
     }
     if (_json.containsKey("headwearLikelihood")) {
@@ -4825,8 +5036,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     if (_json.containsKey("landmarks")) {
       landmarks = (_json["landmarks"] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>((value) =>
-              new GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
     if (_json.containsKey("panAngle")) {
@@ -4851,7 +5061,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -4859,13 +5069,13 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
       _json["blurredLikelihood"] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
       _json["detectionConfidence"] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = (fdBoundingPoly).toJson();
+      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
       _json["headwearLikelihood"] = headwearLikelihood;
@@ -4877,7 +5087,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
       _json["landmarkingConfidence"] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => (value).toJson()).toList();
+      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
       _json["panAngle"] = panAngle;
@@ -4952,8 +5162,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey("position")) {
-      position =
-          new GoogleCloudVisionV1p1beta1Position.fromJson(_json["position"]);
+      position = GoogleCloudVisionV1p1beta1Position.fromJson(_json["position"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4962,9 +5171,9 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -5002,7 +5211,7 @@ class GoogleCloudVisionV1p1beta1GcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -5026,7 +5235,7 @@ class GoogleCloudVisionV1p1beta1GcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -5057,7 +5266,7 @@ class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageNumber != null) {
       _json["pageNumber"] = pageNumber;
     }
@@ -5078,16 +5287,16 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
   GoogleCloudVisionV1p1beta1ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dominantColors")) {
       dominantColors =
-          new GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
+          GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
               _json["dominantColors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = (dominantColors).toJson();
+      _json["dominantColors"] = dominantColors.toJson();
     }
     return _json;
   }
@@ -5101,9 +5310,7 @@ class GoogleCloudVisionV1p1beta1InputConfig {
   /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
   /// requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -5125,7 +5332,7 @@ class GoogleCloudVisionV1p1beta1InputConfig {
     }
     if (_json.containsKey("gcsSource")) {
       gcsSource =
-          new GoogleCloudVisionV1p1beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p1beta1GcsSource.fromJson(_json["gcsSource"]);
     }
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
@@ -5134,12 +5341,12 @@ class GoogleCloudVisionV1p1beta1InputConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -5171,7 +5378,7 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
 
   GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("languageCode")) {
@@ -5190,9 +5397,9 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
@@ -5219,15 +5426,15 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
 
   GoogleCloudVisionV1p1beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
+      latLng = LatLng.fromJson(_json["latLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
+      _json["latLng"] = latLng.toJson();
     }
     return _json;
   }
@@ -5255,7 +5462,7 @@ class GoogleCloudVisionV1p1beta1NormalizedVertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -5299,7 +5506,7 @@ class GoogleCloudVisionV1p1beta1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -5335,19 +5542,19 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
       batchSize = _json["batchSize"];
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
+      gcsDestination = GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -5378,7 +5585,7 @@ class GoogleCloudVisionV1p1beta1Page {
     if (_json.containsKey("blocks")) {
       blocks = (_json["blocks"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Block>(
-              (value) => new GoogleCloudVisionV1p1beta1Block.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Block.fromJson(value))
           .toList();
     }
     if (_json.containsKey("confidence")) {
@@ -5388,9 +5595,8 @@ class GoogleCloudVisionV1p1beta1Page {
       height = _json["height"];
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("width")) {
       width = _json["width"];
@@ -5399,9 +5605,9 @@ class GoogleCloudVisionV1p1beta1Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -5410,7 +5616,7 @@ class GoogleCloudVisionV1p1beta1Page {
       _json["height"] = height;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (width != null) {
       _json["width"] = width;
@@ -5444,39 +5650,38 @@ class GoogleCloudVisionV1p1beta1Paragraph {
 
   GoogleCloudVisionV1p1beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Word>(
-              (value) => new GoogleCloudVisionV1p1beta1Word.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Word.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5511,7 +5716,7 @@ class GoogleCloudVisionV1p1beta1Position {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -5576,14 +5781,14 @@ class GoogleCloudVisionV1p1beta1Product {
     if (_json.containsKey("productLabels")) {
       productLabels = (_json["productLabels"] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductKeyValue>((value) =>
-              new GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -5598,7 +5803,7 @@ class GoogleCloudVisionV1p1beta1Product {
     }
     if (productLabels != null) {
       _json["productLabels"] =
-          productLabels.map((value) => (value).toJson()).toList();
+          productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5627,7 +5832,7 @@ class GoogleCloudVisionV1p1beta1ProductKeyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -5665,14 +5870,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
       productGroupedResults = (_json["productGroupedResults"] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>(
               (value) =>
-                  new GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+                  GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -5680,16 +5885,16 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
     }
     if (productGroupedResults != null) {
       _json["productGroupedResults"] =
-          productGroupedResults.map((value) => (value).toJson()).toList();
+          productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5712,21 +5917,21 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
   GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("objectAnnotations")) {
       objectAnnotations = (_json["objectAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
-                  new GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+                  GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -5734,16 +5939,16 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
-          objectAnnotations.map((value) => (value).toJson()).toList();
+          objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5785,7 +5990,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -5823,8 +6028,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
       image = _json["image"];
     }
     if (_json.containsKey("product")) {
-      product =
-          new GoogleCloudVisionV1p1beta1Product.fromJson(_json["product"]);
+      product = GoogleCloudVisionV1p1beta1Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("score")) {
       score = _json["score"].toDouble();
@@ -5833,12 +6037,12 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
     if (product != null) {
-      _json["product"] = (product).toJson();
+      _json["product"] = product.toJson();
     }
     if (score != null) {
       _json["score"] = score;
@@ -5874,7 +6078,7 @@ class GoogleCloudVisionV1p1beta1Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -5969,7 +6173,7 @@ class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -6014,16 +6218,15 @@ class GoogleCloudVisionV1p1beta1Symbol {
 
   GoogleCloudVisionV1p1beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -6032,15 +6235,15 @@ class GoogleCloudVisionV1p1beta1Symbol {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -6069,7 +6272,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Page>(
-              (value) => new GoogleCloudVisionV1p1beta1Page.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("text")) {
@@ -6079,9 +6282,9 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+      _json["pages"] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
       _json["text"] = text;
@@ -6120,7 +6323,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -6155,7 +6358,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -6181,14 +6384,14 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
       core.Map _json) {
     if (_json.containsKey("detectedBreak")) {
       detectedBreak =
-          new GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
+          GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
               _json["detectedBreak"]);
     }
     if (_json.containsKey("detectedLanguages")) {
       detectedLanguages = (_json["detectedLanguages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>(
               (value) =>
-                  new GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
+                  GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
                       .fromJson(value))
           .toList();
     }
@@ -6196,13 +6399,13 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = (detectedBreak).toJson();
+      _json["detectedBreak"] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
       _json["detectedLanguages"] =
-          detectedLanguages.map((value) => (value).toJson()).toList();
+          detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6230,7 +6433,7 @@ class GoogleCloudVisionV1p1beta1Vertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -6274,72 +6477,67 @@ class GoogleCloudVisionV1p1beta1WebDetection {
     if (_json.containsKey("bestGuessLabels")) {
       bestGuessLabels = (_json["bestGuessLabels"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pagesWithMatchingImages")) {
       pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebPage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("visuallySimilarImages")) {
       visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = (_json["webEntities"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json["bestGuessLabels"] =
-          bestGuessLabels.map((value) => (value).toJson()).toList();
+          bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
       _json["pagesWithMatchingImages"] =
-          pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+          pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
       _json["visuallySimilarImages"] =
-          visuallySimilarImages.map((value) => (value).toJson()).toList();
+          visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] =
-          webEntities.map((value) => (value).toJson()).toList();
+          webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6373,7 +6571,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -6408,7 +6606,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (score != null) {
       _json["score"] = score;
     }
@@ -6442,7 +6640,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -6480,8 +6678,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageTitle")) {
@@ -6490,8 +6687,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -6504,17 +6700,17 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
       _json["pageTitle"] = pageTitle;
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -6551,39 +6747,38 @@ class GoogleCloudVisionV1p1beta1Word {
 
   GoogleCloudVisionV1p1beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("symbols")) {
       symbols = (_json["symbols"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Symbol>(
-              (value) => new GoogleCloudVisionV1p1beta1Symbol.fromJson(value))
+              (value) => GoogleCloudVisionV1p1beta1Symbol.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
+      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6610,17 +6805,16 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new GoogleCloudVisionV1p2beta1InputConfig.fromJson(
-          _json["inputConfig"]);
+      inputConfig =
+          GoogleCloudVisionV1p2beta1InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p2beta1AnnotateImageResponse>((value) =>
-              new GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalPages")) {
@@ -6630,15 +6824,15 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
       _json["totalPages"] = totalPages;
@@ -6702,131 +6896,130 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
 
   GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
+      context = GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
           _json["context"]);
     }
     if (_json.containsKey("cropHintsAnnotation")) {
       cropHintsAnnotation =
-          new GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
+          GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
               _json["cropHintsAnnotation"]);
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = (_json["faceAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation =
-          new GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
-              _json["fullTextAnnotation"]);
+      fullTextAnnotation = GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
+          _json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation =
-          new GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
+          GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
               _json["imagePropertiesAnnotation"]);
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("landmarkAnnotations")) {
       landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("localizedObjectAnnotations")) {
       localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
               as core.List)
           .map<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
+              GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productSearchResults")) {
       productSearchResults =
-          new GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
+          GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
               _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
-          new GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
+          GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
               _json["safeSearchAnnotation"]);
     }
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = (_json["textAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webDetection")) {
-      webDetection = new GoogleCloudVisionV1p2beta1WebDetection.fromJson(
+      webDetection = GoogleCloudVisionV1p2beta1WebDetection.fromJson(
           _json["webDetection"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] =
-          faceAnnotations.map((value) => (value).toJson()).toList();
+          faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
+      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
+      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
-          labelAnnotations.map((value) => (value).toJson()).toList();
+          labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
       _json["landmarkAnnotations"] =
-          landmarkAnnotations.map((value) => (value).toJson()).toList();
+          landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
       _json["localizedObjectAnnotations"] =
-          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+          localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
-          logoAnnotations.map((value) => (value).toJson()).toList();
+          logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = (productSearchResults).toJson();
+      _json["productSearchResults"] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
+      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] =
-          textAnnotations.map((value) => (value).toJson()).toList();
+          textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = (webDetection).toJson();
+      _json["webDetection"] = webDetection.toJson();
     }
     return _json;
   }
@@ -6841,16 +7034,16 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
 
   GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
+      outputConfig = GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
           _json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -6869,7 +7062,7 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>((value) =>
-              new GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
+              GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
                   value))
           .toList();
     }
@@ -6877,9 +7070,9 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6922,43 +7115,41 @@ class GoogleCloudVisionV1p2beta1Block {
       blockType = _json["blockType"];
     }
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = (_json["paragraphs"] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Paragraph>((value) =>
-              new GoogleCloudVisionV1p2beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Paragraph>(
+              (value) => GoogleCloudVisionV1p2beta1Paragraph.fromJson(value))
           .toList();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] =
-          paragraphs.map((value) => (value).toJson()).toList();
+      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     return _json;
   }
@@ -6978,26 +7169,26 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
     if (_json.containsKey("normalizedVertices")) {
       normalizedVertices = (_json["normalizedVertices"] as core.List)
           .map<GoogleCloudVisionV1p2beta1NormalizedVertex>((value) =>
-              new GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Vertex>(
-              (value) => new GoogleCloudVisionV1p2beta1Vertex.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Vertex.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json["normalizedVertices"] =
-          normalizedVertices.map((value) => (value).toJson()).toList();
+          normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7020,7 +7211,7 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
 
   GoogleCloudVisionV1p2beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("pixelFraction")) {
       pixelFraction = _json["pixelFraction"].toDouble();
@@ -7032,9 +7223,9 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (pixelFraction != null) {
       _json["pixelFraction"] = pixelFraction;
@@ -7063,7 +7254,7 @@ class GoogleCloudVisionV1p2beta1CropHint {
 
   GoogleCloudVisionV1p2beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -7076,9 +7267,9 @@ class GoogleCloudVisionV1p2beta1CropHint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -7101,16 +7292,16 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
     if (_json.containsKey("cropHints")) {
       cropHints = (_json["cropHints"] as core.List)
           .map<GoogleCloudVisionV1p2beta1CropHint>(
-              (value) => new GoogleCloudVisionV1p2beta1CropHint.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1CropHint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7126,17 +7317,17 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = (_json["colors"] as core.List)
-          .map<GoogleCloudVisionV1p2beta1ColorInfo>((value) =>
-              new GoogleCloudVisionV1p2beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1ColorInfo>(
+              (value) => GoogleCloudVisionV1p2beta1ColorInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => (value).toJson()).toList();
+      _json["colors"] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7190,7 +7381,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
 
   GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -7204,8 +7395,8 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<GoogleCloudVisionV1p2beta1LocationInfo>((value) =>
-              new GoogleCloudVisionV1p2beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1LocationInfo>(
+              (value) => GoogleCloudVisionV1p2beta1LocationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mid")) {
@@ -7214,7 +7405,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Property>(
-              (value) => new GoogleCloudVisionV1p2beta1Property.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -7227,9 +7418,9 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -7241,14 +7432,13 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
       _json["locale"] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
       _json["mid"] = mid;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -7381,14 +7571,14 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
       blurredLikelihood = _json["blurredLikelihood"];
     }
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("detectionConfidence")) {
       detectionConfidence = _json["detectionConfidence"].toDouble();
     }
     if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      fdBoundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["fdBoundingPoly"]);
     }
     if (_json.containsKey("headwearLikelihood")) {
@@ -7403,8 +7593,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     if (_json.containsKey("landmarks")) {
       landmarks = (_json["landmarks"] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>((value) =>
-              new GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
     if (_json.containsKey("panAngle")) {
@@ -7429,7 +7618,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -7437,13 +7626,13 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
       _json["blurredLikelihood"] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
       _json["detectionConfidence"] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = (fdBoundingPoly).toJson();
+      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
       _json["headwearLikelihood"] = headwearLikelihood;
@@ -7455,7 +7644,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
       _json["landmarkingConfidence"] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => (value).toJson()).toList();
+      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
       _json["panAngle"] = panAngle;
@@ -7530,8 +7719,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey("position")) {
-      position =
-          new GoogleCloudVisionV1p2beta1Position.fromJson(_json["position"]);
+      position = GoogleCloudVisionV1p2beta1Position.fromJson(_json["position"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -7540,9 +7728,9 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -7580,7 +7768,7 @@ class GoogleCloudVisionV1p2beta1GcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -7604,7 +7792,7 @@ class GoogleCloudVisionV1p2beta1GcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -7635,7 +7823,7 @@ class GoogleCloudVisionV1p2beta1ImageAnnotationContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageNumber != null) {
       _json["pageNumber"] = pageNumber;
     }
@@ -7656,16 +7844,16 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
   GoogleCloudVisionV1p2beta1ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dominantColors")) {
       dominantColors =
-          new GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
+          GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
               _json["dominantColors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = (dominantColors).toJson();
+      _json["dominantColors"] = dominantColors.toJson();
     }
     return _json;
   }
@@ -7679,9 +7867,7 @@ class GoogleCloudVisionV1p2beta1InputConfig {
   /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
   /// requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -7703,7 +7889,7 @@ class GoogleCloudVisionV1p2beta1InputConfig {
     }
     if (_json.containsKey("gcsSource")) {
       gcsSource =
-          new GoogleCloudVisionV1p2beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p2beta1GcsSource.fromJson(_json["gcsSource"]);
     }
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
@@ -7712,12 +7898,12 @@ class GoogleCloudVisionV1p2beta1InputConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -7749,7 +7935,7 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
 
   GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("languageCode")) {
@@ -7768,9 +7954,9 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
@@ -7797,15 +7983,15 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
 
   GoogleCloudVisionV1p2beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
+      latLng = LatLng.fromJson(_json["latLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
+      _json["latLng"] = latLng.toJson();
     }
     return _json;
   }
@@ -7833,7 +8019,7 @@ class GoogleCloudVisionV1p2beta1NormalizedVertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -7877,7 +8063,7 @@ class GoogleCloudVisionV1p2beta1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -7913,19 +8099,19 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
       batchSize = _json["batchSize"];
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
+      gcsDestination = GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -7956,7 +8142,7 @@ class GoogleCloudVisionV1p2beta1Page {
     if (_json.containsKey("blocks")) {
       blocks = (_json["blocks"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Block>(
-              (value) => new GoogleCloudVisionV1p2beta1Block.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Block.fromJson(value))
           .toList();
     }
     if (_json.containsKey("confidence")) {
@@ -7966,9 +8152,8 @@ class GoogleCloudVisionV1p2beta1Page {
       height = _json["height"];
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("width")) {
       width = _json["width"];
@@ -7977,9 +8162,9 @@ class GoogleCloudVisionV1p2beta1Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -7988,7 +8173,7 @@ class GoogleCloudVisionV1p2beta1Page {
       _json["height"] = height;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (width != null) {
       _json["width"] = width;
@@ -8022,39 +8207,38 @@ class GoogleCloudVisionV1p2beta1Paragraph {
 
   GoogleCloudVisionV1p2beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Word>(
-              (value) => new GoogleCloudVisionV1p2beta1Word.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Word.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8089,7 +8273,7 @@ class GoogleCloudVisionV1p2beta1Position {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -8154,14 +8338,14 @@ class GoogleCloudVisionV1p2beta1Product {
     if (_json.containsKey("productLabels")) {
       productLabels = (_json["productLabels"] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductKeyValue>((value) =>
-              new GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -8176,7 +8360,7 @@ class GoogleCloudVisionV1p2beta1Product {
     }
     if (productLabels != null) {
       _json["productLabels"] =
-          productLabels.map((value) => (value).toJson()).toList();
+          productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8205,7 +8389,7 @@ class GoogleCloudVisionV1p2beta1ProductKeyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -8243,14 +8427,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
       productGroupedResults = (_json["productGroupedResults"] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>(
               (value) =>
-                  new GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+                  GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -8258,16 +8442,16 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
     }
     if (productGroupedResults != null) {
       _json["productGroupedResults"] =
-          productGroupedResults.map((value) => (value).toJson()).toList();
+          productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8290,21 +8474,21 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
   GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("objectAnnotations")) {
       objectAnnotations = (_json["objectAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
-                  new GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
+                  GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -8312,16 +8496,16 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
-          objectAnnotations.map((value) => (value).toJson()).toList();
+          objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8363,7 +8547,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -8401,8 +8585,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
       image = _json["image"];
     }
     if (_json.containsKey("product")) {
-      product =
-          new GoogleCloudVisionV1p2beta1Product.fromJson(_json["product"]);
+      product = GoogleCloudVisionV1p2beta1Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("score")) {
       score = _json["score"].toDouble();
@@ -8411,12 +8594,12 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
     if (product != null) {
-      _json["product"] = (product).toJson();
+      _json["product"] = product.toJson();
     }
     if (score != null) {
       _json["score"] = score;
@@ -8452,7 +8635,7 @@ class GoogleCloudVisionV1p2beta1Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -8547,7 +8730,7 @@ class GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -8592,16 +8775,15 @@ class GoogleCloudVisionV1p2beta1Symbol {
 
   GoogleCloudVisionV1p2beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -8610,15 +8792,15 @@ class GoogleCloudVisionV1p2beta1Symbol {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -8647,7 +8829,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Page>(
-              (value) => new GoogleCloudVisionV1p2beta1Page.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("text")) {
@@ -8657,9 +8839,9 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+      _json["pages"] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
       _json["text"] = text;
@@ -8698,7 +8880,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -8733,7 +8915,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -8759,14 +8941,14 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
       core.Map _json) {
     if (_json.containsKey("detectedBreak")) {
       detectedBreak =
-          new GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
+          GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
               _json["detectedBreak"]);
     }
     if (_json.containsKey("detectedLanguages")) {
       detectedLanguages = (_json["detectedLanguages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>(
               (value) =>
-                  new GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
+                  GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
                       .fromJson(value))
           .toList();
     }
@@ -8774,13 +8956,13 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = (detectedBreak).toJson();
+      _json["detectedBreak"] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
       _json["detectedLanguages"] =
-          detectedLanguages.map((value) => (value).toJson()).toList();
+          detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8808,7 +8990,7 @@ class GoogleCloudVisionV1p2beta1Vertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -8852,72 +9034,67 @@ class GoogleCloudVisionV1p2beta1WebDetection {
     if (_json.containsKey("bestGuessLabels")) {
       bestGuessLabels = (_json["bestGuessLabels"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pagesWithMatchingImages")) {
       pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebPage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("visuallySimilarImages")) {
       visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = (_json["webEntities"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json["bestGuessLabels"] =
-          bestGuessLabels.map((value) => (value).toJson()).toList();
+          bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
       _json["pagesWithMatchingImages"] =
-          pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+          pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
       _json["visuallySimilarImages"] =
-          visuallySimilarImages.map((value) => (value).toJson()).toList();
+          visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] =
-          webEntities.map((value) => (value).toJson()).toList();
+          webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -8951,7 +9128,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -8986,7 +9163,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (score != null) {
       _json["score"] = score;
     }
@@ -9020,7 +9197,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -9058,8 +9235,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageTitle")) {
@@ -9068,8 +9244,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -9082,17 +9257,17 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
       _json["pageTitle"] = pageTitle;
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -9129,39 +9304,38 @@ class GoogleCloudVisionV1p2beta1Word {
 
   GoogleCloudVisionV1p2beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("symbols")) {
       symbols = (_json["symbols"] as core.List)
           .map<GoogleCloudVisionV1p2beta1Symbol>(
-              (value) => new GoogleCloudVisionV1p2beta1Symbol.fromJson(value))
+              (value) => GoogleCloudVisionV1p2beta1Symbol.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
+      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9188,17 +9362,16 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new GoogleCloudVisionV1p3beta1InputConfig.fromJson(
-          _json["inputConfig"]);
+      inputConfig =
+          GoogleCloudVisionV1p3beta1InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p3beta1AnnotateImageResponse>((value) =>
-              new GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalPages")) {
@@ -9208,15 +9381,15 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
       _json["totalPages"] = totalPages;
@@ -9280,131 +9453,130 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
 
   GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
+      context = GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
           _json["context"]);
     }
     if (_json.containsKey("cropHintsAnnotation")) {
       cropHintsAnnotation =
-          new GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
+          GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
               _json["cropHintsAnnotation"]);
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = (_json["faceAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation =
-          new GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
-              _json["fullTextAnnotation"]);
+      fullTextAnnotation = GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
+          _json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation =
-          new GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
+          GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
               _json["imagePropertiesAnnotation"]);
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("landmarkAnnotations")) {
       landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("localizedObjectAnnotations")) {
       localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
               as core.List)
           .map<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
+              GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productSearchResults")) {
       productSearchResults =
-          new GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
+          GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
               _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
-          new GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
+          GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
               _json["safeSearchAnnotation"]);
     }
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = (_json["textAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webDetection")) {
-      webDetection = new GoogleCloudVisionV1p3beta1WebDetection.fromJson(
+      webDetection = GoogleCloudVisionV1p3beta1WebDetection.fromJson(
           _json["webDetection"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] =
-          faceAnnotations.map((value) => (value).toJson()).toList();
+          faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
+      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
+      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
-          labelAnnotations.map((value) => (value).toJson()).toList();
+          labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
       _json["landmarkAnnotations"] =
-          landmarkAnnotations.map((value) => (value).toJson()).toList();
+          landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
       _json["localizedObjectAnnotations"] =
-          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+          localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
-          logoAnnotations.map((value) => (value).toJson()).toList();
+          logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = (productSearchResults).toJson();
+      _json["productSearchResults"] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
+      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] =
-          textAnnotations.map((value) => (value).toJson()).toList();
+          textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = (webDetection).toJson();
+      _json["webDetection"] = webDetection.toJson();
     }
     return _json;
   }
@@ -9419,16 +9591,16 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
 
   GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
+      outputConfig = GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
           _json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -9447,7 +9619,7 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>((value) =>
-              new GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
+              GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
                   value))
           .toList();
     }
@@ -9455,9 +9627,9 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9504,7 +9676,7 @@ class GoogleCloudVisionV1p3beta1BatchOperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -9555,43 +9727,41 @@ class GoogleCloudVisionV1p3beta1Block {
       blockType = _json["blockType"];
     }
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = (_json["paragraphs"] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Paragraph>((value) =>
-              new GoogleCloudVisionV1p3beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Paragraph>(
+              (value) => GoogleCloudVisionV1p3beta1Paragraph.fromJson(value))
           .toList();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] =
-          paragraphs.map((value) => (value).toJson()).toList();
+      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     return _json;
   }
@@ -9611,26 +9781,26 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
     if (_json.containsKey("normalizedVertices")) {
       normalizedVertices = (_json["normalizedVertices"] as core.List)
           .map<GoogleCloudVisionV1p3beta1NormalizedVertex>((value) =>
-              new GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Vertex>(
-              (value) => new GoogleCloudVisionV1p3beta1Vertex.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Vertex.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json["normalizedVertices"] =
-          normalizedVertices.map((value) => (value).toJson()).toList();
+          normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9653,7 +9823,7 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
 
   GoogleCloudVisionV1p3beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("pixelFraction")) {
       pixelFraction = _json["pixelFraction"].toDouble();
@@ -9665,9 +9835,9 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (pixelFraction != null) {
       _json["pixelFraction"] = pixelFraction;
@@ -9696,7 +9866,7 @@ class GoogleCloudVisionV1p3beta1CropHint {
 
   GoogleCloudVisionV1p3beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -9709,9 +9879,9 @@ class GoogleCloudVisionV1p3beta1CropHint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -9734,16 +9904,16 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
     if (_json.containsKey("cropHints")) {
       cropHints = (_json["cropHints"] as core.List)
           .map<GoogleCloudVisionV1p3beta1CropHint>(
-              (value) => new GoogleCloudVisionV1p3beta1CropHint.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1CropHint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9759,17 +9929,17 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = (_json["colors"] as core.List)
-          .map<GoogleCloudVisionV1p3beta1ColorInfo>((value) =>
-              new GoogleCloudVisionV1p3beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1ColorInfo>(
+              (value) => GoogleCloudVisionV1p3beta1ColorInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => (value).toJson()).toList();
+      _json["colors"] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -9823,7 +9993,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
 
   GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -9837,8 +10007,8 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<GoogleCloudVisionV1p3beta1LocationInfo>((value) =>
-              new GoogleCloudVisionV1p3beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1LocationInfo>(
+              (value) => GoogleCloudVisionV1p3beta1LocationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mid")) {
@@ -9847,7 +10017,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Property>(
-              (value) => new GoogleCloudVisionV1p3beta1Property.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -9860,9 +10030,9 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -9874,14 +10044,13 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
       _json["locale"] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
       _json["mid"] = mid;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -10014,14 +10183,14 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
       blurredLikelihood = _json["blurredLikelihood"];
     }
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("detectionConfidence")) {
       detectionConfidence = _json["detectionConfidence"].toDouble();
     }
     if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      fdBoundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["fdBoundingPoly"]);
     }
     if (_json.containsKey("headwearLikelihood")) {
@@ -10036,8 +10205,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     if (_json.containsKey("landmarks")) {
       landmarks = (_json["landmarks"] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>((value) =>
-              new GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
     if (_json.containsKey("panAngle")) {
@@ -10062,7 +10230,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -10070,13 +10238,13 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
       _json["blurredLikelihood"] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
       _json["detectionConfidence"] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = (fdBoundingPoly).toJson();
+      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
       _json["headwearLikelihood"] = headwearLikelihood;
@@ -10088,7 +10256,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
       _json["landmarkingConfidence"] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => (value).toJson()).toList();
+      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
       _json["panAngle"] = panAngle;
@@ -10163,8 +10331,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey("position")) {
-      position =
-          new GoogleCloudVisionV1p3beta1Position.fromJson(_json["position"]);
+      position = GoogleCloudVisionV1p3beta1Position.fromJson(_json["position"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -10173,9 +10340,9 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -10213,7 +10380,7 @@ class GoogleCloudVisionV1p3beta1GcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -10237,7 +10404,7 @@ class GoogleCloudVisionV1p3beta1GcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -10268,7 +10435,7 @@ class GoogleCloudVisionV1p3beta1ImageAnnotationContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageNumber != null) {
       _json["pageNumber"] = pageNumber;
     }
@@ -10289,16 +10456,16 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
   GoogleCloudVisionV1p3beta1ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dominantColors")) {
       dominantColors =
-          new GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
+          GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
               _json["dominantColors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = (dominantColors).toJson();
+      _json["dominantColors"] = dominantColors.toJson();
     }
     return _json;
   }
@@ -10323,25 +10490,25 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
     if (_json.containsKey("referenceImages")) {
       referenceImages = (_json["referenceImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ReferenceImage>((value) =>
-              new GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("statuses")) {
       statuses = (_json["statuses"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (referenceImages != null) {
       _json["referenceImages"] =
-          referenceImages.map((value) => (value).toJson()).toList();
+          referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10355,9 +10522,7 @@ class GoogleCloudVisionV1p3beta1InputConfig {
   /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
   /// requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -10379,7 +10544,7 @@ class GoogleCloudVisionV1p3beta1InputConfig {
     }
     if (_json.containsKey("gcsSource")) {
       gcsSource =
-          new GoogleCloudVisionV1p3beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p3beta1GcsSource.fromJson(_json["gcsSource"]);
     }
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
@@ -10388,12 +10553,12 @@ class GoogleCloudVisionV1p3beta1InputConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -10425,7 +10590,7 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
 
   GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("languageCode")) {
@@ -10444,9 +10609,9 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
@@ -10473,15 +10638,15 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
 
   GoogleCloudVisionV1p3beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
+      latLng = LatLng.fromJson(_json["latLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
+      _json["latLng"] = latLng.toJson();
     }
     return _json;
   }
@@ -10509,7 +10674,7 @@ class GoogleCloudVisionV1p3beta1NormalizedVertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -10553,7 +10718,7 @@ class GoogleCloudVisionV1p3beta1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -10589,19 +10754,19 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
       batchSize = _json["batchSize"];
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
+      gcsDestination = GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -10632,7 +10797,7 @@ class GoogleCloudVisionV1p3beta1Page {
     if (_json.containsKey("blocks")) {
       blocks = (_json["blocks"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Block>(
-              (value) => new GoogleCloudVisionV1p3beta1Block.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Block.fromJson(value))
           .toList();
     }
     if (_json.containsKey("confidence")) {
@@ -10642,9 +10807,8 @@ class GoogleCloudVisionV1p3beta1Page {
       height = _json["height"];
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("width")) {
       width = _json["width"];
@@ -10653,9 +10817,9 @@ class GoogleCloudVisionV1p3beta1Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -10664,7 +10828,7 @@ class GoogleCloudVisionV1p3beta1Page {
       _json["height"] = height;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (width != null) {
       _json["width"] = width;
@@ -10698,39 +10862,38 @@ class GoogleCloudVisionV1p3beta1Paragraph {
 
   GoogleCloudVisionV1p3beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Word>(
-              (value) => new GoogleCloudVisionV1p3beta1Word.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Word.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10765,7 +10928,7 @@ class GoogleCloudVisionV1p3beta1Position {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -10830,14 +10993,14 @@ class GoogleCloudVisionV1p3beta1Product {
     if (_json.containsKey("productLabels")) {
       productLabels = (_json["productLabels"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductKeyValue>((value) =>
-              new GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -10852,7 +11015,7 @@ class GoogleCloudVisionV1p3beta1Product {
     }
     if (productLabels != null) {
       _json["productLabels"] =
-          productLabels.map((value) => (value).toJson()).toList();
+          productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10881,7 +11044,7 @@ class GoogleCloudVisionV1p3beta1ProductKeyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -10919,14 +11082,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
       productGroupedResults = (_json["productGroupedResults"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>(
               (value) =>
-                  new GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+                  GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -10934,16 +11097,16 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
     }
     if (productGroupedResults != null) {
       _json["productGroupedResults"] =
-          productGroupedResults.map((value) => (value).toJson()).toList();
+          productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -10966,21 +11129,21 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
   GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("objectAnnotations")) {
       objectAnnotations = (_json["objectAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
-                  new GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
+                  GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -10988,16 +11151,16 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
-          objectAnnotations.map((value) => (value).toJson()).toList();
+          objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11039,7 +11202,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -11077,8 +11240,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
       image = _json["image"];
     }
     if (_json.containsKey("product")) {
-      product =
-          new GoogleCloudVisionV1p3beta1Product.fromJson(_json["product"]);
+      product = GoogleCloudVisionV1p3beta1Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("score")) {
       score = _json["score"].toDouble();
@@ -11087,12 +11249,12 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
     if (product != null) {
-      _json["product"] = (product).toJson();
+      _json["product"] = product.toJson();
     }
     if (score != null) {
       _json["score"] = score;
@@ -11128,7 +11290,7 @@ class GoogleCloudVisionV1p3beta1Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -11167,8 +11329,8 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
   GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPolys")) {
       boundingPolys = (_json["boundingPolys"] as core.List)
-          .map<GoogleCloudVisionV1p3beta1BoundingPoly>((value) =>
-              new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1BoundingPoly>(
+              (value) => GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -11181,10 +11343,10 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json["boundingPolys"] =
-          boundingPolys.map((value) => (value).toJson()).toList();
+          boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -11277,7 +11439,7 @@ class GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -11322,16 +11484,15 @@ class GoogleCloudVisionV1p3beta1Symbol {
 
   GoogleCloudVisionV1p3beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -11340,15 +11501,15 @@ class GoogleCloudVisionV1p3beta1Symbol {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -11377,7 +11538,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Page>(
-              (value) => new GoogleCloudVisionV1p3beta1Page.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("text")) {
@@ -11387,9 +11548,9 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+      _json["pages"] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
       _json["text"] = text;
@@ -11428,7 +11589,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -11463,7 +11624,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -11489,14 +11650,14 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
       core.Map _json) {
     if (_json.containsKey("detectedBreak")) {
       detectedBreak =
-          new GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
+          GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
               _json["detectedBreak"]);
     }
     if (_json.containsKey("detectedLanguages")) {
       detectedLanguages = (_json["detectedLanguages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>(
               (value) =>
-                  new GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
+                  GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
                       .fromJson(value))
           .toList();
     }
@@ -11504,13 +11665,13 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = (detectedBreak).toJson();
+      _json["detectedBreak"] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
       _json["detectedLanguages"] =
-          detectedLanguages.map((value) => (value).toJson()).toList();
+          detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11538,7 +11699,7 @@ class GoogleCloudVisionV1p3beta1Vertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -11582,72 +11743,67 @@ class GoogleCloudVisionV1p3beta1WebDetection {
     if (_json.containsKey("bestGuessLabels")) {
       bestGuessLabels = (_json["bestGuessLabels"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pagesWithMatchingImages")) {
       pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebPage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("visuallySimilarImages")) {
       visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = (_json["webEntities"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json["bestGuessLabels"] =
-          bestGuessLabels.map((value) => (value).toJson()).toList();
+          bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
       _json["pagesWithMatchingImages"] =
-          pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+          pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
       _json["visuallySimilarImages"] =
-          visuallySimilarImages.map((value) => (value).toJson()).toList();
+          visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] =
-          webEntities.map((value) => (value).toJson()).toList();
+          webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11681,7 +11837,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -11716,7 +11872,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (score != null) {
       _json["score"] = score;
     }
@@ -11750,7 +11906,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -11788,8 +11944,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageTitle")) {
@@ -11798,8 +11953,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -11812,17 +11966,17 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
       _json["pageTitle"] = pageTitle;
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -11859,39 +12013,38 @@ class GoogleCloudVisionV1p3beta1Word {
 
   GoogleCloudVisionV1p3beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("symbols")) {
       symbols = (_json["symbols"] as core.List)
           .map<GoogleCloudVisionV1p3beta1Symbol>(
-              (value) => new GoogleCloudVisionV1p3beta1Symbol.fromJson(value))
+              (value) => GoogleCloudVisionV1p3beta1Symbol.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
+      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -11918,17 +12071,16 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("inputConfig")) {
-      inputConfig = new GoogleCloudVisionV1p4beta1InputConfig.fromJson(
-          _json["inputConfig"]);
+      inputConfig =
+          GoogleCloudVisionV1p4beta1InputConfig.fromJson(_json["inputConfig"]);
     }
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateImageResponse>((value) =>
-              new GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(value))
           .toList();
     }
     if (_json.containsKey("totalPages")) {
@@ -11938,15 +12090,15 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     if (totalPages != null) {
       _json["totalPages"] = totalPages;
@@ -12010,131 +12162,130 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
 
   GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("context")) {
-      context = new GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
+      context = GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
           _json["context"]);
     }
     if (_json.containsKey("cropHintsAnnotation")) {
       cropHintsAnnotation =
-          new GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
+          GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
               _json["cropHintsAnnotation"]);
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("faceAnnotations")) {
       faceAnnotations = (_json["faceAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullTextAnnotation")) {
-      fullTextAnnotation =
-          new GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
-              _json["fullTextAnnotation"]);
+      fullTextAnnotation = GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
+          _json["fullTextAnnotation"]);
     }
     if (_json.containsKey("imagePropertiesAnnotation")) {
       imagePropertiesAnnotation =
-          new GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
+          GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
               _json["imagePropertiesAnnotation"]);
     }
     if (_json.containsKey("labelAnnotations")) {
       labelAnnotations = (_json["labelAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("landmarkAnnotations")) {
       landmarkAnnotations = (_json["landmarkAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("localizedObjectAnnotations")) {
       localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
               as core.List)
           .map<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
+              GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
                   value))
           .toList();
     }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("productSearchResults")) {
       productSearchResults =
-          new GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
+          GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
               _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
-          new GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
+          GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
               _json["safeSearchAnnotation"]);
     }
     if (_json.containsKey("textAnnotations")) {
       textAnnotations = (_json["textAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              new GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webDetection")) {
-      webDetection = new GoogleCloudVisionV1p4beta1WebDetection.fromJson(
+      webDetection = GoogleCloudVisionV1p4beta1WebDetection.fromJson(
           _json["webDetection"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (context != null) {
-      _json["context"] = (context).toJson();
+      _json["context"] = context.toJson();
     }
     if (cropHintsAnnotation != null) {
-      _json["cropHintsAnnotation"] = (cropHintsAnnotation).toJson();
+      _json["cropHintsAnnotation"] = cropHintsAnnotation.toJson();
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (faceAnnotations != null) {
       _json["faceAnnotations"] =
-          faceAnnotations.map((value) => (value).toJson()).toList();
+          faceAnnotations.map((value) => value.toJson()).toList();
     }
     if (fullTextAnnotation != null) {
-      _json["fullTextAnnotation"] = (fullTextAnnotation).toJson();
+      _json["fullTextAnnotation"] = fullTextAnnotation.toJson();
     }
     if (imagePropertiesAnnotation != null) {
-      _json["imagePropertiesAnnotation"] = (imagePropertiesAnnotation).toJson();
+      _json["imagePropertiesAnnotation"] = imagePropertiesAnnotation.toJson();
     }
     if (labelAnnotations != null) {
       _json["labelAnnotations"] =
-          labelAnnotations.map((value) => (value).toJson()).toList();
+          labelAnnotations.map((value) => value.toJson()).toList();
     }
     if (landmarkAnnotations != null) {
       _json["landmarkAnnotations"] =
-          landmarkAnnotations.map((value) => (value).toJson()).toList();
+          landmarkAnnotations.map((value) => value.toJson()).toList();
     }
     if (localizedObjectAnnotations != null) {
       _json["localizedObjectAnnotations"] =
-          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+          localizedObjectAnnotations.map((value) => value.toJson()).toList();
     }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
-          logoAnnotations.map((value) => (value).toJson()).toList();
+          logoAnnotations.map((value) => value.toJson()).toList();
     }
     if (productSearchResults != null) {
-      _json["productSearchResults"] = (productSearchResults).toJson();
+      _json["productSearchResults"] = productSearchResults.toJson();
     }
     if (safeSearchAnnotation != null) {
-      _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
+      _json["safeSearchAnnotation"] = safeSearchAnnotation.toJson();
     }
     if (textAnnotations != null) {
       _json["textAnnotations"] =
-          textAnnotations.map((value) => (value).toJson()).toList();
+          textAnnotations.map((value) => value.toJson()).toList();
     }
     if (webDetection != null) {
-      _json["webDetection"] = (webDetection).toJson();
+      _json["webDetection"] = webDetection.toJson();
     }
     return _json;
   }
@@ -12149,16 +12300,16 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
 
   GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
+      outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
           _json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -12177,7 +12328,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>((value) =>
-              new GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
+              GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
                   value))
           .toList();
     }
@@ -12185,9 +12336,9 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12203,16 +12354,16 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
   GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey("outputConfig")) {
-      outputConfig = new GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
+      outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
           _json["outputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (outputConfig != null) {
-      _json["outputConfig"] = (outputConfig).toJson();
+      _json["outputConfig"] = outputConfig.toJson();
     }
     return _json;
   }
@@ -12231,17 +12382,16 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
     if (_json.containsKey("responses")) {
       responses = (_json["responses"] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateFileResponse>((value) =>
-              new GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (responses != null) {
-      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+      _json["responses"] = responses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12288,7 +12438,7 @@ class GoogleCloudVisionV1p4beta1BatchOperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -12339,43 +12489,41 @@ class GoogleCloudVisionV1p4beta1Block {
       blockType = _json["blockType"];
     }
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("paragraphs")) {
       paragraphs = (_json["paragraphs"] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Paragraph>((value) =>
-              new GoogleCloudVisionV1p4beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Paragraph>(
+              (value) => GoogleCloudVisionV1p4beta1Paragraph.fromJson(value))
           .toList();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blockType != null) {
       _json["blockType"] = blockType;
     }
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (paragraphs != null) {
-      _json["paragraphs"] =
-          paragraphs.map((value) => (value).toJson()).toList();
+      _json["paragraphs"] = paragraphs.map((value) => value.toJson()).toList();
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     return _json;
   }
@@ -12395,26 +12543,26 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
     if (_json.containsKey("normalizedVertices")) {
       normalizedVertices = (_json["normalizedVertices"] as core.List)
           .map<GoogleCloudVisionV1p4beta1NormalizedVertex>((value) =>
-              new GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(value))
           .toList();
     }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Vertex>(
-              (value) => new GoogleCloudVisionV1p4beta1Vertex.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Vertex.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json["normalizedVertices"] =
-          normalizedVertices.map((value) => (value).toJson()).toList();
+          normalizedVertices.map((value) => value.toJson()).toList();
     }
     if (vertices != null) {
-      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+      _json["vertices"] = vertices.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12448,7 +12596,7 @@ class GoogleCloudVisionV1p4beta1Celebrity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -12479,7 +12627,7 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
 
   GoogleCloudVisionV1p4beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("color")) {
-      color = new Color.fromJson(_json["color"]);
+      color = Color.fromJson(_json["color"]);
     }
     if (_json.containsKey("pixelFraction")) {
       pixelFraction = _json["pixelFraction"].toDouble();
@@ -12491,9 +12639,9 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (color != null) {
-      _json["color"] = (color).toJson();
+      _json["color"] = color.toJson();
     }
     if (pixelFraction != null) {
       _json["pixelFraction"] = pixelFraction;
@@ -12522,7 +12670,7 @@ class GoogleCloudVisionV1p4beta1CropHint {
 
   GoogleCloudVisionV1p4beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -12535,9 +12683,9 @@ class GoogleCloudVisionV1p4beta1CropHint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -12560,16 +12708,16 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
     if (_json.containsKey("cropHints")) {
       cropHints = (_json["cropHints"] as core.List)
           .map<GoogleCloudVisionV1p4beta1CropHint>(
-              (value) => new GoogleCloudVisionV1p4beta1CropHint.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1CropHint.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHints != null) {
-      _json["cropHints"] = cropHints.map((value) => (value).toJson()).toList();
+      _json["cropHints"] = cropHints.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12585,17 +12733,17 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("colors")) {
       colors = (_json["colors"] as core.List)
-          .map<GoogleCloudVisionV1p4beta1ColorInfo>((value) =>
-              new GoogleCloudVisionV1p4beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1ColorInfo>(
+              (value) => GoogleCloudVisionV1p4beta1ColorInfo.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (colors != null) {
-      _json["colors"] = colors.map((value) => (value).toJson()).toList();
+      _json["colors"] = colors.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -12649,7 +12797,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
 
   GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("confidence")) {
@@ -12663,8 +12811,8 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     }
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
-          .map<GoogleCloudVisionV1p4beta1LocationInfo>((value) =>
-              new GoogleCloudVisionV1p4beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1LocationInfo>(
+              (value) => GoogleCloudVisionV1p4beta1LocationInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("mid")) {
@@ -12673,7 +12821,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     if (_json.containsKey("properties")) {
       properties = (_json["properties"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Property>(
-              (value) => new GoogleCloudVisionV1p4beta1Property.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Property.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -12686,9 +12834,9 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -12700,14 +12848,13 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
       _json["locale"] = locale;
     }
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (mid != null) {
       _json["mid"] = mid;
     }
     if (properties != null) {
-      _json["properties"] =
-          properties.map((value) => (value).toJson()).toList();
+      _json["properties"] = properties.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -12846,14 +12993,14 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
       blurredLikelihood = _json["blurredLikelihood"];
     }
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("detectionConfidence")) {
       detectionConfidence = _json["detectionConfidence"].toDouble();
     }
     if (_json.containsKey("fdBoundingPoly")) {
-      fdBoundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      fdBoundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["fdBoundingPoly"]);
     }
     if (_json.containsKey("headwearLikelihood")) {
@@ -12868,8 +13015,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     if (_json.containsKey("landmarks")) {
       landmarks = (_json["landmarks"] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>((value) =>
-              new GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(value))
           .toList();
     }
     if (_json.containsKey("panAngle")) {
@@ -12878,8 +13024,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     if (_json.containsKey("recognitionResult")) {
       recognitionResult = (_json["recognitionResult"] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceRecognitionResult>((value) =>
-              new GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("rollAngle")) {
@@ -12901,7 +13046,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json["angerLikelihood"] = angerLikelihood;
     }
@@ -12909,13 +13054,13 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
       _json["blurredLikelihood"] = blurredLikelihood;
     }
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (detectionConfidence != null) {
       _json["detectionConfidence"] = detectionConfidence;
     }
     if (fdBoundingPoly != null) {
-      _json["fdBoundingPoly"] = (fdBoundingPoly).toJson();
+      _json["fdBoundingPoly"] = fdBoundingPoly.toJson();
     }
     if (headwearLikelihood != null) {
       _json["headwearLikelihood"] = headwearLikelihood;
@@ -12927,14 +13072,14 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
       _json["landmarkingConfidence"] = landmarkingConfidence;
     }
     if (landmarks != null) {
-      _json["landmarks"] = landmarks.map((value) => (value).toJson()).toList();
+      _json["landmarks"] = landmarks.map((value) => value.toJson()).toList();
     }
     if (panAngle != null) {
       _json["panAngle"] = panAngle;
     }
     if (recognitionResult != null) {
       _json["recognitionResult"] =
-          recognitionResult.map((value) => (value).toJson()).toList();
+          recognitionResult.map((value) => value.toJson()).toList();
     }
     if (rollAngle != null) {
       _json["rollAngle"] = rollAngle;
@@ -13006,8 +13151,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey("position")) {
-      position =
-          new GoogleCloudVisionV1p4beta1Position.fromJson(_json["position"]);
+      position = GoogleCloudVisionV1p4beta1Position.fromJson(_json["position"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -13016,9 +13160,9 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -13040,7 +13184,7 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
   GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(core.Map _json) {
     if (_json.containsKey("celebrity")) {
       celebrity =
-          new GoogleCloudVisionV1p4beta1Celebrity.fromJson(_json["celebrity"]);
+          GoogleCloudVisionV1p4beta1Celebrity.fromJson(_json["celebrity"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
@@ -13049,9 +13193,9 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (celebrity != null) {
-      _json["celebrity"] = (celebrity).toJson();
+      _json["celebrity"] = celebrity.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -13089,7 +13233,7 @@ class GoogleCloudVisionV1p4beta1GcsDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -13113,7 +13257,7 @@ class GoogleCloudVisionV1p4beta1GcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (uri != null) {
       _json["uri"] = uri;
     }
@@ -13144,7 +13288,7 @@ class GoogleCloudVisionV1p4beta1ImageAnnotationContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageNumber != null) {
       _json["pageNumber"] = pageNumber;
     }
@@ -13165,16 +13309,16 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
   GoogleCloudVisionV1p4beta1ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dominantColors")) {
       dominantColors =
-          new GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
+          GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
               _json["dominantColors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = (dominantColors).toJson();
+      _json["dominantColors"] = dominantColors.toJson();
     }
     return _json;
   }
@@ -13199,25 +13343,25 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
     if (_json.containsKey("referenceImages")) {
       referenceImages = (_json["referenceImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ReferenceImage>((value) =>
-              new GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("statuses")) {
       statuses = (_json["statuses"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (referenceImages != null) {
       _json["referenceImages"] =
-          referenceImages.map((value) => (value).toJson()).toList();
+          referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13231,9 +13375,7 @@ class GoogleCloudVisionV1p4beta1InputConfig {
   /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
   /// requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -13255,7 +13397,7 @@ class GoogleCloudVisionV1p4beta1InputConfig {
     }
     if (_json.containsKey("gcsSource")) {
       gcsSource =
-          new GoogleCloudVisionV1p4beta1GcsSource.fromJson(_json["gcsSource"]);
+          GoogleCloudVisionV1p4beta1GcsSource.fromJson(_json["gcsSource"]);
     }
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
@@ -13264,12 +13406,12 @@ class GoogleCloudVisionV1p4beta1InputConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -13301,7 +13443,7 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
 
   GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("languageCode")) {
@@ -13320,9 +13462,9 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
@@ -13349,15 +13491,15 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
 
   GoogleCloudVisionV1p4beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
+      latLng = LatLng.fromJson(_json["latLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
+      _json["latLng"] = latLng.toJson();
     }
     return _json;
   }
@@ -13385,7 +13527,7 @@ class GoogleCloudVisionV1p4beta1NormalizedVertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -13429,7 +13571,7 @@ class GoogleCloudVisionV1p4beta1OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -13465,19 +13607,19 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
       batchSize = _json["batchSize"];
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
+      gcsDestination = GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
           _json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -13508,7 +13650,7 @@ class GoogleCloudVisionV1p4beta1Page {
     if (_json.containsKey("blocks")) {
       blocks = (_json["blocks"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Block>(
-              (value) => new GoogleCloudVisionV1p4beta1Block.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Block.fromJson(value))
           .toList();
     }
     if (_json.containsKey("confidence")) {
@@ -13518,9 +13660,8 @@ class GoogleCloudVisionV1p4beta1Page {
       height = _json["height"];
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("width")) {
       width = _json["width"];
@@ -13529,9 +13670,9 @@ class GoogleCloudVisionV1p4beta1Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -13540,7 +13681,7 @@ class GoogleCloudVisionV1p4beta1Page {
       _json["height"] = height;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (width != null) {
       _json["width"] = width;
@@ -13574,39 +13715,38 @@ class GoogleCloudVisionV1p4beta1Paragraph {
 
   GoogleCloudVisionV1p4beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Word>(
-              (value) => new GoogleCloudVisionV1p4beta1Word.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Word.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13641,7 +13781,7 @@ class GoogleCloudVisionV1p4beta1Position {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -13706,14 +13846,14 @@ class GoogleCloudVisionV1p4beta1Product {
     if (_json.containsKey("productLabels")) {
       productLabels = (_json["productLabels"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductKeyValue>((value) =>
-              new GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -13728,7 +13868,7 @@ class GoogleCloudVisionV1p4beta1Product {
     }
     if (productLabels != null) {
       _json["productLabels"] =
-          productLabels.map((value) => (value).toJson()).toList();
+          productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13757,7 +13897,7 @@ class GoogleCloudVisionV1p4beta1ProductKeyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -13795,14 +13935,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
       productGroupedResults = (_json["productGroupedResults"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>(
               (value) =>
-                  new GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
+                  GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -13810,16 +13950,16 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
     }
     if (productGroupedResults != null) {
       _json["productGroupedResults"] =
-          productGroupedResults.map((value) => (value).toJson()).toList();
+          productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13842,21 +13982,21 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
   GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult.fromJson(
       core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+      boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
           _json["boundingPoly"]);
     }
     if (_json.containsKey("objectAnnotations")) {
       objectAnnotations = (_json["objectAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
-                  new GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
+                  GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
                       .fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
-              new GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
+              GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
                   value))
           .toList();
     }
@@ -13864,16 +14004,16 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
-          objectAnnotations.map((value) => (value).toJson()).toList();
+          objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -13915,7 +14055,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -13953,8 +14093,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
       image = _json["image"];
     }
     if (_json.containsKey("product")) {
-      product =
-          new GoogleCloudVisionV1p4beta1Product.fromJson(_json["product"]);
+      product = GoogleCloudVisionV1p4beta1Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("score")) {
       score = _json["score"].toDouble();
@@ -13963,12 +14102,12 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
     if (product != null) {
-      _json["product"] = (product).toJson();
+      _json["product"] = product.toJson();
     }
     if (score != null) {
       _json["score"] = score;
@@ -14004,7 +14143,7 @@ class GoogleCloudVisionV1p4beta1Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -14043,8 +14182,8 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
   GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPolys")) {
       boundingPolys = (_json["boundingPolys"] as core.List)
-          .map<GoogleCloudVisionV1p4beta1BoundingPoly>((value) =>
-              new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1BoundingPoly>(
+              (value) => GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -14057,10 +14196,10 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json["boundingPolys"] =
-          boundingPolys.map((value) => (value).toJson()).toList();
+          boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -14153,7 +14292,7 @@ class GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -14198,16 +14337,15 @@ class GoogleCloudVisionV1p4beta1Symbol {
 
   GoogleCloudVisionV1p4beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -14216,15 +14354,15 @@ class GoogleCloudVisionV1p4beta1Symbol {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -14253,7 +14391,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Page>(
-              (value) => new GoogleCloudVisionV1p4beta1Page.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("text")) {
@@ -14263,9 +14401,9 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+      _json["pages"] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
       _json["text"] = text;
@@ -14304,7 +14442,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (isPrefix != null) {
       _json["isPrefix"] = isPrefix;
     }
@@ -14339,7 +14477,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
@@ -14365,14 +14503,14 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
       core.Map _json) {
     if (_json.containsKey("detectedBreak")) {
       detectedBreak =
-          new GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
+          GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
               _json["detectedBreak"]);
     }
     if (_json.containsKey("detectedLanguages")) {
       detectedLanguages = (_json["detectedLanguages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>(
               (value) =>
-                  new GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
+                  GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
                       .fromJson(value))
           .toList();
     }
@@ -14380,13 +14518,13 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = (detectedBreak).toJson();
+      _json["detectedBreak"] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
       _json["detectedLanguages"] =
-          detectedLanguages.map((value) => (value).toJson()).toList();
+          detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14414,7 +14552,7 @@ class GoogleCloudVisionV1p4beta1Vertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -14458,72 +14596,67 @@ class GoogleCloudVisionV1p4beta1WebDetection {
     if (_json.containsKey("bestGuessLabels")) {
       bestGuessLabels = (_json["bestGuessLabels"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pagesWithMatchingImages")) {
       pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebPage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("visuallySimilarImages")) {
       visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = (_json["webEntities"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json["bestGuessLabels"] =
-          bestGuessLabels.map((value) => (value).toJson()).toList();
+          bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
       _json["pagesWithMatchingImages"] =
-          pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+          pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
       _json["visuallySimilarImages"] =
-          visuallySimilarImages.map((value) => (value).toJson()).toList();
+          visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] =
-          webEntities.map((value) => (value).toJson()).toList();
+          webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14557,7 +14690,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -14592,7 +14725,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (score != null) {
       _json["score"] = score;
     }
@@ -14626,7 +14759,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -14664,8 +14797,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageTitle")) {
@@ -14674,8 +14806,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              new GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-                  value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -14688,17 +14819,17 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
       _json["pageTitle"] = pageTitle;
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -14735,39 +14866,38 @@ class GoogleCloudVisionV1p4beta1Word {
 
   GoogleCloudVisionV1p4beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json["boundingBox"]);
+      boundingBox =
+          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property =
-          new GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              _json["property"]);
+      property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
+          _json["property"]);
     }
     if (_json.containsKey("symbols")) {
       symbols = (_json["symbols"] as core.List)
           .map<GoogleCloudVisionV1p4beta1Symbol>(
-              (value) => new GoogleCloudVisionV1p4beta1Symbol.fromJson(value))
+              (value) => GoogleCloudVisionV1p4beta1Symbol.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
+      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14788,33 +14918,32 @@ class GroupedResult {
 
   GroupedResult.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("objectAnnotations")) {
       objectAnnotations = (_json["objectAnnotations"] as core.List)
-          .map<ObjectAnnotation>(
-              (value) => new ObjectAnnotation.fromJson(value))
+          .map<ObjectAnnotation>((value) => ObjectAnnotation.fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
-          .map<Result>((value) => new Result.fromJson(value))
+          .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (objectAnnotations != null) {
       _json["objectAnnotations"] =
-          objectAnnotations.map((value) => (value).toJson()).toList();
+          objectAnnotations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -14828,9 +14957,7 @@ class Image {
   /// BatchAnnotateImages requests. It does not work for
   /// AsyncBatchAnnotateImages requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -14849,18 +14976,18 @@ class Image {
       content = _json["content"];
     }
     if (_json.containsKey("source")) {
-      source = new ImageSource.fromJson(_json["source"]);
+      source = ImageSource.fromJson(_json["source"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     return _json;
   }
@@ -14889,7 +15016,7 @@ class ImageAnnotationContext {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pageNumber != null) {
       _json["pageNumber"] = pageNumber;
     }
@@ -14928,41 +15055,41 @@ class ImageContext {
 
   ImageContext.fromJson(core.Map _json) {
     if (_json.containsKey("cropHintsParams")) {
-      cropHintsParams = new CropHintsParams.fromJson(_json["cropHintsParams"]);
+      cropHintsParams = CropHintsParams.fromJson(_json["cropHintsParams"]);
     }
     if (_json.containsKey("languageHints")) {
       languageHints = (_json["languageHints"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("latLongRect")) {
-      latLongRect = new LatLongRect.fromJson(_json["latLongRect"]);
+      latLongRect = LatLongRect.fromJson(_json["latLongRect"]);
     }
     if (_json.containsKey("productSearchParams")) {
       productSearchParams =
-          new ProductSearchParams.fromJson(_json["productSearchParams"]);
+          ProductSearchParams.fromJson(_json["productSearchParams"]);
     }
     if (_json.containsKey("webDetectionParams")) {
       webDetectionParams =
-          new WebDetectionParams.fromJson(_json["webDetectionParams"]);
+          WebDetectionParams.fromJson(_json["webDetectionParams"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cropHintsParams != null) {
-      _json["cropHintsParams"] = (cropHintsParams).toJson();
+      _json["cropHintsParams"] = cropHintsParams.toJson();
     }
     if (languageHints != null) {
       _json["languageHints"] = languageHints;
     }
     if (latLongRect != null) {
-      _json["latLongRect"] = (latLongRect).toJson();
+      _json["latLongRect"] = latLongRect.toJson();
     }
     if (productSearchParams != null) {
-      _json["productSearchParams"] = (productSearchParams).toJson();
+      _json["productSearchParams"] = productSearchParams.toJson();
     }
     if (webDetectionParams != null) {
-      _json["webDetectionParams"] = (webDetectionParams).toJson();
+      _json["webDetectionParams"] = webDetectionParams.toJson();
     }
     return _json;
   }
@@ -14978,15 +15105,15 @@ class ImageProperties {
   ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey("dominantColors")) {
       dominantColors =
-          new DominantColorsAnnotation.fromJson(_json["dominantColors"]);
+          DominantColorsAnnotation.fromJson(_json["dominantColors"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dominantColors != null) {
-      _json["dominantColors"] = (dominantColors).toJson();
+      _json["dominantColors"] = dominantColors.toJson();
     }
     return _json;
   }
@@ -15027,7 +15154,7 @@ class ImageSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gcsImageUri != null) {
       _json["gcsImageUri"] = gcsImageUri;
     }
@@ -15086,7 +15213,7 @@ class ImportProductSetsGcsSource {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (csvFileUri != null) {
       _json["csvFileUri"] = csvFileUri;
     }
@@ -15104,15 +15231,15 @@ class ImportProductSetsInputConfig {
 
   ImportProductSetsInputConfig.fromJson(core.Map _json) {
     if (_json.containsKey("gcsSource")) {
-      gcsSource = new ImportProductSetsGcsSource.fromJson(_json["gcsSource"]);
+      gcsSource = ImportProductSetsGcsSource.fromJson(_json["gcsSource"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     return _json;
   }
@@ -15127,16 +15254,15 @@ class ImportProductSetsRequest {
 
   ImportProductSetsRequest.fromJson(core.Map _json) {
     if (_json.containsKey("inputConfig")) {
-      inputConfig =
-          new ImportProductSetsInputConfig.fromJson(_json["inputConfig"]);
+      inputConfig = ImportProductSetsInputConfig.fromJson(_json["inputConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (inputConfig != null) {
-      _json["inputConfig"] = (inputConfig).toJson();
+      _json["inputConfig"] = inputConfig.toJson();
     }
     return _json;
   }
@@ -15160,25 +15286,25 @@ class ImportProductSetsResponse {
   ImportProductSetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("referenceImages")) {
       referenceImages = (_json["referenceImages"] as core.List)
-          .map<ReferenceImage>((value) => new ReferenceImage.fromJson(value))
+          .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("statuses")) {
       statuses = (_json["statuses"] as core.List)
-          .map<Status>((value) => new Status.fromJson(value))
+          .map<Status>((value) => Status.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (referenceImages != null) {
       _json["referenceImages"] =
-          referenceImages.map((value) => (value).toJson()).toList();
+          referenceImages.map((value) => value.toJson()).toList();
     }
     if (statuses != null) {
-      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+      _json["statuses"] = statuses.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15192,9 +15318,7 @@ class InputConfig {
   /// BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
   /// requests.
   core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -15215,7 +15339,7 @@ class InputConfig {
       content = _json["content"];
     }
     if (_json.containsKey("gcsSource")) {
-      gcsSource = new GcsSource.fromJson(_json["gcsSource"]);
+      gcsSource = GcsSource.fromJson(_json["gcsSource"]);
     }
     if (_json.containsKey("mimeType")) {
       mimeType = _json["mimeType"];
@@ -15224,12 +15348,12 @@ class InputConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (content != null) {
       _json["content"] = content;
     }
     if (gcsSource != null) {
-      _json["gcsSource"] = (gcsSource).toJson();
+      _json["gcsSource"] = gcsSource.toJson();
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
@@ -15261,7 +15385,7 @@ class KeyValue {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
@@ -15323,7 +15447,7 @@ class Landmark {
 
   Landmark.fromJson(core.Map _json) {
     if (_json.containsKey("position")) {
-      position = new Position.fromJson(_json["position"]);
+      position = Position.fromJson(_json["position"]);
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -15332,9 +15456,9 @@ class Landmark {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (position != null) {
-      _json["position"] = (position).toJson();
+      _json["position"] = position.toJson();
     }
     if (type != null) {
       _json["type"] = type;
@@ -15367,7 +15491,7 @@ class LatLng {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -15390,21 +15514,21 @@ class LatLongRect {
 
   LatLongRect.fromJson(core.Map _json) {
     if (_json.containsKey("maxLatLng")) {
-      maxLatLng = new LatLng.fromJson(_json["maxLatLng"]);
+      maxLatLng = LatLng.fromJson(_json["maxLatLng"]);
     }
     if (_json.containsKey("minLatLng")) {
-      minLatLng = new LatLng.fromJson(_json["minLatLng"]);
+      minLatLng = LatLng.fromJson(_json["minLatLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxLatLng != null) {
-      _json["maxLatLng"] = (maxLatLng).toJson();
+      _json["maxLatLng"] = maxLatLng.toJson();
     }
     if (minLatLng != null) {
-      _json["minLatLng"] = (minLatLng).toJson();
+      _json["minLatLng"] = minLatLng.toJson();
     }
     return _json;
   }
@@ -15426,20 +15550,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15462,20 +15585,20 @@ class ListProductSetsResponse {
     }
     if (_json.containsKey("productSets")) {
       productSets = (_json["productSets"] as core.List)
-          .map<ProductSet>((value) => new ProductSet.fromJson(value))
+          .map<ProductSet>((value) => ProductSet.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (productSets != null) {
       _json["productSets"] =
-          productSets.map((value) => (value).toJson()).toList();
+          productSets.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15498,19 +15621,19 @@ class ListProductsInProductSetResponse {
     }
     if (_json.containsKey("products")) {
       products = (_json["products"] as core.List)
-          .map<Product>((value) => new Product.fromJson(value))
+          .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => (value).toJson()).toList();
+      _json["products"] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15533,19 +15656,19 @@ class ListProductsResponse {
     }
     if (_json.containsKey("products")) {
       products = (_json["products"] as core.List)
-          .map<Product>((value) => new Product.fromJson(value))
+          .map<Product>((value) => Product.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (products != null) {
-      _json["products"] = products.map((value) => (value).toJson()).toList();
+      _json["products"] = products.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15573,14 +15696,14 @@ class ListReferenceImagesResponse {
     }
     if (_json.containsKey("referenceImages")) {
       referenceImages = (_json["referenceImages"] as core.List)
-          .map<ReferenceImage>((value) => new ReferenceImage.fromJson(value))
+          .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -15589,7 +15712,7 @@ class ListReferenceImagesResponse {
     }
     if (referenceImages != null) {
       _json["referenceImages"] =
-          referenceImages.map((value) => (value).toJson()).toList();
+          referenceImages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -15618,7 +15741,7 @@ class LocalizedObjectAnnotation {
 
   LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
@@ -15636,9 +15759,9 @@ class LocalizedObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
@@ -15665,15 +15788,15 @@ class LocationInfo {
 
   LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey("latLng")) {
-      latLng = new LatLng.fromJson(_json["latLng"]);
+      latLng = LatLng.fromJson(_json["latLng"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (latLng != null) {
-      _json["latLng"] = (latLng).toJson();
+      _json["latLng"] = latLng.toJson();
     }
     return _json;
   }
@@ -15701,7 +15824,7 @@ class NormalizedVertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -15747,7 +15870,7 @@ class ObjectAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
@@ -15808,7 +15931,7 @@ class Operation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new Status.fromJson(_json["error"]);
+      error = Status.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -15825,12 +15948,12 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -15878,7 +16001,7 @@ class OperationMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -15914,18 +16037,18 @@ class OutputConfig {
       batchSize = _json["batchSize"];
     }
     if (_json.containsKey("gcsDestination")) {
-      gcsDestination = new GcsDestination.fromJson(_json["gcsDestination"]);
+      gcsDestination = GcsDestination.fromJson(_json["gcsDestination"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
     if (gcsDestination != null) {
-      _json["gcsDestination"] = (gcsDestination).toJson();
+      _json["gcsDestination"] = gcsDestination.toJson();
     }
     return _json;
   }
@@ -15955,7 +16078,7 @@ class Page {
   Page.fromJson(core.Map _json) {
     if (_json.containsKey("blocks")) {
       blocks = (_json["blocks"] as core.List)
-          .map<Block>((value) => new Block.fromJson(value))
+          .map<Block>((value) => Block.fromJson(value))
           .toList();
     }
     if (_json.containsKey("confidence")) {
@@ -15965,7 +16088,7 @@ class Page {
       height = _json["height"];
     }
     if (_json.containsKey("property")) {
-      property = new TextProperty.fromJson(_json["property"]);
+      property = TextProperty.fromJson(_json["property"]);
     }
     if (_json.containsKey("width")) {
       width = _json["width"];
@@ -15974,9 +16097,9 @@ class Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blocks != null) {
-      _json["blocks"] = blocks.map((value) => (value).toJson()).toList();
+      _json["blocks"] = blocks.map((value) => value.toJson()).toList();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
@@ -15985,7 +16108,7 @@ class Page {
       _json["height"] = height;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (width != null) {
       _json["width"] = width;
@@ -16019,35 +16142,35 @@ class Paragraph {
 
   Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property = new TextProperty.fromJson(_json["property"]);
+      property = TextProperty.fromJson(_json["property"]);
     }
     if (_json.containsKey("words")) {
       words = (_json["words"] as core.List)
-          .map<Word>((value) => new Word.fromJson(value))
+          .map<Word>((value) => Word.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (words != null) {
-      _json["words"] = words.map((value) => (value).toJson()).toList();
+      _json["words"] = words.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16082,7 +16205,7 @@ class Position {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -16146,14 +16269,14 @@ class Product {
     }
     if (_json.containsKey("productLabels")) {
       productLabels = (_json["productLabels"] as core.List)
-          .map<KeyValue>((value) => new KeyValue.fromJson(value))
+          .map<KeyValue>((value) => KeyValue.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -16168,7 +16291,7 @@ class Product {
     }
     if (productLabels != null) {
       _json["productLabels"] =
-          productLabels.map((value) => (value).toJson()).toList();
+          productLabels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16207,7 +16330,7 @@ class ProductSearchParams {
 
   ProductSearchParams.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPoly")) {
-      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+      boundingPoly = BoundingPoly.fromJson(_json["boundingPoly"]);
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -16223,9 +16346,9 @@ class ProductSearchParams {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPoly != null) {
-      _json["boundingPoly"] = (boundingPoly).toJson();
+      _json["boundingPoly"] = boundingPoly.toJson();
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -16264,28 +16387,28 @@ class ProductSearchResults {
     }
     if (_json.containsKey("productGroupedResults")) {
       productGroupedResults = (_json["productGroupedResults"] as core.List)
-          .map<GroupedResult>((value) => new GroupedResult.fromJson(value))
+          .map<GroupedResult>((value) => GroupedResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
-          .map<Result>((value) => new Result.fromJson(value))
+          .map<Result>((value) => Result.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
     }
     if (productGroupedResults != null) {
       _json["productGroupedResults"] =
-          productGroupedResults.map((value) => (value).toJson()).toList();
+          productGroupedResults.map((value) => value.toJson()).toList();
     }
     if (results != null) {
-      _json["results"] = results.map((value) => (value).toJson()).toList();
+      _json["results"] = results.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16321,7 +16444,7 @@ class ProductSet {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("indexError")) {
-      indexError = new Status.fromJson(_json["indexError"]);
+      indexError = Status.fromJson(_json["indexError"]);
     }
     if (_json.containsKey("indexTime")) {
       indexTime = _json["indexTime"];
@@ -16333,12 +16456,12 @@ class ProductSet {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (indexError != null) {
-      _json["indexError"] = (indexError).toJson();
+      _json["indexError"] = indexError.toJson();
     }
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
@@ -16367,7 +16490,7 @@ class ProductSetPurgeConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (productSetId != null) {
       _json["productSetId"] = productSetId;
     }
@@ -16402,7 +16525,7 @@ class Property {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -16440,13 +16563,13 @@ class PurgeProductsRequest {
     }
     if (_json.containsKey("productSetPurgeConfig")) {
       productSetPurgeConfig =
-          new ProductSetPurgeConfig.fromJson(_json["productSetPurgeConfig"]);
+          ProductSetPurgeConfig.fromJson(_json["productSetPurgeConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (deleteOrphanProducts != null) {
       _json["deleteOrphanProducts"] = deleteOrphanProducts;
     }
@@ -16454,7 +16577,7 @@ class PurgeProductsRequest {
       _json["force"] = force;
     }
     if (productSetPurgeConfig != null) {
-      _json["productSetPurgeConfig"] = (productSetPurgeConfig).toJson();
+      _json["productSetPurgeConfig"] = productSetPurgeConfig.toJson();
     }
     return _json;
   }
@@ -16485,7 +16608,7 @@ class ReferenceImage {
   ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey("boundingPolys")) {
       boundingPolys = (_json["boundingPolys"] as core.List)
-          .map<BoundingPoly>((value) => new BoundingPoly.fromJson(value))
+          .map<BoundingPoly>((value) => BoundingPoly.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -16498,10 +16621,10 @@ class ReferenceImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json["boundingPolys"] =
-          boundingPolys.map((value) => (value).toJson()).toList();
+          boundingPolys.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -16530,7 +16653,7 @@ class RemoveProductFromProductSetRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (product != null) {
       _json["product"] = product;
     }
@@ -16558,7 +16681,7 @@ class Result {
       image = _json["image"];
     }
     if (_json.containsKey("product")) {
-      product = new Product.fromJson(_json["product"]);
+      product = Product.fromJson(_json["product"]);
     }
     if (_json.containsKey("score")) {
       score = _json["score"].toDouble();
@@ -16567,12 +16690,12 @@ class Result {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (image != null) {
       _json["image"] = image;
     }
     if (product != null) {
-      _json["product"] = (product).toJson();
+      _json["product"] = product.toJson();
     }
     if (score != null) {
       _json["score"] = score;
@@ -16662,7 +16785,7 @@ class SafeSearchAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (adult != null) {
       _json["adult"] = adult;
     }
@@ -16723,7 +16846,7 @@ class Status {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -16762,13 +16885,13 @@ class Symbol {
 
   Symbol.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property = new TextProperty.fromJson(_json["property"]);
+      property = TextProperty.fromJson(_json["property"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -16777,15 +16900,15 @@ class Symbol {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (text != null) {
       _json["text"] = text;
@@ -16813,7 +16936,7 @@ class TextAnnotation {
   TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey("pages")) {
       pages = (_json["pages"] as core.List)
-          .map<Page>((value) => new Page.fromJson(value))
+          .map<Page>((value) => Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("text")) {
@@ -16823,9 +16946,9 @@ class TextAnnotation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (pages != null) {
-      _json["pages"] = pages.map((value) => (value).toJson()).toList();
+      _json["pages"] = pages.map((value) => value.toJson()).toList();
     }
     if (text != null) {
       _json["text"] = text;
@@ -16846,25 +16969,24 @@ class TextProperty {
 
   TextProperty.fromJson(core.Map _json) {
     if (_json.containsKey("detectedBreak")) {
-      detectedBreak = new DetectedBreak.fromJson(_json["detectedBreak"]);
+      detectedBreak = DetectedBreak.fromJson(_json["detectedBreak"]);
     }
     if (_json.containsKey("detectedLanguages")) {
       detectedLanguages = (_json["detectedLanguages"] as core.List)
-          .map<DetectedLanguage>(
-              (value) => new DetectedLanguage.fromJson(value))
+          .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (detectedBreak != null) {
-      _json["detectedBreak"] = (detectedBreak).toJson();
+      _json["detectedBreak"] = detectedBreak.toJson();
     }
     if (detectedLanguages != null) {
       _json["detectedLanguages"] =
-          detectedLanguages.map((value) => (value).toJson()).toList();
+          detectedLanguages.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -16892,7 +17014,7 @@ class Vertex {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (x != null) {
       _json["x"] = x;
     }
@@ -16932,62 +17054,62 @@ class WebDetection {
   WebDetection.fromJson(core.Map _json) {
     if (_json.containsKey("bestGuessLabels")) {
       bestGuessLabels = (_json["bestGuessLabels"] as core.List)
-          .map<WebLabel>((value) => new WebLabel.fromJson(value))
+          .map<WebLabel>((value) => WebLabel.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
-          .map<WebImage>((value) => new WebImage.fromJson(value))
+          .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pagesWithMatchingImages")) {
       pagesWithMatchingImages = (_json["pagesWithMatchingImages"] as core.List)
-          .map<WebPage>((value) => new WebPage.fromJson(value))
+          .map<WebPage>((value) => WebPage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
-          .map<WebImage>((value) => new WebImage.fromJson(value))
+          .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("visuallySimilarImages")) {
       visuallySimilarImages = (_json["visuallySimilarImages"] as core.List)
-          .map<WebImage>((value) => new WebImage.fromJson(value))
+          .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("webEntities")) {
       webEntities = (_json["webEntities"] as core.List)
-          .map<WebEntity>((value) => new WebEntity.fromJson(value))
+          .map<WebEntity>((value) => WebEntity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json["bestGuessLabels"] =
-          bestGuessLabels.map((value) => (value).toJson()).toList();
+          bestGuessLabels.map((value) => value.toJson()).toList();
     }
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pagesWithMatchingImages != null) {
       _json["pagesWithMatchingImages"] =
-          pagesWithMatchingImages.map((value) => (value).toJson()).toList();
+          pagesWithMatchingImages.map((value) => value.toJson()).toList();
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (visuallySimilarImages != null) {
       _json["visuallySimilarImages"] =
-          visuallySimilarImages.map((value) => (value).toJson()).toList();
+          visuallySimilarImages.map((value) => value.toJson()).toList();
     }
     if (webEntities != null) {
       _json["webEntities"] =
-          webEntities.map((value) => (value).toJson()).toList();
+          webEntities.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -17008,7 +17130,7 @@ class WebDetectionParams {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (includeGeoResults != null) {
       _json["includeGeoResults"] = includeGeoResults;
     }
@@ -17044,7 +17166,7 @@ class WebEntity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }
@@ -17079,7 +17201,7 @@ class WebImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (score != null) {
       _json["score"] = score;
     }
@@ -17113,7 +17235,7 @@ class WebLabel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (label != null) {
       _json["label"] = label;
     }
@@ -17149,7 +17271,7 @@ class WebPage {
   WebPage.fromJson(core.Map _json) {
     if (_json.containsKey("fullMatchingImages")) {
       fullMatchingImages = (_json["fullMatchingImages"] as core.List)
-          .map<WebImage>((value) => new WebImage.fromJson(value))
+          .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("pageTitle")) {
@@ -17157,7 +17279,7 @@ class WebPage {
     }
     if (_json.containsKey("partialMatchingImages")) {
       partialMatchingImages = (_json["partialMatchingImages"] as core.List)
-          .map<WebImage>((value) => new WebImage.fromJson(value))
+          .map<WebImage>((value) => WebImage.fromJson(value))
           .toList();
     }
     if (_json.containsKey("score")) {
@@ -17170,17 +17292,17 @@ class WebPage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json["fullMatchingImages"] =
-          fullMatchingImages.map((value) => (value).toJson()).toList();
+          fullMatchingImages.map((value) => value.toJson()).toList();
     }
     if (pageTitle != null) {
       _json["pageTitle"] = pageTitle;
     }
     if (partialMatchingImages != null) {
       _json["partialMatchingImages"] =
-          partialMatchingImages.map((value) => (value).toJson()).toList();
+          partialMatchingImages.map((value) => value.toJson()).toList();
     }
     if (score != null) {
       _json["score"] = score;
@@ -17217,35 +17339,35 @@ class Word {
 
   Word.fromJson(core.Map _json) {
     if (_json.containsKey("boundingBox")) {
-      boundingBox = new BoundingPoly.fromJson(_json["boundingBox"]);
+      boundingBox = BoundingPoly.fromJson(_json["boundingBox"]);
     }
     if (_json.containsKey("confidence")) {
       confidence = _json["confidence"].toDouble();
     }
     if (_json.containsKey("property")) {
-      property = new TextProperty.fromJson(_json["property"]);
+      property = TextProperty.fromJson(_json["property"]);
     }
     if (_json.containsKey("symbols")) {
       symbols = (_json["symbols"] as core.List)
-          .map<Symbol>((value) => new Symbol.fromJson(value))
+          .map<Symbol>((value) => Symbol.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (boundingBox != null) {
-      _json["boundingBox"] = (boundingBox).toJson();
+      _json["boundingBox"] = boundingBox.toJson();
     }
     if (confidence != null) {
       _json["confidence"] = confidence;
     }
     if (property != null) {
-      _json["property"] = (property).toJson();
+      _json["property"] = property.toJson();
     }
     if (symbols != null) {
-      _json["symbols"] = symbols.map((value) => (value).toJson()).toList();
+      _json["symbols"] = symbols.map((value) => value.toJson()).toList();
     }
     return _json;
   }

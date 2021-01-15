@@ -1,3 +1,27 @@
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
+// ignore_for_file: avoid_returning_null
+// ignore_for_file: cascade_invocations
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unused_local_variable
+
 library googleapis.gmail.v1.test;
 
 import "dart:core" as core;
@@ -18,27 +42,23 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) {
+  @core.override
+  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
-      return request
-          .finalize()
-          .transform(convert.utf8.decoder)
-          .join('')
-          .then((core.String jsonString) {
-        if (jsonString.isEmpty) {
-          return _callback(request, null);
-        } else {
-          return _callback(request, convert.json.decode(jsonString));
-        }
-      });
+      final jsonString =
+          await request.finalize().transform(convert.utf8.decoder).join('');
+      if (jsonString.isEmpty) {
+        return _callback(request, null);
+      } else {
+        return _callback(request, convert.json.decode(jsonString));
+      }
     } else {
       var stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
-        return stream.toBytes().then((data) {
-          return _callback(request, data);
-        });
+        final data = await stream.toBytes();
+        return _callback(request, data);
       }
     }
   }
@@ -46,13 +66,13 @@ class HttpServerMock extends http.BaseClient {
 
 http.StreamedResponse stringResponse(core.int status,
     core.Map<core.String, core.String> headers, core.String body) {
-  var stream = new async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return new http.StreamedResponse(stream, status, headers: headers);
+  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  return http.StreamedResponse(stream, status, headers: headers);
 }
 
 core.int buildCounterAutoForwarding = 0;
-buildAutoForwarding() {
-  var o = new api.AutoForwarding();
+api.AutoForwarding buildAutoForwarding() {
+  var o = api.AutoForwarding();
   buildCounterAutoForwarding++;
   if (buildCounterAutoForwarding < 3) {
     o.disposition = "foo";
@@ -63,7 +83,7 @@ buildAutoForwarding() {
   return o;
 }
 
-checkAutoForwarding(api.AutoForwarding o) {
+void checkAutoForwarding(api.AutoForwarding o) {
   buildCounterAutoForwarding++;
   if (buildCounterAutoForwarding < 3) {
     unittest.expect(o.disposition, unittest.equals('foo'));
@@ -73,103 +93,103 @@ checkAutoForwarding(api.AutoForwarding o) {
   buildCounterAutoForwarding--;
 }
 
-buildUnnamed2299() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3173() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2299(core.List<core.String> o) {
+void checkUnnamed3173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchDeleteMessagesRequest = 0;
-buildBatchDeleteMessagesRequest() {
-  var o = new api.BatchDeleteMessagesRequest();
+api.BatchDeleteMessagesRequest buildBatchDeleteMessagesRequest() {
+  var o = api.BatchDeleteMessagesRequest();
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
-    o.ids = buildUnnamed2299();
+    o.ids = buildUnnamed3173();
   }
   buildCounterBatchDeleteMessagesRequest--;
   return o;
 }
 
-checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
+void checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
-    checkUnnamed2299(o.ids);
+    checkUnnamed3173(o.ids);
   }
   buildCounterBatchDeleteMessagesRequest--;
 }
 
-buildUnnamed2300() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3174() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2300(core.List<core.String> o) {
+void checkUnnamed3174(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2301() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3175() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2301(core.List<core.String> o) {
+void checkUnnamed3175(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2302() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3176() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2302(core.List<core.String> o) {
+void checkUnnamed3176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterBatchModifyMessagesRequest = 0;
-buildBatchModifyMessagesRequest() {
-  var o = new api.BatchModifyMessagesRequest();
+api.BatchModifyMessagesRequest buildBatchModifyMessagesRequest() {
+  var o = api.BatchModifyMessagesRequest();
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
-    o.addLabelIds = buildUnnamed2300();
-    o.ids = buildUnnamed2301();
-    o.removeLabelIds = buildUnnamed2302();
+    o.addLabelIds = buildUnnamed3174();
+    o.ids = buildUnnamed3175();
+    o.removeLabelIds = buildUnnamed3176();
   }
   buildCounterBatchModifyMessagesRequest--;
   return o;
 }
 
-checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
+void checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
-    checkUnnamed2300(o.addLabelIds);
-    checkUnnamed2301(o.ids);
-    checkUnnamed2302(o.removeLabelIds);
+    checkUnnamed3174(o.addLabelIds);
+    checkUnnamed3175(o.ids);
+    checkUnnamed3176(o.removeLabelIds);
   }
   buildCounterBatchModifyMessagesRequest--;
 }
 
 core.int buildCounterDelegate = 0;
-buildDelegate() {
-  var o = new api.Delegate();
+api.Delegate buildDelegate() {
+  var o = api.Delegate();
   buildCounterDelegate++;
   if (buildCounterDelegate < 3) {
     o.delegateEmail = "foo";
@@ -179,7 +199,7 @@ buildDelegate() {
   return o;
 }
 
-checkDelegate(api.Delegate o) {
+void checkDelegate(api.Delegate o) {
   buildCounterDelegate++;
   if (buildCounterDelegate < 3) {
     unittest.expect(o.delegateEmail, unittest.equals('foo'));
@@ -189,8 +209,8 @@ checkDelegate(api.Delegate o) {
 }
 
 core.int buildCounterDraft = 0;
-buildDraft() {
-  var o = new api.Draft();
+api.Draft buildDraft() {
+  var o = api.Draft();
   buildCounterDraft++;
   if (buildCounterDraft < 3) {
     o.id = "foo";
@@ -200,7 +220,7 @@ buildDraft() {
   return o;
 }
 
-checkDraft(api.Draft o) {
+void checkDraft(api.Draft o) {
   buildCounterDraft++;
   if (buildCounterDraft < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
@@ -210,8 +230,8 @@ checkDraft(api.Draft o) {
 }
 
 core.int buildCounterFilter = 0;
-buildFilter() {
-  var o = new api.Filter();
+api.Filter buildFilter() {
+  var o = api.Filter();
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     o.action = buildFilterAction();
@@ -222,7 +242,7 @@ buildFilter() {
   return o;
 }
 
-checkFilter(api.Filter o) {
+void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     checkFilterAction(o.action);
@@ -232,58 +252,58 @@ checkFilter(api.Filter o) {
   buildCounterFilter--;
 }
 
-buildUnnamed2303() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3177() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2303(core.List<core.String> o) {
+void checkUnnamed3177(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2304() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3178() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2304(core.List<core.String> o) {
+void checkUnnamed3178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterFilterAction = 0;
-buildFilterAction() {
-  var o = new api.FilterAction();
+api.FilterAction buildFilterAction() {
+  var o = api.FilterAction();
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    o.addLabelIds = buildUnnamed2303();
+    o.addLabelIds = buildUnnamed3177();
     o.forward = "foo";
-    o.removeLabelIds = buildUnnamed2304();
+    o.removeLabelIds = buildUnnamed3178();
   }
   buildCounterFilterAction--;
   return o;
 }
 
-checkFilterAction(api.FilterAction o) {
+void checkFilterAction(api.FilterAction o) {
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    checkUnnamed2303(o.addLabelIds);
+    checkUnnamed3177(o.addLabelIds);
     unittest.expect(o.forward, unittest.equals('foo'));
-    checkUnnamed2304(o.removeLabelIds);
+    checkUnnamed3178(o.removeLabelIds);
   }
   buildCounterFilterAction--;
 }
 
 core.int buildCounterFilterCriteria = 0;
-buildFilterCriteria() {
-  var o = new api.FilterCriteria();
+api.FilterCriteria buildFilterCriteria() {
+  var o = api.FilterCriteria();
   buildCounterFilterCriteria++;
   if (buildCounterFilterCriteria < 3) {
     o.excludeChats = true;
@@ -300,7 +320,7 @@ buildFilterCriteria() {
   return o;
 }
 
-checkFilterCriteria(api.FilterCriteria o) {
+void checkFilterCriteria(api.FilterCriteria o) {
   buildCounterFilterCriteria++;
   if (buildCounterFilterCriteria < 3) {
     unittest.expect(o.excludeChats, unittest.isTrue);
@@ -317,8 +337,8 @@ checkFilterCriteria(api.FilterCriteria o) {
 }
 
 core.int buildCounterForwardingAddress = 0;
-buildForwardingAddress() {
-  var o = new api.ForwardingAddress();
+api.ForwardingAddress buildForwardingAddress() {
+  var o = api.ForwardingAddress();
   buildCounterForwardingAddress++;
   if (buildCounterForwardingAddress < 3) {
     o.forwardingEmail = "foo";
@@ -328,7 +348,7 @@ buildForwardingAddress() {
   return o;
 }
 
-checkForwardingAddress(api.ForwardingAddress o) {
+void checkForwardingAddress(api.ForwardingAddress o) {
   buildCounterForwardingAddress++;
   if (buildCounterForwardingAddress < 3) {
     unittest.expect(o.forwardingEmail, unittest.equals('foo'));
@@ -337,171 +357,171 @@ checkForwardingAddress(api.ForwardingAddress o) {
   buildCounterForwardingAddress--;
 }
 
-buildUnnamed2305() {
-  var o = new core.List<api.HistoryLabelAdded>();
+core.List<api.HistoryLabelAdded> buildUnnamed3179() {
+  var o = <api.HistoryLabelAdded>[];
   o.add(buildHistoryLabelAdded());
   o.add(buildHistoryLabelAdded());
   return o;
 }
 
-checkUnnamed2305(core.List<api.HistoryLabelAdded> o) {
+void checkUnnamed3179(core.List<api.HistoryLabelAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelAdded(o[0]);
   checkHistoryLabelAdded(o[1]);
 }
 
-buildUnnamed2306() {
-  var o = new core.List<api.HistoryLabelRemoved>();
+core.List<api.HistoryLabelRemoved> buildUnnamed3180() {
+  var o = <api.HistoryLabelRemoved>[];
   o.add(buildHistoryLabelRemoved());
   o.add(buildHistoryLabelRemoved());
   return o;
 }
 
-checkUnnamed2306(core.List<api.HistoryLabelRemoved> o) {
+void checkUnnamed3180(core.List<api.HistoryLabelRemoved> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryLabelRemoved(o[0]);
   checkHistoryLabelRemoved(o[1]);
 }
 
-buildUnnamed2307() {
-  var o = new core.List<api.Message>();
+core.List<api.Message> buildUnnamed3181() {
+  var o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2307(core.List<api.Message> o) {
+void checkUnnamed3181(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
-buildUnnamed2308() {
-  var o = new core.List<api.HistoryMessageAdded>();
+core.List<api.HistoryMessageAdded> buildUnnamed3182() {
+  var o = <api.HistoryMessageAdded>[];
   o.add(buildHistoryMessageAdded());
   o.add(buildHistoryMessageAdded());
   return o;
 }
 
-checkUnnamed2308(core.List<api.HistoryMessageAdded> o) {
+void checkUnnamed3182(core.List<api.HistoryMessageAdded> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageAdded(o[0]);
   checkHistoryMessageAdded(o[1]);
 }
 
-buildUnnamed2309() {
-  var o = new core.List<api.HistoryMessageDeleted>();
+core.List<api.HistoryMessageDeleted> buildUnnamed3183() {
+  var o = <api.HistoryMessageDeleted>[];
   o.add(buildHistoryMessageDeleted());
   o.add(buildHistoryMessageDeleted());
   return o;
 }
 
-checkUnnamed2309(core.List<api.HistoryMessageDeleted> o) {
+void checkUnnamed3183(core.List<api.HistoryMessageDeleted> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistoryMessageDeleted(o[0]);
   checkHistoryMessageDeleted(o[1]);
 }
 
 core.int buildCounterHistory = 0;
-buildHistory() {
-  var o = new api.History();
+api.History buildHistory() {
+  var o = api.History();
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     o.id = "foo";
-    o.labelsAdded = buildUnnamed2305();
-    o.labelsRemoved = buildUnnamed2306();
-    o.messages = buildUnnamed2307();
-    o.messagesAdded = buildUnnamed2308();
-    o.messagesDeleted = buildUnnamed2309();
+    o.labelsAdded = buildUnnamed3179();
+    o.labelsRemoved = buildUnnamed3180();
+    o.messages = buildUnnamed3181();
+    o.messagesAdded = buildUnnamed3182();
+    o.messagesDeleted = buildUnnamed3183();
   }
   buildCounterHistory--;
   return o;
 }
 
-checkHistory(api.History o) {
+void checkHistory(api.History o) {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2305(o.labelsAdded);
-    checkUnnamed2306(o.labelsRemoved);
-    checkUnnamed2307(o.messages);
-    checkUnnamed2308(o.messagesAdded);
-    checkUnnamed2309(o.messagesDeleted);
+    checkUnnamed3179(o.labelsAdded);
+    checkUnnamed3180(o.labelsRemoved);
+    checkUnnamed3181(o.messages);
+    checkUnnamed3182(o.messagesAdded);
+    checkUnnamed3183(o.messagesDeleted);
   }
   buildCounterHistory--;
 }
 
-buildUnnamed2310() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3184() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2310(core.List<core.String> o) {
+void checkUnnamed3184(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterHistoryLabelAdded = 0;
-buildHistoryLabelAdded() {
-  var o = new api.HistoryLabelAdded();
+api.HistoryLabelAdded buildHistoryLabelAdded() {
+  var o = api.HistoryLabelAdded();
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    o.labelIds = buildUnnamed2310();
+    o.labelIds = buildUnnamed3184();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelAdded--;
   return o;
 }
 
-checkHistoryLabelAdded(api.HistoryLabelAdded o) {
+void checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed2310(o.labelIds);
+    checkUnnamed3184(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelAdded--;
 }
 
-buildUnnamed2311() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3185() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2311(core.List<core.String> o) {
+void checkUnnamed3185(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterHistoryLabelRemoved = 0;
-buildHistoryLabelRemoved() {
-  var o = new api.HistoryLabelRemoved();
+api.HistoryLabelRemoved buildHistoryLabelRemoved() {
+  var o = api.HistoryLabelRemoved();
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    o.labelIds = buildUnnamed2311();
+    o.labelIds = buildUnnamed3185();
     o.message = buildMessage();
   }
   buildCounterHistoryLabelRemoved--;
   return o;
 }
 
-checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
+void checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed2311(o.labelIds);
+    checkUnnamed3185(o.labelIds);
     checkMessage(o.message);
   }
   buildCounterHistoryLabelRemoved--;
 }
 
 core.int buildCounterHistoryMessageAdded = 0;
-buildHistoryMessageAdded() {
-  var o = new api.HistoryMessageAdded();
+api.HistoryMessageAdded buildHistoryMessageAdded() {
+  var o = api.HistoryMessageAdded();
   buildCounterHistoryMessageAdded++;
   if (buildCounterHistoryMessageAdded < 3) {
     o.message = buildMessage();
@@ -510,7 +530,7 @@ buildHistoryMessageAdded() {
   return o;
 }
 
-checkHistoryMessageAdded(api.HistoryMessageAdded o) {
+void checkHistoryMessageAdded(api.HistoryMessageAdded o) {
   buildCounterHistoryMessageAdded++;
   if (buildCounterHistoryMessageAdded < 3) {
     checkMessage(o.message);
@@ -519,8 +539,8 @@ checkHistoryMessageAdded(api.HistoryMessageAdded o) {
 }
 
 core.int buildCounterHistoryMessageDeleted = 0;
-buildHistoryMessageDeleted() {
-  var o = new api.HistoryMessageDeleted();
+api.HistoryMessageDeleted buildHistoryMessageDeleted() {
+  var o = api.HistoryMessageDeleted();
   buildCounterHistoryMessageDeleted++;
   if (buildCounterHistoryMessageDeleted < 3) {
     o.message = buildMessage();
@@ -529,7 +549,7 @@ buildHistoryMessageDeleted() {
   return o;
 }
 
-checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
+void checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
   buildCounterHistoryMessageDeleted++;
   if (buildCounterHistoryMessageDeleted < 3) {
     checkMessage(o.message);
@@ -538,8 +558,8 @@ checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
 }
 
 core.int buildCounterImapSettings = 0;
-buildImapSettings() {
-  var o = new api.ImapSettings();
+api.ImapSettings buildImapSettings() {
+  var o = api.ImapSettings();
   buildCounterImapSettings++;
   if (buildCounterImapSettings < 3) {
     o.autoExpunge = true;
@@ -551,7 +571,7 @@ buildImapSettings() {
   return o;
 }
 
-checkImapSettings(api.ImapSettings o) {
+void checkImapSettings(api.ImapSettings o) {
   buildCounterImapSettings++;
   if (buildCounterImapSettings < 3) {
     unittest.expect(o.autoExpunge, unittest.isTrue);
@@ -563,8 +583,8 @@ checkImapSettings(api.ImapSettings o) {
 }
 
 core.int buildCounterLabel = 0;
-buildLabel() {
-  var o = new api.Label();
+api.Label buildLabel() {
+  var o = api.Label();
   buildCounterLabel++;
   if (buildCounterLabel < 3) {
     o.color = buildLabelColor();
@@ -582,7 +602,7 @@ buildLabel() {
   return o;
 }
 
-checkLabel(api.Label o) {
+void checkLabel(api.Label o) {
   buildCounterLabel++;
   if (buildCounterLabel < 3) {
     checkLabelColor(o.color);
@@ -600,8 +620,8 @@ checkLabel(api.Label o) {
 }
 
 core.int buildCounterLabelColor = 0;
-buildLabelColor() {
-  var o = new api.LabelColor();
+api.LabelColor buildLabelColor() {
+  var o = api.LabelColor();
   buildCounterLabelColor++;
   if (buildCounterLabelColor < 3) {
     o.backgroundColor = "foo";
@@ -611,7 +631,7 @@ buildLabelColor() {
   return o;
 }
 
-checkLabelColor(api.LabelColor o) {
+void checkLabelColor(api.LabelColor o) {
   buildCounterLabelColor++;
   if (buildCounterLabelColor < 3) {
     unittest.expect(o.backgroundColor, unittest.equals('foo'));
@@ -621,8 +641,8 @@ checkLabelColor(api.LabelColor o) {
 }
 
 core.int buildCounterLanguageSettings = 0;
-buildLanguageSettings() {
-  var o = new api.LanguageSettings();
+api.LanguageSettings buildLanguageSettings() {
+  var o = api.LanguageSettings();
   buildCounterLanguageSettings++;
   if (buildCounterLanguageSettings < 3) {
     o.displayLanguage = "foo";
@@ -631,7 +651,7 @@ buildLanguageSettings() {
   return o;
 }
 
-checkLanguageSettings(api.LanguageSettings o) {
+void checkLanguageSettings(api.LanguageSettings o) {
   buildCounterLanguageSettings++;
   if (buildCounterLanguageSettings < 3) {
     unittest.expect(o.displayLanguage, unittest.equals('foo'));
@@ -639,57 +659,57 @@ checkLanguageSettings(api.LanguageSettings o) {
   buildCounterLanguageSettings--;
 }
 
-buildUnnamed2312() {
-  var o = new core.List<api.Delegate>();
+core.List<api.Delegate> buildUnnamed3186() {
+  var o = <api.Delegate>[];
   o.add(buildDelegate());
   o.add(buildDelegate());
   return o;
 }
 
-checkUnnamed2312(core.List<api.Delegate> o) {
+void checkUnnamed3186(core.List<api.Delegate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDelegate(o[0]);
   checkDelegate(o[1]);
 }
 
 core.int buildCounterListDelegatesResponse = 0;
-buildListDelegatesResponse() {
-  var o = new api.ListDelegatesResponse();
+api.ListDelegatesResponse buildListDelegatesResponse() {
+  var o = api.ListDelegatesResponse();
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    o.delegates = buildUnnamed2312();
+    o.delegates = buildUnnamed3186();
   }
   buildCounterListDelegatesResponse--;
   return o;
 }
 
-checkListDelegatesResponse(api.ListDelegatesResponse o) {
+void checkListDelegatesResponse(api.ListDelegatesResponse o) {
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    checkUnnamed2312(o.delegates);
+    checkUnnamed3186(o.delegates);
   }
   buildCounterListDelegatesResponse--;
 }
 
-buildUnnamed2313() {
-  var o = new core.List<api.Draft>();
+core.List<api.Draft> buildUnnamed3187() {
+  var o = <api.Draft>[];
   o.add(buildDraft());
   o.add(buildDraft());
   return o;
 }
 
-checkUnnamed2313(core.List<api.Draft> o) {
+void checkUnnamed3187(core.List<api.Draft> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDraft(o[0]);
   checkDraft(o[1]);
 }
 
 core.int buildCounterListDraftsResponse = 0;
-buildListDraftsResponse() {
-  var o = new api.ListDraftsResponse();
+api.ListDraftsResponse buildListDraftsResponse() {
+  var o = api.ListDraftsResponse();
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    o.drafts = buildUnnamed2313();
+    o.drafts = buildUnnamed3187();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -697,99 +717,100 @@ buildListDraftsResponse() {
   return o;
 }
 
-checkListDraftsResponse(api.ListDraftsResponse o) {
+void checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed2313(o.drafts);
+    checkUnnamed3187(o.drafts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListDraftsResponse--;
 }
 
-buildUnnamed2314() {
-  var o = new core.List<api.Filter>();
+core.List<api.Filter> buildUnnamed3188() {
+  var o = <api.Filter>[];
   o.add(buildFilter());
   o.add(buildFilter());
   return o;
 }
 
-checkUnnamed2314(core.List<api.Filter> o) {
+void checkUnnamed3188(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilter(o[0]);
   checkFilter(o[1]);
 }
 
 core.int buildCounterListFiltersResponse = 0;
-buildListFiltersResponse() {
-  var o = new api.ListFiltersResponse();
+api.ListFiltersResponse buildListFiltersResponse() {
+  var o = api.ListFiltersResponse();
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    o.filter = buildUnnamed2314();
+    o.filter = buildUnnamed3188();
   }
   buildCounterListFiltersResponse--;
   return o;
 }
 
-checkListFiltersResponse(api.ListFiltersResponse o) {
+void checkListFiltersResponse(api.ListFiltersResponse o) {
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    checkUnnamed2314(o.filter);
+    checkUnnamed3188(o.filter);
   }
   buildCounterListFiltersResponse--;
 }
 
-buildUnnamed2315() {
-  var o = new core.List<api.ForwardingAddress>();
+core.List<api.ForwardingAddress> buildUnnamed3189() {
+  var o = <api.ForwardingAddress>[];
   o.add(buildForwardingAddress());
   o.add(buildForwardingAddress());
   return o;
 }
 
-checkUnnamed2315(core.List<api.ForwardingAddress> o) {
+void checkUnnamed3189(core.List<api.ForwardingAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkForwardingAddress(o[0]);
   checkForwardingAddress(o[1]);
 }
 
 core.int buildCounterListForwardingAddressesResponse = 0;
-buildListForwardingAddressesResponse() {
-  var o = new api.ListForwardingAddressesResponse();
+api.ListForwardingAddressesResponse buildListForwardingAddressesResponse() {
+  var o = api.ListForwardingAddressesResponse();
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    o.forwardingAddresses = buildUnnamed2315();
+    o.forwardingAddresses = buildUnnamed3189();
   }
   buildCounterListForwardingAddressesResponse--;
   return o;
 }
 
-checkListForwardingAddressesResponse(api.ListForwardingAddressesResponse o) {
+void checkListForwardingAddressesResponse(
+    api.ListForwardingAddressesResponse o) {
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    checkUnnamed2315(o.forwardingAddresses);
+    checkUnnamed3189(o.forwardingAddresses);
   }
   buildCounterListForwardingAddressesResponse--;
 }
 
-buildUnnamed2316() {
-  var o = new core.List<api.History>();
+core.List<api.History> buildUnnamed3190() {
+  var o = <api.History>[];
   o.add(buildHistory());
   o.add(buildHistory());
   return o;
 }
 
-checkUnnamed2316(core.List<api.History> o) {
+void checkUnnamed3190(core.List<api.History> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHistory(o[0]);
   checkHistory(o[1]);
 }
 
 core.int buildCounterListHistoryResponse = 0;
-buildListHistoryResponse() {
-  var o = new api.ListHistoryResponse();
+api.ListHistoryResponse buildListHistoryResponse() {
+  var o = api.ListHistoryResponse();
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    o.history = buildUnnamed2316();
+    o.history = buildUnnamed3190();
     o.historyId = "foo";
     o.nextPageToken = "foo";
   }
@@ -797,67 +818,67 @@ buildListHistoryResponse() {
   return o;
 }
 
-checkListHistoryResponse(api.ListHistoryResponse o) {
+void checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed2316(o.history);
+    checkUnnamed3190(o.history);
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHistoryResponse--;
 }
 
-buildUnnamed2317() {
-  var o = new core.List<api.Label>();
+core.List<api.Label> buildUnnamed3191() {
+  var o = <api.Label>[];
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed2317(core.List<api.Label> o) {
+void checkUnnamed3191(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
 }
 
 core.int buildCounterListLabelsResponse = 0;
-buildListLabelsResponse() {
-  var o = new api.ListLabelsResponse();
+api.ListLabelsResponse buildListLabelsResponse() {
+  var o = api.ListLabelsResponse();
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    o.labels = buildUnnamed2317();
+    o.labels = buildUnnamed3191();
   }
   buildCounterListLabelsResponse--;
   return o;
 }
 
-checkListLabelsResponse(api.ListLabelsResponse o) {
+void checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed2317(o.labels);
+    checkUnnamed3191(o.labels);
   }
   buildCounterListLabelsResponse--;
 }
 
-buildUnnamed2318() {
-  var o = new core.List<api.Message>();
+core.List<api.Message> buildUnnamed3192() {
+  var o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2318(core.List<api.Message> o) {
+void checkUnnamed3192(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
 core.int buildCounterListMessagesResponse = 0;
-buildListMessagesResponse() {
-  var o = new api.ListMessagesResponse();
+api.ListMessagesResponse buildListMessagesResponse() {
+  var o = api.ListMessagesResponse();
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    o.messages = buildUnnamed2318();
+    o.messages = buildUnnamed3192();
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
   }
@@ -865,138 +886,138 @@ buildListMessagesResponse() {
   return o;
 }
 
-checkListMessagesResponse(api.ListMessagesResponse o) {
+void checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed2318(o.messages);
+    checkUnnamed3192(o.messages);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
   }
   buildCounterListMessagesResponse--;
 }
 
-buildUnnamed2319() {
-  var o = new core.List<api.SendAs>();
+core.List<api.SendAs> buildUnnamed3193() {
+  var o = <api.SendAs>[];
   o.add(buildSendAs());
   o.add(buildSendAs());
   return o;
 }
 
-checkUnnamed2319(core.List<api.SendAs> o) {
+void checkUnnamed3193(core.List<api.SendAs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSendAs(o[0]);
   checkSendAs(o[1]);
 }
 
 core.int buildCounterListSendAsResponse = 0;
-buildListSendAsResponse() {
-  var o = new api.ListSendAsResponse();
+api.ListSendAsResponse buildListSendAsResponse() {
+  var o = api.ListSendAsResponse();
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    o.sendAs = buildUnnamed2319();
+    o.sendAs = buildUnnamed3193();
   }
   buildCounterListSendAsResponse--;
   return o;
 }
 
-checkListSendAsResponse(api.ListSendAsResponse o) {
+void checkListSendAsResponse(api.ListSendAsResponse o) {
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    checkUnnamed2319(o.sendAs);
+    checkUnnamed3193(o.sendAs);
   }
   buildCounterListSendAsResponse--;
 }
 
-buildUnnamed2320() {
-  var o = new core.List<api.SmimeInfo>();
+core.List<api.SmimeInfo> buildUnnamed3194() {
+  var o = <api.SmimeInfo>[];
   o.add(buildSmimeInfo());
   o.add(buildSmimeInfo());
   return o;
 }
 
-checkUnnamed2320(core.List<api.SmimeInfo> o) {
+void checkUnnamed3194(core.List<api.SmimeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSmimeInfo(o[0]);
   checkSmimeInfo(o[1]);
 }
 
 core.int buildCounterListSmimeInfoResponse = 0;
-buildListSmimeInfoResponse() {
-  var o = new api.ListSmimeInfoResponse();
+api.ListSmimeInfoResponse buildListSmimeInfoResponse() {
+  var o = api.ListSmimeInfoResponse();
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    o.smimeInfo = buildUnnamed2320();
+    o.smimeInfo = buildUnnamed3194();
   }
   buildCounterListSmimeInfoResponse--;
   return o;
 }
 
-checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
+void checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    checkUnnamed2320(o.smimeInfo);
+    checkUnnamed3194(o.smimeInfo);
   }
   buildCounterListSmimeInfoResponse--;
 }
 
-buildUnnamed2321() {
-  var o = new core.List<api.Thread>();
+core.List<api.Thread> buildUnnamed3195() {
+  var o = <api.Thread>[];
   o.add(buildThread());
   o.add(buildThread());
   return o;
 }
 
-checkUnnamed2321(core.List<api.Thread> o) {
+void checkUnnamed3195(core.List<api.Thread> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThread(o[0]);
   checkThread(o[1]);
 }
 
 core.int buildCounterListThreadsResponse = 0;
-buildListThreadsResponse() {
-  var o = new api.ListThreadsResponse();
+api.ListThreadsResponse buildListThreadsResponse() {
+  var o = api.ListThreadsResponse();
   buildCounterListThreadsResponse++;
   if (buildCounterListThreadsResponse < 3) {
     o.nextPageToken = "foo";
     o.resultSizeEstimate = 42;
-    o.threads = buildUnnamed2321();
+    o.threads = buildUnnamed3195();
   }
   buildCounterListThreadsResponse--;
   return o;
 }
 
-checkListThreadsResponse(api.ListThreadsResponse o) {
+void checkListThreadsResponse(api.ListThreadsResponse o) {
   buildCounterListThreadsResponse++;
   if (buildCounterListThreadsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.resultSizeEstimate, unittest.equals(42));
-    checkUnnamed2321(o.threads);
+    checkUnnamed3195(o.threads);
   }
   buildCounterListThreadsResponse--;
 }
 
-buildUnnamed2322() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3196() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2322(core.List<core.String> o) {
+void checkUnnamed3196(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterMessage = 0;
-buildMessage() {
-  var o = new api.Message();
+api.Message buildMessage() {
+  var o = api.Message();
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.historyId = "foo";
     o.id = "foo";
     o.internalDate = "foo";
-    o.labelIds = buildUnnamed2322();
+    o.labelIds = buildUnnamed3196();
     o.payload = buildMessagePart();
     o.raw = "foo";
     o.sizeEstimate = 42;
@@ -1007,13 +1028,13 @@ buildMessage() {
   return o;
 }
 
-checkMessage(api.Message o) {
+void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.internalDate, unittest.equals('foo'));
-    checkUnnamed2322(o.labelIds);
+    checkUnnamed3196(o.labelIds);
     checkMessagePart(o.payload);
     unittest.expect(o.raw, unittest.equals('foo'));
     unittest.expect(o.sizeEstimate, unittest.equals(42));
@@ -1023,64 +1044,64 @@ checkMessage(api.Message o) {
   buildCounterMessage--;
 }
 
-buildUnnamed2323() {
-  var o = new core.List<api.MessagePartHeader>();
+core.List<api.MessagePartHeader> buildUnnamed3197() {
+  var o = <api.MessagePartHeader>[];
   o.add(buildMessagePartHeader());
   o.add(buildMessagePartHeader());
   return o;
 }
 
-checkUnnamed2323(core.List<api.MessagePartHeader> o) {
+void checkUnnamed3197(core.List<api.MessagePartHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePartHeader(o[0]);
   checkMessagePartHeader(o[1]);
 }
 
-buildUnnamed2324() {
-  var o = new core.List<api.MessagePart>();
+core.List<api.MessagePart> buildUnnamed3198() {
+  var o = <api.MessagePart>[];
   o.add(buildMessagePart());
   o.add(buildMessagePart());
   return o;
 }
 
-checkUnnamed2324(core.List<api.MessagePart> o) {
+void checkUnnamed3198(core.List<api.MessagePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessagePart(o[0]);
   checkMessagePart(o[1]);
 }
 
 core.int buildCounterMessagePart = 0;
-buildMessagePart() {
-  var o = new api.MessagePart();
+api.MessagePart buildMessagePart() {
+  var o = api.MessagePart();
   buildCounterMessagePart++;
   if (buildCounterMessagePart < 3) {
     o.body = buildMessagePartBody();
     o.filename = "foo";
-    o.headers = buildUnnamed2323();
+    o.headers = buildUnnamed3197();
     o.mimeType = "foo";
     o.partId = "foo";
-    o.parts = buildUnnamed2324();
+    o.parts = buildUnnamed3198();
   }
   buildCounterMessagePart--;
   return o;
 }
 
-checkMessagePart(api.MessagePart o) {
+void checkMessagePart(api.MessagePart o) {
   buildCounterMessagePart++;
   if (buildCounterMessagePart < 3) {
     checkMessagePartBody(o.body);
     unittest.expect(o.filename, unittest.equals('foo'));
-    checkUnnamed2323(o.headers);
+    checkUnnamed3197(o.headers);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.partId, unittest.equals('foo'));
-    checkUnnamed2324(o.parts);
+    checkUnnamed3198(o.parts);
   }
   buildCounterMessagePart--;
 }
 
 core.int buildCounterMessagePartBody = 0;
-buildMessagePartBody() {
-  var o = new api.MessagePartBody();
+api.MessagePartBody buildMessagePartBody() {
+  var o = api.MessagePartBody();
   buildCounterMessagePartBody++;
   if (buildCounterMessagePartBody < 3) {
     o.attachmentId = "foo";
@@ -1091,7 +1112,7 @@ buildMessagePartBody() {
   return o;
 }
 
-checkMessagePartBody(api.MessagePartBody o) {
+void checkMessagePartBody(api.MessagePartBody o) {
   buildCounterMessagePartBody++;
   if (buildCounterMessagePartBody < 3) {
     unittest.expect(o.attachmentId, unittest.equals('foo'));
@@ -1102,8 +1123,8 @@ checkMessagePartBody(api.MessagePartBody o) {
 }
 
 core.int buildCounterMessagePartHeader = 0;
-buildMessagePartHeader() {
-  var o = new api.MessagePartHeader();
+api.MessagePartHeader buildMessagePartHeader() {
+  var o = api.MessagePartHeader();
   buildCounterMessagePartHeader++;
   if (buildCounterMessagePartHeader < 3) {
     o.name = "foo";
@@ -1113,7 +1134,7 @@ buildMessagePartHeader() {
   return o;
 }
 
-checkMessagePartHeader(api.MessagePartHeader o) {
+void checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader++;
   if (buildCounterMessagePartHeader < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1122,103 +1143,103 @@ checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader--;
 }
 
-buildUnnamed2325() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3199() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2325(core.List<core.String> o) {
+void checkUnnamed3199(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2326() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3200() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2326(core.List<core.String> o) {
+void checkUnnamed3200(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterModifyMessageRequest = 0;
-buildModifyMessageRequest() {
-  var o = new api.ModifyMessageRequest();
+api.ModifyMessageRequest buildModifyMessageRequest() {
+  var o = api.ModifyMessageRequest();
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    o.addLabelIds = buildUnnamed2325();
-    o.removeLabelIds = buildUnnamed2326();
+    o.addLabelIds = buildUnnamed3199();
+    o.removeLabelIds = buildUnnamed3200();
   }
   buildCounterModifyMessageRequest--;
   return o;
 }
 
-checkModifyMessageRequest(api.ModifyMessageRequest o) {
+void checkModifyMessageRequest(api.ModifyMessageRequest o) {
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed2325(o.addLabelIds);
-    checkUnnamed2326(o.removeLabelIds);
+    checkUnnamed3199(o.addLabelIds);
+    checkUnnamed3200(o.removeLabelIds);
   }
   buildCounterModifyMessageRequest--;
 }
 
-buildUnnamed2327() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3201() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2327(core.List<core.String> o) {
+void checkUnnamed3201(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2328() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3202() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2328(core.List<core.String> o) {
+void checkUnnamed3202(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterModifyThreadRequest = 0;
-buildModifyThreadRequest() {
-  var o = new api.ModifyThreadRequest();
+api.ModifyThreadRequest buildModifyThreadRequest() {
+  var o = api.ModifyThreadRequest();
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    o.addLabelIds = buildUnnamed2327();
-    o.removeLabelIds = buildUnnamed2328();
+    o.addLabelIds = buildUnnamed3201();
+    o.removeLabelIds = buildUnnamed3202();
   }
   buildCounterModifyThreadRequest--;
   return o;
 }
 
-checkModifyThreadRequest(api.ModifyThreadRequest o) {
+void checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed2327(o.addLabelIds);
-    checkUnnamed2328(o.removeLabelIds);
+    checkUnnamed3201(o.addLabelIds);
+    checkUnnamed3202(o.removeLabelIds);
   }
   buildCounterModifyThreadRequest--;
 }
 
 core.int buildCounterPopSettings = 0;
-buildPopSettings() {
-  var o = new api.PopSettings();
+api.PopSettings buildPopSettings() {
+  var o = api.PopSettings();
   buildCounterPopSettings++;
   if (buildCounterPopSettings < 3) {
     o.accessWindow = "foo";
@@ -1228,7 +1249,7 @@ buildPopSettings() {
   return o;
 }
 
-checkPopSettings(api.PopSettings o) {
+void checkPopSettings(api.PopSettings o) {
   buildCounterPopSettings++;
   if (buildCounterPopSettings < 3) {
     unittest.expect(o.accessWindow, unittest.equals('foo'));
@@ -1238,8 +1259,8 @@ checkPopSettings(api.PopSettings o) {
 }
 
 core.int buildCounterProfile = 0;
-buildProfile() {
-  var o = new api.Profile();
+api.Profile buildProfile() {
+  var o = api.Profile();
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
     o.emailAddress = "foo";
@@ -1251,7 +1272,7 @@ buildProfile() {
   return o;
 }
 
-checkProfile(api.Profile o) {
+void checkProfile(api.Profile o) {
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
     unittest.expect(o.emailAddress, unittest.equals('foo'));
@@ -1263,8 +1284,8 @@ checkProfile(api.Profile o) {
 }
 
 core.int buildCounterSendAs = 0;
-buildSendAs() {
-  var o = new api.SendAs();
+api.SendAs buildSendAs() {
+  var o = api.SendAs();
   buildCounterSendAs++;
   if (buildCounterSendAs < 3) {
     o.displayName = "foo";
@@ -1281,7 +1302,7 @@ buildSendAs() {
   return o;
 }
 
-checkSendAs(api.SendAs o) {
+void checkSendAs(api.SendAs o) {
   buildCounterSendAs++;
   if (buildCounterSendAs < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
@@ -1298,8 +1319,8 @@ checkSendAs(api.SendAs o) {
 }
 
 core.int buildCounterSmimeInfo = 0;
-buildSmimeInfo() {
-  var o = new api.SmimeInfo();
+api.SmimeInfo buildSmimeInfo() {
+  var o = api.SmimeInfo();
   buildCounterSmimeInfo++;
   if (buildCounterSmimeInfo < 3) {
     o.encryptedKeyPassword = "foo";
@@ -1314,7 +1335,7 @@ buildSmimeInfo() {
   return o;
 }
 
-checkSmimeInfo(api.SmimeInfo o) {
+void checkSmimeInfo(api.SmimeInfo o) {
   buildCounterSmimeInfo++;
   if (buildCounterSmimeInfo < 3) {
     unittest.expect(o.encryptedKeyPassword, unittest.equals('foo'));
@@ -1329,8 +1350,8 @@ checkSmimeInfo(api.SmimeInfo o) {
 }
 
 core.int buildCounterSmtpMsa = 0;
-buildSmtpMsa() {
-  var o = new api.SmtpMsa();
+api.SmtpMsa buildSmtpMsa() {
+  var o = api.SmtpMsa();
   buildCounterSmtpMsa++;
   if (buildCounterSmtpMsa < 3) {
     o.host = "foo";
@@ -1343,7 +1364,7 @@ buildSmtpMsa() {
   return o;
 }
 
-checkSmtpMsa(api.SmtpMsa o) {
+void checkSmtpMsa(api.SmtpMsa o) {
   buildCounterSmtpMsa++;
   if (buildCounterSmtpMsa < 3) {
     unittest.expect(o.host, unittest.equals('foo'));
@@ -1355,47 +1376,47 @@ checkSmtpMsa(api.SmtpMsa o) {
   buildCounterSmtpMsa--;
 }
 
-buildUnnamed2329() {
-  var o = new core.List<api.Message>();
+core.List<api.Message> buildUnnamed3203() {
+  var o = <api.Message>[];
   o.add(buildMessage());
   o.add(buildMessage());
   return o;
 }
 
-checkUnnamed2329(core.List<api.Message> o) {
+void checkUnnamed3203(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMessage(o[0]);
   checkMessage(o[1]);
 }
 
 core.int buildCounterThread = 0;
-buildThread() {
-  var o = new api.Thread();
+api.Thread buildThread() {
+  var o = api.Thread();
   buildCounterThread++;
   if (buildCounterThread < 3) {
     o.historyId = "foo";
     o.id = "foo";
-    o.messages = buildUnnamed2329();
+    o.messages = buildUnnamed3203();
     o.snippet = "foo";
   }
   buildCounterThread--;
   return o;
 }
 
-checkThread(api.Thread o) {
+void checkThread(api.Thread o) {
   buildCounterThread++;
   if (buildCounterThread < 3) {
     unittest.expect(o.historyId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2329(o.messages);
+    checkUnnamed3203(o.messages);
     unittest.expect(o.snippet, unittest.equals('foo'));
   }
   buildCounterThread--;
 }
 
 core.int buildCounterVacationSettings = 0;
-buildVacationSettings() {
-  var o = new api.VacationSettings();
+api.VacationSettings buildVacationSettings() {
+  var o = api.VacationSettings();
   buildCounterVacationSettings++;
   if (buildCounterVacationSettings < 3) {
     o.enableAutoReply = true;
@@ -1411,7 +1432,7 @@ buildVacationSettings() {
   return o;
 }
 
-checkVacationSettings(api.VacationSettings o) {
+void checkVacationSettings(api.VacationSettings o) {
   buildCounterVacationSettings++;
   if (buildCounterVacationSettings < 3) {
     unittest.expect(o.enableAutoReply, unittest.isTrue);
@@ -1426,45 +1447,45 @@ checkVacationSettings(api.VacationSettings o) {
   buildCounterVacationSettings--;
 }
 
-buildUnnamed2330() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3204() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2330(core.List<core.String> o) {
+void checkUnnamed3204(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterWatchRequest = 0;
-buildWatchRequest() {
-  var o = new api.WatchRequest();
+api.WatchRequest buildWatchRequest() {
+  var o = api.WatchRequest();
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     o.labelFilterAction = "foo";
-    o.labelIds = buildUnnamed2330();
+    o.labelIds = buildUnnamed3204();
     o.topicName = "foo";
   }
   buildCounterWatchRequest--;
   return o;
 }
 
-checkWatchRequest(api.WatchRequest o) {
+void checkWatchRequest(api.WatchRequest o) {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
     unittest.expect(o.labelFilterAction, unittest.equals('foo'));
-    checkUnnamed2330(o.labelIds);
+    checkUnnamed3204(o.labelIds);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterWatchRequest--;
 }
 
 core.int buildCounterWatchResponse = 0;
-buildWatchResponse() {
-  var o = new api.WatchResponse();
+api.WatchResponse buildWatchResponse() {
+  var o = api.WatchResponse();
   buildCounterWatchResponse++;
   if (buildCounterWatchResponse < 3) {
     o.expiration = "foo";
@@ -1474,7 +1495,7 @@ buildWatchResponse() {
   return o;
 }
 
-checkWatchResponse(api.WatchResponse o) {
+void checkWatchResponse(api.WatchResponse o) {
   buildCounterWatchResponse++;
   if (buildCounterWatchResponse < 3) {
     unittest.expect(o.expiration, unittest.equals('foo'));
@@ -1483,76 +1504,76 @@ checkWatchResponse(api.WatchResponse o) {
   buildCounterWatchResponse--;
 }
 
-buildUnnamed2331() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3205() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2331(core.List<core.String> o) {
+void checkUnnamed3205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2332() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3206() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2332(core.List<core.String> o) {
+void checkUnnamed3206(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2333() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3207() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2333(core.List<core.String> o) {
+void checkUnnamed3207(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2334() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3208() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2334(core.List<core.String> o) {
+void checkUnnamed3208(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2335() {
-  var o = new core.List<core.String>();
+core.List<core.String> buildUnnamed3209() {
+  var o = <core.String>[];
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2335(core.List<core.String> o) {
+void checkUnnamed3209(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-main() {
+void main() {
   unittest.group("obj-schema-AutoForwarding", () {
     unittest.test("to-json--from-json", () {
       var o = buildAutoForwarding();
-      var od = new api.AutoForwarding.fromJson(o.toJson());
+      var od = api.AutoForwarding.fromJson(o.toJson());
       checkAutoForwarding(od);
     });
   });
@@ -1560,7 +1581,7 @@ main() {
   unittest.group("obj-schema-BatchDeleteMessagesRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchDeleteMessagesRequest();
-      var od = new api.BatchDeleteMessagesRequest.fromJson(o.toJson());
+      var od = api.BatchDeleteMessagesRequest.fromJson(o.toJson());
       checkBatchDeleteMessagesRequest(od);
     });
   });
@@ -1568,7 +1589,7 @@ main() {
   unittest.group("obj-schema-BatchModifyMessagesRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchModifyMessagesRequest();
-      var od = new api.BatchModifyMessagesRequest.fromJson(o.toJson());
+      var od = api.BatchModifyMessagesRequest.fromJson(o.toJson());
       checkBatchModifyMessagesRequest(od);
     });
   });
@@ -1576,7 +1597,7 @@ main() {
   unittest.group("obj-schema-Delegate", () {
     unittest.test("to-json--from-json", () {
       var o = buildDelegate();
-      var od = new api.Delegate.fromJson(o.toJson());
+      var od = api.Delegate.fromJson(o.toJson());
       checkDelegate(od);
     });
   });
@@ -1584,7 +1605,7 @@ main() {
   unittest.group("obj-schema-Draft", () {
     unittest.test("to-json--from-json", () {
       var o = buildDraft();
-      var od = new api.Draft.fromJson(o.toJson());
+      var od = api.Draft.fromJson(o.toJson());
       checkDraft(od);
     });
   });
@@ -1592,7 +1613,7 @@ main() {
   unittest.group("obj-schema-Filter", () {
     unittest.test("to-json--from-json", () {
       var o = buildFilter();
-      var od = new api.Filter.fromJson(o.toJson());
+      var od = api.Filter.fromJson(o.toJson());
       checkFilter(od);
     });
   });
@@ -1600,7 +1621,7 @@ main() {
   unittest.group("obj-schema-FilterAction", () {
     unittest.test("to-json--from-json", () {
       var o = buildFilterAction();
-      var od = new api.FilterAction.fromJson(o.toJson());
+      var od = api.FilterAction.fromJson(o.toJson());
       checkFilterAction(od);
     });
   });
@@ -1608,7 +1629,7 @@ main() {
   unittest.group("obj-schema-FilterCriteria", () {
     unittest.test("to-json--from-json", () {
       var o = buildFilterCriteria();
-      var od = new api.FilterCriteria.fromJson(o.toJson());
+      var od = api.FilterCriteria.fromJson(o.toJson());
       checkFilterCriteria(od);
     });
   });
@@ -1616,7 +1637,7 @@ main() {
   unittest.group("obj-schema-ForwardingAddress", () {
     unittest.test("to-json--from-json", () {
       var o = buildForwardingAddress();
-      var od = new api.ForwardingAddress.fromJson(o.toJson());
+      var od = api.ForwardingAddress.fromJson(o.toJson());
       checkForwardingAddress(od);
     });
   });
@@ -1624,7 +1645,7 @@ main() {
   unittest.group("obj-schema-History", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistory();
-      var od = new api.History.fromJson(o.toJson());
+      var od = api.History.fromJson(o.toJson());
       checkHistory(od);
     });
   });
@@ -1632,7 +1653,7 @@ main() {
   unittest.group("obj-schema-HistoryLabelAdded", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistoryLabelAdded();
-      var od = new api.HistoryLabelAdded.fromJson(o.toJson());
+      var od = api.HistoryLabelAdded.fromJson(o.toJson());
       checkHistoryLabelAdded(od);
     });
   });
@@ -1640,7 +1661,7 @@ main() {
   unittest.group("obj-schema-HistoryLabelRemoved", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistoryLabelRemoved();
-      var od = new api.HistoryLabelRemoved.fromJson(o.toJson());
+      var od = api.HistoryLabelRemoved.fromJson(o.toJson());
       checkHistoryLabelRemoved(od);
     });
   });
@@ -1648,7 +1669,7 @@ main() {
   unittest.group("obj-schema-HistoryMessageAdded", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistoryMessageAdded();
-      var od = new api.HistoryMessageAdded.fromJson(o.toJson());
+      var od = api.HistoryMessageAdded.fromJson(o.toJson());
       checkHistoryMessageAdded(od);
     });
   });
@@ -1656,7 +1677,7 @@ main() {
   unittest.group("obj-schema-HistoryMessageDeleted", () {
     unittest.test("to-json--from-json", () {
       var o = buildHistoryMessageDeleted();
-      var od = new api.HistoryMessageDeleted.fromJson(o.toJson());
+      var od = api.HistoryMessageDeleted.fromJson(o.toJson());
       checkHistoryMessageDeleted(od);
     });
   });
@@ -1664,7 +1685,7 @@ main() {
   unittest.group("obj-schema-ImapSettings", () {
     unittest.test("to-json--from-json", () {
       var o = buildImapSettings();
-      var od = new api.ImapSettings.fromJson(o.toJson());
+      var od = api.ImapSettings.fromJson(o.toJson());
       checkImapSettings(od);
     });
   });
@@ -1672,7 +1693,7 @@ main() {
   unittest.group("obj-schema-Label", () {
     unittest.test("to-json--from-json", () {
       var o = buildLabel();
-      var od = new api.Label.fromJson(o.toJson());
+      var od = api.Label.fromJson(o.toJson());
       checkLabel(od);
     });
   });
@@ -1680,7 +1701,7 @@ main() {
   unittest.group("obj-schema-LabelColor", () {
     unittest.test("to-json--from-json", () {
       var o = buildLabelColor();
-      var od = new api.LabelColor.fromJson(o.toJson());
+      var od = api.LabelColor.fromJson(o.toJson());
       checkLabelColor(od);
     });
   });
@@ -1688,7 +1709,7 @@ main() {
   unittest.group("obj-schema-LanguageSettings", () {
     unittest.test("to-json--from-json", () {
       var o = buildLanguageSettings();
-      var od = new api.LanguageSettings.fromJson(o.toJson());
+      var od = api.LanguageSettings.fromJson(o.toJson());
       checkLanguageSettings(od);
     });
   });
@@ -1696,7 +1717,7 @@ main() {
   unittest.group("obj-schema-ListDelegatesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListDelegatesResponse();
-      var od = new api.ListDelegatesResponse.fromJson(o.toJson());
+      var od = api.ListDelegatesResponse.fromJson(o.toJson());
       checkListDelegatesResponse(od);
     });
   });
@@ -1704,7 +1725,7 @@ main() {
   unittest.group("obj-schema-ListDraftsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListDraftsResponse();
-      var od = new api.ListDraftsResponse.fromJson(o.toJson());
+      var od = api.ListDraftsResponse.fromJson(o.toJson());
       checkListDraftsResponse(od);
     });
   });
@@ -1712,7 +1733,7 @@ main() {
   unittest.group("obj-schema-ListFiltersResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListFiltersResponse();
-      var od = new api.ListFiltersResponse.fromJson(o.toJson());
+      var od = api.ListFiltersResponse.fromJson(o.toJson());
       checkListFiltersResponse(od);
     });
   });
@@ -1720,7 +1741,7 @@ main() {
   unittest.group("obj-schema-ListForwardingAddressesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListForwardingAddressesResponse();
-      var od = new api.ListForwardingAddressesResponse.fromJson(o.toJson());
+      var od = api.ListForwardingAddressesResponse.fromJson(o.toJson());
       checkListForwardingAddressesResponse(od);
     });
   });
@@ -1728,7 +1749,7 @@ main() {
   unittest.group("obj-schema-ListHistoryResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListHistoryResponse();
-      var od = new api.ListHistoryResponse.fromJson(o.toJson());
+      var od = api.ListHistoryResponse.fromJson(o.toJson());
       checkListHistoryResponse(od);
     });
   });
@@ -1736,7 +1757,7 @@ main() {
   unittest.group("obj-schema-ListLabelsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListLabelsResponse();
-      var od = new api.ListLabelsResponse.fromJson(o.toJson());
+      var od = api.ListLabelsResponse.fromJson(o.toJson());
       checkListLabelsResponse(od);
     });
   });
@@ -1744,7 +1765,7 @@ main() {
   unittest.group("obj-schema-ListMessagesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListMessagesResponse();
-      var od = new api.ListMessagesResponse.fromJson(o.toJson());
+      var od = api.ListMessagesResponse.fromJson(o.toJson());
       checkListMessagesResponse(od);
     });
   });
@@ -1752,7 +1773,7 @@ main() {
   unittest.group("obj-schema-ListSendAsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListSendAsResponse();
-      var od = new api.ListSendAsResponse.fromJson(o.toJson());
+      var od = api.ListSendAsResponse.fromJson(o.toJson());
       checkListSendAsResponse(od);
     });
   });
@@ -1760,7 +1781,7 @@ main() {
   unittest.group("obj-schema-ListSmimeInfoResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListSmimeInfoResponse();
-      var od = new api.ListSmimeInfoResponse.fromJson(o.toJson());
+      var od = api.ListSmimeInfoResponse.fromJson(o.toJson());
       checkListSmimeInfoResponse(od);
     });
   });
@@ -1768,7 +1789,7 @@ main() {
   unittest.group("obj-schema-ListThreadsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListThreadsResponse();
-      var od = new api.ListThreadsResponse.fromJson(o.toJson());
+      var od = api.ListThreadsResponse.fromJson(o.toJson());
       checkListThreadsResponse(od);
     });
   });
@@ -1776,7 +1797,7 @@ main() {
   unittest.group("obj-schema-Message", () {
     unittest.test("to-json--from-json", () {
       var o = buildMessage();
-      var od = new api.Message.fromJson(o.toJson());
+      var od = api.Message.fromJson(o.toJson());
       checkMessage(od);
     });
   });
@@ -1784,7 +1805,7 @@ main() {
   unittest.group("obj-schema-MessagePart", () {
     unittest.test("to-json--from-json", () {
       var o = buildMessagePart();
-      var od = new api.MessagePart.fromJson(o.toJson());
+      var od = api.MessagePart.fromJson(o.toJson());
       checkMessagePart(od);
     });
   });
@@ -1792,7 +1813,7 @@ main() {
   unittest.group("obj-schema-MessagePartBody", () {
     unittest.test("to-json--from-json", () {
       var o = buildMessagePartBody();
-      var od = new api.MessagePartBody.fromJson(o.toJson());
+      var od = api.MessagePartBody.fromJson(o.toJson());
       checkMessagePartBody(od);
     });
   });
@@ -1800,7 +1821,7 @@ main() {
   unittest.group("obj-schema-MessagePartHeader", () {
     unittest.test("to-json--from-json", () {
       var o = buildMessagePartHeader();
-      var od = new api.MessagePartHeader.fromJson(o.toJson());
+      var od = api.MessagePartHeader.fromJson(o.toJson());
       checkMessagePartHeader(od);
     });
   });
@@ -1808,7 +1829,7 @@ main() {
   unittest.group("obj-schema-ModifyMessageRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildModifyMessageRequest();
-      var od = new api.ModifyMessageRequest.fromJson(o.toJson());
+      var od = api.ModifyMessageRequest.fromJson(o.toJson());
       checkModifyMessageRequest(od);
     });
   });
@@ -1816,7 +1837,7 @@ main() {
   unittest.group("obj-schema-ModifyThreadRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildModifyThreadRequest();
-      var od = new api.ModifyThreadRequest.fromJson(o.toJson());
+      var od = api.ModifyThreadRequest.fromJson(o.toJson());
       checkModifyThreadRequest(od);
     });
   });
@@ -1824,7 +1845,7 @@ main() {
   unittest.group("obj-schema-PopSettings", () {
     unittest.test("to-json--from-json", () {
       var o = buildPopSettings();
-      var od = new api.PopSettings.fromJson(o.toJson());
+      var od = api.PopSettings.fromJson(o.toJson());
       checkPopSettings(od);
     });
   });
@@ -1832,7 +1853,7 @@ main() {
   unittest.group("obj-schema-Profile", () {
     unittest.test("to-json--from-json", () {
       var o = buildProfile();
-      var od = new api.Profile.fromJson(o.toJson());
+      var od = api.Profile.fromJson(o.toJson());
       checkProfile(od);
     });
   });
@@ -1840,7 +1861,7 @@ main() {
   unittest.group("obj-schema-SendAs", () {
     unittest.test("to-json--from-json", () {
       var o = buildSendAs();
-      var od = new api.SendAs.fromJson(o.toJson());
+      var od = api.SendAs.fromJson(o.toJson());
       checkSendAs(od);
     });
   });
@@ -1848,7 +1869,7 @@ main() {
   unittest.group("obj-schema-SmimeInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildSmimeInfo();
-      var od = new api.SmimeInfo.fromJson(o.toJson());
+      var od = api.SmimeInfo.fromJson(o.toJson());
       checkSmimeInfo(od);
     });
   });
@@ -1856,7 +1877,7 @@ main() {
   unittest.group("obj-schema-SmtpMsa", () {
     unittest.test("to-json--from-json", () {
       var o = buildSmtpMsa();
-      var od = new api.SmtpMsa.fromJson(o.toJson());
+      var od = api.SmtpMsa.fromJson(o.toJson());
       checkSmtpMsa(od);
     });
   });
@@ -1864,7 +1885,7 @@ main() {
   unittest.group("obj-schema-Thread", () {
     unittest.test("to-json--from-json", () {
       var o = buildThread();
-      var od = new api.Thread.fromJson(o.toJson());
+      var od = api.Thread.fromJson(o.toJson());
       checkThread(od);
     });
   });
@@ -1872,7 +1893,7 @@ main() {
   unittest.group("obj-schema-VacationSettings", () {
     unittest.test("to-json--from-json", () {
       var o = buildVacationSettings();
-      var od = new api.VacationSettings.fromJson(o.toJson());
+      var od = api.VacationSettings.fromJson(o.toJson());
       checkVacationSettings(od);
     });
   });
@@ -1880,7 +1901,7 @@ main() {
   unittest.group("obj-schema-WatchRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildWatchRequest();
-      var od = new api.WatchRequest.fromJson(o.toJson());
+      var od = api.WatchRequest.fromJson(o.toJson());
       checkWatchRequest(od);
     });
   });
@@ -1888,22 +1909,22 @@ main() {
   unittest.group("obj-schema-WatchResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildWatchResponse();
-      var od = new api.WatchResponse.fromJson(o.toJson());
+      var od = api.WatchResponse.fromJson(o.toJson());
       checkWatchResponse(od);
     });
   });
 
   unittest.group("resource-UsersResourceApi", () {
     unittest.test("method--getProfile", () {
-      var mock = new HttpServerMock();
-      api.UsersResourceApi res = new api.GmailApi(mock).users;
+      var mock = HttpServerMock();
+      api.UsersResourceApi res = api.GmailApi(mock).users;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1923,19 +1944,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1944,7 +1961,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildProfile());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getProfile(arg_userId, $fields: arg_$fields)
@@ -1954,15 +1971,15 @@ main() {
     });
 
     unittest.test("method--stop", () {
-      var mock = new HttpServerMock();
-      api.UsersResourceApi res = new api.GmailApi(mock).users;
+      var mock = HttpServerMock();
+      api.UsersResourceApi res = api.GmailApi(mock).users;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -1982,19 +1999,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2003,7 +2016,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .stop(arg_userId, $fields: arg_$fields)
@@ -2011,19 +2024,19 @@ main() {
     });
 
     unittest.test("method--watch", () {
-      var mock = new HttpServerMock();
-      api.UsersResourceApi res = new api.GmailApi(mock).users;
+      var mock = HttpServerMock();
+      api.UsersResourceApi res = api.GmailApi(mock).users;
       var arg_request = buildWatchRequest();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.WatchRequest.fromJson(json);
+        var obj = api.WatchRequest.fromJson(json);
         checkWatchRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2043,19 +2056,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2064,7 +2073,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildWatchResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .watch(arg_request, arg_userId, $fields: arg_$fields)
@@ -2079,19 +2088,19 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Draft.fromJson(json);
+        var obj = api.Draft.fromJson(json);
         checkDraft(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2111,19 +2120,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2132,7 +2137,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDraft());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -2142,16 +2147,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2174,19 +2179,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2195,7 +2196,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_id, $fields: arg_$fields)
@@ -2203,8 +2204,8 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_format = "foo";
@@ -2212,8 +2213,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2236,19 +2237,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
@@ -2258,7 +2255,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDraft());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_id, format: arg_format, $fields: arg_$fields)
@@ -2268,8 +2265,8 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_userId = "foo";
       var arg_includeSpamTrash = true;
       var arg_pageToken = "foo";
@@ -2279,8 +2276,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2300,19 +2297,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["includeSpamTrash"].first,
@@ -2328,7 +2321,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListDraftsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId,
@@ -2346,19 +2339,19 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Draft.fromJson(json);
+        var obj = api.Draft.fromJson(json);
         checkDraft(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2378,19 +2371,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2399,7 +2388,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .send(arg_request, arg_userId, $fields: arg_$fields)
@@ -2412,20 +2401,20 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersDraftsResourceApi res = new api.GmailApi(mock).users.drafts;
+      var mock = HttpServerMock();
+      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Draft.fromJson(json);
+        var obj = api.Draft.fromJson(json);
         checkDraft(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2448,19 +2437,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2469,7 +2454,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDraft());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .update(arg_request, arg_userId, arg_id, $fields: arg_$fields)
@@ -2481,10 +2466,10 @@ main() {
 
   unittest.group("resource-UsersHistoryResourceApi", () {
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.UsersHistoryResourceApi res = new api.GmailApi(mock).users.history;
+      var mock = HttpServerMock();
+      api.UsersHistoryResourceApi res = api.GmailApi(mock).users.history;
       var arg_userId = "foo";
-      var arg_historyTypes = buildUnnamed2331();
+      var arg_historyTypes = buildUnnamed3205();
       var arg_labelId = "foo";
       var arg_pageToken = "foo";
       var arg_maxResults = 42;
@@ -2493,8 +2478,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2514,19 +2499,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -2545,7 +2526,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListHistoryResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId,
@@ -2563,19 +2544,19 @@ main() {
 
   unittest.group("resource-UsersLabelsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Label.fromJson(json);
+        var obj = api.Label.fromJson(json);
         checkLabel(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2595,19 +2576,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2616,7 +2593,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLabel());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -2626,16 +2603,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2658,19 +2635,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2679,7 +2652,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_id, $fields: arg_$fields)
@@ -2687,16 +2660,16 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2719,19 +2692,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2740,7 +2709,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLabel());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_id, $fields: arg_$fields)
@@ -2750,15 +2719,15 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2778,19 +2747,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2799,7 +2764,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListLabelsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, $fields: arg_$fields)
@@ -2809,20 +2774,20 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Label.fromJson(json);
+        var obj = api.Label.fromJson(json);
         checkLabel(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2845,19 +2810,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2866,7 +2827,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLabel());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_userId, arg_id, $fields: arg_$fields)
@@ -2876,20 +2837,20 @@ main() {
     });
 
     unittest.test("method--update", () {
-      var mock = new HttpServerMock();
-      api.UsersLabelsResourceApi res = new api.GmailApi(mock).users.labels;
+      var mock = HttpServerMock();
+      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Label.fromJson(json);
+        var obj = api.Label.fromJson(json);
         checkLabel(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2912,19 +2873,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2933,7 +2890,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLabel());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .update(arg_request, arg_userId, arg_id, $fields: arg_$fields)
@@ -2945,19 +2902,19 @@ main() {
 
   unittest.group("resource-UsersMessagesResourceApi", () {
     unittest.test("method--batchDelete", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchDeleteMessagesRequest();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.BatchDeleteMessagesRequest.fromJson(json);
+        var obj = api.BatchDeleteMessagesRequest.fromJson(json);
         checkBatchDeleteMessagesRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -2977,19 +2934,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2998,7 +2951,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .batchDelete(arg_request, arg_userId, $fields: arg_$fields)
@@ -3006,19 +2959,19 @@ main() {
     });
 
     unittest.test("method--batchModify", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchModifyMessagesRequest();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.BatchModifyMessagesRequest.fromJson(json);
+        var obj = api.BatchModifyMessagesRequest.fromJson(json);
         checkBatchModifyMessagesRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3038,19 +2991,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3059,7 +3008,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .batchModify(arg_request, arg_userId, $fields: arg_$fields)
@@ -3067,16 +3016,16 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3099,19 +3048,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3120,7 +3065,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_id, $fields: arg_$fields)
@@ -3128,18 +3073,18 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
-      var arg_metadataHeaders = buildUnnamed2332();
+      var arg_metadataHeaders = buildUnnamed3206();
       var arg_format = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3162,19 +3107,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3186,7 +3127,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_id,
@@ -3202,8 +3143,8 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
       var arg_processForCalendar = true;
@@ -3212,13 +3153,13 @@ main() {
       var arg_deleted = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Message.fromJson(json);
+        var obj = api.Message.fromJson(json);
         checkMessage(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3238,19 +3179,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["processForCalendar"].first,
@@ -3267,7 +3204,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .import(arg_request, arg_userId,
@@ -3285,21 +3222,21 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
       var arg_deleted = true;
       var arg_internalDateSource = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Message.fromJson(json);
+        var obj = api.Message.fromJson(json);
         checkMessage(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3319,19 +3256,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3344,7 +3277,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .insert(arg_request, arg_userId,
@@ -3357,20 +3290,20 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_pageToken = "foo";
       var arg_q = "foo";
       var arg_includeSpamTrash = true;
-      var arg_labelIds = buildUnnamed2333();
+      var arg_labelIds = buildUnnamed3207();
       var arg_maxResults = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3390,19 +3323,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -3419,7 +3348,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListMessagesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId,
@@ -3435,20 +3364,20 @@ main() {
     });
 
     unittest.test("method--modify", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildModifyMessageRequest();
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.ModifyMessageRequest.fromJson(json);
+        var obj = api.ModifyMessageRequest.fromJson(json);
         checkModifyMessageRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3477,19 +3406,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3498,7 +3423,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .modify(arg_request, arg_userId, arg_id, $fields: arg_$fields)
@@ -3511,19 +3436,19 @@ main() {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Message.fromJson(json);
+        var obj = api.Message.fromJson(json);
         checkMessage(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3543,19 +3468,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3564,7 +3485,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .send(arg_request, arg_userId, $fields: arg_$fields)
@@ -3574,16 +3495,16 @@ main() {
     });
 
     unittest.test("method--trash", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3612,19 +3533,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3633,7 +3550,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .trash(arg_userId, arg_id, $fields: arg_$fields)
@@ -3643,16 +3560,16 @@ main() {
     });
 
     unittest.test("method--untrash", () {
-      var mock = new HttpServerMock();
-      api.UsersMessagesResourceApi res = new api.GmailApi(mock).users.messages;
+      var mock = HttpServerMock();
+      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3681,19 +3598,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3702,7 +3615,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessage());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .untrash(arg_userId, arg_id, $fields: arg_$fields)
@@ -3714,9 +3627,9 @@ main() {
 
   unittest.group("resource-UsersMessagesAttachmentsResourceApi", () {
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersMessagesAttachmentsResourceApi res =
-          new api.GmailApi(mock).users.messages.attachments;
+          api.GmailApi(mock).users.messages.attachments;
       var arg_userId = "foo";
       var arg_messageId = "foo";
       var arg_id = "foo";
@@ -3724,8 +3637,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3757,19 +3670,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3778,7 +3687,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildMessagePartBody());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_messageId, arg_id, $fields: arg_$fields)
@@ -3790,15 +3699,15 @@ main() {
 
   unittest.group("resource-UsersSettingsResourceApi", () {
     unittest.test("method--getAutoForwarding", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3818,19 +3727,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3839,7 +3744,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildAutoForwarding());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getAutoForwarding(arg_userId, $fields: arg_$fields)
@@ -3849,15 +3754,15 @@ main() {
     });
 
     unittest.test("method--getImap", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3877,19 +3782,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3898,7 +3799,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildImapSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getImap(arg_userId, $fields: arg_$fields)
@@ -3908,15 +3809,15 @@ main() {
     });
 
     unittest.test("method--getLanguage", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3936,19 +3837,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3957,7 +3854,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLanguageSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getLanguage(arg_userId, $fields: arg_$fields)
@@ -3967,15 +3864,15 @@ main() {
     });
 
     unittest.test("method--getPop", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -3995,19 +3892,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4016,7 +3909,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPopSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getPop(arg_userId, $fields: arg_$fields)
@@ -4026,15 +3919,15 @@ main() {
     });
 
     unittest.test("method--getVacation", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4054,19 +3947,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4075,7 +3964,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildVacationSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .getVacation(arg_userId, $fields: arg_$fields)
@@ -4085,19 +3974,19 @@ main() {
     });
 
     unittest.test("method--updateAutoForwarding", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_request = buildAutoForwarding();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.AutoForwarding.fromJson(json);
+        var obj = api.AutoForwarding.fromJson(json);
         checkAutoForwarding(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4117,19 +4006,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4138,7 +4023,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildAutoForwarding());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updateAutoForwarding(arg_request, arg_userId, $fields: arg_$fields)
@@ -4148,19 +4033,19 @@ main() {
     });
 
     unittest.test("method--updateImap", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_request = buildImapSettings();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.ImapSettings.fromJson(json);
+        var obj = api.ImapSettings.fromJson(json);
         checkImapSettings(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4180,19 +4065,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4201,7 +4082,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildImapSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updateImap(arg_request, arg_userId, $fields: arg_$fields)
@@ -4211,19 +4092,19 @@ main() {
     });
 
     unittest.test("method--updateLanguage", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_request = buildLanguageSettings();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.LanguageSettings.fromJson(json);
+        var obj = api.LanguageSettings.fromJson(json);
         checkLanguageSettings(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4243,19 +4124,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4264,7 +4141,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildLanguageSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updateLanguage(arg_request, arg_userId, $fields: arg_$fields)
@@ -4274,19 +4151,19 @@ main() {
     });
 
     unittest.test("method--updatePop", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_request = buildPopSettings();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.PopSettings.fromJson(json);
+        var obj = api.PopSettings.fromJson(json);
         checkPopSettings(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4306,19 +4183,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4327,7 +4200,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildPopSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updatePop(arg_request, arg_userId, $fields: arg_$fields)
@@ -4337,19 +4210,19 @@ main() {
     });
 
     unittest.test("method--updateVacation", () {
-      var mock = new HttpServerMock();
-      api.UsersSettingsResourceApi res = new api.GmailApi(mock).users.settings;
+      var mock = HttpServerMock();
+      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
       var arg_request = buildVacationSettings();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.VacationSettings.fromJson(json);
+        var obj = api.VacationSettings.fromJson(json);
         checkVacationSettings(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4369,19 +4242,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4390,7 +4259,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildVacationSettings());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .updateVacation(arg_request, arg_userId, $fields: arg_$fields)
@@ -4402,20 +4271,20 @@ main() {
 
   unittest.group("resource-UsersSettingsDelegatesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsDelegatesResourceApi res =
-          new api.GmailApi(mock).users.settings.delegates;
+          api.GmailApi(mock).users.settings.delegates;
       var arg_request = buildDelegate();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Delegate.fromJson(json);
+        var obj = api.Delegate.fromJson(json);
         checkDelegate(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4435,19 +4304,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4456,7 +4321,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDelegate());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -4466,17 +4331,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsDelegatesResourceApi res =
-          new api.GmailApi(mock).users.settings.delegates;
+          api.GmailApi(mock).users.settings.delegates;
       var arg_userId = "foo";
       var arg_delegateEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4499,19 +4364,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4520,7 +4381,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_delegateEmail, $fields: arg_$fields)
@@ -4528,17 +4389,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsDelegatesResourceApi res =
-          new api.GmailApi(mock).users.settings.delegates;
+          api.GmailApi(mock).users.settings.delegates;
       var arg_userId = "foo";
       var arg_delegateEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4561,19 +4422,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4582,7 +4439,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildDelegate());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_delegateEmail, $fields: arg_$fields)
@@ -4592,16 +4449,16 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsDelegatesResourceApi res =
-          new api.GmailApi(mock).users.settings.delegates;
+          api.GmailApi(mock).users.settings.delegates;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4621,19 +4478,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4642,7 +4495,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListDelegatesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, $fields: arg_$fields)
@@ -4654,20 +4507,20 @@ main() {
 
   unittest.group("resource-UsersSettingsFiltersResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsFiltersResourceApi res =
-          new api.GmailApi(mock).users.settings.filters;
+          api.GmailApi(mock).users.settings.filters;
       var arg_request = buildFilter();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.Filter.fromJson(json);
+        var obj = api.Filter.fromJson(json);
         checkFilter(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4687,19 +4540,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4708,7 +4557,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildFilter());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -4718,17 +4567,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsFiltersResourceApi res =
-          new api.GmailApi(mock).users.settings.filters;
+          api.GmailApi(mock).users.settings.filters;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4751,19 +4600,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4772,7 +4617,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_id, $fields: arg_$fields)
@@ -4780,17 +4625,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsFiltersResourceApi res =
-          new api.GmailApi(mock).users.settings.filters;
+          api.GmailApi(mock).users.settings.filters;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4813,19 +4658,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4834,7 +4675,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildFilter());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_id, $fields: arg_$fields)
@@ -4844,16 +4685,16 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsFiltersResourceApi res =
-          new api.GmailApi(mock).users.settings.filters;
+          api.GmailApi(mock).users.settings.filters;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4873,19 +4714,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4894,7 +4731,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListFiltersResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, $fields: arg_$fields)
@@ -4906,20 +4743,20 @@ main() {
 
   unittest.group("resource-UsersSettingsForwardingAddressesResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsForwardingAddressesResourceApi res =
-          new api.GmailApi(mock).users.settings.forwardingAddresses;
+          api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_request = buildForwardingAddress();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.ForwardingAddress.fromJson(json);
+        var obj = api.ForwardingAddress.fromJson(json);
         checkForwardingAddress(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -4939,19 +4776,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4960,7 +4793,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildForwardingAddress());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -4970,17 +4803,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsForwardingAddressesResourceApi res =
-          new api.GmailApi(mock).users.settings.forwardingAddresses;
+          api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = "foo";
       var arg_forwardingEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5003,19 +4836,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5024,7 +4853,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_forwardingEmail, $fields: arg_$fields)
@@ -5032,17 +4861,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsForwardingAddressesResourceApi res =
-          new api.GmailApi(mock).users.settings.forwardingAddresses;
+          api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = "foo";
       var arg_forwardingEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5065,19 +4894,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5086,7 +4911,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildForwardingAddress());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_forwardingEmail, $fields: arg_$fields)
@@ -5096,16 +4921,16 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsForwardingAddressesResourceApi res =
-          new api.GmailApi(mock).users.settings.forwardingAddresses;
+          api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5125,19 +4950,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5146,7 +4967,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListForwardingAddressesResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, $fields: arg_$fields)
@@ -5158,20 +4979,20 @@ main() {
 
   unittest.group("resource-UsersSettingsSendAsResourceApi", () {
     unittest.test("method--create", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SendAs.fromJson(json);
+        var obj = api.SendAs.fromJson(json);
         checkSendAs(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5191,19 +5012,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5212,7 +5029,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSendAs());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
@@ -5222,17 +5039,17 @@ main() {
     });
 
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5255,19 +5072,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5276,7 +5089,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
@@ -5284,17 +5097,17 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5317,19 +5130,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5338,7 +5147,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSendAs());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
@@ -5348,16 +5157,16 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5377,19 +5186,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5398,7 +5203,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListSendAsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, $fields: arg_$fields)
@@ -5408,21 +5213,21 @@ main() {
     });
 
     unittest.test("method--patch", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SendAs.fromJson(json);
+        var obj = api.SendAs.fromJson(json);
         checkSendAs(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5445,19 +5250,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5466,7 +5267,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSendAs());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .patch(arg_request, arg_userId, arg_sendAsEmail, $fields: arg_$fields)
@@ -5476,21 +5277,21 @@ main() {
     });
 
     unittest.test("method--update", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SendAs.fromJson(json);
+        var obj = api.SendAs.fromJson(json);
         checkSendAs(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5513,19 +5314,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5534,7 +5331,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSendAs());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .update(arg_request, arg_userId, arg_sendAsEmail,
@@ -5545,17 +5342,17 @@ main() {
     });
 
     unittest.test("method--verify", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs;
+          api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5584,19 +5381,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5605,7 +5398,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .verify(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
@@ -5615,9 +5408,9 @@ main() {
 
   unittest.group("resource-UsersSettingsSendAsSmimeInfoResourceApi", () {
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_id = "foo";
@@ -5625,8 +5418,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5658,19 +5451,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5679,7 +5468,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
@@ -5687,9 +5476,9 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_id = "foo";
@@ -5697,8 +5486,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5730,19 +5519,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5751,7 +5536,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSmimeInfo());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
@@ -5761,21 +5546,21 @@ main() {
     });
 
     unittest.test("method--insert", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_request = buildSmimeInfo();
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.SmimeInfo.fromJson(json);
+        var obj = api.SmimeInfo.fromJson(json);
         checkSmimeInfo(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5804,19 +5589,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5825,7 +5606,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildSmimeInfo());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .insert(arg_request, arg_userId, arg_sendAsEmail,
@@ -5836,17 +5617,17 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5875,19 +5656,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5896,7 +5673,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListSmimeInfoResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
@@ -5906,9 +5683,9 @@ main() {
     });
 
     unittest.test("method--setDefault", () {
-      var mock = new HttpServerMock();
+      var mock = HttpServerMock();
       api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          new api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = "foo";
       var arg_sendAsEmail = "foo";
       var arg_id = "foo";
@@ -5916,8 +5693,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -5955,19 +5732,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5976,7 +5749,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .setDefault(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
@@ -5986,16 +5759,16 @@ main() {
 
   unittest.group("resource-UsersThreadsResourceApi", () {
     unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6018,19 +5791,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6039,7 +5808,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_userId, arg_id, $fields: arg_$fields)
@@ -6047,18 +5816,18 @@ main() {
     });
 
     unittest.test("method--get", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
-      var arg_metadataHeaders = buildUnnamed2334();
+      var arg_metadataHeaders = buildUnnamed3208();
       var arg_format = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6081,19 +5850,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(
@@ -6105,7 +5870,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildThread());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .get(arg_userId, arg_id,
@@ -6118,10 +5883,10 @@ main() {
     });
 
     unittest.test("method--list", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
-      var arg_labelIds = buildUnnamed2335();
+      var arg_labelIds = buildUnnamed3209();
       var arg_q = "foo";
       var arg_pageToken = "foo";
       var arg_includeSpamTrash = true;
@@ -6130,8 +5895,8 @@ main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6151,19 +5916,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
@@ -6180,7 +5941,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildListThreadsResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .list(arg_userId,
@@ -6196,20 +5957,20 @@ main() {
     });
 
     unittest.test("method--modify", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_request = buildModifyThreadRequest();
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.ModifyThreadRequest.fromJson(json);
+        var obj = api.ModifyThreadRequest.fromJson(json);
         checkModifyThreadRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6238,19 +5999,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6259,7 +6016,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildThread());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .modify(arg_request, arg_userId, arg_id, $fields: arg_$fields)
@@ -6269,16 +6026,16 @@ main() {
     });
 
     unittest.test("method--trash", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6307,19 +6064,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6328,7 +6081,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildThread());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .trash(arg_userId, arg_id, $fields: arg_$fields)
@@ -6338,16 +6091,16 @@ main() {
     });
 
     unittest.test("method--untrash", () {
-      var mock = new HttpServerMock();
-      api.UsersThreadsResourceApi res = new api.GmailApi(mock).users.threads;
+      var mock = HttpServerMock();
+      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = "foo";
       var arg_id = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
-        var index;
-        var subPart;
+        core.int index;
+        core.String subPart;
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
@@ -6376,19 +6129,15 @@ main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
+        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.length > 0) {
+        if (query.isNotEmpty) {
           for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
+            var keyValue = part.split("=");
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
           }
         }
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6397,7 +6146,7 @@ main() {
           "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.json.encode(buildThread());
-        return new async.Future.value(stringResponse(200, h, resp));
+        return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .untrash(arg_userId, arg_id, $fields: arg_$fields)

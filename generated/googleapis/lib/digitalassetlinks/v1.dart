@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.digitalassetlinks.v1;
 
@@ -20,14 +38,14 @@ const core.String USER_AGENT = 'dart-api-client digitalassetlinks/v1';
 class DigitalassetlinksApi {
   final commons.ApiRequester _requester;
 
-  AssetlinksResourceApi get assetlinks => new AssetlinksResourceApi(_requester);
-  StatementsResourceApi get statements => new StatementsResourceApi(_requester);
+  AssetlinksResourceApi get assetlinks => AssetlinksResourceApi(_requester);
+  StatementsResourceApi get statements => StatementsResourceApi(_requester);
 
   DigitalassetlinksApi(http.Client client,
       {core.String rootUrl = "https://digitalassetlinks.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AssetlinksResourceApi {
@@ -146,21 +164,22 @@ class AssetlinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CheckResponse> check(
-      {core.String source_web_site,
-      core.String target_androidApp_packageName,
-      core.String source_androidApp_certificate_sha256Fingerprint,
-      core.String relation,
-      core.String target_androidApp_certificate_sha256Fingerprint,
-      core.String target_web_site,
-      core.String source_androidApp_packageName,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CheckResponse> check({
+    core.String source_web_site,
+    core.String target_androidApp_packageName,
+    core.String source_androidApp_certificate_sha256Fingerprint,
+    core.String relation,
+    core.String target_androidApp_certificate_sha256Fingerprint,
+    core.String target_web_site,
+    core.String source_androidApp_packageName,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (source_web_site != null) {
       _queryParams["source.web.site"] = [source_web_site];
@@ -197,13 +216,16 @@ class AssetlinksResourceApi {
 
     _url = 'v1/assetlinks:check';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CheckResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CheckResponse.fromJson(data));
   }
 }
 
@@ -283,18 +305,19 @@ class StatementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListResponse> list(
-      {core.String source_web_site,
-      core.String source_androidApp_packageName,
-      core.String relation,
-      core.String source_androidApp_certificate_sha256Fingerprint,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListResponse> list({
+    core.String source_web_site,
+    core.String source_androidApp_packageName,
+    core.String relation,
+    core.String source_androidApp_certificate_sha256Fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (source_web_site != null) {
       _queryParams["source.web.site"] = [source_web_site];
@@ -318,13 +341,16 @@ class StatementsResourceApi {
 
     _url = 'v1/statements:list';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListResponse.fromJson(data));
   }
 }
 
@@ -352,7 +378,7 @@ class AndroidAppAsset {
 
   AndroidAppAsset.fromJson(core.Map _json) {
     if (_json.containsKey("certificate")) {
-      certificate = new CertificateInfo.fromJson(_json["certificate"]);
+      certificate = CertificateInfo.fromJson(_json["certificate"]);
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
@@ -361,9 +387,9 @@ class AndroidAppAsset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (certificate != null) {
-      _json["certificate"] = (certificate).toJson();
+      _json["certificate"] = certificate.toJson();
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
@@ -387,21 +413,21 @@ class Asset {
 
   Asset.fromJson(core.Map _json) {
     if (_json.containsKey("androidApp")) {
-      androidApp = new AndroidAppAsset.fromJson(_json["androidApp"]);
+      androidApp = AndroidAppAsset.fromJson(_json["androidApp"]);
     }
     if (_json.containsKey("web")) {
-      web = new WebAsset.fromJson(_json["web"]);
+      web = WebAsset.fromJson(_json["web"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (androidApp != null) {
-      _json["androidApp"] = (androidApp).toJson();
+      _json["androidApp"] = androidApp.toJson();
     }
     if (web != null) {
-      _json["web"] = (web).toJson();
+      _json["web"] = web.toJson();
     }
     return _json;
   }
@@ -435,7 +461,7 @@ class CertificateInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (sha256Fingerprint != null) {
       _json["sha256Fingerprint"] = sha256Fingerprint;
     }
@@ -484,7 +510,7 @@ class CheckResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (debugString != null) {
       _json["debugString"] = debugString;
     }
@@ -536,14 +562,14 @@ class ListResponse {
     }
     if (_json.containsKey("statements")) {
       statements = (_json["statements"] as core.List)
-          .map<Statement>((value) => new Statement.fromJson(value))
+          .map<Statement>((value) => Statement.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (debugString != null) {
       _json["debugString"] = debugString;
     }
@@ -554,8 +580,7 @@ class ListResponse {
       _json["maxAge"] = maxAge;
     }
     if (statements != null) {
-      _json["statements"] =
-          statements.map((value) => (value).toJson()).toList();
+      _json["statements"] = statements.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -592,24 +617,24 @@ class Statement {
       relation = _json["relation"];
     }
     if (_json.containsKey("source")) {
-      source = new Asset.fromJson(_json["source"]);
+      source = Asset.fromJson(_json["source"]);
     }
     if (_json.containsKey("target")) {
-      target = new Asset.fromJson(_json["target"]);
+      target = Asset.fromJson(_json["target"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (relation != null) {
       _json["relation"] = relation;
     }
     if (source != null) {
-      _json["source"] = (source).toJson();
+      _json["source"] = source.toJson();
     }
     if (target != null) {
-      _json["target"] = (target).toJson();
+      _json["target"] = target.toJson();
     }
     return _json;
   }
@@ -644,7 +669,7 @@ class WebAsset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (site != null) {
       _json["site"] = site;
     }

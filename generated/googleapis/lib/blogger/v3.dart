@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.blogger.v3;
 
@@ -29,21 +47,21 @@ class BloggerApi {
   final commons.ApiRequester _requester;
 
   BlogUserInfosResourceApi get blogUserInfos =>
-      new BlogUserInfosResourceApi(_requester);
-  BlogsResourceApi get blogs => new BlogsResourceApi(_requester);
-  CommentsResourceApi get comments => new CommentsResourceApi(_requester);
-  PageViewsResourceApi get pageViews => new PageViewsResourceApi(_requester);
-  PagesResourceApi get pages => new PagesResourceApi(_requester);
+      BlogUserInfosResourceApi(_requester);
+  BlogsResourceApi get blogs => BlogsResourceApi(_requester);
+  CommentsResourceApi get comments => CommentsResourceApi(_requester);
+  PageViewsResourceApi get pageViews => PageViewsResourceApi(_requester);
+  PagesResourceApi get pages => PagesResourceApi(_requester);
   PostUserInfosResourceApi get postUserInfos =>
-      new PostUserInfosResourceApi(_requester);
-  PostsResourceApi get posts => new PostsResourceApi(_requester);
-  UsersResourceApi get users => new UsersResourceApi(_requester);
+      PostUserInfosResourceApi(_requester);
+  PostsResourceApi get posts => PostsResourceApi(_requester);
+  UsersResourceApi get users => UsersResourceApi(_requester);
 
   BloggerApi(http.Client client,
       {core.String rootUrl = "https://blogger.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class BlogUserInfosResourceApi {
@@ -71,20 +89,24 @@ class BlogUserInfosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BlogUserInfo> get(core.String userId, core.String blogId,
-      {core.int maxPosts, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BlogUserInfo> get(
+    core.String userId,
+    core.String blogId, {
+    core.int maxPosts,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (maxPosts != null) {
       _queryParams["maxPosts"] = ["${maxPosts}"];
@@ -98,13 +120,16 @@ class BlogUserInfosResourceApi {
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BlogUserInfo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BlogUserInfo.fromJson(data));
   }
 }
 
@@ -138,17 +163,21 @@ class BlogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Blog> get(core.String blogId,
-      {core.String view, core.int maxPosts, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Blog> get(
+    core.String blogId, {
+    core.String view,
+    core.int maxPosts,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -162,13 +191,16 @@ class BlogsResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Blog.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Blog.fromJson(data));
   }
 
   /// Gets a blog by url.
@@ -194,17 +226,20 @@ class BlogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Blog> getByUrl(core.String url,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Blog> getByUrl(
+    core.String url, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (url == null) {
-      throw new core.ArgumentError("Parameter url is required.");
+      throw core.ArgumentError("Parameter url is required.");
     }
     _queryParams["url"] = [url];
     if (view != null) {
@@ -216,13 +251,16 @@ class BlogsResourceApi {
 
     _url = 'v3/blogs/byurl';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Blog.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Blog.fromJson(data));
   }
 
   /// Lists blogs by user.
@@ -254,21 +292,23 @@ class BlogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BlogList> listByUser(core.String userId,
-      {core.List<core.String> role,
-      core.List<core.String> status,
-      core.String view,
-      core.bool fetchUserInfo,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<BlogList> listByUser(
+    core.String userId, {
+    core.List<core.String> role,
+    core.List<core.String> status,
+    core.String view,
+    core.bool fetchUserInfo,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (role != null) {
       _queryParams["role"] = role;
@@ -288,13 +328,16 @@ class BlogsResourceApi {
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new BlogList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => BlogList.fromJson(data));
   }
 }
 
@@ -324,23 +367,26 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> approve(
-      core.String blogId, core.String postId, core.String commentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String blogId,
+    core.String postId,
+    core.String commentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (commentId == null) {
-      throw new core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError("Parameter commentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -354,13 +400,16 @@ class CommentsResourceApi {
         commons.Escaper.ecapeVariable('$commentId') +
         '/approve';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 
   /// Deletes a comment by blog id, post id and comment id.
@@ -382,23 +431,26 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String blogId, core.String postId, core.String commentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String blogId,
+    core.String postId,
+    core.String commentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (commentId == null) {
-      throw new core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError("Parameter commentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -413,12 +465,15 @@ class CommentsResourceApi {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -450,23 +505,27 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> get(
-      core.String blogId, core.String postId, core.String commentId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String blogId,
+    core.String postId,
+    core.String commentId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (commentId == null) {
-      throw new core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError("Parameter commentId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -482,13 +541,16 @@ class CommentsResourceApi {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 
   /// Lists comments.
@@ -533,27 +595,30 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentList> list(core.String blogId, core.String postId,
-      {core.bool fetchBodies,
-      core.String view,
-      core.int maxResults,
-      core.String pageToken,
-      core.String startDate,
-      core.String status,
-      core.String endDate,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CommentList> list(
+    core.String blogId,
+    core.String postId, {
+    core.bool fetchBodies,
+    core.String view,
+    core.int maxResults,
+    core.String pageToken,
+    core.String startDate,
+    core.String status,
+    core.String endDate,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
@@ -586,13 +651,16 @@ class CommentsResourceApi {
         commons.Escaper.ecapeVariable('$postId') +
         '/comments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommentList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentList.fromJson(data));
   }
 
   /// Lists comments by blog.
@@ -623,23 +691,25 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CommentList> listByBlog(core.String blogId,
-      {core.bool fetchBodies,
-      core.String endDate,
-      core.String pageToken,
-      core.String startDate,
-      core.List<core.String> status,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CommentList> listByBlog(
+    core.String blogId, {
+    core.bool fetchBodies,
+    core.String endDate,
+    core.String pageToken,
+    core.String startDate,
+    core.List<core.String> status,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
@@ -665,13 +735,16 @@ class CommentsResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CommentList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CommentList.fromJson(data));
   }
 
   /// Marks a comment as spam by blog id, post id and comment id.
@@ -695,23 +768,26 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> markAsSpam(
-      core.String blogId, core.String postId, core.String commentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String blogId,
+    core.String postId,
+    core.String commentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (commentId == null) {
-      throw new core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError("Parameter commentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -725,13 +801,16 @@ class CommentsResourceApi {
         commons.Escaper.ecapeVariable('$commentId') +
         '/spam';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 
   /// Removes the content of a comment by blog id, post id and comment id.
@@ -755,23 +834,26 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> removeContent(
-      core.String blogId, core.String postId, core.String commentId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String blogId,
+    core.String postId,
+    core.String commentId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (commentId == null) {
-      throw new core.ArgumentError("Parameter commentId is required.");
+      throw core.ArgumentError("Parameter commentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -785,13 +867,16 @@ class CommentsResourceApi {
         commons.Escaper.ecapeVariable('$commentId') +
         '/removecontent';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Comment.fromJson(data));
   }
 }
 
@@ -818,17 +903,20 @@ class PageViewsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Pageviews> get(core.String blogId,
-      {core.List<core.String> range, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Pageviews> get(
+    core.String blogId, {
+    core.List<core.String> range,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (range != null) {
       _queryParams["range"] = range;
@@ -840,13 +928,16 @@ class PageViewsResourceApi {
     _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Pageviews.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Pageviews.fromJson(data));
   }
 }
 
@@ -871,20 +962,23 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String blogId, core.String pageId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String blogId,
+    core.String pageId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -897,12 +991,15 @@ class PagesResourceApi {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -931,20 +1028,24 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> get(core.String blogId, core.String pageId,
-      {core.String view, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Page> get(
+    core.String blogId,
+    core.String pageId, {
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -958,13 +1059,16 @@ class PagesResourceApi {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 
   /// Inserts a page.
@@ -987,20 +1091,24 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> insert(Page request, core.String blogId,
-      {core.bool isDraft, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Page> insert(
+    Page request,
+    core.String blogId, {
+    core.bool isDraft,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
@@ -1011,13 +1119,16 @@ class PagesResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 
   /// Lists pages.
@@ -1051,22 +1162,24 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PageList> list(core.String blogId,
-      {core.String view,
-      core.int maxResults,
-      core.bool fetchBodies,
-      core.List<core.String> status,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PageList> list(
+    core.String blogId, {
+    core.String view,
+    core.int maxResults,
+    core.bool fetchBodies,
+    core.List<core.String> status,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -1089,13 +1202,16 @@ class PagesResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PageList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PageList.fromJson(data));
   }
 
   /// Patches a page.
@@ -1122,23 +1238,29 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
-      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Page> patch(
+    Page request,
+    core.String blogId,
+    core.String pageId, {
+    core.bool publish_1,
+    core.bool revert_1,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
@@ -1155,13 +1277,16 @@ class PagesResourceApi {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 
   /// Publishes a page.
@@ -1182,20 +1307,23 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> publish(core.String blogId, core.String pageId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Page> publish(
+    core.String blogId,
+    core.String pageId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1207,13 +1335,16 @@ class PagesResourceApi {
         commons.Escaper.ecapeVariable('$pageId') +
         '/publish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 
   /// Reverts a published or scheduled page to draft state.
@@ -1234,20 +1365,23 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> revert(core.String blogId, core.String pageId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Page> revert(
+    core.String blogId,
+    core.String pageId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1259,13 +1393,16 @@ class PagesResourceApi {
         commons.Escaper.ecapeVariable('$pageId') +
         '/revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 
   /// Updates a page by blog id and page id.
@@ -1293,23 +1430,28 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> update(
-      Page request, core.String blogId, core.String pageId,
-      {core.bool revert_1, core.bool publish_1, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Page request,
+    core.String blogId,
+    core.String pageId, {
+    core.bool revert_1,
+    core.bool publish_1,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
+      throw core.ArgumentError("Parameter pageId is required.");
     }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
@@ -1326,13 +1468,16 @@ class PagesResourceApi {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Page.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Page.fromJson(data));
   }
 }
 
@@ -1364,23 +1509,27 @@ class PostUserInfosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostUserInfo> get(
-      core.String userId, core.String blogId, core.String postId,
-      {core.int maxComments, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String userId,
+    core.String blogId,
+    core.String postId, {
+    core.int maxComments,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
@@ -1396,13 +1545,16 @@ class PostUserInfosResourceApi {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostUserInfo.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostUserInfo.fromJson(data));
   }
 
   /// Lists post and user info pairs.
@@ -1450,29 +1602,32 @@ class PostUserInfosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostUserInfosList> list(core.String userId, core.String blogId,
-      {core.String orderBy,
-      core.bool fetchBodies,
-      core.String view,
-      core.int maxResults,
-      core.String startDate,
-      core.String labels,
-      core.String endDate,
-      core.String pageToken,
-      core.List<core.String> status,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PostUserInfosList> list(
+    core.String userId,
+    core.String blogId, {
+    core.String orderBy,
+    core.bool fetchBodies,
+    core.String view,
+    core.int maxResults,
+    core.String startDate,
+    core.String labels,
+    core.String endDate,
+    core.String pageToken,
+    core.List<core.String> status,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -1511,13 +1666,16 @@ class PostUserInfosResourceApi {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostUserInfosList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostUserInfosList.fromJson(data));
   }
 }
 
@@ -1542,20 +1700,23 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String blogId, core.String postId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String blogId,
+    core.String postId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1568,12 +1729,15 @@ class PostsResourceApi {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1608,24 +1772,27 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> get(core.String blogId, core.String postId,
-      {core.int maxComments,
-      core.bool fetchBody,
-      core.bool fetchImages,
-      core.String view,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> get(
+    core.String blogId,
+    core.String postId, {
+    core.int maxComments,
+    core.bool fetchBody,
+    core.bool fetchImages,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
@@ -1648,13 +1815,16 @@ class PostsResourceApi {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Gets a post by path.
@@ -1684,20 +1854,25 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> getByPath(core.String blogId, core.String path,
-      {core.String view, core.int maxComments, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> getByPath(
+    core.String blogId,
+    core.String path, {
+    core.String view,
+    core.int maxComments,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     _queryParams["path"] = [path];
     if (view != null) {
@@ -1714,13 +1889,16 @@ class PostsResourceApi {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/bypath';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Inserts a post.
@@ -1747,23 +1925,26 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> insert(Post request, core.String blogId,
-      {core.bool isDraft,
-      core.bool fetchBody,
-      core.bool fetchImages,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> insert(
+    Post request,
+    core.String blogId, {
+    core.bool isDraft,
+    core.bool fetchBody,
+    core.bool fetchImages,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
@@ -1780,13 +1961,16 @@ class PostsResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Lists posts.
@@ -1834,27 +2018,29 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostList> list(core.String blogId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.bool fetchBodies,
-      core.String endDate,
-      core.String view,
-      core.bool fetchImages,
-      core.String orderBy,
-      core.String startDate,
-      core.List<core.String> status,
-      core.String labels,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PostList> list(
+    core.String blogId, {
+    core.int maxResults,
+    core.String pageToken,
+    core.bool fetchBodies,
+    core.String endDate,
+    core.String view,
+    core.bool fetchImages,
+    core.String orderBy,
+    core.String startDate,
+    core.List<core.String> status,
+    core.String labels,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1892,13 +2078,16 @@ class PostsResourceApi {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostList.fromJson(data));
   }
 
   /// Patches a post.
@@ -1931,28 +2120,32 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> patch(Post request, core.String blogId, core.String postId,
-      {core.bool publish_1,
-      core.bool fetchImages,
-      core.int maxComments,
-      core.bool fetchBody,
-      core.bool revert_1,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> patch(
+    Post request,
+    core.String blogId,
+    core.String postId, {
+    core.bool publish_1,
+    core.bool fetchImages,
+    core.int maxComments,
+    core.bool fetchBody,
+    core.bool revert_1,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
@@ -1978,13 +2171,16 @@ class PostsResourceApi {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Publishes a post.
@@ -2007,20 +2203,24 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> publish(core.String blogId, core.String postId,
-      {core.String publishDate, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> publish(
+    core.String blogId,
+    core.String postId, {
+    core.String publishDate,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (publishDate != null) {
       _queryParams["publishDate"] = [publishDate];
@@ -2035,13 +2235,16 @@ class PostsResourceApi {
         commons.Escaper.ecapeVariable('$postId') +
         '/publish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Reverts a published or scheduled post to draft state.
@@ -2062,20 +2265,23 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> revert(core.String blogId, core.String postId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Post> revert(
+    core.String blogId,
+    core.String postId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2087,13 +2293,16 @@ class PostsResourceApi {
         commons.Escaper.ecapeVariable('$postId') +
         '/revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 
   /// Searches for posts matching given query terms in the specified blog.
@@ -2122,20 +2331,25 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostList> search(core.String blogId, core.String q,
-      {core.String orderBy, core.bool fetchBodies, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PostList> search(
+    core.String blogId,
+    core.String q, {
+    core.String orderBy,
+    core.bool fetchBodies,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (q == null) {
-      throw new core.ArgumentError("Parameter q is required.");
+      throw core.ArgumentError("Parameter q is required.");
     }
     _queryParams["q"] = [q];
     if (orderBy != null) {
@@ -2152,13 +2366,16 @@ class PostsResourceApi {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/search';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PostList.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PostList.fromJson(data));
   }
 
   /// Updates a post by blog id and post id.
@@ -2192,28 +2409,31 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> update(
-      Post request, core.String blogId, core.String postId,
-      {core.bool publish_1,
-      core.bool revert_1,
-      core.int maxComments,
-      core.bool fetchImages,
-      core.bool fetchBody,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    Post request,
+    core.String blogId,
+    core.String postId, {
+    core.bool publish_1,
+    core.bool revert_1,
+    core.int maxComments,
+    core.bool fetchImages,
+    core.bool fetchBody,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (blogId == null) {
-      throw new core.ArgumentError("Parameter blogId is required.");
+      throw core.ArgumentError("Parameter blogId is required.");
     }
     if (postId == null) {
-      throw new core.ArgumentError("Parameter postId is required.");
+      throw core.ArgumentError("Parameter postId is required.");
     }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
@@ -2239,13 +2459,16 @@ class PostsResourceApi {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Post.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Post.fromJson(data));
   }
 }
 
@@ -2270,16 +2493,19 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> get(core.String userId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<User> get(
+    core.String userId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
+      throw core.ArgumentError("Parameter userId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2287,13 +2513,16 @@ class UsersResourceApi {
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => User.fromJson(data));
   }
 }
 
@@ -2324,7 +2553,7 @@ class BlogLocale {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (country != null) {
       _json["country"] = country;
     }
@@ -2359,7 +2588,7 @@ class BlogPages {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -2386,7 +2615,7 @@ class BlogPosts {
   BlogPosts.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Post>((value) => new Post.fromJson(value))
+          .map<Post>((value) => Post.fromJson(value))
           .toList();
     }
     if (_json.containsKey("selfLink")) {
@@ -2399,9 +2628,9 @@ class BlogPosts {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -2472,16 +2701,16 @@ class Blog {
       kind = _json["kind"];
     }
     if (_json.containsKey("locale")) {
-      locale = new BlogLocale.fromJson(_json["locale"]);
+      locale = BlogLocale.fromJson(_json["locale"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("pages")) {
-      pages = new BlogPages.fromJson(_json["pages"]);
+      pages = BlogPages.fromJson(_json["pages"]);
     }
     if (_json.containsKey("posts")) {
-      posts = new BlogPosts.fromJson(_json["posts"]);
+      posts = BlogPosts.fromJson(_json["posts"]);
     }
     if (_json.containsKey("published")) {
       published = _json["published"];
@@ -2502,7 +2731,7 @@ class Blog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (customMetaData != null) {
       _json["customMetaData"] = customMetaData;
     }
@@ -2516,16 +2745,16 @@ class Blog {
       _json["kind"] = kind;
     }
     if (locale != null) {
-      _json["locale"] = (locale).toJson();
+      _json["locale"] = locale.toJson();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (pages != null) {
-      _json["pages"] = (pages).toJson();
+      _json["pages"] = pages.toJson();
     }
     if (posts != null) {
-      _json["posts"] = (posts).toJson();
+      _json["posts"] = posts.toJson();
     }
     if (published != null) {
       _json["published"] = published;
@@ -2561,12 +2790,12 @@ class BlogList {
   BlogList.fromJson(core.Map _json) {
     if (_json.containsKey("blogUserInfos")) {
       blogUserInfos = (_json["blogUserInfos"] as core.List)
-          .map<BlogUserInfo>((value) => new BlogUserInfo.fromJson(value))
+          .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Blog>((value) => new Blog.fromJson(value))
+          .map<Blog>((value) => Blog.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2576,13 +2805,13 @@ class BlogList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blogUserInfos != null) {
       _json["blogUserInfos"] =
-          blogUserInfos.map((value) => (value).toJson()).toList();
+          blogUserInfos.map((value) => value.toJson()).toList();
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2641,7 +2870,7 @@ class BlogPerUserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blogId != null) {
       _json["blogId"] = blogId;
     }
@@ -2678,10 +2907,10 @@ class BlogUserInfo {
 
   BlogUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey("blog")) {
-      blog = new Blog.fromJson(_json["blog"]);
+      blog = Blog.fromJson(_json["blog"]);
     }
     if (_json.containsKey("blog_user_info")) {
-      blogUserInfo = new BlogPerUserInfo.fromJson(_json["blog_user_info"]);
+      blogUserInfo = BlogPerUserInfo.fromJson(_json["blog_user_info"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2690,12 +2919,12 @@ class BlogUserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blog != null) {
-      _json["blog"] = (blog).toJson();
+      _json["blog"] = blog.toJson();
     }
     if (blogUserInfo != null) {
-      _json["blog_user_info"] = (blogUserInfo).toJson();
+      _json["blog_user_info"] = blogUserInfo.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2719,7 +2948,7 @@ class CommentAuthorImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -2751,7 +2980,7 @@ class CommentAuthor {
       id = _json["id"];
     }
     if (_json.containsKey("image")) {
-      image = new CommentAuthorImage.fromJson(_json["image"]);
+      image = CommentAuthorImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -2760,7 +2989,7 @@ class CommentAuthor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2768,7 +2997,7 @@ class CommentAuthor {
       _json["id"] = id;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -2792,7 +3021,7 @@ class CommentBlog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2815,7 +3044,7 @@ class CommentInReplyTo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2838,7 +3067,7 @@ class CommentPost {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -2889,10 +3118,10 @@ class Comment {
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey("author")) {
-      author = new CommentAuthor.fromJson(_json["author"]);
+      author = CommentAuthor.fromJson(_json["author"]);
     }
     if (_json.containsKey("blog")) {
-      blog = new CommentBlog.fromJson(_json["blog"]);
+      blog = CommentBlog.fromJson(_json["blog"]);
     }
     if (_json.containsKey("content")) {
       content = _json["content"];
@@ -2901,13 +3130,13 @@ class Comment {
       id = _json["id"];
     }
     if (_json.containsKey("inReplyTo")) {
-      inReplyTo = new CommentInReplyTo.fromJson(_json["inReplyTo"]);
+      inReplyTo = CommentInReplyTo.fromJson(_json["inReplyTo"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("post")) {
-      post = new CommentPost.fromJson(_json["post"]);
+      post = CommentPost.fromJson(_json["post"]);
     }
     if (_json.containsKey("published")) {
       published = _json["published"];
@@ -2925,12 +3154,12 @@ class Comment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = (author).toJson();
+      _json["author"] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = (blog).toJson();
+      _json["blog"] = blog.toJson();
     }
     if (content != null) {
       _json["content"] = content;
@@ -2939,13 +3168,13 @@ class Comment {
       _json["id"] = id;
     }
     if (inReplyTo != null) {
-      _json["inReplyTo"] = (inReplyTo).toJson();
+      _json["inReplyTo"] = inReplyTo.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (post != null) {
-      _json["post"] = (post).toJson();
+      _json["post"] = post.toJson();
     }
     if (published != null) {
       _json["published"] = published;
@@ -2987,7 +3216,7 @@ class CommentList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Comment>((value) => new Comment.fromJson(value))
+          .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3003,12 +3232,12 @@ class CommentList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3038,7 +3267,7 @@ class PageAuthorImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -3070,7 +3299,7 @@ class PageAuthor {
       id = _json["id"];
     }
     if (_json.containsKey("image")) {
-      image = new PageAuthorImage.fromJson(_json["image"]);
+      image = PageAuthorImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -3079,7 +3308,7 @@ class PageAuthor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3087,7 +3316,7 @@ class PageAuthor {
       _json["id"] = id;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -3111,7 +3340,7 @@ class PageBlog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3164,10 +3393,10 @@ class Page {
 
   Page.fromJson(core.Map _json) {
     if (_json.containsKey("author")) {
-      author = new PageAuthor.fromJson(_json["author"]);
+      author = PageAuthor.fromJson(_json["author"]);
     }
     if (_json.containsKey("blog")) {
-      blog = new PageBlog.fromJson(_json["blog"]);
+      blog = PageBlog.fromJson(_json["blog"]);
     }
     if (_json.containsKey("content")) {
       content = _json["content"];
@@ -3203,12 +3432,12 @@ class Page {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = (author).toJson();
+      _json["author"] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = (blog).toJson();
+      _json["blog"] = blog.toJson();
     }
     if (content != null) {
       _json["content"] = content;
@@ -3265,7 +3494,7 @@ class PageList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Page>((value) => new Page.fromJson(value))
+          .map<Page>((value) => Page.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3278,12 +3507,12 @@ class PageList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3319,7 +3548,7 @@ class PageviewsCounts {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -3348,7 +3577,7 @@ class Pageviews {
     }
     if (_json.containsKey("counts")) {
       counts = (_json["counts"] as core.List)
-          .map<PageviewsCounts>((value) => new PageviewsCounts.fromJson(value))
+          .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3358,12 +3587,12 @@ class Pageviews {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blogId != null) {
       _json["blogId"] = blogId;
     }
     if (counts != null) {
-      _json["counts"] = counts.map((value) => (value).toJson()).toList();
+      _json["counts"] = counts.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3387,7 +3616,7 @@ class PostAuthorImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -3419,7 +3648,7 @@ class PostAuthor {
       id = _json["id"];
     }
     if (_json.containsKey("image")) {
-      image = new PostAuthorImage.fromJson(_json["image"]);
+      image = PostAuthorImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -3428,7 +3657,7 @@ class PostAuthor {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3436,7 +3665,7 @@ class PostAuthor {
       _json["id"] = id;
     }
     if (image != null) {
-      _json["image"] = (image).toJson();
+      _json["image"] = image.toJson();
     }
     if (url != null) {
       _json["url"] = url;
@@ -3460,7 +3689,7 @@ class PostBlog {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (id != null) {
       _json["id"] = id;
     }
@@ -3481,7 +3710,7 @@ class PostImages {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (url != null) {
       _json["url"] = url;
     }
@@ -3522,7 +3751,7 @@ class PostLocation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (lat != null) {
       _json["lat"] = lat;
     }
@@ -3555,7 +3784,7 @@ class PostReplies {
   PostReplies.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Comment>((value) => new Comment.fromJson(value))
+          .map<Comment>((value) => Comment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("selfLink")) {
@@ -3568,9 +3797,9 @@ class PostReplies {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -3652,10 +3881,10 @@ class Post {
 
   Post.fromJson(core.Map _json) {
     if (_json.containsKey("author")) {
-      author = new PostAuthor.fromJson(_json["author"]);
+      author = PostAuthor.fromJson(_json["author"]);
     }
     if (_json.containsKey("blog")) {
-      blog = new PostBlog.fromJson(_json["blog"]);
+      blog = PostBlog.fromJson(_json["blog"]);
     }
     if (_json.containsKey("content")) {
       content = _json["content"];
@@ -3671,7 +3900,7 @@ class Post {
     }
     if (_json.containsKey("images")) {
       images = (_json["images"] as core.List)
-          .map<PostImages>((value) => new PostImages.fromJson(value))
+          .map<PostImages>((value) => PostImages.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3681,7 +3910,7 @@ class Post {
       labels = (_json["labels"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("location")) {
-      location = new PostLocation.fromJson(_json["location"]);
+      location = PostLocation.fromJson(_json["location"]);
     }
     if (_json.containsKey("published")) {
       published = _json["published"];
@@ -3690,7 +3919,7 @@ class Post {
       readerComments = _json["readerComments"];
     }
     if (_json.containsKey("replies")) {
-      replies = new PostReplies.fromJson(_json["replies"]);
+      replies = PostReplies.fromJson(_json["replies"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -3714,12 +3943,12 @@ class Post {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (author != null) {
-      _json["author"] = (author).toJson();
+      _json["author"] = author.toJson();
     }
     if (blog != null) {
-      _json["blog"] = (blog).toJson();
+      _json["blog"] = blog.toJson();
     }
     if (content != null) {
       _json["content"] = content;
@@ -3734,7 +3963,7 @@ class Post {
       _json["id"] = id;
     }
     if (images != null) {
-      _json["images"] = images.map((value) => (value).toJson()).toList();
+      _json["images"] = images.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3743,7 +3972,7 @@ class Post {
       _json["labels"] = labels;
     }
     if (location != null) {
-      _json["location"] = (location).toJson();
+      _json["location"] = location.toJson();
     }
     if (published != null) {
       _json["published"] = published;
@@ -3752,7 +3981,7 @@ class Post {
       _json["readerComments"] = readerComments;
     }
     if (replies != null) {
-      _json["replies"] = (replies).toJson();
+      _json["replies"] = replies.toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -3800,7 +4029,7 @@ class PostList {
     }
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Post>((value) => new Post.fromJson(value))
+          .map<Post>((value) => Post.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3816,12 +4045,12 @@ class PostList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3874,7 +4103,7 @@ class PostPerUserInfo {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (blogId != null) {
       _json["blogId"] = blogId;
     }
@@ -3911,24 +4140,24 @@ class PostUserInfo {
       kind = _json["kind"];
     }
     if (_json.containsKey("post")) {
-      post = new Post.fromJson(_json["post"]);
+      post = Post.fromJson(_json["post"]);
     }
     if (_json.containsKey("post_user_info")) {
-      postUserInfo = new PostPerUserInfo.fromJson(_json["post_user_info"]);
+      postUserInfo = PostPerUserInfo.fromJson(_json["post_user_info"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (post != null) {
-      _json["post"] = (post).toJson();
+      _json["post"] = post.toJson();
     }
     if (postUserInfo != null) {
-      _json["post_user_info"] = (postUserInfo).toJson();
+      _json["post_user_info"] = postUserInfo.toJson();
     }
     return _json;
   }
@@ -3949,7 +4178,7 @@ class PostUserInfosList {
   PostUserInfosList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<PostUserInfo>((value) => new PostUserInfo.fromJson(value))
+          .map<PostUserInfo>((value) => PostUserInfo.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3962,9 +4191,9 @@ class PostUserInfosList {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3991,7 +4220,7 @@ class UserBlogs {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -4026,7 +4255,7 @@ class UserLocale {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (country != null) {
       _json["country"] = country;
     }
@@ -4075,7 +4304,7 @@ class User {
       about = _json["about"];
     }
     if (_json.containsKey("blogs")) {
-      blogs = new UserBlogs.fromJson(_json["blogs"]);
+      blogs = UserBlogs.fromJson(_json["blogs"]);
     }
     if (_json.containsKey("created")) {
       created = _json["created"];
@@ -4090,7 +4319,7 @@ class User {
       kind = _json["kind"];
     }
     if (_json.containsKey("locale")) {
-      locale = new UserLocale.fromJson(_json["locale"]);
+      locale = UserLocale.fromJson(_json["locale"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -4102,12 +4331,12 @@ class User {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (about != null) {
       _json["about"] = about;
     }
     if (blogs != null) {
-      _json["blogs"] = (blogs).toJson();
+      _json["blogs"] = blogs.toJson();
     }
     if (created != null) {
       _json["created"] = created;
@@ -4122,7 +4351,7 @@ class User {
       _json["kind"] = kind;
     }
     if (locale != null) {
-      _json["locale"] = (locale).toJson();
+      _json["locale"] = locale.toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;

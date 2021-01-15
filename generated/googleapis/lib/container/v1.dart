@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.container.v1;
 
@@ -25,24 +43,23 @@ class ContainerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   ContainerApi(http.Client client,
       {core.String rootUrl = "https://container.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsAggregatedResourceApi get aggregated =>
-      new ProjectsAggregatedResourceApi(_requester);
+      ProjectsAggregatedResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
-  ProjectsZonesResourceApi get zones =>
-      new ProjectsZonesResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
+  ProjectsZonesResourceApi get zones => ProjectsZonesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -51,7 +68,7 @@ class ProjectsAggregatedResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsAggregatedUsableSubnetworksResourceApi get usableSubnetworks =>
-      new ProjectsAggregatedUsableSubnetworksResourceApi(_requester);
+      ProjectsAggregatedUsableSubnetworksResourceApi(_requester);
 
   ProjectsAggregatedResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -95,20 +112,22 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListUsableSubnetworksResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListUsableSubnetworksResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.int pageSize,
+    core.String filter,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -127,14 +146,17 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/aggregated/usableSubnetworks';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListUsableSubnetworksResponse.fromJson(data));
+        .then((data) => ListUsableSubnetworksResponse.fromJson(data));
   }
 }
 
@@ -142,9 +164,9 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersResourceApi get clusters =>
-      new ProjectsLocationsClustersResourceApi(_requester);
+      ProjectsLocationsClustersResourceApi(_requester);
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -176,17 +198,21 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ServerConfig> getServerConfig(core.String name,
-      {core.String projectId, core.String zone, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ServerConfig> getServerConfig(
+    core.String name, {
+    core.String projectId,
+    core.String zone,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -202,13 +228,16 @@ class ProjectsLocationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serverConfig';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ServerConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ServerConfig.fromJson(data));
   }
 }
 
@@ -216,9 +245,9 @@ class ProjectsLocationsClustersResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsClustersNodePoolsResourceApi get nodePools =>
-      new ProjectsLocationsClustersNodePoolsResourceApi(_requester);
+      ProjectsLocationsClustersNodePoolsResourceApi(_requester);
   ProjectsLocationsClustersWell_knownResourceApi get well_known =>
-      new ProjectsLocationsClustersWell_knownResourceApi(_requester);
+      ProjectsLocationsClustersWell_knownResourceApi(_requester);
 
   ProjectsLocationsClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -245,20 +274,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> completeIpRotation(
-      CompleteIPRotationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CompleteIPRotationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -268,13 +299,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':completeIpRotation';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -306,20 +340,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      CreateClusterRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreateClusterRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -328,13 +364,16 @@ class ProjectsLocationsClustersResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -371,20 +410,22 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name,
-      {core.String clusterId,
-      core.String projectId,
-      core.String zone,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String clusterId,
+    core.String projectId,
+    core.String zone,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
@@ -401,13 +442,16 @@ class ProjectsLocationsClustersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the details of a specific cluster.
@@ -440,20 +484,22 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Cluster> get(core.String name,
-      {core.String zone,
-      core.String clusterId,
-      core.String projectId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Cluster> get(
+    core.String name, {
+    core.String zone,
+    core.String clusterId,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (zone != null) {
       _queryParams["zone"] = [zone];
@@ -470,13 +516,16 @@ class ProjectsLocationsClustersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Cluster.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Cluster.fromJson(data));
   }
 
   /// Gets the public component of the cluster signing keys in JSON Web Key
@@ -499,17 +548,19 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetJSONWebKeysResponse> getJwks(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetJSONWebKeysResponse> getJwks(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -517,13 +568,16 @@ class ProjectsLocationsClustersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetJSONWebKeysResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetJSONWebKeysResponse.fromJson(data));
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -555,17 +609,21 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListClustersResponse> list(core.String parent,
-      {core.String zone, core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListClustersResponse> list(
+    core.String parent, {
+    core.String zone,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (zone != null) {
       _queryParams["zone"] = [zone];
@@ -580,13 +638,16 @@ class ProjectsLocationsClustersResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListClustersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListClustersResponse.fromJson(data));
   }
 
   /// Sets the addons for a specific cluster.
@@ -611,20 +672,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setAddons(
-      SetAddonsConfigRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetAddonsConfigRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -633,13 +696,16 @@ class ProjectsLocationsClustersResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setAddons';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -664,20 +730,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setLegacyAbac(
-      SetLegacyAbacRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetLegacyAbacRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -687,13 +755,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLegacyAbac';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the locations for a specific cluster. Deprecated. Use
@@ -720,20 +791,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setLocations(
-      SetLocationsRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetLocationsRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -743,13 +816,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLocations';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the logging service for a specific cluster.
@@ -774,20 +850,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setLogging(
-      SetLoggingServiceRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetLoggingServiceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -796,13 +874,16 @@ class ProjectsLocationsClustersResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setLogging';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -827,20 +908,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setMaintenancePolicy(
-      SetMaintenancePolicyRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetMaintenancePolicyRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -850,13 +933,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMaintenancePolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets master auth materials. Currently supports changing the admin password
@@ -882,20 +968,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setMasterAuth(
-      SetMasterAuthRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetMasterAuthRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -905,13 +993,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMasterAuth';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -936,20 +1027,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setMonitoring(
-      SetMonitoringServiceRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetMonitoringServiceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -959,13 +1052,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMonitoring';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -990,20 +1086,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setNetworkPolicy(
-      SetNetworkPolicyRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNetworkPolicyRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1013,13 +1111,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setNetworkPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets labels on a cluster.
@@ -1044,20 +1145,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setResourceLabels(
-      SetLabelsRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetLabelsRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1067,13 +1170,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setResourceLabels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Starts master IP rotation.
@@ -1098,20 +1204,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startIpRotation(
-      StartIPRotationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    StartIPRotationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1121,13 +1229,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':startIpRotation';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the settings of a specific cluster.
@@ -1150,20 +1261,23 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> update(UpdateClusterRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> update(
+    UpdateClusterRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1171,13 +1285,16 @@ class ProjectsLocationsClustersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the master for a specific cluster.
@@ -1201,20 +1318,22 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> updateMaster(
-      UpdateMasterRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateMasterRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1224,13 +1343,16 @@ class ProjectsLocationsClustersResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateMaster';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1262,20 +1384,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      CreateNodePoolRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreateNodePoolRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1284,13 +1408,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a node pool from a cluster.
@@ -1329,21 +1456,23 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String name,
-      {core.String clusterId,
-      core.String zone,
-      core.String projectId,
-      core.String nodePoolId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String clusterId,
+    core.String zone,
+    core.String projectId,
+    core.String nodePoolId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
@@ -1363,13 +1492,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves the requested node pool.
@@ -1408,21 +1540,23 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NodePool> get(core.String name,
-      {core.String clusterId,
-      core.String zone,
-      core.String nodePoolId,
-      core.String projectId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<NodePool> get(
+    core.String name, {
+    core.String clusterId,
+    core.String zone,
+    core.String nodePoolId,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
@@ -1442,13 +1576,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NodePool.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NodePool.fromJson(data));
   }
 
   /// Lists the node pools for a cluster.
@@ -1483,20 +1620,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListNodePoolsResponse> list(core.String parent,
-      {core.String zone,
-      core.String projectId,
-      core.String clusterId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListNodePoolsResponse> list(
+    core.String parent, {
+    core.String zone,
+    core.String projectId,
+    core.String clusterId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (zone != null) {
       _queryParams["zone"] = [zone];
@@ -1514,13 +1653,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListNodePoolsResponse.fromJson(data));
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade. This makes no
@@ -1547,20 +1689,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> rollback(
-      RollbackNodePoolUpgradeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RollbackNodePoolUpgradeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1568,13 +1712,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the autoscaling settings for the specified node pool.
@@ -1600,20 +1747,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setAutoscaling(
-      SetNodePoolAutoscalingRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolAutoscalingRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1623,13 +1772,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setAutoscaling';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -1655,20 +1807,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setManagement(
-      SetNodePoolManagementRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolManagementRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1678,13 +1832,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setManagement';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the size for a specific node pool.
@@ -1710,20 +1867,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setSize(
-      SetNodePoolSizeRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolSizeRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1731,13 +1890,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -1763,20 +1925,22 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      UpdateNodePoolRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateNodePoolRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1784,13 +1948,16 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -1824,17 +1991,18 @@ class ProjectsLocationsClustersWell_knownResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetOpenIDConfigResponse> getOpenid_configuration(
-      core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1844,13 +2012,16 @@ class ProjectsLocationsClustersWell_knownResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/.well-known/openid-configuration';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetOpenIDConfigResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetOpenIDConfigResponse.fromJson(data));
   }
 }
 
@@ -1882,20 +2053,23 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1903,13 +2077,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified operation.
@@ -1944,20 +2121,22 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name,
-      {core.String zone,
-      core.String projectId,
-      core.String operationId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> get(
+    core.String name, {
+    core.String zone,
+    core.String projectId,
+    core.String operationId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (zone != null) {
       _queryParams["zone"] = [zone];
@@ -1974,13 +2153,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -2011,17 +2193,21 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(core.String parent,
-      {core.String zone, core.String projectId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListOperationsResponse> list(
+    core.String parent, {
+    core.String zone,
+    core.String projectId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (zone != null) {
       _queryParams["zone"] = [zone];
@@ -2037,13 +2223,16 @@ class ProjectsLocationsOperationsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -2051,9 +2240,9 @@ class ProjectsZonesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsZonesClustersResourceApi get clusters =>
-      new ProjectsZonesClustersResourceApi(_requester);
+      ProjectsZonesClustersResourceApi(_requester);
   ProjectsZonesOperationsResourceApi get operations =>
-      new ProjectsZonesOperationsResourceApi(_requester);
+      ProjectsZonesOperationsResourceApi(_requester);
 
   ProjectsZonesResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -2084,20 +2273,23 @@ class ProjectsZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerconfig(
-      core.String projectId, core.String zone,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -2112,13 +2304,16 @@ class ProjectsZonesResourceApi {
         commons.Escaper.ecapeVariable('$zone') +
         '/serverconfig';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ServerConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ServerConfig.fromJson(data));
   }
 }
 
@@ -2126,7 +2321,7 @@ class ProjectsZonesClustersResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsZonesClustersNodePoolsResourceApi get nodePools =>
-      new ProjectsZonesClustersNodePoolsResourceApi(_requester);
+      ProjectsZonesClustersNodePoolsResourceApi(_requester);
 
   ProjectsZonesClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2159,27 +2354,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> addons(SetAddonsConfigRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> addons(
+    SetAddonsConfigRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2193,13 +2392,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/addons';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Completes master IP rotation.
@@ -2231,27 +2433,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> completeIpRotation(CompleteIPRotationRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> completeIpRotation(
+    CompleteIPRotationRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2265,13 +2471,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':completeIpRotation';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -2308,23 +2517,26 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      CreateClusterRequest request, core.String projectId, core.String zone,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreateClusterRequest request,
+    core.String projectId,
+    core.String zone, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2336,13 +2548,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$zone') +
         '/clusters';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -2379,23 +2594,27 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -2411,13 +2630,16 @@ class ProjectsZonesClustersResourceApi {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Gets the details of a specific cluster.
@@ -2450,23 +2672,27 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Cluster> get(
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -2482,13 +2708,16 @@ class ProjectsZonesClustersResourceApi {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Cluster.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Cluster.fromJson(data));
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -2519,27 +2748,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> legacyAbac(SetLegacyAbacRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> legacyAbac(
+    SetLegacyAbacRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2553,13 +2786,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/legacyAbac';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -2591,20 +2827,23 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
-      core.String projectId, core.String zone,
-      {core.String parent, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone, {
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -2619,13 +2858,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$zone') +
         '/clusters';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListClustersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListClustersResponse.fromJson(data));
   }
 
   /// Sets the locations for a specific cluster. Deprecated. Use
@@ -2658,27 +2900,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> locations(SetLocationsRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> locations(
+    SetLocationsRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2692,13 +2938,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/locations';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the logging service for a specific cluster.
@@ -2729,27 +2978,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> logging(SetLoggingServiceRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> logging(
+    SetLoggingServiceRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2763,13 +3016,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/logging';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the master for a specific cluster.
@@ -2800,27 +3056,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> master(UpdateMasterRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> master(
+    UpdateMasterRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2834,13 +3094,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/master';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -2871,27 +3134,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> monitoring(SetMonitoringServiceRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> monitoring(
+    SetMonitoringServiceRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2905,13 +3172,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/monitoring';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets labels on a cluster.
@@ -2943,27 +3213,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> resourceLabels(SetLabelsRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> resourceLabels(
+    SetLabelsRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2977,13 +3251,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/resourceLabels';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -3012,29 +3289,30 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setMaintenancePolicy(
-      SetMaintenancePolicyRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetMaintenancePolicyRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3048,13 +3326,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setMaintenancePolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets master auth materials. Currently supports changing the admin password
@@ -3087,27 +3368,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> setMasterAuth(SetMasterAuthRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> setMasterAuth(
+    SetMasterAuthRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3121,13 +3406,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setMasterAuth';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -3159,27 +3447,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> setNetworkPolicy(SetNetworkPolicyRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> setNetworkPolicy(
+    SetNetworkPolicyRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3193,13 +3485,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setNetworkPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Starts master IP rotation.
@@ -3231,27 +3526,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> startIpRotation(StartIPRotationRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> startIpRotation(
+    StartIPRotationRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3265,13 +3564,16 @@ class ProjectsZonesClustersResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':startIpRotation';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the settings of a specific cluster.
@@ -3302,27 +3604,31 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> update(UpdateClusterRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> update(
+    UpdateClusterRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3335,13 +3641,16 @@ class ProjectsZonesClustersResourceApi {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -3383,33 +3692,34 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> autoscaling(
-      SetNodePoolAutoscalingRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      core.String nodePoolId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolAutoscalingRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3425,13 +3735,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/autoscaling';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Creates a node pool for a cluster.
@@ -3463,27 +3776,31 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(CreateNodePoolRequest request,
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> create(
+    CreateNodePoolRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3497,13 +3814,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/nodePools';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Deletes a node pool from a cluster.
@@ -3540,27 +3860,32 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String projectId, core.String zone,
-      core.String clusterId, core.String nodePoolId,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Operation> delete(
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -3578,13 +3903,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         '/nodePools/' +
         commons.Escaper.ecapeVariable('$nodePoolId');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Retrieves the requested node pool.
@@ -3621,27 +3949,32 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NodePool> get(core.String projectId, core.String zone,
-      core.String clusterId, core.String nodePoolId,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<NodePool> get(
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -3659,13 +3992,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         '/nodePools/' +
         commons.Escaper.ecapeVariable('$nodePoolId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new NodePool.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => NodePool.fromJson(data));
   }
 
   /// Lists the node pools for a cluster.
@@ -3700,23 +4036,27 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(
-      core.String projectId, core.String zone, core.String clusterId,
-      {core.String parent, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone,
+    core.String clusterId, {
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -3733,13 +4073,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/nodePools';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListNodePoolsResponse.fromJson(data));
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade. This makes no
@@ -3775,33 +4118,34 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> rollback(
-      RollbackNodePoolUpgradeRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      core.String nodePoolId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    RollbackNodePoolUpgradeRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3817,13 +4161,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         ':rollback';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -3858,33 +4205,34 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setManagement(
-      SetNodePoolManagementRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      core.String nodePoolId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolManagementRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3900,13 +4248,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/setManagement';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Sets the size for a specific node pool.
@@ -3941,33 +4292,34 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setSize(
-      SetNodePoolSizeRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      core.String nodePoolId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    SetNodePoolSizeRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3983,13 +4335,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/setSize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -4024,33 +4379,34 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      UpdateNodePoolRequest request,
-      core.String projectId,
-      core.String zone,
-      core.String clusterId,
-      core.String nodePoolId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UpdateNodePoolRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String clusterId,
+    core.String nodePoolId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
+      throw core.ArgumentError("Parameter clusterId is required.");
     }
     if (nodePoolId == null) {
-      throw new core.ArgumentError("Parameter nodePoolId is required.");
+      throw core.ArgumentError("Parameter nodePoolId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4066,13 +4422,16 @@ class ProjectsZonesClustersNodePoolsResourceApi {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/update';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 }
 
@@ -4110,27 +4469,31 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request,
-      core.String projectId, core.String zone, core.String operationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String projectId,
+    core.String zone,
+    core.String operationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (operationId == null) {
-      throw new core.ArgumentError("Parameter operationId is required.");
+      throw core.ArgumentError("Parameter operationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4144,13 +4507,16 @@ class ProjectsZonesOperationsResourceApi {
         commons.Escaper.ecapeVariable('$operationId') +
         ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Empty.fromJson(data));
   }
 
   /// Gets the specified operation.
@@ -4184,23 +4550,27 @@ class ProjectsZonesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String projectId, core.String zone, core.String operationId,
-      {core.String name, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone,
+    core.String operationId, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (operationId == null) {
-      throw new core.ArgumentError("Parameter operationId is required.");
+      throw core.ArgumentError("Parameter operationId is required.");
     }
     if (name != null) {
       _queryParams["name"] = [name];
@@ -4216,13 +4586,16 @@ class ProjectsZonesOperationsResourceApi {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operationId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Operation.fromJson(data));
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -4253,20 +4626,23 @@ class ProjectsZonesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      core.String projectId, core.String zone,
-      {core.String parent, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String projectId,
+    core.String zone, {
+    core.String parent,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
+      throw core.ArgumentError("Parameter projectId is required.");
     }
     if (zone == null) {
-      throw new core.ArgumentError("Parameter zone is required.");
+      throw core.ArgumentError("Parameter zone is required.");
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
@@ -4281,13 +4657,16 @@ class ProjectsZonesOperationsResourceApi {
         commons.Escaper.ecapeVariable('$zone') +
         '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -4313,7 +4692,7 @@ class AcceleratorConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (acceleratorCount != null) {
       _json["acceleratorCount"] = acceleratorCount;
     }
@@ -4363,56 +4742,56 @@ class AddonsConfig {
 
   AddonsConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cloudRunConfig")) {
-      cloudRunConfig = new CloudRunConfig.fromJson(_json["cloudRunConfig"]);
+      cloudRunConfig = CloudRunConfig.fromJson(_json["cloudRunConfig"]);
     }
     if (_json.containsKey("configConnectorConfig")) {
       configConnectorConfig =
-          new ConfigConnectorConfig.fromJson(_json["configConnectorConfig"]);
+          ConfigConnectorConfig.fromJson(_json["configConnectorConfig"]);
     }
     if (_json.containsKey("dnsCacheConfig")) {
-      dnsCacheConfig = new DnsCacheConfig.fromJson(_json["dnsCacheConfig"]);
+      dnsCacheConfig = DnsCacheConfig.fromJson(_json["dnsCacheConfig"]);
     }
     if (_json.containsKey("horizontalPodAutoscaling")) {
-      horizontalPodAutoscaling = new HorizontalPodAutoscaling.fromJson(
-          _json["horizontalPodAutoscaling"]);
+      horizontalPodAutoscaling =
+          HorizontalPodAutoscaling.fromJson(_json["horizontalPodAutoscaling"]);
     }
     if (_json.containsKey("httpLoadBalancing")) {
       httpLoadBalancing =
-          new HttpLoadBalancing.fromJson(_json["httpLoadBalancing"]);
+          HttpLoadBalancing.fromJson(_json["httpLoadBalancing"]);
     }
     if (_json.containsKey("kubernetesDashboard")) {
       kubernetesDashboard =
-          new KubernetesDashboard.fromJson(_json["kubernetesDashboard"]);
+          KubernetesDashboard.fromJson(_json["kubernetesDashboard"]);
     }
     if (_json.containsKey("networkPolicyConfig")) {
       networkPolicyConfig =
-          new NetworkPolicyConfig.fromJson(_json["networkPolicyConfig"]);
+          NetworkPolicyConfig.fromJson(_json["networkPolicyConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cloudRunConfig != null) {
-      _json["cloudRunConfig"] = (cloudRunConfig).toJson();
+      _json["cloudRunConfig"] = cloudRunConfig.toJson();
     }
     if (configConnectorConfig != null) {
-      _json["configConnectorConfig"] = (configConnectorConfig).toJson();
+      _json["configConnectorConfig"] = configConnectorConfig.toJson();
     }
     if (dnsCacheConfig != null) {
-      _json["dnsCacheConfig"] = (dnsCacheConfig).toJson();
+      _json["dnsCacheConfig"] = dnsCacheConfig.toJson();
     }
     if (horizontalPodAutoscaling != null) {
-      _json["horizontalPodAutoscaling"] = (horizontalPodAutoscaling).toJson();
+      _json["horizontalPodAutoscaling"] = horizontalPodAutoscaling.toJson();
     }
     if (httpLoadBalancing != null) {
-      _json["httpLoadBalancing"] = (httpLoadBalancing).toJson();
+      _json["httpLoadBalancing"] = httpLoadBalancing.toJson();
     }
     if (kubernetesDashboard != null) {
-      _json["kubernetesDashboard"] = (kubernetesDashboard).toJson();
+      _json["kubernetesDashboard"] = kubernetesDashboard.toJson();
     }
     if (networkPolicyConfig != null) {
-      _json["networkPolicyConfig"] = (networkPolicyConfig).toJson();
+      _json["networkPolicyConfig"] = networkPolicyConfig.toJson();
     }
     return _json;
   }
@@ -4441,7 +4820,7 @@ class AuthenticatorGroupsConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -4477,7 +4856,7 @@ class AutoUpgradeOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoUpgradeStartTime != null) {
       _json["autoUpgradeStartTime"] = autoUpgradeStartTime;
     }
@@ -4544,7 +4923,7 @@ class AutoprovisioningNodePoolDefaults {
       diskType = _json["diskType"];
     }
     if (_json.containsKey("management")) {
-      management = new NodeManagement.fromJson(_json["management"]);
+      management = NodeManagement.fromJson(_json["management"]);
     }
     if (_json.containsKey("minCpuPlatform")) {
       minCpuPlatform = _json["minCpuPlatform"];
@@ -4557,16 +4936,16 @@ class AutoprovisioningNodePoolDefaults {
     }
     if (_json.containsKey("shieldedInstanceConfig")) {
       shieldedInstanceConfig =
-          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
+          ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
     }
     if (_json.containsKey("upgradeSettings")) {
-      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
+      upgradeSettings = UpgradeSettings.fromJson(_json["upgradeSettings"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bootDiskKmsKey != null) {
       _json["bootDiskKmsKey"] = bootDiskKmsKey;
     }
@@ -4577,7 +4956,7 @@ class AutoprovisioningNodePoolDefaults {
       _json["diskType"] = diskType;
     }
     if (management != null) {
-      _json["management"] = (management).toJson();
+      _json["management"] = management.toJson();
     }
     if (minCpuPlatform != null) {
       _json["minCpuPlatform"] = minCpuPlatform;
@@ -4589,10 +4968,10 @@ class AutoprovisioningNodePoolDefaults {
       _json["serviceAccount"] = serviceAccount;
     }
     if (shieldedInstanceConfig != null) {
-      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
+      _json["shieldedInstanceConfig"] = shieldedInstanceConfig.toJson();
     }
     if (upgradeSettings != null) {
-      _json["upgradeSettings"] = (upgradeSettings).toJson();
+      _json["upgradeSettings"] = upgradeSettings.toJson();
     }
     return _json;
   }
@@ -4613,7 +4992,7 @@ class BigQueryDestination {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (datasetId != null) {
       _json["datasetId"] = datasetId;
     }
@@ -4637,7 +5016,7 @@ class BinaryAuthorization {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -4685,7 +5064,7 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -4723,7 +5102,7 @@ class CidrBlock {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cidrBlock != null) {
       _json["cidrBlock"] = cidrBlock;
     }
@@ -4749,7 +5128,7 @@ class ClientCertificateConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (issueClientCertificate != null) {
       _json["issueClientCertificate"] = issueClientCertificate;
     }
@@ -4785,7 +5164,7 @@ class CloudRunConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -5059,25 +5438,25 @@ class Cluster {
 
   Cluster.fromJson(core.Map _json) {
     if (_json.containsKey("addonsConfig")) {
-      addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+      addonsConfig = AddonsConfig.fromJson(_json["addonsConfig"]);
     }
     if (_json.containsKey("authenticatorGroupsConfig")) {
-      authenticatorGroupsConfig = new AuthenticatorGroupsConfig.fromJson(
+      authenticatorGroupsConfig = AuthenticatorGroupsConfig.fromJson(
           _json["authenticatorGroupsConfig"]);
     }
     if (_json.containsKey("autoscaling")) {
-      autoscaling = new ClusterAutoscaling.fromJson(_json["autoscaling"]);
+      autoscaling = ClusterAutoscaling.fromJson(_json["autoscaling"]);
     }
     if (_json.containsKey("binaryAuthorization")) {
       binaryAuthorization =
-          new BinaryAuthorization.fromJson(_json["binaryAuthorization"]);
+          BinaryAuthorization.fromJson(_json["binaryAuthorization"]);
     }
     if (_json.containsKey("clusterIpv4Cidr")) {
       clusterIpv4Cidr = _json["clusterIpv4Cidr"];
     }
     if (_json.containsKey("conditions")) {
       conditions = (_json["conditions"] as core.List)
-          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("createTime")) {
@@ -5094,11 +5473,11 @@ class Cluster {
     }
     if (_json.containsKey("databaseEncryption")) {
       databaseEncryption =
-          new DatabaseEncryption.fromJson(_json["databaseEncryption"]);
+          DatabaseEncryption.fromJson(_json["databaseEncryption"]);
     }
     if (_json.containsKey("defaultMaxPodsConstraint")) {
       defaultMaxPodsConstraint =
-          new MaxPodsConstraint.fromJson(_json["defaultMaxPodsConstraint"]);
+          MaxPodsConstraint.fromJson(_json["defaultMaxPodsConstraint"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -5127,13 +5506,13 @@ class Cluster {
     }
     if (_json.containsKey("ipAllocationPolicy")) {
       ipAllocationPolicy =
-          new IPAllocationPolicy.fromJson(_json["ipAllocationPolicy"]);
+          IPAllocationPolicy.fromJson(_json["ipAllocationPolicy"]);
     }
     if (_json.containsKey("labelFingerprint")) {
       labelFingerprint = _json["labelFingerprint"];
     }
     if (_json.containsKey("legacyAbac")) {
-      legacyAbac = new LegacyAbac.fromJson(_json["legacyAbac"]);
+      legacyAbac = LegacyAbac.fromJson(_json["legacyAbac"]);
     }
     if (_json.containsKey("location")) {
       location = _json["location"];
@@ -5146,15 +5525,14 @@ class Cluster {
     }
     if (_json.containsKey("maintenancePolicy")) {
       maintenancePolicy =
-          new MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
+          MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
     }
     if (_json.containsKey("masterAuth")) {
-      masterAuth = new MasterAuth.fromJson(_json["masterAuth"]);
+      masterAuth = MasterAuth.fromJson(_json["masterAuth"]);
     }
     if (_json.containsKey("masterAuthorizedNetworksConfig")) {
-      masterAuthorizedNetworksConfig =
-          new MasterAuthorizedNetworksConfig.fromJson(
-              _json["masterAuthorizedNetworksConfig"]);
+      masterAuthorizedNetworksConfig = MasterAuthorizedNetworksConfig.fromJson(
+          _json["masterAuthorizedNetworksConfig"]);
     }
     if (_json.containsKey("monitoringService")) {
       monitoringService = _json["monitoringService"];
@@ -5166,35 +5544,35 @@ class Cluster {
       network = _json["network"];
     }
     if (_json.containsKey("networkConfig")) {
-      networkConfig = new NetworkConfig.fromJson(_json["networkConfig"]);
+      networkConfig = NetworkConfig.fromJson(_json["networkConfig"]);
     }
     if (_json.containsKey("networkPolicy")) {
-      networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
+      networkPolicy = NetworkPolicy.fromJson(_json["networkPolicy"]);
     }
     if (_json.containsKey("nodeConfig")) {
-      nodeConfig = new NodeConfig.fromJson(_json["nodeConfig"]);
+      nodeConfig = NodeConfig.fromJson(_json["nodeConfig"]);
     }
     if (_json.containsKey("nodeIpv4CidrSize")) {
       nodeIpv4CidrSize = _json["nodeIpv4CidrSize"];
     }
     if (_json.containsKey("nodePools")) {
       nodePools = (_json["nodePools"] as core.List)
-          .map<NodePool>((value) => new NodePool.fromJson(value))
+          .map<NodePool>((value) => NodePool.fromJson(value))
           .toList();
     }
     if (_json.containsKey("privateClusterConfig")) {
       privateClusterConfig =
-          new PrivateClusterConfig.fromJson(_json["privateClusterConfig"]);
+          PrivateClusterConfig.fromJson(_json["privateClusterConfig"]);
     }
     if (_json.containsKey("releaseChannel")) {
-      releaseChannel = new ReleaseChannel.fromJson(_json["releaseChannel"]);
+      releaseChannel = ReleaseChannel.fromJson(_json["releaseChannel"]);
     }
     if (_json.containsKey("resourceLabels")) {
       resourceLabels = (_json["resourceLabels"] as core.Map)
           .cast<core.String, core.String>();
     }
     if (_json.containsKey("resourceUsageExportConfig")) {
-      resourceUsageExportConfig = new ResourceUsageExportConfig.fromJson(
+      resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
           _json["resourceUsageExportConfig"]);
     }
     if (_json.containsKey("selfLink")) {
@@ -5204,7 +5582,7 @@ class Cluster {
       servicesIpv4Cidr = _json["servicesIpv4Cidr"];
     }
     if (_json.containsKey("shieldedNodes")) {
-      shieldedNodes = new ShieldedNodes.fromJson(_json["shieldedNodes"]);
+      shieldedNodes = ShieldedNodes.fromJson(_json["shieldedNodes"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -5220,11 +5598,11 @@ class Cluster {
     }
     if (_json.containsKey("verticalPodAutoscaling")) {
       verticalPodAutoscaling =
-          new VerticalPodAutoscaling.fromJson(_json["verticalPodAutoscaling"]);
+          VerticalPodAutoscaling.fromJson(_json["verticalPodAutoscaling"]);
     }
     if (_json.containsKey("workloadIdentityConfig")) {
       workloadIdentityConfig =
-          new WorkloadIdentityConfig.fromJson(_json["workloadIdentityConfig"]);
+          WorkloadIdentityConfig.fromJson(_json["workloadIdentityConfig"]);
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -5233,25 +5611,24 @@ class Cluster {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addonsConfig != null) {
-      _json["addonsConfig"] = (addonsConfig).toJson();
+      _json["addonsConfig"] = addonsConfig.toJson();
     }
     if (authenticatorGroupsConfig != null) {
-      _json["authenticatorGroupsConfig"] = (authenticatorGroupsConfig).toJson();
+      _json["authenticatorGroupsConfig"] = authenticatorGroupsConfig.toJson();
     }
     if (autoscaling != null) {
-      _json["autoscaling"] = (autoscaling).toJson();
+      _json["autoscaling"] = autoscaling.toJson();
     }
     if (binaryAuthorization != null) {
-      _json["binaryAuthorization"] = (binaryAuthorization).toJson();
+      _json["binaryAuthorization"] = binaryAuthorization.toJson();
     }
     if (clusterIpv4Cidr != null) {
       _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
     }
     if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
+      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -5266,10 +5643,10 @@ class Cluster {
       _json["currentNodeVersion"] = currentNodeVersion;
     }
     if (databaseEncryption != null) {
-      _json["databaseEncryption"] = (databaseEncryption).toJson();
+      _json["databaseEncryption"] = databaseEncryption.toJson();
     }
     if (defaultMaxPodsConstraint != null) {
-      _json["defaultMaxPodsConstraint"] = (defaultMaxPodsConstraint).toJson();
+      _json["defaultMaxPodsConstraint"] = defaultMaxPodsConstraint.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -5296,13 +5673,13 @@ class Cluster {
       _json["instanceGroupUrls"] = instanceGroupUrls;
     }
     if (ipAllocationPolicy != null) {
-      _json["ipAllocationPolicy"] = (ipAllocationPolicy).toJson();
+      _json["ipAllocationPolicy"] = ipAllocationPolicy.toJson();
     }
     if (labelFingerprint != null) {
       _json["labelFingerprint"] = labelFingerprint;
     }
     if (legacyAbac != null) {
-      _json["legacyAbac"] = (legacyAbac).toJson();
+      _json["legacyAbac"] = legacyAbac.toJson();
     }
     if (location != null) {
       _json["location"] = location;
@@ -5314,14 +5691,14 @@ class Cluster {
       _json["loggingService"] = loggingService;
     }
     if (maintenancePolicy != null) {
-      _json["maintenancePolicy"] = (maintenancePolicy).toJson();
+      _json["maintenancePolicy"] = maintenancePolicy.toJson();
     }
     if (masterAuth != null) {
-      _json["masterAuth"] = (masterAuth).toJson();
+      _json["masterAuth"] = masterAuth.toJson();
     }
     if (masterAuthorizedNetworksConfig != null) {
       _json["masterAuthorizedNetworksConfig"] =
-          (masterAuthorizedNetworksConfig).toJson();
+          masterAuthorizedNetworksConfig.toJson();
     }
     if (monitoringService != null) {
       _json["monitoringService"] = monitoringService;
@@ -5333,31 +5710,31 @@ class Cluster {
       _json["network"] = network;
     }
     if (networkConfig != null) {
-      _json["networkConfig"] = (networkConfig).toJson();
+      _json["networkConfig"] = networkConfig.toJson();
     }
     if (networkPolicy != null) {
-      _json["networkPolicy"] = (networkPolicy).toJson();
+      _json["networkPolicy"] = networkPolicy.toJson();
     }
     if (nodeConfig != null) {
-      _json["nodeConfig"] = (nodeConfig).toJson();
+      _json["nodeConfig"] = nodeConfig.toJson();
     }
     if (nodeIpv4CidrSize != null) {
       _json["nodeIpv4CidrSize"] = nodeIpv4CidrSize;
     }
     if (nodePools != null) {
-      _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
+      _json["nodePools"] = nodePools.map((value) => value.toJson()).toList();
     }
     if (privateClusterConfig != null) {
-      _json["privateClusterConfig"] = (privateClusterConfig).toJson();
+      _json["privateClusterConfig"] = privateClusterConfig.toJson();
     }
     if (releaseChannel != null) {
-      _json["releaseChannel"] = (releaseChannel).toJson();
+      _json["releaseChannel"] = releaseChannel.toJson();
     }
     if (resourceLabels != null) {
       _json["resourceLabels"] = resourceLabels;
     }
     if (resourceUsageExportConfig != null) {
-      _json["resourceUsageExportConfig"] = (resourceUsageExportConfig).toJson();
+      _json["resourceUsageExportConfig"] = resourceUsageExportConfig.toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -5366,7 +5743,7 @@ class Cluster {
       _json["servicesIpv4Cidr"] = servicesIpv4Cidr;
     }
     if (shieldedNodes != null) {
-      _json["shieldedNodes"] = (shieldedNodes).toJson();
+      _json["shieldedNodes"] = shieldedNodes.toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -5381,10 +5758,10 @@ class Cluster {
       _json["tpuIpv4CidrBlock"] = tpuIpv4CidrBlock;
     }
     if (verticalPodAutoscaling != null) {
-      _json["verticalPodAutoscaling"] = (verticalPodAutoscaling).toJson();
+      _json["verticalPodAutoscaling"] = verticalPodAutoscaling.toJson();
     }
     if (workloadIdentityConfig != null) {
-      _json["workloadIdentityConfig"] = (workloadIdentityConfig).toJson();
+      _json["workloadIdentityConfig"] = workloadIdentityConfig.toJson();
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -5422,7 +5799,7 @@ class ClusterAutoscaling {
     }
     if (_json.containsKey("autoprovisioningNodePoolDefaults")) {
       autoprovisioningNodePoolDefaults =
-          new AutoprovisioningNodePoolDefaults.fromJson(
+          AutoprovisioningNodePoolDefaults.fromJson(
               _json["autoprovisioningNodePoolDefaults"]);
     }
     if (_json.containsKey("enableNodeAutoprovisioning")) {
@@ -5430,27 +5807,27 @@ class ClusterAutoscaling {
     }
     if (_json.containsKey("resourceLimits")) {
       resourceLimits = (_json["resourceLimits"] as core.List)
-          .map<ResourceLimit>((value) => new ResourceLimit.fromJson(value))
+          .map<ResourceLimit>((value) => ResourceLimit.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoprovisioningLocations != null) {
       _json["autoprovisioningLocations"] = autoprovisioningLocations;
     }
     if (autoprovisioningNodePoolDefaults != null) {
       _json["autoprovisioningNodePoolDefaults"] =
-          (autoprovisioningNodePoolDefaults).toJson();
+          autoprovisioningNodePoolDefaults.toJson();
     }
     if (enableNodeAutoprovisioning != null) {
       _json["enableNodeAutoprovisioning"] = enableNodeAutoprovisioning;
     }
     if (resourceLimits != null) {
       _json["resourceLimits"] =
-          resourceLimits.map((value) => (value).toJson()).toList();
+          resourceLimits.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5565,30 +5942,29 @@ class ClusterUpdate {
 
   ClusterUpdate.fromJson(core.Map _json) {
     if (_json.containsKey("desiredAddonsConfig")) {
-      desiredAddonsConfig =
-          new AddonsConfig.fromJson(_json["desiredAddonsConfig"]);
+      desiredAddonsConfig = AddonsConfig.fromJson(_json["desiredAddonsConfig"]);
     }
     if (_json.containsKey("desiredBinaryAuthorization")) {
       desiredBinaryAuthorization =
-          new BinaryAuthorization.fromJson(_json["desiredBinaryAuthorization"]);
+          BinaryAuthorization.fromJson(_json["desiredBinaryAuthorization"]);
     }
     if (_json.containsKey("desiredClusterAutoscaling")) {
       desiredClusterAutoscaling =
-          new ClusterAutoscaling.fromJson(_json["desiredClusterAutoscaling"]);
+          ClusterAutoscaling.fromJson(_json["desiredClusterAutoscaling"]);
     }
     if (_json.containsKey("desiredDatabaseEncryption")) {
       desiredDatabaseEncryption =
-          new DatabaseEncryption.fromJson(_json["desiredDatabaseEncryption"]);
+          DatabaseEncryption.fromJson(_json["desiredDatabaseEncryption"]);
     }
     if (_json.containsKey("desiredDefaultSnatStatus")) {
       desiredDefaultSnatStatus =
-          new DefaultSnatStatus.fromJson(_json["desiredDefaultSnatStatus"]);
+          DefaultSnatStatus.fromJson(_json["desiredDefaultSnatStatus"]);
     }
     if (_json.containsKey("desiredImageType")) {
       desiredImageType = _json["desiredImageType"];
     }
     if (_json.containsKey("desiredIntraNodeVisibilityConfig")) {
-      desiredIntraNodeVisibilityConfig = new IntraNodeVisibilityConfig.fromJson(
+      desiredIntraNodeVisibilityConfig = IntraNodeVisibilityConfig.fromJson(
           _json["desiredIntraNodeVisibilityConfig"]);
     }
     if (_json.containsKey("desiredLocations")) {
@@ -5600,7 +5976,7 @@ class ClusterUpdate {
     }
     if (_json.containsKey("desiredMasterAuthorizedNetworksConfig")) {
       desiredMasterAuthorizedNetworksConfig =
-          new MasterAuthorizedNetworksConfig.fromJson(
+          MasterAuthorizedNetworksConfig.fromJson(
               _json["desiredMasterAuthorizedNetworksConfig"]);
     }
     if (_json.containsKey("desiredMasterVersion")) {
@@ -5611,7 +5987,7 @@ class ClusterUpdate {
     }
     if (_json.containsKey("desiredNodePoolAutoscaling")) {
       desiredNodePoolAutoscaling =
-          new NodePoolAutoscaling.fromJson(_json["desiredNodePoolAutoscaling"]);
+          NodePoolAutoscaling.fromJson(_json["desiredNodePoolAutoscaling"]);
     }
     if (_json.containsKey("desiredNodePoolId")) {
       desiredNodePoolId = _json["desiredNodePoolId"];
@@ -5620,56 +5996,55 @@ class ClusterUpdate {
       desiredNodeVersion = _json["desiredNodeVersion"];
     }
     if (_json.containsKey("desiredPrivateClusterConfig")) {
-      desiredPrivateClusterConfig = new PrivateClusterConfig.fromJson(
-          _json["desiredPrivateClusterConfig"]);
+      desiredPrivateClusterConfig =
+          PrivateClusterConfig.fromJson(_json["desiredPrivateClusterConfig"]);
     }
     if (_json.containsKey("desiredReleaseChannel")) {
       desiredReleaseChannel =
-          new ReleaseChannel.fromJson(_json["desiredReleaseChannel"]);
+          ReleaseChannel.fromJson(_json["desiredReleaseChannel"]);
     }
     if (_json.containsKey("desiredResourceUsageExportConfig")) {
-      desiredResourceUsageExportConfig = new ResourceUsageExportConfig.fromJson(
+      desiredResourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
           _json["desiredResourceUsageExportConfig"]);
     }
     if (_json.containsKey("desiredShieldedNodes")) {
       desiredShieldedNodes =
-          new ShieldedNodes.fromJson(_json["desiredShieldedNodes"]);
+          ShieldedNodes.fromJson(_json["desiredShieldedNodes"]);
     }
     if (_json.containsKey("desiredVerticalPodAutoscaling")) {
-      desiredVerticalPodAutoscaling = new VerticalPodAutoscaling.fromJson(
+      desiredVerticalPodAutoscaling = VerticalPodAutoscaling.fromJson(
           _json["desiredVerticalPodAutoscaling"]);
     }
     if (_json.containsKey("desiredWorkloadIdentityConfig")) {
-      desiredWorkloadIdentityConfig = new WorkloadIdentityConfig.fromJson(
+      desiredWorkloadIdentityConfig = WorkloadIdentityConfig.fromJson(
           _json["desiredWorkloadIdentityConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (desiredAddonsConfig != null) {
-      _json["desiredAddonsConfig"] = (desiredAddonsConfig).toJson();
+      _json["desiredAddonsConfig"] = desiredAddonsConfig.toJson();
     }
     if (desiredBinaryAuthorization != null) {
-      _json["desiredBinaryAuthorization"] =
-          (desiredBinaryAuthorization).toJson();
+      _json["desiredBinaryAuthorization"] = desiredBinaryAuthorization.toJson();
     }
     if (desiredClusterAutoscaling != null) {
-      _json["desiredClusterAutoscaling"] = (desiredClusterAutoscaling).toJson();
+      _json["desiredClusterAutoscaling"] = desiredClusterAutoscaling.toJson();
     }
     if (desiredDatabaseEncryption != null) {
-      _json["desiredDatabaseEncryption"] = (desiredDatabaseEncryption).toJson();
+      _json["desiredDatabaseEncryption"] = desiredDatabaseEncryption.toJson();
     }
     if (desiredDefaultSnatStatus != null) {
-      _json["desiredDefaultSnatStatus"] = (desiredDefaultSnatStatus).toJson();
+      _json["desiredDefaultSnatStatus"] = desiredDefaultSnatStatus.toJson();
     }
     if (desiredImageType != null) {
       _json["desiredImageType"] = desiredImageType;
     }
     if (desiredIntraNodeVisibilityConfig != null) {
       _json["desiredIntraNodeVisibilityConfig"] =
-          (desiredIntraNodeVisibilityConfig).toJson();
+          desiredIntraNodeVisibilityConfig.toJson();
     }
     if (desiredLocations != null) {
       _json["desiredLocations"] = desiredLocations;
@@ -5679,7 +6054,7 @@ class ClusterUpdate {
     }
     if (desiredMasterAuthorizedNetworksConfig != null) {
       _json["desiredMasterAuthorizedNetworksConfig"] =
-          (desiredMasterAuthorizedNetworksConfig).toJson();
+          desiredMasterAuthorizedNetworksConfig.toJson();
     }
     if (desiredMasterVersion != null) {
       _json["desiredMasterVersion"] = desiredMasterVersion;
@@ -5688,8 +6063,7 @@ class ClusterUpdate {
       _json["desiredMonitoringService"] = desiredMonitoringService;
     }
     if (desiredNodePoolAutoscaling != null) {
-      _json["desiredNodePoolAutoscaling"] =
-          (desiredNodePoolAutoscaling).toJson();
+      _json["desiredNodePoolAutoscaling"] = desiredNodePoolAutoscaling.toJson();
     }
     if (desiredNodePoolId != null) {
       _json["desiredNodePoolId"] = desiredNodePoolId;
@@ -5699,25 +6073,25 @@ class ClusterUpdate {
     }
     if (desiredPrivateClusterConfig != null) {
       _json["desiredPrivateClusterConfig"] =
-          (desiredPrivateClusterConfig).toJson();
+          desiredPrivateClusterConfig.toJson();
     }
     if (desiredReleaseChannel != null) {
-      _json["desiredReleaseChannel"] = (desiredReleaseChannel).toJson();
+      _json["desiredReleaseChannel"] = desiredReleaseChannel.toJson();
     }
     if (desiredResourceUsageExportConfig != null) {
       _json["desiredResourceUsageExportConfig"] =
-          (desiredResourceUsageExportConfig).toJson();
+          desiredResourceUsageExportConfig.toJson();
     }
     if (desiredShieldedNodes != null) {
-      _json["desiredShieldedNodes"] = (desiredShieldedNodes).toJson();
+      _json["desiredShieldedNodes"] = desiredShieldedNodes.toJson();
     }
     if (desiredVerticalPodAutoscaling != null) {
       _json["desiredVerticalPodAutoscaling"] =
-          (desiredVerticalPodAutoscaling).toJson();
+          desiredVerticalPodAutoscaling.toJson();
     }
     if (desiredWorkloadIdentityConfig != null) {
       _json["desiredWorkloadIdentityConfig"] =
-          (desiredWorkloadIdentityConfig).toJson();
+          desiredWorkloadIdentityConfig.toJson();
     }
     return _json;
   }
@@ -5764,7 +6138,7 @@ class CompleteIPRotationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -5796,7 +6170,7 @@ class ConfigConnectorConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -5821,7 +6195,7 @@ class ConsumptionMeteringConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -5854,7 +6228,7 @@ class CreateClusterRequest {
 
   CreateClusterRequest.fromJson(core.Map _json) {
     if (_json.containsKey("cluster")) {
-      cluster = new Cluster.fromJson(_json["cluster"]);
+      cluster = Cluster.fromJson(_json["cluster"]);
     }
     if (_json.containsKey("parent")) {
       parent = _json["parent"];
@@ -5869,9 +6243,9 @@ class CreateClusterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cluster != null) {
-      _json["cluster"] = (cluster).toJson();
+      _json["cluster"] = cluster.toJson();
     }
     if (parent != null) {
       _json["parent"] = parent;
@@ -5918,7 +6292,7 @@ class CreateNodePoolRequest {
       clusterId = _json["clusterId"];
     }
     if (_json.containsKey("nodePool")) {
-      nodePool = new NodePool.fromJson(_json["nodePool"]);
+      nodePool = NodePool.fromJson(_json["nodePool"]);
     }
     if (_json.containsKey("parent")) {
       parent = _json["parent"];
@@ -5933,12 +6307,12 @@ class CreateNodePoolRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
     if (nodePool != null) {
-      _json["nodePool"] = (nodePool).toJson();
+      _json["nodePool"] = nodePool.toJson();
     }
     if (parent != null) {
       _json["parent"] = parent;
@@ -5978,7 +6352,7 @@ class DailyMaintenanceWindow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (duration != null) {
       _json["duration"] = duration;
     }
@@ -6016,7 +6390,7 @@ class DatabaseEncryption {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (keyName != null) {
       _json["keyName"] = keyName;
     }
@@ -6043,7 +6417,7 @@ class DefaultSnatStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -6066,7 +6440,7 @@ class DnsCacheConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -6086,7 +6460,7 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6106,23 +6480,23 @@ class GetJSONWebKeysResponse {
   GetJSONWebKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cacheHeader")) {
       cacheHeader =
-          new HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
+          HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
     }
     if (_json.containsKey("keys")) {
       keys = (_json["keys"] as core.List)
-          .map<Jwk>((value) => new Jwk.fromJson(value))
+          .map<Jwk>((value) => Jwk.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cacheHeader != null) {
-      _json["cacheHeader"] = (cacheHeader).toJson();
+      _json["cacheHeader"] = cacheHeader.toJson();
     }
     if (keys != null) {
-      _json["keys"] = keys.map((value) => (value).toJson()).toList();
+      _json["keys"] = keys.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6161,7 +6535,7 @@ class GetOpenIDConfigResponse {
   GetOpenIDConfigResponse.fromJson(core.Map _json) {
     if (_json.containsKey("cacheHeader")) {
       cacheHeader =
-          new HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
+          HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
     }
     if (_json.containsKey("claims_supported")) {
       claimsSupported =
@@ -6193,9 +6567,9 @@ class GetOpenIDConfigResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cacheHeader != null) {
-      _json["cacheHeader"] = (cacheHeader).toJson();
+      _json["cacheHeader"] = cacheHeader.toJson();
     }
     if (claimsSupported != null) {
       _json["claims_supported"] = claimsSupported;
@@ -6242,7 +6616,7 @@ class HorizontalPodAutoscaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -6277,7 +6651,7 @@ class HttpCacheControlResponseHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (age != null) {
       _json["age"] = age;
     }
@@ -6309,7 +6683,7 @@ class HttpLoadBalancing {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -6452,7 +6826,7 @@ class IPAllocationPolicy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterIpv4Cidr != null) {
       _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
     }
@@ -6512,7 +6886,7 @@ class IntraNodeVisibilityConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -6583,7 +6957,7 @@ class Jwk {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alg != null) {
       _json["alg"] = alg;
     }
@@ -6630,7 +7004,7 @@ class KubernetesDashboard {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -6657,7 +7031,7 @@ class LegacyAbac {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -6680,7 +7054,7 @@ class ListClustersResponse {
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
       clusters = (_json["clusters"] as core.List)
-          .map<Cluster>((value) => new Cluster.fromJson(value))
+          .map<Cluster>((value) => Cluster.fromJson(value))
           .toList();
     }
     if (_json.containsKey("missingZones")) {
@@ -6690,9 +7064,9 @@ class ListClustersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusters != null) {
-      _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
+      _json["clusters"] = clusters.map((value) => value.toJson()).toList();
     }
     if (missingZones != null) {
       _json["missingZones"] = missingZones;
@@ -6711,16 +7085,16 @@ class ListNodePoolsResponse {
   ListNodePoolsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("nodePools")) {
       nodePools = (_json["nodePools"] as core.List)
-          .map<NodePool>((value) => new NodePool.fromJson(value))
+          .map<NodePool>((value) => NodePool.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nodePools != null) {
-      _json["nodePools"] = nodePools.map((value) => (value).toJson()).toList();
+      _json["nodePools"] = nodePools.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6743,20 +7117,19 @@ class ListOperationsResponse {
     }
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
-          .map<Operation>((value) => new Operation.fromJson(value))
+          .map<Operation>((value) => Operation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (missingZones != null) {
       _json["missingZones"] = missingZones;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6782,21 +7155,20 @@ class ListUsableSubnetworksResponse {
     }
     if (_json.containsKey("subnetworks")) {
       subnetworks = (_json["subnetworks"] as core.List)
-          .map<UsableSubnetwork>(
-              (value) => new UsableSubnetwork.fromJson(value))
+          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (subnetworks != null) {
       _json["subnetworks"] =
-          subnetworks.map((value) => (value).toJson()).toList();
+          subnetworks.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6821,18 +7193,18 @@ class MaintenancePolicy {
       resourceVersion = _json["resourceVersion"];
     }
     if (_json.containsKey("window")) {
-      window = new MaintenanceWindow.fromJson(_json["window"]);
+      window = MaintenanceWindow.fromJson(_json["window"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (resourceVersion != null) {
       _json["resourceVersion"] = resourceVersion;
     }
     if (window != null) {
-      _json["window"] = (window).toJson();
+      _json["window"] = window.toJson();
     }
     return _json;
   }
@@ -6857,32 +7229,31 @@ class MaintenanceWindow {
   MaintenanceWindow.fromJson(core.Map _json) {
     if (_json.containsKey("dailyMaintenanceWindow")) {
       dailyMaintenanceWindow =
-          new DailyMaintenanceWindow.fromJson(_json["dailyMaintenanceWindow"]);
+          DailyMaintenanceWindow.fromJson(_json["dailyMaintenanceWindow"]);
     }
     if (_json.containsKey("maintenanceExclusions")) {
       maintenanceExclusions = commons.mapMap<core.Map, TimeWindow>(
           _json["maintenanceExclusions"].cast<core.String, core.Map>(),
-          (core.Map item) => new TimeWindow.fromJson(item));
+          (core.Map item) => TimeWindow.fromJson(item));
     }
     if (_json.containsKey("recurringWindow")) {
-      recurringWindow =
-          new RecurringTimeWindow.fromJson(_json["recurringWindow"]);
+      recurringWindow = RecurringTimeWindow.fromJson(_json["recurringWindow"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (dailyMaintenanceWindow != null) {
-      _json["dailyMaintenanceWindow"] = (dailyMaintenanceWindow).toJson();
+      _json["dailyMaintenanceWindow"] = dailyMaintenanceWindow.toJson();
     }
     if (maintenanceExclusions != null) {
       _json["maintenanceExclusions"] =
           commons.mapMap<TimeWindow, core.Map<core.String, core.Object>>(
-              maintenanceExclusions, (TimeWindow item) => (item).toJson());
+              maintenanceExclusions, (TimeWindow item) => item.toJson());
     }
     if (recurringWindow != null) {
-      _json["recurringWindow"] = (recurringWindow).toJson();
+      _json["recurringWindow"] = recurringWindow.toJson();
     }
     return _json;
   }
@@ -6934,8 +7305,8 @@ class MasterAuth {
       clientCertificate = _json["clientCertificate"];
     }
     if (_json.containsKey("clientCertificateConfig")) {
-      clientCertificateConfig = new ClientCertificateConfig.fromJson(
-          _json["clientCertificateConfig"]);
+      clientCertificateConfig =
+          ClientCertificateConfig.fromJson(_json["clientCertificateConfig"]);
     }
     if (_json.containsKey("clientKey")) {
       clientKey = _json["clientKey"];
@@ -6953,12 +7324,12 @@ class MasterAuth {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientCertificate != null) {
       _json["clientCertificate"] = clientCertificate;
     }
     if (clientCertificateConfig != null) {
-      _json["clientCertificateConfig"] = (clientCertificateConfig).toJson();
+      _json["clientCertificateConfig"] = clientCertificateConfig.toJson();
     }
     if (clientKey != null) {
       _json["clientKey"] = clientKey;
@@ -6993,7 +7364,7 @@ class MasterAuthorizedNetworksConfig {
   MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
     if (_json.containsKey("cidrBlocks")) {
       cidrBlocks = (_json["cidrBlocks"] as core.List)
-          .map<CidrBlock>((value) => new CidrBlock.fromJson(value))
+          .map<CidrBlock>((value) => CidrBlock.fromJson(value))
           .toList();
     }
     if (_json.containsKey("enabled")) {
@@ -7003,10 +7374,9 @@ class MasterAuthorizedNetworksConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (cidrBlocks != null) {
-      _json["cidrBlocks"] =
-          cidrBlocks.map((value) => (value).toJson()).toList();
+      _json["cidrBlocks"] = cidrBlocks.map((value) => value.toJson()).toList();
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
@@ -7030,7 +7400,7 @@ class MaxPodsConstraint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxPodsPerNode != null) {
       _json["maxPodsPerNode"] = maxPodsPerNode;
     }
@@ -7071,7 +7441,7 @@ class Metric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (doubleValue != null) {
       _json["doubleValue"] = doubleValue;
     }
@@ -7117,7 +7487,7 @@ class NetworkConfig {
   NetworkConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultSnatStatus")) {
       defaultSnatStatus =
-          new DefaultSnatStatus.fromJson(_json["defaultSnatStatus"]);
+          DefaultSnatStatus.fromJson(_json["defaultSnatStatus"]);
     }
     if (_json.containsKey("enableIntraNodeVisibility")) {
       enableIntraNodeVisibility = _json["enableIntraNodeVisibility"];
@@ -7132,9 +7502,9 @@ class NetworkConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultSnatStatus != null) {
-      _json["defaultSnatStatus"] = (defaultSnatStatus).toJson();
+      _json["defaultSnatStatus"] = defaultSnatStatus.toJson();
     }
     if (enableIntraNodeVisibility != null) {
       _json["enableIntraNodeVisibility"] = enableIntraNodeVisibility;
@@ -7174,7 +7544,7 @@ class NetworkPolicy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -7202,7 +7572,7 @@ class NetworkPolicyConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (disabled != null) {
       _json["disabled"] = disabled;
     }
@@ -7341,8 +7711,7 @@ class NodeConfig {
   NodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("accelerators")) {
       accelerators = (_json["accelerators"] as core.List)
-          .map<AcceleratorConfig>(
-              (value) => new AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bootDiskKmsKey")) {
@@ -7384,38 +7753,38 @@ class NodeConfig {
     }
     if (_json.containsKey("reservationAffinity")) {
       reservationAffinity =
-          new ReservationAffinity.fromJson(_json["reservationAffinity"]);
+          ReservationAffinity.fromJson(_json["reservationAffinity"]);
     }
     if (_json.containsKey("sandboxConfig")) {
-      sandboxConfig = new SandboxConfig.fromJson(_json["sandboxConfig"]);
+      sandboxConfig = SandboxConfig.fromJson(_json["sandboxConfig"]);
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("shieldedInstanceConfig")) {
       shieldedInstanceConfig =
-          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
+          ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("taints")) {
       taints = (_json["taints"] as core.List)
-          .map<NodeTaint>((value) => new NodeTaint.fromJson(value))
+          .map<NodeTaint>((value) => NodeTaint.fromJson(value))
           .toList();
     }
     if (_json.containsKey("workloadMetadataConfig")) {
       workloadMetadataConfig =
-          new WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
+          WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accelerators != null) {
       _json["accelerators"] =
-          accelerators.map((value) => (value).toJson()).toList();
+          accelerators.map((value) => value.toJson()).toList();
     }
     if (bootDiskKmsKey != null) {
       _json["bootDiskKmsKey"] = bootDiskKmsKey;
@@ -7454,25 +7823,25 @@ class NodeConfig {
       _json["preemptible"] = preemptible;
     }
     if (reservationAffinity != null) {
-      _json["reservationAffinity"] = (reservationAffinity).toJson();
+      _json["reservationAffinity"] = reservationAffinity.toJson();
     }
     if (sandboxConfig != null) {
-      _json["sandboxConfig"] = (sandboxConfig).toJson();
+      _json["sandboxConfig"] = sandboxConfig.toJson();
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
     }
     if (shieldedInstanceConfig != null) {
-      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
+      _json["shieldedInstanceConfig"] = shieldedInstanceConfig.toJson();
     }
     if (tags != null) {
       _json["tags"] = tags;
     }
     if (taints != null) {
-      _json["taints"] = taints.map((value) => (value).toJson()).toList();
+      _json["taints"] = taints.map((value) => value.toJson()).toList();
     }
     if (workloadMetadataConfig != null) {
-      _json["workloadMetadataConfig"] = (workloadMetadataConfig).toJson();
+      _json["workloadMetadataConfig"] = workloadMetadataConfig.toJson();
     }
     return _json;
   }
@@ -7505,13 +7874,13 @@ class NodeManagement {
       autoUpgrade = _json["autoUpgrade"];
     }
     if (_json.containsKey("upgradeOptions")) {
-      upgradeOptions = new AutoUpgradeOptions.fromJson(_json["upgradeOptions"]);
+      upgradeOptions = AutoUpgradeOptions.fromJson(_json["upgradeOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoRepair != null) {
       _json["autoRepair"] = autoRepair;
     }
@@ -7519,7 +7888,7 @@ class NodeManagement {
       _json["autoUpgrade"] = autoUpgrade;
     }
     if (upgradeOptions != null) {
-      _json["upgradeOptions"] = (upgradeOptions).toJson();
+      _json["upgradeOptions"] = upgradeOptions.toJson();
     }
     return _json;
   }
@@ -7608,15 +7977,15 @@ class NodePool {
 
   NodePool.fromJson(core.Map _json) {
     if (_json.containsKey("autoscaling")) {
-      autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
+      autoscaling = NodePoolAutoscaling.fromJson(_json["autoscaling"]);
     }
     if (_json.containsKey("conditions")) {
       conditions = (_json["conditions"] as core.List)
-          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("config")) {
-      config = new NodeConfig.fromJson(_json["config"]);
+      config = NodeConfig.fromJson(_json["config"]);
     }
     if (_json.containsKey("initialNodeCount")) {
       initialNodeCount = _json["initialNodeCount"];
@@ -7629,11 +7998,11 @@ class NodePool {
       locations = (_json["locations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("management")) {
-      management = new NodeManagement.fromJson(_json["management"]);
+      management = NodeManagement.fromJson(_json["management"]);
     }
     if (_json.containsKey("maxPodsConstraint")) {
       maxPodsConstraint =
-          new MaxPodsConstraint.fromJson(_json["maxPodsConstraint"]);
+          MaxPodsConstraint.fromJson(_json["maxPodsConstraint"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7651,7 +8020,7 @@ class NodePool {
       statusMessage = _json["statusMessage"];
     }
     if (_json.containsKey("upgradeSettings")) {
-      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
+      upgradeSettings = UpgradeSettings.fromJson(_json["upgradeSettings"]);
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -7660,16 +8029,15 @@ class NodePool {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoscaling != null) {
-      _json["autoscaling"] = (autoscaling).toJson();
+      _json["autoscaling"] = autoscaling.toJson();
     }
     if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
+      _json["conditions"] = conditions.map((value) => value.toJson()).toList();
     }
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (initialNodeCount != null) {
       _json["initialNodeCount"] = initialNodeCount;
@@ -7681,10 +8049,10 @@ class NodePool {
       _json["locations"] = locations;
     }
     if (management != null) {
-      _json["management"] = (management).toJson();
+      _json["management"] = management.toJson();
     }
     if (maxPodsConstraint != null) {
-      _json["maxPodsConstraint"] = (maxPodsConstraint).toJson();
+      _json["maxPodsConstraint"] = maxPodsConstraint.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -7702,7 +8070,7 @@ class NodePool {
       _json["statusMessage"] = statusMessage;
     }
     if (upgradeSettings != null) {
-      _json["upgradeSettings"] = (upgradeSettings).toJson();
+      _json["upgradeSettings"] = upgradeSettings.toJson();
     }
     if (version != null) {
       _json["version"] = version;
@@ -7747,7 +8115,7 @@ class NodePoolAutoscaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoprovisioned != null) {
       _json["autoprovisioned"] = autoprovisioned;
     }
@@ -7800,7 +8168,7 @@ class NodeTaint {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (effect != null) {
       _json["effect"] = effect;
     }
@@ -7896,7 +8264,7 @@ class Operation {
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey("clusterConditions")) {
       clusterConditions = (_json["clusterConditions"] as core.List)
-          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("detail")) {
@@ -7913,14 +8281,14 @@ class Operation {
     }
     if (_json.containsKey("nodepoolConditions")) {
       nodepoolConditions = (_json["nodepoolConditions"] as core.List)
-          .map<StatusCondition>((value) => new StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
     }
     if (_json.containsKey("progress")) {
-      progress = new OperationProgress.fromJson(_json["progress"]);
+      progress = OperationProgress.fromJson(_json["progress"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -7944,10 +8312,10 @@ class Operation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterConditions != null) {
       _json["clusterConditions"] =
-          clusterConditions.map((value) => (value).toJson()).toList();
+          clusterConditions.map((value) => value.toJson()).toList();
     }
     if (detail != null) {
       _json["detail"] = detail;
@@ -7963,13 +8331,13 @@ class Operation {
     }
     if (nodepoolConditions != null) {
       _json["nodepoolConditions"] =
-          nodepoolConditions.map((value) => (value).toJson()).toList();
+          nodepoolConditions.map((value) => value.toJson()).toList();
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
     if (progress != null) {
-      _json["progress"] = (progress).toJson();
+      _json["progress"] = progress.toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -8022,7 +8390,7 @@ class OperationProgress {
   OperationProgress.fromJson(core.Map _json) {
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<Metric>((value) => new Metric.fromJson(value))
+          .map<Metric>((value) => Metric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -8030,8 +8398,7 @@ class OperationProgress {
     }
     if (_json.containsKey("stages")) {
       stages = (_json["stages"] as core.List)
-          .map<OperationProgress>(
-              (value) => new OperationProgress.fromJson(value))
+          .map<OperationProgress>((value) => OperationProgress.fromJson(value))
           .toList();
     }
     if (_json.containsKey("status")) {
@@ -8041,15 +8408,15 @@ class OperationProgress {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (stages != null) {
-      _json["stages"] = stages.map((value) => (value).toJson()).toList();
+      _json["stages"] = stages.map((value) => value.toJson()).toList();
     }
     if (status != null) {
       _json["status"] = status;
@@ -8097,7 +8464,7 @@ class PrivateClusterConfig {
     }
     if (_json.containsKey("masterGlobalAccessConfig")) {
       masterGlobalAccessConfig =
-          new PrivateClusterMasterGlobalAccessConfig.fromJson(
+          PrivateClusterMasterGlobalAccessConfig.fromJson(
               _json["masterGlobalAccessConfig"]);
     }
     if (_json.containsKey("masterIpv4CidrBlock")) {
@@ -8116,7 +8483,7 @@ class PrivateClusterConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enablePrivateEndpoint != null) {
       _json["enablePrivateEndpoint"] = enablePrivateEndpoint;
     }
@@ -8124,7 +8491,7 @@ class PrivateClusterConfig {
       _json["enablePrivateNodes"] = enablePrivateNodes;
     }
     if (masterGlobalAccessConfig != null) {
-      _json["masterGlobalAccessConfig"] = (masterGlobalAccessConfig).toJson();
+      _json["masterGlobalAccessConfig"] = masterGlobalAccessConfig.toJson();
     }
     if (masterIpv4CidrBlock != null) {
       _json["masterIpv4CidrBlock"] = masterIpv4CidrBlock;
@@ -8157,7 +8524,7 @@ class PrivateClusterMasterGlobalAccessConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -8195,18 +8562,18 @@ class RecurringTimeWindow {
       recurrence = _json["recurrence"];
     }
     if (_json.containsKey("window")) {
-      window = new TimeWindow.fromJson(_json["window"]);
+      window = TimeWindow.fromJson(_json["window"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (recurrence != null) {
       _json["recurrence"] = recurrence;
     }
     if (window != null) {
-      _json["window"] = (window).toJson();
+      _json["window"] = window.toJson();
     }
     return _json;
   }
@@ -8241,7 +8608,7 @@ class ReleaseChannel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channel != null) {
       _json["channel"] = channel;
     }
@@ -8287,7 +8654,7 @@ class ReleaseChannelConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channel != null) {
       _json["channel"] = channel;
     }
@@ -8338,7 +8705,7 @@ class ReservationAffinity {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (consumeReservationType != null) {
       _json["consumeReservationType"] = consumeReservationType;
     }
@@ -8380,7 +8747,7 @@ class ResourceLimit {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maximum != null) {
       _json["maximum"] = maximum;
     }
@@ -8411,10 +8778,10 @@ class ResourceUsageExportConfig {
   ResourceUsageExportConfig.fromJson(core.Map _json) {
     if (_json.containsKey("bigqueryDestination")) {
       bigqueryDestination =
-          new BigQueryDestination.fromJson(_json["bigqueryDestination"]);
+          BigQueryDestination.fromJson(_json["bigqueryDestination"]);
     }
     if (_json.containsKey("consumptionMeteringConfig")) {
-      consumptionMeteringConfig = new ConsumptionMeteringConfig.fromJson(
+      consumptionMeteringConfig = ConsumptionMeteringConfig.fromJson(
           _json["consumptionMeteringConfig"]);
     }
     if (_json.containsKey("enableNetworkEgressMetering")) {
@@ -8424,12 +8791,12 @@ class ResourceUsageExportConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryDestination != null) {
-      _json["bigqueryDestination"] = (bigqueryDestination).toJson();
+      _json["bigqueryDestination"] = bigqueryDestination.toJson();
     }
     if (consumptionMeteringConfig != null) {
-      _json["consumptionMeteringConfig"] = (consumptionMeteringConfig).toJson();
+      _json["consumptionMeteringConfig"] = consumptionMeteringConfig.toJson();
     }
     if (enableNetworkEgressMetering != null) {
       _json["enableNetworkEgressMetering"] = enableNetworkEgressMetering;
@@ -8488,7 +8855,7 @@ class RollbackNodePoolUpgradeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -8526,7 +8893,7 @@ class SandboxConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (type != null) {
       _json["type"] = type;
     }
@@ -8560,7 +8927,7 @@ class ServerConfig {
     if (_json.containsKey("channels")) {
       channels = (_json["channels"] as core.List)
           .map<ReleaseChannelConfig>(
-              (value) => new ReleaseChannelConfig.fromJson(value))
+              (value) => ReleaseChannelConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("defaultClusterVersion")) {
@@ -8585,9 +8952,9 @@ class ServerConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (channels != null) {
-      _json["channels"] = channels.map((value) => (value).toJson()).toList();
+      _json["channels"] = channels.map((value) => value.toJson()).toList();
     }
     if (defaultClusterVersion != null) {
       _json["defaultClusterVersion"] = defaultClusterVersion;
@@ -8637,7 +9004,7 @@ class SetAddonsConfigRequest {
 
   SetAddonsConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey("addonsConfig")) {
-      addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+      addonsConfig = AddonsConfig.fromJson(_json["addonsConfig"]);
     }
     if (_json.containsKey("clusterId")) {
       clusterId = _json["clusterId"];
@@ -8655,9 +9022,9 @@ class SetAddonsConfigRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (addonsConfig != null) {
-      _json["addonsConfig"] = (addonsConfig).toJson();
+      _json["addonsConfig"] = addonsConfig.toJson();
     }
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
@@ -8735,7 +9102,7 @@ class SetLabelsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -8806,7 +9173,7 @@ class SetLegacyAbacRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -8877,7 +9244,7 @@ class SetLocationsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -8950,7 +9317,7 @@ class SetLoggingServiceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9001,7 +9368,7 @@ class SetMaintenancePolicyRequest {
     }
     if (_json.containsKey("maintenancePolicy")) {
       maintenancePolicy =
-          new MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
+          MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -9016,12 +9383,12 @@ class SetMaintenancePolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
     if (maintenancePolicy != null) {
-      _json["maintenancePolicy"] = (maintenancePolicy).toJson();
+      _json["maintenancePolicy"] = maintenancePolicy.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -9087,7 +9454,7 @@ class SetMasterAuthRequest {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("update")) {
-      update = new MasterAuth.fromJson(_json["update"]);
+      update = MasterAuth.fromJson(_json["update"]);
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -9096,7 +9463,7 @@ class SetMasterAuthRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (action != null) {
       _json["action"] = action;
     }
@@ -9110,7 +9477,7 @@ class SetMasterAuthRequest {
       _json["projectId"] = projectId;
     }
     if (update != null) {
-      _json["update"] = (update).toJson();
+      _json["update"] = update.toJson();
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -9172,7 +9539,7 @@ class SetMonitoringServiceRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9227,7 +9594,7 @@ class SetNetworkPolicyRequest {
       name = _json["name"];
     }
     if (_json.containsKey("networkPolicy")) {
-      networkPolicy = new NetworkPolicy.fromJson(_json["networkPolicy"]);
+      networkPolicy = NetworkPolicy.fromJson(_json["networkPolicy"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -9239,7 +9606,7 @@ class SetNetworkPolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9247,7 +9614,7 @@ class SetNetworkPolicyRequest {
       _json["name"] = name;
     }
     if (networkPolicy != null) {
-      _json["networkPolicy"] = (networkPolicy).toJson();
+      _json["networkPolicy"] = networkPolicy.toJson();
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -9292,7 +9659,7 @@ class SetNodePoolAutoscalingRequest {
 
   SetNodePoolAutoscalingRequest.fromJson(core.Map _json) {
     if (_json.containsKey("autoscaling")) {
-      autoscaling = new NodePoolAutoscaling.fromJson(_json["autoscaling"]);
+      autoscaling = NodePoolAutoscaling.fromJson(_json["autoscaling"]);
     }
     if (_json.containsKey("clusterId")) {
       clusterId = _json["clusterId"];
@@ -9313,9 +9680,9 @@ class SetNodePoolAutoscalingRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (autoscaling != null) {
-      _json["autoscaling"] = (autoscaling).toJson();
+      _json["autoscaling"] = autoscaling.toJson();
     }
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
@@ -9373,7 +9740,7 @@ class SetNodePoolManagementRequest {
       clusterId = _json["clusterId"];
     }
     if (_json.containsKey("management")) {
-      management = new NodeManagement.fromJson(_json["management"]);
+      management = NodeManagement.fromJson(_json["management"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -9391,12 +9758,12 @@ class SetNodePoolManagementRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
     if (management != null) {
-      _json["management"] = (management).toJson();
+      _json["management"] = management.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -9468,7 +9835,7 @@ class SetNodePoolSizeRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9519,7 +9886,7 @@ class ShieldedInstanceConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enableIntegrityMonitoring != null) {
       _json["enableIntegrityMonitoring"] = enableIntegrityMonitoring;
     }
@@ -9545,7 +9912,7 @@ class ShieldedNodes {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -9601,7 +9968,7 @@ class StartIPRotationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9654,7 +10021,7 @@ class StatusCondition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -9687,7 +10054,7 @@ class TimeWindow {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -9735,7 +10102,7 @@ class UpdateClusterRequest {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("update")) {
-      update = new ClusterUpdate.fromJson(_json["update"]);
+      update = ClusterUpdate.fromJson(_json["update"]);
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -9744,7 +10111,7 @@ class UpdateClusterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9755,7 +10122,7 @@ class UpdateClusterRequest {
       _json["projectId"] = projectId;
     }
     if (update != null) {
-      _json["update"] = (update).toJson();
+      _json["update"] = update.toJson();
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -9816,7 +10183,7 @@ class UpdateMasterRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9912,11 +10279,11 @@ class UpdateNodePoolRequest {
       projectId = _json["projectId"];
     }
     if (_json.containsKey("upgradeSettings")) {
-      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
+      upgradeSettings = UpgradeSettings.fromJson(_json["upgradeSettings"]);
     }
     if (_json.containsKey("workloadMetadataConfig")) {
       workloadMetadataConfig =
-          new WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
+          WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -9925,7 +10292,7 @@ class UpdateNodePoolRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clusterId != null) {
       _json["clusterId"] = clusterId;
     }
@@ -9948,10 +10315,10 @@ class UpdateNodePoolRequest {
       _json["projectId"] = projectId;
     }
     if (upgradeSettings != null) {
-      _json["upgradeSettings"] = (upgradeSettings).toJson();
+      _json["upgradeSettings"] = upgradeSettings.toJson();
     }
     if (workloadMetadataConfig != null) {
-      _json["workloadMetadataConfig"] = (workloadMetadataConfig).toJson();
+      _json["workloadMetadataConfig"] = workloadMetadataConfig.toJson();
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -10012,7 +10379,7 @@ class UpgradeEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentVersion != null) {
       _json["currentVersion"] = currentVersion;
     }
@@ -10073,7 +10440,7 @@ class UpgradeSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxSurge != null) {
       _json["maxSurge"] = maxSurge;
     }
@@ -10118,7 +10485,7 @@ class UsableSubnetwork {
     if (_json.containsKey("secondaryIpRanges")) {
       secondaryIpRanges = (_json["secondaryIpRanges"] as core.List)
           .map<UsableSubnetworkSecondaryRange>(
-              (value) => new UsableSubnetworkSecondaryRange.fromJson(value))
+              (value) => UsableSubnetworkSecondaryRange.fromJson(value))
           .toList();
     }
     if (_json.containsKey("statusMessage")) {
@@ -10131,7 +10498,7 @@ class UsableSubnetwork {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ipCidrRange != null) {
       _json["ipCidrRange"] = ipCidrRange;
     }
@@ -10140,7 +10507,7 @@ class UsableSubnetwork {
     }
     if (secondaryIpRanges != null) {
       _json["secondaryIpRanges"] =
-          secondaryIpRanges.map((value) => (value).toJson()).toList();
+          secondaryIpRanges.map((value) => value.toJson()).toList();
     }
     if (statusMessage != null) {
       _json["statusMessage"] = statusMessage;
@@ -10191,7 +10558,7 @@ class UsableSubnetworkSecondaryRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (ipCidrRange != null) {
       _json["ipCidrRange"] = ipCidrRange;
     }
@@ -10222,7 +10589,7 @@ class VerticalPodAutoscaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -10246,7 +10613,7 @@ class WorkloadIdentityConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (workloadPool != null) {
       _json["workloadPool"] = workloadPool;
     }
@@ -10279,7 +10646,7 @@ class WorkloadMetadataConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mode != null) {
       _json["mode"] = mode;
     }

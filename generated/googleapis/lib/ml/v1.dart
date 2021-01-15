@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.ml.v1;
 
@@ -28,25 +46,24 @@ class MlApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
   MlApi(http.Client client,
       {core.String rootUrl = "https://ml.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
+  ProjectsJobsResourceApi get jobs => ProjectsJobsResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
-      new ProjectsLocationsResourceApi(_requester);
-  ProjectsModelsResourceApi get models =>
-      new ProjectsModelsResourceApi(_requester);
+      ProjectsLocationsResourceApi(_requester);
+  ProjectsModelsResourceApi get models => ProjectsModelsResourceApi(_requester);
   ProjectsOperationsResourceApi get operations =>
-      new ProjectsOperationsResourceApi(_requester);
+      ProjectsOperationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -73,20 +90,22 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> explain(
-      GoogleCloudMlV1ExplainRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1ExplainRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -94,13 +113,16 @@ class ProjectsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':explain';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 
   /// Get the service account information associated with your project. You need
@@ -123,17 +145,19 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -142,14 +166,17 @@ class ProjectsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':getConfig';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1GetConfigResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1GetConfigResponse.fromJson(data));
   }
 
   /// Performs online prediction on the data in the request. {% dynamic include
@@ -175,20 +202,22 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> predict(
-      GoogleCloudMlV1PredictRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1PredictRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -196,13 +225,16 @@ class ProjectsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
   }
 }
 
@@ -231,20 +263,22 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GoogleCloudMlV1CancelJobRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1CancelJobRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -252,13 +286,16 @@ class ProjectsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Creates a training or a batch prediction job.
@@ -281,20 +318,22 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Job> create(
-      GoogleCloudMlV1Job request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Job request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -302,13 +341,16 @@ class ProjectsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Job.fromJson(data));
   }
 
   /// Describes a job.
@@ -328,17 +370,19 @@ class ProjectsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Job> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Job> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -346,13 +390,16 @@ class ProjectsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Job.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -383,17 +430,20 @@ class ProjectsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -408,13 +458,16 @@ class ProjectsJobsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Lists the jobs in the project. If there are no jobs that match the request
@@ -452,20 +505,22 @@ class ProjectsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String filter,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListJobsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -482,14 +537,17 @@ class ProjectsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1ListJobsResponse.fromJson(data));
   }
 
   /// Updates a specific job resource. Currently the only supported fields to
@@ -524,20 +582,23 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Job> patch(
-      GoogleCloudMlV1Job request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Job request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -548,13 +609,16 @@ class ProjectsJobsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Job.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -581,20 +645,22 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> setIamPolicy(
-      GoogleIamV1SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -604,13 +670,16 @@ class ProjectsJobsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -639,20 +708,22 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-      GoogleIamV1TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -662,14 +733,17 @@ class ProjectsJobsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleIamV1TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -677,9 +751,9 @@ class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResourceApi get operations =>
-      new ProjectsLocationsOperationsResourceApi(_requester);
+      ProjectsLocationsOperationsResourceApi(_requester);
   ProjectsLocationsStudiesResourceApi get studies =>
-      new ProjectsLocationsStudiesResourceApi(_requester);
+      ProjectsLocationsStudiesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -702,17 +776,19 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Location> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Location> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -720,13 +796,16 @@ class ProjectsLocationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Location.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Location.fromJson(data));
   }
 
   /// List all locations that provides at least one type of CMLE capability.
@@ -757,17 +836,21 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListLocationsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListLocationsResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -782,14 +865,17 @@ class ProjectsLocationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/locations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleCloudMlV1ListLocationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleCloudMlV1ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -825,17 +911,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancel(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -843,13 +931,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -872,17 +963,19 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -890,14 +983,16 @@ class ProjectsLocationsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -905,7 +1000,7 @@ class ProjectsLocationsStudiesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsStudiesTrialsResourceApi get trials =>
-      new ProjectsLocationsStudiesTrialsResourceApi(_requester);
+      ProjectsLocationsStudiesTrialsResourceApi(_requester);
 
   ProjectsLocationsStudiesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -934,20 +1029,23 @@ class ProjectsLocationsStudiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Study> create(
-      GoogleCloudMlV1Study request, core.String parent,
-      {core.String studyId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Study request,
+    core.String parent, {
+    core.String studyId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (studyId != null) {
       _queryParams["studyId"] = [studyId];
@@ -959,13 +1057,16 @@ class ProjectsLocationsStudiesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/studies';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Study.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Study.fromJson(data));
   }
 
   /// Deletes a study.
@@ -985,17 +1086,19 @@ class ProjectsLocationsStudiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1003,13 +1106,16 @@ class ProjectsLocationsStudiesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a study.
@@ -1029,17 +1135,19 @@ class ProjectsLocationsStudiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Study> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Study> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1047,13 +1155,16 @@ class ProjectsLocationsStudiesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Study.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Study.fromJson(data));
   }
 
   /// Lists all the studies in a region for an associated project.
@@ -1074,17 +1185,19 @@ class ProjectsLocationsStudiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListStudiesResponse> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListStudiesResponse> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1093,14 +1206,17 @@ class ProjectsLocationsStudiesResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/studies';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1ListStudiesResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1ListStudiesResponse.fromJson(data));
   }
 }
 
@@ -1132,20 +1248,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Trial> addMeasurement(
-      GoogleCloudMlV1AddTrialMeasurementRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1AddTrialMeasurementRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1155,13 +1273,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':addMeasurement';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Trial.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Trial.fromJson(data));
   }
 
   /// Checks whether a trial should stop or not. Returns a long-running
@@ -1187,21 +1308,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> checkEarlyStoppingState(
-      GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest request,
-      core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1211,14 +1333,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':checkEarlyStoppingState';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Marks a trial as complete.
@@ -1242,20 +1366,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Trial> complete(
-      GoogleCloudMlV1CompleteTrialRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1CompleteTrialRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1263,13 +1389,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':complete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Trial.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Trial.fromJson(data));
   }
 
   /// Adds a user provided trial to a study.
@@ -1292,20 +1421,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Trial> create(
-      GoogleCloudMlV1Trial request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Trial request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1313,13 +1444,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Trial.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Trial.fromJson(data));
   }
 
   /// Deletes a trial.
@@ -1340,17 +1474,19 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1358,13 +1494,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets a trial.
@@ -1385,17 +1524,19 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Trial> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Trial> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1403,13 +1544,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Trial.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Trial.fromJson(data));
   }
 
   /// Lists the trials associated with a study.
@@ -1429,17 +1573,19 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListTrialsResponse> list(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListTrialsResponse> list(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1447,14 +1593,17 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1ListTrialsResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1ListTrialsResponse.fromJson(data));
   }
 
   /// Stops a trial.
@@ -1478,20 +1627,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Trial> stop(
-      GoogleCloudMlV1StopTrialRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1StopTrialRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,13 +1650,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Trial.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Trial.fromJson(data));
   }
 
   /// Adds one or more trials to a study, with parameter values suggested by AI
@@ -1531,20 +1685,22 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> suggest(
-      GoogleCloudMlV1SuggestTrialsRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1SuggestTrialsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1554,14 +1710,16 @@ class ProjectsLocationsStudiesTrialsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/trials:suggest';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 }
 
@@ -1569,7 +1727,7 @@ class ProjectsModelsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsModelsVersionsResourceApi get versions =>
-      new ProjectsModelsVersionsResourceApi(_requester);
+      ProjectsModelsVersionsResourceApi(_requester);
 
   ProjectsModelsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -1595,20 +1753,22 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Model> create(
-      GoogleCloudMlV1Model request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Model request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1616,13 +1776,16 @@ class ProjectsModelsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Model.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Model.fromJson(data));
   }
 
   /// Deletes a model. You can only delete a model if there are no versions in
@@ -1643,17 +1806,19 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1661,14 +1826,16 @@ class ProjectsModelsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets information about a model, including its name, the description (if
@@ -1690,17 +1857,19 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Model> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Model> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1708,13 +1877,16 @@ class ProjectsModelsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Model.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Model.fromJson(data));
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -1745,17 +1917,20 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
-      {core.int options_requestedPolicyVersion, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if (options_requestedPolicyVersion != null) {
       _queryParams["options.requestedPolicyVersion"] = [
@@ -1770,13 +1945,16 @@ class ProjectsModelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Lists the models in a project. Each project can contain multiple models,
@@ -1811,20 +1989,22 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListModelsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String pageToken,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -1841,14 +2021,17 @@ class ProjectsModelsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1ListModelsResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1ListModelsResponse.fromJson(data));
   }
 
   /// Updates a specific model resource. Currently the only supported fields to
@@ -1880,20 +2063,23 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
-      GoogleCloudMlV1Model request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Model request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -1904,14 +2090,16 @@ class ProjectsModelsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1938,20 +2126,22 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> setIamPolicy(
-      GoogleIamV1SetIamPolicyRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1961,13 +2151,16 @@ class ProjectsModelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleIamV1Policy.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1996,20 +2189,22 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-      GoogleIamV1TestIamPermissionsRequest request, core.String resource,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (resource == null) {
-      throw new core.ArgumentError("Parameter resource is required.");
+      throw core.ArgumentError("Parameter resource is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2019,14 +2214,17 @@ class ProjectsModelsResourceApi {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleIamV1TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -2062,20 +2260,22 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudMlV1Version request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Version request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2084,14 +2284,16 @@ class ProjectsModelsVersionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Deletes a model version. Each model can have multiple versions deployed
@@ -2115,17 +2317,19 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2133,14 +2337,16 @@ class ProjectsModelsVersionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Gets information about a model version. Models can have multiple versions.
@@ -2162,17 +2368,19 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Version> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1Version> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2180,13 +2388,16 @@ class ProjectsModelsVersionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Version.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Version.fromJson(data));
   }
 
   /// Gets basic information about all the versions of a model. If you expect
@@ -2221,20 +2432,22 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleCloudMlV1ListVersionsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2252,14 +2465,17 @@ class ProjectsModelsVersionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new GoogleCloudMlV1ListVersionsResponse.fromJson(data));
+        .then((data) => GoogleCloudMlV1ListVersionsResponse.fromJson(data));
   }
 
   /// Updates the specified Version resource. Currently the only update-able
@@ -2294,20 +2510,23 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
-      GoogleCloudMlV1Version request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1Version request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
@@ -2318,14 +2537,16 @@ class ProjectsModelsVersionsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PATCH",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Designates a version to be the default for the model. The default version
@@ -2354,20 +2575,22 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Version> setDefault(
-      GoogleCloudMlV1SetDefaultVersionRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    GoogleCloudMlV1SetDefaultVersionRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2376,13 +2599,16 @@ class ProjectsModelsVersionsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setDefault';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleCloudMlV1Version.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleCloudMlV1Version.fromJson(data));
   }
 }
 
@@ -2417,17 +2643,19 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancel(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleProtobufEmpty> cancel(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2435,13 +2663,16 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -2463,17 +2694,19 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2481,14 +2714,16 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -2522,20 +2757,22 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.String filter,
-      core.int pageSize,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String pageToken,
+    core.String filter,
+    core.int pageSize,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+      throw core.ArgumentError("Parameter name is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2553,14 +2790,17 @@ class ProjectsOperationsResourceApi {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response
+        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
   }
 }
 
@@ -2588,9 +2828,7 @@ class GoogleApiHttpBody {
 
   /// The HTTP request/response body as raw binary.
   core.String data;
-  core.List<core.int> get dataAsBytes {
-    return convert.base64.decode(data);
-  }
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -2623,7 +2861,7 @@ class GoogleApiHttpBody {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (contentType != null) {
       _json["contentType"] = contentType;
     }
@@ -2653,7 +2891,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (useElapsedTime != null) {
       _json["useElapsedTime"] = useElapsedTime;
     }
@@ -2684,7 +2922,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (useElapsedTime != null) {
       _json["useElapsedTime"] = useElapsedTime;
     }
@@ -2714,7 +2952,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (objectiveValue != null) {
       _json["objectiveValue"] = objectiveValue;
     }
@@ -2746,7 +2984,7 @@ class GoogleCloudMlV1MeasurementMetric {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (metric != null) {
       _json["metric"] = metric;
     }
@@ -2773,7 +3011,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }
@@ -2801,7 +3039,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }
@@ -2830,7 +3068,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxValue != null) {
       _json["maxValue"] = maxValue;
     }
@@ -2862,7 +3100,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxValue != null) {
       _json["maxValue"] = maxValue;
     }
@@ -2890,7 +3128,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }
@@ -2917,7 +3155,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }
@@ -2942,7 +3180,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (values != null) {
       _json["values"] = values;
     }
@@ -2975,7 +3213,7 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (goal != null) {
       _json["goal"] = goal;
     }
@@ -3046,28 +3284,28 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   GoogleCloudMlV1StudyConfigParameterSpec.fromJson(core.Map _json) {
     if (_json.containsKey("categoricalValueSpec")) {
       categoricalValueSpec =
-          new GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
-              .fromJson(_json["categoricalValueSpec"]);
+          GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
+              _json["categoricalValueSpec"]);
     }
     if (_json.containsKey("childParameterSpecs")) {
       childParameterSpecs = (_json["childParameterSpecs"] as core.List)
           .map<GoogleCloudMlV1StudyConfigParameterSpec>((value) =>
-              new GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
+              GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("discreteValueSpec")) {
       discreteValueSpec =
-          new GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
+          GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
               _json["discreteValueSpec"]);
     }
     if (_json.containsKey("doubleValueSpec")) {
       doubleValueSpec =
-          new GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
+          GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
               _json["doubleValueSpec"]);
     }
     if (_json.containsKey("integerValueSpec")) {
       integerValueSpec =
-          new GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
+          GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
               _json["integerValueSpec"]);
     }
     if (_json.containsKey("parameter")) {
@@ -3075,17 +3313,17 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
     }
     if (_json.containsKey("parentCategoricalValues")) {
       parentCategoricalValues =
-          new GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
+          GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
               .fromJson(_json["parentCategoricalValues"]);
     }
     if (_json.containsKey("parentDiscreteValues")) {
       parentDiscreteValues =
-          new GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
+          GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
               .fromJson(_json["parentDiscreteValues"]);
     }
     if (_json.containsKey("parentIntValues")) {
       parentIntValues =
-          new GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
+          GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
               .fromJson(_json["parentIntValues"]);
     }
     if (_json.containsKey("scaleType")) {
@@ -3098,34 +3336,34 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoricalValueSpec != null) {
-      _json["categoricalValueSpec"] = (categoricalValueSpec).toJson();
+      _json["categoricalValueSpec"] = categoricalValueSpec.toJson();
     }
     if (childParameterSpecs != null) {
       _json["childParameterSpecs"] =
-          childParameterSpecs.map((value) => (value).toJson()).toList();
+          childParameterSpecs.map((value) => value.toJson()).toList();
     }
     if (discreteValueSpec != null) {
-      _json["discreteValueSpec"] = (discreteValueSpec).toJson();
+      _json["discreteValueSpec"] = discreteValueSpec.toJson();
     }
     if (doubleValueSpec != null) {
-      _json["doubleValueSpec"] = (doubleValueSpec).toJson();
+      _json["doubleValueSpec"] = doubleValueSpec.toJson();
     }
     if (integerValueSpec != null) {
-      _json["integerValueSpec"] = (integerValueSpec).toJson();
+      _json["integerValueSpec"] = integerValueSpec.toJson();
     }
     if (parameter != null) {
       _json["parameter"] = parameter;
     }
     if (parentCategoricalValues != null) {
-      _json["parentCategoricalValues"] = (parentCategoricalValues).toJson();
+      _json["parentCategoricalValues"] = parentCategoricalValues.toJson();
     }
     if (parentDiscreteValues != null) {
-      _json["parentDiscreteValues"] = (parentDiscreteValues).toJson();
+      _json["parentDiscreteValues"] = parentDiscreteValues.toJson();
     }
     if (parentIntValues != null) {
-      _json["parentIntValues"] = (parentIntValues).toJson();
+      _json["parentIntValues"] = parentIntValues.toJson();
     }
     if (scaleType != null) {
       _json["scaleType"] = scaleType;
@@ -3171,7 +3409,7 @@ class GoogleCloudMlV1TrialParameter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (floatValue != null) {
       _json["floatValue"] = floatValue;
     }
@@ -3223,7 +3461,7 @@ class GoogleCloudMlV1AcceleratorConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (count != null) {
       _json["count"] = count;
     }
@@ -3243,16 +3481,15 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
 
   GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(core.Map _json) {
     if (_json.containsKey("measurement")) {
-      measurement =
-          new GoogleCloudMlV1Measurement.fromJson(_json["measurement"]);
+      measurement = GoogleCloudMlV1Measurement.fromJson(_json["measurement"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (measurement != null) {
-      _json["measurement"] = (measurement).toJson();
+      _json["measurement"] = measurement.toJson();
     }
     return _json;
   }
@@ -3298,7 +3535,7 @@ class GoogleCloudMlV1AutoScaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (minNodes != null) {
       _json["minNodes"] = minNodes;
     }
@@ -3319,25 +3556,25 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
   GoogleCloudMlV1AutomatedStoppingConfig.fromJson(core.Map _json) {
     if (_json.containsKey("decayCurveStoppingConfig")) {
       decayCurveStoppingConfig =
-          new GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
+          GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
               .fromJson(_json["decayCurveStoppingConfig"]);
     }
     if (_json.containsKey("medianAutomatedStoppingConfig")) {
       medianAutomatedStoppingConfig =
-          new GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
+          GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
               .fromJson(_json["medianAutomatedStoppingConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (decayCurveStoppingConfig != null) {
-      _json["decayCurveStoppingConfig"] = (decayCurveStoppingConfig).toJson();
+      _json["decayCurveStoppingConfig"] = decayCurveStoppingConfig.toJson();
     }
     if (medianAutomatedStoppingConfig != null) {
       _json["medianAutomatedStoppingConfig"] =
-          (medianAutomatedStoppingConfig).toJson();
+          medianAutomatedStoppingConfig.toJson();
     }
     return _json;
   }
@@ -3378,7 +3615,7 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (framework != null) {
       _json["framework"] = framework;
     }
@@ -3403,7 +3640,7 @@ class GoogleCloudMlV1CancelJobRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3434,7 +3671,7 @@ class GoogleCloudMlV1Capability {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (availableAccelerators != null) {
       _json["availableAccelerators"] = availableAccelerators;
     }
@@ -3475,7 +3712,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -3497,7 +3734,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3531,7 +3768,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3565,7 +3802,7 @@ class GoogleCloudMlV1CompleteTrialRequest {
   GoogleCloudMlV1CompleteTrialRequest.fromJson(core.Map _json) {
     if (_json.containsKey("finalMeasurement")) {
       finalMeasurement =
-          new GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
+          GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
     }
     if (_json.containsKey("infeasibleReason")) {
       infeasibleReason = _json["infeasibleReason"];
@@ -3577,9 +3814,9 @@ class GoogleCloudMlV1CompleteTrialRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (finalMeasurement != null) {
-      _json["finalMeasurement"] = (finalMeasurement).toJson();
+      _json["finalMeasurement"] = finalMeasurement.toJson();
     }
     if (infeasibleReason != null) {
       _json["infeasibleReason"] = infeasibleReason;
@@ -3605,7 +3842,7 @@ class GoogleCloudMlV1Config {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tpuServiceAccount != null) {
       _json["tpuServiceAccount"] = tpuServiceAccount;
     }
@@ -3629,7 +3866,7 @@ class GoogleCloudMlV1ContainerPort {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (containerPort != null) {
       _json["containerPort"] = containerPort;
     }
@@ -3688,7 +3925,7 @@ class GoogleCloudMlV1ContainerSpec {
     if (_json.containsKey("env")) {
       env = (_json["env"] as core.List)
           .map<GoogleCloudMlV1EnvVar>(
-              (value) => new GoogleCloudMlV1EnvVar.fromJson(value))
+              (value) => GoogleCloudMlV1EnvVar.fromJson(value))
           .toList();
     }
     if (_json.containsKey("image")) {
@@ -3697,14 +3934,14 @@ class GoogleCloudMlV1ContainerSpec {
     if (_json.containsKey("ports")) {
       ports = (_json["ports"] as core.List)
           .map<GoogleCloudMlV1ContainerPort>(
-              (value) => new GoogleCloudMlV1ContainerPort.fromJson(value))
+              (value) => GoogleCloudMlV1ContainerPort.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
       _json["args"] = args;
     }
@@ -3712,13 +3949,13 @@ class GoogleCloudMlV1ContainerSpec {
       _json["command"] = command;
     }
     if (env != null) {
-      _json["env"] = env.map((value) => (value).toJson()).toList();
+      _json["env"] = env.map((value) => value.toJson()).toList();
     }
     if (image != null) {
       _json["image"] = image;
     }
     if (ports != null) {
-      _json["ports"] = ports.map((value) => (value).toJson()).toList();
+      _json["ports"] = ports.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3743,7 +3980,7 @@ class GoogleCloudMlV1EncryptionConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json["kmsKeyName"] = kmsKeyName;
     }
@@ -3777,7 +4014,7 @@ class GoogleCloudMlV1EnvVar {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -3797,15 +4034,15 @@ class GoogleCloudMlV1ExplainRequest {
 
   GoogleCloudMlV1ExplainRequest.fromJson(core.Map _json) {
     if (_json.containsKey("httpBody")) {
-      httpBody = new GoogleApiHttpBody.fromJson(_json["httpBody"]);
+      httpBody = GoogleApiHttpBody.fromJson(_json["httpBody"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpBody != null) {
-      _json["httpBody"] = (httpBody).toJson();
+      _json["httpBody"] = httpBody.toJson();
     }
     return _json;
   }
@@ -3837,32 +4074,32 @@ class GoogleCloudMlV1ExplanationConfig {
   GoogleCloudMlV1ExplanationConfig.fromJson(core.Map _json) {
     if (_json.containsKey("integratedGradientsAttribution")) {
       integratedGradientsAttribution =
-          new GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
+          GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
               _json["integratedGradientsAttribution"]);
     }
     if (_json.containsKey("sampledShapleyAttribution")) {
       sampledShapleyAttribution =
-          new GoogleCloudMlV1SampledShapleyAttribution.fromJson(
+          GoogleCloudMlV1SampledShapleyAttribution.fromJson(
               _json["sampledShapleyAttribution"]);
     }
     if (_json.containsKey("xraiAttribution")) {
       xraiAttribution =
-          new GoogleCloudMlV1XraiAttribution.fromJson(_json["xraiAttribution"]);
+          GoogleCloudMlV1XraiAttribution.fromJson(_json["xraiAttribution"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (integratedGradientsAttribution != null) {
       _json["integratedGradientsAttribution"] =
-          (integratedGradientsAttribution).toJson();
+          integratedGradientsAttribution.toJson();
     }
     if (sampledShapleyAttribution != null) {
-      _json["sampledShapleyAttribution"] = (sampledShapleyAttribution).toJson();
+      _json["sampledShapleyAttribution"] = sampledShapleyAttribution.toJson();
     }
     if (xraiAttribution != null) {
-      _json["xraiAttribution"] = (xraiAttribution).toJson();
+      _json["xraiAttribution"] = xraiAttribution.toJson();
     }
     return _json;
   }
@@ -3882,7 +4119,7 @@ class GoogleCloudMlV1GetConfigResponse {
 
   GoogleCloudMlV1GetConfigResponse.fromJson(core.Map _json) {
     if (_json.containsKey("config")) {
-      config = new GoogleCloudMlV1Config.fromJson(_json["config"]);
+      config = GoogleCloudMlV1Config.fromJson(_json["config"]);
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
@@ -3894,9 +4131,9 @@ class GoogleCloudMlV1GetConfigResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (config != null) {
-      _json["config"] = (config).toJson();
+      _json["config"] = config.toJson();
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
@@ -3961,22 +4198,20 @@ class GoogleCloudMlV1HyperparameterOutput {
     if (_json.containsKey("allMetrics")) {
       allMetrics = (_json["allMetrics"] as core.List)
           .map<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>(
-              (value) =>
-                  new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
-                      .fromJson(value))
+              (value) => GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
+                  .fromJson(value))
           .toList();
     }
     if (_json.containsKey("builtInAlgorithmOutput")) {
-      builtInAlgorithmOutput =
-          new GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
-              _json["builtInAlgorithmOutput"]);
+      builtInAlgorithmOutput = GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+          _json["builtInAlgorithmOutput"]);
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
     if (_json.containsKey("finalMetric")) {
       finalMetric =
-          new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
+          GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
               _json["finalMetric"]);
     }
     if (_json.containsKey("hyperparameters")) {
@@ -3999,19 +4234,18 @@ class GoogleCloudMlV1HyperparameterOutput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (allMetrics != null) {
-      _json["allMetrics"] =
-          allMetrics.map((value) => (value).toJson()).toList();
+      _json["allMetrics"] = allMetrics.map((value) => value.toJson()).toList();
     }
     if (builtInAlgorithmOutput != null) {
-      _json["builtInAlgorithmOutput"] = (builtInAlgorithmOutput).toJson();
+      _json["builtInAlgorithmOutput"] = builtInAlgorithmOutput.toJson();
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
     if (finalMetric != null) {
-      _json["finalMetric"] = (finalMetric).toJson();
+      _json["finalMetric"] = finalMetric.toJson();
     }
     if (hyperparameters != null) {
       _json["hyperparameters"] = hyperparameters;
@@ -4120,7 +4354,7 @@ class GoogleCloudMlV1HyperparameterSpec {
     if (_json.containsKey("params")) {
       params = (_json["params"] as core.List)
           .map<GoogleCloudMlV1ParameterSpec>(
-              (value) => new GoogleCloudMlV1ParameterSpec.fromJson(value))
+              (value) => GoogleCloudMlV1ParameterSpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("resumePreviousJobId")) {
@@ -4130,7 +4364,7 @@ class GoogleCloudMlV1HyperparameterSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -4153,7 +4387,7 @@ class GoogleCloudMlV1HyperparameterSpec {
       _json["maxTrials"] = maxTrials;
     }
     if (params != null) {
-      _json["params"] = params.map((value) => (value).toJson()).toList();
+      _json["params"] = params.map((value) => value.toJson()).toList();
     }
     if (resumePreviousJobId != null) {
       _json["resumePreviousJobId"] = resumePreviousJobId;
@@ -4181,7 +4415,7 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numIntegralSteps != null) {
       _json["numIntegralSteps"] = numIntegralSteps;
     }
@@ -4208,9 +4442,7 @@ class GoogleCloudMlV1Job {
   /// that etag in the request to `UpdateJob` to ensure that their change will
   /// be applied to the same version of the job.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4280,11 +4512,11 @@ class GoogleCloudMlV1Job {
     }
     if (_json.containsKey("predictionInput")) {
       predictionInput =
-          new GoogleCloudMlV1PredictionInput.fromJson(_json["predictionInput"]);
+          GoogleCloudMlV1PredictionInput.fromJson(_json["predictionInput"]);
     }
     if (_json.containsKey("predictionOutput")) {
-      predictionOutput = new GoogleCloudMlV1PredictionOutput.fromJson(
-          _json["predictionOutput"]);
+      predictionOutput =
+          GoogleCloudMlV1PredictionOutput.fromJson(_json["predictionOutput"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -4294,17 +4526,17 @@ class GoogleCloudMlV1Job {
     }
     if (_json.containsKey("trainingInput")) {
       trainingInput =
-          new GoogleCloudMlV1TrainingInput.fromJson(_json["trainingInput"]);
+          GoogleCloudMlV1TrainingInput.fromJson(_json["trainingInput"]);
     }
     if (_json.containsKey("trainingOutput")) {
       trainingOutput =
-          new GoogleCloudMlV1TrainingOutput.fromJson(_json["trainingOutput"]);
+          GoogleCloudMlV1TrainingOutput.fromJson(_json["trainingOutput"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -4324,10 +4556,10 @@ class GoogleCloudMlV1Job {
       _json["labels"] = labels;
     }
     if (predictionInput != null) {
-      _json["predictionInput"] = (predictionInput).toJson();
+      _json["predictionInput"] = predictionInput.toJson();
     }
     if (predictionOutput != null) {
-      _json["predictionOutput"] = (predictionOutput).toJson();
+      _json["predictionOutput"] = predictionOutput.toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -4336,10 +4568,10 @@ class GoogleCloudMlV1Job {
       _json["state"] = state;
     }
     if (trainingInput != null) {
-      _json["trainingInput"] = (trainingInput).toJson();
+      _json["trainingInput"] = trainingInput.toJson();
     }
     if (trainingOutput != null) {
-      _json["trainingOutput"] = (trainingOutput).toJson();
+      _json["trainingOutput"] = trainingOutput.toJson();
     }
     return _json;
   }
@@ -4360,7 +4592,7 @@ class GoogleCloudMlV1ListJobsResponse {
     if (_json.containsKey("jobs")) {
       jobs = (_json["jobs"] as core.List)
           .map<GoogleCloudMlV1Job>(
-              (value) => new GoogleCloudMlV1Job.fromJson(value))
+              (value) => GoogleCloudMlV1Job.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4370,9 +4602,9 @@ class GoogleCloudMlV1ListJobsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (jobs != null) {
-      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+      _json["jobs"] = jobs.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4395,7 +4627,7 @@ class GoogleCloudMlV1ListLocationsResponse {
     if (_json.containsKey("locations")) {
       locations = (_json["locations"] as core.List)
           .map<GoogleCloudMlV1Location>(
-              (value) => new GoogleCloudMlV1Location.fromJson(value))
+              (value) => GoogleCloudMlV1Location.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4405,9 +4637,9 @@ class GoogleCloudMlV1ListLocationsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (locations != null) {
-      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+      _json["locations"] = locations.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4431,7 +4663,7 @@ class GoogleCloudMlV1ListModelsResponse {
     if (_json.containsKey("models")) {
       models = (_json["models"] as core.List)
           .map<GoogleCloudMlV1Model>(
-              (value) => new GoogleCloudMlV1Model.fromJson(value))
+              (value) => GoogleCloudMlV1Model.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -4441,9 +4673,9 @@ class GoogleCloudMlV1ListModelsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (models != null) {
-      _json["models"] = models.map((value) => (value).toJson()).toList();
+      _json["models"] = models.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -4462,16 +4694,16 @@ class GoogleCloudMlV1ListStudiesResponse {
     if (_json.containsKey("studies")) {
       studies = (_json["studies"] as core.List)
           .map<GoogleCloudMlV1Study>(
-              (value) => new GoogleCloudMlV1Study.fromJson(value))
+              (value) => GoogleCloudMlV1Study.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (studies != null) {
-      _json["studies"] = studies.map((value) => (value).toJson()).toList();
+      _json["studies"] = studies.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4488,16 +4720,16 @@ class GoogleCloudMlV1ListTrialsResponse {
     if (_json.containsKey("trials")) {
       trials = (_json["trials"] as core.List)
           .map<GoogleCloudMlV1Trial>(
-              (value) => new GoogleCloudMlV1Trial.fromJson(value))
+              (value) => GoogleCloudMlV1Trial.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (trials != null) {
-      _json["trials"] = trials.map((value) => (value).toJson()).toList();
+      _json["trials"] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4521,19 +4753,19 @@ class GoogleCloudMlV1ListVersionsResponse {
     if (_json.containsKey("versions")) {
       versions = (_json["versions"] as core.List)
           .map<GoogleCloudMlV1Version>(
-              (value) => new GoogleCloudMlV1Version.fromJson(value))
+              (value) => GoogleCloudMlV1Version.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (versions != null) {
-      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+      _json["versions"] = versions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4550,7 +4782,7 @@ class GoogleCloudMlV1Location {
     if (_json.containsKey("capabilities")) {
       capabilities = (_json["capabilities"] as core.List)
           .map<GoogleCloudMlV1Capability>(
-              (value) => new GoogleCloudMlV1Capability.fromJson(value))
+              (value) => GoogleCloudMlV1Capability.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -4560,10 +4792,10 @@ class GoogleCloudMlV1Location {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (capabilities != null) {
       _json["capabilities"] =
-          capabilities.map((value) => (value).toJson()).toList();
+          capabilities.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -4590,7 +4822,7 @@ class GoogleCloudMlV1ManualScaling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nodes != null) {
       _json["nodes"] = nodes;
     }
@@ -4620,7 +4852,7 @@ class GoogleCloudMlV1Measurement {
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
           .map<GoogleCloudMlV1MeasurementMetric>(
-              (value) => new GoogleCloudMlV1MeasurementMetric.fromJson(value))
+              (value) => GoogleCloudMlV1MeasurementMetric.fromJson(value))
           .toList();
     }
     if (_json.containsKey("stepCount")) {
@@ -4630,12 +4862,12 @@ class GoogleCloudMlV1Measurement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (elapsedTime != null) {
       _json["elapsedTime"] = elapsedTime;
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (stepCount != null) {
       _json["stepCount"] = stepCount;
@@ -4664,9 +4896,7 @@ class GoogleCloudMlV1Model {
   /// systems are expected to put that etag in the request to `UpdateModel` to
   /// ensure that their change will be applied to the model as intended.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4714,8 +4944,7 @@ class GoogleCloudMlV1Model {
 
   GoogleCloudMlV1Model.fromJson(core.Map _json) {
     if (_json.containsKey("defaultVersion")) {
-      defaultVersion =
-          new GoogleCloudMlV1Version.fromJson(_json["defaultVersion"]);
+      defaultVersion = GoogleCloudMlV1Version.fromJson(_json["defaultVersion"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -4742,9 +4971,9 @@ class GoogleCloudMlV1Model {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (defaultVersion != null) {
-      _json["defaultVersion"] = (defaultVersion).toJson();
+      _json["defaultVersion"] = defaultVersion.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -4837,13 +5066,13 @@ class GoogleCloudMlV1OperationMetadata {
       startTime = _json["startTime"];
     }
     if (_json.containsKey("version")) {
-      version = new GoogleCloudMlV1Version.fromJson(_json["version"]);
+      version = GoogleCloudMlV1Version.fromJson(_json["version"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -4869,7 +5098,7 @@ class GoogleCloudMlV1OperationMetadata {
       _json["startTime"] = startTime;
     }
     if (version != null) {
-      _json["version"] = (version).toJson();
+      _json["version"] = version.toJson();
     }
     return _json;
   }
@@ -4956,7 +5185,7 @@ class GoogleCloudMlV1ParameterSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (categoricalValues != null) {
       _json["categoricalValues"] = categoricalValues;
     }
@@ -4993,15 +5222,15 @@ class GoogleCloudMlV1PredictRequest {
 
   GoogleCloudMlV1PredictRequest.fromJson(core.Map _json) {
     if (_json.containsKey("httpBody")) {
-      httpBody = new GoogleApiHttpBody.fromJson(_json["httpBody"]);
+      httpBody = GoogleApiHttpBody.fromJson(_json["httpBody"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (httpBody != null) {
-      _json["httpBody"] = (httpBody).toJson();
+      _json["httpBody"] = httpBody.toJson();
     }
     return _json;
   }
@@ -5131,7 +5360,7 @@ class GoogleCloudMlV1PredictionInput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
@@ -5206,7 +5435,7 @@ class GoogleCloudMlV1PredictionOutput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (errorCount != null) {
       _json["errorCount"] = errorCount;
     }
@@ -5276,8 +5505,8 @@ class GoogleCloudMlV1ReplicaConfig {
 
   GoogleCloudMlV1ReplicaConfig.fromJson(core.Map _json) {
     if (_json.containsKey("acceleratorConfig")) {
-      acceleratorConfig = new GoogleCloudMlV1AcceleratorConfig.fromJson(
-          _json["acceleratorConfig"]);
+      acceleratorConfig =
+          GoogleCloudMlV1AcceleratorConfig.fromJson(_json["acceleratorConfig"]);
     }
     if (_json.containsKey("containerArgs")) {
       containerArgs = (_json["containerArgs"] as core.List).cast<core.String>();
@@ -5296,9 +5525,9 @@ class GoogleCloudMlV1ReplicaConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (acceleratorConfig != null) {
-      _json["acceleratorConfig"] = (acceleratorConfig).toJson();
+      _json["acceleratorConfig"] = acceleratorConfig.toJson();
     }
     if (containerArgs != null) {
       _json["containerArgs"] = containerArgs;
@@ -5354,7 +5583,7 @@ class GoogleCloudMlV1RequestLoggingConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bigqueryTableName != null) {
       _json["bigqueryTableName"] = bigqueryTableName;
     }
@@ -5388,7 +5617,7 @@ class GoogleCloudMlV1RouteMap {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (health != null) {
       _json["health"] = health;
     }
@@ -5417,7 +5646,7 @@ class GoogleCloudMlV1SampledShapleyAttribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numPaths != null) {
       _json["numPaths"] = numPaths;
     }
@@ -5477,7 +5706,7 @@ class GoogleCloudMlV1Scheduling {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (maxRunningTime != null) {
       _json["maxRunningTime"] = maxRunningTime;
     }
@@ -5496,7 +5725,7 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5508,7 +5737,7 @@ class GoogleCloudMlV1StopTrialRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5553,14 +5782,13 @@ class GoogleCloudMlV1Study {
       state = _json["state"];
     }
     if (_json.containsKey("studyConfig")) {
-      studyConfig =
-          new GoogleCloudMlV1StudyConfig.fromJson(_json["studyConfig"]);
+      studyConfig = GoogleCloudMlV1StudyConfig.fromJson(_json["studyConfig"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -5574,7 +5802,7 @@ class GoogleCloudMlV1Study {
       _json["state"] = state;
     }
     if (studyConfig != null) {
-      _json["studyConfig"] = (studyConfig).toJson();
+      _json["studyConfig"] = studyConfig.toJson();
     }
     return _json;
   }
@@ -5609,39 +5837,37 @@ class GoogleCloudMlV1StudyConfig {
       algorithm = _json["algorithm"];
     }
     if (_json.containsKey("automatedStoppingConfig")) {
-      automatedStoppingConfig =
-          new GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
-              _json["automatedStoppingConfig"]);
+      automatedStoppingConfig = GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
+          _json["automatedStoppingConfig"]);
     }
     if (_json.containsKey("metrics")) {
       metrics = (_json["metrics"] as core.List)
-          .map<GoogleCloudMlV1StudyConfigMetricSpec>((value) =>
-              new GoogleCloudMlV1StudyConfigMetricSpec.fromJson(value))
+          .map<GoogleCloudMlV1StudyConfigMetricSpec>(
+              (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parameters")) {
       parameters = (_json["parameters"] as core.List)
           .map<GoogleCloudMlV1StudyConfigParameterSpec>((value) =>
-              new GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
+              GoogleCloudMlV1StudyConfigParameterSpec.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
     if (automatedStoppingConfig != null) {
-      _json["automatedStoppingConfig"] = (automatedStoppingConfig).toJson();
+      _json["automatedStoppingConfig"] = automatedStoppingConfig.toJson();
     }
     if (metrics != null) {
-      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+      _json["metrics"] = metrics.map((value) => value.toJson()).toList();
     }
     if (parameters != null) {
-      _json["parameters"] =
-          parameters.map((value) => (value).toJson()).toList();
+      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5681,7 +5907,7 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -5722,7 +5948,7 @@ class GoogleCloudMlV1SuggestTrialsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -5769,14 +5995,14 @@ class GoogleCloudMlV1SuggestTrialsResponse {
     if (_json.containsKey("trials")) {
       trials = (_json["trials"] as core.List)
           .map<GoogleCloudMlV1Trial>(
-              (value) => new GoogleCloudMlV1Trial.fromJson(value))
+              (value) => GoogleCloudMlV1Trial.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -5787,7 +6013,7 @@ class GoogleCloudMlV1SuggestTrialsResponse {
       _json["studyState"] = studyState;
     }
     if (trials != null) {
-      _json["trials"] = trials.map((value) => (value).toJson()).toList();
+      _json["trials"] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6039,12 +6265,12 @@ class GoogleCloudMlV1TrainingInput {
       args = (_json["args"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("encryptionConfig")) {
-      encryptionConfig = new GoogleCloudMlV1EncryptionConfig.fromJson(
-          _json["encryptionConfig"]);
+      encryptionConfig =
+          GoogleCloudMlV1EncryptionConfig.fromJson(_json["encryptionConfig"]);
     }
     if (_json.containsKey("evaluatorConfig")) {
       evaluatorConfig =
-          new GoogleCloudMlV1ReplicaConfig.fromJson(_json["evaluatorConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json["evaluatorConfig"]);
     }
     if (_json.containsKey("evaluatorCount")) {
       evaluatorCount = _json["evaluatorCount"];
@@ -6053,15 +6279,15 @@ class GoogleCloudMlV1TrainingInput {
       evaluatorType = _json["evaluatorType"];
     }
     if (_json.containsKey("hyperparameters")) {
-      hyperparameters = new GoogleCloudMlV1HyperparameterSpec.fromJson(
-          _json["hyperparameters"]);
+      hyperparameters =
+          GoogleCloudMlV1HyperparameterSpec.fromJson(_json["hyperparameters"]);
     }
     if (_json.containsKey("jobDir")) {
       jobDir = _json["jobDir"];
     }
     if (_json.containsKey("masterConfig")) {
       masterConfig =
-          new GoogleCloudMlV1ReplicaConfig.fromJson(_json["masterConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json["masterConfig"]);
     }
     if (_json.containsKey("masterType")) {
       masterType = _json["masterType"];
@@ -6073,8 +6299,8 @@ class GoogleCloudMlV1TrainingInput {
       packageUris = (_json["packageUris"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("parameterServerConfig")) {
-      parameterServerConfig = new GoogleCloudMlV1ReplicaConfig.fromJson(
-          _json["parameterServerConfig"]);
+      parameterServerConfig =
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json["parameterServerConfig"]);
     }
     if (_json.containsKey("parameterServerCount")) {
       parameterServerCount = _json["parameterServerCount"];
@@ -6098,7 +6324,7 @@ class GoogleCloudMlV1TrainingInput {
       scaleTier = _json["scaleTier"];
     }
     if (_json.containsKey("scheduling")) {
-      scheduling = new GoogleCloudMlV1Scheduling.fromJson(_json["scheduling"]);
+      scheduling = GoogleCloudMlV1Scheduling.fromJson(_json["scheduling"]);
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
@@ -6108,7 +6334,7 @@ class GoogleCloudMlV1TrainingInput {
     }
     if (_json.containsKey("workerConfig")) {
       workerConfig =
-          new GoogleCloudMlV1ReplicaConfig.fromJson(_json["workerConfig"]);
+          GoogleCloudMlV1ReplicaConfig.fromJson(_json["workerConfig"]);
     }
     if (_json.containsKey("workerCount")) {
       workerCount = _json["workerCount"];
@@ -6120,15 +6346,15 @@ class GoogleCloudMlV1TrainingInput {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (args != null) {
       _json["args"] = args;
     }
     if (encryptionConfig != null) {
-      _json["encryptionConfig"] = (encryptionConfig).toJson();
+      _json["encryptionConfig"] = encryptionConfig.toJson();
     }
     if (evaluatorConfig != null) {
-      _json["evaluatorConfig"] = (evaluatorConfig).toJson();
+      _json["evaluatorConfig"] = evaluatorConfig.toJson();
     }
     if (evaluatorCount != null) {
       _json["evaluatorCount"] = evaluatorCount;
@@ -6137,13 +6363,13 @@ class GoogleCloudMlV1TrainingInput {
       _json["evaluatorType"] = evaluatorType;
     }
     if (hyperparameters != null) {
-      _json["hyperparameters"] = (hyperparameters).toJson();
+      _json["hyperparameters"] = hyperparameters.toJson();
     }
     if (jobDir != null) {
       _json["jobDir"] = jobDir;
     }
     if (masterConfig != null) {
-      _json["masterConfig"] = (masterConfig).toJson();
+      _json["masterConfig"] = masterConfig.toJson();
     }
     if (masterType != null) {
       _json["masterType"] = masterType;
@@ -6155,7 +6381,7 @@ class GoogleCloudMlV1TrainingInput {
       _json["packageUris"] = packageUris;
     }
     if (parameterServerConfig != null) {
-      _json["parameterServerConfig"] = (parameterServerConfig).toJson();
+      _json["parameterServerConfig"] = parameterServerConfig.toJson();
     }
     if (parameterServerCount != null) {
       _json["parameterServerCount"] = parameterServerCount;
@@ -6179,7 +6405,7 @@ class GoogleCloudMlV1TrainingInput {
       _json["scaleTier"] = scaleTier;
     }
     if (scheduling != null) {
-      _json["scheduling"] = (scheduling).toJson();
+      _json["scheduling"] = scheduling.toJson();
     }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
@@ -6188,7 +6414,7 @@ class GoogleCloudMlV1TrainingInput {
       _json["useChiefInTfConfig"] = useChiefInTfConfig;
     }
     if (workerConfig != null) {
-      _json["workerConfig"] = (workerConfig).toJson();
+      _json["workerConfig"] = workerConfig.toJson();
     }
     if (workerCount != null) {
       _json["workerCount"] = workerCount;
@@ -6233,9 +6459,8 @@ class GoogleCloudMlV1TrainingOutput {
 
   GoogleCloudMlV1TrainingOutput.fromJson(core.Map _json) {
     if (_json.containsKey("builtInAlgorithmOutput")) {
-      builtInAlgorithmOutput =
-          new GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
-              _json["builtInAlgorithmOutput"]);
+      builtInAlgorithmOutput = GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+          _json["builtInAlgorithmOutput"]);
     }
     if (_json.containsKey("completedTrialCount")) {
       completedTrialCount = _json["completedTrialCount"];
@@ -6254,17 +6479,17 @@ class GoogleCloudMlV1TrainingOutput {
     }
     if (_json.containsKey("trials")) {
       trials = (_json["trials"] as core.List)
-          .map<GoogleCloudMlV1HyperparameterOutput>((value) =>
-              new GoogleCloudMlV1HyperparameterOutput.fromJson(value))
+          .map<GoogleCloudMlV1HyperparameterOutput>(
+              (value) => GoogleCloudMlV1HyperparameterOutput.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (builtInAlgorithmOutput != null) {
-      _json["builtInAlgorithmOutput"] = (builtInAlgorithmOutput).toJson();
+      _json["builtInAlgorithmOutput"] = builtInAlgorithmOutput.toJson();
     }
     if (completedTrialCount != null) {
       _json["completedTrialCount"] = completedTrialCount;
@@ -6282,7 +6507,7 @@ class GoogleCloudMlV1TrainingOutput {
       _json["isHyperparameterTuningJob"] = isHyperparameterTuningJob;
     }
     if (trials != null) {
-      _json["trials"] = trials.map((value) => (value).toJson()).toList();
+      _json["trials"] = trials.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6345,7 +6570,7 @@ class GoogleCloudMlV1Trial {
     }
     if (_json.containsKey("finalMeasurement")) {
       finalMeasurement =
-          new GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
+          GoogleCloudMlV1Measurement.fromJson(_json["finalMeasurement"]);
     }
     if (_json.containsKey("infeasibleReason")) {
       infeasibleReason = _json["infeasibleReason"];
@@ -6353,7 +6578,7 @@ class GoogleCloudMlV1Trial {
     if (_json.containsKey("measurements")) {
       measurements = (_json["measurements"] as core.List)
           .map<GoogleCloudMlV1Measurement>(
-              (value) => new GoogleCloudMlV1Measurement.fromJson(value))
+              (value) => GoogleCloudMlV1Measurement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -6362,7 +6587,7 @@ class GoogleCloudMlV1Trial {
     if (_json.containsKey("parameters")) {
       parameters = (_json["parameters"] as core.List)
           .map<GoogleCloudMlV1TrialParameter>(
-              (value) => new GoogleCloudMlV1TrialParameter.fromJson(value))
+              (value) => GoogleCloudMlV1TrialParameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startTime")) {
@@ -6378,7 +6603,7 @@ class GoogleCloudMlV1Trial {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (clientId != null) {
       _json["clientId"] = clientId;
     }
@@ -6386,21 +6611,20 @@ class GoogleCloudMlV1Trial {
       _json["endTime"] = endTime;
     }
     if (finalMeasurement != null) {
-      _json["finalMeasurement"] = (finalMeasurement).toJson();
+      _json["finalMeasurement"] = finalMeasurement.toJson();
     }
     if (infeasibleReason != null) {
       _json["infeasibleReason"] = infeasibleReason;
     }
     if (measurements != null) {
       _json["measurements"] =
-          measurements.map((value) => (value).toJson()).toList();
+          measurements.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
     }
     if (parameters != null) {
-      _json["parameters"] =
-          parameters.map((value) => (value).toJson()).toList();
+      _json["parameters"] = parameters.map((value) => value.toJson()).toList();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -6463,9 +6687,7 @@ class GoogleCloudMlV1Version {
   /// systems are expected to put that etag in the request to `UpdateVersion` to
   /// ensure that their change will be applied to the model as intended.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -6620,15 +6842,14 @@ class GoogleCloudMlV1Version {
 
   GoogleCloudMlV1Version.fromJson(core.Map _json) {
     if (_json.containsKey("acceleratorConfig")) {
-      acceleratorConfig = new GoogleCloudMlV1AcceleratorConfig.fromJson(
-          _json["acceleratorConfig"]);
+      acceleratorConfig =
+          GoogleCloudMlV1AcceleratorConfig.fromJson(_json["acceleratorConfig"]);
     }
     if (_json.containsKey("autoScaling")) {
-      autoScaling =
-          new GoogleCloudMlV1AutoScaling.fromJson(_json["autoScaling"]);
+      autoScaling = GoogleCloudMlV1AutoScaling.fromJson(_json["autoScaling"]);
     }
     if (_json.containsKey("container")) {
-      container = new GoogleCloudMlV1ContainerSpec.fromJson(_json["container"]);
+      container = GoogleCloudMlV1ContainerSpec.fromJson(_json["container"]);
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -6646,8 +6867,8 @@ class GoogleCloudMlV1Version {
       etag = _json["etag"];
     }
     if (_json.containsKey("explanationConfig")) {
-      explanationConfig = new GoogleCloudMlV1ExplanationConfig.fromJson(
-          _json["explanationConfig"]);
+      explanationConfig =
+          GoogleCloudMlV1ExplanationConfig.fromJson(_json["explanationConfig"]);
     }
     if (_json.containsKey("framework")) {
       framework = _json["framework"];
@@ -6666,7 +6887,7 @@ class GoogleCloudMlV1Version {
     }
     if (_json.containsKey("manualScaling")) {
       manualScaling =
-          new GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
+          GoogleCloudMlV1ManualScaling.fromJson(_json["manualScaling"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -6681,11 +6902,11 @@ class GoogleCloudMlV1Version {
       pythonVersion = _json["pythonVersion"];
     }
     if (_json.containsKey("requestLoggingConfig")) {
-      requestLoggingConfig = new GoogleCloudMlV1RequestLoggingConfig.fromJson(
+      requestLoggingConfig = GoogleCloudMlV1RequestLoggingConfig.fromJson(
           _json["requestLoggingConfig"]);
     }
     if (_json.containsKey("routes")) {
-      routes = new GoogleCloudMlV1RouteMap.fromJson(_json["routes"]);
+      routes = GoogleCloudMlV1RouteMap.fromJson(_json["routes"]);
     }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
@@ -6700,15 +6921,15 @@ class GoogleCloudMlV1Version {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (acceleratorConfig != null) {
-      _json["acceleratorConfig"] = (acceleratorConfig).toJson();
+      _json["acceleratorConfig"] = acceleratorConfig.toJson();
     }
     if (autoScaling != null) {
-      _json["autoScaling"] = (autoScaling).toJson();
+      _json["autoScaling"] = autoScaling.toJson();
     }
     if (container != null) {
-      _json["container"] = (container).toJson();
+      _json["container"] = container.toJson();
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -6726,7 +6947,7 @@ class GoogleCloudMlV1Version {
       _json["etag"] = etag;
     }
     if (explanationConfig != null) {
-      _json["explanationConfig"] = (explanationConfig).toJson();
+      _json["explanationConfig"] = explanationConfig.toJson();
     }
     if (framework != null) {
       _json["framework"] = framework;
@@ -6744,7 +6965,7 @@ class GoogleCloudMlV1Version {
       _json["machineType"] = machineType;
     }
     if (manualScaling != null) {
-      _json["manualScaling"] = (manualScaling).toJson();
+      _json["manualScaling"] = manualScaling.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -6759,10 +6980,10 @@ class GoogleCloudMlV1Version {
       _json["pythonVersion"] = pythonVersion;
     }
     if (requestLoggingConfig != null) {
-      _json["requestLoggingConfig"] = (requestLoggingConfig).toJson();
+      _json["requestLoggingConfig"] = requestLoggingConfig.toJson();
     }
     if (routes != null) {
-      _json["routes"] = (routes).toJson();
+      _json["routes"] = routes.toJson();
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
@@ -6797,7 +7018,7 @@ class GoogleCloudMlV1XraiAttribution {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (numIntegralSteps != null) {
       _json["numIntegralSteps"] = numIntegralSteps;
     }
@@ -6836,7 +7057,7 @@ class GoogleIamV1AuditConfig {
     if (_json.containsKey("auditLogConfigs")) {
       auditLogConfigs = (_json["auditLogConfigs"] as core.List)
           .map<GoogleIamV1AuditLogConfig>(
-              (value) => new GoogleIamV1AuditLogConfig.fromJson(value))
+              (value) => GoogleIamV1AuditLogConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("service")) {
@@ -6846,10 +7067,10 @@ class GoogleIamV1AuditConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
+          auditLogConfigs.map((value) => value.toJson()).toList();
     }
     if (service != null) {
       _json["service"] = service;
@@ -6890,7 +7111,7 @@ class GoogleIamV1AuditLogConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -6958,7 +7179,7 @@ class GoogleIamV1Binding {
       bindingId = _json["bindingId"];
     }
     if (_json.containsKey("condition")) {
-      condition = new GoogleTypeExpr.fromJson(_json["condition"]);
+      condition = GoogleTypeExpr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -6970,12 +7191,12 @@ class GoogleIamV1Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bindingId != null) {
       _json["bindingId"] = bindingId;
     }
     if (condition != null) {
-      _json["condition"] = (condition).toJson();
+      _json["condition"] = condition.toJson();
     }
     if (members != null) {
       _json["members"] = members;
@@ -7037,9 +7258,7 @@ class GoogleIamV1Policy {
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
-  core.List<core.int> get etagAsBytes {
-    return convert.base64.decode(etag);
-  }
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -7069,13 +7288,13 @@ class GoogleIamV1Policy {
     if (_json.containsKey("auditConfigs")) {
       auditConfigs = (_json["auditConfigs"] as core.List)
           .map<GoogleIamV1AuditConfig>(
-              (value) => new GoogleIamV1AuditConfig.fromJson(value))
+              (value) => GoogleIamV1AuditConfig.fromJson(value))
           .toList();
     }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
           .map<GoogleIamV1Binding>(
-              (value) => new GoogleIamV1Binding.fromJson(value))
+              (value) => GoogleIamV1Binding.fromJson(value))
           .toList();
     }
     if (_json.containsKey("etag")) {
@@ -7088,13 +7307,13 @@ class GoogleIamV1Policy {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
+          auditConfigs.map((value) => value.toJson()).toList();
     }
     if (bindings != null) {
-      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+      _json["bindings"] = bindings.map((value) => value.toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -7123,7 +7342,7 @@ class GoogleIamV1SetIamPolicyRequest {
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
-      policy = new GoogleIamV1Policy.fromJson(_json["policy"]);
+      policy = GoogleIamV1Policy.fromJson(_json["policy"]);
     }
     if (_json.containsKey("updateMask")) {
       updateMask = _json["updateMask"];
@@ -7132,9 +7351,9 @@ class GoogleIamV1SetIamPolicyRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (policy != null) {
-      _json["policy"] = (policy).toJson();
+      _json["policy"] = policy.toJson();
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
@@ -7161,7 +7380,7 @@ class GoogleIamV1TestIamPermissionsRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -7185,7 +7404,7 @@ class GoogleIamV1TestIamPermissionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -7210,20 +7429,19 @@ class GoogleLongrunningListOperationsResponse {
     if (_json.containsKey("operations")) {
       operations = (_json["operations"] as core.List)
           .map<GoogleLongrunningOperation>(
-              (value) => new GoogleLongrunningOperation.fromJson(value))
+              (value) => GoogleLongrunningOperation.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] =
-          operations.map((value) => (value).toJson()).toList();
+      _json["operations"] = operations.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -7273,7 +7491,7 @@ class GoogleLongrunningOperation {
       done = _json["done"];
     }
     if (_json.containsKey("error")) {
-      error = new GoogleRpcStatus.fromJson(_json["error"]);
+      error = GoogleRpcStatus.fromJson(_json["error"]);
     }
     if (_json.containsKey("metadata")) {
       metadata =
@@ -7290,12 +7508,12 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (done != null) {
       _json["done"] = done;
     }
     if (error != null) {
-      _json["error"] = (error).toJson();
+      _json["error"] = error.toJson();
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
@@ -7322,7 +7540,7 @@ class GoogleProtobufEmpty {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7368,7 +7586,7 @@ class GoogleRpcStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (code != null) {
       _json["code"] = code;
     }
@@ -7434,7 +7652,7 @@ class GoogleTypeExpr {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (description != null) {
       _json["description"] = description;
     }

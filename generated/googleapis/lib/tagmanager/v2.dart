@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.tagmanager.v2;
 
@@ -50,22 +68,22 @@ class TagmanagerApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
+  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
       {core.String rootUrl = "https://tagmanager.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsContainersResourceApi get containers =>
-      new AccountsContainersResourceApi(_requester);
+      AccountsContainersResourceApi(_requester);
   AccountsUserPermissionsResourceApi get userPermissions =>
-      new AccountsUserPermissionsResourceApi(_requester);
+      AccountsUserPermissionsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -86,16 +104,19 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Account> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -103,13 +124,16 @@ class AccountsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 
   /// Lists all GTM Accounts that a user has access to.
@@ -128,14 +152,16 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAccountsResponse> list(
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListAccountsResponse> list({
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -146,13 +172,16 @@ class AccountsResourceApi {
 
     _url = 'tagmanager/v2/accounts';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListAccountsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListAccountsResponse.fromJson(data));
   }
 
   /// Updates a GTM Account.
@@ -177,20 +206,24 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> update(Account request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Account> update(
+    Account request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -201,13 +234,16 @@ class AccountsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Account.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Account.fromJson(data));
   }
 }
 
@@ -215,13 +251,13 @@ class AccountsContainersResourceApi {
   final commons.ApiRequester _requester;
 
   AccountsContainersEnvironmentsResourceApi get environments =>
-      new AccountsContainersEnvironmentsResourceApi(_requester);
+      AccountsContainersEnvironmentsResourceApi(_requester);
   AccountsContainersVersionHeadersResourceApi get versionHeaders =>
-      new AccountsContainersVersionHeadersResourceApi(_requester);
+      AccountsContainersVersionHeadersResourceApi(_requester);
   AccountsContainersVersionsResourceApi get versions =>
-      new AccountsContainersVersionsResourceApi(_requester);
+      AccountsContainersVersionsResourceApi(_requester);
   AccountsContainersWorkspacesResourceApi get workspaces =>
-      new AccountsContainersWorkspacesResourceApi(_requester);
+      AccountsContainersWorkspacesResourceApi(_requester);
 
   AccountsContainersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -246,20 +282,23 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> create(Container request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Container> create(
+    Container request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -269,13 +308,16 @@ class AccountsContainersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Container.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Container.fromJson(data));
   }
 
   /// Deletes a Container.
@@ -294,16 +336,19 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -313,12 +358,15 @@ class AccountsContainersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -340,16 +388,19 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Container> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -357,13 +408,16 @@ class AccountsContainersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Container.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Container.fromJson(data));
   }
 
   /// Lists all Containers that belongs to a GTM Account.
@@ -386,17 +440,20 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListContainersResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListContainersResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -409,13 +466,16 @@ class AccountsContainersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListContainersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListContainersResponse.fromJson(data));
   }
 
   /// Updates a Container.
@@ -441,20 +501,24 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> update(Container request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Container> update(
+    Container request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -465,13 +529,16 @@ class AccountsContainersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Container.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Container.fromJson(data));
   }
 }
 
@@ -501,20 +568,23 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> create(Environment request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Environment> create(
+    Environment request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -524,13 +594,16 @@ class AccountsContainersEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Environment.fromJson(data));
   }
 
   /// Deletes a GTM Environment.
@@ -550,16 +623,19 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -569,12 +645,15 @@ class AccountsContainersEnvironmentsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -597,16 +676,19 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Environment> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -614,13 +696,16 @@ class AccountsContainersEnvironmentsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Environment.fromJson(data));
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -643,17 +728,20 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListEnvironmentsResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListEnvironmentsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -666,14 +754,16 @@ class AccountsContainersEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListEnvironmentsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListEnvironmentsResponse.fromJson(data));
   }
 
   /// Re-generates the authorization code for a GTM Environment.
@@ -697,20 +787,23 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> reauthorize(Environment request, core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Environment> reauthorize(
+    Environment request,
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -720,13 +813,16 @@ class AccountsContainersEnvironmentsResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':reauthorize';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Environment.fromJson(data));
   }
 
   /// Updates a GTM Environment.
@@ -753,20 +849,24 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> update(Environment request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Environment> update(
+    Environment request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -777,13 +877,16 @@ class AccountsContainersEnvironmentsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Environment.fromJson(data));
   }
 }
 
@@ -811,17 +914,19 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersionHeader> latest(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContainerVersionHeader> latest(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -831,13 +936,16 @@ class AccountsContainersVersionHeadersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers:latest';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersionHeader.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersionHeader.fromJson(data));
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -862,17 +970,21 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListContainerVersionsResponse> list(core.String parent,
-      {core.bool includeDeleted, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListContainerVersionsResponse> list(
+    core.String parent, {
+    core.bool includeDeleted,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
@@ -888,14 +1000,17 @@ class AccountsContainersVersionHeadersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListContainerVersionsResponse.fromJson(data));
+        .then((data) => ListContainerVersionsResponse.fromJson(data));
   }
 }
 
@@ -922,16 +1037,19 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -941,12 +1059,15 @@ class AccountsContainersVersionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -972,17 +1093,20 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> get(core.String path,
-      {core.String containerVersionId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContainerVersion> get(
+    core.String path, {
+    core.String containerVersionId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (containerVersionId != null) {
       _queryParams["containerVersionId"] = [containerVersionId];
@@ -993,13 +1117,16 @@ class AccountsContainersVersionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersion.fromJson(data));
   }
 
   /// Gets the live (i.e. published) container version
@@ -1020,17 +1147,19 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> live(core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContainerVersion> live(
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1040,13 +1169,16 @@ class AccountsContainersVersionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/versions:live';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersion.fromJson(data));
   }
 
   /// Publishes a Container Version.
@@ -1071,17 +1203,20 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PublishContainerVersionResponse> publish(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PublishContainerVersionResponse> publish(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -1094,14 +1229,17 @@ class AccountsContainersVersionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':publish';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PublishContainerVersionResponse.fromJson(data));
+        .then((data) => PublishContainerVersionResponse.fromJson(data));
   }
 
   /// Sets the latest version used for synchronization of workspaces when
@@ -1124,17 +1262,19 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> setLatest(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContainerVersion> setLatest(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1144,13 +1284,16 @@ class AccountsContainersVersionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':set_latest';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersion.fromJson(data));
   }
 
   /// Undeletes a Container Version.
@@ -1172,17 +1315,19 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> undelete(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ContainerVersion> undelete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1192,13 +1337,16 @@ class AccountsContainersVersionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':undelete';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersion.fromJson(data));
   }
 
   /// Updates a Container Version.
@@ -1226,20 +1374,23 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContainerVersion> update(
-      ContainerVersion request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    ContainerVersion request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -1250,13 +1401,16 @@ class AccountsContainersVersionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ContainerVersion.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ContainerVersion.fromJson(data));
   }
 }
 
@@ -1265,20 +1419,19 @@ class AccountsContainersWorkspacesResourceApi {
 
   AccountsContainersWorkspacesBuiltInVariablesResourceApi
       get builtInVariables =>
-          new AccountsContainersWorkspacesBuiltInVariablesResourceApi(
-              _requester);
+          AccountsContainersWorkspacesBuiltInVariablesResourceApi(_requester);
   AccountsContainersWorkspacesFoldersResourceApi get folders =>
-      new AccountsContainersWorkspacesFoldersResourceApi(_requester);
+      AccountsContainersWorkspacesFoldersResourceApi(_requester);
   AccountsContainersWorkspacesTagsResourceApi get tags =>
-      new AccountsContainersWorkspacesTagsResourceApi(_requester);
+      AccountsContainersWorkspacesTagsResourceApi(_requester);
   AccountsContainersWorkspacesTemplatesResourceApi get templates =>
-      new AccountsContainersWorkspacesTemplatesResourceApi(_requester);
+      AccountsContainersWorkspacesTemplatesResourceApi(_requester);
   AccountsContainersWorkspacesTriggersResourceApi get triggers =>
-      new AccountsContainersWorkspacesTriggersResourceApi(_requester);
+      AccountsContainersWorkspacesTriggersResourceApi(_requester);
   AccountsContainersWorkspacesVariablesResourceApi get variables =>
-      new AccountsContainersWorkspacesVariablesResourceApi(_requester);
+      AccountsContainersWorkspacesVariablesResourceApi(_requester);
   AccountsContainersWorkspacesZonesResourceApi get zones =>
-      new AccountsContainersWorkspacesZonesResourceApi(_requester);
+      AccountsContainersWorkspacesZonesResourceApi(_requester);
 
   AccountsContainersWorkspacesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1303,20 +1456,23 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workspace> create(Workspace request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Workspace> create(
+    Workspace request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1326,13 +1482,16 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Workspace.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Workspace.fromJson(data));
   }
 
   /// Creates a Container Version from the entities present in the workspace,
@@ -1359,20 +1518,22 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateContainerVersionResponse> createVersion(
-      CreateContainerVersionRequestVersionOptions request, core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CreateContainerVersionRequestVersionOptions request,
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1382,14 +1543,17 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':create_version';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new CreateContainerVersionResponse.fromJson(data));
+        .then((data) => CreateContainerVersionResponse.fromJson(data));
   }
 
   /// Deletes a Workspace.
@@ -1409,16 +1573,19 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1428,12 +1595,15 @@ class AccountsContainersWorkspacesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1456,16 +1626,19 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workspace> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Workspace> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1473,13 +1646,16 @@ class AccountsContainersWorkspacesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Workspace.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Workspace.fromJson(data));
   }
 
   /// Finds conflicting and modified entities in the workspace.
@@ -1501,17 +1677,19 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetWorkspaceStatusResponse> getStatus(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<GetWorkspaceStatusResponse> getStatus(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1521,14 +1699,16 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         '/status';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GetWorkspaceStatusResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => GetWorkspaceStatusResponse.fromJson(data));
   }
 
   /// Lists all Workspaces that belong to a GTM Container.
@@ -1551,17 +1731,20 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListWorkspacesResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListWorkspacesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1574,13 +1757,16 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListWorkspacesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListWorkspacesResponse.fromJson(data));
   }
 
   /// Quick previews a workspace by creating a fake container version from all
@@ -1603,17 +1789,19 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<QuickPreviewResponse> quickPreview(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<QuickPreviewResponse> quickPreview(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1623,13 +1811,16 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':quick_preview';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new QuickPreviewResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => QuickPreviewResponse.fromJson(data));
   }
 
   /// Resolves a merge conflict for a workspace entity by updating it to the
@@ -1655,20 +1846,24 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resolveConflict(Entity request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future resolveConflict(
+    Entity request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -1683,12 +1878,15 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':resolve_conflict';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1713,17 +1911,19 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SyncWorkspaceResponse> sync(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SyncWorkspaceResponse> sync(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1733,13 +1933,16 @@ class AccountsContainersWorkspacesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':sync';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SyncWorkspaceResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SyncWorkspaceResponse.fromJson(data));
   }
 
   /// Updates a Workspace.
@@ -1766,20 +1969,24 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workspace> update(Workspace request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Workspace> update(
+    Workspace request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -1790,13 +1997,16 @@ class AccountsContainersWorkspacesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Workspace.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Workspace.fromJson(data));
   }
 }
 
@@ -1828,17 +2038,20 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreateBuiltInVariableResponse> create(core.String parent,
-      {core.List<core.String> type, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CreateBuiltInVariableResponse> create(
+    core.String parent, {
+    core.List<core.String> type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (type != null) {
       _queryParams["type"] = type;
@@ -1851,14 +2064,17 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new CreateBuiltInVariableResponse.fromJson(data));
+        .then((data) => CreateBuiltInVariableResponse.fromJson(data));
   }
 
   /// Deletes one or more GTM Built-In Variables.
@@ -1880,17 +2096,20 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path,
-      {core.List<core.String> type, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.List<core.String> type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (type != null) {
       _queryParams["type"] = type;
@@ -1903,12 +2122,15 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -1933,17 +2155,20 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListEnabledBuiltInVariablesResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListEnabledBuiltInVariablesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1956,14 +2181,17 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new ListEnabledBuiltInVariablesResponse.fromJson(data));
+        .then((data) => ListEnabledBuiltInVariablesResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Built-In Variables in a GTM Workspace.
@@ -2098,17 +2326,20 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertBuiltInVariableResponse> revert(core.String path,
-      {core.String type, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertBuiltInVariableResponse> revert(
+    core.String path, {
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (type != null) {
       _queryParams["type"] = [type];
@@ -2121,14 +2352,17 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         '/built_in_variables:revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new RevertBuiltInVariableResponse.fromJson(data));
+        .then((data) => RevertBuiltInVariableResponse.fromJson(data));
   }
 }
 
@@ -2159,20 +2393,23 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> create(Folder request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Folder> create(
+    Folder request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2182,13 +2419,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Folder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Folder.fromJson(data));
   }
 
   /// Deletes a GTM Folder.
@@ -2208,16 +2448,19 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2227,12 +2470,15 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2257,17 +2503,20 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FolderEntities> entities(core.String path,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<FolderEntities> entities(
+    core.String path, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2280,13 +2529,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':entities';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new FolderEntities.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => FolderEntities.fromJson(data));
   }
 
   /// Gets a GTM Folder.
@@ -2308,16 +2560,19 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Folder> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2325,13 +2580,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Folder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Folder.fromJson(data));
   }
 
   /// Lists all GTM Folders of a Container.
@@ -2355,17 +2613,20 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFoldersResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListFoldersResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2378,13 +2639,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListFoldersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListFoldersResponse.fromJson(data));
   }
 
   /// Moves entities to a GTM Folder.
@@ -2412,23 +2676,26 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future moveEntitiesToFolder(Folder request, core.String path,
-      {core.List<core.String> variableId,
-      core.List<core.String> triggerId,
-      core.List<core.String> tagId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future moveEntitiesToFolder(
+    Folder request,
+    core.String path, {
+    core.List<core.String> variableId,
+    core.List<core.String> triggerId,
+    core.List<core.String> tagId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (variableId != null) {
       _queryParams["variableId"] = variableId;
@@ -2449,12 +2716,15 @@ class AccountsContainersWorkspacesFoldersResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':move_entities_to_folder';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2480,17 +2750,20 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertFolderResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertFolderResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -2503,13 +2776,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertFolderResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertFolderResponse.fromJson(data));
   }
 
   /// Updates a GTM Folder.
@@ -2536,20 +2812,24 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> update(Folder request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Folder> update(
+    Folder request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -2560,13 +2840,16 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Folder.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Folder.fromJson(data));
   }
 }
 
@@ -2597,20 +2880,23 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> create(Tag request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Tag> create(
+    Tag request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2620,13 +2906,16 @@ class AccountsContainersWorkspacesTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Tag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Tag.fromJson(data));
   }
 
   /// Deletes a GTM Tag.
@@ -2646,16 +2935,19 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2665,12 +2957,15 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -2693,16 +2988,19 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Tag> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2710,13 +3008,16 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Tag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Tag.fromJson(data));
   }
 
   /// Lists all GTM Tags of a Container.
@@ -2740,17 +3041,20 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTagsResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTagsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2763,13 +3067,16 @@ class AccountsContainersWorkspacesTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTagsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTagsResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Tag in a GTM Workspace.
@@ -2794,17 +3101,20 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertTagResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertTagResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -2817,13 +3127,16 @@ class AccountsContainersWorkspacesTagsResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertTagResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertTagResponse.fromJson(data));
   }
 
   /// Updates a GTM Tag.
@@ -2850,20 +3163,24 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> update(Tag request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Tag> update(
+    Tag request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -2874,13 +3191,16 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Tag.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Tag.fromJson(data));
   }
 }
 
@@ -2912,20 +3232,22 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomTemplate> create(
-      CustomTemplate request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    CustomTemplate request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2935,13 +3257,16 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomTemplate.fromJson(data));
   }
 
   /// Deletes a GTM Template.
@@ -2961,16 +3286,19 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2980,12 +3308,15 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3008,16 +3339,19 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomTemplate> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomTemplate> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3025,13 +3359,16 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomTemplate.fromJson(data));
   }
 
   /// Lists all GTM Templates of a GTM container workspace.
@@ -3055,17 +3392,20 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTemplatesResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTemplatesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3078,13 +3418,16 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTemplatesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTemplatesResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Template in a GTM Workspace.
@@ -3109,17 +3452,20 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertTemplateResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertTemplateResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3132,13 +3478,16 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertTemplateResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertTemplateResponse.fromJson(data));
   }
 
   /// Updates a GTM Template.
@@ -3165,20 +3514,24 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomTemplate> update(CustomTemplate request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<CustomTemplate> update(
+    CustomTemplate request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3189,13 +3542,16 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CustomTemplate.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CustomTemplate.fromJson(data));
   }
 }
 
@@ -3226,20 +3582,23 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trigger> create(Trigger request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Trigger> create(
+    Trigger request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3249,13 +3608,16 @@ class AccountsContainersWorkspacesTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Trigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Trigger.fromJson(data));
   }
 
   /// Deletes a GTM Trigger.
@@ -3275,16 +3637,19 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3294,12 +3659,15 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3322,16 +3690,19 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trigger> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Trigger> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3339,13 +3710,16 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Trigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Trigger.fromJson(data));
   }
 
   /// Lists all GTM Triggers of a Container.
@@ -3369,17 +3743,20 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTriggersResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListTriggersResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3392,13 +3769,16 @@ class AccountsContainersWorkspacesTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTriggersResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListTriggersResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Trigger in a GTM Workspace.
@@ -3423,17 +3803,20 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertTriggerResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertTriggerResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3446,13 +3829,16 @@ class AccountsContainersWorkspacesTriggersResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertTriggerResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertTriggerResponse.fromJson(data));
   }
 
   /// Updates a GTM Trigger.
@@ -3479,20 +3865,24 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trigger> update(Trigger request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Trigger> update(
+    Trigger request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3503,13 +3893,16 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Trigger.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Trigger.fromJson(data));
   }
 }
 
@@ -3540,20 +3933,23 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variable> create(Variable request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Variable> create(
+    Variable request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3563,13 +3959,16 @@ class AccountsContainersWorkspacesVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Variable.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Variable.fromJson(data));
   }
 
   /// Deletes a GTM Variable.
@@ -3589,16 +3988,19 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3608,12 +4010,15 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3636,16 +4041,19 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variable> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Variable> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3653,13 +4061,16 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Variable.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Variable.fromJson(data));
   }
 
   /// Lists all GTM Variables of a Container.
@@ -3683,17 +4094,20 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListVariablesResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListVariablesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -3706,13 +4120,16 @@ class AccountsContainersWorkspacesVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListVariablesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListVariablesResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Variable in a GTM Workspace.
@@ -3737,17 +4154,20 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertVariableResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertVariableResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3760,13 +4180,16 @@ class AccountsContainersWorkspacesVariablesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertVariableResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertVariableResponse.fromJson(data));
   }
 
   /// Updates a GTM Variable.
@@ -3793,20 +4216,24 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variable> update(Variable request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Variable> update(
+    Variable request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -3817,13 +4244,16 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Variable.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Variable.fromJson(data));
   }
 }
 
@@ -3854,20 +4284,23 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Zone> create(Zone request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Zone> create(
+    Zone request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3877,13 +4310,16 @@ class AccountsContainersWorkspacesZonesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Zone.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Zone.fromJson(data));
   }
 
   /// Deletes a GTM Zone.
@@ -3903,16 +4339,19 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3922,12 +4361,15 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -3950,16 +4392,19 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Zone> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Zone> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3967,13 +4412,16 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Zone.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Zone.fromJson(data));
   }
 
   /// Lists all GTM Zones of a GTM container workspace.
@@ -3997,17 +4445,20 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListZonesResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListZonesResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4020,13 +4471,16 @@ class AccountsContainersWorkspacesZonesResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListZonesResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListZonesResponse.fromJson(data));
   }
 
   /// Reverts changes to a GTM Zone in a GTM Workspace.
@@ -4051,17 +4505,20 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevertZoneResponse> revert(core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevertZoneResponse> revert(
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -4074,13 +4531,16 @@ class AccountsContainersWorkspacesZonesResourceApi {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevertZoneResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevertZoneResponse.fromJson(data));
   }
 
   /// Updates a GTM Zone.
@@ -4107,20 +4567,24 @@ class AccountsContainersWorkspacesZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Zone> update(Zone request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Zone> update(
+    Zone request,
+    core.String path, {
+    core.String fingerprint,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
@@ -4131,13 +4595,16 @@ class AccountsContainersWorkspacesZonesResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Zone.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Zone.fromJson(data));
   }
 }
 
@@ -4167,20 +4634,22 @@ class AccountsUserPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserPermission> create(
-      UserPermission request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    UserPermission request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4190,13 +4659,16 @@ class AccountsUserPermissionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserPermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserPermission.fromJson(data));
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -4216,16 +4688,19 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future delete(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4235,12 +4710,15 @@ class AccountsUserPermissionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "DELETE",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -4262,16 +4740,19 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPermission> get(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserPermission> get(
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4279,13 +4760,16 @@ class AccountsUserPermissionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserPermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserPermission.fromJson(data));
   }
 
   /// List all users that have access to the account along with Account and
@@ -4309,17 +4793,20 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListUserPermissionsResponse> list(core.String parent,
-      {core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ListUserPermissionsResponse> list(
+    core.String parent, {
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
+      throw core.ArgumentError("Parameter parent is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -4332,14 +4819,16 @@ class AccountsUserPermissionsResourceApi {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListUserPermissionsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ListUserPermissionsResponse.fromJson(data));
   }
 
   /// Updates a user's Account & Container access.
@@ -4362,20 +4851,23 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPermission> update(UserPermission request, core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<UserPermission> update(
+    UserPermission request,
+    core.String path, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
+      throw core.ArgumentError("Parameter path is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4383,13 +4875,16 @@ class AccountsUserPermissionsResourceApi {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new UserPermission.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "PUT",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => UserPermission.fromJson(data));
   }
 }
 
@@ -4445,7 +4940,7 @@ class Account {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -4490,7 +4985,7 @@ class AccountAccess {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (permission != null) {
       _json["permission"] = permission;
     }
@@ -4661,7 +5156,7 @@ class BuiltInVariable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -4750,7 +5245,7 @@ class Client {
     }
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parentFolderId")) {
@@ -4775,7 +5270,7 @@ class Client {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -4792,7 +5287,7 @@ class Client {
       _json["name"] = name;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
@@ -4854,7 +5349,7 @@ class Condition {
   Condition.fromJson(core.Map _json) {
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -4864,9 +5359,9 @@ class Condition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4952,7 +5447,7 @@ class Container {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -5018,7 +5513,7 @@ class ContainerAccess {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (containerId != null) {
       _json["containerId"] = containerId;
     }
@@ -5096,16 +5591,16 @@ class ContainerVersion {
     }
     if (_json.containsKey("builtInVariable")) {
       builtInVariable = (_json["builtInVariable"] as core.List)
-          .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("client")) {
       client = (_json["client"] as core.List)
-          .map<Client>((value) => new Client.fromJson(value))
+          .map<Client>((value) => Client.fromJson(value))
           .toList();
     }
     if (_json.containsKey("container")) {
-      container = new Container.fromJson(_json["container"]);
+      container = Container.fromJson(_json["container"]);
     }
     if (_json.containsKey("containerId")) {
       containerId = _json["containerId"];
@@ -5115,7 +5610,7 @@ class ContainerVersion {
     }
     if (_json.containsKey("customTemplate")) {
       customTemplate = (_json["customTemplate"] as core.List)
-          .map<CustomTemplate>((value) => new CustomTemplate.fromJson(value))
+          .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
           .toList();
     }
     if (_json.containsKey("deleted")) {
@@ -5129,7 +5624,7 @@ class ContainerVersion {
     }
     if (_json.containsKey("folder")) {
       folder = (_json["folder"] as core.List)
-          .map<Folder>((value) => new Folder.fromJson(value))
+          .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("name")) {
@@ -5140,7 +5635,7 @@ class ContainerVersion {
     }
     if (_json.containsKey("tag")) {
       tag = (_json["tag"] as core.List)
-          .map<Tag>((value) => new Tag.fromJson(value))
+          .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tagManagerUrl")) {
@@ -5148,36 +5643,36 @@ class ContainerVersion {
     }
     if (_json.containsKey("trigger")) {
       trigger = (_json["trigger"] as core.List)
-          .map<Trigger>((value) => new Trigger.fromJson(value))
+          .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("variable")) {
       variable = (_json["variable"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("zone")) {
       zone = (_json["zone"] as core.List)
-          .map<Zone>((value) => new Zone.fromJson(value))
+          .map<Zone>((value) => Zone.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (builtInVariable != null) {
       _json["builtInVariable"] =
-          builtInVariable.map((value) => (value).toJson()).toList();
+          builtInVariable.map((value) => value.toJson()).toList();
     }
     if (client != null) {
-      _json["client"] = client.map((value) => (value).toJson()).toList();
+      _json["client"] = client.map((value) => value.toJson()).toList();
     }
     if (container != null) {
-      _json["container"] = (container).toJson();
+      _json["container"] = container.toJson();
     }
     if (containerId != null) {
       _json["containerId"] = containerId;
@@ -5187,7 +5682,7 @@ class ContainerVersion {
     }
     if (customTemplate != null) {
       _json["customTemplate"] =
-          customTemplate.map((value) => (value).toJson()).toList();
+          customTemplate.map((value) => value.toJson()).toList();
     }
     if (deleted != null) {
       _json["deleted"] = deleted;
@@ -5199,7 +5694,7 @@ class ContainerVersion {
       _json["fingerprint"] = fingerprint;
     }
     if (folder != null) {
-      _json["folder"] = folder.map((value) => (value).toJson()).toList();
+      _json["folder"] = folder.map((value) => value.toJson()).toList();
     }
     if (name != null) {
       _json["name"] = name;
@@ -5208,19 +5703,19 @@ class ContainerVersion {
       _json["path"] = path;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => (value).toJson()).toList();
+      _json["tag"] = tag.map((value) => value.toJson()).toList();
     }
     if (tagManagerUrl != null) {
       _json["tagManagerUrl"] = tagManagerUrl;
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => (value).toJson()).toList();
+      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => (value).toJson()).toList();
+      _json["variable"] = variable.map((value) => value.toJson()).toList();
     }
     if (zone != null) {
-      _json["zone"] = zone.map((value) => (value).toJson()).toList();
+      _json["zone"] = zone.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5313,7 +5808,7 @@ class ContainerVersionHeader {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -5366,17 +5861,17 @@ class CreateBuiltInVariableResponse {
   CreateBuiltInVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey("builtInVariable")) {
       builtInVariable = (_json["builtInVariable"] as core.List)
-          .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (builtInVariable != null) {
       _json["builtInVariable"] =
-          builtInVariable.map((value) => (value).toJson()).toList();
+          builtInVariable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5403,7 +5898,7 @@ class CreateContainerVersionRequestVersionOptions {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (name != null) {
       _json["name"] = name;
     }
@@ -5438,31 +5933,30 @@ class CreateContainerVersionResponse {
       compilerError = _json["compilerError"];
     }
     if (_json.containsKey("containerVersion")) {
-      containerVersion =
-          new ContainerVersion.fromJson(_json["containerVersion"]);
+      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
     }
     if (_json.containsKey("newWorkspacePath")) {
       newWorkspacePath = _json["newWorkspacePath"];
     }
     if (_json.containsKey("syncStatus")) {
-      syncStatus = new SyncStatus.fromJson(_json["syncStatus"]);
+      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compilerError != null) {
       _json["compilerError"] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = (containerVersion).toJson();
+      _json["containerVersion"] = containerVersion.toJson();
     }
     if (newWorkspacePath != null) {
       _json["newWorkspacePath"] = newWorkspacePath;
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = (syncStatus).toJson();
+      _json["syncStatus"] = syncStatus.toJson();
     }
     return _json;
   }
@@ -5514,8 +6008,7 @@ class CustomTemplate {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("galleryReference")) {
-      galleryReference =
-          new GalleryReference.fromJson(_json["galleryReference"]);
+      galleryReference = GalleryReference.fromJson(_json["galleryReference"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5539,7 +6032,7 @@ class CustomTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -5550,7 +6043,7 @@ class CustomTemplate {
       _json["fingerprint"] = fingerprint;
     }
     if (galleryReference != null) {
-      _json["galleryReference"] = (galleryReference).toJson();
+      _json["galleryReference"] = galleryReference.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -5605,36 +6098,36 @@ class Entity {
       changeStatus = _json["changeStatus"];
     }
     if (_json.containsKey("folder")) {
-      folder = new Folder.fromJson(_json["folder"]);
+      folder = Folder.fromJson(_json["folder"]);
     }
     if (_json.containsKey("tag")) {
-      tag = new Tag.fromJson(_json["tag"]);
+      tag = Tag.fromJson(_json["tag"]);
     }
     if (_json.containsKey("trigger")) {
-      trigger = new Trigger.fromJson(_json["trigger"]);
+      trigger = Trigger.fromJson(_json["trigger"]);
     }
     if (_json.containsKey("variable")) {
-      variable = new Variable.fromJson(_json["variable"]);
+      variable = Variable.fromJson(_json["variable"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (changeStatus != null) {
       _json["changeStatus"] = changeStatus;
     }
     if (folder != null) {
-      _json["folder"] = (folder).toJson();
+      _json["folder"] = folder.toJson();
     }
     if (tag != null) {
-      _json["tag"] = (tag).toJson();
+      _json["tag"] = tag.toJson();
     }
     if (trigger != null) {
-      _json["trigger"] = (trigger).toJson();
+      _json["trigger"] = trigger.toJson();
     }
     if (variable != null) {
-      _json["variable"] = (variable).toJson();
+      _json["variable"] = variable.toJson();
     }
     return _json;
   }
@@ -5756,7 +6249,7 @@ class Environment {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -5874,7 +6367,7 @@ class Folder {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -5928,35 +6421,35 @@ class FolderEntities {
     }
     if (_json.containsKey("tag")) {
       tag = (_json["tag"] as core.List)
-          .map<Tag>((value) => new Tag.fromJson(value))
+          .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("trigger")) {
       trigger = (_json["trigger"] as core.List)
-          .map<Trigger>((value) => new Trigger.fromJson(value))
+          .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
     if (_json.containsKey("variable")) {
       variable = (_json["variable"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => (value).toJson()).toList();
+      _json["tag"] = tag.map((value) => value.toJson()).toList();
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => (value).toJson()).toList();
+      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => (value).toJson()).toList();
+      _json["variable"] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6010,7 +6503,7 @@ class GalleryReference {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (host != null) {
       _json["host"] = host;
     }
@@ -6047,26 +6540,26 @@ class GetWorkspaceStatusResponse {
   GetWorkspaceStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey("mergeConflict")) {
       mergeConflict = (_json["mergeConflict"] as core.List)
-          .map<MergeConflict>((value) => new MergeConflict.fromJson(value))
+          .map<MergeConflict>((value) => MergeConflict.fromJson(value))
           .toList();
     }
     if (_json.containsKey("workspaceChange")) {
       workspaceChange = (_json["workspaceChange"] as core.List)
-          .map<Entity>((value) => new Entity.fromJson(value))
+          .map<Entity>((value) => Entity.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json["mergeConflict"] =
-          mergeConflict.map((value) => (value).toJson()).toList();
+          mergeConflict.map((value) => value.toJson()).toList();
     }
     if (workspaceChange != null) {
       _json["workspaceChange"] =
-          workspaceChange.map((value) => (value).toJson()).toList();
+          workspaceChange.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6085,7 +6578,7 @@ class ListAccountsResponse {
   ListAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
       account = (_json["account"] as core.List)
-          .map<Account>((value) => new Account.fromJson(value))
+          .map<Account>((value) => Account.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6095,9 +6588,9 @@ class ListAccountsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (account != null) {
-      _json["account"] = account.map((value) => (value).toJson()).toList();
+      _json["account"] = account.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6120,7 +6613,7 @@ class ListContainerVersionsResponse {
     if (_json.containsKey("containerVersionHeader")) {
       containerVersionHeader = (_json["containerVersionHeader"] as core.List)
           .map<ContainerVersionHeader>(
-              (value) => new ContainerVersionHeader.fromJson(value))
+              (value) => ContainerVersionHeader.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6130,10 +6623,10 @@ class ListContainerVersionsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (containerVersionHeader != null) {
       _json["containerVersionHeader"] =
-          containerVersionHeader.map((value) => (value).toJson()).toList();
+          containerVersionHeader.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6155,7 +6648,7 @@ class ListContainersResponse {
   ListContainersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("container")) {
       container = (_json["container"] as core.List)
-          .map<Container>((value) => new Container.fromJson(value))
+          .map<Container>((value) => Container.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6165,9 +6658,9 @@ class ListContainersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (container != null) {
-      _json["container"] = container.map((value) => (value).toJson()).toList();
+      _json["container"] = container.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6189,7 +6682,7 @@ class ListEnabledBuiltInVariablesResponse {
   ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("builtInVariable")) {
       builtInVariable = (_json["builtInVariable"] as core.List)
-          .map<BuiltInVariable>((value) => new BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6199,10 +6692,10 @@ class ListEnabledBuiltInVariablesResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (builtInVariable != null) {
       _json["builtInVariable"] =
-          builtInVariable.map((value) => (value).toJson()).toList();
+          builtInVariable.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6224,7 +6717,7 @@ class ListEnvironmentsResponse {
   ListEnvironmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("environment")) {
       environment = (_json["environment"] as core.List)
-          .map<Environment>((value) => new Environment.fromJson(value))
+          .map<Environment>((value) => Environment.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6234,10 +6727,10 @@ class ListEnvironmentsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (environment != null) {
       _json["environment"] =
-          environment.map((value) => (value).toJson()).toList();
+          environment.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6259,7 +6752,7 @@ class ListFoldersResponse {
   ListFoldersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("folder")) {
       folder = (_json["folder"] as core.List)
-          .map<Folder>((value) => new Folder.fromJson(value))
+          .map<Folder>((value) => Folder.fromJson(value))
           .toList();
     }
     if (_json.containsKey("nextPageToken")) {
@@ -6269,9 +6762,9 @@ class ListFoldersResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (folder != null) {
-      _json["folder"] = folder.map((value) => (value).toJson()).toList();
+      _json["folder"] = folder.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -6296,19 +6789,19 @@ class ListTagsResponse {
     }
     if (_json.containsKey("tag")) {
       tag = (_json["tag"] as core.List)
-          .map<Tag>((value) => new Tag.fromJson(value))
+          .map<Tag>((value) => Tag.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (tag != null) {
-      _json["tag"] = tag.map((value) => (value).toJson()).toList();
+      _json["tag"] = tag.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6329,19 +6822,19 @@ class ListTemplatesResponse {
     }
     if (_json.containsKey("template")) {
       template = (_json["template"] as core.List)
-          .map<CustomTemplate>((value) => new CustomTemplate.fromJson(value))
+          .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (template != null) {
-      _json["template"] = template.map((value) => (value).toJson()).toList();
+      _json["template"] = template.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6363,19 +6856,19 @@ class ListTriggersResponse {
     }
     if (_json.containsKey("trigger")) {
       trigger = (_json["trigger"] as core.List)
-          .map<Trigger>((value) => new Trigger.fromJson(value))
+          .map<Trigger>((value) => Trigger.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (trigger != null) {
-      _json["trigger"] = trigger.map((value) => (value).toJson()).toList();
+      _json["trigger"] = trigger.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6397,20 +6890,20 @@ class ListUserPermissionsResponse {
     }
     if (_json.containsKey("userPermission")) {
       userPermission = (_json["userPermission"] as core.List)
-          .map<UserPermission>((value) => new UserPermission.fromJson(value))
+          .map<UserPermission>((value) => UserPermission.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (userPermission != null) {
       _json["userPermission"] =
-          userPermission.map((value) => (value).toJson()).toList();
+          userPermission.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6432,19 +6925,19 @@ class ListVariablesResponse {
     }
     if (_json.containsKey("variable")) {
       variable = (_json["variable"] as core.List)
-          .map<Variable>((value) => new Variable.fromJson(value))
+          .map<Variable>((value) => Variable.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (variable != null) {
-      _json["variable"] = variable.map((value) => (value).toJson()).toList();
+      _json["variable"] = variable.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6466,19 +6959,19 @@ class ListWorkspacesResponse {
     }
     if (_json.containsKey("workspace")) {
       workspace = (_json["workspace"] as core.List)
-          .map<Workspace>((value) => new Workspace.fromJson(value))
+          .map<Workspace>((value) => Workspace.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (workspace != null) {
-      _json["workspace"] = workspace.map((value) => (value).toJson()).toList();
+      _json["workspace"] = workspace.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6499,19 +6992,19 @@ class ListZonesResponse {
     }
     if (_json.containsKey("zone")) {
       zone = (_json["zone"] as core.List)
-          .map<Zone>((value) => new Zone.fromJson(value))
+          .map<Zone>((value) => Zone.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (zone != null) {
-      _json["zone"] = zone.map((value) => (value).toJson()).toList();
+      _json["zone"] = zone.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -6533,21 +7026,21 @@ class MergeConflict {
 
   MergeConflict.fromJson(core.Map _json) {
     if (_json.containsKey("entityInBaseVersion")) {
-      entityInBaseVersion = new Entity.fromJson(_json["entityInBaseVersion"]);
+      entityInBaseVersion = Entity.fromJson(_json["entityInBaseVersion"]);
     }
     if (_json.containsKey("entityInWorkspace")) {
-      entityInWorkspace = new Entity.fromJson(_json["entityInWorkspace"]);
+      entityInWorkspace = Entity.fromJson(_json["entityInWorkspace"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (entityInBaseVersion != null) {
-      _json["entityInBaseVersion"] = (entityInBaseVersion).toJson();
+      _json["entityInBaseVersion"] = entityInBaseVersion.toJson();
     }
     if (entityInWorkspace != null) {
-      _json["entityInWorkspace"] = (entityInWorkspace).toJson();
+      _json["entityInWorkspace"] = entityInWorkspace.toJson();
     }
     return _json;
   }
@@ -6627,12 +7120,12 @@ class Parameter {
     }
     if (_json.containsKey("list")) {
       list = (_json["list"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("map")) {
       map = (_json["map"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -6645,15 +7138,15 @@ class Parameter {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (key != null) {
       _json["key"] = key;
     }
     if (list != null) {
-      _json["list"] = list.map((value) => (value).toJson()).toList();
+      _json["list"] = list.map((value) => value.toJson()).toList();
     }
     if (map != null) {
-      _json["map"] = map.map((value) => (value).toJson()).toList();
+      _json["map"] = map.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -6680,19 +7173,18 @@ class PublishContainerVersionResponse {
       compilerError = _json["compilerError"];
     }
     if (_json.containsKey("containerVersion")) {
-      containerVersion =
-          new ContainerVersion.fromJson(_json["containerVersion"]);
+      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compilerError != null) {
       _json["compilerError"] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = (containerVersion).toJson();
+      _json["containerVersion"] = containerVersion.toJson();
     }
     return _json;
   }
@@ -6717,25 +7209,24 @@ class QuickPreviewResponse {
       compilerError = _json["compilerError"];
     }
     if (_json.containsKey("containerVersion")) {
-      containerVersion =
-          new ContainerVersion.fromJson(_json["containerVersion"]);
+      containerVersion = ContainerVersion.fromJson(_json["containerVersion"]);
     }
     if (_json.containsKey("syncStatus")) {
-      syncStatus = new SyncStatus.fromJson(_json["syncStatus"]);
+      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (compilerError != null) {
       _json["compilerError"] = compilerError;
     }
     if (containerVersion != null) {
-      _json["containerVersion"] = (containerVersion).toJson();
+      _json["containerVersion"] = containerVersion.toJson();
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = (syncStatus).toJson();
+      _json["syncStatus"] = syncStatus.toJson();
     }
     return _json;
   }
@@ -6756,7 +7247,7 @@ class RevertBuiltInVariableResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -6775,15 +7266,15 @@ class RevertFolderResponse {
 
   RevertFolderResponse.fromJson(core.Map _json) {
     if (_json.containsKey("folder")) {
-      folder = new Folder.fromJson(_json["folder"]);
+      folder = Folder.fromJson(_json["folder"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (folder != null) {
-      _json["folder"] = (folder).toJson();
+      _json["folder"] = folder.toJson();
     }
     return _json;
   }
@@ -6800,15 +7291,15 @@ class RevertTagResponse {
 
   RevertTagResponse.fromJson(core.Map _json) {
     if (_json.containsKey("tag")) {
-      tag = new Tag.fromJson(_json["tag"]);
+      tag = Tag.fromJson(_json["tag"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (tag != null) {
-      _json["tag"] = (tag).toJson();
+      _json["tag"] = tag.toJson();
     }
     return _json;
   }
@@ -6825,15 +7316,15 @@ class RevertTemplateResponse {
 
   RevertTemplateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("template")) {
-      template = new CustomTemplate.fromJson(_json["template"]);
+      template = CustomTemplate.fromJson(_json["template"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (template != null) {
-      _json["template"] = (template).toJson();
+      _json["template"] = template.toJson();
     }
     return _json;
   }
@@ -6850,15 +7341,15 @@ class RevertTriggerResponse {
 
   RevertTriggerResponse.fromJson(core.Map _json) {
     if (_json.containsKey("trigger")) {
-      trigger = new Trigger.fromJson(_json["trigger"]);
+      trigger = Trigger.fromJson(_json["trigger"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (trigger != null) {
-      _json["trigger"] = (trigger).toJson();
+      _json["trigger"] = trigger.toJson();
     }
     return _json;
   }
@@ -6875,15 +7366,15 @@ class RevertVariableResponse {
 
   RevertVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey("variable")) {
-      variable = new Variable.fromJson(_json["variable"]);
+      variable = Variable.fromJson(_json["variable"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (variable != null) {
-      _json["variable"] = (variable).toJson();
+      _json["variable"] = variable.toJson();
     }
     return _json;
   }
@@ -6900,15 +7391,15 @@ class RevertZoneResponse {
 
   RevertZoneResponse.fromJson(core.Map _json) {
     if (_json.containsKey("zone")) {
-      zone = new Zone.fromJson(_json["zone"]);
+      zone = Zone.fromJson(_json["zone"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (zone != null) {
-      _json["zone"] = (zone).toJson();
+      _json["zone"] = zone.toJson();
     }
     return _json;
   }
@@ -6938,7 +7429,7 @@ class SetupTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (stopOnSetupFailure != null) {
       _json["stopOnSetupFailure"] = stopOnSetupFailure;
     }
@@ -6970,7 +7461,7 @@ class SyncStatus {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json["mergeConflict"] = mergeConflict;
     }
@@ -6997,23 +7488,23 @@ class SyncWorkspaceResponse {
   SyncWorkspaceResponse.fromJson(core.Map _json) {
     if (_json.containsKey("mergeConflict")) {
       mergeConflict = (_json["mergeConflict"] as core.List)
-          .map<MergeConflict>((value) => new MergeConflict.fromJson(value))
+          .map<MergeConflict>((value) => MergeConflict.fromJson(value))
           .toList();
     }
     if (_json.containsKey("syncStatus")) {
-      syncStatus = new SyncStatus.fromJson(_json["syncStatus"]);
+      syncStatus = SyncStatus.fromJson(_json["syncStatus"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json["mergeConflict"] =
-          mergeConflict.map((value) => (value).toJson()).toList();
+          mergeConflict.map((value) => value.toJson()).toList();
     }
     if (syncStatus != null) {
-      _json["syncStatus"] = (syncStatus).toJson();
+      _json["syncStatus"] = syncStatus.toJson();
     }
     return _json;
   }
@@ -7178,7 +7669,7 @@ class Tag {
       liveOnly = _json["liveOnly"];
     }
     if (_json.containsKey("monitoringMetadata")) {
-      monitoringMetadata = new Parameter.fromJson(_json["monitoringMetadata"]);
+      monitoringMetadata = Parameter.fromJson(_json["monitoringMetadata"]);
     }
     if (_json.containsKey("monitoringMetadataTagNameKey")) {
       monitoringMetadataTagNameKey = _json["monitoringMetadataTagNameKey"];
@@ -7191,7 +7682,7 @@ class Tag {
     }
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parentFolderId")) {
@@ -7204,7 +7695,7 @@ class Tag {
       paused = _json["paused"];
     }
     if (_json.containsKey("priority")) {
-      priority = new Parameter.fromJson(_json["priority"]);
+      priority = Parameter.fromJson(_json["priority"]);
     }
     if (_json.containsKey("scheduleEndMs")) {
       scheduleEndMs = _json["scheduleEndMs"];
@@ -7214,7 +7705,7 @@ class Tag {
     }
     if (_json.containsKey("setupTag")) {
       setupTag = (_json["setupTag"] as core.List)
-          .map<SetupTag>((value) => new SetupTag.fromJson(value))
+          .map<SetupTag>((value) => SetupTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("tagFiringOption")) {
@@ -7228,7 +7719,7 @@ class Tag {
     }
     if (_json.containsKey("teardownTag")) {
       teardownTag = (_json["teardownTag"] as core.List)
-          .map<TeardownTag>((value) => new TeardownTag.fromJson(value))
+          .map<TeardownTag>((value) => TeardownTag.fromJson(value))
           .toList();
     }
     if (_json.containsKey("type")) {
@@ -7241,7 +7732,7 @@ class Tag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -7267,7 +7758,7 @@ class Tag {
       _json["liveOnly"] = liveOnly;
     }
     if (monitoringMetadata != null) {
-      _json["monitoringMetadata"] = (monitoringMetadata).toJson();
+      _json["monitoringMetadata"] = monitoringMetadata.toJson();
     }
     if (monitoringMetadataTagNameKey != null) {
       _json["monitoringMetadataTagNameKey"] = monitoringMetadataTagNameKey;
@@ -7279,7 +7770,7 @@ class Tag {
       _json["notes"] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
@@ -7291,7 +7782,7 @@ class Tag {
       _json["paused"] = paused;
     }
     if (priority != null) {
-      _json["priority"] = (priority).toJson();
+      _json["priority"] = priority.toJson();
     }
     if (scheduleEndMs != null) {
       _json["scheduleEndMs"] = scheduleEndMs;
@@ -7300,7 +7791,7 @@ class Tag {
       _json["scheduleStartMs"] = scheduleStartMs;
     }
     if (setupTag != null) {
-      _json["setupTag"] = setupTag.map((value) => (value).toJson()).toList();
+      _json["setupTag"] = setupTag.map((value) => value.toJson()).toList();
     }
     if (tagFiringOption != null) {
       _json["tagFiringOption"] = tagFiringOption;
@@ -7313,7 +7804,7 @@ class Tag {
     }
     if (teardownTag != null) {
       _json["teardownTag"] =
-          teardownTag.map((value) => (value).toJson()).toList();
+          teardownTag.map((value) => value.toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -7349,7 +7840,7 @@ class TeardownTag {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (stopTeardownOnFailure != null) {
       _json["stopTeardownOnFailure"] = stopTeardownOnFailure;
     }
@@ -7575,30 +8066,30 @@ class Trigger {
     }
     if (_json.containsKey("autoEventFilter")) {
       autoEventFilter = (_json["autoEventFilter"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("checkValidation")) {
-      checkValidation = new Parameter.fromJson(_json["checkValidation"]);
+      checkValidation = Parameter.fromJson(_json["checkValidation"]);
     }
     if (_json.containsKey("containerId")) {
       containerId = _json["containerId"];
     }
     if (_json.containsKey("continuousTimeMinMilliseconds")) {
       continuousTimeMinMilliseconds =
-          new Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
+          Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
     }
     if (_json.containsKey("customEventFilter")) {
       customEventFilter = (_json["customEventFilter"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventName")) {
-      eventName = new Parameter.fromJson(_json["eventName"]);
+      eventName = Parameter.fromJson(_json["eventName"]);
     }
     if (_json.containsKey("filter")) {
       filter = (_json["filter"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("fingerprint")) {
@@ -7606,20 +8097,20 @@ class Trigger {
     }
     if (_json.containsKey("horizontalScrollPercentageList")) {
       horizontalScrollPercentageList =
-          new Parameter.fromJson(_json["horizontalScrollPercentageList"]);
+          Parameter.fromJson(_json["horizontalScrollPercentageList"]);
     }
     if (_json.containsKey("interval")) {
-      interval = new Parameter.fromJson(_json["interval"]);
+      interval = Parameter.fromJson(_json["interval"]);
     }
     if (_json.containsKey("intervalSeconds")) {
-      intervalSeconds = new Parameter.fromJson(_json["intervalSeconds"]);
+      intervalSeconds = Parameter.fromJson(_json["intervalSeconds"]);
     }
     if (_json.containsKey("limit")) {
-      limit = new Parameter.fromJson(_json["limit"]);
+      limit = Parameter.fromJson(_json["limit"]);
     }
     if (_json.containsKey("maxTimerLengthSeconds")) {
       maxTimerLengthSeconds =
-          new Parameter.fromJson(_json["maxTimerLengthSeconds"]);
+          Parameter.fromJson(_json["maxTimerLengthSeconds"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7629,7 +8120,7 @@ class Trigger {
     }
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parentFolderId")) {
@@ -7639,14 +8130,14 @@ class Trigger {
       path = _json["path"];
     }
     if (_json.containsKey("selector")) {
-      selector = new Parameter.fromJson(_json["selector"]);
+      selector = Parameter.fromJson(_json["selector"]);
     }
     if (_json.containsKey("tagManagerUrl")) {
       tagManagerUrl = _json["tagManagerUrl"];
     }
     if (_json.containsKey("totalTimeMinMilliseconds")) {
       totalTimeMinMilliseconds =
-          new Parameter.fromJson(_json["totalTimeMinMilliseconds"]);
+          Parameter.fromJson(_json["totalTimeMinMilliseconds"]);
     }
     if (_json.containsKey("triggerId")) {
       triggerId = _json["triggerId"];
@@ -7655,28 +8146,26 @@ class Trigger {
       type = _json["type"];
     }
     if (_json.containsKey("uniqueTriggerId")) {
-      uniqueTriggerId = new Parameter.fromJson(_json["uniqueTriggerId"]);
+      uniqueTriggerId = Parameter.fromJson(_json["uniqueTriggerId"]);
     }
     if (_json.containsKey("verticalScrollPercentageList")) {
       verticalScrollPercentageList =
-          new Parameter.fromJson(_json["verticalScrollPercentageList"]);
+          Parameter.fromJson(_json["verticalScrollPercentageList"]);
     }
     if (_json.containsKey("visibilitySelector")) {
-      visibilitySelector = new Parameter.fromJson(_json["visibilitySelector"]);
+      visibilitySelector = Parameter.fromJson(_json["visibilitySelector"]);
     }
     if (_json.containsKey("visiblePercentageMax")) {
-      visiblePercentageMax =
-          new Parameter.fromJson(_json["visiblePercentageMax"]);
+      visiblePercentageMax = Parameter.fromJson(_json["visiblePercentageMax"]);
     }
     if (_json.containsKey("visiblePercentageMin")) {
-      visiblePercentageMin =
-          new Parameter.fromJson(_json["visiblePercentageMin"]);
+      visiblePercentageMin = Parameter.fromJson(_json["visiblePercentageMin"]);
     }
     if (_json.containsKey("waitForTags")) {
-      waitForTags = new Parameter.fromJson(_json["waitForTags"]);
+      waitForTags = Parameter.fromJson(_json["waitForTags"]);
     }
     if (_json.containsKey("waitForTagsTimeout")) {
-      waitForTagsTimeout = new Parameter.fromJson(_json["waitForTagsTimeout"]);
+      waitForTagsTimeout = Parameter.fromJson(_json["waitForTagsTimeout"]);
     }
     if (_json.containsKey("workspaceId")) {
       workspaceId = _json["workspaceId"];
@@ -7685,52 +8174,52 @@ class Trigger {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (autoEventFilter != null) {
       _json["autoEventFilter"] =
-          autoEventFilter.map((value) => (value).toJson()).toList();
+          autoEventFilter.map((value) => value.toJson()).toList();
     }
     if (checkValidation != null) {
-      _json["checkValidation"] = (checkValidation).toJson();
+      _json["checkValidation"] = checkValidation.toJson();
     }
     if (containerId != null) {
       _json["containerId"] = containerId;
     }
     if (continuousTimeMinMilliseconds != null) {
       _json["continuousTimeMinMilliseconds"] =
-          (continuousTimeMinMilliseconds).toJson();
+          continuousTimeMinMilliseconds.toJson();
     }
     if (customEventFilter != null) {
       _json["customEventFilter"] =
-          customEventFilter.map((value) => (value).toJson()).toList();
+          customEventFilter.map((value) => value.toJson()).toList();
     }
     if (eventName != null) {
-      _json["eventName"] = (eventName).toJson();
+      _json["eventName"] = eventName.toJson();
     }
     if (filter != null) {
-      _json["filter"] = filter.map((value) => (value).toJson()).toList();
+      _json["filter"] = filter.map((value) => value.toJson()).toList();
     }
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
     if (horizontalScrollPercentageList != null) {
       _json["horizontalScrollPercentageList"] =
-          (horizontalScrollPercentageList).toJson();
+          horizontalScrollPercentageList.toJson();
     }
     if (interval != null) {
-      _json["interval"] = (interval).toJson();
+      _json["interval"] = interval.toJson();
     }
     if (intervalSeconds != null) {
-      _json["intervalSeconds"] = (intervalSeconds).toJson();
+      _json["intervalSeconds"] = intervalSeconds.toJson();
     }
     if (limit != null) {
-      _json["limit"] = (limit).toJson();
+      _json["limit"] = limit.toJson();
     }
     if (maxTimerLengthSeconds != null) {
-      _json["maxTimerLengthSeconds"] = (maxTimerLengthSeconds).toJson();
+      _json["maxTimerLengthSeconds"] = maxTimerLengthSeconds.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -7739,7 +8228,7 @@ class Trigger {
       _json["notes"] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
@@ -7748,13 +8237,13 @@ class Trigger {
       _json["path"] = path;
     }
     if (selector != null) {
-      _json["selector"] = (selector).toJson();
+      _json["selector"] = selector.toJson();
     }
     if (tagManagerUrl != null) {
       _json["tagManagerUrl"] = tagManagerUrl;
     }
     if (totalTimeMinMilliseconds != null) {
-      _json["totalTimeMinMilliseconds"] = (totalTimeMinMilliseconds).toJson();
+      _json["totalTimeMinMilliseconds"] = totalTimeMinMilliseconds.toJson();
     }
     if (triggerId != null) {
       _json["triggerId"] = triggerId;
@@ -7763,26 +8252,26 @@ class Trigger {
       _json["type"] = type;
     }
     if (uniqueTriggerId != null) {
-      _json["uniqueTriggerId"] = (uniqueTriggerId).toJson();
+      _json["uniqueTriggerId"] = uniqueTriggerId.toJson();
     }
     if (verticalScrollPercentageList != null) {
       _json["verticalScrollPercentageList"] =
-          (verticalScrollPercentageList).toJson();
+          verticalScrollPercentageList.toJson();
     }
     if (visibilitySelector != null) {
-      _json["visibilitySelector"] = (visibilitySelector).toJson();
+      _json["visibilitySelector"] = visibilitySelector.toJson();
     }
     if (visiblePercentageMax != null) {
-      _json["visiblePercentageMax"] = (visiblePercentageMax).toJson();
+      _json["visiblePercentageMax"] = visiblePercentageMax.toJson();
     }
     if (visiblePercentageMin != null) {
-      _json["visiblePercentageMin"] = (visiblePercentageMin).toJson();
+      _json["visiblePercentageMin"] = visiblePercentageMin.toJson();
     }
     if (waitForTags != null) {
-      _json["waitForTags"] = (waitForTags).toJson();
+      _json["waitForTags"] = waitForTags.toJson();
     }
     if (waitForTagsTimeout != null) {
-      _json["waitForTagsTimeout"] = (waitForTagsTimeout).toJson();
+      _json["waitForTagsTimeout"] = waitForTagsTimeout.toJson();
     }
     if (workspaceId != null) {
       _json["workspaceId"] = workspaceId;
@@ -7816,14 +8305,14 @@ class UserPermission {
 
   UserPermission.fromJson(core.Map _json) {
     if (_json.containsKey("accountAccess")) {
-      accountAccess = new AccountAccess.fromJson(_json["accountAccess"]);
+      accountAccess = AccountAccess.fromJson(_json["accountAccess"]);
     }
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("containerAccess")) {
       containerAccess = (_json["containerAccess"] as core.List)
-          .map<ContainerAccess>((value) => new ContainerAccess.fromJson(value))
+          .map<ContainerAccess>((value) => ContainerAccess.fromJson(value))
           .toList();
     }
     if (_json.containsKey("emailAddress")) {
@@ -7836,16 +8325,16 @@ class UserPermission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountAccess != null) {
-      _json["accountAccess"] = (accountAccess).toJson();
+      _json["accountAccess"] = accountAccess.toJson();
     }
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (containerAccess != null) {
       _json["containerAccess"] =
-          containerAccess.map((value) => (value).toJson()).toList();
+          containerAccess.map((value) => value.toJson()).toList();
     }
     if (emailAddress != null) {
       _json["emailAddress"] = emailAddress;
@@ -7953,7 +8442,7 @@ class Variable {
       fingerprint = _json["fingerprint"];
     }
     if (_json.containsKey("formatValue")) {
-      formatValue = new VariableFormatValue.fromJson(_json["formatValue"]);
+      formatValue = VariableFormatValue.fromJson(_json["formatValue"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -7963,7 +8452,7 @@ class Variable {
     }
     if (_json.containsKey("parameter")) {
       parameter = (_json["parameter"] as core.List)
-          .map<Parameter>((value) => new Parameter.fromJson(value))
+          .map<Parameter>((value) => Parameter.fromJson(value))
           .toList();
     }
     if (_json.containsKey("parentFolderId")) {
@@ -7994,7 +8483,7 @@ class Variable {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -8011,7 +8500,7 @@ class Variable {
       _json["fingerprint"] = fingerprint;
     }
     if (formatValue != null) {
-      _json["formatValue"] = (formatValue).toJson();
+      _json["formatValue"] = formatValue.toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -8020,7 +8509,7 @@ class Variable {
       _json["notes"] = notes;
     }
     if (parameter != null) {
-      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+      _json["parameter"] = parameter.map((value) => value.toJson()).toList();
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
@@ -8078,38 +8567,37 @@ class VariableFormatValue {
       caseConversionType = _json["caseConversionType"];
     }
     if (_json.containsKey("convertFalseToValue")) {
-      convertFalseToValue =
-          new Parameter.fromJson(_json["convertFalseToValue"]);
+      convertFalseToValue = Parameter.fromJson(_json["convertFalseToValue"]);
     }
     if (_json.containsKey("convertNullToValue")) {
-      convertNullToValue = new Parameter.fromJson(_json["convertNullToValue"]);
+      convertNullToValue = Parameter.fromJson(_json["convertNullToValue"]);
     }
     if (_json.containsKey("convertTrueToValue")) {
-      convertTrueToValue = new Parameter.fromJson(_json["convertTrueToValue"]);
+      convertTrueToValue = Parameter.fromJson(_json["convertTrueToValue"]);
     }
     if (_json.containsKey("convertUndefinedToValue")) {
       convertUndefinedToValue =
-          new Parameter.fromJson(_json["convertUndefinedToValue"]);
+          Parameter.fromJson(_json["convertUndefinedToValue"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (caseConversionType != null) {
       _json["caseConversionType"] = caseConversionType;
     }
     if (convertFalseToValue != null) {
-      _json["convertFalseToValue"] = (convertFalseToValue).toJson();
+      _json["convertFalseToValue"] = convertFalseToValue.toJson();
     }
     if (convertNullToValue != null) {
-      _json["convertNullToValue"] = (convertNullToValue).toJson();
+      _json["convertNullToValue"] = convertNullToValue.toJson();
     }
     if (convertTrueToValue != null) {
-      _json["convertTrueToValue"] = (convertTrueToValue).toJson();
+      _json["convertTrueToValue"] = convertTrueToValue.toJson();
     }
     if (convertUndefinedToValue != null) {
-      _json["convertUndefinedToValue"] = (convertUndefinedToValue).toJson();
+      _json["convertUndefinedToValue"] = convertUndefinedToValue.toJson();
     }
     return _json;
   }
@@ -8177,7 +8665,7 @@ class Workspace {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -8252,12 +8740,12 @@ class Zone {
       accountId = _json["accountId"];
     }
     if (_json.containsKey("boundary")) {
-      boundary = new ZoneBoundary.fromJson(_json["boundary"]);
+      boundary = ZoneBoundary.fromJson(_json["boundary"]);
     }
     if (_json.containsKey("childContainer")) {
       childContainer = (_json["childContainer"] as core.List)
           .map<ZoneChildContainer>(
-              (value) => new ZoneChildContainer.fromJson(value))
+              (value) => ZoneChildContainer.fromJson(value))
           .toList();
     }
     if (_json.containsKey("containerId")) {
@@ -8279,8 +8767,7 @@ class Zone {
       tagManagerUrl = _json["tagManagerUrl"];
     }
     if (_json.containsKey("typeRestriction")) {
-      typeRestriction =
-          new ZoneTypeRestriction.fromJson(_json["typeRestriction"]);
+      typeRestriction = ZoneTypeRestriction.fromJson(_json["typeRestriction"]);
     }
     if (_json.containsKey("workspaceId")) {
       workspaceId = _json["workspaceId"];
@@ -8292,16 +8779,16 @@ class Zone {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
     if (boundary != null) {
-      _json["boundary"] = (boundary).toJson();
+      _json["boundary"] = boundary.toJson();
     }
     if (childContainer != null) {
       _json["childContainer"] =
-          childContainer.map((value) => (value).toJson()).toList();
+          childContainer.map((value) => value.toJson()).toList();
     }
     if (containerId != null) {
       _json["containerId"] = containerId;
@@ -8322,7 +8809,7 @@ class Zone {
       _json["tagManagerUrl"] = tagManagerUrl;
     }
     if (typeRestriction != null) {
-      _json["typeRestriction"] = (typeRestriction).toJson();
+      _json["typeRestriction"] = typeRestriction.toJson();
     }
     if (workspaceId != null) {
       _json["workspaceId"] = workspaceId;
@@ -8348,7 +8835,7 @@ class ZoneBoundary {
   ZoneBoundary.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
       condition = (_json["condition"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
+          .map<Condition>((value) => Condition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("customEvaluationTriggerId")) {
@@ -8359,9 +8846,9 @@ class ZoneBoundary {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (condition != null) {
-      _json["condition"] = condition.map((value) => (value).toJson()).toList();
+      _json["condition"] = condition.map((value) => value.toJson()).toList();
     }
     if (customEvaluationTriggerId != null) {
       _json["customEvaluationTriggerId"] = customEvaluationTriggerId;
@@ -8391,7 +8878,7 @@ class ZoneChildContainer {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (nickname != null) {
       _json["nickname"] = nickname;
     }
@@ -8424,7 +8911,7 @@ class ZoneTypeRestriction {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enable != null) {
       _json["enable"] = enable;
     }

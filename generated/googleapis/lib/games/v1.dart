@@ -1,6 +1,24 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unused_import, unnecessary_cast
+// ignore_for_file: avoid_unused_constructor_parameters
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: directives_ordering
+// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: library_names
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: omit_local_variable_types
+// ignore_for_file: prefer_final_locals
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_single_quotes
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_cast
+// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unused_field
+// ignore_for_file: unused_import
 
 library googleapis.games.v1;
 
@@ -29,26 +47,26 @@ class GamesApi {
   final commons.ApiRequester _requester;
 
   AchievementDefinitionsResourceApi get achievementDefinitions =>
-      new AchievementDefinitionsResourceApi(_requester);
+      AchievementDefinitionsResourceApi(_requester);
   AchievementsResourceApi get achievements =>
-      new AchievementsResourceApi(_requester);
+      AchievementsResourceApi(_requester);
   ApplicationsResourceApi get applications =>
-      new ApplicationsResourceApi(_requester);
-  EventsResourceApi get events => new EventsResourceApi(_requester);
+      ApplicationsResourceApi(_requester);
+  EventsResourceApi get events => EventsResourceApi(_requester);
   LeaderboardsResourceApi get leaderboards =>
-      new LeaderboardsResourceApi(_requester);
-  MetagameResourceApi get metagame => new MetagameResourceApi(_requester);
-  PlayersResourceApi get players => new PlayersResourceApi(_requester);
-  RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
-  ScoresResourceApi get scores => new ScoresResourceApi(_requester);
-  SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
-  StatsResourceApi get stats => new StatsResourceApi(_requester);
+      LeaderboardsResourceApi(_requester);
+  MetagameResourceApi get metagame => MetagameResourceApi(_requester);
+  PlayersResourceApi get players => PlayersResourceApi(_requester);
+  RevisionsResourceApi get revisions => RevisionsResourceApi(_requester);
+  ScoresResourceApi get scores => ScoresResourceApi(_requester);
+  SnapshotsResourceApi get snapshots => SnapshotsResourceApi(_requester);
+  StatsResourceApi get stats => StatsResourceApi(_requester);
 
   GamesApi(http.Client client,
       {core.String rootUrl = "https://games.googleapis.com/",
       core.String servicePath = ""})
       : _requester =
-            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
 class AchievementDefinitionsResourceApi {
@@ -81,17 +99,18 @@ class AchievementDefinitionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementDefinitionsListResponse> list(
-      {core.int maxResults,
-      core.String language,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementDefinitionsListResponse> list({
+    core.int maxResults,
+    core.String language,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -108,14 +127,17 @@ class AchievementDefinitionsResourceApi {
 
     _url = 'games/v1/achievements';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AchievementDefinitionsListResponse.fromJson(data));
+        .then((data) => AchievementDefinitionsListResponse.fromJson(data));
   }
 }
 
@@ -148,20 +170,23 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementIncrementResponse> increment(
-      core.String achievementId, core.int stepsToIncrement,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String achievementId,
+    core.int stepsToIncrement, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if (stepsToIncrement == null) {
-      throw new core.ArgumentError("Parameter stepsToIncrement is required.");
+      throw core.ArgumentError("Parameter stepsToIncrement is required.");
     }
     _queryParams["stepsToIncrement"] = ["${stepsToIncrement}"];
     if (requestId != null) {
@@ -175,14 +200,17 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/increment';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AchievementIncrementResponse.fromJson(data));
+        .then((data) => AchievementIncrementResponse.fromJson(data));
   }
 
   /// Lists the progress for all your application's achievements for the
@@ -221,21 +249,23 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerAchievementListResponse> list(core.String playerId,
-      {core.String state,
-      core.int maxResults,
-      core.String pageToken,
-      core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlayerAchievementListResponse> list(
+    core.String playerId, {
+    core.String state,
+    core.int maxResults,
+    core.String pageToken,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if (state != null) {
       _queryParams["state"] = [state];
@@ -257,14 +287,17 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$playerId') +
         '/achievements';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PlayerAchievementListResponse.fromJson(data));
+        .then((data) => PlayerAchievementListResponse.fromJson(data));
   }
 
   /// Sets the state of the achievement with the given ID to `REVEALED` for the
@@ -284,17 +317,19 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementRevealResponse> reveal(core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementRevealResponse> reveal(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -304,14 +339,16 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reveal';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementRevealResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementRevealResponse.fromJson(data));
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
@@ -336,20 +373,22 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(
-      core.String achievementId, core.int steps,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String achievementId,
+    core.int steps, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if (steps == null) {
-      throw new core.ArgumentError("Parameter steps is required.");
+      throw core.ArgumentError("Parameter steps is required.");
     }
     _queryParams["steps"] = ["${steps}"];
     if ($fields != null) {
@@ -360,14 +399,17 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AchievementSetStepsAtLeastResponse.fromJson(data));
+        .then((data) => AchievementSetStepsAtLeastResponse.fromJson(data));
   }
 
   /// Unlocks this achievement for the currently authenticated player.
@@ -386,17 +428,19 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<AchievementUnlockResponse> unlock(
+    core.String achievementId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
+      throw core.ArgumentError("Parameter achievementId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -406,14 +450,16 @@ class AchievementsResourceApi {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/unlock';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementUnlockResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => AchievementUnlockResponse.fromJson(data));
   }
 
   /// Updates multiple achievements for the currently authenticated player.
@@ -433,17 +479,18 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
-      AchievementUpdateMultipleRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    AchievementUpdateMultipleRequest request, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -451,14 +498,17 @@ class AchievementsResourceApi {
 
     _url = 'games/v1/achievements/updateMultiple';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new AchievementUpdateMultipleResponse.fromJson(data));
+        .then((data) => AchievementUpdateMultipleResponse.fromJson(data));
   }
 }
 
@@ -497,17 +547,21 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String applicationId,
-      {core.String language, core.String platformType, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Application> get(
+    core.String applicationId, {
+    core.String language,
+    core.String platformType,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -522,13 +576,16 @@ class ApplicationsResourceApi {
     _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Application.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Application.fromJson(data));
   }
 
   /// Indicate that the currently authenticated user is playing your
@@ -544,13 +601,15 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future played({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -560,12 +619,15 @@ class ApplicationsResourceApi {
 
     _url = 'games/v1/applications/played';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response.then((data) => null);
   }
 
@@ -588,17 +650,19 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ApplicationVerifyResponse> verify(core.String applicationId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<ApplicationVerifyResponse> verify(
+    core.String applicationId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (applicationId == null) {
-      throw new core.ArgumentError("Parameter applicationId is required.");
+      throw core.ArgumentError("Parameter applicationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -608,14 +672,16 @@ class ApplicationsResourceApi {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/verify';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ApplicationVerifyResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => ApplicationVerifyResponse.fromJson(data));
   }
 }
 
@@ -648,17 +714,18 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerEventListResponse> listByPlayer(
-      {core.String pageToken,
-      core.String language,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlayerEventListResponse> listByPlayer({
+    core.String pageToken,
+    core.String language,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -675,13 +742,16 @@ class EventsResourceApi {
 
     _url = 'games/v1/events';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlayerEventListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerEventListResponse.fromJson(data));
   }
 
   /// Returns a list of the event definitions in this application.
@@ -707,17 +777,18 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventDefinitionListResponse> listDefinitions(
-      {core.String language,
-      core.String pageToken,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventDefinitionListResponse> listDefinitions({
+    core.String language,
+    core.String pageToken,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -734,14 +805,16 @@ class EventsResourceApi {
 
     _url = 'games/v1/eventDefinitions';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new EventDefinitionListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventDefinitionListResponse.fromJson(data));
   }
 
   /// Records a batch of changes to the number of times events have occurred for
@@ -764,17 +837,20 @@ class EventsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventUpdateResponse> record(EventRecordRequest request,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<EventUpdateResponse> record(
+    EventRecordRequest request, {
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -785,13 +861,16 @@ class EventsResourceApi {
 
     _url = 'games/v1/events';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new EventUpdateResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => EventUpdateResponse.fromJson(data));
   }
 }
 
@@ -819,17 +898,20 @@ class LeaderboardsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Leaderboard> get(core.String leaderboardId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Leaderboard> get(
+    core.String leaderboardId, {
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -841,13 +923,16 @@ class LeaderboardsResourceApi {
     _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Leaderboard.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Leaderboard.fromJson(data));
   }
 
   /// Lists all the leaderboard metadata for your application.
@@ -873,17 +958,18 @@ class LeaderboardsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LeaderboardListResponse> list(
-      {core.String pageToken,
-      core.int maxResults,
-      core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<LeaderboardListResponse> list({
+    core.String pageToken,
+    core.int maxResults,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -900,13 +986,16 @@ class LeaderboardsResourceApi {
 
     _url = 'games/v1/leaderboards';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LeaderboardListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardListResponse.fromJson(data));
   }
 }
 
@@ -929,13 +1018,15 @@ class MetagameResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetagameConfig> getMetagameConfig({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<MetagameConfig> getMetagameConfig({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -943,13 +1034,16 @@ class MetagameResourceApi {
 
     _url = 'games/v1/metagameConfig';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new MetagameConfig.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => MetagameConfig.fromJson(data));
   }
 
   /// List play data aggregated per category for the player corresponding to
@@ -986,23 +1080,25 @@ class MetagameResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CategoryListResponse> listCategoriesByPlayer(
-      core.String playerId, core.String collection,
-      {core.String language,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String playerId,
+    core.String collection, {
+    core.String language,
+    core.int maxResults,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if (collection == null) {
-      throw new core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError("Parameter collection is required.");
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1022,13 +1118,16 @@ class MetagameResourceApi {
         '/categories/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new CategoryListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => CategoryListResponse.fromJson(data));
   }
 }
 
@@ -1058,17 +1157,20 @@ class PlayersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Player> get(core.String playerId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Player> get(
+    core.String playerId, {
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1079,13 +1181,16 @@ class PlayersResourceApi {
 
     _url = 'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Player.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Player.fromJson(data));
   }
 
   /// Get the collection of players for the currently authenticated user.
@@ -1120,20 +1225,22 @@ class PlayersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerListResponse> list(core.String collection,
-      {core.String pageToken,
-      core.int maxResults,
-      core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<PlayerListResponse> list(
+    core.String collection, {
+    core.String pageToken,
+    core.int maxResults,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (collection == null) {
-      throw new core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError("Parameter collection is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1151,13 +1258,16 @@ class PlayersResourceApi {
     _url = 'games/v1/players/me/players/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlayerListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerListResponse.fromJson(data));
   }
 }
 
@@ -1186,17 +1296,19 @@ class RevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RevisionCheckResponse> check(core.String clientRevision,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<RevisionCheckResponse> check(
+    core.String clientRevision, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (clientRevision == null) {
-      throw new core.ArgumentError("Parameter clientRevision is required.");
+      throw core.ArgumentError("Parameter clientRevision is required.");
     }
     _queryParams["clientRevision"] = [clientRevision];
     if ($fields != null) {
@@ -1205,13 +1317,16 @@ class RevisionsResourceApi {
 
     _url = 'games/v1/revisions/check';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new RevisionCheckResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => RevisionCheckResponse.fromJson(data));
   }
 }
 
@@ -1274,27 +1389,30 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerLeaderboardScoreListResponse> get(
-      core.String playerId, core.String leaderboardId, core.String timeSpan,
-      {core.int maxResults,
-      core.String includeRankType,
-      core.String pageToken,
-      core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String playerId,
+    core.String leaderboardId,
+    core.String timeSpan, {
+    core.int maxResults,
+    core.String includeRankType,
+    core.String pageToken,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if (timeSpan == null) {
-      throw new core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError("Parameter timeSpan is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1319,14 +1437,17 @@ class ScoresResourceApi {
         '/scores/' +
         commons.Escaper.ecapeVariable('$timeSpan');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
     return _response
-        .then((data) => new PlayerLeaderboardScoreListResponse.fromJson(data));
+        .then((data) => PlayerLeaderboardScoreListResponse.fromJson(data));
   }
 
   /// Lists the scores in a leaderboard, starting from the top.
@@ -1369,26 +1490,29 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> list(
-      core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String pageToken,
-      core.String language,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String leaderboardId,
+    core.String collection,
+    core.String timeSpan, {
+    core.String pageToken,
+    core.String language,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if (collection == null) {
-      throw new core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError("Parameter collection is required.");
     }
     if (timeSpan == null) {
-      throw new core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
     if (pageToken != null) {
@@ -1409,13 +1533,16 @@ class ScoresResourceApi {
         '/scores/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LeaderboardScores.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardScores.fromJson(data));
   }
 
   /// Lists the scores in a leaderboard around (and including) a player's score.
@@ -1466,28 +1593,31 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardScores> listWindow(
-      core.String leaderboardId, core.String collection, core.String timeSpan,
-      {core.String pageToken,
-      core.int resultsAbove,
-      core.bool returnTopIfAbsent,
-      core.String language,
-      core.int maxResults,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String leaderboardId,
+    core.String collection,
+    core.String timeSpan, {
+    core.String pageToken,
+    core.int resultsAbove,
+    core.bool returnTopIfAbsent,
+    core.String language,
+    core.int maxResults,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if (collection == null) {
-      throw new core.ArgumentError("Parameter collection is required.");
+      throw core.ArgumentError("Parameter collection is required.");
     }
     if (timeSpan == null) {
-      throw new core.ArgumentError("Parameter timeSpan is required.");
+      throw core.ArgumentError("Parameter timeSpan is required.");
     }
     _queryParams["timeSpan"] = [timeSpan];
     if (pageToken != null) {
@@ -1514,13 +1644,16 @@ class ScoresResourceApi {
         '/window/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LeaderboardScores.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => LeaderboardScores.fromJson(data));
   }
 
   /// Submits a score to the specified leaderboard.
@@ -1555,20 +1688,24 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerScoreResponse> submit(
-      core.String leaderboardId, core.String score,
-      {core.String scoreTag, core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    core.String leaderboardId,
+    core.String score, {
+    core.String scoreTag,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
+      throw core.ArgumentError("Parameter leaderboardId is required.");
     }
     if (score == null) {
-      throw new core.ArgumentError("Parameter score is required.");
+      throw core.ArgumentError("Parameter score is required.");
     }
     _queryParams["score"] = [score];
     if (scoreTag != null) {
@@ -1585,13 +1722,16 @@ class ScoresResourceApi {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlayerScoreResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerScoreResponse.fromJson(data));
   }
 
   /// Submits multiple scores to leaderboards.
@@ -1614,18 +1754,19 @@ class ScoresResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerScoreListResponse> submitMultiple(
-      PlayerScoreSubmissionList request,
-      {core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+    PlayerScoreSubmissionList request, {
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (request != null) {
-      _body = convert.json.encode((request).toJson());
+      _body = convert.json.encode(request.toJson());
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1636,13 +1777,16 @@ class ScoresResourceApi {
 
     _url = 'games/v1/leaderboards/scores';
 
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PlayerScoreListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "POST",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => PlayerScoreListResponse.fromJson(data));
   }
 }
 
@@ -1670,17 +1814,20 @@ class SnapshotsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Snapshot> get(core.String snapshotId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<Snapshot> get(
+    core.String snapshotId, {
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (snapshotId == null) {
-      throw new core.ArgumentError("Parameter snapshotId is required.");
+      throw core.ArgumentError("Parameter snapshotId is required.");
     }
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1691,13 +1838,16 @@ class SnapshotsResourceApi {
 
     _url = 'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Snapshot.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => Snapshot.fromJson(data));
   }
 
   /// Retrieves a list of snapshots created by your application for the player
@@ -1727,20 +1877,22 @@ class SnapshotsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SnapshotListResponse> list(core.String playerId,
-      {core.int maxResults,
-      core.String pageToken,
-      core.String language,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<SnapshotListResponse> list(
+    core.String playerId, {
+    core.int maxResults,
+    core.String pageToken,
+    core.String language,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
+      throw core.ArgumentError("Parameter playerId is required.");
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1759,13 +1911,16 @@ class SnapshotsResourceApi {
         commons.Escaper.ecapeVariable('$playerId') +
         '/snapshots';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new SnapshotListResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => SnapshotListResponse.fromJson(data));
   }
 }
 
@@ -1789,13 +1944,15 @@ class StatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<StatsResponse> get({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
+  async.Future<StatsResponse> get({
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
+    core.String _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1803,13 +1960,16 @@ class StatsResourceApi {
 
     _url = 'games/v1/stats';
 
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new StatsResponse.fromJson(data));
+    final _response = _requester.request(
+      _url,
+      "GET",
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then((data) => StatsResponse.fromJson(data));
   }
 }
 
@@ -1912,7 +2072,7 @@ class AchievementDefinition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementType != null) {
       _json["achievementType"] = achievementType;
     }
@@ -1974,7 +2134,7 @@ class AchievementDefinitionsListResponse {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<AchievementDefinition>(
-              (value) => new AchievementDefinition.fromJson(value))
+              (value) => AchievementDefinition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -1987,9 +2147,9 @@ class AchievementDefinitionsListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2030,7 +2190,7 @@ class AchievementIncrementResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentSteps != null) {
       _json["currentSteps"] = currentSteps;
     }
@@ -2071,7 +2231,7 @@ class AchievementRevealResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentState != null) {
       _json["currentState"] = currentState;
     }
@@ -2111,7 +2271,7 @@ class AchievementSetStepsAtLeastResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentSteps != null) {
       _json["currentSteps"] = currentSteps;
     }
@@ -2148,7 +2308,7 @@ class AchievementUnlockResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2177,19 +2337,19 @@ class AchievementUpdateMultipleRequest {
     if (_json.containsKey("updates")) {
       updates = (_json["updates"] as core.List)
           .map<AchievementUpdateRequest>(
-              (value) => new AchievementUpdateRequest.fromJson(value))
+              (value) => AchievementUpdateRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (updates != null) {
-      _json["updates"] = updates.map((value) => (value).toJson()).toList();
+      _json["updates"] = updates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2213,20 +2373,20 @@ class AchievementUpdateMultipleResponse {
     if (_json.containsKey("updatedAchievements")) {
       updatedAchievements = (_json["updatedAchievements"] as core.List)
           .map<AchievementUpdateResponse>(
-              (value) => new AchievementUpdateResponse.fromJson(value))
+              (value) => AchievementUpdateResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (updatedAchievements != null) {
       _json["updatedAchievements"] =
-          updatedAchievements.map((value) => (value).toJson()).toList();
+          updatedAchievements.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -2267,13 +2427,13 @@ class AchievementUpdateRequest {
     }
     if (_json.containsKey("incrementPayload")) {
       incrementPayload =
-          new GamesAchievementIncrement.fromJson(_json["incrementPayload"]);
+          GamesAchievementIncrement.fromJson(_json["incrementPayload"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
     if (_json.containsKey("setStepsAtLeastPayload")) {
-      setStepsAtLeastPayload = new GamesAchievementSetStepsAtLeast.fromJson(
+      setStepsAtLeastPayload = GamesAchievementSetStepsAtLeast.fromJson(
           _json["setStepsAtLeastPayload"]);
     }
     if (_json.containsKey("updateType")) {
@@ -2283,18 +2443,18 @@ class AchievementUpdateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementId != null) {
       _json["achievementId"] = achievementId;
     }
     if (incrementPayload != null) {
-      _json["incrementPayload"] = (incrementPayload).toJson();
+      _json["incrementPayload"] = incrementPayload.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (setStepsAtLeastPayload != null) {
-      _json["setStepsAtLeastPayload"] = (setStepsAtLeastPayload).toJson();
+      _json["setStepsAtLeastPayload"] = setStepsAtLeastPayload.toJson();
     }
     if (updateType != null) {
       _json["updateType"] = updateType;
@@ -2355,7 +2515,7 @@ class AchievementUpdateResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementId != null) {
       _json["achievementId"] = achievementId;
     }
@@ -2429,14 +2589,14 @@ class Application {
     }
     if (_json.containsKey("assets")) {
       assets = (_json["assets"] as core.List)
-          .map<ImageAsset>((value) => new ImageAsset.fromJson(value))
+          .map<ImageAsset>((value) => ImageAsset.fromJson(value))
           .toList();
     }
     if (_json.containsKey("author")) {
       author = _json["author"];
     }
     if (_json.containsKey("category")) {
-      category = new ApplicationCategory.fromJson(_json["category"]);
+      category = ApplicationCategory.fromJson(_json["category"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2450,7 +2610,7 @@ class Application {
     }
     if (_json.containsKey("instances")) {
       instances = (_json["instances"] as core.List)
-          .map<Instance>((value) => new Instance.fromJson(value))
+          .map<Instance>((value) => Instance.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2472,18 +2632,18 @@ class Application {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementCount != null) {
       _json["achievement_count"] = achievementCount;
     }
     if (assets != null) {
-      _json["assets"] = assets.map((value) => (value).toJson()).toList();
+      _json["assets"] = assets.map((value) => value.toJson()).toList();
     }
     if (author != null) {
       _json["author"] = author;
     }
     if (category != null) {
-      _json["category"] = (category).toJson();
+      _json["category"] = category.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -2495,7 +2655,7 @@ class Application {
       _json["id"] = id;
     }
     if (instances != null) {
-      _json["instances"] = instances.map((value) => (value).toJson()).toList();
+      _json["instances"] = instances.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2544,7 +2704,7 @@ class ApplicationCategory {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2587,7 +2747,7 @@ class ApplicationVerifyResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (alternatePlayerId != null) {
       _json["alternate_player_id"] = alternatePlayerId;
     }
@@ -2629,7 +2789,7 @@ class Category {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (category != null) {
       _json["category"] = category;
     }
@@ -2660,7 +2820,7 @@ class CategoryListResponse {
   CategoryListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Category>((value) => new Category.fromJson(value))
+          .map<Category>((value) => Category.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2673,9 +2833,9 @@ class CategoryListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2723,13 +2883,13 @@ class EventBatchRecordFailure {
       kind = _json["kind"];
     }
     if (_json.containsKey("range")) {
-      range = new EventPeriodRange.fromJson(_json["range"]);
+      range = EventPeriodRange.fromJson(_json["range"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (failureCause != null) {
       _json["failureCause"] = failureCause;
     }
@@ -2737,7 +2897,7 @@ class EventBatchRecordFailure {
       _json["kind"] = kind;
     }
     if (range != null) {
-      _json["range"] = (range).toJson();
+      _json["range"] = range.toJson();
     }
     return _json;
   }
@@ -2765,7 +2925,7 @@ class EventChild {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (childId != null) {
       _json["childId"] = childId;
     }
@@ -2814,7 +2974,7 @@ class EventDefinition {
   EventDefinition.fromJson(core.Map _json) {
     if (_json.containsKey("childEvents")) {
       childEvents = (_json["childEvents"] as core.List)
-          .map<EventChild>((value) => new EventChild.fromJson(value))
+          .map<EventChild>((value) => EventChild.fromJson(value))
           .toList();
     }
     if (_json.containsKey("description")) {
@@ -2842,10 +3002,10 @@ class EventDefinition {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (childEvents != null) {
       _json["childEvents"] =
-          childEvents.map((value) => (value).toJson()).toList();
+          childEvents.map((value) => value.toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -2889,7 +3049,7 @@ class EventDefinitionListResponse {
   EventDefinitionListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<EventDefinition>((value) => new EventDefinition.fromJson(value))
+          .map<EventDefinition>((value) => EventDefinition.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -2902,9 +3062,9 @@ class EventDefinitionListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2946,7 +3106,7 @@ class EventPeriodRange {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2979,27 +3139,27 @@ class EventPeriodUpdate {
       kind = _json["kind"];
     }
     if (_json.containsKey("timePeriod")) {
-      timePeriod = new EventPeriodRange.fromJson(_json["timePeriod"]);
+      timePeriod = EventPeriodRange.fromJson(_json["timePeriod"]);
     }
     if (_json.containsKey("updates")) {
       updates = (_json["updates"] as core.List)
           .map<EventUpdateRequest>(
-              (value) => new EventUpdateRequest.fromJson(value))
+              (value) => EventUpdateRequest.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (timePeriod != null) {
-      _json["timePeriod"] = (timePeriod).toJson();
+      _json["timePeriod"] = timePeriod.toJson();
     }
     if (updates != null) {
-      _json["updates"] = updates.map((value) => (value).toJson()).toList();
+      _json["updates"] = updates.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3039,7 +3199,7 @@ class EventRecordFailure {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (eventId != null) {
       _json["eventId"] = eventId;
     }
@@ -3083,15 +3243,14 @@ class EventRecordRequest {
     }
     if (_json.containsKey("timePeriods")) {
       timePeriods = (_json["timePeriods"] as core.List)
-          .map<EventPeriodUpdate>(
-              (value) => new EventPeriodUpdate.fromJson(value))
+          .map<EventPeriodUpdate>((value) => EventPeriodUpdate.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentTimeMillis != null) {
       _json["currentTimeMillis"] = currentTimeMillis;
     }
@@ -3103,7 +3262,7 @@ class EventRecordRequest {
     }
     if (timePeriods != null) {
       _json["timePeriods"] =
-          timePeriods.map((value) => (value).toJson()).toList();
+          timePeriods.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3137,7 +3296,7 @@ class EventUpdateRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (definitionId != null) {
       _json["definitionId"] = definitionId;
     }
@@ -3172,13 +3331,13 @@ class EventUpdateResponse {
     if (_json.containsKey("batchFailures")) {
       batchFailures = (_json["batchFailures"] as core.List)
           .map<EventBatchRecordFailure>(
-              (value) => new EventBatchRecordFailure.fromJson(value))
+              (value) => EventBatchRecordFailure.fromJson(value))
           .toList();
     }
     if (_json.containsKey("eventFailures")) {
       eventFailures = (_json["eventFailures"] as core.List)
           .map<EventRecordFailure>(
-              (value) => new EventRecordFailure.fromJson(value))
+              (value) => EventRecordFailure.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3186,28 +3345,28 @@ class EventUpdateResponse {
     }
     if (_json.containsKey("playerEvents")) {
       playerEvents = (_json["playerEvents"] as core.List)
-          .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (batchFailures != null) {
       _json["batchFailures"] =
-          batchFailures.map((value) => (value).toJson()).toList();
+          batchFailures.map((value) => value.toJson()).toList();
     }
     if (eventFailures != null) {
       _json["eventFailures"] =
-          eventFailures.map((value) => (value).toJson()).toList();
+          eventFailures.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (playerEvents != null) {
       _json["playerEvents"] =
-          playerEvents.map((value) => (value).toJson()).toList();
+          playerEvents.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3241,7 +3400,7 @@ class GamesAchievementIncrement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3277,7 +3436,7 @@ class GamesAchievementSetStepsAtLeast {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3328,7 +3487,7 @@ class ImageAsset {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -3391,10 +3550,10 @@ class Instance {
     }
     if (_json.containsKey("androidInstance")) {
       androidInstance =
-          new InstanceAndroidDetails.fromJson(_json["androidInstance"]);
+          InstanceAndroidDetails.fromJson(_json["androidInstance"]);
     }
     if (_json.containsKey("iosInstance")) {
-      iosInstance = new InstanceIosDetails.fromJson(_json["iosInstance"]);
+      iosInstance = InstanceIosDetails.fromJson(_json["iosInstance"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3412,21 +3571,21 @@ class Instance {
       turnBasedPlay = _json["turnBasedPlay"];
     }
     if (_json.containsKey("webInstance")) {
-      webInstance = new InstanceWebDetails.fromJson(_json["webInstance"]);
+      webInstance = InstanceWebDetails.fromJson(_json["webInstance"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (acquisitionUri != null) {
       _json["acquisitionUri"] = acquisitionUri;
     }
     if (androidInstance != null) {
-      _json["androidInstance"] = (androidInstance).toJson();
+      _json["androidInstance"] = androidInstance.toJson();
     }
     if (iosInstance != null) {
-      _json["iosInstance"] = (iosInstance).toJson();
+      _json["iosInstance"] = iosInstance.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3444,7 +3603,7 @@ class Instance {
       _json["turnBasedPlay"] = turnBasedPlay;
     }
     if (webInstance != null) {
-      _json["webInstance"] = (webInstance).toJson();
+      _json["webInstance"] = webInstance.toJson();
     }
     return _json;
   }
@@ -3484,7 +3643,7 @@ class InstanceAndroidDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (enablePiracyCheck != null) {
       _json["enablePiracyCheck"] = enablePiracyCheck;
     }
@@ -3555,7 +3714,7 @@ class InstanceIosDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (bundleIdentifier != null) {
       _json["bundleIdentifier"] = bundleIdentifier;
     }
@@ -3609,7 +3768,7 @@ class InstanceWebDetails {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3676,7 +3835,7 @@ class Leaderboard {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
     }
@@ -3749,7 +3908,7 @@ class LeaderboardEntry {
       kind = _json["kind"];
     }
     if (_json.containsKey("player")) {
-      player = new Player.fromJson(_json["player"]);
+      player = Player.fromJson(_json["player"]);
     }
     if (_json.containsKey("scoreRank")) {
       scoreRank = _json["scoreRank"];
@@ -3770,7 +3929,7 @@ class LeaderboardEntry {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedScore != null) {
       _json["formattedScore"] = formattedScore;
     }
@@ -3781,7 +3940,7 @@ class LeaderboardEntry {
       _json["kind"] = kind;
     }
     if (player != null) {
-      _json["player"] = (player).toJson();
+      _json["player"] = player.toJson();
     }
     if (scoreRank != null) {
       _json["scoreRank"] = scoreRank;
@@ -3819,7 +3978,7 @@ class LeaderboardListResponse {
   LeaderboardListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Leaderboard>((value) => new Leaderboard.fromJson(value))
+          .map<Leaderboard>((value) => Leaderboard.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3832,9 +3991,9 @@ class LeaderboardListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3886,7 +4045,7 @@ class LeaderboardScoreRank {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedNumScores != null) {
       _json["formattedNumScores"] = formattedNumScores;
     }
@@ -3936,8 +4095,7 @@ class LeaderboardScores {
   LeaderboardScores.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<LeaderboardEntry>(
-              (value) => new LeaderboardEntry.fromJson(value))
+          .map<LeaderboardEntry>((value) => LeaderboardEntry.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -3950,7 +4108,7 @@ class LeaderboardScores {
       numScores = _json["numScores"];
     }
     if (_json.containsKey("playerScore")) {
-      playerScore = new LeaderboardEntry.fromJson(_json["playerScore"]);
+      playerScore = LeaderboardEntry.fromJson(_json["playerScore"]);
     }
     if (_json.containsKey("prevPageToken")) {
       prevPageToken = _json["prevPageToken"];
@@ -3959,9 +4117,9 @@ class LeaderboardScores {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3973,7 +4131,7 @@ class LeaderboardScores {
       _json["numScores"] = numScores;
     }
     if (playerScore != null) {
-      _json["playerScore"] = (playerScore).toJson();
+      _json["playerScore"] = playerScore.toJson();
     }
     if (prevPageToken != null) {
       _json["prevPageToken"] = prevPageToken;
@@ -4006,14 +4164,14 @@ class MetagameConfig {
     }
     if (_json.containsKey("playerLevels")) {
       playerLevels = (_json["playerLevels"] as core.List)
-          .map<PlayerLevel>((value) => new PlayerLevel.fromJson(value))
+          .map<PlayerLevel>((value) => PlayerLevel.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentVersion != null) {
       _json["currentVersion"] = currentVersion;
     }
@@ -4022,7 +4180,7 @@ class MetagameConfig {
     }
     if (playerLevels != null) {
       _json["playerLevels"] =
-          playerLevels.map((value) => (value).toJson()).toList();
+          playerLevels.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4051,7 +4209,7 @@ class PlayerName {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -4126,8 +4284,7 @@ class Player {
       displayName = _json["displayName"];
     }
     if (_json.containsKey("experienceInfo")) {
-      experienceInfo =
-          new PlayerExperienceInfo.fromJson(_json["experienceInfo"]);
+      experienceInfo = PlayerExperienceInfo.fromJson(_json["experienceInfo"]);
     }
     if (_json.containsKey("friendStatus")) {
       friendStatus = _json["friendStatus"];
@@ -4136,7 +4293,7 @@ class Player {
       kind = _json["kind"];
     }
     if (_json.containsKey("name")) {
-      name = new PlayerName.fromJson(_json["name"]);
+      name = PlayerName.fromJson(_json["name"]);
     }
     if (_json.containsKey("originalPlayerId")) {
       originalPlayerId = _json["originalPlayerId"];
@@ -4145,7 +4302,7 @@ class Player {
       playerId = _json["playerId"];
     }
     if (_json.containsKey("profileSettings")) {
-      profileSettings = new ProfileSettings.fromJson(_json["profileSettings"]);
+      profileSettings = ProfileSettings.fromJson(_json["profileSettings"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -4154,7 +4311,7 @@ class Player {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avatarImageUrl != null) {
       _json["avatarImageUrl"] = avatarImageUrl;
     }
@@ -4168,7 +4325,7 @@ class Player {
       _json["displayName"] = displayName;
     }
     if (experienceInfo != null) {
-      _json["experienceInfo"] = (experienceInfo).toJson();
+      _json["experienceInfo"] = experienceInfo.toJson();
     }
     if (friendStatus != null) {
       _json["friendStatus"] = friendStatus;
@@ -4177,7 +4334,7 @@ class Player {
       _json["kind"] = kind;
     }
     if (name != null) {
-      _json["name"] = (name).toJson();
+      _json["name"] = name.toJson();
     }
     if (originalPlayerId != null) {
       _json["originalPlayerId"] = originalPlayerId;
@@ -4186,7 +4343,7 @@ class Player {
       _json["playerId"] = playerId;
     }
     if (profileSettings != null) {
-      _json["profileSettings"] = (profileSettings).toJson();
+      _json["profileSettings"] = profileSettings.toJson();
     }
     if (title != null) {
       _json["title"] = title;
@@ -4254,7 +4411,7 @@ class PlayerAchievement {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (achievementState != null) {
       _json["achievementState"] = achievementState;
     }
@@ -4297,8 +4454,7 @@ class PlayerAchievementListResponse {
   PlayerAchievementListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<PlayerAchievement>(
-              (value) => new PlayerAchievement.fromJson(value))
+          .map<PlayerAchievement>((value) => PlayerAchievement.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4311,9 +4467,9 @@ class PlayerAchievementListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4367,7 +4523,7 @@ class PlayerEvent {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (definitionId != null) {
       _json["definitionId"] = definitionId;
     }
@@ -4404,7 +4560,7 @@ class PlayerEventListResponse {
   PlayerEventListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<PlayerEvent>((value) => new PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4417,9 +4573,9 @@ class PlayerEventListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4458,7 +4614,7 @@ class PlayerExperienceInfo {
       currentExperiencePoints = _json["currentExperiencePoints"];
     }
     if (_json.containsKey("currentLevel")) {
-      currentLevel = new PlayerLevel.fromJson(_json["currentLevel"]);
+      currentLevel = PlayerLevel.fromJson(_json["currentLevel"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4467,18 +4623,18 @@ class PlayerExperienceInfo {
       lastLevelUpTimestampMillis = _json["lastLevelUpTimestampMillis"];
     }
     if (_json.containsKey("nextLevel")) {
-      nextLevel = new PlayerLevel.fromJson(_json["nextLevel"]);
+      nextLevel = PlayerLevel.fromJson(_json["nextLevel"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (currentExperiencePoints != null) {
       _json["currentExperiencePoints"] = currentExperiencePoints;
     }
     if (currentLevel != null) {
-      _json["currentLevel"] = (currentLevel).toJson();
+      _json["currentLevel"] = currentLevel.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4487,7 +4643,7 @@ class PlayerExperienceInfo {
       _json["lastLevelUpTimestampMillis"] = lastLevelUpTimestampMillis;
     }
     if (nextLevel != null) {
-      _json["nextLevel"] = (nextLevel).toJson();
+      _json["nextLevel"] = nextLevel.toJson();
     }
     return _json;
   }
@@ -4538,7 +4694,7 @@ class PlayerLeaderboardScore {
 
   PlayerLeaderboardScore.fromJson(core.Map _json) {
     if (_json.containsKey("friendsRank")) {
-      friendsRank = new LeaderboardScoreRank.fromJson(_json["friendsRank"]);
+      friendsRank = LeaderboardScoreRank.fromJson(_json["friendsRank"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4547,7 +4703,7 @@ class PlayerLeaderboardScore {
       leaderboardId = _json["leaderboard_id"];
     }
     if (_json.containsKey("publicRank")) {
-      publicRank = new LeaderboardScoreRank.fromJson(_json["publicRank"]);
+      publicRank = LeaderboardScoreRank.fromJson(_json["publicRank"]);
     }
     if (_json.containsKey("scoreString")) {
       scoreString = _json["scoreString"];
@@ -4559,7 +4715,7 @@ class PlayerLeaderboardScore {
       scoreValue = _json["scoreValue"];
     }
     if (_json.containsKey("socialRank")) {
-      socialRank = new LeaderboardScoreRank.fromJson(_json["socialRank"]);
+      socialRank = LeaderboardScoreRank.fromJson(_json["socialRank"]);
     }
     if (_json.containsKey("timeSpan")) {
       timeSpan = _json["timeSpan"];
@@ -4571,9 +4727,9 @@ class PlayerLeaderboardScore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (friendsRank != null) {
-      _json["friendsRank"] = (friendsRank).toJson();
+      _json["friendsRank"] = friendsRank.toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4582,7 +4738,7 @@ class PlayerLeaderboardScore {
       _json["leaderboard_id"] = leaderboardId;
     }
     if (publicRank != null) {
-      _json["publicRank"] = (publicRank).toJson();
+      _json["publicRank"] = publicRank.toJson();
     }
     if (scoreString != null) {
       _json["scoreString"] = scoreString;
@@ -4594,7 +4750,7 @@ class PlayerLeaderboardScore {
       _json["scoreValue"] = scoreValue;
     }
     if (socialRank != null) {
-      _json["socialRank"] = (socialRank).toJson();
+      _json["socialRank"] = socialRank.toJson();
     }
     if (timeSpan != null) {
       _json["timeSpan"] = timeSpan;
@@ -4627,7 +4783,7 @@ class PlayerLeaderboardScoreListResponse {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
           .map<PlayerLeaderboardScore>(
-              (value) => new PlayerLeaderboardScore.fromJson(value))
+              (value) => PlayerLeaderboardScore.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4637,15 +4793,15 @@ class PlayerLeaderboardScoreListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("player")) {
-      player = new Player.fromJson(_json["player"]);
+      player = Player.fromJson(_json["player"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4654,7 +4810,7 @@ class PlayerLeaderboardScoreListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (player != null) {
-      _json["player"] = (player).toJson();
+      _json["player"] = player.toJson();
     }
     return _json;
   }
@@ -4694,7 +4850,7 @@ class PlayerLevel {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4728,7 +4884,7 @@ class PlayerListResponse {
   PlayerListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Player>((value) => new Player.fromJson(value))
+          .map<Player>((value) => Player.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -4741,9 +4897,9 @@ class PlayerListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4801,7 +4957,7 @@ class PlayerScore {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (formattedScore != null) {
       _json["formattedScore"] = formattedScore;
     }
@@ -4839,20 +4995,20 @@ class PlayerScoreListResponse {
     if (_json.containsKey("submittedScores")) {
       submittedScores = (_json["submittedScores"] as core.List)
           .map<PlayerScoreResponse>(
-              (value) => new PlayerScoreResponse.fromJson(value))
+              (value) => PlayerScoreResponse.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (submittedScores != null) {
       _json["submittedScores"] =
-          submittedScores.map((value) => (value).toJson()).toList();
+          submittedScores.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4904,14 +5060,14 @@ class PlayerScoreResponse {
     }
     if (_json.containsKey("unbeatenScores")) {
       unbeatenScores = (_json["unbeatenScores"] as core.List)
-          .map<PlayerScore>((value) => new PlayerScore.fromJson(value))
+          .map<PlayerScore>((value) => PlayerScore.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (beatenScoreTimeSpans != null) {
       _json["beatenScoreTimeSpans"] = beatenScoreTimeSpans;
     }
@@ -4929,7 +5085,7 @@ class PlayerScoreResponse {
     }
     if (unbeatenScores != null) {
       _json["unbeatenScores"] =
-          unbeatenScores.map((value) => (value).toJson()).toList();
+          unbeatenScores.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4952,19 +5108,19 @@ class PlayerScoreSubmissionList {
     }
     if (_json.containsKey("scores")) {
       scores = (_json["scores"] as core.List)
-          .map<ScoreSubmission>((value) => new ScoreSubmission.fromJson(value))
+          .map<ScoreSubmission>((value) => ScoreSubmission.fromJson(value))
           .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
     if (scores != null) {
-      _json["scores"] = scores.map((value) => (value).toJson()).toList();
+      _json["scores"] = scores.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -5008,7 +5164,7 @@ class ProfileSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (friendsListVisibility != null) {
       _json["friendsListVisibility"] = friendsListVisibility;
     }
@@ -5058,7 +5214,7 @@ class RevisionCheckResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (apiVersion != null) {
       _json["apiVersion"] = apiVersion;
     }
@@ -5114,7 +5270,7 @@ class ScoreSubmission {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5181,7 +5337,7 @@ class Snapshot {
 
   Snapshot.fromJson(core.Map _json) {
     if (_json.containsKey("coverImage")) {
-      coverImage = new SnapshotImage.fromJson(_json["coverImage"]);
+      coverImage = SnapshotImage.fromJson(_json["coverImage"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -5217,9 +5373,9 @@ class Snapshot {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (coverImage != null) {
-      _json["coverImage"] = (coverImage).toJson();
+      _json["coverImage"] = coverImage.toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -5296,7 +5452,7 @@ class SnapshotImage {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (height != null) {
       _json["height"] = height;
     }
@@ -5334,7 +5490,7 @@ class SnapshotListResponse {
   SnapshotListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
       items = (_json["items"] as core.List)
-          .map<Snapshot>((value) => new Snapshot.fromJson(value))
+          .map<Snapshot>((value) => Snapshot.fromJson(value))
           .toList();
     }
     if (_json.containsKey("kind")) {
@@ -5347,9 +5503,9 @@ class SnapshotListResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
+      _json["items"] = items.map((value) => value.toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5455,7 +5611,7 @@ class StatsResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
+        <core.String, core.Object>{};
     if (avgSessionLengthMinutes != null) {
       _json["avg_session_length_minutes"] = avgSessionLengthMinutes;
     }
