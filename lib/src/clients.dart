@@ -52,18 +52,18 @@ class ApiRequester {
   ///
   /// Otherwise the result will be downloaded as a [client_requests.Media]
   Future request(String requestUrl, String method,
-      {String body,
-      Map<String, List<String>> queryParams,
-      client_requests.Media uploadMedia,
-      client_requests.UploadOptions uploadOptions,
-      client_requests.DownloadOptions downloadOptions =
+      {String? body,
+      Map<String, List<String>>? queryParams,
+      client_requests.Media? uploadMedia,
+      client_requests.UploadOptions? uploadOptions,
+      client_requests.DownloadOptions? downloadOptions =
           client_requests.DownloadOptions.Metadata}) async {
     if (uploadMedia != null &&
         downloadOptions != client_requests.DownloadOptions.Metadata) {
       throw ArgumentError('When uploading a [Media] you cannot download a '
           '[Media] at the same time!');
     }
-    client_requests.ByteRange downloadRange;
+    client_requests.ByteRange? downloadRange;
     if (downloadOptions is client_requests.PartialDownloadOptions &&
         !downloadOptions.isFullDownload) {
       downloadRange = downloadOptions.range;
@@ -100,9 +100,9 @@ class ApiRequester {
           "No 'content-type' header in media response.");
     }
 
-    int contentLength;
+    int? contentLength;
     if (response.headers['content-length'] != null) {
-      contentLength = int.tryParse(response.headers['content-length']);
+      contentLength = int.tryParse(response.headers['content-length']!);
     }
 
     if (downloadRange != null) {
@@ -127,12 +127,12 @@ class ApiRequester {
   Future<http.StreamedResponse> _request(
       String requestUrl,
       String method,
-      String body,
-      Map<String, List<String>> queryParams,
-      client_requests.Media uploadMedia,
-      client_requests.UploadOptions uploadOptions,
-      client_requests.DownloadOptions downloadOptions,
-      client_requests.ByteRange downloadRange) {
+      String? body,
+      Map<String, List<String>>? queryParams,
+      client_requests.Media? uploadMedia,
+      client_requests.UploadOptions? uploadOptions,
+      client_requests.DownloadOptions? downloadOptions,
+      client_requests.ByteRange? downloadRange) {
     var downloadAsMedia = downloadOptions != null &&
         downloadOptions != client_requests.DownloadOptions.Metadata;
 
@@ -182,7 +182,7 @@ class ApiRequester {
     var uri = Uri.parse(path);
 
     Future<http.StreamedResponse> simpleUpload() {
-      var bodyStream = uploadMedia.stream;
+      var bodyStream = uploadMedia!.stream;
       var request = _RequestImpl(method, uri, bodyStream);
       request.headers.addAll({
         'user-agent': _userAgent,
@@ -278,7 +278,7 @@ class MultipartMediaUploader {
     var base64MediaStream =
         _uploadMedia.stream.transform(_base64Encoder).transform(ascii.encoder);
     var base64MediaStreamLength =
-        Base64Encoder.lengthOfBase64Stream(_uploadMedia.length);
+        Base64Encoder.lengthOfBase64Stream(_uploadMedia.length!);
 
     // NOTE: We assume that [_body] is encoded JSON without any \r or \n in it.
     // This guarantees us that [_body] cannot contain a valid multipart
@@ -298,7 +298,7 @@ class MultipartMediaUploader {
     bodyController.add(utf8.encode(bodyHead));
     bodyController.addStream(base64MediaStream).then((_) {
       bodyController.add(utf8.encode(bodyTail));
-    }).catchError((error, StackTrace stack) {
+    }).catchError((Object error, StackTrace stack) {
       bodyController.addError(error, stack);
     }).then((_) {
       bodyController.close();
@@ -323,7 +323,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
   }
 
   Stream<String> bind(Stream<List<int>> stream) {
-    StreamController<String> controller;
+    late StreamController<String> controller;
 
     // Holds between 0 and 3 bytes and is used as a buffer.
     var remainingBytes = <int>[];
@@ -333,7 +333,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
         remainingBytes.addAll(bytes);
         return;
       }
-      int start;
+      late int start;
       if (remainingBytes.isEmpty) {
         start = 0;
       } else if (remainingBytes.length == 1) {
@@ -368,8 +368,8 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
       }
     }
 
-    void onError(error, StackTrace stack) {
-      controller.addError(error, stack);
+    void onError(Object? error, StackTrace stack) {
+      controller.addError(error ?? NullThrownError(), stack);
     }
 
     void onDone() {
@@ -380,7 +380,7 @@ class Base64Encoder extends StreamTransformerBase<List<int>, String> {
       controller.close();
     }
 
-    StreamSubscription subscription;
+    late StreamSubscription subscription;
     controller = StreamController<String>(onListen: () {
       subscription = stream.listen(onData, onError: onError, onDone: onDone);
     }, onPause: () {
@@ -400,7 +400,7 @@ class ResumableMediaUploader {
   final http.Client _httpClient;
   final client_requests.Media _uploadMedia;
   final Uri _uri;
-  final String _body;
+  final String? _body;
   final String _method;
   final client_requests.ResumableUploadOptions _options;
   final String _userAgent;
@@ -414,7 +414,7 @@ class ResumableMediaUploader {
   /// The returned response stream has not been listened to.
   Future<http.StreamedResponse> upload() {
     return _startSession().then((Uri uploadUri) {
-      StreamSubscription subscription;
+      late StreamSubscription subscription;
 
       var completer = Completer<http.StreamedResponse>();
       var completed = false;
@@ -443,17 +443,17 @@ class ResumableMediaUploader {
               .then((_) {
             // All chunks uploaded, we can continue consuming data.
             subscription.resume();
-          }).catchError((error, StackTrace stack) {
+          }).catchError((Object? error, StackTrace stack) {
             subscription.cancel();
             completed = true;
-            completer.completeError(error, stack);
+            completer.completeError(error ?? NullThrownError(), stack);
           });
         }
-      }, onError: (error, StackTrace stack) {
+      }, onError: (Object? error, StackTrace stack) {
         subscription.cancel();
         if (!completed) {
           completed = true;
-          completer.completeError(error, stack);
+          completer.completeError(error ?? NullThrownError(), stack);
         }
       }, onDone: () {
         if (!completed) {
@@ -473,11 +473,11 @@ class ResumableMediaUploader {
           // Validate that we have the correct number of bytes if length was
           // specified.
           if (_uploadMedia.length != null) {
-            if (end < _uploadMedia.length) {
+            if (end < _uploadMedia.length!) {
               completer.completeError(client_requests.ApiRequestError(
                   'Received less bytes than indicated by [Media.length].'));
               return;
-            } else if (end > _uploadMedia.length) {
+            } else if (end > _uploadMedia.length!) {
               completer.completeError(client_requests.ApiRequestError(
                   'Received more bytes than indicated by [Media.length].'));
               return;
@@ -489,8 +489,8 @@ class ResumableMediaUploader {
           _uploadChunkResumable(uploadUri, lastChunk, lastChunk: true)
               .then((response) {
             completer.complete(response);
-          }).catchError((error, StackTrace stack) {
-            completer.completeError(error, stack);
+          }).catchError((Object? error, StackTrace stack) {
+            completer.completeError(error ?? NullThrownError(), stack);
           });
         }
       });
@@ -504,9 +504,9 @@ class ResumableMediaUploader {
   /// Returns the [Uri] which should be used for uploading all content.
   Future<Uri> _startSession() {
     var length = 0;
-    List<int> bytes;
+    List<int>? bytes;
     if (_body != null) {
-      bytes = utf8.encode(_body);
+      bytes = utf8.encode(_body!);
       length = bytes.length;
     }
     var bodyStream = _bytes2Stream(bytes);
@@ -554,7 +554,8 @@ class ResumableMediaUploader {
           return response.stream.drain().then((_) {
             // Delay the next attempt. Default backoff function is exponential.
             var failedAttempts = _options.numberOfAttempts - attemptsLeft;
-            var duration = _options.backoffFunction(failedAttempts) as Duration;
+            var duration =
+                _options.backoffFunction(failedAttempts) as Duration?;
             if (duration == null) {
               throw client_requests.DetailedApiRequestError(
                   status,
@@ -623,7 +624,7 @@ class ResumableMediaUploader {
     return _httpClient.send(request);
   }
 
-  Stream<List<int>> _bytes2Stream(List<int> bytes) {
+  Stream<List<int>> _bytes2Stream(List<int>? bytes) {
     var bodyController = StreamController<List<int>>();
     if (bytes != null) {
       bodyController.add(bytes);
@@ -739,7 +740,7 @@ class ResumableChunk {
 class _RequestImpl extends http.BaseRequest {
   final Stream<List<int>> _stream;
 
-  _RequestImpl(String method, Uri url, [Stream<List<int>> stream])
+  _RequestImpl(String method, Uri url, [Stream<List<int>>? stream])
       : _stream = stream == null ? Stream.fromIterable([]) : stream,
         super(method, url);
 
@@ -839,10 +840,10 @@ Future<http.StreamedResponse> _validateResponse(
       if (jsonResponse is Map && jsonResponse['error'] is Map) {
         final error = jsonResponse['error'] as Map;
         final codeValue = error['code'];
-        final message = error['message'] as String;
+        final message = error['message'] as String?;
 
         final code =
-            codeValue is String ? int.tryParse(codeValue) : codeValue as int;
+            codeValue is String ? int.tryParse(codeValue) : codeValue as int?;
 
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
@@ -862,7 +863,7 @@ Future<http.StreamedResponse> _validateResponse(
   return response;
 }
 
-Stream<String> _decodeStreamAsText(http.StreamedResponse response) {
+Stream<String>? _decodeStreamAsText(http.StreamedResponse response) {
   // TODO: Correctly handle the response content-types, using correct
   // decoder.
   // Currently we assume that the api endpoint is responding with json
@@ -879,8 +880,6 @@ Stream<String> _decodeStreamAsText(http.StreamedResponse response) {
 /// Creates a new [Map] and inserts all entries of [source] into it,
 /// optionally calling [convert] on the values.
 Map<String, T> mapMap<F, T>(Map<String, F> source, T convert(F source)) {
-  assert(source != null);
-  assert(convert != null);
   var result = <String, T>{};
   source.forEach((String key, F value) {
     result[key] = convert(value);

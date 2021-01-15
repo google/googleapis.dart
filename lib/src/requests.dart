@@ -12,7 +12,7 @@ import 'dart:core' as core;
 class Media {
   final async.Stream<core.List<core.int>> stream;
   final core.String contentType;
-  final core.int length;
+  final core.int? length;
 
   /// Creates a new [Media] with a byte [stream] of length [length] with a
   /// [contentType].
@@ -21,11 +21,7 @@ class Media {
   /// is used.
   Media(this.stream, this.length,
       {this.contentType = 'application/octet-stream'}) {
-    if (stream == null || contentType == null) {
-      throw core.ArgumentError(
-          'Arguments stream, contentType and length must not be null.');
-    }
-    if (length != null && length < 0) {
+    if (length != null && length! < 0) {
       throw core.ArgumentError('A negative content length is not allowed');
     }
   }
@@ -69,7 +65,7 @@ class ResumableUploadOptions extends UploadOptions {
   ResumableUploadOptions(
       {this.numberOfAttempts = 3,
       this.chunkSize = 1024 * 1024,
-      core.Function backoffFunction})
+      core.Function? backoffFunction})
       : backoffFunction =
             backoffFunction == null ? ExponentialBackoff : backoffFunction {
     // See e.g. here:
@@ -141,7 +137,7 @@ class ByteRange {
 
 /// Represents a general error reported by the API endpoint.
 class ApiRequestError implements core.Exception {
-  final core.String message;
+  final core.String? message;
 
   ApiRequestError(this.message);
 
@@ -151,14 +147,14 @@ class ApiRequestError implements core.Exception {
 /// Represents a specific error reported by the API endpoint.
 class DetailedApiRequestError extends ApiRequestError {
   /// The error code. For some non-google services this can be `null`.
-  final core.int status;
+  final core.int? status;
 
   final core.List<ApiRequestErrorDetail> errors;
 
   /// The full error response as decoded json if available. `null` otherwise.
-  final core.Map<core.String, core.dynamic> jsonResponse;
+  final core.Map<core.String, core.dynamic>? jsonResponse;
 
-  DetailedApiRequestError(this.status, core.String message,
+  DetailedApiRequestError(this.status, core.String? message,
       {this.errors = const [], this.jsonResponse})
       : super(message);
 
@@ -176,34 +172,34 @@ class ApiRequestErrorDetail {
   /// Unique identifier for the service raising this error. This helps
   /// distinguish service-specific errors (i.e. error inserting an event in a
   /// calendar) from general protocol errors (i.e. file not found).
-  final core.String domain;
+  final core.String? domain;
 
   /// Unique identifier for this error. Different from the [RpcError.statusCode]
   /// property in that this is not an http response code.
-  final core.String reason;
+  final core.String? reason;
 
   /// A human readable message providing more details about the error. If there
   /// is only one error, this field will match error.message.
-  final core.String message;
+  final core.String? message;
 
   /// The location of the error (the interpretation of its value depends on
   /// [locationType]).
-  final core.String location;
+  final core.String? location;
 
   /// Indicates how the [location] property should be interpreted.
-  final core.String locationType;
+  final core.String? locationType;
 
   /// A URI for a help text that might shed some more light on the error.
-  final core.String extendedHelp;
+  final core.String? extendedHelp;
 
   /// A URI for a report form used by the service to collect data about the
   /// error condition. This URI should be preloaded with parameters describing
   /// the request.
-  final core.String sendReport;
+  final core.String? sendReport;
 
   /// If this error detail gets created with the `.fromJson` constructor, the
   /// json will be accessible here.
-  final core.Map originalJson;
+  final core.Map? originalJson;
 
   ApiRequestErrorDetail(
       {this.domain,
@@ -215,12 +211,13 @@ class ApiRequestErrorDetail {
       this.sendReport})
       : originalJson = null;
 
-  ApiRequestErrorDetail.fromJson(this.originalJson)
-      : domain = originalJson['domain'] as core.String,
-        reason = originalJson['reason'] as core.String,
-        message = originalJson['message'] as core.String,
-        location = originalJson['location'] as core.String,
-        locationType = originalJson['locationType'] as core.String,
-        extendedHelp = originalJson['extendedHelp'] as core.String,
-        sendReport = originalJson['sendReport'] as core.String;
+  ApiRequestErrorDetail.fromJson(
+      core.Map<core.dynamic, core.dynamic> this.originalJson)
+      : domain = originalJson['domain'] as core.String?,
+        reason = originalJson['reason'] as core.String?,
+        message = originalJson['message'] as core.String?,
+        location = originalJson['location'] as core.String?,
+        locationType = originalJson['locationType'] as core.String?,
+        extendedHelp = originalJson['extendedHelp'] as core.String?,
+        sendReport = originalJson['sendReport'] as core.String?;
 }
