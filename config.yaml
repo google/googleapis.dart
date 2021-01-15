@@ -2,8 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 0.56.1
-    author: Dart Team <misc@dartlang.org>
+    version: 0.57.0
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -131,7 +130,6 @@ packages:
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3 # https://developers.google.com/webmaster-tools/
     - youtube:v3 # https://developers.google.com/youtube/
-    - youtubeAnalytics:v1 # https://developers.google.com/youtube/analytics/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
     - accesscontextmanager:v1
@@ -178,7 +176,6 @@ packages:
 
 - googleapis_beta:
     version: 0.51.0
-    author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -218,7 +215,6 @@ packages:
     - artifactregistry:v1beta1
     - documentai:v1beta2
     - sqladmin:v1beta4
-    
 
 # APIs that we do not wish to include in this package
 skipped_apis:
@@ -296,3 +292,4 @@ skipped_apis:
 - displayvideo:v1beta # v1 included
 - networkmanagement:v1beta1 # v1 included
 - recommender:v1beta1 # v1 included
+- youtubeAnalytics:v1 # resource definition is empty - broken!

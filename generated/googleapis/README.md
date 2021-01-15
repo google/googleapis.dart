@@ -975,12 +975,6 @@ The YouTube Data API v3 is an API that provides access to YouTube data, such as 
 
 Official API documentation: https://developers.google.com/youtube/
 
-#### YouTube Analytics API - youtubeAnalytics v1
-
-Retrieves your YouTube Analytics data.
-
-Official API documentation: https://developers.google.com/youtube/analytics
-
 #### YouTube Analytics API - youtubeAnalytics v2
 
 Retrieves your YouTube Analytics data.
