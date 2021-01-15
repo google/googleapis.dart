@@ -1,3 +1,7 @@
+## 0.3.0-dev
+
+- Migrate to null safety.
+
 ## 0.2.0
 
  - Changed `ApiRequestError` (and its subclass `DetailedApiRequestError`) from

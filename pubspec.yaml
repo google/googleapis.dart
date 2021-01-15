@@ -1,5 +1,5 @@
 name: _discoveryapis_commons
-version: 0.2.0
+version: 0.3.0-dev
 author: Dart Team <misc@dartlang.org>
 description: Library for use by client APIs generated from Discovery Documents.
 homepage: https://github.com/dart-lang/discoveryapis_commons
@@ -7,7 +7,6 @@ environment:
   sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
-  # Not published yet.
   # Not published yet.
   http:
     git:
