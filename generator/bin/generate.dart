@@ -9,22 +9,22 @@ import 'package:args/args.dart';
 import 'package:googleapis_generator_dependency/googleapis_generator.dart';
 
 ArgParser downloadCommandArgParser() => ArgParser()
-    ..addOption('output-dir',
-        abbr: 'o',
-        help: 'Output directory of discovery documents.',
-        defaultsTo: 'googleapis-discovery-documents');
+  ..addOption('output-dir',
+      abbr: 'o',
+      help: 'Output directory of discovery documents.',
+      defaultsTo: 'googleapis-discovery-documents');
 
 ArgParser runConfigCommandArgParser() => ArgParser()
-    ..addCommand('download')
-    ..addCommand('generate')
-    ..addOption('config-file',
-        help: 'Configuration file describing package generation.',
-        defaultsTo: 'config.yaml');
+  ..addCommand('download')
+  ..addCommand('generate')
+  ..addOption('config-file',
+      help: 'Configuration file describing package generation.',
+      defaultsTo: 'config.yaml');
 
 ArgParser globalArgParser() => ArgParser()
-    ..addCommand('download', downloadCommandArgParser())
-    ..addCommand('run_config', runConfigCommandArgParser())
-    ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
+  ..addCommand('download', downloadCommandArgParser())
+  ..addCommand('run_config', runConfigCommandArgParser())
+  ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
 
 ArgResults parseArguments(ArgParser parser, List<String> arguments) {
   try {
