@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dart bin/generate.dart run_config generate
+dart generator/bin/generate.dart run_config generate
 
 echo 'starting on googleapis'
 pushd generated/googleapis || exit
