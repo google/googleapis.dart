@@ -1,3 +1,6 @@
+## 0.57.0
+ * [api-removed] youtubeanalytics:v1
+
 ## 0.56.1
  * [api-add] oauth2:v2 (appears to have been unintentionally missing from 0.55.0)
 
