@@ -115,21 +115,21 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of records that should be returned.
-  /// Requested page size cannot exceed 100. If not set, the default page size
-  /// is 100. Pagination is only supported when querying for a specific
-  /// function.
-  ///
   /// [filter] - Required. A filter for matching the requested operations. The
   /// supported formats of *filter* are: To query for a specific function:
   /// project:*,location:*,function:* To query for all of the latest operations
   /// for a project: project:*,latest:true
   ///
+  /// [name] - Must not be set.
+  ///
+  /// [pageSize] - The maximum number of records that should be returned.
+  /// Requested page size cannot exceed 100. If not set, the default page size
+  /// is 100. Pagination is only supported when querying for a specific
+  /// function.
+  ///
   /// [pageToken] - Token identifying which result to start with, which is
   /// returned by a previous list call. Pagination is only supported when
   /// querying for a specific function.
-  ///
-  /// [name] - Must not be set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -142,10 +142,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.int pageSize,
     core.String filter,
-    core.String pageToken,
     core.String name,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -155,17 +155,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (name != null) {
       _queryParams['name'] = [name];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -211,11 +211,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -229,9 +229,9 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -244,14 +244,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

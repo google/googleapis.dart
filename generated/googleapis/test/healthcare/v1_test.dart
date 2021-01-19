@@ -2926,8 +2926,8 @@ void main() {
           api.HealthcareApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2957,10 +2957,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2972,8 +2972,8 @@ void main() {
       res
           .list(arg_name,
               filter: arg_filter,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLocationsResponse(response);
@@ -3829,9 +3829,9 @@ void main() {
       api.ProjectsLocationsDatasetsDicomStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3860,11 +3860,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3875,9 +3875,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDicomStoresResponse(response);
@@ -5520,8 +5520,8 @@ void main() {
       api.ProjectsLocationsDatasetsFhirStoresResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5551,9 +5551,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5566,8 +5566,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5743,12 +5743,12 @@ void main() {
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_name = 'foo';
-      var arg_P_type = 'foo';
       var arg_P_count = 42;
-      var arg_start = 'foo';
-      var arg_P_since = 'foo';
-      var arg_end = 'foo';
       var arg_P_pageToken = 'foo';
+      var arg_P_since = 'foo';
+      var arg_P_type = 'foo';
+      var arg_end = 'foo';
+      var arg_start = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5777,14 +5777,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["_type"].first, unittest.equals(arg_P_type));
         unittest.expect(core.int.parse(queryMap["_count"].first),
             unittest.equals(arg_P_count));
-        unittest.expect(queryMap["start"].first, unittest.equals(arg_start));
-        unittest.expect(queryMap["_since"].first, unittest.equals(arg_P_since));
-        unittest.expect(queryMap["end"].first, unittest.equals(arg_end));
         unittest.expect(
             queryMap["_page_token"].first, unittest.equals(arg_P_pageToken));
+        unittest.expect(queryMap["_since"].first, unittest.equals(arg_P_since));
+        unittest.expect(queryMap["_type"].first, unittest.equals(arg_P_type));
+        unittest.expect(queryMap["end"].first, unittest.equals(arg_end));
+        unittest.expect(queryMap["start"].first, unittest.equals(arg_start));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5794,12 +5794,12 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.Patient_everything(arg_name,
-              P_type: arg_P_type,
               P_count: arg_P_count,
-              start: arg_start,
-              P_since: arg_P_since,
-              end: arg_end,
               P_pageToken: arg_P_pageToken,
+              P_since: arg_P_since,
+              P_type: arg_P_type,
+              end: arg_end,
+              start: arg_start,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkHttpBody(response);
@@ -6059,9 +6059,9 @@ void main() {
       api.ProjectsLocationsDatasetsFhirStoresFhirResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
       var arg_name = 'foo';
-      var arg_P_pageToken = 'foo';
       var arg_P_at = 'foo';
       var arg_P_count = 42;
+      var arg_P_pageToken = 'foo';
       var arg_P_since = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6091,11 +6091,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["_page_token"].first, unittest.equals(arg_P_pageToken));
         unittest.expect(queryMap["_at"].first, unittest.equals(arg_P_at));
         unittest.expect(core.int.parse(queryMap["_count"].first),
             unittest.equals(arg_P_count));
+        unittest.expect(
+            queryMap["_page_token"].first, unittest.equals(arg_P_pageToken));
         unittest.expect(queryMap["_since"].first, unittest.equals(arg_P_since));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -6107,9 +6107,9 @@ void main() {
       }), true);
       res
           .history(arg_name,
-              P_pageToken: arg_P_pageToken,
               P_at: arg_P_at,
               P_count: arg_P_count,
+              P_pageToken: arg_P_pageToken,
               P_since: arg_P_since,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6585,8 +6585,8 @@ void main() {
           api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6616,10 +6616,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6631,8 +6631,8 @@ void main() {
       res
           .list(arg_parent,
               filter: arg_filter,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListHl7V2StoresResponse(response);
@@ -7034,11 +7034,11 @@ void main() {
               .hl7V2Stores
               .messages;
       var arg_parent = 'foo';
-      var arg_view = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
-      var arg_pageSize = 42;
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7067,14 +7067,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7085,11 +7085,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              view: arg_view,
-              pageToken: arg_pageToken,
               filter: arg_filter,
-              pageSize: arg_pageSize,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMessagesResponse(response);
@@ -7264,9 +7264,9 @@ void main() {
       api.ProjectsLocationsDatasetsOperationsResourceApi res =
           api.HealthcareApi(mock).projects.locations.datasets.operations;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7295,11 +7295,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7310,9 +7310,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);

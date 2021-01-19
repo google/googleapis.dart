@@ -2657,11 +2657,11 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// Value must have pattern
   /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
   ///
-  /// [variableId] - The variables to be moved to the folder.
+  /// [tagId] - The tags to be moved to the folder.
   ///
   /// [triggerId] - The triggers to be moved to the folder.
   ///
-  /// [tagId] - The tags to be moved to the folder.
+  /// [variableId] - The variables to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2674,9 +2674,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   async.Future moveEntitiesToFolder(
     Folder request,
     core.String path, {
-    core.List<core.String> variableId,
-    core.List<core.String> triggerId,
     core.List<core.String> tagId,
+    core.List<core.String> triggerId,
+    core.List<core.String> variableId,
     core.String $fields,
   }) {
     core.String _url;
@@ -2692,14 +2692,14 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    if (variableId != null) {
-      _queryParams['variableId'] = variableId;
+    if (tagId != null) {
+      _queryParams['tagId'] = tagId;
     }
     if (triggerId != null) {
       _queryParams['triggerId'] = triggerId;
     }
-    if (tagId != null) {
-      _queryParams['tagId'] = tagId;
+    if (variableId != null) {
+      _queryParams['variableId'] = variableId;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -157,20 +157,20 @@ class ElectionsResourceApi {
   ///
   /// [address] - The registered address of the voter to look up.
   ///
-  /// [returnAllAvailableData] - If set to true, the query will return the
-  /// success code and include any partial information when it is unable to
-  /// determine a matching address or unable to determine the election for
-  /// electionId=0 queries.
-  ///
-  /// [officialOnly] - If set to true, only data from official state sources
-  /// will be returned.
-  ///
   /// [electionId] - The unique ID of the election to look up. A list of
   /// election IDs can be obtained at
   /// https://www.googleapis.com/civicinfo/{version}/elections. If no election
   /// ID is specified in the query and there is more than one election with data
   /// for the given voter, the additional elections are provided in the
   /// otherElections response field.
+  ///
+  /// [officialOnly] - If set to true, only data from official state sources
+  /// will be returned.
+  ///
+  /// [returnAllAvailableData] - If set to true, the query will return the
+  /// success code and include any partial information when it is unable to
+  /// determine a matching address or unable to determine the election for
+  /// electionId=0 queries.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -184,9 +184,9 @@ class ElectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<VoterInfoResponse> voterInfoQuery(
     core.String address, {
-    core.bool returnAllAvailableData,
-    core.bool officialOnly,
     core.String electionId,
+    core.bool officialOnly,
+    core.bool returnAllAvailableData,
     core.String $fields,
   }) {
     core.String _url;
@@ -200,14 +200,14 @@ class ElectionsResourceApi {
       throw core.ArgumentError('Parameter address is required.');
     }
     _queryParams['address'] = [address];
-    if (returnAllAvailableData != null) {
-      _queryParams['returnAllAvailableData'] = ['${returnAllAvailableData}'];
+    if (electionId != null) {
+      _queryParams['electionId'] = [electionId];
     }
     if (officialOnly != null) {
       _queryParams['officialOnly'] = ['${officialOnly}'];
     }
-    if (electionId != null) {
-      _queryParams['electionId'] = [electionId];
+    if (returnAllAvailableData != null) {
+      _queryParams['returnAllAvailableData'] = ['${returnAllAvailableData}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -238,20 +238,20 @@ class RepresentativesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [levels] - A list of office levels to filter by. Only offices that serve
-  /// at least one of these levels will be returned. Divisions that don't
-  /// contain a matching office will not be returned.
+  /// [address] - The address to look up. May only be specified if the field
+  /// ocdId is not given in the URL
   ///
   /// [includeOffices] - Whether to return information about offices and
   /// officials. If false, only the top-level district information will be
   /// returned.
   ///
+  /// [levels] - A list of office levels to filter by. Only offices that serve
+  /// at least one of these levels will be returned. Divisions that don't
+  /// contain a matching office will not be returned.
+  ///
   /// [roles] - A list of office roles to filter by. Only offices fulfilling one
   /// of these roles will be returned. Divisions that don't contain a matching
   /// office will not be returned.
-  ///
-  /// [address] - The address to look up. May only be specified if the field
-  /// ocdId is not given in the URL
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -264,10 +264,10 @@ class RepresentativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoResponse> representativeInfoByAddress({
-    core.List<core.String> levels,
-    core.bool includeOffices,
-    core.List<core.String> roles,
     core.String address,
+    core.bool includeOffices,
+    core.List<core.String> levels,
+    core.List<core.String> roles,
     core.String $fields,
   }) {
     core.String _url;
@@ -277,17 +277,17 @@ class RepresentativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (levels != null) {
-      _queryParams['levels'] = levels;
+    if (address != null) {
+      _queryParams['address'] = [address];
     }
     if (includeOffices != null) {
       _queryParams['includeOffices'] = ['${includeOffices}'];
     }
+    if (levels != null) {
+      _queryParams['levels'] = levels;
+    }
     if (roles != null) {
       _queryParams['roles'] = roles;
-    }
-    if (address != null) {
-      _queryParams['address'] = [address];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -314,18 +314,18 @@ class RepresentativesResourceApi {
   /// [ocdId] - The Open Civic Data division identifier of the division to look
   /// up.
   ///
-  /// [roles] - A list of office roles to filter by. Only offices fulfilling one
-  /// of these roles will be returned. Divisions that don't contain a matching
-  /// office will not be returned.
+  /// [levels] - A list of office levels to filter by. Only offices that serve
+  /// at least one of these levels will be returned. Divisions that don't
+  /// contain a matching office will not be returned.
   ///
   /// [recursive] - If true, information about all divisions contained in the
   /// division requested will be included as well. For example, if querying
   /// ocd-division/country:us/district:dc, this would also return all DC's wards
   /// and ANCs.
   ///
-  /// [levels] - A list of office levels to filter by. Only offices that serve
-  /// at least one of these levels will be returned. Divisions that don't
-  /// contain a matching office will not be returned.
+  /// [roles] - A list of office roles to filter by. Only offices fulfilling one
+  /// of these roles will be returned. Divisions that don't contain a matching
+  /// office will not be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -339,9 +339,9 @@ class RepresentativesResourceApi {
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoData> representativeInfoByDivision(
     core.String ocdId, {
-    core.List<core.String> roles,
-    core.bool recursive,
     core.List<core.String> levels,
+    core.bool recursive,
+    core.List<core.String> roles,
     core.String $fields,
   }) {
     core.String _url;
@@ -354,14 +354,14 @@ class RepresentativesResourceApi {
     if (ocdId == null) {
       throw core.ArgumentError('Parameter ocdId is required.');
     }
-    if (roles != null) {
-      _queryParams['roles'] = roles;
+    if (levels != null) {
+      _queryParams['levels'] = levels;
     }
     if (recursive != null) {
       _queryParams['recursive'] = ['${recursive}'];
     }
-    if (levels != null) {
-      _queryParams['levels'] = levels;
+    if (roles != null) {
+      _queryParams['roles'] = roles;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -268,11 +268,11 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
   /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
   /// 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -287,8 +287,8 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   async.Future<ListUnmappedIdentitiesResponse> list(
     core.String parent, {
     core.bool debugOptions_enableDebugging,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -306,11 +306,11 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
         '${debugOptions_enableDebugging}'
       ];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -361,18 +361,18 @@ class DebugIdentitysourcesItemsResourceApi {
   /// identitysources/{source_id}}
   /// Value must have pattern "^identitysources/[^/]+$".
   ///
-  /// [userResourceName] - null
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [groupResourceName] - null
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
   ///
   /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
   /// 100.
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field. Otherwise, ignore this field.
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [userResourceName] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,11 +387,11 @@ class DebugIdentitysourcesItemsResourceApi {
   async.Future<ListItemNamesForUnmappedIdentityResponse>
       listForunmappedidentity(
     core.String parent, {
-    core.String userResourceName,
-    core.String groupResourceName,
-    core.String pageToken,
-    core.int pageSize,
     core.bool debugOptions_enableDebugging,
+    core.String groupResourceName,
+    core.int pageSize,
+    core.String pageToken,
+    core.String userResourceName,
     core.String $fields,
   }) {
     core.String _url;
@@ -404,22 +404,22 @@ class DebugIdentitysourcesItemsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (userResourceName != null) {
-      _queryParams['userResourceName'] = [userResourceName];
-    }
-    if (groupResourceName != null) {
-      _queryParams['groupResourceName'] = [groupResourceName];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams['debugOptions.enableDebugging'] = [
         '${debugOptions_enableDebugging}'
       ];
+    }
+    if (groupResourceName != null) {
+      _queryParams['groupResourceName'] = [groupResourceName];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (userResourceName != null) {
+      _queryParams['userResourceName'] = [userResourceName];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -458,11 +458,14 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// identitysources/{source_id}
   /// Value must have pattern "^identitysources/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [pageSize] - Maximum number of items to fetch in a request. Defaults to
   /// 100.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [resolutionStatusCode] - Limit users selection to this status.
   /// Possible string values are:
@@ -478,9 +481,6 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// external identity is too large.
   /// - "INTERNAL_ERROR" : Internal error.
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field. Otherwise, ignore this field.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -493,10 +493,10 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.int pageSize,
-    core.String resolutionStatusCode,
     core.bool debugOptions_enableDebugging,
+    core.int pageSize,
+    core.String pageToken,
+    core.String resolutionStatusCode,
     core.String $fields,
   }) {
     core.String _url;
@@ -509,19 +509,19 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (resolutionStatusCode != null) {
-      _queryParams['resolutionStatusCode'] = [resolutionStatusCode];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams['debugOptions.enableDebugging'] = [
         '${debugOptions_enableDebugging}'
       ];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (resolutionStatusCode != null) {
+      _queryParams['resolutionStatusCode'] = [resolutionStatusCode];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -765,19 +765,11 @@ class IndexingDatasourcesItemsResourceApi {
   /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field. Otherwise, ignore this field.
-  ///
-  /// [version] - Required. The incremented version of the item to delete from
-  /// the index. The indexing system stores the version from the datasource as a
-  /// byte string and compares the Item version in the index to the version of
-  /// the queued Item using lexical ordering. Cloud Search Indexing won't delete
-  /// any queued item with a version value that is less than or equal to the
-  /// version of the currently indexed item. The maximum length for this field
-  /// is 1024 bytes.
-  ///
   /// [connectorName] - Name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [mode] - Required. The RequestMode for this request.
   /// Possible string values are:
@@ -786,6 +778,14 @@ class IndexingDatasourcesItemsResourceApi {
   /// - "SYNCHRONOUS" : For real-time updates.
   /// - "ASYNCHRONOUS" : For changes that are executed after the response is
   /// sent back to the caller.
+  ///
+  /// [version] - Required. The incremented version of the item to delete from
+  /// the index. The indexing system stores the version from the datasource as a
+  /// byte string and compares the Item version in the index to the version of
+  /// the queued Item using lexical ordering. Cloud Search Indexing won't delete
+  /// any queued item with a version value that is less than or equal to the
+  /// version of the currently indexed item. The maximum length for this field
+  /// is 1024 bytes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -799,10 +799,10 @@ class IndexingDatasourcesItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String version,
     core.String connectorName,
+    core.bool debugOptions_enableDebugging,
     core.String mode,
+    core.String version,
     core.String $fields,
   }) {
     core.String _url;
@@ -815,19 +815,19 @@ class IndexingDatasourcesItemsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (connectorName != null) {
+      _queryParams['connectorName'] = [connectorName];
+    }
     if (debugOptions_enableDebugging != null) {
       _queryParams['debugOptions.enableDebugging'] = [
         '${debugOptions_enableDebugging}'
       ];
     }
-    if (version != null) {
-      _queryParams['version'] = [version];
-    }
-    if (connectorName != null) {
-      _queryParams['connectorName'] = [connectorName];
-    }
     if (mode != null) {
       _queryParams['mode'] = [mode];
+    }
+    if (version != null) {
+      _queryParams['version'] = [version];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1048,12 +1048,6 @@ class IndexingDatasourcesItemsResourceApi {
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
-  /// [connectorName] - Name of connector making this call. Format:
-  /// datasources/{source_id}/connectors/{ID}
-  ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field. Otherwise, ignore this field.
-  ///
   /// [brief] - When set to true, the indexing system only populates the
   /// following fields: name, version, queue. metadata.hash, metadata.title,
   /// metadata.sourceRepositoryURL, metadata.objectType, metadata.createTime,
@@ -1061,6 +1055,12 @@ class IndexingDatasourcesItemsResourceApi {
   /// structured_data.hash, content.hash, itemType, itemStatus.code,
   /// itemStatus.processingError.code, itemStatus.repositoryError.type, If this
   /// value is false, then all the fields are populated in Item.
+  ///
+  /// [connectorName] - Name of connector making this call. Format:
+  /// datasources/{source_id}/connectors/{ID}
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [pageSize] - Maximum number of items to fetch in a request. The max value
   /// is 1000 when brief is true. The max value is 10 if brief is false. The
@@ -1081,9 +1081,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListItemsResponse> list(
     core.String name, {
+    core.bool brief,
     core.String connectorName,
     core.bool debugOptions_enableDebugging,
-    core.bool brief,
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -1098,6 +1098,9 @@ class IndexingDatasourcesItemsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (brief != null) {
+      _queryParams['brief'] = ['${brief}'];
+    }
     if (connectorName != null) {
       _queryParams['connectorName'] = [connectorName];
     }
@@ -1105,9 +1108,6 @@ class IndexingDatasourcesItemsResourceApi {
       _queryParams['debugOptions.enableDebugging'] = [
         '${debugOptions_enableDebugging}'
       ];
-    }
-    if (brief != null) {
-      _queryParams['brief'] = ['${brief}'];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -1555,11 +1555,11 @@ class OperationsLroResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations/.*$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1573,9 +1573,9 @@ class OperationsLroResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1588,14 +1588,14 @@ class OperationsLroResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1745,6 +1745,11 @@ class QuerySourcesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - Number of sources to return in the response.
+  ///
+  /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
+  /// to help with debugging, set this field. Otherwise, ignore this field.
+  ///
   /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
   /// or "sr-Latn". For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
@@ -1755,10 +1760,9 @@ class QuerySourcesResourceApi {
   /// not use this parameter. Instead, suggest autocompletes only based on
   /// characters in the query.
   ///
-  /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
-  /// to help with debugging, set this field. Otherwise, ignore this field.
-  ///
-  /// [pageToken] - Number of sources to return in the response.
+  /// [requestOptions_searchApplicationId] - The ID generated when you create a
+  /// search application using the [admin
+  /// console](https://support.google.com/a/answer/9043922).
   ///
   /// [requestOptions_timeZone] - Current user's time zone id, such as
   /// "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by
@@ -1767,10 +1771,6 @@ class QuerySourcesResourceApi {
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this
   /// field is not specified, the default time zone (UTC) is used.
-  ///
-  /// [requestOptions_searchApplicationId] - The ID generated when you create a
-  /// search application using the [admin
-  /// console](https://support.google.com/a/answer/9043922).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1783,11 +1783,11 @@ class QuerySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list({
-    core.String requestOptions_languageCode,
-    core.bool requestOptions_debugOptions_enableDebugging,
     core.String pageToken,
-    core.String requestOptions_timeZone,
+    core.bool requestOptions_debugOptions_enableDebugging,
+    core.String requestOptions_languageCode,
     core.String requestOptions_searchApplicationId,
+    core.String requestOptions_timeZone,
     core.String $fields,
   }) {
     core.String _url;
@@ -1797,26 +1797,26 @@ class QuerySourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (requestOptions_languageCode != null) {
-      _queryParams['requestOptions.languageCode'] = [
-        requestOptions_languageCode
-      ];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (requestOptions_debugOptions_enableDebugging != null) {
       _queryParams['requestOptions.debugOptions.enableDebugging'] = [
         '${requestOptions_debugOptions_enableDebugging}'
       ];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (requestOptions_timeZone != null) {
-      _queryParams['requestOptions.timeZone'] = [requestOptions_timeZone];
+    if (requestOptions_languageCode != null) {
+      _queryParams['requestOptions.languageCode'] = [
+        requestOptions_languageCode
+      ];
     }
     if (requestOptions_searchApplicationId != null) {
       _queryParams['requestOptions.searchApplicationId'] = [
         requestOptions_searchApplicationId
       ];
+    }
+    if (requestOptions_timeZone != null) {
+      _queryParams['requestOptions.timeZone'] = [requestOptions_timeZone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2026,11 +2026,11 @@ class SettingsDatasourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Maximum number of datasources to fetch in a request. The max
-  /// value is 100. The default value is 10
-  ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
+  ///
+  /// [pageSize] - Maximum number of datasources to fetch in a request. The max
+  /// value is 100. The default value is 10
   ///
   /// [pageToken] - Starting index of the results.
   ///
@@ -2045,8 +2045,8 @@ class SettingsDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourceResponse> list({
-    core.int pageSize,
     core.bool debugOptions_enableDebugging,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -2057,13 +2057,13 @@ class SettingsDatasourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (debugOptions_enableDebugging != null) {
       _queryParams['debugOptions.enableDebugging'] = [
         '${debugOptions_enableDebugging}'
       ];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -2519,19 +2519,19 @@ class StatsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2544,12 +2544,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerIndexStatsResponse> getIndex({
-    core.int toDate_month,
-    core.int toDate_year,
+    core.int fromDate_day,
+    core.int fromDate_month,
     core.int fromDate_year,
     core.int toDate_day,
-    core.int fromDate_month,
-    core.int fromDate_day,
+    core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -2559,11 +2559,11 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
+    if (fromDate_day != null) {
+      _queryParams['fromDate.day'] = ['${fromDate_day}'];
     }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
+    if (fromDate_month != null) {
+      _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
     if (fromDate_year != null) {
       _queryParams['fromDate.year'] = ['${fromDate_year}'];
@@ -2571,11 +2571,11 @@ class StatsResourceApi {
     if (toDate_day != null) {
       _queryParams['toDate.day'] = ['${toDate_day}'];
     }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
+    if (toDate_month != null) {
+      _queryParams['toDate.month'] = ['${toDate_month}'];
     }
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2601,19 +2601,19 @@ class StatsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
-  ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2626,12 +2626,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerQueryStatsResponse> getQuery({
-    core.int toDate_month,
-    core.int fromDate_year,
     core.int fromDate_day,
-    core.int toDate_year,
     core.int fromDate_month,
+    core.int fromDate_year,
     core.int toDate_day,
+    core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -2641,23 +2641,23 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
     if (fromDate_day != null) {
       _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    }
     if (toDate_day != null) {
       _queryParams['toDate.day'] = ['${toDate_day}'];
+    }
+    if (toDate_month != null) {
+      _queryParams['toDate.month'] = ['${toDate_month}'];
+    }
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2684,19 +2684,19 @@ class StatsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2709,12 +2709,12 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerSessionStatsResponse> getSession({
-    core.int fromDate_year,
-    core.int fromDate_month,
     core.int fromDate_day,
+    core.int fromDate_month,
+    core.int fromDate_year,
+    core.int toDate_day,
     core.int toDate_month,
     core.int toDate_year,
-    core.int toDate_day,
     core.String $fields,
   }) {
     core.String _url;
@@ -2724,23 +2724,23 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    if (fromDate_day != null) {
+      _queryParams['fromDate.day'] = ['${fromDate_day}'];
     }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    }
+    if (toDate_day != null) {
+      _queryParams['toDate.day'] = ['${toDate_day}'];
     }
     if (toDate_month != null) {
       _queryParams['toDate.month'] = ['${toDate_month}'];
     }
     if (toDate_year != null) {
       _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2766,17 +2766,17 @@ class StatsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
-  ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
@@ -2791,11 +2791,11 @@ class StatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerUserStatsResponse> getUser({
-    core.int fromDate_month,
-    core.int toDate_day,
     core.int fromDate_day,
-    core.int toDate_month,
+    core.int fromDate_month,
     core.int fromDate_year,
+    core.int toDate_day,
+    core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
   }) {
@@ -2806,20 +2806,20 @@ class StatsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (fromDate_day != null) {
+      _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
+    }
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
     }
     if (toDate_day != null) {
       _queryParams['toDate.day'] = ['${toDate_day}'];
     }
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
     if (toDate_month != null) {
       _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
     }
     if (toDate_year != null) {
       _queryParams['toDate.year'] = ['${toDate_year}'];
@@ -2868,19 +2868,19 @@ class StatsIndexDatasourcesResourceApi {
   /// the following format: "datasources/{source_id}"
   /// Value must have pattern "^datasources/[^/]+$".
   ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
-  ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2894,12 +2894,12 @@ class StatsIndexDatasourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetDataSourceIndexStatsResponse> get(
     core.String name, {
-    core.int fromDate_month,
-    core.int toDate_day,
     core.int fromDate_day,
+    core.int fromDate_month,
     core.int fromDate_year,
-    core.int toDate_year,
+    core.int toDate_day,
     core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -2912,23 +2912,23 @@ class StatsIndexDatasourcesResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
     if (fromDate_day != null) {
       _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    }
+    if (fromDate_month != null) {
+      _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
     if (fromDate_year != null) {
       _queryParams['fromDate.year'] = ['${fromDate_year}'];
     }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
+    if (toDate_day != null) {
+      _queryParams['toDate.day'] = ['${toDate_day}'];
     }
     if (toDate_month != null) {
       _queryParams['toDate.month'] = ['${toDate_month}'];
+    }
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2974,19 +2974,19 @@ class StatsQuerySearchapplicationsResourceApi {
   /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
-  ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
-  ///
-  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3000,12 +3000,12 @@ class StatsQuerySearchapplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationQueryStatsResponse> get(
     core.String name, {
-    core.int toDate_year,
-    core.int fromDate_year,
     core.int fromDate_day,
-    core.int toDate_day,
     core.int fromDate_month,
+    core.int fromDate_year,
+    core.int toDate_day,
     core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -3018,23 +3018,23 @@ class StatsQuerySearchapplicationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
     if (fromDate_day != null) {
       _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
     }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    }
+    if (toDate_day != null) {
+      _queryParams['toDate.day'] = ['${toDate_day}'];
+    }
     if (toDate_month != null) {
       _queryParams['toDate.month'] = ['${toDate_month}'];
+    }
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3081,19 +3081,19 @@ class StatsSessionSearchapplicationsResourceApi {
   /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3107,12 +3107,12 @@ class StatsSessionSearchapplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationSessionStatsResponse> get(
     core.String name, {
-    core.int toDate_month,
-    core.int fromDate_month,
-    core.int toDate_year,
-    core.int toDate_day,
-    core.int fromDate_year,
     core.int fromDate_day,
+    core.int fromDate_month,
+    core.int fromDate_year,
+    core.int toDate_day,
+    core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -3125,23 +3125,23 @@ class StatsSessionSearchapplicationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
+    if (fromDate_day != null) {
+      _queryParams['fromDate.day'] = ['${fromDate_day}'];
     }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
     }
     if (toDate_day != null) {
       _queryParams['toDate.day'] = ['${toDate_day}'];
     }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    if (toDate_month != null) {
+      _queryParams['toDate.month'] = ['${toDate_month}'];
     }
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3187,19 +3187,19 @@ class StatsUserSearchapplicationsResourceApi {
   /// following format: searchapplications/{application_id}
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
   ///
   /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
   ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
   ///
-  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
-  /// and month.
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3213,12 +3213,12 @@ class StatsUserSearchapplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationUserStatsResponse> get(
     core.String name, {
-    core.int fromDate_year,
-    core.int toDate_year,
-    core.int fromDate_month,
     core.int fromDate_day,
-    core.int toDate_month,
+    core.int fromDate_month,
+    core.int fromDate_year,
     core.int toDate_day,
+    core.int toDate_month,
+    core.int toDate_year,
     core.String $fields,
   }) {
     core.String _url;
@@ -3231,23 +3231,23 @@ class StatsUserSearchapplicationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
+    if (fromDate_day != null) {
+      _queryParams['fromDate.day'] = ['${fromDate_day}'];
     }
     if (fromDate_month != null) {
       _queryParams['fromDate.month'] = ['${fromDate_month}'];
     }
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
+    if (fromDate_year != null) {
+      _queryParams['fromDate.year'] = ['${fromDate_year}'];
+    }
+    if (toDate_day != null) {
+      _queryParams['toDate.day'] = ['${toDate_day}'];
     }
     if (toDate_month != null) {
       _queryParams['toDate.month'] = ['${toDate_month}'];
     }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
+    if (toDate_year != null) {
+      _queryParams['toDate.year'] = ['${toDate_year}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

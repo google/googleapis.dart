@@ -2204,13 +2204,13 @@ void main() {
       api.OrganizationsAssetsResourceApi res =
           api.SecuritycenterApi(mock).organizations.assets;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
+      var arg_compareDuration = 'foo';
       var arg_fieldMask = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_compareDuration = 'foo';
-      var arg_readTime = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_readTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2239,19 +2239,19 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["compareDuration"].first,
+            unittest.equals(arg_compareDuration));
         unittest.expect(
             queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["compareDuration"].first,
-            unittest.equals(arg_compareDuration));
-        unittest.expect(
-            queryMap["readTime"].first, unittest.equals(arg_readTime));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["readTime"].first, unittest.equals(arg_readTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2262,13 +2262,13 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
+              compareDuration: arg_compareDuration,
               fieldMask: arg_fieldMask,
               filter: arg_filter,
-              pageToken: arg_pageToken,
-              compareDuration: arg_compareDuration,
-              readTime: arg_readTime,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              readTime: arg_readTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAssetsResponse(response);
@@ -2547,8 +2547,8 @@ void main() {
       api.OrganizationsNotificationConfigsResourceApi res =
           api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2577,10 +2577,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2591,8 +2591,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListNotificationConfigsResponse(response);
@@ -3020,8 +3020,8 @@ void main() {
       api.OrganizationsSourcesResourceApi res =
           api.SecuritycenterApi(mock).organizations.sources;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3050,10 +3050,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3064,8 +3064,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSourcesResponse(response);
@@ -3347,13 +3347,13 @@ void main() {
       api.OrganizationsSourcesFindingsResourceApi res =
           api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_compareDuration = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
-      var arg_filter = 'foo';
-      var arg_readTime = 'foo';
       var arg_fieldMask = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_readTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3382,19 +3382,19 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["compareDuration"].first,
             unittest.equals(arg_compareDuration));
+        unittest.expect(
+            queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["readTime"].first, unittest.equals(arg_readTime));
-        unittest.expect(
-            queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3405,13 +3405,13 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               compareDuration: arg_compareDuration,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
-              filter: arg_filter,
-              readTime: arg_readTime,
               fieldMask: arg_fieldMask,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              readTime: arg_readTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListFindingsResponse(response);
@@ -3532,8 +3532,8 @@ void main() {
           api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildSecurityMarks();
       var arg_name = 'foo';
-      var arg_updateMask = 'foo';
       var arg_startTime = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.SecurityMarks.fromJson(json);
@@ -3566,9 +3566,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3579,8 +3579,8 @@ void main() {
       }), true);
       res
           .updateSecurityMarks(arg_request, arg_name,
-              updateMask: arg_updateMask,
               startTime: arg_startTime,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSecurityMarks(response);

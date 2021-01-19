@@ -90,11 +90,11 @@ class ConversionResourceApi {
   ///
   /// [adGroupId] - Numeric ID of the ad group.
   ///
-  /// [criterionId] - Numeric ID of the criterion.
+  /// [adId] - Numeric ID of the ad.
   ///
   /// [campaignId] - Numeric ID of the campaign.
   ///
-  /// [adId] - Numeric ID of the ad.
+  /// [criterionId] - Numeric ID of the criterion.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -115,9 +115,9 @@ class ConversionResourceApi {
     core.int startDate,
     core.int startRow, {
     core.String adGroupId,
-    core.String criterionId,
-    core.String campaignId,
     core.String adId,
+    core.String campaignId,
+    core.String criterionId,
     core.String $fields,
   }) {
     core.String _url;
@@ -155,14 +155,14 @@ class ConversionResourceApi {
     if (adGroupId != null) {
       _queryParams['adGroupId'] = [adGroupId];
     }
-    if (criterionId != null) {
-      _queryParams['criterionId'] = [criterionId];
+    if (adId != null) {
+      _queryParams['adId'] = [adId];
     }
     if (campaignId != null) {
       _queryParams['campaignId'] = [campaignId];
     }
-    if (adId != null) {
-      _queryParams['adId'] = [adId];
+    if (criterionId != null) {
+      _queryParams['criterionId'] = [criterionId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

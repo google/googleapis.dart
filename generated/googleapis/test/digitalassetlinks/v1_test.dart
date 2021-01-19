@@ -319,13 +319,13 @@ void main() {
     unittest.test('method--check', () {
       var mock = HttpServerMock();
       api.AssetlinksResourceApi res = api.DigitalassetlinksApi(mock).assetlinks;
-      var arg_source_web_site = 'foo';
-      var arg_target_androidApp_packageName = 'foo';
-      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       var arg_relation = 'foo';
-      var arg_target_androidApp_certificate_sha256Fingerprint = 'foo';
-      var arg_target_web_site = 'foo';
+      var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       var arg_source_androidApp_packageName = 'foo';
+      var arg_source_web_site = 'foo';
+      var arg_target_androidApp_certificate_sha256Fingerprint = 'foo';
+      var arg_target_androidApp_packageName = 'foo';
+      var arg_target_web_site = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -353,24 +353,24 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["source.web.site"].first,
-            unittest.equals(arg_source_web_site));
-        unittest.expect(queryMap["target.androidApp.packageName"].first,
-            unittest.equals(arg_target_androidApp_packageName));
+        unittest.expect(
+            queryMap["relation"].first, unittest.equals(arg_relation));
         unittest.expect(
             queryMap["source.androidApp.certificate.sha256Fingerprint"].first,
             unittest
                 .equals(arg_source_androidApp_certificate_sha256Fingerprint));
-        unittest.expect(
-            queryMap["relation"].first, unittest.equals(arg_relation));
+        unittest.expect(queryMap["source.androidApp.packageName"].first,
+            unittest.equals(arg_source_androidApp_packageName));
+        unittest.expect(queryMap["source.web.site"].first,
+            unittest.equals(arg_source_web_site));
         unittest.expect(
             queryMap["target.androidApp.certificate.sha256Fingerprint"].first,
             unittest
                 .equals(arg_target_androidApp_certificate_sha256Fingerprint));
+        unittest.expect(queryMap["target.androidApp.packageName"].first,
+            unittest.equals(arg_target_androidApp_packageName));
         unittest.expect(queryMap["target.web.site"].first,
             unittest.equals(arg_target_web_site));
-        unittest.expect(queryMap["source.androidApp.packageName"].first,
-            unittest.equals(arg_source_androidApp_packageName));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -381,15 +381,15 @@ void main() {
       }), true);
       res
           .check(
-              source_web_site: arg_source_web_site,
-              target_androidApp_packageName: arg_target_androidApp_packageName,
+              relation: arg_relation,
               source_androidApp_certificate_sha256Fingerprint:
                   arg_source_androidApp_certificate_sha256Fingerprint,
-              relation: arg_relation,
+              source_androidApp_packageName: arg_source_androidApp_packageName,
+              source_web_site: arg_source_web_site,
               target_androidApp_certificate_sha256Fingerprint:
                   arg_target_androidApp_certificate_sha256Fingerprint,
+              target_androidApp_packageName: arg_target_androidApp_packageName,
               target_web_site: arg_target_web_site,
-              source_androidApp_packageName: arg_source_androidApp_packageName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCheckResponse(response);
@@ -401,10 +401,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.StatementsResourceApi res = api.DigitalassetlinksApi(mock).statements;
-      var arg_source_web_site = 'foo';
-      var arg_source_androidApp_packageName = 'foo';
       var arg_relation = 'foo';
       var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
+      var arg_source_androidApp_packageName = 'foo';
+      var arg_source_web_site = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -432,16 +432,16 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["source.web.site"].first,
-            unittest.equals(arg_source_web_site));
-        unittest.expect(queryMap["source.androidApp.packageName"].first,
-            unittest.equals(arg_source_androidApp_packageName));
         unittest.expect(
             queryMap["relation"].first, unittest.equals(arg_relation));
         unittest.expect(
             queryMap["source.androidApp.certificate.sha256Fingerprint"].first,
             unittest
                 .equals(arg_source_androidApp_certificate_sha256Fingerprint));
+        unittest.expect(queryMap["source.androidApp.packageName"].first,
+            unittest.equals(arg_source_androidApp_packageName));
+        unittest.expect(queryMap["source.web.site"].first,
+            unittest.equals(arg_source_web_site));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -452,11 +452,11 @@ void main() {
       }), true);
       res
           .list(
-              source_web_site: arg_source_web_site,
-              source_androidApp_packageName: arg_source_androidApp_packageName,
               relation: arg_relation,
               source_androidApp_certificate_sha256Fingerprint:
                   arg_source_androidApp_certificate_sha256Fingerprint,
+              source_androidApp_packageName: arg_source_androidApp_packageName,
+              source_web_site: arg_source_web_site,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListResponse(response);

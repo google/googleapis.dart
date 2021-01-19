@@ -2058,9 +2058,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_state = 'foo';
-      var arg_pageSize = 42;
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2089,11 +2089,11 @@ void main() {
             );
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -2105,9 +2105,9 @@ void main() {
       }), true);
       res
           .list(
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               state: arg_state,
-              pageSize: arg_pageSize,
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

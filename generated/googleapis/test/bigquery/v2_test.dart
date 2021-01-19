@@ -6685,11 +6685,11 @@ void main() {
       api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
+      var arg_location = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_startIndex = 'foo';
       var arg_timeoutMs = 42;
-      var arg_location = 'foo';
-      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6732,16 +6732,16 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["location"].first, unittest.equals(arg_location));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["startIndex"].first, unittest.equals(arg_startIndex));
         unittest.expect(core.int.parse(queryMap["timeoutMs"].first),
             unittest.equals(arg_timeoutMs));
-        unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6752,11 +6752,11 @@ void main() {
       }), true);
       res
           .getQueryResults(arg_projectId, arg_jobId,
+              location: arg_location,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               startIndex: arg_startIndex,
               timeoutMs: arg_timeoutMs,
-              location: arg_location,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetQueryResultsResponse(response);
@@ -6832,14 +6832,14 @@ void main() {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
+      var arg_allUsers = true;
       var arg_maxCreationTime = 'foo';
       var arg_maxResults = 42;
-      var arg_stateFilter = buildUnnamed1311();
       var arg_minCreationTime = 'foo';
+      var arg_pageToken = 'foo';
       var arg_parentJobId = 'foo';
       var arg_projection = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_allUsers = true;
+      var arg_stateFilter = buildUnnamed1311();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6879,22 +6879,22 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["allUsers"].first, unittest.equals("$arg_allUsers"));
         unittest.expect(queryMap["maxCreationTime"].first,
             unittest.equals(arg_maxCreationTime));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["stateFilter"], unittest.equals(arg_stateFilter));
         unittest.expect(queryMap["minCreationTime"].first,
             unittest.equals(arg_minCreationTime));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["parentJobId"].first, unittest.equals(arg_parentJobId));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["allUsers"].first, unittest.equals("$arg_allUsers"));
+            queryMap["stateFilter"], unittest.equals(arg_stateFilter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6905,14 +6905,14 @@ void main() {
       }), true);
       res
           .list(arg_projectId,
+              allUsers: arg_allUsers,
               maxCreationTime: arg_maxCreationTime,
               maxResults: arg_maxResults,
-              stateFilter: arg_stateFilter,
               minCreationTime: arg_minCreationTime,
+              pageToken: arg_pageToken,
               parentJobId: arg_parentJobId,
               projection: arg_projection,
-              pageToken: arg_pageToken,
-              allUsers: arg_allUsers,
+              stateFilter: arg_stateFilter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkJobList(response);
@@ -7091,8 +7091,8 @@ void main() {
       api.ModelsResourceApi res = api.BigqueryApi(mock).models;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7124,10 +7124,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7138,8 +7138,8 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_datasetId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListModelsResponse(response);
@@ -7266,8 +7266,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.BigqueryApi(mock).projects;
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7298,10 +7298,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7312,8 +7312,8 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkProjectList(response);
@@ -7490,10 +7490,10 @@ void main() {
       api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
-      var arg_readMask = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_filter = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_readMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7525,13 +7525,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["readMask"].first, unittest.equals(arg_readMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7542,10 +7542,10 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_datasetId,
-              readMask: arg_readMask,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               filter: arg_filter,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              readMask: arg_readMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListRoutinesResponse(response);
@@ -7701,9 +7701,9 @@ void main() {
       var arg_datasetId = 'foo';
       var arg_tableId = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_selectedFields = 'foo';
       var arg_startIndex = 'foo';
-      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7763,12 +7763,12 @@ void main() {
         }
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["selectedFields"].first,
             unittest.equals(arg_selectedFields));
         unittest.expect(
             queryMap["startIndex"].first, unittest.equals(arg_startIndex));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7780,9 +7780,9 @@ void main() {
       res
           .list(arg_projectId, arg_datasetId, arg_tableId,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               selectedFields: arg_selectedFields,
               startIndex: arg_startIndex,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTableDataList(response);
@@ -8063,8 +8063,8 @@ void main() {
       api.TablesResourceApi res = api.BigqueryApi(mock).tables;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8113,10 +8113,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8127,8 +8127,8 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_datasetId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTableList(response);

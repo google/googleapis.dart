@@ -411,28 +411,6 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than `maxResults`,
-  /// Compute Engine returns a `nextPageToken` that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are `0` to
-  /// `500`, inclusive. (Default: `500`)
-  ///
-  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
-  /// `nextPageToken` returned by a previous list request to get the next page
-  /// of results.
-  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
@@ -456,6 +434,28 @@ class DeploymentsResourceApi {
   /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
   /// ```
   ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -468,10 +468,10 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<DeploymentsListResponse> list(
     core.String project, {
-    core.String orderBy,
-    core.int maxResults,
-    core.String pageToken,
     core.String filter,
+    core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -484,17 +484,17 @@ class DeploymentsResourceApi {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -528,6 +528,11 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [createPolicy] - Sets the policy to use for creating new resources.
+  /// Possible string values are:
+  /// - "ACQUIRE"
+  /// - "CREATE_OR_ACQUIRE"
+  ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
   /// - "ABANDON"
@@ -544,11 +549,6 @@ class DeploymentsResourceApi {
   /// deployment will still exist after you cancel the preview and you must
   /// separately delete this deployment if you want to remove it.
   ///
-  /// [createPolicy] - Sets the policy to use for creating new resources.
-  /// Possible string values are:
-  /// - "ACQUIRE"
-  /// - "CREATE_OR_ACQUIRE"
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -563,9 +563,9 @@ class DeploymentsResourceApi {
     Deployment request,
     core.String project,
     core.String deployment, {
+    core.String createPolicy,
     core.String deletePolicy,
     core.bool preview,
-    core.String createPolicy,
     core.String $fields,
   }) {
     core.String _url;
@@ -584,14 +584,14 @@ class DeploymentsResourceApi {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    if (createPolicy != null) {
+      _queryParams['createPolicy'] = [createPolicy];
+    }
     if (deletePolicy != null) {
       _queryParams['deletePolicy'] = [deletePolicy];
     }
     if (preview != null) {
       _queryParams['preview'] = ['${preview}'];
-    }
-    if (createPolicy != null) {
-      _queryParams['createPolicy'] = [createPolicy];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -999,12 +999,6 @@ class ManifestsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than `maxResults`,
-  /// Compute Engine returns a `nextPageToken` that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are `0` to
-  /// `500`, inclusive. (Default: `500`)
-  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
@@ -1027,6 +1021,12 @@ class ManifestsResourceApi {
   /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
   /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
   /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
@@ -1057,8 +1057,8 @@ class ManifestsResourceApi {
   async.Future<ManifestsListResponse> list(
     core.String project,
     core.String deployment, {
-    core.int maxResults,
     core.String filter,
+    core.int maxResults,
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
@@ -1076,11 +1076,11 @@ class ManifestsResourceApi {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
@@ -1204,6 +1204,12 @@ class OperationsResourceApi {
   /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
   /// ```
   ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
@@ -1215,12 +1221,6 @@ class OperationsResourceApi {
   ///
   /// Currently, only sorting by `name` or `creationTimestamp desc` is
   /// supported.
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than `maxResults`,
-  /// Compute Engine returns a `nextPageToken` that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are `0` to
-  /// `500`, inclusive. (Default: `500`)
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1239,8 +1239,8 @@ class OperationsResourceApi {
   async.Future<OperationsListResponse> list(
     core.String project, {
     core.String filter,
-    core.String orderBy,
     core.int maxResults,
+    core.String orderBy,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -1257,11 +1257,11 @@ class OperationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -1391,6 +1391,12 @@ class ResourcesResourceApi {
   /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
   /// ```
   ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
@@ -1402,12 +1408,6 @@ class ResourcesResourceApi {
   ///
   /// Currently, only sorting by `name` or `creationTimestamp desc` is
   /// supported.
-  ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than `maxResults`,
-  /// Compute Engine returns a `nextPageToken` that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are `0` to
-  /// `500`, inclusive. (Default: `500`)
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1427,8 +1427,8 @@ class ResourcesResourceApi {
     core.String project,
     core.String deployment, {
     core.String filter,
-    core.String orderBy,
     core.int maxResults,
+    core.String orderBy,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -1448,11 +1448,11 @@ class ResourcesResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -1492,10 +1492,6 @@ class TypesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
-  /// `nextPageToken` returned by a previous list request to get the next page
-  /// of results.
-  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
@@ -1519,6 +1515,12 @@ class TypesResourceApi {
   /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
   /// ```
   ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
   /// returned in alphanumerical order based on the resource name.
   ///
@@ -1531,11 +1533,9 @@ class TypesResourceApi {
   /// Currently, only sorting by `name` or `creationTimestamp desc` is
   /// supported.
   ///
-  /// [maxResults] - The maximum number of results per page that should be
-  /// returned. If the number of available results is larger than `maxResults`,
-  /// Compute Engine returns a `nextPageToken` that can be used to get the next
-  /// page of results in subsequent list requests. Acceptable values are `0` to
-  /// `500`, inclusive. (Default: `500`)
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1549,10 +1549,10 @@ class TypesResourceApi {
   /// this method will complete with the same error.
   async.Future<TypesListResponse> list(
     core.String project, {
-    core.String pageToken,
     core.String filter,
-    core.String orderBy,
     core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1565,17 +1565,17 @@ class TypesResourceApi {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

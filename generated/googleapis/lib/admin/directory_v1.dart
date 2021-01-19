@@ -547,6 +547,8 @@ class ChromeosdevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
+  /// [maxResults] - Maximum number of results to return.
+  ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
   /// - "orderByUndefined"
@@ -559,10 +561,9 @@ class ChromeosdevicesResourceApi {
   /// - "status" : Chromebook status.
   /// - "supportEndDate" : Chromebook support end date.
   ///
-  /// [query] - Search string in the format given at
-  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
-  /// [maxResults] - Maximum number of results to return.
+  /// [pageToken] - Token to specify next page in the list
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
@@ -571,7 +572,8 @@ class ChromeosdevicesResourceApi {
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [query] - Search string in the format given at
+  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -579,8 +581,6 @@ class ChromeosdevicesResourceApi {
   /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
-  ///
-  /// [pageToken] - Token to specify next page in the list
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -594,13 +594,13 @@ class ChromeosdevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevices> list(
     core.String customerId, {
-    core.String orderBy,
-    core.String query,
     core.int maxResults,
-    core.String projection,
+    core.String orderBy,
     core.String orgUnitPath,
-    core.String sortOrder,
     core.String pageToken,
+    core.String projection,
+    core.String query,
+    core.String sortOrder,
     core.String $fields,
   }) {
     core.String _url;
@@ -613,26 +613,26 @@ class ChromeosdevicesResourceApi {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (orgUnitPath != null) {
       _queryParams['orgUnitPath'] = [orgUnitPath];
     }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
+    }
+    if (projection != null) {
+      _queryParams['projection'] = [projection];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
+    if (sortOrder != null) {
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1647,12 +1647,26 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all groups for a customer, fill this field instead of domain.
+  ///
+  /// [domain] - Name of the domain. Fill this field to get groups from only
+  /// this domain. To return all groups in a multi-domain fill customer field
+  /// instead.
+  ///
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 200.
+  ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
   /// - "orderByUndefined"
   /// - "email" : Email of the group.
   ///
   /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -1661,23 +1675,9 @@ class GroupsResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all groups for a customer, fill this field instead of domain.
-  ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups
-  ///
-  /// [domain] - Name of the domain. Fill this field to get groups from only
-  /// this domain. To return all groups in a multi-domain fill customer field
-  /// instead.
-  ///
   /// [userKey] - Email or immutable ID of the user if only those groups are to
   /// be listed, the given user is a member of. If it's an ID, it should match
   /// with the ID of the user object.
-  ///
-  /// [maxResults] - Maximum number of results to return. Max allowed value is
-  /// 200.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1690,14 +1690,14 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Groups> list({
+    core.String customer,
+    core.String domain,
+    core.int maxResults,
     core.String orderBy,
     core.String pageToken,
-    core.String sortOrder,
-    core.String customer,
     core.String query,
-    core.String domain,
+    core.String sortOrder,
     core.String userKey,
-    core.int maxResults,
     core.String $fields,
   }) {
     core.String _url;
@@ -1707,29 +1707,29 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (customer != null) {
+      _queryParams['customer'] = [customer];
+    }
+    if (domain != null) {
+      _queryParams['domain'] = [domain];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (customer != null) {
-      _queryParams['customer'] = [customer];
-    }
     if (query != null) {
       _queryParams['query'] = [query];
     }
-    if (domain != null) {
-      _queryParams['domain'] = [domain];
+    if (sortOrder != null) {
+      _queryParams['sortOrder'] = [sortOrder];
     }
     if (userKey != null) {
       _queryParams['userKey'] = [userKey];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2272,13 +2272,13 @@ class MembersResourceApi {
   ///
   /// [groupKey] - Email or immutable ID of the group
   ///
+  /// [includeDerivedMembership] - Whether to list indirect memberships.
+  /// Default: false.
+  ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 200.
   ///
   /// [pageToken] - Token to specify next page in the list
-  ///
-  /// [includeDerivedMembership] - Whether to list indirect memberships.
-  /// Default: false.
   ///
   /// [roles] - Comma separated role values to filter list results on.
   ///
@@ -2294,9 +2294,9 @@ class MembersResourceApi {
   /// this method will complete with the same error.
   async.Future<Members> list(
     core.String groupKey, {
+    core.bool includeDerivedMembership,
     core.int maxResults,
     core.String pageToken,
-    core.bool includeDerivedMembership,
     core.String roles,
     core.String $fields,
   }) {
@@ -2310,16 +2310,16 @@ class MembersResourceApi {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
+    if (includeDerivedMembership != null) {
+      _queryParams['includeDerivedMembership'] = [
+        '${includeDerivedMembership}'
+      ];
+    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (includeDerivedMembership != null) {
-      _queryParams['includeDerivedMembership'] = [
-        '${includeDerivedMembership}'
-      ];
     }
     if (roles != null) {
       _queryParams['roles'] = [roles];
@@ -2675,17 +2675,9 @@ class MobiledevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [projection] - Restrict information returned to a set of selected fields.
-  /// Possible string values are:
-  /// - "PROJECTION_UNDEFINED"
-  /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
-  /// model, status, type, and status)
-  /// - "FULL" : Includes all metadata fields
-  ///
-  /// [pageToken] - Token to specify next page in the list
-  ///
-  /// [query] - Search string in the format given at
-  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 100.
+  /// Value must be between "1" and "100".
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
@@ -2699,16 +2691,24 @@ class MobiledevicesResourceApi {
   /// - "status" : Status of the device.
   /// - "type" : Type of the device.
   ///
+  /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "PROJECTION_UNDEFINED"
+  /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
+  /// model, status, type, and status)
+  /// - "FULL" : Includes all metadata fields
+  ///
+  /// [query] - Search string in the format given at
+  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
+  ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
   /// Possible string values are:
   /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
-  ///
-  /// [maxResults] - Maximum number of results to return. Max allowed value is
-  /// 100.
-  /// Value must be between "1" and "100".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2722,12 +2722,12 @@ class MobiledevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileDevices> list(
     core.String customerId, {
-    core.String projection,
-    core.String pageToken,
-    core.String query,
-    core.String orderBy,
-    core.String sortOrder,
     core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
+    core.String projection,
+    core.String query,
+    core.String sortOrder,
     core.String $fields,
   }) {
     core.String _url;
@@ -2740,23 +2740,23 @@ class MobiledevicesResourceApi {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (projection != null) {
+      _queryParams['projection'] = [projection];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
     if (sortOrder != null) {
       _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3834,6 +3834,9 @@ class ResourcesCalendarsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
+  ///
   /// [orderBy] - Field(s) to sort results by in either ascending or descending
   /// order. Supported fields include resourceId, resourceName, capacity,
   /// buildingId, and floorName. If no order is specified, defaults to
@@ -3841,6 +3844,8 @@ class ResourcesCalendarsResourceApi {
   /// ...". For example buildingId, capacity desc would return results sorted
   /// first by buildingId in ascending order then by capacity in descending
   /// order.
+  ///
+  /// [pageToken] - Token to specify the next page in the list.
   ///
   /// [query] - String query used to filter results. Should be of the form
   /// "field operator value" where field can be any of supported fields and
@@ -3851,11 +3856,6 @@ class ResourcesCalendarsResourceApi {
   /// Supported fields include generatedResourceName, name, buildingId,
   /// floor_name, capacity, featureInstances.feature.name. For example
   /// buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone.
-  ///
-  /// [pageToken] - Token to specify the next page in the list.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3869,10 +3869,10 @@ class ResourcesCalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future<CalendarResources> list(
     core.String customer, {
-    core.String orderBy,
-    core.String query,
-    core.String pageToken,
     core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
+    core.String query,
     core.String $fields,
   }) {
     core.String _url;
@@ -3885,17 +3885,17 @@ class ResourcesCalendarsResourceApi {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (query != null) {
+      _queryParams['query'] = [query];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5760,13 +5760,6 @@ class UsersResourceApi {
   ///
   /// [userKey] - Email or immutable ID of the user
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
-  /// Possible string values are:
-  /// - "view_type_undefined"
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
-  ///
   /// [customFieldMask] - Comma-separated list of schema names. All fields from
   /// these schemas are fetched. This should only be set when projection=custom.
   ///
@@ -5777,6 +5770,13 @@ class UsersResourceApi {
   /// - "custom" : Include custom fields from schemas mentioned in
   /// customFieldMask.
   /// - "full" : Include all fields associated with this user.
+  ///
+  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+  /// user.
+  /// Possible string values are:
+  /// - "view_type_undefined"
+  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
+  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5790,9 +5790,9 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> get(
     core.String userKey, {
-    core.String viewType,
     core.String customFieldMask,
     core.String projection,
+    core.String viewType,
     core.String $fields,
   }) {
     core.String _url;
@@ -5805,14 +5805,14 @@ class UsersResourceApi {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    if (viewType != null) {
-      _queryParams['viewType'] = [viewType];
-    }
     if (customFieldMask != null) {
       _queryParams['customFieldMask'] = [customFieldMask];
     }
     if (projection != null) {
       _queryParams['projection'] = [projection];
+    }
+    if (viewType != null) {
+      _queryParams['viewType'] = [viewType];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5885,13 +5885,41 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
+  /// [customFieldMask] - Comma-separated list of schema names. All fields from
+  /// these schemas are fetched. This should only be set when projection=custom.
+  ///
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all users for a customer, fill this field instead of domain.
   ///
   /// [domain] - Name of the domain. Fill this field to get users from only this
   /// domain. To return all users in a multi-domain fill customer field instead.
   ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
+  ///
+  /// [orderBy] - Column to use for sorting results
+  /// Possible string values are:
+  /// - "orderByUndefined"
+  /// - "email" : Primary email of the user.
+  /// - "familyName" : User's family name.
+  /// - "givenName" : User's given name.
+  ///
   /// [pageToken] - Token to specify next page in the list
+  ///
+  /// [projection] - What subset of fields to fetch for this user.
+  /// Possible string values are:
+  /// - "projectionUndefined"
+  /// - "basic" : Do not include any custom fields for the user.
+  /// - "custom" : Include custom fields from schemas mentioned in
+  /// customFieldMask.
+  /// - "full" : Include all fields associated with this user.
+  ///
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  ///
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
@@ -5906,34 +5934,6 @@ class UsersResourceApi {
   /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
   /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
-  /// [orderBy] - Column to use for sorting results
-  /// Possible string values are:
-  /// - "orderByUndefined"
-  /// - "email" : Primary email of the user.
-  /// - "familyName" : User's family name.
-  /// - "givenName" : User's given name.
-  ///
-  /// [showDeleted] - If set to true, retrieves the list of deleted users.
-  /// (Default: false)
-  ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
-  ///
-  /// [projection] - What subset of fields to fetch for this user.
-  /// Possible string values are:
-  /// - "projectionUndefined"
-  /// - "basic" : Do not include any custom fields for the user.
-  /// - "custom" : Include custom fields from schemas mentioned in
-  /// customFieldMask.
-  /// - "full" : Include all fields associated with this user.
-  ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
-  ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5945,17 +5945,17 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Users> list({
-    core.int maxResults,
+    core.String customFieldMask,
+    core.String customer,
     core.String domain,
+    core.int maxResults,
+    core.String orderBy,
     core.String pageToken,
+    core.String projection,
+    core.String query,
+    core.String showDeleted,
     core.String sortOrder,
     core.String viewType,
-    core.String orderBy,
-    core.String showDeleted,
-    core.String query,
-    core.String projection,
-    core.String customer,
-    core.String customFieldMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -5965,38 +5965,38 @@ class UsersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (customFieldMask != null) {
+      _queryParams['customFieldMask'] = [customFieldMask];
+    }
+    if (customer != null) {
+      _queryParams['customer'] = [customer];
     }
     if (domain != null) {
       _queryParams['domain'] = [domain];
     }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
+    }
+    if (projection != null) {
+      _queryParams['projection'] = [projection];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
+    if (showDeleted != null) {
+      _queryParams['showDeleted'] = [showDeleted];
     }
     if (sortOrder != null) {
       _queryParams['sortOrder'] = [sortOrder];
     }
     if (viewType != null) {
       _queryParams['viewType'] = [viewType];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = [showDeleted];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (customer != null) {
-      _queryParams['customer'] = [customer];
-    }
-    if (customFieldMask != null) {
-      _queryParams['customFieldMask'] = [customFieldMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6299,25 +6299,15 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
-  /// Possible string values are:
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// [customFieldMask] - Comma-separated list of schema names. All fields from
+  /// these schemas are fetched. This should only be set when projection=custom.
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
+  /// to fetch all users for a customer, fill this field instead of domain.
   ///
   /// [domain] - Name of the domain. Fill this field to get users from only this
   /// domain. To return all users in a multi-domain fill customer field
   /// instead."
-  ///
-  /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Possible string values are:
-  /// - "sortOrderUnspecified"
-  /// - "ASCENDING" : Ascending order.
-  /// - "DESCENDING" : Descending order.
   ///
   /// [event] - Event on which subscription is intended
   /// Possible string values are:
@@ -6328,10 +6318,8 @@ class UsersResourceApi {
   /// - "undelete" : User Undeleted Event
   /// - "update" : User Updated Event
   ///
-  /// [pageToken] - Token to specify next page in the list
-  ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "1" and "500".
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
@@ -6340,14 +6328,7 @@ class UsersResourceApi {
   /// - "familyName" : User's family name.
   /// - "givenName" : User's given name.
   ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "1" and "500".
-  ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
-  ///
-  /// [showDeleted] - If set to true, retrieves the list of deleted users.
-  /// (Default: false)
+  /// [pageToken] - Token to specify next page in the list
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
@@ -6356,6 +6337,25 @@ class UsersResourceApi {
   /// - "custom" : Include custom fields from schemas mentioned in
   /// customFieldMask.
   /// - "full" : Include all fields associated with this user.
+  ///
+  /// [query] - Query string search. Should be of the form "". Complete
+  /// documentation is at https:
+  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  ///
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
+  ///
+  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// Possible string values are:
+  /// - "sortOrderUnspecified"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
+  ///
+  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
+  /// user.
+  /// Possible string values are:
+  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
+  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6369,18 +6369,18 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<Channel> watch(
     Channel request, {
-    core.String viewType,
-    core.String query,
-    core.String domain,
-    core.String sortOrder,
-    core.String event,
-    core.String pageToken,
-    core.String customer,
-    core.String orderBy,
-    core.int maxResults,
     core.String customFieldMask,
-    core.String showDeleted,
+    core.String customer,
+    core.String domain,
+    core.String event,
+    core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
     core.String projection,
+    core.String query,
+    core.String showDeleted,
+    core.String sortOrder,
+    core.String viewType,
     core.String $fields,
   }) {
     core.String _url;
@@ -6393,41 +6393,41 @@ class UsersResourceApi {
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
-    if (viewType != null) {
-      _queryParams['viewType'] = [viewType];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (domain != null) {
-      _queryParams['domain'] = [domain];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (event != null) {
-      _queryParams['event'] = [event];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (customFieldMask != null) {
+      _queryParams['customFieldMask'] = [customFieldMask];
     }
     if (customer != null) {
       _queryParams['customer'] = [customer];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (domain != null) {
+      _queryParams['domain'] = [domain];
+    }
+    if (event != null) {
+      _queryParams['event'] = [event];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (customFieldMask != null) {
-      _queryParams['customFieldMask'] = [customFieldMask];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (projection != null) {
+      _queryParams['projection'] = [projection];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
     }
     if (showDeleted != null) {
       _queryParams['showDeleted'] = [showDeleted];
     }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
+    if (sortOrder != null) {
+      _queryParams['sortOrder'] = [sortOrder];
+    }
+    if (viewType != null) {
+      _queryParams['viewType'] = [viewType];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

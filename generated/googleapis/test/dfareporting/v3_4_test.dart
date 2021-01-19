@@ -13724,15 +13724,15 @@ void main() {
       api.AccountUserProfilesResourceApi res =
           api.DfareportingApi(mock).accountUserProfiles;
       var arg_profileId = 'foo';
-      var arg_subaccountId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_userRoleId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_ids = buildUnnamed4215();
-      var arg_sortField = 'foo';
       var arg_active = true;
-      var arg_searchString = 'foo';
+      var arg_ids = buildUnnamed4215();
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_subaccountId = 'foo';
+      var arg_userRoleId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13773,22 +13773,22 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["userRoleId"].first, unittest.equals(arg_userRoleId));
+            queryMap["active"].first, unittest.equals("$arg_active"));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["active"].first, unittest.equals("$arg_active"));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
+        unittest.expect(
+            queryMap["userRoleId"].first, unittest.equals(arg_userRoleId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13799,15 +13799,15 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              subaccountId: arg_subaccountId,
-              sortOrder: arg_sortOrder,
-              userRoleId: arg_userRoleId,
-              pageToken: arg_pageToken,
-              ids: arg_ids,
-              sortField: arg_sortField,
               active: arg_active,
-              searchString: arg_searchString,
+              ids: arg_ids,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              subaccountId: arg_subaccountId,
+              userRoleId: arg_userRoleId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAccountUserProfilesListResponse(response);
@@ -14010,13 +14010,13 @@ void main() {
       var mock = HttpServerMock();
       api.AccountsResourceApi res = api.DfareportingApi(mock).accounts;
       var arg_profileId = 'foo';
+      var arg_active = true;
+      var arg_ids = buildUnnamed4216();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_searchString = 'foo';
       var arg_sortField = 'foo';
-      var arg_maxResults = 42;
-      var arg_ids = buildUnnamed4216();
       var arg_sortOrder = 'foo';
-      var arg_active = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14057,18 +14057,18 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["active"].first, unittest.equals("$arg_active"));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["active"].first, unittest.equals("$arg_active"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14079,13 +14079,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
+              active: arg_active,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               searchString: arg_searchString,
               sortField: arg_sortField,
-              maxResults: arg_maxResults,
-              ids: arg_ids,
               sortOrder: arg_sortOrder,
-              active: arg_active,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAccountsListResponse(response);
@@ -14348,29 +14348,29 @@ void main() {
       var mock = HttpServerMock();
       api.AdsResourceApi res = api.DfareportingApi(mock).ads;
       var arg_profileId = 'foo';
-      var arg_placementIds = buildUnnamed4217();
-      var arg_campaignIds = buildUnnamed4218();
-      var arg_dynamicClickTracker = true;
-      var arg_compatibility = 'foo';
-      var arg_type = buildUnnamed4219();
-      var arg_ids = buildUnnamed4220();
-      var arg_sortOrder = 'foo';
-      var arg_archived = true;
-      var arg_audienceSegmentIds = buildUnnamed4221();
       var arg_active = true;
-      var arg_remarketingListIds = buildUnnamed4222();
-      var arg_sizeIds = buildUnnamed4223();
-      var arg_creativeOptimizationConfigurationIds = buildUnnamed4224();
       var arg_advertiserId = 'foo';
+      var arg_archived = true;
+      var arg_audienceSegmentIds = buildUnnamed4217();
+      var arg_campaignIds = buildUnnamed4218();
+      var arg_compatibility = 'foo';
+      var arg_creativeIds = buildUnnamed4219();
+      var arg_creativeOptimizationConfigurationIds = buildUnnamed4220();
+      var arg_dynamicClickTracker = true;
+      var arg_ids = buildUnnamed4221();
+      var arg_landingPageIds = buildUnnamed4222();
       var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_sslCompliant = true;
-      var arg_landingPageIds = buildUnnamed4225();
-      var arg_creativeIds = buildUnnamed4226();
       var arg_overriddenEventTagId = 'foo';
-      var arg_sslRequired = true;
-      var arg_sortField = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_placementIds = buildUnnamed4223();
+      var arg_remarketingListIds = buildUnnamed4224();
       var arg_searchString = 'foo';
+      var arg_sizeIds = buildUnnamed4225();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_sslCompliant = true;
+      var arg_sslRequired = true;
+      var arg_type = buildUnnamed4226();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14411,48 +14411,48 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["placementIds"], unittest.equals(arg_placementIds));
+            queryMap["active"].first, unittest.equals("$arg_active"));
         unittest.expect(
-            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
-        unittest.expect(queryMap["dynamicClickTracker"].first,
-            unittest.equals("$arg_dynamicClickTracker"));
-        unittest.expect(queryMap["compatibility"].first,
-            unittest.equals(arg_compatibility));
-        unittest.expect(queryMap["type"], unittest.equals(arg_type));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
         unittest.expect(queryMap["audienceSegmentIds"],
             unittest.equals(arg_audienceSegmentIds));
         unittest.expect(
-            queryMap["active"].first, unittest.equals("$arg_active"));
-        unittest.expect(queryMap["remarketingListIds"],
-            unittest.equals(arg_remarketingListIds));
-        unittest.expect(queryMap["sizeIds"], unittest.equals(arg_sizeIds));
-        unittest.expect(queryMap["creativeOptimizationConfigurationIds"],
-            unittest.equals(arg_creativeOptimizationConfigurationIds));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["sslCompliant"].first,
-            unittest.equals("$arg_sslCompliant"));
-        unittest.expect(
-            queryMap["landingPageIds"], unittest.equals(arg_landingPageIds));
+            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
+        unittest.expect(queryMap["compatibility"].first,
+            unittest.equals(arg_compatibility));
         unittest.expect(
             queryMap["creativeIds"], unittest.equals(arg_creativeIds));
+        unittest.expect(queryMap["creativeOptimizationConfigurationIds"],
+            unittest.equals(arg_creativeOptimizationConfigurationIds));
+        unittest.expect(queryMap["dynamicClickTracker"].first,
+            unittest.equals("$arg_dynamicClickTracker"));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["landingPageIds"], unittest.equals(arg_landingPageIds));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["overriddenEventTagId"].first,
             unittest.equals(arg_overriddenEventTagId));
         unittest.expect(
-            queryMap["sslRequired"].first, unittest.equals("$arg_sslRequired"));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["placementIds"], unittest.equals(arg_placementIds));
+        unittest.expect(queryMap["remarketingListIds"],
+            unittest.equals(arg_remarketingListIds));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["sizeIds"], unittest.equals(arg_sizeIds));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(queryMap["sslCompliant"].first,
+            unittest.equals("$arg_sslCompliant"));
+        unittest.expect(
+            queryMap["sslRequired"].first, unittest.equals("$arg_sslRequired"));
+        unittest.expect(queryMap["type"], unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14463,30 +14463,30 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              placementIds: arg_placementIds,
-              campaignIds: arg_campaignIds,
-              dynamicClickTracker: arg_dynamicClickTracker,
-              compatibility: arg_compatibility,
-              type: arg_type,
-              ids: arg_ids,
-              sortOrder: arg_sortOrder,
+              active: arg_active,
+              advertiserId: arg_advertiserId,
               archived: arg_archived,
               audienceSegmentIds: arg_audienceSegmentIds,
-              active: arg_active,
-              remarketingListIds: arg_remarketingListIds,
-              sizeIds: arg_sizeIds,
+              campaignIds: arg_campaignIds,
+              compatibility: arg_compatibility,
+              creativeIds: arg_creativeIds,
               creativeOptimizationConfigurationIds:
                   arg_creativeOptimizationConfigurationIds,
-              advertiserId: arg_advertiserId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              sslCompliant: arg_sslCompliant,
+              dynamicClickTracker: arg_dynamicClickTracker,
+              ids: arg_ids,
               landingPageIds: arg_landingPageIds,
-              creativeIds: arg_creativeIds,
+              maxResults: arg_maxResults,
               overriddenEventTagId: arg_overriddenEventTagId,
-              sslRequired: arg_sslRequired,
-              sortField: arg_sortField,
+              pageToken: arg_pageToken,
+              placementIds: arg_placementIds,
+              remarketingListIds: arg_remarketingListIds,
               searchString: arg_searchString,
+              sizeIds: arg_sizeIds,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              sslCompliant: arg_sslCompliant,
+              sslRequired: arg_sslRequired,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdsListResponse(response);
@@ -14813,12 +14813,12 @@ void main() {
       api.AdvertiserGroupsResourceApi res =
           api.DfareportingApi(mock).advertiserGroups;
       var arg_profileId = 'foo';
-      var arg_searchString = 'foo';
-      var arg_maxResults = 42;
       var arg_ids = buildUnnamed4227();
-      var arg_sortOrder = 'foo';
-      var arg_sortField = 'foo';
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14858,17 +14858,17 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14879,12 +14879,12 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              searchString: arg_searchString,
-              maxResults: arg_maxResults,
               ids: arg_ids,
-              sortOrder: arg_sortOrder,
-              sortField: arg_sortField,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdvertiserGroupsListResponse(response);
@@ -15152,16 +15152,16 @@ void main() {
       api.AdvertiserLandingPagesResourceApi res =
           api.DfareportingApi(mock).advertiserLandingPages;
       var arg_profileId = 'foo';
-      var arg_subaccountId = 'foo';
-      var arg_campaignIds = buildUnnamed4228();
-      var arg_sortOrder = 'foo';
-      var arg_advertiserIds = buildUnnamed4229();
-      var arg_pageToken = 'foo';
-      var arg_sortField = 'foo';
+      var arg_advertiserIds = buildUnnamed4228();
       var arg_archived = true;
-      var arg_searchString = 'foo';
-      var arg_maxResults = 42;
+      var arg_campaignIds = buildUnnamed4229();
       var arg_ids = buildUnnamed4230();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_subaccountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15202,24 +15202,24 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
-        unittest.expect(
-            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
             queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15231,16 +15231,16 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              subaccountId: arg_subaccountId,
-              campaignIds: arg_campaignIds,
-              sortOrder: arg_sortOrder,
               advertiserIds: arg_advertiserIds,
-              pageToken: arg_pageToken,
-              sortField: arg_sortField,
               archived: arg_archived,
-              searchString: arg_searchString,
-              maxResults: arg_maxResults,
+              campaignIds: arg_campaignIds,
               ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              subaccountId: arg_subaccountId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdvertiserLandingPagesListResponse(response);
@@ -15505,18 +15505,18 @@ void main() {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
       var arg_profileId = 'foo';
+      var arg_advertiserGroupIds = buildUnnamed4231();
+      var arg_floodlightConfigurationIds = buildUnnamed4232();
+      var arg_ids = buildUnnamed4233();
+      var arg_includeAdvertisersWithoutGroupsOnly = true;
       var arg_maxResults = 42;
-      var arg_subaccountId = 'foo';
-      var arg_ids = buildUnnamed4231();
+      var arg_onlyParent = true;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
       var arg_status = 'foo';
-      var arg_onlyParent = true;
-      var arg_floodlightConfigurationIds = buildUnnamed4232();
-      var arg_sortField = 'foo';
-      var arg_searchString = 'foo';
-      var arg_advertiserGroupIds = buildUnnamed4233();
-      var arg_pageToken = 'foo';
-      var arg_includeAdvertisersWithoutGroupsOnly = true;
+      var arg_subaccountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15556,28 +15556,28 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["advertiserGroupIds"],
+            unittest.equals(arg_advertiserGroupIds));
+        unittest.expect(queryMap["floodlightConfigurationIds"],
+            unittest.equals(arg_floodlightConfigurationIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(queryMap["includeAdvertisersWithoutGroupsOnly"].first,
+            unittest.equals("$arg_includeAdvertisersWithoutGroupsOnly"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+            queryMap["onlyParent"].first, unittest.equals("$arg_onlyParent"));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
         unittest.expect(
-            queryMap["onlyParent"].first, unittest.equals("$arg_onlyParent"));
-        unittest.expect(queryMap["floodlightConfigurationIds"],
-            unittest.equals(arg_floodlightConfigurationIds));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["advertiserGroupIds"],
-            unittest.equals(arg_advertiserGroupIds));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["includeAdvertisersWithoutGroupsOnly"].first,
-            unittest.equals("$arg_includeAdvertisersWithoutGroupsOnly"));
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15588,19 +15588,19 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              subaccountId: arg_subaccountId,
-              ids: arg_ids,
-              sortOrder: arg_sortOrder,
-              status: arg_status,
-              onlyParent: arg_onlyParent,
-              floodlightConfigurationIds: arg_floodlightConfigurationIds,
-              sortField: arg_sortField,
-              searchString: arg_searchString,
               advertiserGroupIds: arg_advertiserGroupIds,
-              pageToken: arg_pageToken,
+              floodlightConfigurationIds: arg_floodlightConfigurationIds,
+              ids: arg_ids,
               includeAdvertisersWithoutGroupsOnly:
                   arg_includeAdvertisersWithoutGroupsOnly,
+              maxResults: arg_maxResults,
+              onlyParent: arg_onlyParent,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              status: arg_status,
+              subaccountId: arg_subaccountId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdvertisersListResponse(response);
@@ -15876,8 +15876,8 @@ void main() {
       var arg_profileId = 'foo';
       var arg_campaignId = 'foo';
       var arg_maxResults = 42;
-      var arg_sortOrder = 'foo';
       var arg_pageToken = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15929,9 +15929,9 @@ void main() {
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15944,8 +15944,8 @@ void main() {
       res
           .list(arg_profileId, arg_campaignId,
               maxResults: arg_maxResults,
-              sortOrder: arg_sortOrder,
               pageToken: arg_pageToken,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCampaignCreativeAssociationsListResponse(response);
@@ -16082,19 +16082,19 @@ void main() {
       var mock = HttpServerMock();
       api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
+      var arg_advertiserGroupIds = buildUnnamed4234();
+      var arg_advertiserIds = buildUnnamed4235();
       var arg_archived = true;
-      var arg_sortField = 'foo';
-      var arg_ids = buildUnnamed4234();
       var arg_atLeastOneOptimizationActivity = true;
-      var arg_excludedIds = buildUnnamed4235();
-      var arg_sortOrder = 'foo';
-      var arg_searchString = 'foo';
-      var arg_advertiserGroupIds = buildUnnamed4236();
+      var arg_excludedIds = buildUnnamed4236();
+      var arg_ids = buildUnnamed4237();
+      var arg_maxResults = 42;
       var arg_overriddenEventTagId = 'foo';
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_subaccountId = 'foo';
-      var arg_advertiserIds = buildUnnamed4237();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -16134,31 +16134,31 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["advertiserGroupIds"],
+            unittest.equals(arg_advertiserGroupIds));
+        unittest.expect(
+            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
         unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["atLeastOneOptimizationActivity"].first,
             unittest.equals("$arg_atLeastOneOptimizationActivity"));
         unittest.expect(
             queryMap["excludedIds"], unittest.equals(arg_excludedIds));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["advertiserGroupIds"],
-            unittest.equals(arg_advertiserGroupIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["overriddenEventTagId"].first,
             unittest.equals(arg_overriddenEventTagId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
-            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -16169,20 +16169,20 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
+              advertiserGroupIds: arg_advertiserGroupIds,
+              advertiserIds: arg_advertiserIds,
               archived: arg_archived,
-              sortField: arg_sortField,
-              ids: arg_ids,
               atLeastOneOptimizationActivity:
                   arg_atLeastOneOptimizationActivity,
               excludedIds: arg_excludedIds,
-              sortOrder: arg_sortOrder,
-              searchString: arg_searchString,
-              advertiserGroupIds: arg_advertiserGroupIds,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
               overriddenEventTagId: arg_overriddenEventTagId,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               subaccountId: arg_subaccountId,
-              advertiserIds: arg_advertiserIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCampaignsListResponse(response);
@@ -16384,15 +16384,15 @@ void main() {
       api.ChangeLogsResourceApi res = api.DfareportingApi(mock).changeLogs;
       var arg_profileId = 'foo';
       var arg_action = 'foo';
-      var arg_objectType = 'foo';
+      var arg_ids = buildUnnamed4238();
       var arg_maxChangeTime = 'foo';
-      var arg_objectIds = buildUnnamed4238();
-      var arg_userProfileIds = buildUnnamed4239();
       var arg_maxResults = 42;
       var arg_minChangeTime = 'foo';
+      var arg_objectIds = buildUnnamed4239();
+      var arg_objectType = 'foo';
       var arg_pageToken = 'foo';
       var arg_searchString = 'foo';
-      var arg_ids = buildUnnamed4240();
+      var arg_userProfileIds = buildUnnamed4240();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -16433,22 +16433,22 @@ void main() {
           }
         }
         unittest.expect(queryMap["action"].first, unittest.equals(arg_action));
-        unittest.expect(
-            queryMap["objectType"].first, unittest.equals(arg_objectType));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["maxChangeTime"].first,
             unittest.equals(arg_maxChangeTime));
-        unittest.expect(queryMap["objectIds"], unittest.equals(arg_objectIds));
-        unittest.expect(
-            queryMap["userProfileIds"], unittest.equals(arg_userProfileIds));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(queryMap["minChangeTime"].first,
             unittest.equals(arg_minChangeTime));
+        unittest.expect(queryMap["objectIds"], unittest.equals(arg_objectIds));
+        unittest.expect(
+            queryMap["objectType"].first, unittest.equals(arg_objectType));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["userProfileIds"], unittest.equals(arg_userProfileIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -16460,15 +16460,15 @@ void main() {
       res
           .list(arg_profileId,
               action: arg_action,
-              objectType: arg_objectType,
+              ids: arg_ids,
               maxChangeTime: arg_maxChangeTime,
-              objectIds: arg_objectIds,
-              userProfileIds: arg_userProfileIds,
               maxResults: arg_maxResults,
               minChangeTime: arg_minChangeTime,
+              objectIds: arg_objectIds,
+              objectType: arg_objectType,
               pageToken: arg_pageToken,
               searchString: arg_searchString,
-              ids: arg_ids,
+              userProfileIds: arg_userProfileIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChangeLogsListResponse(response);
@@ -16482,8 +16482,8 @@ void main() {
       api.CitiesResourceApi res = api.DfareportingApi(mock).cities;
       var arg_profileId = 'foo';
       var arg_countryDartIds = buildUnnamed4241();
-      var arg_namePrefix = 'foo';
       var arg_dartIds = buildUnnamed4242();
+      var arg_namePrefix = 'foo';
       var arg_regionDartIds = buildUnnamed4243();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16526,9 +16526,9 @@ void main() {
         }
         unittest.expect(
             queryMap["countryDartIds"], unittest.equals(arg_countryDartIds));
+        unittest.expect(queryMap["dartIds"], unittest.equals(arg_dartIds));
         unittest.expect(
             queryMap["namePrefix"].first, unittest.equals(arg_namePrefix));
-        unittest.expect(queryMap["dartIds"], unittest.equals(arg_dartIds));
         unittest.expect(
             queryMap["regionDartIds"], unittest.equals(arg_regionDartIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -16542,8 +16542,8 @@ void main() {
       res
           .list(arg_profileId,
               countryDartIds: arg_countryDartIds,
-              namePrefix: arg_namePrefix,
               dartIds: arg_dartIds,
+              namePrefix: arg_namePrefix,
               regionDartIds: arg_regionDartIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -16869,12 +16869,12 @@ void main() {
       api.ContentCategoriesResourceApi res =
           api.DfareportingApi(mock).contentCategories;
       var arg_profileId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_searchString = 'foo';
+      var arg_ids = buildUnnamed4244();
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_sortField = 'foo';
-      var arg_ids = buildUnnamed4244();
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -16914,17 +16914,17 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -16935,12 +16935,12 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              sortOrder: arg_sortOrder,
-              searchString: arg_searchString,
+              ids: arg_ids,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
               sortField: arg_sortField,
-              ids: arg_ids,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkContentCategoriesListResponse(response);
@@ -17629,11 +17629,11 @@ void main() {
           api.DfareportingApi(mock).creativeFieldValues;
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
-      var arg_searchString = 'foo';
-      var arg_sortField = 'foo';
+      var arg_ids = buildUnnamed4245();
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_ids = buildUnnamed4245();
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17683,15 +17683,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -17704,11 +17704,11 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_creativeFieldId,
-              searchString: arg_searchString,
-              sortField: arg_sortField,
+              ids: arg_ids,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              ids: arg_ids,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -18060,13 +18060,13 @@ void main() {
       api.CreativeFieldsResourceApi res =
           api.DfareportingApi(mock).creativeFields;
       var arg_profileId = 'foo';
-      var arg_searchString = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
-      var arg_sortField = 'foo';
       var arg_advertiserIds = buildUnnamed4246();
-      var arg_sortOrder = 'foo';
       var arg_ids = buildUnnamed4247();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -18107,18 +18107,18 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
-        unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -18129,13 +18129,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              searchString: arg_searchString,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
-              sortField: arg_sortField,
               advertiserIds: arg_advertiserIds,
-              sortOrder: arg_sortOrder,
               ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCreativeFieldsListResponse(response);
@@ -18403,13 +18403,13 @@ void main() {
       api.CreativeGroupsResourceApi res =
           api.DfareportingApi(mock).creativeGroups;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
+      var arg_advertiserIds = buildUnnamed4248();
       var arg_groupNumber = 42;
-      var arg_sortField = 'foo';
-      var arg_ids = buildUnnamed4248();
-      var arg_advertiserIds = buildUnnamed4249();
-      var arg_searchString = 'foo';
+      var arg_ids = buildUnnamed4249();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18450,19 +18450,19 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["groupNumber"].first),
-            unittest.equals(arg_groupNumber));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
             queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+        unittest.expect(core.int.parse(queryMap["groupNumber"].first),
+            unittest.equals(arg_groupNumber));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -18475,13 +18475,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              groupNumber: arg_groupNumber,
-              sortField: arg_sortField,
-              ids: arg_ids,
               advertiserIds: arg_advertiserIds,
-              searchString: arg_searchString,
+              groupNumber: arg_groupNumber,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -18747,22 +18747,22 @@ void main() {
       var mock = HttpServerMock();
       api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
-      var arg_creativeFieldIds = buildUnnamed4250();
-      var arg_types = buildUnnamed4251();
-      var arg_sizeIds = buildUnnamed4252();
-      var arg_campaignId = 'foo';
-      var arg_advertiserId = 'foo';
       var arg_active = true;
-      var arg_sortField = 'foo';
-      var arg_searchString = 'foo';
-      var arg_studioCreativeId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_ids = buildUnnamed4253();
-      var arg_companionCreativeIds = buildUnnamed4254();
-      var arg_renderingIds = buildUnnamed4255();
+      var arg_advertiserId = 'foo';
       var arg_archived = true;
+      var arg_campaignId = 'foo';
+      var arg_companionCreativeIds = buildUnnamed4250();
+      var arg_creativeFieldIds = buildUnnamed4251();
+      var arg_ids = buildUnnamed4252();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_renderingIds = buildUnnamed4253();
+      var arg_searchString = 'foo';
+      var arg_sizeIds = buildUnnamed4254();
+      var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
+      var arg_studioCreativeId = 'foo';
+      var arg_types = buildUnnamed4255();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -18802,35 +18802,35 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["creativeFieldIds"],
-            unittest.equals(arg_creativeFieldIds));
-        unittest.expect(queryMap["types"], unittest.equals(arg_types));
-        unittest.expect(queryMap["sizeIds"], unittest.equals(arg_sizeIds));
-        unittest.expect(
-            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
             queryMap["active"].first, unittest.equals("$arg_active"));
         unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["studioCreativeId"].first,
-            unittest.equals(arg_studioCreativeId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(queryMap["companionCreativeIds"],
-            unittest.equals(arg_companionCreativeIds));
-        unittest.expect(
-            queryMap["renderingIds"], unittest.equals(arg_renderingIds));
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
         unittest.expect(
+            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
+        unittest.expect(queryMap["companionCreativeIds"],
+            unittest.equals(arg_companionCreativeIds));
+        unittest.expect(queryMap["creativeFieldIds"],
+            unittest.equals(arg_creativeFieldIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["renderingIds"], unittest.equals(arg_renderingIds));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["sizeIds"], unittest.equals(arg_sizeIds));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(queryMap["studioCreativeId"].first,
+            unittest.equals(arg_studioCreativeId));
+        unittest.expect(queryMap["types"], unittest.equals(arg_types));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -18841,22 +18841,22 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              creativeFieldIds: arg_creativeFieldIds,
-              types: arg_types,
-              sizeIds: arg_sizeIds,
-              campaignId: arg_campaignId,
-              advertiserId: arg_advertiserId,
               active: arg_active,
-              sortField: arg_sortField,
-              searchString: arg_searchString,
-              studioCreativeId: arg_studioCreativeId,
-              pageToken: arg_pageToken,
-              ids: arg_ids,
-              companionCreativeIds: arg_companionCreativeIds,
-              renderingIds: arg_renderingIds,
+              advertiserId: arg_advertiserId,
               archived: arg_archived,
+              campaignId: arg_campaignId,
+              companionCreativeIds: arg_companionCreativeIds,
+              creativeFieldIds: arg_creativeFieldIds,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              renderingIds: arg_renderingIds,
+              searchString: arg_searchString,
+              sizeIds: arg_sizeIds,
+              sortField: arg_sortField,
               sortOrder: arg_sortOrder,
+              studioCreativeId: arg_studioCreativeId,
+              types: arg_types,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCreativesListResponse(response);
@@ -19061,8 +19061,8 @@ void main() {
           api.DfareportingApi(mock).dimensionValues;
       var arg_request = buildDimensionValueRequest();
       var arg_profileId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.DimensionValueRequest.fromJson(json);
@@ -19105,10 +19105,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -19119,8 +19119,8 @@ void main() {
       }), true);
       res
           .query(arg_request, arg_profileId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDimensionValueList(response);
@@ -19260,17 +19260,17 @@ void main() {
       api.DirectorySitesResourceApi res =
           api.DfareportingApi(mock).directorySites;
       var arg_profileId = 'foo';
+      var arg_acceptsInStreamVideoPlacements = true;
+      var arg_acceptsInterstitialPlacements = true;
       var arg_acceptsPublisherPaidPlacements = true;
+      var arg_active = true;
+      var arg_dfpNetworkCode = 'foo';
+      var arg_ids = buildUnnamed4256();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
-      var arg_ids = buildUnnamed4256();
-      var arg_active = true;
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
-      var arg_acceptsInStreamVideoPlacements = true;
-      var arg_searchString = 'foo';
-      var arg_dfpNetworkCode = 'foo';
-      var arg_acceptsInterstitialPlacements = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -19310,27 +19310,27 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["acceptsInStreamVideoPlacements"].first,
+            unittest.equals("$arg_acceptsInStreamVideoPlacements"));
+        unittest.expect(queryMap["acceptsInterstitialPlacements"].first,
+            unittest.equals("$arg_acceptsInterstitialPlacements"));
         unittest.expect(queryMap["acceptsPublisherPaidPlacements"].first,
             unittest.equals("$arg_acceptsPublisherPaidPlacements"));
+        unittest.expect(
+            queryMap["active"].first, unittest.equals("$arg_active"));
+        unittest.expect(queryMap["dfpNetworkCode"].first,
+            unittest.equals(arg_dfpNetworkCode));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["active"].first, unittest.equals("$arg_active"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["acceptsInStreamVideoPlacements"].first,
-            unittest.equals("$arg_acceptsInStreamVideoPlacements"));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["dfpNetworkCode"].first,
-            unittest.equals(arg_dfpNetworkCode));
-        unittest.expect(queryMap["acceptsInterstitialPlacements"].first,
-            unittest.equals("$arg_acceptsInterstitialPlacements"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -19341,19 +19341,19 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              acceptsPublisherPaidPlacements:
-                  arg_acceptsPublisherPaidPlacements,
-              sortField: arg_sortField,
-              sortOrder: arg_sortOrder,
-              ids: arg_ids,
-              active: arg_active,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               acceptsInStreamVideoPlacements:
                   arg_acceptsInStreamVideoPlacements,
-              searchString: arg_searchString,
-              dfpNetworkCode: arg_dfpNetworkCode,
               acceptsInterstitialPlacements: arg_acceptsInterstitialPlacements,
+              acceptsPublisherPaidPlacements:
+                  arg_acceptsPublisherPaidPlacements,
+              active: arg_active,
+              dfpNetworkCode: arg_dfpNetworkCode,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDirectorySitesListResponse(response);
@@ -19497,10 +19497,10 @@ void main() {
       api.DynamicTargetingKeysResourceApi res =
           api.DfareportingApi(mock).dynamicTargetingKeys;
       var arg_profileId = 'foo';
-      var arg_objectType = 'foo';
-      var arg_objectId = 'foo';
-      var arg_names = buildUnnamed4257();
       var arg_advertiserId = 'foo';
+      var arg_names = buildUnnamed4257();
+      var arg_objectId = 'foo';
+      var arg_objectType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -19541,12 +19541,12 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["objectType"].first, unittest.equals(arg_objectType));
-        unittest.expect(
-            queryMap["objectId"].first, unittest.equals(arg_objectId));
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(queryMap["names"], unittest.equals(arg_names));
         unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+            queryMap["objectId"].first, unittest.equals(arg_objectId));
+        unittest.expect(
+            queryMap["objectType"].first, unittest.equals(arg_objectType));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -19557,10 +19557,10 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              objectType: arg_objectType,
-              objectId: arg_objectId,
-              names: arg_names,
               advertiserId: arg_advertiserId,
+              names: arg_names,
+              objectId: arg_objectId,
+              objectType: arg_objectType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDynamicTargetingKeysListResponse(response);
@@ -19757,15 +19757,15 @@ void main() {
       var mock = HttpServerMock();
       api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
       var arg_profileId = 'foo';
-      var arg_definitionsOnly = true;
       var arg_adId = 'foo';
-      var arg_searchString = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_ids = buildUnnamed4258();
-      var arg_sortField = 'foo';
-      var arg_enabled = true;
-      var arg_eventTagTypes = buildUnnamed4259();
       var arg_campaignId = 'foo';
+      var arg_definitionsOnly = true;
+      var arg_enabled = true;
+      var arg_eventTagTypes = buildUnnamed4258();
+      var arg_ids = buildUnnamed4259();
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -19806,22 +19806,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["definitionsOnly"].first,
-            unittest.equals("$arg_definitionsOnly"));
         unittest.expect(queryMap["adId"].first, unittest.equals(arg_adId));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
+        unittest.expect(queryMap["definitionsOnly"].first,
+            unittest.equals("$arg_definitionsOnly"));
         unittest.expect(
             queryMap["enabled"].first, unittest.equals("$arg_enabled"));
         unittest.expect(
             queryMap["eventTagTypes"], unittest.equals(arg_eventTagTypes));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -19834,15 +19834,15 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              definitionsOnly: arg_definitionsOnly,
               adId: arg_adId,
-              searchString: arg_searchString,
               advertiserId: arg_advertiserId,
-              ids: arg_ids,
-              sortField: arg_sortField,
+              campaignId: arg_campaignId,
+              definitionsOnly: arg_definitionsOnly,
               enabled: arg_enabled,
               eventTagTypes: arg_eventTagTypes,
-              campaignId: arg_campaignId,
+              ids: arg_ids,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -20047,11 +20047,11 @@ void main() {
       var mock = HttpServerMock();
       api.FilesResourceApi res = api.DfareportingApi(mock).files;
       var arg_profileId = 'foo';
-      var arg_scope = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_sortField = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_scope = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -20091,15 +20091,15 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -20110,11 +20110,11 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              scope: arg_scope,
-              pageToken: arg_pageToken,
-              sortOrder: arg_sortOrder,
-              sortField: arg_sortField,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              scope: arg_scope,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFileList(response);
@@ -20381,18 +20381,18 @@ void main() {
           api.DfareportingApi(mock).floodlightActivities;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_sortField = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_floodlightActivityGroupIds = buildUnnamed4260();
-      var arg_floodlightConfigurationId = 'foo';
-      var arg_maxResults = 42;
-      var arg_ids = buildUnnamed4261();
-      var arg_tagString = 'foo';
-      var arg_pageToken = 'foo';
       var arg_floodlightActivityGroupName = 'foo';
       var arg_floodlightActivityGroupTagString = 'foo';
       var arg_floodlightActivityGroupType = 'foo';
+      var arg_floodlightConfigurationId = 'foo';
+      var arg_ids = buildUnnamed4261();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_tagString = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -20434,29 +20434,29 @@ void main() {
         }
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["floodlightActivityGroupIds"],
             unittest.equals(arg_floodlightActivityGroupIds));
-        unittest.expect(queryMap["floodlightConfigurationId"].first,
-            unittest.equals(arg_floodlightConfigurationId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["tagString"].first, unittest.equals(arg_tagString));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["floodlightActivityGroupName"].first,
             unittest.equals(arg_floodlightActivityGroupName));
         unittest.expect(queryMap["floodlightActivityGroupTagString"].first,
             unittest.equals(arg_floodlightActivityGroupTagString));
         unittest.expect(queryMap["floodlightActivityGroupType"].first,
             unittest.equals(arg_floodlightActivityGroupType));
+        unittest.expect(queryMap["floodlightConfigurationId"].first,
+            unittest.equals(arg_floodlightConfigurationId));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["tagString"].first, unittest.equals(arg_tagString));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -20468,19 +20468,19 @@ void main() {
       res
           .list(arg_profileId,
               advertiserId: arg_advertiserId,
-              sortField: arg_sortField,
-              sortOrder: arg_sortOrder,
               floodlightActivityGroupIds: arg_floodlightActivityGroupIds,
-              floodlightConfigurationId: arg_floodlightConfigurationId,
-              maxResults: arg_maxResults,
-              ids: arg_ids,
-              tagString: arg_tagString,
-              pageToken: arg_pageToken,
               floodlightActivityGroupName: arg_floodlightActivityGroupName,
               floodlightActivityGroupTagString:
                   arg_floodlightActivityGroupTagString,
               floodlightActivityGroupType: arg_floodlightActivityGroupType,
+              floodlightConfigurationId: arg_floodlightConfigurationId,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              tagString: arg_tagString,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFloodlightActivitiesListResponse(response);
@@ -20749,13 +20749,13 @@ void main() {
           api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_ids = buildUnnamed4262();
       var arg_floodlightConfigurationId = 'foo';
-      var arg_sortField = 'foo';
+      var arg_ids = buildUnnamed4262();
       var arg_maxResults = 42;
-      var arg_searchString = 'foo';
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -20798,19 +20798,19 @@ void main() {
         }
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["floodlightConfigurationId"].first,
             unittest.equals(arg_floodlightConfigurationId));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -20824,13 +20824,13 @@ void main() {
       res
           .list(arg_profileId,
               advertiserId: arg_advertiserId,
-              sortOrder: arg_sortOrder,
-              ids: arg_ids,
               floodlightConfigurationId: arg_floodlightConfigurationId,
-              sortField: arg_sortField,
+              ids: arg_ids,
               maxResults: arg_maxResults,
-              searchString: arg_searchString,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -21302,14 +21302,14 @@ void main() {
           api.DfareportingApi(mock).inventoryItems;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
+      var arg_ids = buildUnnamed4264();
       var arg_inPlan = true;
-      var arg_orderId = buildUnnamed4264();
-      var arg_siteId = buildUnnamed4265();
-      var arg_ids = buildUnnamed4266();
-      var arg_sortOrder = 'foo';
-      var arg_sortField = 'foo';
       var arg_maxResults = 42;
+      var arg_orderId = buildUnnamed4265();
       var arg_pageToken = 'foo';
+      var arg_siteId = buildUnnamed4266();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21359,19 +21359,19 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["inPlan"].first, unittest.equals("$arg_inPlan"));
-        unittest.expect(queryMap["orderId"], unittest.equals(arg_orderId));
-        unittest.expect(queryMap["siteId"], unittest.equals(arg_siteId));
         unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+            queryMap["inPlan"].first, unittest.equals("$arg_inPlan"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["orderId"], unittest.equals(arg_orderId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["siteId"], unittest.equals(arg_siteId));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -21383,14 +21383,14 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_projectId,
-              inPlan: arg_inPlan,
-              orderId: arg_orderId,
-              siteId: arg_siteId,
               ids: arg_ids,
-              sortOrder: arg_sortOrder,
-              sortField: arg_sortField,
+              inPlan: arg_inPlan,
               maxResults: arg_maxResults,
+              orderId: arg_orderId,
               pageToken: arg_pageToken,
+              siteId: arg_siteId,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -21586,11 +21586,11 @@ void main() {
       var mock = HttpServerMock();
       api.MobileAppsResourceApi res = api.DfareportingApi(mock).mobileApps;
       var arg_profileId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_directories = buildUnnamed4267();
-      var arg_searchString = 'foo';
-      var arg_maxResults = 42;
       var arg_ids = buildUnnamed4268();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -21631,14 +21631,14 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["directories"], unittest.equals(arg_directories));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -21649,11 +21649,11 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              pageToken: arg_pageToken,
               directories: arg_directories,
-              searchString: arg_searchString,
-              maxResults: arg_maxResults,
               ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMobileAppsListResponse(response);
@@ -22114,15 +22114,15 @@ void main() {
           api.DfareportingApi(mock).orderDocuments;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
       var arg_approved = true;
-      var arg_sortOrder = 'foo';
-      var arg_orderId = buildUnnamed4269();
-      var arg_siteId = buildUnnamed4270();
-      var arg_sortField = 'foo';
+      var arg_ids = buildUnnamed4269();
+      var arg_maxResults = 42;
+      var arg_orderId = buildUnnamed4270();
+      var arg_pageToken = 'foo';
       var arg_searchString = 'foo';
-      var arg_ids = buildUnnamed4271();
+      var arg_siteId = buildUnnamed4271();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -22171,21 +22171,21 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["approved"].first, unittest.equals("$arg_approved"));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["orderId"], unittest.equals(arg_orderId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["approved"].first, unittest.equals("$arg_approved"));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["orderId"], unittest.equals(arg_orderId));
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(queryMap["siteId"], unittest.equals(arg_siteId));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -22196,15 +22196,15 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_projectId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
               approved: arg_approved,
-              sortOrder: arg_sortOrder,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
               orderId: arg_orderId,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
               siteId: arg_siteId,
               sortField: arg_sortField,
-              searchString: arg_searchString,
-              ids: arg_ids,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOrderDocumentsListResponse(response);
@@ -22290,13 +22290,13 @@ void main() {
       api.OrdersResourceApi res = api.DfareportingApi(mock).orders;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_sortField = 'foo';
+      var arg_ids = buildUnnamed4272();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_searchString = 'foo';
-      var arg_siteId = buildUnnamed4272();
-      var arg_maxResults = 42;
-      var arg_ids = buildUnnamed4273();
+      var arg_siteId = buildUnnamed4273();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -22345,18 +22345,18 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(queryMap["siteId"], unittest.equals(arg_siteId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -22367,13 +22367,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_projectId,
-              sortOrder: arg_sortOrder,
-              sortField: arg_sortField,
+              ids: arg_ids,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               searchString: arg_searchString,
               siteId: arg_siteId,
-              maxResults: arg_maxResults,
-              ids: arg_ids,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOrdersListResponse(response);
@@ -22513,25 +22513,25 @@ void main() {
       api.PlacementGroupsResourceApi res =
           api.DfareportingApi(mock).placementGroups;
       var arg_profileId = 'foo';
-      var arg_placementStrategyIds = buildUnnamed4274();
-      var arg_contentCategoryIds = buildUnnamed4275();
-      var arg_searchString = 'foo';
-      var arg_sortField = 'foo';
-      var arg_advertiserIds = buildUnnamed4276();
-      var arg_campaignIds = buildUnnamed4277();
-      var arg_minEndDate = 'foo';
+      var arg_advertiserIds = buildUnnamed4274();
       var arg_archived = true;
-      var arg_directorySiteIds = buildUnnamed4278();
-      var arg_siteIds = buildUnnamed4279();
-      var arg_pricingTypes = buildUnnamed4280();
-      var arg_pageToken = 'foo';
-      var arg_ids = buildUnnamed4281();
-      var arg_sortOrder = 'foo';
-      var arg_placementGroupType = 'foo';
+      var arg_campaignIds = buildUnnamed4275();
+      var arg_contentCategoryIds = buildUnnamed4276();
+      var arg_directorySiteIds = buildUnnamed4277();
+      var arg_ids = buildUnnamed4278();
       var arg_maxEndDate = 'foo';
       var arg_maxResults = 42;
-      var arg_minStartDate = 'foo';
       var arg_maxStartDate = 'foo';
+      var arg_minEndDate = 'foo';
+      var arg_minStartDate = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_placementGroupType = 'foo';
+      var arg_placementStrategyIds = buildUnnamed4279();
+      var arg_pricingTypes = buildUnnamed4280();
+      var arg_searchString = 'foo';
+      var arg_siteIds = buildUnnamed4281();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -22571,42 +22571,42 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["placementStrategyIds"],
-            unittest.equals(arg_placementStrategyIds));
-        unittest.expect(queryMap["contentCategoryIds"],
-            unittest.equals(arg_contentCategoryIds));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
         unittest.expect(
-            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
-        unittest.expect(
-            queryMap["minEndDate"].first, unittest.equals(arg_minEndDate));
-        unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
+        unittest.expect(
+            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
+        unittest.expect(queryMap["contentCategoryIds"],
+            unittest.equals(arg_contentCategoryIds));
         unittest.expect(queryMap["directorySiteIds"],
             unittest.equals(arg_directorySiteIds));
-        unittest.expect(queryMap["siteIds"], unittest.equals(arg_siteIds));
-        unittest.expect(
-            queryMap["pricingTypes"], unittest.equals(arg_pricingTypes));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["placementGroupType"].first,
-            unittest.equals(arg_placementGroupType));
         unittest.expect(
             queryMap["maxEndDate"].first, unittest.equals(arg_maxEndDate));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["maxStartDate"].first, unittest.equals(arg_maxStartDate));
+        unittest.expect(
+            queryMap["minEndDate"].first, unittest.equals(arg_minEndDate));
+        unittest.expect(
             queryMap["minStartDate"].first, unittest.equals(arg_minStartDate));
         unittest.expect(
-            queryMap["maxStartDate"].first, unittest.equals(arg_maxStartDate));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["placementGroupType"].first,
+            unittest.equals(arg_placementGroupType));
+        unittest.expect(queryMap["placementStrategyIds"],
+            unittest.equals(arg_placementStrategyIds));
+        unittest.expect(
+            queryMap["pricingTypes"], unittest.equals(arg_pricingTypes));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["siteIds"], unittest.equals(arg_siteIds));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -22617,25 +22617,25 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              placementStrategyIds: arg_placementStrategyIds,
-              contentCategoryIds: arg_contentCategoryIds,
-              searchString: arg_searchString,
-              sortField: arg_sortField,
               advertiserIds: arg_advertiserIds,
-              campaignIds: arg_campaignIds,
-              minEndDate: arg_minEndDate,
               archived: arg_archived,
+              campaignIds: arg_campaignIds,
+              contentCategoryIds: arg_contentCategoryIds,
               directorySiteIds: arg_directorySiteIds,
-              siteIds: arg_siteIds,
-              pricingTypes: arg_pricingTypes,
-              pageToken: arg_pageToken,
               ids: arg_ids,
-              sortOrder: arg_sortOrder,
-              placementGroupType: arg_placementGroupType,
               maxEndDate: arg_maxEndDate,
               maxResults: arg_maxResults,
-              minStartDate: arg_minStartDate,
               maxStartDate: arg_maxStartDate,
+              minEndDate: arg_minEndDate,
+              minStartDate: arg_minStartDate,
+              pageToken: arg_pageToken,
+              placementGroupType: arg_placementGroupType,
+              placementStrategyIds: arg_placementStrategyIds,
+              pricingTypes: arg_pricingTypes,
+              searchString: arg_searchString,
+              siteIds: arg_siteIds,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlacementGroupsListResponse(response);
@@ -22964,12 +22964,12 @@ void main() {
       api.PlacementStrategiesResourceApi res =
           api.DfareportingApi(mock).placementStrategies;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
-      var arg_searchString = 'foo';
-      var arg_pageToken = 'foo';
       var arg_ids = buildUnnamed4282();
-      var arg_sortOrder = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -23009,17 +23009,17 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -23030,12 +23030,12 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              searchString: arg_searchString,
-              pageToken: arg_pageToken,
               ids: arg_ids,
-              sortOrder: arg_sortOrder,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
               sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlacementStrategiesListResponse(response);
@@ -23176,9 +23176,9 @@ void main() {
       var mock = HttpServerMock();
       api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
       var arg_profileId = 'foo';
-      var arg_tagFormats = buildUnnamed4283();
-      var arg_placementIds = buildUnnamed4284();
       var arg_campaignId = 'foo';
+      var arg_placementIds = buildUnnamed4283();
+      var arg_tagFormats = buildUnnamed4284();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -23219,11 +23219,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["tagFormats"], unittest.equals(arg_tagFormats));
+            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
         unittest.expect(
             queryMap["placementIds"], unittest.equals(arg_placementIds));
         unittest.expect(
-            queryMap["campaignId"].first, unittest.equals(arg_campaignId));
+            queryMap["tagFormats"], unittest.equals(arg_tagFormats));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -23234,9 +23234,9 @@ void main() {
       }), true);
       res
           .generatetags(arg_profileId,
-              tagFormats: arg_tagFormats,
-              placementIds: arg_placementIds,
               campaignId: arg_campaignId,
+              placementIds: arg_placementIds,
+              tagFormats: arg_tagFormats,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlacementsGenerateTagsResponse(response);
@@ -23371,28 +23371,28 @@ void main() {
       var mock = HttpServerMock();
       api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
       var arg_profileId = 'foo';
+      var arg_advertiserIds = buildUnnamed4285();
       var arg_archived = true;
-      var arg_campaignIds = buildUnnamed4285();
+      var arg_campaignIds = buildUnnamed4286();
+      var arg_compatibilities = buildUnnamed4287();
+      var arg_contentCategoryIds = buildUnnamed4288();
+      var arg_directorySiteIds = buildUnnamed4289();
+      var arg_groupIds = buildUnnamed4290();
+      var arg_ids = buildUnnamed4291();
       var arg_maxEndDate = 'foo';
-      var arg_compatibilities = buildUnnamed4286();
-      var arg_advertiserIds = buildUnnamed4287();
-      var arg_minEndDate = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_siteIds = buildUnnamed4288();
-      var arg_pageToken = 'foo';
-      var arg_sortField = 'foo';
-      var arg_searchString = 'foo';
-      var arg_groupIds = buildUnnamed4289();
-      var arg_contentCategoryIds = buildUnnamed4290();
-      var arg_pricingTypes = buildUnnamed4291();
-      var arg_maxStartDate = 'foo';
-      var arg_directorySiteIds = buildUnnamed4292();
-      var arg_paymentSource = 'foo';
-      var arg_ids = buildUnnamed4293();
-      var arg_minStartDate = 'foo';
-      var arg_sizeIds = buildUnnamed4294();
       var arg_maxResults = 42;
-      var arg_placementStrategyIds = buildUnnamed4295();
+      var arg_maxStartDate = 'foo';
+      var arg_minEndDate = 'foo';
+      var arg_minStartDate = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_paymentSource = 'foo';
+      var arg_placementStrategyIds = buildUnnamed4292();
+      var arg_pricingTypes = buildUnnamed4293();
+      var arg_searchString = 'foo';
+      var arg_siteIds = buildUnnamed4294();
+      var arg_sizeIds = buildUnnamed4295();
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -23433,45 +23433,45 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+        unittest.expect(
             queryMap["archived"].first, unittest.equals("$arg_archived"));
         unittest.expect(
             queryMap["campaignIds"], unittest.equals(arg_campaignIds));
         unittest.expect(
-            queryMap["maxEndDate"].first, unittest.equals(arg_maxEndDate));
-        unittest.expect(
             queryMap["compatibilities"], unittest.equals(arg_compatibilities));
+        unittest.expect(queryMap["contentCategoryIds"],
+            unittest.equals(arg_contentCategoryIds));
+        unittest.expect(queryMap["directorySiteIds"],
+            unittest.equals(arg_directorySiteIds));
+        unittest.expect(queryMap["groupIds"], unittest.equals(arg_groupIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+            queryMap["maxEndDate"].first, unittest.equals(arg_maxEndDate));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["maxStartDate"].first, unittest.equals(arg_maxStartDate));
         unittest.expect(
             queryMap["minEndDate"].first, unittest.equals(arg_minEndDate));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["siteIds"], unittest.equals(arg_siteIds));
+            queryMap["minStartDate"].first, unittest.equals(arg_minStartDate));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["groupIds"], unittest.equals(arg_groupIds));
-        unittest.expect(queryMap["contentCategoryIds"],
-            unittest.equals(arg_contentCategoryIds));
+        unittest.expect(queryMap["paymentSource"].first,
+            unittest.equals(arg_paymentSource));
+        unittest.expect(queryMap["placementStrategyIds"],
+            unittest.equals(arg_placementStrategyIds));
         unittest.expect(
             queryMap["pricingTypes"], unittest.equals(arg_pricingTypes));
         unittest.expect(
-            queryMap["maxStartDate"].first, unittest.equals(arg_maxStartDate));
-        unittest.expect(queryMap["directorySiteIds"],
-            unittest.equals(arg_directorySiteIds));
-        unittest.expect(queryMap["paymentSource"].first,
-            unittest.equals(arg_paymentSource));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
-            queryMap["minStartDate"].first, unittest.equals(arg_minStartDate));
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["siteIds"], unittest.equals(arg_siteIds));
         unittest.expect(queryMap["sizeIds"], unittest.equals(arg_sizeIds));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["placementStrategyIds"],
-            unittest.equals(arg_placementStrategyIds));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -23482,28 +23482,28 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
+              advertiserIds: arg_advertiserIds,
               archived: arg_archived,
               campaignIds: arg_campaignIds,
-              maxEndDate: arg_maxEndDate,
               compatibilities: arg_compatibilities,
-              advertiserIds: arg_advertiserIds,
-              minEndDate: arg_minEndDate,
-              sortOrder: arg_sortOrder,
-              siteIds: arg_siteIds,
-              pageToken: arg_pageToken,
-              sortField: arg_sortField,
-              searchString: arg_searchString,
-              groupIds: arg_groupIds,
               contentCategoryIds: arg_contentCategoryIds,
-              pricingTypes: arg_pricingTypes,
-              maxStartDate: arg_maxStartDate,
               directorySiteIds: arg_directorySiteIds,
-              paymentSource: arg_paymentSource,
+              groupIds: arg_groupIds,
               ids: arg_ids,
-              minStartDate: arg_minStartDate,
-              sizeIds: arg_sizeIds,
+              maxEndDate: arg_maxEndDate,
               maxResults: arg_maxResults,
+              maxStartDate: arg_maxStartDate,
+              minEndDate: arg_minEndDate,
+              minStartDate: arg_minStartDate,
+              pageToken: arg_pageToken,
+              paymentSource: arg_paymentSource,
               placementStrategyIds: arg_placementStrategyIds,
+              pricingTypes: arg_pricingTypes,
+              searchString: arg_searchString,
+              siteIds: arg_siteIds,
+              sizeIds: arg_sizeIds,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlacementsListResponse(response);
@@ -23950,13 +23950,13 @@ void main() {
       var mock = HttpServerMock();
       api.ProjectsResourceApi res = api.DfareportingApi(mock).projects;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
       var arg_advertiserIds = buildUnnamed4296();
-      var arg_sortOrder = 'foo';
       var arg_ids = buildUnnamed4297();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_sortField = 'foo';
       var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -23996,19 +23996,19 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["advertiserIds"], unittest.equals(arg_advertiserIds));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -24019,13 +24019,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
               advertiserIds: arg_advertiserIds,
-              sortOrder: arg_sortOrder,
               ids: arg_ids,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              sortField: arg_sortField,
               searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkProjectsListResponse(response);
@@ -24419,13 +24419,13 @@ void main() {
           api.DfareportingApi(mock).remarketingLists;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_active = true;
+      var arg_floodlightActivityId = 'foo';
+      var arg_maxResults = 42;
+      var arg_name = 'foo';
+      var arg_pageToken = 'foo';
       var arg_sortField = 'foo';
       var arg_sortOrder = 'foo';
-      var arg_floodlightActivityId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
-      var arg_active = true;
-      var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -24468,18 +24468,18 @@ void main() {
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
+            queryMap["active"].first, unittest.equals("$arg_active"));
+        unittest.expect(queryMap["floodlightActivityId"].first,
+            unittest.equals(arg_floodlightActivityId));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["floodlightActivityId"].first,
-            unittest.equals(arg_floodlightActivityId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["active"].first, unittest.equals("$arg_active"));
-        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -24490,13 +24490,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_advertiserId,
+              active: arg_active,
+              floodlightActivityId: arg_floodlightActivityId,
+              maxResults: arg_maxResults,
+              name: arg_name,
+              pageToken: arg_pageToken,
               sortField: arg_sortField,
               sortOrder: arg_sortOrder,
-              floodlightActivityId: arg_floodlightActivityId,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
-              active: arg_active,
-              name: arg_name,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkRemarketingListsListResponse(response);
@@ -24821,11 +24821,11 @@ void main() {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
       var arg_profileId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_scope = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_scope = 'foo';
       var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -24865,15 +24865,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -24884,11 +24884,11 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              sortOrder: arg_sortOrder,
-              scope: arg_scope,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              scope: arg_scope,
               sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkReportList(response);
@@ -25248,9 +25248,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_maxResults = 42;
-      var arg_sortOrder = 'foo';
       var arg_pageToken = 'foo';
       var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -25302,11 +25302,11 @@ void main() {
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -25318,9 +25318,9 @@ void main() {
       res
           .list(arg_profileId, arg_reportId,
               maxResults: arg_maxResults,
-              sortOrder: arg_sortOrder,
               pageToken: arg_pageToken,
               sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFileList(response);
@@ -25457,21 +25457,21 @@ void main() {
       var mock = HttpServerMock();
       api.SitesResourceApi res = api.DfareportingApi(mock).sites;
       var arg_profileId = 'foo';
-      var arg_unmappedSite = true;
-      var arg_sortOrder = 'foo';
       var arg_acceptsInStreamVideoPlacements = true;
+      var arg_acceptsInterstitialPlacements = true;
       var arg_acceptsPublisherPaidPlacements = true;
-      var arg_maxResults = 42;
-      var arg_campaignIds = buildUnnamed4298();
-      var arg_searchString = 'foo';
-      var arg_directorySiteIds = buildUnnamed4299();
       var arg_adWordsSite = true;
       var arg_approved = true;
-      var arg_pageToken = 'foo';
+      var arg_campaignIds = buildUnnamed4298();
+      var arg_directorySiteIds = buildUnnamed4299();
       var arg_ids = buildUnnamed4300();
-      var arg_acceptsInterstitialPlacements = true;
-      var arg_subaccountId = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_subaccountId = 'foo';
+      var arg_unmappedSite = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -25511,35 +25511,35 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["unmappedSite"].first,
-            unittest.equals("$arg_unmappedSite"));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["acceptsInStreamVideoPlacements"].first,
             unittest.equals("$arg_acceptsInStreamVideoPlacements"));
+        unittest.expect(queryMap["acceptsInterstitialPlacements"].first,
+            unittest.equals("$arg_acceptsInterstitialPlacements"));
         unittest.expect(queryMap["acceptsPublisherPaidPlacements"].first,
             unittest.equals("$arg_acceptsPublisherPaidPlacements"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(queryMap["directorySiteIds"],
-            unittest.equals(arg_directorySiteIds));
         unittest.expect(
             queryMap["adWordsSite"].first, unittest.equals("$arg_adWordsSite"));
         unittest.expect(
             queryMap["approved"].first, unittest.equals("$arg_approved"));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["campaignIds"], unittest.equals(arg_campaignIds));
+        unittest.expect(queryMap["directorySiteIds"],
+            unittest.equals(arg_directorySiteIds));
         unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(queryMap["acceptsInterstitialPlacements"].first,
-            unittest.equals("$arg_acceptsInterstitialPlacements"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
+        unittest.expect(queryMap["unmappedSite"].first,
+            unittest.equals("$arg_unmappedSite"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -25550,23 +25550,23 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              unmappedSite: arg_unmappedSite,
-              sortOrder: arg_sortOrder,
               acceptsInStreamVideoPlacements:
                   arg_acceptsInStreamVideoPlacements,
+              acceptsInterstitialPlacements: arg_acceptsInterstitialPlacements,
               acceptsPublisherPaidPlacements:
                   arg_acceptsPublisherPaidPlacements,
-              maxResults: arg_maxResults,
-              campaignIds: arg_campaignIds,
-              searchString: arg_searchString,
-              directorySiteIds: arg_directorySiteIds,
               adWordsSite: arg_adWordsSite,
               approved: arg_approved,
-              pageToken: arg_pageToken,
+              campaignIds: arg_campaignIds,
+              directorySiteIds: arg_directorySiteIds,
               ids: arg_ids,
-              acceptsInterstitialPlacements: arg_acceptsInterstitialPlacements,
-              subaccountId: arg_subaccountId,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
               sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              subaccountId: arg_subaccountId,
+              unmappedSite: arg_unmappedSite,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSitesListResponse(response);
@@ -25831,8 +25831,8 @@ void main() {
       var arg_profileId = 'foo';
       var arg_height = 42;
       var arg_iabStandard = true;
-      var arg_width = 42;
       var arg_ids = buildUnnamed4301();
+      var arg_width = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -25876,9 +25876,9 @@ void main() {
             unittest.equals(arg_height));
         unittest.expect(
             queryMap["iabStandard"].first, unittest.equals("$arg_iabStandard"));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["width"].first),
             unittest.equals(arg_width));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -25891,8 +25891,8 @@ void main() {
           .list(arg_profileId,
               height: arg_height,
               iabStandard: arg_iabStandard,
-              width: arg_width,
               ids: arg_ids,
+              width: arg_width,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSizesListResponse(response);
@@ -26029,12 +26029,12 @@ void main() {
       var mock = HttpServerMock();
       api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
-      var arg_searchString = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_ids = buildUnnamed4302();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
       var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -26074,17 +26074,17 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
             queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -26095,12 +26095,12 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              searchString: arg_searchString,
-              sortOrder: arg_sortOrder,
               ids: arg_ids,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
               sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSubaccountsListResponse(response);
@@ -26304,12 +26304,12 @@ void main() {
           api.DfareportingApi(mock).targetableRemarketingLists;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_sortField = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_active = true;
+      var arg_maxResults = 42;
       var arg_name = 'foo';
       var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -26352,16 +26352,16 @@ void main() {
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
             queryMap["active"].first, unittest.equals("$arg_active"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -26373,12 +26373,12 @@ void main() {
       }), true);
       res
           .list(arg_profileId, arg_advertiserId,
-              sortField: arg_sortField,
-              sortOrder: arg_sortOrder,
               active: arg_active,
+              maxResults: arg_maxResults,
               name: arg_name,
               pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTargetableRemarketingListsListResponse(response);
@@ -26518,13 +26518,13 @@ void main() {
       api.TargetingTemplatesResourceApi res =
           api.DfareportingApi(mock).targetingTemplates;
       var arg_profileId = 'foo';
-      var arg_maxResults = 42;
-      var arg_sortField = 'foo';
-      var arg_searchString = 'foo';
-      var arg_pageToken = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_ids = buildUnnamed4303();
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -26564,19 +26564,19 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchString"].first, unittest.equals(arg_searchString));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -26587,13 +26587,13 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              maxResults: arg_maxResults,
-              sortField: arg_sortField,
-              searchString: arg_searchString,
-              pageToken: arg_pageToken,
               advertiserId: arg_advertiserId,
-              sortOrder: arg_sortOrder,
               ids: arg_ids,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTargetingTemplatesListResponse(response);
@@ -27269,14 +27269,14 @@ void main() {
       var mock = HttpServerMock();
       api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
       var arg_profileId = 'foo';
-      var arg_subaccountId = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_ids = buildUnnamed4305();
       var arg_accountUserRoleOnly = true;
-      var arg_sortField = 'foo';
-      var arg_searchString = 'foo';
+      var arg_ids = buildUnnamed4305();
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_searchString = 'foo';
+      var arg_sortField = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_subaccountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -27316,21 +27316,21 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(queryMap["accountUserRoleOnly"].first,
             unittest.equals("$arg_accountUserRoleOnly"));
-        unittest.expect(
-            queryMap["sortField"].first, unittest.equals(arg_sortField));
-        unittest.expect(
-            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["searchString"].first, unittest.equals(arg_searchString));
+        unittest.expect(
+            queryMap["sortField"].first, unittest.equals(arg_sortField));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["subaccountId"].first, unittest.equals(arg_subaccountId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -27341,14 +27341,14 @@ void main() {
       }), true);
       res
           .list(arg_profileId,
-              subaccountId: arg_subaccountId,
-              sortOrder: arg_sortOrder,
-              ids: arg_ids,
               accountUserRoleOnly: arg_accountUserRoleOnly,
-              sortField: arg_sortField,
-              searchString: arg_searchString,
+              ids: arg_ids,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              searchString: arg_searchString,
+              sortField: arg_sortField,
+              sortOrder: arg_sortOrder,
+              subaccountId: arg_subaccountId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUserRolesListResponse(response);

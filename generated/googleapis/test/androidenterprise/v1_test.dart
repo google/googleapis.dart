@@ -3859,8 +3859,8 @@ void main() {
       var mock = HttpServerMock();
       api.EnterprisesResourceApi res =
           api.AndroidenterpriseApi(mock).enterprises;
-      var arg_enterpriseToken = 'foo';
       var arg_completionToken = 'foo';
+      var arg_enterpriseToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3888,10 +3888,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["enterpriseToken"].first,
-            unittest.equals(arg_enterpriseToken));
         unittest.expect(queryMap["completionToken"].first,
             unittest.equals(arg_completionToken));
+        unittest.expect(queryMap["enterpriseToken"].first,
+            unittest.equals(arg_enterpriseToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3902,8 +3902,8 @@ void main() {
       }), true);
       res
           .completeSignup(
-              enterpriseToken: arg_enterpriseToken,
               completionToken: arg_completionToken,
+              enterpriseToken: arg_enterpriseToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEnterprise(response);
@@ -6447,10 +6447,10 @@ void main() {
       api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_approved = true;
-      var arg_maxResults = 42;
-      var arg_token = 'foo';
-      var arg_query = 'foo';
       var arg_language = 'foo';
+      var arg_maxResults = 42;
+      var arg_query = 'foo';
+      var arg_token = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6489,12 +6489,12 @@ void main() {
         }
         unittest.expect(
             queryMap["approved"].first, unittest.equals("$arg_approved"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6506,10 +6506,10 @@ void main() {
       res
           .list(arg_enterpriseId,
               approved: arg_approved,
-              maxResults: arg_maxResults,
-              token: arg_token,
-              query: arg_query,
               language: arg_language,
+              maxResults: arg_maxResults,
+              query: arg_query,
+              token: arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkProductsListResponse(response);

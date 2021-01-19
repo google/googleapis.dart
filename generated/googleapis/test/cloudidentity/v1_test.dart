@@ -1785,10 +1785,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.DevicesResourceApi res = api.CloudidentityApi(mock).devices;
-      var arg_pageSize = 42;
+      var arg_customer = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
-      var arg_customer = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -1818,13 +1818,13 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
@@ -1839,10 +1839,10 @@ void main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
+              customer: arg_customer,
               filter: arg_filter,
               orderBy: arg_orderBy,
-              customer: arg_customer,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               view: arg_view,
               $fields: arg_$fields)
@@ -2179,11 +2179,11 @@ void main() {
       api.DevicesDeviceUsersResourceApi res =
           api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_customer = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2213,14 +2213,14 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2232,11 +2232,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               customer: arg_customer,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response);
@@ -2248,11 +2248,11 @@ void main() {
       api.DevicesDeviceUsersResourceApi res =
           api.CloudidentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
-      var arg_rawResourceId = 'foo';
-      var arg_userId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_androidId = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_rawResourceId = 'foo';
+      var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2281,15 +2281,15 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["rawResourceId"].first,
-            unittest.equals(arg_rawResourceId));
-        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["androidId"].first, unittest.equals(arg_androidId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["rawResourceId"].first,
+            unittest.equals(arg_rawResourceId));
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2301,11 +2301,11 @@ void main() {
       }), true);
       res
           .lookup(arg_parent,
-              rawResourceId: arg_rawResourceId,
-              userId: arg_userId,
-              pageToken: arg_pageToken,
               androidId: arg_androidId,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              rawResourceId: arg_rawResourceId,
+              userId: arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
@@ -2427,10 +2427,10 @@ void main() {
       api.DevicesDeviceUsersClientStatesResourceApi res =
           api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_customer = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2460,12 +2460,12 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["customer"].first, unittest.equals(arg_customer));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2477,10 +2477,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
-              filter: arg_filter,
-              pageToken: arg_pageToken,
               customer: arg_customer,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response);
@@ -2493,8 +2493,8 @@ void main() {
           api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var arg_name = 'foo';
-      var arg_updateMask = 'foo';
       var arg_customer = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
@@ -2528,9 +2528,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2541,8 +2541,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_name,
-              updateMask: arg_updateMask,
               customer: arg_customer,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -2702,9 +2702,9 @@ void main() {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
       var arg_pageSize = 42;
-      var arg_view = 'foo';
-      var arg_parent = 'foo';
       var arg_pageToken = 'foo';
+      var arg_parent = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2734,10 +2734,10 @@ void main() {
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2749,9 +2749,9 @@ void main() {
       res
           .list(
               pageSize: arg_pageSize,
-              view: arg_view,
-              parent: arg_parent,
               pageToken: arg_pageToken,
+              parent: arg_parent,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGroupsResponse(response);
@@ -2761,8 +2761,8 @@ void main() {
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
-      var arg_groupKey_namespace = 'foo';
       var arg_groupKey_id = 'foo';
+      var arg_groupKey_namespace = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2790,10 +2790,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["groupKey.namespace"].first,
-            unittest.equals(arg_groupKey_namespace));
         unittest.expect(
             queryMap["groupKey.id"].first, unittest.equals(arg_groupKey_id));
+        unittest.expect(queryMap["groupKey.namespace"].first,
+            unittest.equals(arg_groupKey_namespace));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2804,8 +2804,8 @@ void main() {
       }), true);
       res
           .lookup(
-              groupKey_namespace: arg_groupKey_namespace,
               groupKey_id: arg_groupKey_id,
+              groupKey_namespace: arg_groupKey_namespace,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLookupGroupNameResponse(response);
@@ -2870,10 +2870,10 @@ void main() {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.CloudidentityApi(mock).groups;
-      var arg_view = 'foo';
-      var arg_query = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_query = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2901,12 +2901,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2917,10 +2917,10 @@ void main() {
       }), true);
       res
           .search(
-              view: arg_view,
-              query: arg_query,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              query: arg_query,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchGroupsResponse(response);
@@ -3083,8 +3083,8 @@ void main() {
           api.CloudidentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_view = 'foo';
       var arg_pageToken = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3115,9 +3115,9 @@ void main() {
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3129,8 +3129,8 @@ void main() {
       res
           .list(arg_parent,
               pageSize: arg_pageSize,
-              view: arg_view,
               pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMembershipsResponse(response);

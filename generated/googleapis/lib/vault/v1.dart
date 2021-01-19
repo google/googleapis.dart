@@ -334,6 +334,9 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The number of matters to return in the response. Default and
+  /// maximum are 100.
+  ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
   /// [state] - If set, list only matters with that specific state. The default
@@ -343,9 +346,6 @@ class MattersResourceApi {
   /// - "OPEN" : This matter is open.
   /// - "CLOSED" : This matter is closed.
   /// - "DELETED" : This matter is deleted.
-  ///
-  /// [pageSize] - The number of matters to return in the response. Default and
-  /// maximum are 100.
   ///
   /// [view] - Specifies which parts of the matter to return in response.
   /// Possible string values are:
@@ -366,9 +366,9 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list({
+    core.int pageSize,
     core.String pageToken,
     core.String state,
-    core.int pageSize,
     core.String view,
     core.String $fields,
   }) {
@@ -379,14 +379,14 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (state != null) {
       _queryParams['state'] = [state];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (view != null) {
       _queryParams['view'] = [view];

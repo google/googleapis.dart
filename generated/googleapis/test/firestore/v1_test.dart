@@ -3613,9 +3613,9 @@ void main() {
       api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3644,11 +3644,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3660,9 +3660,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleFirestoreAdminV1ListIndexesResponse(response);
@@ -4004,8 +4004,8 @@ void main() {
           api.FirestoreApi(mock).projects.databases.documents;
       var arg_name = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3303();
-      var arg_transaction = 'foo';
       var arg_readTime = 'foo';
+      var arg_transaction = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4037,9 +4037,9 @@ void main() {
         unittest.expect(
             queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
         unittest.expect(
-            queryMap["transaction"].first, unittest.equals(arg_transaction));
-        unittest.expect(
             queryMap["readTime"].first, unittest.equals(arg_readTime));
+        unittest.expect(
+            queryMap["transaction"].first, unittest.equals(arg_transaction));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4051,8 +4051,8 @@ void main() {
       res
           .get(arg_name,
               mask_fieldPaths: arg_mask_fieldPaths,
-              transaction: arg_transaction,
               readTime: arg_readTime,
+              transaction: arg_transaction,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDocument(response);
@@ -4066,12 +4066,12 @@ void main() {
       var arg_parent = 'foo';
       var arg_collectionId = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3304();
-      var arg_pageToken = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_readTime = 'foo';
       var arg_showMissing = true;
       var arg_transaction = 'foo';
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4103,17 +4103,17 @@ void main() {
         unittest.expect(
             queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["readTime"].first, unittest.equals(arg_readTime));
         unittest.expect(
             queryMap["showMissing"].first, unittest.equals("$arg_showMissing"));
         unittest.expect(
             queryMap["transaction"].first, unittest.equals(arg_transaction));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4125,12 +4125,12 @@ void main() {
       res
           .list(arg_parent, arg_collectionId,
               mask_fieldPaths: arg_mask_fieldPaths,
-              pageToken: arg_pageToken,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               readTime: arg_readTime,
               showMissing: arg_showMissing,
               transaction: arg_transaction,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDocumentsResponse(response);
@@ -4300,9 +4300,9 @@ void main() {
       var arg_request = buildDocument();
       var arg_name = 'foo';
       var arg_currentDocument_exists = true;
-      var arg_updateMask_fieldPaths = buildUnnamed3305();
-      var arg_mask_fieldPaths = buildUnnamed3306();
       var arg_currentDocument_updateTime = 'foo';
+      var arg_mask_fieldPaths = buildUnnamed3305();
+      var arg_updateMask_fieldPaths = buildUnnamed3306();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Document.fromJson(json);
@@ -4336,12 +4336,12 @@ void main() {
         }
         unittest.expect(queryMap["currentDocument.exists"].first,
             unittest.equals("$arg_currentDocument_exists"));
-        unittest.expect(queryMap["updateMask.fieldPaths"],
-            unittest.equals(arg_updateMask_fieldPaths));
-        unittest.expect(
-            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
         unittest.expect(queryMap["currentDocument.updateTime"].first,
             unittest.equals(arg_currentDocument_updateTime));
+        unittest.expect(
+            queryMap["mask.fieldPaths"], unittest.equals(arg_mask_fieldPaths));
+        unittest.expect(queryMap["updateMask.fieldPaths"],
+            unittest.equals(arg_updateMask_fieldPaths));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4353,9 +4353,9 @@ void main() {
       res
           .patch(arg_request, arg_name,
               currentDocument_exists: arg_currentDocument_exists,
-              updateMask_fieldPaths: arg_updateMask_fieldPaths,
-              mask_fieldPaths: arg_mask_fieldPaths,
               currentDocument_updateTime: arg_currentDocument_updateTime,
+              mask_fieldPaths: arg_mask_fieldPaths,
+              updateMask_fieldPaths: arg_updateMask_fieldPaths,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDocument(response);
@@ -4673,9 +4673,9 @@ void main() {
       api.ProjectsDatabasesOperationsResourceApi res =
           api.FirestoreApi(mock).projects.databases.operations;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4704,11 +4704,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4720,9 +4720,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleLongrunningListOperationsResponse(response);
@@ -4784,9 +4784,9 @@ void main() {
       api.ProjectsLocationsResourceApi res =
           api.FirestoreApi(mock).projects.locations;
       var arg_name = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4815,11 +4815,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4830,9 +4830,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLocationsResponse(response);

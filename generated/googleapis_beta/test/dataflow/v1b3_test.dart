@@ -8360,11 +8360,11 @@ void main() {
       var mock = HttpServerMock();
       api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
-      var arg_pageSize = 42;
-      var arg_view = 'foo';
-      var arg_location = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
+      var arg_location = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8401,14 +8401,14 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8419,11 +8419,11 @@ void main() {
       }), true);
       res
           .aggregated(arg_projectId,
-              pageSize: arg_pageSize,
-              view: arg_view,
-              location: arg_location,
-              pageToken: arg_pageToken,
               filter: arg_filter,
+              location: arg_location,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);
@@ -8435,8 +8435,8 @@ void main() {
       api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
-      var arg_replaceJobId = 'foo';
       var arg_location = 'foo';
+      var arg_replaceJobId = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8478,9 +8478,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["replaceJobId"].first, unittest.equals(arg_replaceJobId));
-        unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(
+            queryMap["replaceJobId"].first, unittest.equals(arg_replaceJobId));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -8492,8 +8492,8 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_projectId,
-              replaceJobId: arg_replaceJobId,
               location: arg_location,
+              replaceJobId: arg_replaceJobId,
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -8506,8 +8506,8 @@ void main() {
       api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
-      var arg_view = 'foo';
       var arg_location = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8547,9 +8547,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8560,7 +8560,7 @@ void main() {
       }), true);
       res
           .get(arg_projectId, arg_jobId,
-              view: arg_view, location: arg_location, $fields: arg_$fields)
+              location: arg_location, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkJob(response);
       })));
@@ -8571,8 +8571,8 @@ void main() {
       api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
-      var arg_startTime = 'foo';
       var arg_location = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8619,9 +8619,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8632,8 +8632,8 @@ void main() {
       }), true);
       res
           .getMetrics(arg_projectId, arg_jobId,
-              startTime: arg_startTime,
               location: arg_location,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkJobMetrics(response);
@@ -8645,10 +8645,10 @@ void main() {
       api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_view = 'foo';
       var arg_location = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8686,13 +8686,13 @@ void main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8704,10 +8704,10 @@ void main() {
       res
           .list(arg_projectId,
               filter: arg_filter,
-              pageSize: arg_pageSize,
-              view: arg_view,
               location: arg_location,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);
@@ -9004,10 +9004,10 @@ void main() {
       var arg_jobId = 'foo';
       var arg_endTime = 'foo';
       var arg_location = 'foo';
-      var arg_startTime = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_minimumImportance = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9057,14 +9057,14 @@ void main() {
             queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["minimumImportance"].first,
             unittest.equals(arg_minimumImportance));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9077,10 +9077,10 @@ void main() {
           .list(arg_projectId, arg_jobId,
               endTime: arg_endTime,
               location: arg_location,
-              startTime: arg_startTime,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               minimumImportance: arg_minimumImportance,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobMessagesResponse(response);
@@ -9385,8 +9385,8 @@ void main() {
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
-      var arg_view = 'foo';
       var arg_replaceJobId = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Job.fromJson(json);
@@ -9435,9 +9435,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["replaceJobId"].first, unittest.equals(arg_replaceJobId));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9448,8 +9448,8 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_projectId, arg_location,
-              view: arg_view,
               replaceJobId: arg_replaceJobId,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkJob(response);
@@ -9700,8 +9700,8 @@ void main() {
           api.DataflowApi(mock).projects.locations.jobs;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -9749,9 +9749,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
@@ -9765,8 +9765,8 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_location,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               view: arg_view,
               $fields: arg_$fields)
@@ -10104,11 +10104,11 @@ void main() {
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
-      var arg_startTime = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
       var arg_endTime = 'foo';
       var arg_minimumImportance = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10164,15 +10164,15 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(queryMap["minimumImportance"].first,
+            unittest.equals(arg_minimumImportance));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(queryMap["minimumImportance"].first,
-            unittest.equals(arg_minimumImportance));
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10183,11 +10183,11 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_location, arg_jobId,
-              startTime: arg_startTime,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
               endTime: arg_endTime,
               minimumImportance: arg_minimumImportance,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobMessagesResponse(response);
@@ -10283,9 +10283,9 @@ void main() {
       var arg_jobId = 'foo';
       var arg_stageId = 'foo';
       var arg_endTime = 'foo';
-      var arg_startTime = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10351,12 +10351,12 @@ void main() {
         }
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10369,9 +10369,9 @@ void main() {
           .getExecutionDetails(
               arg_projectId, arg_location, arg_jobId, arg_stageId,
               endTime: arg_endTime,
-              startTime: arg_startTime,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkStageExecutionDetails(response);
@@ -10905,8 +10905,8 @@ void main() {
           api.DataflowApi(mock).projects.locations.templates;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
-      var arg_view = 'foo';
       var arg_gcsPath = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10952,9 +10952,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["gcsPath"].first, unittest.equals(arg_gcsPath));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10965,7 +10965,7 @@ void main() {
       }), true);
       res
           .get(arg_projectId, arg_location,
-              view: arg_view, gcsPath: arg_gcsPath, $fields: arg_$fields)
+              gcsPath: arg_gcsPath, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetTemplateResponse(response);
       })));
@@ -10978,10 +10978,10 @@ void main() {
       var arg_request = buildLaunchTemplateParameters();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
-      var arg_validateOnly = true;
+      var arg_dynamicTemplate_gcsPath = 'foo';
       var arg_dynamicTemplate_stagingLocation = 'foo';
       var arg_gcsPath = 'foo';
-      var arg_dynamicTemplate_gcsPath = 'foo';
+      var arg_validateOnly = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LaunchTemplateParameters.fromJson(json);
@@ -11030,14 +11030,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["validateOnly"].first,
-            unittest.equals("$arg_validateOnly"));
+        unittest.expect(queryMap["dynamicTemplate.gcsPath"].first,
+            unittest.equals(arg_dynamicTemplate_gcsPath));
         unittest.expect(queryMap["dynamicTemplate.stagingLocation"].first,
             unittest.equals(arg_dynamicTemplate_stagingLocation));
         unittest.expect(
             queryMap["gcsPath"].first, unittest.equals(arg_gcsPath));
-        unittest.expect(queryMap["dynamicTemplate.gcsPath"].first,
-            unittest.equals(arg_dynamicTemplate_gcsPath));
+        unittest.expect(queryMap["validateOnly"].first,
+            unittest.equals("$arg_validateOnly"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11048,11 +11048,11 @@ void main() {
       }), true);
       res
           .launch(arg_request, arg_projectId, arg_location,
-              validateOnly: arg_validateOnly,
+              dynamicTemplate_gcsPath: arg_dynamicTemplate_gcsPath,
               dynamicTemplate_stagingLocation:
                   arg_dynamicTemplate_stagingLocation,
               gcsPath: arg_gcsPath,
-              dynamicTemplate_gcsPath: arg_dynamicTemplate_gcsPath,
+              validateOnly: arg_validateOnly,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLaunchTemplateResponse(response);
@@ -11313,9 +11313,9 @@ void main() {
       api.ProjectsTemplatesResourceApi res =
           api.DataflowApi(mock).projects.templates;
       var arg_projectId = 'foo';
-      var arg_view = 'foo';
-      var arg_location = 'foo';
       var arg_gcsPath = 'foo';
+      var arg_location = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11352,11 +11352,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
         unittest.expect(
             queryMap["gcsPath"].first, unittest.equals(arg_gcsPath));
+        unittest.expect(
+            queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11367,9 +11367,9 @@ void main() {
       }), true);
       res
           .get(arg_projectId,
-              view: arg_view,
-              location: arg_location,
               gcsPath: arg_gcsPath,
+              location: arg_location,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetTemplateResponse(response);
@@ -11382,11 +11382,11 @@ void main() {
           api.DataflowApi(mock).projects.templates;
       var arg_request = buildLaunchTemplateParameters();
       var arg_projectId = 'foo';
+      var arg_dynamicTemplate_gcsPath = 'foo';
+      var arg_dynamicTemplate_stagingLocation = 'foo';
+      var arg_gcsPath = 'foo';
       var arg_location = 'foo';
       var arg_validateOnly = true;
-      var arg_dynamicTemplate_gcsPath = 'foo';
-      var arg_gcsPath = 'foo';
-      var arg_dynamicTemplate_stagingLocation = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LaunchTemplateParameters.fromJson(json);
@@ -11426,16 +11426,16 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["dynamicTemplate.gcsPath"].first,
+            unittest.equals(arg_dynamicTemplate_gcsPath));
+        unittest.expect(queryMap["dynamicTemplate.stagingLocation"].first,
+            unittest.equals(arg_dynamicTemplate_stagingLocation));
+        unittest.expect(
+            queryMap["gcsPath"].first, unittest.equals(arg_gcsPath));
         unittest.expect(
             queryMap["location"].first, unittest.equals(arg_location));
         unittest.expect(queryMap["validateOnly"].first,
             unittest.equals("$arg_validateOnly"));
-        unittest.expect(queryMap["dynamicTemplate.gcsPath"].first,
-            unittest.equals(arg_dynamicTemplate_gcsPath));
-        unittest.expect(
-            queryMap["gcsPath"].first, unittest.equals(arg_gcsPath));
-        unittest.expect(queryMap["dynamicTemplate.stagingLocation"].first,
-            unittest.equals(arg_dynamicTemplate_stagingLocation));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11446,12 +11446,12 @@ void main() {
       }), true);
       res
           .launch(arg_request, arg_projectId,
-              location: arg_location,
-              validateOnly: arg_validateOnly,
               dynamicTemplate_gcsPath: arg_dynamicTemplate_gcsPath,
-              gcsPath: arg_gcsPath,
               dynamicTemplate_stagingLocation:
                   arg_dynamicTemplate_stagingLocation,
+              gcsPath: arg_gcsPath,
+              location: arg_location,
+              validateOnly: arg_validateOnly,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLaunchTemplateResponse(response);

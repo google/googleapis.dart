@@ -2419,10 +2419,10 @@ void main() {
       var mock = HttpServerMock();
       api.V1ResourceApi res = api.CloudassetApi(mock).v1;
       var arg_parent = 'foo';
-      var arg_readTimeWindow_startTime = 'foo';
+      var arg_assetNames = buildUnnamed2707();
       var arg_contentType = 'foo';
       var arg_readTimeWindow_endTime = 'foo';
-      var arg_assetNames = buildUnnamed2707();
+      var arg_readTimeWindow_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2451,14 +2451,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["readTimeWindow.startTime"].first,
-            unittest.equals(arg_readTimeWindow_startTime));
+        unittest.expect(
+            queryMap["assetNames"], unittest.equals(arg_assetNames));
         unittest.expect(
             queryMap["contentType"].first, unittest.equals(arg_contentType));
         unittest.expect(queryMap["readTimeWindow.endTime"].first,
             unittest.equals(arg_readTimeWindow_endTime));
-        unittest.expect(
-            queryMap["assetNames"], unittest.equals(arg_assetNames));
+        unittest.expect(queryMap["readTimeWindow.startTime"].first,
+            unittest.equals(arg_readTimeWindow_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2469,10 +2469,10 @@ void main() {
       }), true);
       res
           .batchGetAssetsHistory(arg_parent,
-              readTimeWindow_startTime: arg_readTimeWindow_startTime,
+              assetNames: arg_assetNames,
               contentType: arg_contentType,
               readTimeWindow_endTime: arg_readTimeWindow_endTime,
-              assetNames: arg_assetNames,
+              readTimeWindow_startTime: arg_readTimeWindow_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBatchGetAssetsHistoryResponse(response);
@@ -2595,9 +2595,9 @@ void main() {
       var arg_scope = 'foo';
       var arg_assetTypes = buildUnnamed2708();
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_query = 'foo';
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2630,11 +2630,11 @@ void main() {
             queryMap["assetTypes"], unittest.equals(arg_assetTypes));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2647,9 +2647,9 @@ void main() {
           .searchAllResources(arg_scope,
               assetTypes: arg_assetTypes,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               query: arg_query,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchAllResourcesResponse(response);

@@ -273,15 +273,15 @@ class LicenseAssignmentsResourceApi {
   /// accepted the primary domain name as a value for this field. If the
   /// customer is suspended, the server returns an error.
   ///
-  /// [pageToken] - Token to fetch the next page of data. The maxResults query
-  /// string is related to the pageToken since maxResults determines how many
-  /// entries are returned on each page. This is an optional query string. If
-  /// not specified, the server returns the first page.
-  ///
   /// [maxResults] - The maxResults query string determines how many entries are
   /// returned on each page of a large response. This is an optional parameter.
   /// The value must be a positive number.
   /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - Token to fetch the next page of data. The maxResults query
+  /// string is related to the pageToken since maxResults determines how many
+  /// entries are returned on each page. This is an optional query string. If
+  /// not specified, the server returns the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,8 +296,8 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignmentList> listForProduct(
     core.String productId,
     core.String customerId, {
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -314,11 +314,11 @@ class LicenseAssignmentsResourceApi {
       throw core.ArgumentError('Parameter customerId is required.');
     }
     _queryParams['customerId'] = [customerId];
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -354,15 +354,15 @@ class LicenseAssignmentsResourceApi {
   /// accepted the primary domain name as a value for this field. If the
   /// customer is suspended, the server returns an error.
   ///
-  /// [pageToken] - Token to fetch the next page of data. The maxResults query
-  /// string is related to the pageToken since maxResults determines how many
-  /// entries are returned on each page. This is an optional query string. If
-  /// not specified, the server returns the first page.
-  ///
   /// [maxResults] - The maxResults query string determines how many entries are
   /// returned on each page of a large response. This is an optional parameter.
   /// The value must be a positive number.
   /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - Token to fetch the next page of data. The maxResults query
+  /// string is related to the pageToken since maxResults determines how many
+  /// entries are returned on each page. This is an optional query string. If
+  /// not specified, the server returns the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -378,8 +378,8 @@ class LicenseAssignmentsResourceApi {
     core.String productId,
     core.String skuId,
     core.String customerId, {
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -399,11 +399,11 @@ class LicenseAssignmentsResourceApi {
       throw core.ArgumentError('Parameter customerId is required.');
     }
     _queryParams['customerId'] = [customerId];
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

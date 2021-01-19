@@ -228,8 +228,6 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
   /// "job_names":["jobid1","jobid2",...],
@@ -238,6 +236,8 @@ class TransferJobsResourceApi {
   /// with array notation. `project``_``id` is required. `job_names` and
   /// `job_statuses` are optional. The valid values for `job_statuses` are
   /// case-insensitive: ENABLED, DISABLED, and DELETED.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [pageToken] - The list page token.
   ///
@@ -252,8 +252,8 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list({
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -264,11 +264,11 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -486,10 +486,6 @@ class TransferOperationsResourceApi {
   /// [name] - Required. The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
-  /// [pageToken] - The list page token.
-  ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
   /// "job_names":["jobid1","jobid2",...],
@@ -500,6 +496,10 @@ class TransferOperationsResourceApi {
   /// `job_names`, `operation_names`, and `transfer_statuses` are optional. The
   /// valid values for `transfer_statuses` are case-insensitive: IN_PROGRESS,
   /// PAUSED, SUCCESS, FAILED, and ABORTED.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
+  /// [pageToken] - The list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -513,9 +513,9 @@ class TransferOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -528,14 +528,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

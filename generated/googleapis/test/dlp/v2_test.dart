@@ -7367,9 +7367,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.InfoTypesResourceApi res = api.DlpApi(mock).infoTypes;
-      var arg_locationId = 'foo';
-      var arg_languageCode = 'foo';
       var arg_filter = 'foo';
+      var arg_languageCode = 'foo';
+      var arg_locationId = 'foo';
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7398,11 +7398,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -7415,9 +7415,9 @@ void main() {
       }), true);
       res
           .list(
-              locationId: arg_locationId,
-              languageCode: arg_languageCode,
               filter: arg_filter,
+              languageCode: arg_languageCode,
+              locationId: arg_locationId,
               parent: arg_parent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -7433,8 +7433,8 @@ void main() {
           api.DlpApi(mock).locations.infoTypes;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
-      var arg_locationId = 'foo';
       var arg_languageCode = 'foo';
+      var arg_locationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7465,9 +7465,9 @@ void main() {
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
-        unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7480,8 +7480,8 @@ void main() {
       res
           .list(arg_parent,
               filter: arg_filter,
-              locationId: arg_locationId,
               languageCode: arg_languageCode,
+              locationId: arg_locationId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListInfoTypesResponse(response);
@@ -7648,10 +7648,10 @@ void main() {
       api.OrganizationsDeidentifyTemplatesResourceApi res =
           api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
       var arg_locationId = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7681,13 +7681,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7699,10 +7699,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
               locationId: arg_locationId,
-              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(response);
@@ -8199,10 +8199,10 @@ void main() {
       api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
           api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_orderBy = 'foo';
       var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8232,13 +8232,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8250,10 +8250,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
               locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(response);
@@ -8475,8 +8475,8 @@ void main() {
       api.OrganizationsLocationsInspectTemplatesResourceApi res =
           api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
       var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -8508,9 +8508,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
@@ -8526,8 +8526,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
               locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
@@ -8747,9 +8747,9 @@ void main() {
       api.OrganizationsLocationsStoredInfoTypesResourceApi res =
           api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_parent = 'foo';
+      var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_locationId = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8780,11 +8780,11 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
+        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -8798,9 +8798,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              locationId: arg_locationId,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
-              locationId: arg_locationId,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -9017,10 +9017,10 @@ void main() {
       api.OrganizationsStoredInfoTypesResourceApi res =
           api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9049,14 +9049,14 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9068,10 +9068,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
               locationId: arg_locationId,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(response);
@@ -9449,10 +9449,10 @@ void main() {
       api.ProjectsDeidentifyTemplatesResourceApi res =
           api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9482,13 +9482,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9500,10 +9500,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               locationId: arg_locationId,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(response);
@@ -9768,12 +9768,12 @@ void main() {
       var mock = HttpServerMock();
       api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
       var arg_parent = 'foo';
+      var arg_filter = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
-      var arg_type = 'foo';
-      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9802,16 +9802,16 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9823,12 +9823,12 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               locationId: arg_locationId,
               orderBy: arg_orderBy,
-              type: arg_type,
-              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListDlpJobsResponse(response);
@@ -10370,11 +10370,11 @@ void main() {
       api.ProjectsJobTriggersResourceApi res =
           api.DlpApi(mock).projects.jobTriggers;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_locationId = 'foo';
       var arg_filter = 'foo';
+      var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10403,15 +10403,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10423,11 +10423,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              locationId: arg_locationId,
               filter: arg_filter,
+              locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListJobTriggersResponse(response);
@@ -10808,10 +10808,10 @@ void main() {
       api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
           api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_parent = 'foo';
+      var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_locationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10840,14 +10840,14 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10859,10 +10859,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
-              locationId: arg_locationId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(response);
@@ -11238,11 +11238,11 @@ void main() {
       api.ProjectsLocationsDlpJobsResourceApi res =
           api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_parent = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
       var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11272,15 +11272,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -11293,11 +11293,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               filter: arg_filter,
               locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -11518,10 +11518,10 @@ void main() {
       api.ProjectsLocationsInspectTemplatesResourceApi res =
           api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_orderBy = 'foo';
       var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11551,13 +11551,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11569,10 +11569,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
               locationId: arg_locationId,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListInspectTemplatesResponse(response);
@@ -11895,11 +11895,11 @@ void main() {
       api.ProjectsLocationsJobTriggersResourceApi res =
           api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
-      var arg_locationId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
+      var arg_locationId = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11928,15 +11928,15 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11948,11 +11948,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
-              locationId: arg_locationId,
-              pageToken: arg_pageToken,
               filter: arg_filter,
+              locationId: arg_locationId,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListJobTriggersResponse(response);
@@ -12167,10 +12167,10 @@ void main() {
       api.ProjectsLocationsStoredInfoTypesResourceApi res =
           api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12200,13 +12200,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12218,10 +12218,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               locationId: arg_locationId,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(response);
@@ -12437,10 +12437,10 @@ void main() {
       api.ProjectsStoredInfoTypesResourceApi res =
           api.DlpApi(mock).projects.storedInfoTypes;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12470,13 +12470,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["locationId"].first, unittest.equals(arg_locationId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12488,10 +12488,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               locationId: arg_locationId,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(response);

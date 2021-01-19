@@ -4988,9 +4988,9 @@ void main() {
           api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
       var arg_path = 'foo';
-      var arg_variableId = buildUnnamed4479();
+      var arg_tagId = buildUnnamed4479();
       var arg_triggerId = buildUnnamed4480();
-      var arg_tagId = buildUnnamed4481();
+      var arg_variableId = buildUnnamed4481();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
@@ -5022,10 +5022,10 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["tagId"], unittest.equals(arg_tagId));
+        unittest.expect(queryMap["triggerId"], unittest.equals(arg_triggerId));
         unittest.expect(
             queryMap["variableId"], unittest.equals(arg_variableId));
-        unittest.expect(queryMap["triggerId"], unittest.equals(arg_triggerId));
-        unittest.expect(queryMap["tagId"], unittest.equals(arg_tagId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5036,9 +5036,9 @@ void main() {
       }), true);
       res
           .moveEntitiesToFolder(arg_request, arg_path,
-              variableId: arg_variableId,
-              triggerId: arg_triggerId,
               tagId: arg_tagId,
+              triggerId: arg_triggerId,
+              variableId: arg_variableId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });

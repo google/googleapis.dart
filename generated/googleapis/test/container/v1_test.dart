@@ -3807,9 +3807,9 @@ void main() {
       api.ProjectsAggregatedUsableSubnetworksResourceApi res =
           api.ContainerApi(mock).projects.aggregated.usableSubnetworks;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3838,11 +3838,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3853,9 +3853,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUsableSubnetworksResponse(response);
@@ -4089,9 +4089,9 @@ void main() {
       api.ProjectsLocationsClustersResourceApi res =
           api.ContainerApi(mock).projects.locations.clusters;
       var arg_name = 'foo';
-      var arg_zone = 'foo';
       var arg_clusterId = 'foo';
       var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4120,11 +4120,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(
             queryMap["clusterId"].first, unittest.equals(arg_clusterId));
         unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4135,9 +4135,9 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              zone: arg_zone,
               clusterId: arg_clusterId,
               projectId: arg_projectId,
+              zone: arg_zone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCluster(response);
@@ -4197,8 +4197,8 @@ void main() {
       api.ProjectsLocationsClustersResourceApi res =
           api.ContainerApi(mock).projects.locations.clusters;
       var arg_parent = 'foo';
-      var arg_zone = 'foo';
       var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4227,9 +4227,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4240,7 +4240,7 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              zone: arg_zone, projectId: arg_projectId, $fields: arg_$fields)
+              projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListClustersResponse(response);
       })));
@@ -4930,9 +4930,9 @@ void main() {
           api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
-      var arg_zone = 'foo';
-      var arg_projectId = 'foo';
       var arg_nodePoolId = 'foo';
+      var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4963,11 +4963,11 @@ void main() {
         }
         unittest.expect(
             queryMap["clusterId"].first, unittest.equals(arg_clusterId));
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
-        unittest.expect(
-            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(
             queryMap["nodePoolId"].first, unittest.equals(arg_nodePoolId));
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4979,9 +4979,9 @@ void main() {
       res
           .delete(arg_name,
               clusterId: arg_clusterId,
-              zone: arg_zone,
-              projectId: arg_projectId,
               nodePoolId: arg_nodePoolId,
+              projectId: arg_projectId,
+              zone: arg_zone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -4994,9 +4994,9 @@ void main() {
           api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
-      var arg_zone = 'foo';
       var arg_nodePoolId = 'foo';
       var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5027,11 +5027,11 @@ void main() {
         }
         unittest.expect(
             queryMap["clusterId"].first, unittest.equals(arg_clusterId));
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(
             queryMap["nodePoolId"].first, unittest.equals(arg_nodePoolId));
         unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5043,9 +5043,9 @@ void main() {
       res
           .get(arg_name,
               clusterId: arg_clusterId,
-              zone: arg_zone,
               nodePoolId: arg_nodePoolId,
               projectId: arg_projectId,
+              zone: arg_zone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkNodePool(response);
@@ -5057,9 +5057,9 @@ void main() {
       api.ProjectsLocationsClustersNodePoolsResourceApi res =
           api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_parent = 'foo';
-      var arg_zone = 'foo';
-      var arg_projectId = 'foo';
       var arg_clusterId = 'foo';
+      var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5088,11 +5088,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
-        unittest.expect(
-            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(
             queryMap["clusterId"].first, unittest.equals(arg_clusterId));
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5103,9 +5103,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              zone: arg_zone,
-              projectId: arg_projectId,
               clusterId: arg_clusterId,
+              projectId: arg_projectId,
+              zone: arg_zone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListNodePoolsResponse(response);
@@ -5481,9 +5481,9 @@ void main() {
       api.ProjectsLocationsOperationsResourceApi res =
           api.ContainerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
-      var arg_zone = 'foo';
-      var arg_projectId = 'foo';
       var arg_operationId = 'foo';
+      var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5512,11 +5512,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
-        unittest.expect(
-            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(
             queryMap["operationId"].first, unittest.equals(arg_operationId));
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5527,9 +5527,9 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              zone: arg_zone,
-              projectId: arg_projectId,
               operationId: arg_operationId,
+              projectId: arg_projectId,
+              zone: arg_zone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -5541,8 +5541,8 @@ void main() {
       api.ProjectsLocationsOperationsResourceApi res =
           api.ContainerApi(mock).projects.locations.operations;
       var arg_parent = 'foo';
-      var arg_zone = 'foo';
       var arg_projectId = 'foo';
+      var arg_zone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5571,9 +5571,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["zone"].first, unittest.equals(arg_zone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5584,7 +5584,7 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              zone: arg_zone, projectId: arg_projectId, $fields: arg_$fields)
+              projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
       })));

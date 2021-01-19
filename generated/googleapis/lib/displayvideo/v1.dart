@@ -250,11 +250,6 @@ class AdvertisersResourceApi {
   /// to.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `targetingType` (default) The default sorting order is ascending. To
-  /// specify descending order for a field, a suffix "desc" should be added to
-  /// the field name. Example: `targetingType desc`.
-  ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
   /// restrictions. * Restrictions can be combined by the logical operator
@@ -264,14 +259,19 @@ class AdvertisersResourceApi {
   /// `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should
   /// be no more than 500 characters.
   ///
-  /// [pageToken] - A token that lets the client fetch the next page of results.
-  /// Typically, this is the value of next_page_token returned from the previous
-  /// call to `BulkListAdvertiserAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `targetingType` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix "desc" should be added to
+  /// the field name. Example: `targetingType desc`.
   ///
   /// [pageSize] - Requested page size. The size must be an integer between `1`
   /// and `5000`. If unspecified, the default is '5000'. Returns error code
   /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - A token that lets the client fetch the next page of results.
+  /// Typically, this is the value of next_page_token returned from the previous
+  /// call to `BulkListAdvertiserAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -286,10 +286,10 @@ class AdvertisersResourceApi {
   async.Future<BulkListAdvertiserAssignedTargetingOptionsResponse>
       bulkListAdvertiserAssignedTargetingOptions(
     core.String advertiserId, {
-    core.String orderBy,
     core.String filter,
-    core.String pageToken,
+    core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -302,17 +302,17 @@ class AdvertisersResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -492,10 +492,6 @@ class AdvertisersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - Required. The ID of the partner that the fetched advertisers
-  /// should all belong to. The system only supports listing advertisers for one
-  /// partner at a time.
-  ///
   /// [filter] - Allows filtering by advertiser properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
@@ -511,13 +507,17 @@ class AdvertisersResourceApi {
   /// ascending. To specify descending order for a field, a suffix "desc" should
   /// be added to the field name. For example, `displayName desc`.
   ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
   /// previous call to `ListAdvertisers` method. If not specified, the first
   /// page of results will be returned.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`.
+  /// [partnerId] - Required. The ID of the partner that the fetched advertisers
+  /// should all belong to. The system only supports listing advertisers for one
+  /// partner at a time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,11 +530,11 @@ class AdvertisersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAdvertisersResponse> list({
-    core.String partnerId,
     core.String filter,
     core.String orderBy,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -544,20 +544,20 @@ class AdvertisersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -914,19 +914,6 @@ class AdvertisersCampaignsResourceApi {
   /// [advertiserId] - The ID of the advertiser to list campaigns for.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListCampaigns` method. If not specified, the first page
-  /// of results will be returned.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
-  ///
   /// [filter] - Allows filtering by campaign properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
@@ -937,6 +924,19 @@ class AdvertisersCampaignsResourceApi {
   /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be
   /// no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `displayName` (default) * `entityStatus` The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCampaigns` method. If not specified, the first page
+  /// of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -950,10 +950,10 @@ class AdvertisersCampaignsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCampaignsResponse> list(
     core.String advertiserId, {
-    core.String pageToken,
-    core.int pageSize,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -966,17 +966,17 @@ class AdvertisersCampaignsResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1216,11 +1216,6 @@ class AdvertisersChannelsResourceApi {
   /// [advertiserId] - The ID of the advertiser that owns the channels.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListChannels` method. If not specified, the first page
-  /// of results will be returned.
-  ///
   /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
   /// expressions for channel currently can only contain at most one *
   /// restriction. * A restriction has the form of `{field} {operator} {value}`.
@@ -1229,14 +1224,19 @@ class AdvertisersChannelsResourceApi {
   /// `displayName : "google"`. The length of this field should be no more than
   /// 500 characters.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `channelId` The default sorting order is
   /// ascending. To specify descending order for a field, a suffix " desc"
   /// should be added to the field name. Example: `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListChannels` method. If not specified, the first page
+  /// of results will be returned.
   ///
   /// [partnerId] - The ID of the partner that owns the channels.
   ///
@@ -1252,10 +1252,10 @@ class AdvertisersChannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListChannelsResponse> list(
     core.String advertiserId, {
-    core.String pageToken,
     core.String filter,
-    core.int pageSize,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String partnerId,
     core.String $fields,
   }) {
@@ -1269,17 +1269,17 @@ class AdvertisersChannelsResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
@@ -1316,9 +1316,9 @@ class AdvertisersChannelsResourceApi {
   /// [channelId] - Output only. The unique ID of the channel. Assigned by the
   /// system.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
   /// [partnerId] - The ID of the partner that owns the created channel.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1334,8 +1334,8 @@ class AdvertisersChannelsResourceApi {
     Channel request,
     core.String advertiserId,
     core.String channelId, {
-    core.String updateMask,
     core.String partnerId,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -1354,11 +1354,11 @@ class AdvertisersChannelsResourceApi {
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1613,19 +1613,12 @@ class AdvertisersChannelsSitesResourceApi {
   /// requested sites belong.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListSites` method. If not specified, the first page of
-  /// results will be returned.
-  ///
   /// [filter] - Allows filtering by site fields. Supported syntax: * Filter
   /// expressions for site currently can only contain at most one * restriction.
   /// * A restriction has the form of `{field} {operator} {value}`. * The
   /// operator must be `CONTAINS (:)`. * Supported fields: - `urlOrAppId`
   /// Examples: * All sites for which the URL or app ID contains "google":
   /// `urlOrAppId : "google"`
-  ///
-  /// [partnerId] - The ID of the partner that owns the parent channel.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `urlOrAppId` (default) The default sorting order is ascending. To specify
@@ -1635,6 +1628,13 @@ class AdvertisersChannelsSitesResourceApi {
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListSites` method. If not specified, the first page of
+  /// results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent channel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1649,11 +1649,11 @@ class AdvertisersChannelsSitesResourceApi {
   async.Future<ListSitesResponse> list(
     core.String advertiserId,
     core.String channelId, {
-    core.String pageToken,
     core.String filter,
-    core.String partnerId,
     core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -1669,20 +1669,20 @@ class AdvertisersChannelsSitesResourceApi {
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
-    }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1901,21 +1901,6 @@ class AdvertisersCreativesResourceApi {
   /// [advertiserId] - Required. The ID of the advertiser to list creatives for.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions`
-  /// (sorts by width first, then by height) The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `createTime desc`.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListCreatives` method. If not specified, the first page
-  /// of results will be returned.
-  ///
   /// [filter] - Allows filtering by creative properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restriction
   /// for the same field must be combined by `OR`. * Restriction for different
@@ -1947,6 +1932,21 @@ class AdvertisersCreativesResourceApi {
   /// * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2`
   /// The length of this field should be no more than 500 characters.
   ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions`
+  /// (sorts by width first, then by height) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `createTime desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCreatives` method. If not specified, the first page
+  /// of results will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1959,10 +1959,10 @@ class AdvertisersCreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(
     core.String advertiserId, {
-    core.int pageSize,
-    core.String orderBy,
-    core.String pageToken,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1975,17 +1975,17 @@ class AdvertisersCreativesResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2280,20 +2280,6 @@ class AdvertisersInsertionOrdersResourceApi {
   /// orders for.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// "displayName" (default) * "entityStatus" The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListInsertionOrders` method. If not specified, the first
-  /// page of results will be returned.
-  ///
   /// [filter] - Allows filtering by insertion order properties. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
   /// Restrictions can be combined by `AND` or `OR` logical operators. A
@@ -2311,6 +2297,20 @@ class AdvertisersInsertionOrdersResourceApi {
   /// `budget.budget_segments.date_range.end_date<"2019-03-28"` The length of
   /// this field should be no more than 500 characters.
   ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// "displayName" (default) * "entityStatus" The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListInsertionOrders` method. If not specified, the first
+  /// page of results will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2323,10 +2323,10 @@ class AdvertisersInsertionOrdersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInsertionOrdersResponse> list(
     core.String advertiserId, {
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -2339,6 +2339,9 @@ class AdvertisersInsertionOrdersResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
@@ -2347,9 +2350,6 @@ class AdvertisersInsertionOrdersResourceApi {
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2541,20 +2541,6 @@ class AdvertisersLineItemsResourceApi {
   /// targeting options for.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - A token that lets the client fetch the next page of results.
-  /// Typically, this is the value of next_page_token returned from the previous
-  /// call to `BulkListLineItemAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `targetingType` (default) The default sorting order is ascending. To
-  /// specify descending order for a field, a suffix "desc" should be added to
-  /// the field name. Example: `targetingType desc`.
-  ///
-  /// [pageSize] - Requested page size. The size must be an integer between `1`
-  /// and `5000`. If unspecified, the default is '5000'. Returns error code
-  /// `INVALID_ARGUMENT` if an invalid value is specified.
-  ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
   /// restrictions. * Restrictions can be combined by the logical operator `OR`
@@ -2568,6 +2554,20 @@ class AdvertisersLineItemsResourceApi {
   /// inheritance status of NOT_INHERITED or INHERITED_FROM_PARTNER
   /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
   /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `targetingType` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix "desc" should be added to
+  /// the field name. Example: `targetingType desc`.
+  ///
+  /// [pageSize] - Requested page size. The size must be an integer between `1`
+  /// and `5000`. If unspecified, the default is '5000'. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - A token that lets the client fetch the next page of results.
+  /// Typically, this is the value of next_page_token returned from the previous
+  /// call to `BulkListLineItemAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2583,10 +2583,10 @@ class AdvertisersLineItemsResourceApi {
       bulkListLineItemAssignedTargetingOptions(
     core.String advertiserId,
     core.String lineItemId, {
-    core.String pageToken,
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
-    core.String filter,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2602,8 +2602,8 @@ class AdvertisersLineItemsResourceApi {
     if (lineItemId == null) {
       throw core.ArgumentError('Parameter lineItemId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
@@ -2611,8 +2611,8 @@ class AdvertisersLineItemsResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2827,12 +2827,6 @@ class AdvertisersLineItemsResourceApi {
   /// for.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” The
-  /// default sorting order is ascending. To specify descending order for a
-  /// field, a suffix "desc" should be added to the field name. Example:
-  /// `displayName desc`.
-  ///
   /// [filter] - Allows filtering by line item properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
@@ -2855,14 +2849,20 @@ class AdvertisersLineItemsResourceApi {
   /// `warningMessages:"NO_VALID_CREATIVE"` The length of this field should be
   /// no more than 500 characters.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListLineItems` method. If not specified, the first page
-  /// of results will be returned.
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” The
+  /// default sorting order is ascending. To specify descending order for a
+  /// field, a suffix "desc" should be added to the field name. Example:
+  /// `displayName desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListLineItems` method. If not specified, the first page
+  /// of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2876,10 +2876,10 @@ class AdvertisersLineItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLineItemsResponse> list(
     core.String advertiserId, {
-    core.String orderBy,
     core.String filter,
-    core.String pageToken,
+    core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2892,17 +2892,17 @@ class AdvertisersLineItemsResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3594,20 +3594,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
   ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListLineItemAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `assignedTargetingOptionId` (default) The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
-  ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
   /// restrictions. * Restrictions can be combined by the logical operator `OR`.
@@ -3619,6 +3605,20 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   /// status of NOT_INHERITED or INHERITED_FROM_PARTNER
   /// `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The
   /// length of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `assignedTargetingOptionId` (default) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListLineItemAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3634,10 +3634,10 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
     core.String advertiserId,
     core.String lineItemId,
     core.String targetingType, {
+    core.String filter,
+    core.String orderBy,
     core.int pageSize,
     core.String pageToken,
-    core.String orderBy,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -3656,17 +3656,17 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3830,15 +3830,6 @@ class AdvertisersLocationListsResourceApi {
   /// fetched location lists belong.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `locationListId` (default) * `displayName` The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. Defaults
-  /// to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid
-  /// value is specified.
-  ///
   /// [filter] - Allows filtering by location list fields. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
@@ -3847,6 +3838,15 @@ class AdvertisersLocationListsResourceApi {
   /// Supported fields: - `locationType` Examples: * All regional location list:
   /// `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location
   /// list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `locationListId` (default) * `displayName` The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. Defaults
+  /// to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid
+  /// value is specified.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -3865,9 +3865,9 @@ class AdvertisersLocationListsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationListsResponse> list(
     core.String advertiserId, {
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
-    core.String filter,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -3881,14 +3881,14 @@ class AdvertisersLocationListsResourceApi {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -4210,11 +4210,6 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   /// [locationListId] - Required. The ID of the location list to which these
   /// assignments are assigned.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListAssignedLocations` method. If not specified, the
-  /// first page of results will be returned.
-  ///
   /// [filter] - Allows filtering by location list assignment fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
   /// Restrictions can be combined by the logical operator `OR`. * A restriction
@@ -4231,6 +4226,11 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListAssignedLocations` method. If not specified, the
+  /// first page of results will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4244,10 +4244,10 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   async.Future<ListAssignedLocationsResponse> list(
     core.String advertiserId,
     core.String locationListId, {
-    core.String pageToken,
     core.String filter,
     core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4263,9 +4263,6 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
     if (locationListId == null) {
       throw core.ArgumentError('Parameter locationListId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -4274,6 +4271,9 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4867,17 +4867,17 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   /// list to which the requested negative keywords belong.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `keywordValue` (default) The default sorting order is ascending. To
-  /// specify descending order for a field, a suffix " desc" should be added to
-  /// the field name. Example: `keywordValue desc`.
-  ///
   /// [filter] - Allows filtering by negative keyword fields. Supported syntax:
   /// * Filter expressions for negative keyword currently can only contain at
   /// most one * restriction. * A restriction has the form of `{field}
   /// {operator} {value}`. * The operator must be `CONTAINS (:)`. * Supported
   /// fields: - `keywordValue` Examples: * All negative keywords for which the
   /// keyword value contains "google": `keywordValue : "google"`
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `keywordValue` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix " desc" should be added to
+  /// the field name. Example: `keywordValue desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
@@ -4901,8 +4901,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   async.Future<ListNegativeKeywordsResponse> list(
     core.String advertiserId,
     core.String negativeKeywordListId, {
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -4920,11 +4920,11 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
     if (negativeKeywordListId == null) {
       throw core.ArgumentError('Parameter negativeKeywordListId is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -5513,11 +5513,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `assignedTargetingOptionId` (default) The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
-  ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
   /// restrictions. * Restrictions can be combined by the logical operator `OR`.
@@ -5527,14 +5522,19 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// 123456 `assignedTargetingOptionId="123456"` The length of this field
   /// should be no more than 500 characters.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListAdvertiserAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `assignedTargetingOptionId` (default) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `assignedTargetingOptionId desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListAdvertiserAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5549,10 +5549,10 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   async.Future<ListAdvertiserAssignedTargetingOptionsResponse> list(
     core.String advertiserId,
     core.String targetingType, {
-    core.String orderBy,
     core.String filter,
-    core.String pageToken,
+    core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -5568,17 +5568,17 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5678,17 +5678,7 @@ class CombinedAudiencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `combinedAudienceId` (default) * `displayName` The default sorting order
-  /// is ascending. To specify descending order for a field, a suffix "desc"
-  /// should be added to the field name. Example: `displayName desc`.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListCombinedAudiences` method. If not specified, the
-  /// first page of results will be returned.
-  ///
-  /// [partnerId] - The ID of the partner that has access to the fetched
+  /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// combined audiences.
   ///
   /// [filter] - Allows filtering by combined audience fields. Supported syntax:
@@ -5699,11 +5689,21 @@ class CombinedAudiencesResourceApi {
   /// name contains "Google": `displayName : "Google"`. The length of this field
   /// should be no more than 500 characters.
   ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `combinedAudienceId` (default) * `displayName` The default sorting order
+  /// is ascending. To specify descending order for a field, a suffix "desc"
+  /// should be added to the field name. Example: `displayName desc`.
+  ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
-  /// [advertiserId] - The ID of the advertiser that has access to the fetched
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCombinedAudiences` method. If not specified, the
+  /// first page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the fetched
   /// combined audiences.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5717,12 +5717,12 @@ class CombinedAudiencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCombinedAudiencesResponse> list({
+    core.String advertiserId,
+    core.String filter,
     core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String partnerId,
-    core.String filter,
-    core.int pageSize,
-    core.String advertiserId,
     core.String $fields,
   }) {
     core.String _url;
@@ -5732,23 +5732,23 @@ class CombinedAudiencesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (advertiserId != null) {
+      _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5848,18 +5848,6 @@ class CustomBiddingAlgorithmsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - The ID of the DV360 partner that has access to the custom
-  /// bidding algorithm.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListCustomBiddingAlgorithms` method. If not specified,
-  /// the first page of results will be returned.
-  ///
   /// [advertiserId] - The ID of the DV360 advertiser that has access to the
   /// custom bidding algorithm.
   ///
@@ -5885,6 +5873,18 @@ class CustomBiddingAlgorithmsResourceApi {
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. Example: `displayName desc`.
   ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCustomBiddingAlgorithms` method. If not specified,
+  /// the first page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the DV360 partner that has access to the custom
+  /// bidding algorithm.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5896,12 +5896,12 @@ class CustomBiddingAlgorithmsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCustomBiddingAlgorithmsResponse> list({
-    core.String partnerId,
-    core.int pageSize,
-    core.String pageToken,
     core.String advertiserId,
     core.String filter,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -5911,15 +5911,6 @@ class CustomBiddingAlgorithmsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
     }
@@ -5928,6 +5919,15 @@ class CustomBiddingAlgorithmsResourceApi {
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6015,22 +6015,8 @@ class CustomListsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListCustomLists` method. If not specified, the first
-  /// page of results will be returned.
-  ///
   /// [advertiserId] - The ID of the DV360 advertiser that has access to the
   /// fetched custom lists.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `customListId` (default) * `displayName` The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
   ///
   /// [filter] - Allows filtering by custom list fields. Supported syntax: *
   /// Filter expressions for custom lists currently can only contain at most one
@@ -6039,6 +6025,20 @@ class CustomListsResourceApi {
   /// Examples: * All custom lists for which the display name contains "Google":
   /// `displayName : "Google"`. The length of this field should be no more than
   /// 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `customListId` (default) * `displayName` The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix "desc" should
+  /// be added to the field name. Example: `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCustomLists` method. If not specified, the first
+  /// page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6051,11 +6051,11 @@ class CustomListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCustomListsResponse> list({
-    core.String pageToken,
     core.String advertiserId,
-    core.int pageSize,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -6065,20 +6065,20 @@ class CustomListsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6113,11 +6113,11 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// party audience to fetch.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [partnerId] - The ID of the partner that has access to the fetched first
-  /// and third party audience.
-  ///
   /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// first and third party audience.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the fetched first
+  /// and third party audience.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6131,8 +6131,8 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// this method will complete with the same error.
   async.Future<FirstAndThirdPartyAudience> get(
     core.String firstAndThirdPartyAudienceId, {
-    core.String partnerId,
     core.String advertiserId,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -6146,11 +6146,11 @@ class FirstAndThirdPartyAudiencesResourceApi {
       throw core.ArgumentError(
           'Parameter firstAndThirdPartyAudienceId is required.');
     }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6179,12 +6179,6 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// first and third party audiences.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `firstAndThirdPartyAudienceId` (default) * `displayName` The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix "desc" should be added to the field name. Example: `displayName
-  /// desc`.
-  ///
   /// [filter] - Allows filtering by first and third party audience fields.
   /// Supported syntax: * Filter expressions for first and third party audiences
   /// currently can only contain at most one restriction. * A restriction has
@@ -6194,6 +6188,16 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// : "Google"`. The length of this field should be no more than 500
   /// characters.
   ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `firstAndThirdPartyAudienceId` (default) * `displayName` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
   /// previous call to `ListFirstAndThirdPartyAudiences` method. If not
@@ -6201,10 +6205,6 @@ class FirstAndThirdPartyAudiencesResourceApi {
   ///
   /// [partnerId] - The ID of the partner that has access to the fetched first
   /// and third party audiences.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6218,11 +6218,11 @@ class FirstAndThirdPartyAudiencesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFirstAndThirdPartyAudiencesResponse> list({
     core.String advertiserId,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String partnerId,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -6235,20 +6235,20 @@ class FirstAndThirdPartyAudiencesResourceApi {
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6343,10 +6343,10 @@ class FloodlightGroupsResourceApi {
   /// [floodlightGroupId] - Output only. The unique ID of the Floodlight group.
   /// Assigned by the system.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
   /// [partnerId] - Required. The partner context by which the Floodlight group
   /// is being accessed.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6361,8 +6361,8 @@ class FloodlightGroupsResourceApi {
   async.Future<FloodlightGroup> patch(
     FloodlightGroup request,
     core.String floodlightGroupId, {
-    core.String updateMask,
     core.String partnerId,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -6378,11 +6378,11 @@ class FloodlightGroupsResourceApi {
     if (floodlightGroupId == null) {
       throw core.ArgumentError('Parameter floodlightGroupId is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6488,14 +6488,6 @@ class GoogleAudiencesResourceApi {
   /// contains "Google": `displayName : "Google"`. The length of this field
   /// should be no more than 500 characters.
   ///
-  /// [partnerId] - The ID of the partner that has access to the fetched Google
-  /// audiences.
-  ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListGoogleAudiences` method. If not specified, the first
-  /// page of results will be returned.
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `googleAudienceId` (default) * `displayName` The default sorting order is
   /// ascending. To specify descending order for a field, a suffix "desc" should
@@ -6504,6 +6496,14 @@ class GoogleAudiencesResourceApi {
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListGoogleAudiences` method. If not specified, the first
+  /// page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the fetched Google
+  /// audiences.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6518,10 +6518,10 @@ class GoogleAudiencesResourceApi {
   async.Future<ListGoogleAudiencesResponse> list({
     core.String advertiserId,
     core.String filter,
-    core.String partnerId,
-    core.String pageToken,
     core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -6537,17 +6537,17 @@ class GoogleAudiencesResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6651,11 +6651,11 @@ class InventorySourceGroupsResourceApi {
   /// to delete.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [partnerId] - The ID of the partner that owns the inventory source group.
-  /// Only this partner has write access to this group.
-  ///
   /// [advertiserId] - The ID of the advertiser that owns the inventory source
   /// group. The parent partner does not have access to this group.
+  ///
+  /// [partnerId] - The ID of the partner that owns the inventory source group.
+  /// Only this partner has write access to this group.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6669,8 +6669,8 @@ class InventorySourceGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String inventorySourceGroupId, {
-    core.String partnerId,
     core.String advertiserId,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -6683,11 +6683,11 @@ class InventorySourceGroupsResourceApi {
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6716,13 +6716,13 @@ class InventorySourceGroupsResourceApi {
   /// to fetch.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [partnerId] - The ID of the partner that has access to the inventory
-  /// source group. A partner cannot access an advertiser-owned inventory source
-  /// group.
-  ///
   /// [advertiserId] - The ID of the advertiser that has access to the inventory
   /// source group. If an inventory source group is partner-owned, only
   /// advertisers to which the group is explicitly shared can access the group.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the inventory
+  /// source group. A partner cannot access an advertiser-owned inventory source
+  /// group.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6736,8 +6736,8 @@ class InventorySourceGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<InventorySourceGroup> get(
     core.String inventorySourceGroupId, {
-    core.String partnerId,
     core.String advertiserId,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -6750,11 +6750,11 @@ class InventorySourceGroupsResourceApi {
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6797,13 +6797,13 @@ class InventorySourceGroupsResourceApi {
   /// order is ascending. To specify descending order for a field, a suffix
   /// "desc" should be added to the field name. For example, `displayName desc`.
   ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
   /// previous call to `ListInventorySources` method. If not specified, the
   /// first page of results will be returned.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`.
   ///
   /// [partnerId] - The ID of the partner that has access to the inventory
   /// source group. A partner cannot access advertiser-owned inventory source
@@ -6823,8 +6823,8 @@ class InventorySourceGroupsResourceApi {
     core.String advertiserId,
     core.String filter,
     core.String orderBy,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String partnerId,
     core.String $fields,
   }) {
@@ -6844,11 +6844,11 @@ class InventorySourceGroupsResourceApi {
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
@@ -6882,13 +6882,13 @@ class InventorySourceGroupsResourceApi {
   /// [inventorySourceGroupId] - Output only. The unique ID of the inventory
   /// source group. Assigned by the system.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
   /// [advertiserId] - The ID of the advertiser that owns the inventory source
   /// group. The parent partner does not have access to this group.
   ///
   /// [partnerId] - The ID of the partner that owns the inventory source group.
   /// Only this partner has write access to this group.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6903,9 +6903,9 @@ class InventorySourceGroupsResourceApi {
   async.Future<InventorySourceGroup> patch(
     InventorySourceGroup request,
     core.String inventorySourceGroupId, {
-    core.String updateMask,
     core.String advertiserId,
     core.String partnerId,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -6921,14 +6921,14 @@ class InventorySourceGroupsResourceApi {
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
     }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7032,13 +7032,13 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// to which the assignment will be assigned.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [partnerId] - The ID of the partner that owns the parent inventory source
-  /// group. Only this partner will have write access to this assigned inventory
-  /// source.
-  ///
   /// [advertiserId] - The ID of the advertiser that owns the parent inventory
   /// source group. The parent partner will not have access to this assigned
   /// inventory source.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent inventory source
+  /// group. Only this partner will have write access to this assigned inventory
+  /// source.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7053,8 +7053,8 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   async.Future<AssignedInventorySource> create(
     AssignedInventorySource request,
     core.String inventorySourceGroupId, {
-    core.String partnerId,
     core.String advertiserId,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -7070,11 +7070,11 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7183,6 +7183,24 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// to which these assignments are assigned.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [advertiserId] - The ID of the advertiser that has access to the
+  /// assignment. If the parent inventory source group is partner-owned, only
+  /// advertisers to which the parent group is explicitly shared can access the
+  /// assigned inventory source.
+  ///
+  /// [filter] - Allows filtering by assigned inventory source fields. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by the logical operator `OR`. * A restriction
+  /// has the form of `{field} {operator} {value}`. * The operator must be
+  /// `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId` The length
+  /// of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `assignedInventorySourceId` (default) The default sorting order is
+  /// ascending. To specify descending order for a field, a suffix " desc"
+  /// should be added to the field name. Example: `assignedInventorySourceId
+  /// desc`.
+  ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
@@ -7192,27 +7210,9 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// previous call to `ListAssignedInventorySources` method. If not specified,
   /// the first page of results will be returned.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `assignedInventorySourceId` (default) The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix " desc"
-  /// should be added to the field name. Example: `assignedInventorySourceId
-  /// desc`.
-  ///
   /// [partnerId] - The ID of the partner that has access to the assignment. If
   /// the parent inventory source group is advertiser-owned, the assignment
   /// cannot be accessed via a partner.
-  ///
-  /// [filter] - Allows filtering by assigned inventory source fields. Supported
-  /// syntax: * Filter expressions are made up of one or more restrictions. *
-  /// Restrictions can be combined by the logical operator `OR`. * A restriction
-  /// has the form of `{field} {operator} {value}`. * The operator must be
-  /// `EQUALS (=)`. * Supported fields: - `assignedInventorySourceId` The length
-  /// of this field should be no more than 500 characters.
-  ///
-  /// [advertiserId] - The ID of the advertiser that has access to the
-  /// assignment. If the parent inventory source group is partner-owned, only
-  /// advertisers to which the parent group is explicitly shared can access the
-  /// assigned inventory source.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7226,12 +7226,12 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAssignedInventorySourcesResponse> list(
     core.String inventorySourceGroupId, {
+    core.String advertiserId,
+    core.String filter,
+    core.String orderBy,
     core.int pageSize,
     core.String pageToken,
-    core.String orderBy,
     core.String partnerId,
-    core.String filter,
-    core.String advertiserId,
     core.String $fields,
   }) {
     core.String _url;
@@ -7244,23 +7244,23 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
+    if (advertiserId != null) {
+      _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (partnerId != null) {
       _queryParams['partnerId'] = [partnerId];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7354,7 +7354,7 @@ class InventorySourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [partnerId] - The ID of the partner that has access to the inventory
+  /// [advertiserId] - The ID of the advertiser that has access to the inventory
   /// source.
   ///
   /// [filter] - Allows filtering by inventory source properties. Supported
@@ -7369,14 +7369,6 @@ class InventorySourcesResourceApi {
   /// `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The
   /// length of this field should be no more than 500 characters.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListInventorySources` method. If not specified, the
-  /// first page of results will be returned.
-  ///
-  /// [advertiserId] - The ID of the advertiser that has access to the inventory
-  /// source.
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) The default sorting order is ascending. To specify
   /// descending order for a field, a suffix "desc" should be added to the field
@@ -7384,6 +7376,14 @@ class InventorySourcesResourceApi {
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListInventorySources` method. If not specified, the
+  /// first page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that has access to the inventory
+  /// source.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7396,12 +7396,12 @@ class InventorySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInventorySourcesResponse> list({
-    core.String partnerId,
-    core.String filter,
-    core.String pageToken,
     core.String advertiserId,
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
+    core.String partnerId,
     core.String $fields,
   }) {
     core.String _url;
@@ -7411,23 +7411,23 @@ class InventorySourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (partnerId != null) {
-      _queryParams['partnerId'] = [partnerId];
+    if (advertiserId != null) {
+      _queryParams['advertiserId'] = [advertiserId];
     }
     if (filter != null) {
       _queryParams['filter'] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (partnerId != null) {
+      _queryParams['partnerId'] = [partnerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7659,18 +7659,18 @@ class PartnersResourceApi {
   /// `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be
   /// no more than 500 characters.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListPartners` method. If not specified, the first page
-  /// of results will be returned.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`.
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` The default sorting order is ascending. To specify
   /// descending order for a field, a suffix "desc" should be added to the field
   /// name. For example, `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListPartners` method. If not specified, the first page
+  /// of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7684,9 +7684,9 @@ class PartnersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListPartnersResponse> list({
     core.String filter,
-    core.String pageToken,
-    core.int pageSize,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -7699,14 +7699,14 @@ class PartnersResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7871,6 +7871,16 @@ class PartnersChannelsResourceApi {
   /// [partnerId] - The ID of the partner that owns the channels.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [advertiserId] - The ID of the advertiser that owns the channels.
+  ///
+  /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
+  /// expressions for channel currently can only contain at most one *
+  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
+  /// * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+  /// Examples: * All channels for which the display name contains "google":
+  /// `displayName : "google"`. The length of this field should be no more than
+  /// 500 characters.
+  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `channelId` The default sorting order is
   /// ascending. To specify descending order for a field, a suffix " desc"
@@ -7885,16 +7895,6 @@ class PartnersChannelsResourceApi {
   /// previous call to `ListChannels` method. If not specified, the first page
   /// of results will be returned.
   ///
-  /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
-  /// expressions for channel currently can only contain at most one *
-  /// restriction. * A restriction has the form of `{field} {operator} {value}`.
-  /// * The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
-  /// Examples: * All channels for which the display name contains "google":
-  /// `displayName : "google"`. The length of this field should be no more than
-  /// 500 characters.
-  ///
-  /// [advertiserId] - The ID of the advertiser that owns the channels.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7907,11 +7907,11 @@ class PartnersChannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListChannelsResponse> list(
     core.String partnerId, {
+    core.String advertiserId,
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
-    core.String advertiserId,
     core.String $fields,
   }) {
     core.String _url;
@@ -7924,6 +7924,12 @@ class PartnersChannelsResourceApi {
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
+    if (advertiserId != null) {
+      _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
@@ -7932,12 +7938,6 @@ class PartnersChannelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7971,9 +7971,9 @@ class PartnersChannelsResourceApi {
   /// [channelId] - Output only. The unique ID of the channel. Assigned by the
   /// system.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
-  ///
   /// [advertiserId] - The ID of the advertiser that owns the created channel.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7989,8 +7989,8 @@ class PartnersChannelsResourceApi {
     Channel request,
     core.String partnerId,
     core.String channelId, {
-    core.String updateMask,
     core.String advertiserId,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -8009,11 +8009,11 @@ class PartnersChannelsResourceApi {
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -8268,6 +8268,8 @@ class PartnersChannelsSitesResourceApi {
   /// requested sites belong.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent channel.
+  ///
   /// [filter] - Allows filtering by site fields. Supported syntax: * Filter
   /// expressions for site currently can only contain at most one * restriction.
   /// * A restriction has the form of `{field} {operator} {value}`. * The
@@ -8275,21 +8277,19 @@ class PartnersChannelsSitesResourceApi {
   /// Examples: * All sites for which the URL or app ID contains "google":
   /// `urlOrAppId : "google"`
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListSites` method. If not specified, the first page of
-  /// results will be returned.
-  ///
-  /// [advertiserId] - The ID of the advertiser that owns the parent channel.
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `urlOrAppId` (default) The default sorting order is ascending. To specify
+  /// descending order for a field, a suffix " desc" should be added to the
+  /// field name. Example: `urlOrAppId desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `urlOrAppId` (default) The default sorting order is ascending. To specify
-  /// descending order for a field, a suffix " desc" should be added to the
-  /// field name. Example: `urlOrAppId desc`.
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListSites` method. If not specified, the first page of
+  /// results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8304,11 +8304,11 @@ class PartnersChannelsSitesResourceApi {
   async.Future<ListSitesResponse> list(
     core.String partnerId,
     core.String channelId, {
-    core.String filter,
-    core.String pageToken,
     core.String advertiserId,
-    core.int pageSize,
+    core.String filter,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -8324,20 +8324,20 @@ class PartnersChannelsSitesResourceApi {
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
+    if (advertiserId != null) {
+      _queryParams['advertiserId'] = [advertiserId];
+    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -8918,10 +8918,14 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListPartnerAssignedTargetingOptions` method. If not
-  /// specified, the first page of results will be returned.
+  /// [filter] - Allows filtering by assigned targeting option properties.
+  /// Supported syntax: * Filter expressions are made up of one or more
+  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
+  /// * A restriction has the form of `{field} {operator} {value}`. * The
+  /// operator must be `EQUALS (=)`. * Supported fields: -
+  /// `assignedTargetingOptionId` Examples: * AssignedTargetingOption with ID
+  /// 123456 `assignedTargetingOptionId="123456"` The length of this field
+  /// should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `assignedTargetingOptionId` (default) The default sorting order is
@@ -8932,14 +8936,10 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
   /// if an invalid value is specified.
   ///
-  /// [filter] - Allows filtering by assigned targeting option properties.
-  /// Supported syntax: * Filter expressions are made up of one or more
-  /// restrictions. * Restrictions can be combined by the logical operator `OR`.
-  /// * A restriction has the form of `{field} {operator} {value}`. * The
-  /// operator must be `EQUALS (=)`. * Supported fields: -
-  /// `assignedTargetingOptionId` Examples: * AssignedTargetingOption with ID
-  /// 123456 `assignedTargetingOptionId="123456"` The length of this field
-  /// should be no more than 500 characters.
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListPartnerAssignedTargetingOptions` method. If not
+  /// specified, the first page of results will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8954,10 +8954,10 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   async.Future<ListPartnerAssignedTargetingOptionsResponse> list(
     core.String partnerId,
     core.String targetingType, {
-    core.String pageToken,
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
-    core.String filter,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -8973,8 +8973,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
@@ -8982,8 +8982,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -9378,17 +9378,8 @@ class TargetingTypesTargetingOptionsResourceApi {
   /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
   /// sub-exchanges.
   ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `targetingOptionId` (default) The default sorting order is ascending. To
-  /// specify descending order for a field, a suffix "desc" should be added to
-  /// the field name. Example: `targetingOptionId desc`.
-  ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
-  /// if an invalid value is specified.
   ///
   /// [filter] - Allows filtering by targeting option properties. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -9404,6 +9395,15 @@ class TargetingTypesTargetingOptionsResourceApi {
   /// `CARRIER_AND_ISP_TYPE_CARRIER`:
   /// `carrier_and_isp_details.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length
   /// of this field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `targetingOptionId` (default) The default sorting order is ascending. To
+  /// specify descending order for a field, a suffix "desc" should be added to
+  /// the field name. Example: `targetingOptionId desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -9422,10 +9422,10 @@ class TargetingTypesTargetingOptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTargetingOptionsResponse> list(
     core.String targetingType, {
-    core.String orderBy,
     core.String advertiserId,
-    core.int pageSize,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -9439,17 +9439,17 @@ class TargetingTypesTargetingOptionsResourceApi {
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -9695,19 +9695,6 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of next_page_token returned from the
-  /// previous call to `ListUsers` method. If not specified, the first page of
-  /// results will be returned.
-  ///
-  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
-  /// unspecified will default to `100`.
-  ///
-  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) The default sorting order is ascending. To specify
-  /// descending order for a field, a suffix "desc" should be added to the field
-  /// name. For example, `displayName desc`.
-  ///
   /// [filter] - Allows filtering by user properties. Supported syntax: * Filter
   /// expressions are made up of one or more restrictions. * Restrictions can be
   /// combined by the logical operator `AND`. * A restriction has the form of
@@ -9732,6 +9719,19 @@ class UsersResourceApi {
   /// `parentPartnerId="123"` The length of this field should be no more than
   /// 500 characters.
   ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `displayName` (default) The default sorting order is ascending. To specify
+  /// descending order for a field, a suffix "desc" should be added to the field
+  /// name. For example, `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListUsers` method. If not specified, the first page of
+  /// results will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9743,10 +9743,10 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUsersResponse> list({
-    core.String pageToken,
-    core.int pageSize,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -9756,17 +9756,17 @@ class UsersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -503,10 +503,10 @@ class UsersDraftsResourceApi {
   /// [includeSpamTrash] - Include drafts from `SPAM` and `TRASH` in the
   /// results.
   ///
+  /// [maxResults] - Maximum number of drafts to return.
+  ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.
-  ///
-  /// [maxResults] - Maximum number of drafts to return.
   ///
   /// [q] - Only return draft messages matching the specified query. Supports
   /// the same query format as the Gmail search box. For example,
@@ -525,8 +525,8 @@ class UsersDraftsResourceApi {
   async.Future<ListDraftsResponse> list(
     core.String userId, {
     core.bool includeSpamTrash,
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String q,
     core.String $fields,
   }) {
@@ -543,11 +543,11 @@ class UsersDraftsResourceApi {
     if (includeSpamTrash != null) {
       _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (q != null) {
       _queryParams['q'] = [q];
@@ -756,10 +756,10 @@ class UsersHistoryResourceApi {
   ///
   /// [labelId] - Only return messages with a label matching the ID.
   ///
+  /// [maxResults] - The maximum number of history records to return.
+  ///
   /// [pageToken] - Page token to retrieve a specific page of results in the
   /// list.
-  ///
-  /// [maxResults] - The maximum number of history records to return.
   ///
   /// [startHistoryId] - Required. Returns history records after the specified
   /// `startHistoryId`. The supplied `startHistoryId` should be obtained from
@@ -787,8 +787,8 @@ class UsersHistoryResourceApi {
     core.String userId, {
     core.List<core.String> historyTypes,
     core.String labelId,
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String startHistoryId,
     core.String $fields,
   }) {
@@ -808,11 +808,11 @@ class UsersHistoryResourceApi {
     if (labelId != null) {
       _queryParams['labelId'] = [labelId];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startHistoryId != null) {
       _queryParams['startHistoryId'] = [startHistoryId];
@@ -1388,9 +1388,6 @@ class UsersMessagesResourceApi {
   ///
   /// [id] - The ID of the message to retrieve.
   ///
-  /// [metadataHeaders] - When given and format is `METADATA`, only include
-  /// headers specified.
-  ///
   /// [format] - The format to return the message in.
   /// Possible string values are:
   /// - "minimal" : Returns only email message ID and labels; does not return
@@ -1403,6 +1400,9 @@ class UsersMessagesResourceApi {
   /// used. Format cannot be used when accessing the api using the
   /// gmail.metadata scope.
   /// - "metadata" : Returns only email message ID, labels, and email headers.
+  ///
+  /// [metadataHeaders] - When given and format is `METADATA`, only include
+  /// headers specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1417,8 +1417,8 @@ class UsersMessagesResourceApi {
   async.Future<Message> get(
     core.String userId,
     core.String id, {
-    core.List<core.String> metadataHeaders,
     core.String format,
+    core.List<core.String> metadataHeaders,
     core.String $fields,
   }) {
     core.String _url;
@@ -1434,11 +1434,11 @@ class UsersMessagesResourceApi {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    if (metadataHeaders != null) {
-      _queryParams['metadataHeaders'] = metadataHeaders;
-    }
     if (format != null) {
       _queryParams['format'] = [format];
+    }
+    if (metadataHeaders != null) {
+      _queryParams['metadataHeaders'] = metadataHeaders;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1473,8 +1473,9 @@ class UsersMessagesResourceApi {
   /// [userId] - The user's email address. The special value `me` can be used to
   /// indicate the authenticated user.
   ///
-  /// [processForCalendar] - Process calendar invites in the email and add any
-  /// extracted meetings to the Google Calendar for this user.
+  /// [deleted] - Mark the email as permanently deleted (not TRASH) and only
+  /// visible in Google Vault to a Vault administrator. Only used for G Suite
+  /// accounts.
   ///
   /// [internalDateSource] - Source for Gmail's internal date of the message.
   /// Possible string values are:
@@ -1486,9 +1487,8 @@ class UsersMessagesResourceApi {
   /// [neverMarkSpam] - Ignore the Gmail spam classifier decision and never mark
   /// this email as SPAM in the mailbox.
   ///
-  /// [deleted] - Mark the email as permanently deleted (not TRASH) and only
-  /// visible in Google Vault to a Vault administrator. Only used for G Suite
-  /// accounts.
+  /// [processForCalendar] - Process calendar invites in the email and add any
+  /// extracted meetings to the Google Calendar for this user.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1509,10 +1509,10 @@ class UsersMessagesResourceApi {
   async.Future<Message> import(
     Message request,
     core.String userId, {
-    core.bool processForCalendar,
+    core.bool deleted,
     core.String internalDateSource,
     core.bool neverMarkSpam,
-    core.bool deleted,
+    core.bool processForCalendar,
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
@@ -1530,8 +1530,8 @@ class UsersMessagesResourceApi {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    if (processForCalendar != null) {
-      _queryParams['processForCalendar'] = ['${processForCalendar}'];
+    if (deleted != null) {
+      _queryParams['deleted'] = ['${deleted}'];
     }
     if (internalDateSource != null) {
       _queryParams['internalDateSource'] = [internalDateSource];
@@ -1539,8 +1539,8 @@ class UsersMessagesResourceApi {
     if (neverMarkSpam != null) {
       _queryParams['neverMarkSpam'] = ['${neverMarkSpam}'];
     }
-    if (deleted != null) {
-      _queryParams['deleted'] = ['${deleted}'];
+    if (processForCalendar != null) {
+      _queryParams['processForCalendar'] = ['${processForCalendar}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1681,14 +1681,6 @@ class UsersMessagesResourceApi {
   /// [userId] - The user's email address. The special value `me` can be used to
   /// indicate the authenticated user.
   ///
-  /// [pageToken] - Page token to retrieve a specific page of results in the
-  /// list.
-  ///
-  /// [q] - Only return messages matching the specified query. Supports the same
-  /// query format as the Gmail search box. For example,
-  /// `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be
-  /// used when accessing the api using the gmail.metadata scope.
-  ///
   /// [includeSpamTrash] - Include messages from `SPAM` and `TRASH` in the
   /// results.
   ///
@@ -1696,6 +1688,14 @@ class UsersMessagesResourceApi {
   /// specified label IDs.
   ///
   /// [maxResults] - Maximum number of messages to return.
+  ///
+  /// [pageToken] - Page token to retrieve a specific page of results in the
+  /// list.
+  ///
+  /// [q] - Only return messages matching the specified query. Supports the same
+  /// query format as the Gmail search box. For example,
+  /// `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be
+  /// used when accessing the api using the gmail.metadata scope.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1709,11 +1709,11 @@ class UsersMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListMessagesResponse> list(
     core.String userId, {
-    core.String pageToken,
-    core.String q,
     core.bool includeSpamTrash,
     core.List<core.String> labelIds,
     core.int maxResults,
+    core.String pageToken,
+    core.String q,
     core.String $fields,
   }) {
     core.String _url;
@@ -1726,12 +1726,6 @@ class UsersMessagesResourceApi {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
     if (includeSpamTrash != null) {
       _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
     }
@@ -1740,6 +1734,12 @@ class UsersMessagesResourceApi {
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (q != null) {
+      _queryParams['q'] = [q];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4228,9 +4228,6 @@ class UsersThreadsResourceApi {
   ///
   /// [id] - The ID of the thread to retrieve.
   ///
-  /// [metadataHeaders] - When given and format is METADATA, only include
-  /// headers specified.
-  ///
   /// [format] - The format to return the messages in.
   /// Possible string values are:
   /// - "full" : Returns the full email message data with body content parsed in
@@ -4239,6 +4236,9 @@ class UsersThreadsResourceApi {
   /// - "metadata" : Returns only email message IDs, labels, and email headers.
   /// - "minimal" : Returns only email message IDs and labels; does not return
   /// the email headers, body, or payload.
+  ///
+  /// [metadataHeaders] - When given and format is METADATA, only include
+  /// headers specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4253,8 +4253,8 @@ class UsersThreadsResourceApi {
   async.Future<Thread> get(
     core.String userId,
     core.String id, {
-    core.List<core.String> metadataHeaders,
     core.String format,
+    core.List<core.String> metadataHeaders,
     core.String $fields,
   }) {
     core.String _url;
@@ -4270,11 +4270,11 @@ class UsersThreadsResourceApi {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    if (metadataHeaders != null) {
-      _queryParams['metadataHeaders'] = metadataHeaders;
-    }
     if (format != null) {
       _queryParams['format'] = [format];
+    }
+    if (metadataHeaders != null) {
+      _queryParams['metadataHeaders'] = metadataHeaders;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4304,21 +4304,21 @@ class UsersThreadsResourceApi {
   /// [userId] - The user's email address. The special value `me` can be used to
   /// indicate the authenticated user.
   ///
+  /// [includeSpamTrash] - Include threads from `SPAM` and `TRASH` in the
+  /// results.
+  ///
   /// [labelIds] - Only return threads with labels that match all of the
   /// specified label IDs.
+  ///
+  /// [maxResults] - Maximum number of threads to return.
+  ///
+  /// [pageToken] - Page token to retrieve a specific page of results in the
+  /// list.
   ///
   /// [q] - Only return threads matching the specified query. Supports the same
   /// query format as the Gmail search box. For example,
   /// `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be
   /// used when accessing the api using the gmail.metadata scope.
-  ///
-  /// [pageToken] - Page token to retrieve a specific page of results in the
-  /// list.
-  ///
-  /// [includeSpamTrash] - Include threads from `SPAM` and `TRASH` in the
-  /// results.
-  ///
-  /// [maxResults] - Maximum number of threads to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4332,11 +4332,11 @@ class UsersThreadsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListThreadsResponse> list(
     core.String userId, {
-    core.List<core.String> labelIds,
-    core.String q,
-    core.String pageToken,
     core.bool includeSpamTrash,
+    core.List<core.String> labelIds,
     core.int maxResults,
+    core.String pageToken,
+    core.String q,
     core.String $fields,
   }) {
     core.String _url;
@@ -4349,20 +4349,20 @@ class UsersThreadsResourceApi {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    if (includeSpamTrash != null) {
+      _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
+    }
     if (labelIds != null) {
       _queryParams['labelIds'] = labelIds;
     }
-    if (q != null) {
-      _queryParams['q'] = [q];
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (includeSpamTrash != null) {
-      _queryParams['includeSpamTrash'] = ['${includeSpamTrash}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (q != null) {
+      _queryParams['q'] = [q];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

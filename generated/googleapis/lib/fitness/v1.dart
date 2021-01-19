@@ -661,15 +661,15 @@ class UsersDataSourcesDatasetsResourceApi {
   /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
   /// where startTime and endTime are 64 bit integers.
   ///
+  /// [limit] - If specified, no more than this many data points will be
+  /// included in the dataset. If there are more data points in the dataset,
+  /// nextPageToken will be set in the dataset response.
+  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// datasets. To get the next page of a dataset, set this parameter to the
   /// value of nextPageToken from the previous response. Each subsequent call
   /// will yield a partial dataset with data point end timestamps that are
   /// strictly smaller than those in the previous partial response.
-  ///
-  /// [limit] - If specified, no more than this many data points will be
-  /// included in the dataset. If there are more data points in the dataset,
-  /// nextPageToken will be set in the dataset response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -685,8 +685,8 @@ class UsersDataSourcesDatasetsResourceApi {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.String pageToken,
     core.int limit,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -705,11 +705,11 @@ class UsersDataSourcesDatasetsResourceApi {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (limit != null) {
       _queryParams['limit'] = ['${limit}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -960,13 +960,13 @@ class UsersSessionsResourceApi {
   /// [userId] - List sessions for the person identified. Use me to indicate the
   /// authenticated user. Only me is supported at this time.
   ///
+  /// [activityType] - If non-empty, only sessions with these activity types
+  /// should be returned.
+  ///
   /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response. If this time is omitted
   /// but startTime is specified, all sessions from startTime to the end of time
   /// will be returned.
-  ///
-  /// [activityType] - If non-empty, only sessions with these activity types
-  /// should be returned.
   ///
   /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
   /// session deletions will be returned.
@@ -995,8 +995,8 @@ class UsersSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(
     core.String userId, {
-    core.String endTime,
     core.List<core.int> activityType,
+    core.String endTime,
     core.bool includeDeleted,
     core.String pageToken,
     core.String startTime,
@@ -1012,12 +1012,12 @@ class UsersSessionsResourceApi {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
     if (activityType != null) {
       _queryParams['activityType'] =
           activityType.map((item) => '${item}').toList();
+    }
+    if (endTime != null) {
+      _queryParams['endTime'] = [endTime];
     }
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];

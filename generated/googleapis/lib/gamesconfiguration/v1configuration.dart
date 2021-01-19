@@ -229,11 +229,11 @@ class AchievementConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [maxResults] - The maximum number of resource configurations to return in
   /// the response, used for paging. For any response, the actual number of
   /// resources returned may be less than the specified `maxResults`.
+  ///
+  /// [pageToken] - The token returned by the previous request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -247,8 +247,8 @@ class AchievementConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementConfigurationListResponse> list(
     core.String applicationId, {
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -261,11 +261,11 @@ class AchievementConfigurationsResourceApi {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

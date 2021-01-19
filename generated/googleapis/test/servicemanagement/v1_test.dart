@@ -4165,10 +4165,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OperationsResourceApi res = api.ServicemanagementApi(mock).operations;
-      var arg_pageSize = 42;
-      var arg_name = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
+      var arg_name = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4196,12 +4196,12 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4212,10 +4212,10 @@ void main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
-              name: arg_name,
-              pageToken: arg_pageToken,
               filter: arg_filter,
+              name: arg_name,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -4483,8 +4483,8 @@ void main() {
       var mock = HttpServerMock();
       api.ServicesResourceApi res = api.ServicemanagementApi(mock).services;
       var arg_serviceName = 'foo';
-      var arg_view = 'foo';
       var arg_configId = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4521,9 +4521,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["configId"].first, unittest.equals(arg_configId));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4534,7 +4534,7 @@ void main() {
       }), true);
       res
           .getConfig(arg_serviceName,
-              view: arg_view, configId: arg_configId, $fields: arg_$fields)
+              configId: arg_configId, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkService(response);
       })));
@@ -4594,10 +4594,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ServicesResourceApi res = api.ServicemanagementApi(mock).services;
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_producerProjectId = 'foo';
       var arg_consumerId = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_producerProjectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4626,13 +4626,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["consumerId"].first, unittest.equals(arg_consumerId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["producerProjectId"].first,
             unittest.equals(arg_producerProjectId));
-        unittest.expect(
-            queryMap["consumerId"].first, unittest.equals(arg_consumerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4643,10 +4643,10 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              producerProjectId: arg_producerProjectId,
               consumerId: arg_consumerId,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              producerProjectId: arg_producerProjectId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListServicesResponse(response);

@@ -4444,8 +4444,8 @@ void main() {
       api.ProjectsLocationsWorkflowTemplatesResourceApi res =
           api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4474,10 +4474,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4488,8 +4488,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListWorkflowTemplatesResponse(response);
@@ -5150,8 +5150,8 @@ void main() {
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_clusterName = 'foo';
-      var arg_requestId = 'foo';
       var arg_clusterUuid = 'foo';
+      var arg_requestId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5201,9 +5201,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
-        unittest.expect(
             queryMap["clusterUuid"].first, unittest.equals(arg_clusterUuid));
+        unittest.expect(
+            queryMap["requestId"].first, unittest.equals(arg_requestId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5214,8 +5214,8 @@ void main() {
       }), true);
       res
           .delete(arg_projectId, arg_region, arg_clusterName,
-              requestId: arg_requestId,
               clusterUuid: arg_clusterUuid,
+              requestId: arg_requestId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -5431,9 +5431,9 @@ void main() {
           api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5479,11 +5479,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5494,9 +5494,9 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_region,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListClustersResponse(response);
@@ -5511,8 +5511,8 @@ void main() {
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_clusterName = 'foo';
-      var arg_requestId = 'foo';
       var arg_gracefulDecommissionTimeout = 'foo';
+      var arg_requestId = 'foo';
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5565,10 +5565,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
         unittest.expect(queryMap["gracefulDecommissionTimeout"].first,
             unittest.equals(arg_gracefulDecommissionTimeout));
+        unittest.expect(
+            queryMap["requestId"].first, unittest.equals(arg_requestId));
         unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5581,8 +5581,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_projectId, arg_region, arg_clusterName,
-              requestId: arg_requestId,
               gracefulDecommissionTimeout: arg_gracefulDecommissionTimeout,
+              requestId: arg_requestId,
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5975,11 +5975,11 @@ void main() {
           api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
-      var arg_pageToken = 'foo';
       var arg_clusterName = 'foo';
-      var arg_jobStateMatcher = 'foo';
       var arg_filter = 'foo';
+      var arg_jobStateMatcher = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6026,14 +6026,14 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["clusterName"].first, unittest.equals(arg_clusterName));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["jobStateMatcher"].first,
             unittest.equals(arg_jobStateMatcher));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6044,11 +6044,11 @@ void main() {
       }), true);
       res
           .list(arg_projectId, arg_region,
-              pageToken: arg_pageToken,
               clusterName: arg_clusterName,
-              jobStateMatcher: arg_jobStateMatcher,
               filter: arg_filter,
+              jobStateMatcher: arg_jobStateMatcher,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);
@@ -6581,9 +6581,9 @@ void main() {
       api.ProjectsRegionsOperationsResourceApi res =
           api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6612,11 +6612,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6627,9 +6627,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -7061,8 +7061,8 @@ void main() {
       api.ProjectsRegionsWorkflowTemplatesResourceApi res =
           api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7091,10 +7091,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7105,8 +7105,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListWorkflowTemplatesResponse(response);

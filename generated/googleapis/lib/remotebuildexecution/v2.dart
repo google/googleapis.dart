@@ -77,15 +77,15 @@ class ActionResultsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
-  /// [inlineStdout] - A hint to the server to request inlining stdout in the
-  /// ActionResult message.
+  /// [inlineOutputFiles] - A hint to the server to inline the contents of the
+  /// listed output files. Each path needs to exactly match one path in
+  /// `output_files` in the Command message.
   ///
   /// [inlineStderr] - A hint to the server to request inlining stderr in the
   /// ActionResult message.
   ///
-  /// [inlineOutputFiles] - A hint to the server to inline the contents of the
-  /// listed output files. Each path needs to exactly match one path in
-  /// `output_files` in the Command message.
+  /// [inlineStdout] - A hint to the server to request inlining stdout in the
+  /// ActionResult message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -101,9 +101,9 @@ class ActionResultsResourceApi {
     core.String instanceName,
     core.String hash,
     core.String sizeBytes, {
-    core.bool inlineStdout,
-    core.bool inlineStderr,
     core.List<core.String> inlineOutputFiles,
+    core.bool inlineStderr,
+    core.bool inlineStdout,
     core.String $fields,
   }) {
     core.String _url;
@@ -122,14 +122,14 @@ class ActionResultsResourceApi {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
-    if (inlineStdout != null) {
-      _queryParams['inlineStdout'] = ['${inlineStdout}'];
+    if (inlineOutputFiles != null) {
+      _queryParams['inlineOutputFiles'] = inlineOutputFiles;
     }
     if (inlineStderr != null) {
       _queryParams['inlineStderr'] = ['${inlineStderr}'];
     }
-    if (inlineOutputFiles != null) {
-      _queryParams['inlineOutputFiles'] = inlineOutputFiles;
+    if (inlineStdout != null) {
+      _queryParams['inlineStdout'] = ['${inlineStdout}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -604,15 +604,15 @@ class BlobsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
-  /// [pageToken] - A page token, which must be a value received in a previous
-  /// GetTreeResponse. If present, the server will use that token as an offset,
-  /// returning only that page and the ones that succeed it.
-  ///
   /// [pageSize] - A maximum page size to request. If present, the server will
   /// request no more than this many items. Regardless of whether a page size is
   /// specified, the server may place its own limit on the number of items to be
   /// returned and require the client to retrieve more items using a subsequent
   /// request.
+  ///
+  /// [pageToken] - A page token, which must be a value received in a previous
+  /// GetTreeResponse. If present, the server will use that token as an offset,
+  /// returning only that page and the ones that succeed it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -628,8 +628,8 @@ class BlobsResourceApi {
     core.String instanceName,
     core.String hash,
     core.String sizeBytes, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -648,11 +648,11 @@ class BlobsResourceApi {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

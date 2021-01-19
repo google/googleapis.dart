@@ -8752,10 +8752,10 @@ void main() {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8784,13 +8784,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8802,10 +8802,10 @@ void main() {
       }), true);
       res
           .bulkListAdvertiserAssignedTargetingOptions(arg_advertiserId,
-              orderBy: arg_orderBy,
               filter: arg_filter,
-              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBulkListAdvertiserAssignedTargetingOptionsResponse(response);
@@ -8958,11 +8958,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
-      var arg_partnerId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8990,15 +8990,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9009,11 +9009,11 @@ void main() {
       }), true);
       res
           .list(
-              partnerId: arg_partnerId,
               filter: arg_filter,
               orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAdvertisersResponse(response);
@@ -9289,10 +9289,10 @@ void main() {
       api.AdvertisersCampaignsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9321,13 +9321,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9338,10 +9338,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCampaignsResponse(response);
@@ -9521,10 +9521,10 @@ void main() {
       api.AdvertisersChannelsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.channels;
       var arg_advertiserId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
-      var arg_pageSize = 42;
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9554,13 +9554,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -9573,10 +9573,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
-              pageToken: arg_pageToken,
               filter: arg_filter,
-              pageSize: arg_pageSize,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -9591,8 +9591,8 @@ void main() {
       var arg_request = buildChannel();
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
-      var arg_updateMask = 'foo';
       var arg_partnerId = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
@@ -9625,9 +9625,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9638,8 +9638,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_advertiserId, arg_channelId,
-              updateMask: arg_updateMask,
               partnerId: arg_partnerId,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -9846,11 +9846,11 @@ void main() {
           api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
-      var arg_partnerId = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9879,15 +9879,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9898,11 +9898,11 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId, arg_channelId,
-              pageToken: arg_pageToken,
               filter: arg_filter,
-              partnerId: arg_partnerId,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSitesResponse(response);
@@ -10066,10 +10066,10 @@ void main() {
       api.AdvertisersCreativesResourceApi res =
           api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10098,13 +10098,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10115,10 +10115,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCreativesResponse(response);
@@ -10339,10 +10339,10 @@ void main() {
       api.AdvertisersInsertionOrdersResourceApi res =
           api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10371,13 +10371,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10388,10 +10388,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListInsertionOrdersResponse(response);
@@ -10520,10 +10520,10 @@ void main() {
           api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10552,13 +10552,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10571,10 +10571,10 @@ void main() {
       res
           .bulkListLineItemAssignedTargetingOptions(
               arg_advertiserId, arg_lineItemId,
-              pageToken: arg_pageToken,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
-              filter: arg_filter,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBulkListLineItemAssignedTargetingOptionsResponse(response);
@@ -10736,10 +10736,10 @@ void main() {
       api.AdvertisersLineItemsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10768,13 +10768,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10785,10 +10785,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
-              orderBy: arg_orderBy,
               filter: arg_filter,
-              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLineItemsResponse(response);
@@ -11041,10 +11041,10 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_targetingType = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11073,13 +11073,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11091,10 +11091,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId, arg_lineItemId, arg_targetingType,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLineItemAssignedTargetingOptionsResponse(response);
@@ -11209,9 +11209,9 @@ void main() {
       api.AdvertisersLocationListsResourceApi res =
           api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11241,11 +11241,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -11258,9 +11258,9 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
-              filter: arg_filter,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -11538,10 +11538,10 @@ void main() {
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_advertiserId = 'foo';
       var arg_locationListId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11587,13 +11587,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11604,10 +11604,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId, arg_locationListId,
-              pageToken: arg_pageToken,
               filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAssignedLocationsResponse(response);
@@ -12090,8 +12090,8 @@ void main() {
               .negativeKeywords;
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -12122,9 +12122,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
@@ -12139,8 +12139,8 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId, arg_negativeKeywordListId,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
@@ -12329,10 +12329,10 @@ void main() {
               .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_targetingType = 'foo';
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12361,13 +12361,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12379,10 +12379,10 @@ void main() {
       }), true);
       res
           .list(arg_advertiserId, arg_targetingType,
-              orderBy: arg_orderBy,
               filter: arg_filter,
-              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAdvertiserAssignedTargetingOptionsResponse(response);
@@ -12452,12 +12452,12 @@ void main() {
       var mock = HttpServerMock();
       api.CombinedAudiencesResourceApi res =
           api.DisplayvideoApi(mock).combinedAudiences;
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_partnerId = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageSize = 42;
-      var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12486,16 +12486,16 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12506,12 +12506,12 @@ void main() {
       }), true);
       res
           .list(
+              advertiserId: arg_advertiserId,
+              filter: arg_filter,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               partnerId: arg_partnerId,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              advertiserId: arg_advertiserId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCombinedAudiencesResponse(response);
@@ -12581,12 +12581,12 @@ void main() {
       var mock = HttpServerMock();
       api.CustomBiddingAlgorithmsResourceApi res =
           api.DisplayvideoApi(mock).customBiddingAlgorithms;
-      var arg_partnerId = 'foo';
-      var arg_pageSize = 42;
-      var arg_pageToken = 'foo';
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12615,16 +12615,16 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12636,12 +12636,12 @@ void main() {
       }), true);
       res
           .list(
-              partnerId: arg_partnerId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
               advertiserId: arg_advertiserId,
               filter: arg_filter,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCustomBiddingAlgorithmsResponse(response);
@@ -12704,11 +12704,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CustomListsResourceApi res = api.DisplayvideoApi(mock).customLists;
-      var arg_pageToken = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12737,14 +12737,14 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12755,11 +12755,11 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               advertiserId: arg_advertiserId,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCustomListsResponse(response);
@@ -12773,8 +12773,8 @@ void main() {
       api.FirstAndThirdPartyAudiencesResourceApi res =
           api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
       var arg_firstAndThirdPartyAudienceId = 'foo';
-      var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12804,9 +12804,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12817,8 +12817,8 @@ void main() {
       }), true);
       res
           .get(arg_firstAndThirdPartyAudienceId,
-              partnerId: arg_partnerId,
               advertiserId: arg_advertiserId,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFirstAndThirdPartyAudience(response);
@@ -12830,11 +12830,11 @@ void main() {
       api.FirstAndThirdPartyAudiencesResourceApi res =
           api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
       var arg_advertiserId = 'foo';
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_partnerId = 'foo';
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12864,15 +12864,15 @@ void main() {
         }
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12885,11 +12885,11 @@ void main() {
       res
           .list(
               advertiserId: arg_advertiserId,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               partnerId: arg_partnerId,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListFirstAndThirdPartyAudiencesResponse(response);
@@ -12956,8 +12956,8 @@ void main() {
           api.DisplayvideoApi(mock).floodlightGroups;
       var arg_request = buildFloodlightGroup();
       var arg_floodlightGroupId = 'foo';
-      var arg_updateMask = 'foo';
       var arg_partnerId = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.FloodlightGroup.fromJson(json);
@@ -12992,9 +12992,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13005,8 +13005,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_floodlightGroupId,
-              updateMask: arg_updateMask,
               partnerId: arg_partnerId,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFloodlightGroup(response);
@@ -13078,10 +13078,10 @@ void main() {
           api.DisplayvideoApi(mock).googleAudiences;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
-      var arg_partnerId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13113,13 +13113,13 @@ void main() {
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13132,10 +13132,10 @@ void main() {
           .list(
               advertiserId: arg_advertiserId,
               filter: arg_filter,
-              partnerId: arg_partnerId,
-              pageToken: arg_pageToken,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGoogleAudiencesResponse(response);
@@ -13208,8 +13208,8 @@ void main() {
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
-      var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13239,9 +13239,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13252,8 +13252,8 @@ void main() {
       }), true);
       res
           .delete(arg_inventorySourceGroupId,
-              partnerId: arg_partnerId,
               advertiserId: arg_advertiserId,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
@@ -13265,8 +13265,8 @@ void main() {
       api.InventorySourceGroupsResourceApi res =
           api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
-      var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13296,9 +13296,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13309,8 +13309,8 @@ void main() {
       }), true);
       res
           .get(arg_inventorySourceGroupId,
-              partnerId: arg_partnerId,
               advertiserId: arg_advertiserId,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkInventorySourceGroup(response);
@@ -13324,8 +13324,8 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13359,10 +13359,10 @@ void main() {
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -13379,8 +13379,8 @@ void main() {
               advertiserId: arg_advertiserId,
               filter: arg_filter,
               orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -13394,9 +13394,9 @@ void main() {
           api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
       var arg_inventorySourceGroupId = 'foo';
-      var arg_updateMask = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.InventorySourceGroup.fromJson(json);
@@ -13432,11 +13432,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13447,9 +13447,9 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_inventorySourceGroupId,
-              updateMask: arg_updateMask,
               advertiserId: arg_advertiserId,
               partnerId: arg_partnerId,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkInventorySourceGroup(response);
@@ -13523,8 +13523,8 @@ void main() {
               .assignedInventorySources;
       var arg_request = buildAssignedInventorySource();
       var arg_inventorySourceGroupId = 'foo';
-      var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AssignedInventorySource.fromJson(json);
@@ -13557,9 +13557,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13570,8 +13570,8 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_inventorySourceGroupId,
-              partnerId: arg_partnerId,
               advertiserId: arg_advertiserId,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAssignedInventorySource(response);
@@ -13645,12 +13645,12 @@ void main() {
               .inventorySourceGroups
               .assignedInventorySources;
       var arg_inventorySourceGroupId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_orderBy = 'foo';
       var arg_partnerId = 'foo';
-      var arg_filter = 'foo';
-      var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13679,17 +13679,17 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13701,12 +13701,12 @@ void main() {
       }), true);
       res
           .list(arg_inventorySourceGroupId,
+              advertiserId: arg_advertiserId,
+              filter: arg_filter,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              orderBy: arg_orderBy,
               partnerId: arg_partnerId,
-              filter: arg_filter,
-              advertiserId: arg_advertiserId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAssignedInventorySourcesResponse(response);
@@ -13771,12 +13771,12 @@ void main() {
       var mock = HttpServerMock();
       api.InventorySourcesResourceApi res =
           api.DisplayvideoApi(mock).inventorySources;
-      var arg_partnerId = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -13805,16 +13805,16 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["partnerId"].first, unittest.equals(arg_partnerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13825,12 +13825,12 @@ void main() {
       }), true);
       res
           .list(
-              partnerId: arg_partnerId,
-              filter: arg_filter,
-              pageToken: arg_pageToken,
               advertiserId: arg_advertiserId,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListInventorySourcesResponse(response);
@@ -13996,9 +13996,9 @@ void main() {
       var mock = HttpServerMock();
       api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14028,11 +14028,11 @@ void main() {
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14044,9 +14044,9 @@ void main() {
       res
           .list(
               filter: arg_filter,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPartnersResponse(response);
@@ -14169,11 +14169,11 @@ void main() {
       api.PartnersChannelsResourceApi res =
           api.DisplayvideoApi(mock).partners.channels;
       var arg_partnerId = 'foo';
+      var arg_advertiserId = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
-      var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14203,14 +14203,14 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14221,11 +14221,11 @@ void main() {
       }), true);
       res
           .list(arg_partnerId,
+              advertiserId: arg_advertiserId,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
-              advertiserId: arg_advertiserId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListChannelsResponse(response);
@@ -14239,8 +14239,8 @@ void main() {
       var arg_request = buildChannel();
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
-      var arg_updateMask = 'foo';
       var arg_advertiserId = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
@@ -14273,9 +14273,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14286,8 +14286,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_partnerId, arg_channelId,
-              updateMask: arg_updateMask,
               advertiserId: arg_advertiserId,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
@@ -14494,11 +14494,11 @@ void main() {
           api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
-      var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_pageSize = 42;
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14527,15 +14527,15 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14546,11 +14546,11 @@ void main() {
       }), true);
       res
           .list(arg_partnerId, arg_channelId,
-              filter: arg_filter,
-              pageToken: arg_pageToken,
               advertiserId: arg_advertiserId,
-              pageSize: arg_pageSize,
+              filter: arg_filter,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSitesResponse(response);
@@ -14735,10 +14735,10 @@ void main() {
               .assignedTargetingOptions;
       var arg_partnerId = 'foo';
       var arg_targetingType = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
-      var arg_filter = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14767,13 +14767,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14785,10 +14785,10 @@ void main() {
       }), true);
       res
           .list(arg_partnerId, arg_targetingType,
-              pageToken: arg_pageToken,
+              filter: arg_filter,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
-              filter: arg_filter,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPartnerAssignedTargetingOptionsResponse(response);
@@ -14957,10 +14957,10 @@ void main() {
       api.TargetingTypesTargetingOptionsResourceApi res =
           api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
       var arg_targetingType = 'foo';
-      var arg_orderBy = 'foo';
       var arg_advertiserId = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14991,12 +14991,12 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["advertiserId"].first, unittest.equals(arg_advertiserId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -15009,10 +15009,10 @@ void main() {
       }), true);
       res
           .list(arg_targetingType,
-              orderBy: arg_orderBy,
               advertiserId: arg_advertiserId,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -15221,10 +15221,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15252,13 +15252,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15269,10 +15269,10 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUsersResponse(response);

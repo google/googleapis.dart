@@ -4075,11 +4075,11 @@ void main() {
       var mock = HttpServerMock();
       api.CompaniesJobsResourceApi res = api.JobsApi(mock).companies.jobs;
       var arg_companyName = 'foo';
+      var arg_idsOnly = true;
       var arg_includeJobsCount = true;
       var arg_jobRequisitionId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_idsOnly = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4108,6 +4108,8 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["idsOnly"].first, unittest.equals("$arg_idsOnly"));
         unittest.expect(queryMap["includeJobsCount"].first,
             unittest.equals("$arg_includeJobsCount"));
         unittest.expect(queryMap["jobRequisitionId"].first,
@@ -4116,8 +4118,6 @@ void main() {
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["idsOnly"].first, unittest.equals("$arg_idsOnly"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4128,11 +4128,11 @@ void main() {
       }), true);
       res
           .list(arg_companyName,
+              idsOnly: arg_idsOnly,
               includeJobsCount: arg_includeJobsCount,
               jobRequisitionId: arg_jobRequisitionId,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              idsOnly: arg_idsOnly,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCompanyJobsResponse(response);
@@ -4438,9 +4438,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.JobsApi(mock).jobs;
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
       var arg_idsOnly = true;
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4469,11 +4469,11 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["idsOnly"].first, unittest.equals("$arg_idsOnly"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4486,9 +4486,9 @@ void main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
               filter: arg_filter,
               idsOnly: arg_idsOnly,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4650,12 +4650,12 @@ void main() {
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
       api.V2ResourceApi res = api.JobsApi(mock).v2;
-      var arg_languageCode = 'foo';
-      var arg_query = 'foo';
-      var arg_pageSize = 42;
-      var arg_type = 'foo';
-      var arg_scope = 'foo';
       var arg_companyName = 'foo';
+      var arg_languageCode = 'foo';
+      var arg_pageSize = 42;
+      var arg_query = 'foo';
+      var arg_scope = 'foo';
+      var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4684,14 +4684,14 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["companyName"].first, unittest.equals(arg_companyName));
+        unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["scope"].first, unittest.equals(arg_scope));
-        unittest.expect(
-            queryMap["companyName"].first, unittest.equals(arg_companyName));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4702,12 +4702,12 @@ void main() {
       }), true);
       res
           .complete(
-              languageCode: arg_languageCode,
-              query: arg_query,
-              pageSize: arg_pageSize,
-              type: arg_type,
-              scope: arg_scope,
               companyName: arg_companyName,
+              languageCode: arg_languageCode,
+              pageSize: arg_pageSize,
+              query: arg_query,
+              scope: arg_scope,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCompleteQueryResponse(response);

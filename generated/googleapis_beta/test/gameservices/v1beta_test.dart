@@ -2711,9 +2711,9 @@ void main() {
       api.ProjectsLocationsResourceApi res =
           api.GameservicesApi(mock).projects.locations;
       var arg_name = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
       var arg_includeUnrevealedLocations = true;
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2743,11 +2743,11 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["includeUnrevealedLocations"].first,
             unittest.equals("$arg_includeUnrevealedLocations"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2760,9 +2760,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageSize: arg_pageSize,
               filter: arg_filter,
               includeUnrevealedLocations: arg_includeUnrevealedLocations,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3085,10 +3085,10 @@ void main() {
       api.ProjectsLocationsGameServerDeploymentsResourceApi res =
           api.GameservicesApi(mock).projects.locations.gameServerDeployments;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3117,13 +3117,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3135,10 +3135,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGameServerDeploymentsResponse(response);
@@ -3599,9 +3599,9 @@ void main() {
               .gameServerDeployments
               .configs;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3631,11 +3631,11 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3648,9 +3648,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3813,9 +3813,9 @@ void main() {
       api.ProjectsLocationsOperationsResourceApi res =
           api.GameservicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3844,11 +3844,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3859,9 +3859,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -4027,9 +4027,9 @@ void main() {
       api.ProjectsLocationsRealmsResourceApi res =
           api.GameservicesApi(mock).projects.locations.realms;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4059,11 +4059,11 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4076,9 +4076,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               filter: arg_filter,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4148,8 +4148,8 @@ void main() {
           api.GameservicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
       var arg_name = 'foo';
-      var arg_updateMask = 'foo';
       var arg_previewTime = 'foo';
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Realm.fromJson(json);
@@ -4182,9 +4182,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
             queryMap["previewTime"].first, unittest.equals(arg_previewTime));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4195,8 +4195,8 @@ void main() {
       }), true);
       res
           .previewUpdate(arg_request, arg_name,
-              updateMask: arg_updateMask,
               previewTime: arg_previewTime,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPreviewRealmUpdateResponse(response);
@@ -4380,9 +4380,9 @@ void main() {
               .realms
               .gameServerClusters;
       var arg_parent = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4412,11 +4412,11 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4429,9 +4429,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4509,8 +4509,8 @@ void main() {
               .gameServerClusters;
       var arg_request = buildGameServerCluster();
       var arg_parent = 'foo';
-      var arg_previewTime = 'foo';
       var arg_gameServerClusterId = 'foo';
+      var arg_previewTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GameServerCluster.fromJson(json);
@@ -4542,10 +4542,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["previewTime"].first, unittest.equals(arg_previewTime));
         unittest.expect(queryMap["gameServerClusterId"].first,
             unittest.equals(arg_gameServerClusterId));
+        unittest.expect(
+            queryMap["previewTime"].first, unittest.equals(arg_previewTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4557,8 +4557,8 @@ void main() {
       }), true);
       res
           .previewCreate(arg_request, arg_parent,
-              previewTime: arg_previewTime,
               gameServerClusterId: arg_gameServerClusterId,
+              previewTime: arg_previewTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPreviewCreateGameServerClusterResponse(response);

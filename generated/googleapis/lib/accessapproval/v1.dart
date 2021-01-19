@@ -414,14 +414,14 @@ class FoldersApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Requested page size.
-  ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
   /// and dismissed (including expired) requests.
+  ///
+  /// [pageSize] - Requested page size.
   ///
   /// [pageToken] - A token identifying the page of results to return.
   ///
@@ -437,8 +437,8 @@ class FoldersApprovalRequestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -452,11 +452,11 @@ class FoldersApprovalRequestsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -848,16 +848,16 @@ class OrganizationsApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - A token identifying the page of results to return.
-  ///
-  /// [pageSize] - Requested page size.
-  ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
   /// and dismissed (including expired) requests.
+  ///
+  /// [pageSize] - Requested page size.
+  ///
+  /// [pageToken] - A token identifying the page of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -871,9 +871,9 @@ class OrganizationsApprovalRequestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -886,14 +886,14 @@ class OrganizationsApprovalRequestsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1282,14 +1282,14 @@ class ProjectsApprovalRequestsResourceApi {
   /// "folders/{folder}", or "organizations/{organization}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Requested page size.
-  ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
   /// one of the following values: * [not set]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
   /// and dismissed (including expired) requests.
+  ///
+  /// [pageSize] - Requested page size.
   ///
   /// [pageToken] - A token identifying the page of results to return.
   ///
@@ -1305,8 +1305,8 @@ class ProjectsApprovalRequestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -1320,11 +1320,11 @@ class ProjectsApprovalRequestsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

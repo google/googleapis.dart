@@ -251,11 +251,11 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return.
+  /// [filter] - List filter.
   ///
   /// [orderBy] - Sort results.
   ///
-  /// [filter] - List filter.
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
@@ -272,9 +272,9 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -288,14 +288,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -901,9 +901,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -918,8 +918,8 @@ class ProjectsLocationsOperationsResourceApi {
   async.Future<ListOperationsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -935,11 +935,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1026,12 +1026,12 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   ///
   /// [filter] - List filter.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
+  /// [orderBy] - Sort results.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
-  /// [orderBy] - Sort results.
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,9 +1046,9 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   async.Future<ListTensorFlowVersionsResponse> list(
     core.String parent, {
     core.String filter,
-    core.String pageToken,
-    core.int pageSize,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1064,14 +1064,14 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

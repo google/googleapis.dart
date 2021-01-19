@@ -187,12 +187,12 @@ void main() {
       var mock = HttpServerMock();
       api.EntitiesResourceApi res = api.KgsearchApi(mock).entities;
       var arg_ids = buildUnnamed80();
-      var arg_types = buildUnnamed81();
-      var arg_query = 'foo';
-      var arg_prefix = true;
       var arg_indent = true;
+      var arg_languages = buildUnnamed81();
       var arg_limit = 42;
-      var arg_languages = buildUnnamed82();
+      var arg_prefix = true;
+      var arg_query = 'foo';
+      var arg_types = buildUnnamed82();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -221,15 +221,15 @@ void main() {
           }
         }
         unittest.expect(queryMap["ids"], unittest.equals(arg_ids));
-        unittest.expect(queryMap["types"], unittest.equals(arg_types));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(
-            queryMap["prefix"].first, unittest.equals("$arg_prefix"));
         unittest.expect(
             queryMap["indent"].first, unittest.equals("$arg_indent"));
+        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
         unittest.expect(core.int.parse(queryMap["limit"].first),
             unittest.equals(arg_limit));
-        unittest.expect(queryMap["languages"], unittest.equals(arg_languages));
+        unittest.expect(
+            queryMap["prefix"].first, unittest.equals("$arg_prefix"));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(queryMap["types"], unittest.equals(arg_types));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -241,12 +241,12 @@ void main() {
       res
           .search(
               ids: arg_ids,
-              types: arg_types,
-              query: arg_query,
-              prefix: arg_prefix,
               indent: arg_indent,
-              limit: arg_limit,
               languages: arg_languages,
+              limit: arg_limit,
+              prefix: arg_prefix,
+              query: arg_query,
+              types: arg_types,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchResponse(response);

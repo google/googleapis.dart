@@ -59,6 +59,13 @@ class PagespeedapiResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [captchaToken] - The captcha token passed when filling out a captcha.
+  ///
+  /// [category] - A Lighthouse category to run; if none are given, only
+  /// Performance category will be run
+  ///
+  /// [locale] - The locale used to localize formatted results
+  ///
   /// [strategy] - The analysis strategy (desktop or mobile) to use, and desktop
   /// is the default
   /// Possible string values are:
@@ -66,18 +73,11 @@ class PagespeedapiResourceApi {
   /// - "DESKTOP" : Fetch and analyze the URL for desktop browsers.
   /// - "MOBILE" : Fetch and analyze the URL for mobile devices.
   ///
-  /// [utmCampaign] - Campaign name for analytics.
-  ///
-  /// [category] - A Lighthouse category to run; if none are given, only
-  /// Performance category will be run
-  ///
-  /// [locale] - The locale used to localize formatted results
-  ///
   /// [url] - Required. The URL to fetch and analyze
   ///
-  /// [utmSource] - Campaign source for analytics.
+  /// [utmCampaign] - Campaign name for analytics.
   ///
-  /// [captchaToken] - The captcha token passed when filling out a captcha.
+  /// [utmSource] - Campaign source for analytics.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -90,13 +90,13 @@ class PagespeedapiResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PagespeedApiPagespeedResponseV5> runpagespeed({
-    core.String strategy,
-    core.String utmCampaign,
+    core.String captchaToken,
     core.List<core.String> category,
     core.String locale,
+    core.String strategy,
     core.String url,
+    core.String utmCampaign,
     core.String utmSource,
-    core.String captchaToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -106,11 +106,8 @@ class PagespeedapiResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (strategy != null) {
-      _queryParams['strategy'] = [strategy];
-    }
-    if (utmCampaign != null) {
-      _queryParams['utm_campaign'] = [utmCampaign];
+    if (captchaToken != null) {
+      _queryParams['captchaToken'] = [captchaToken];
     }
     if (category != null) {
       _queryParams['category'] = category;
@@ -118,14 +115,17 @@ class PagespeedapiResourceApi {
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
+    if (strategy != null) {
+      _queryParams['strategy'] = [strategy];
+    }
     if (url != null) {
       _queryParams['url'] = [url];
     }
+    if (utmCampaign != null) {
+      _queryParams['utm_campaign'] = [utmCampaign];
+    }
     if (utmSource != null) {
       _queryParams['utm_source'] = [utmSource];
-    }
-    if (captchaToken != null) {
-      _queryParams['captchaToken'] = [captchaToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

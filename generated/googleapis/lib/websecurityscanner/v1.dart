@@ -625,13 +625,13 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results to be returned. This
-  /// should be a `next_page_token` value returned from a previous List request.
-  /// If unspecified, the first page of results is returned.
-  ///
   /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
   /// by server. If not specified or not positive, the implementation will
   /// select a reasonable value.
+  ///
+  /// [pageToken] - A token identifying a page of results to be returned. This
+  /// should be a `next_page_token` value returned from a previous List request.
+  /// If unspecified, the first page of results is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -645,8 +645,8 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCrawledUrlsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -659,11 +659,11 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -817,12 +817,12 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$".
   ///
+  /// [filter] - The filter expression. The expression must be in the format: .
+  /// Supported field: 'finding_type'. Supported operator: '='.
+  ///
   /// [pageSize] - The maximum number of Findings to return, can be limited by
   /// server. If not specified or not positive, the implementation will select a
   /// reasonable value.
-  ///
-  /// [filter] - The filter expression. The expression must be in the format: .
-  /// Supported field: 'finding_type'. Supported operator: '='.
   ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a `next_page_token` value returned from a previous List request.
@@ -840,8 +840,8 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -855,11 +855,11 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

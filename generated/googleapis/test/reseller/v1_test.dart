@@ -1422,10 +1422,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
-      var arg_maxResults = 42;
-      var arg_customerNamePrefix = 'foo';
       var arg_customerAuthToken = 'foo';
       var arg_customerId = 'foo';
+      var arg_customerNamePrefix = 'foo';
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1457,14 +1457,14 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["customerNamePrefix"].first,
-            unittest.equals(arg_customerNamePrefix));
         unittest.expect(queryMap["customerAuthToken"].first,
             unittest.equals(arg_customerAuthToken));
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(queryMap["customerNamePrefix"].first,
+            unittest.equals(arg_customerNamePrefix));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1477,10 +1477,10 @@ void main() {
       }), true);
       res
           .list(
-              maxResults: arg_maxResults,
-              customerNamePrefix: arg_customerNamePrefix,
               customerAuthToken: arg_customerAuthToken,
               customerId: arg_customerId,
+              customerNamePrefix: arg_customerNamePrefix,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

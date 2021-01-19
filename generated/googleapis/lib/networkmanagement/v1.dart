@@ -123,9 +123,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -140,8 +140,8 @@ class ProjectsLocationsResourceApi {
   async.Future<ListLocationsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -157,11 +157,11 @@ class ProjectsLocationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -458,13 +458,6 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// `projects/{project_id}/locations/global`
   /// Value must have pattern "^projects/[^/]+/locations/global$".
   ///
-  /// [pageToken] - Page token from an earlier query, as returned in
-  /// `next_page_token`.
-  ///
-  /// [pageSize] - Number of `ConnectivityTests` to return.
-  ///
-  /// [orderBy] - Field to use to sort the list.
-  ///
   /// [filter] - Lists the `ConnectivityTests` that match the filter expression.
   /// A filter expression filters the resources listed in the response. The
   /// expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`,
@@ -475,6 +468,13 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by
   /// labels: - Resources that have a key called `foo` labels.foo:* - Resources
   /// that have a key called `foo` whose value is `bar` labels.foo = bar
+  ///
+  /// [orderBy] - Field to use to sort the list.
+  ///
+  /// [pageSize] - Number of `ConnectivityTests` to return.
+  ///
+  /// [pageToken] - Page token from an earlier query, as returned in
+  /// `next_page_token`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -488,10 +488,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListConnectivityTestsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.int pageSize,
-    core.String orderBy,
     core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -504,17 +504,17 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

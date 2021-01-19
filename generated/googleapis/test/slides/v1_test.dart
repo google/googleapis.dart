@@ -4888,8 +4888,8 @@ void main() {
           api.SlidesApi(mock).presentations.pages;
       var arg_presentationId = 'foo';
       var arg_pageObjectId = 'foo';
-      var arg_thumbnailProperties_thumbnailSize = 'foo';
       var arg_thumbnailProperties_mimeType = 'foo';
+      var arg_thumbnailProperties_thumbnailSize = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4935,10 +4935,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["thumbnailProperties.thumbnailSize"].first,
-            unittest.equals(arg_thumbnailProperties_thumbnailSize));
         unittest.expect(queryMap["thumbnailProperties.mimeType"].first,
             unittest.equals(arg_thumbnailProperties_mimeType));
+        unittest.expect(queryMap["thumbnailProperties.thumbnailSize"].first,
+            unittest.equals(arg_thumbnailProperties_thumbnailSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4949,9 +4949,9 @@ void main() {
       }), true);
       res
           .getThumbnail(arg_presentationId, arg_pageObjectId,
+              thumbnailProperties_mimeType: arg_thumbnailProperties_mimeType,
               thumbnailProperties_thumbnailSize:
                   arg_thumbnailProperties_thumbnailSize,
-              thumbnailProperties_mimeType: arg_thumbnailProperties_mimeType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkThumbnail(response);

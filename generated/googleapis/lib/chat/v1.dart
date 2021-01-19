@@ -306,12 +306,12 @@ class SpacesMembersResourceApi {
   /// spaces/AAAAMpdlehY
   /// Value must have pattern "^spaces/[^/]+$".
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  ///
   /// [pageSize] - Requested page size. The value is capped at 1000. Server may
   /// return fewer results than requested. If unspecified, server will default
   /// to 100.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -325,8 +325,8 @@ class SpacesMembersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -339,11 +339,11 @@ class SpacesMembersResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

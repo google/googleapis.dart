@@ -125,9 +125,9 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
   ///
@@ -143,8 +143,8 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -158,11 +158,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -387,6 +387,10 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// KeyRings, in the format `projects / * /locations / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For more information, see [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the results will be sorted in the default order. For more
   /// information, see [Sorting and filtering list
@@ -396,10 +400,6 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// in the response. Further KeyRings can subsequently be obtained by
   /// including the ListKeyRingsResponse.next_page_token in a subsequent
   /// request. If unspecified, the server will pick an appropriate default.
-  ///
-  /// [filter] - Optional. Only include resources that match the filter in the
-  /// response. For more information, see [Sorting and filtering list
-  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListKeyRingsResponse.next_page_token.
@@ -416,9 +416,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListKeyRingsResponse> list(
     core.String parent, {
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
-    core.String filter,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -432,14 +432,14 @@ class ProjectsLocationsKeyRingsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -610,13 +610,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// CryptoKeys.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [cryptoKeyId] - Required. It must be unique within a KeyRing and match the
+  /// regular expression `[a-zA-Z0-9_-]{1,63}`
+  ///
   /// [skipInitialVersionCreation] - If set to true, the request will create a
   /// CryptoKey without any CryptoKeyVersions. You must manually call
   /// CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this
   /// CryptoKey.
-  ///
-  /// [cryptoKeyId] - Required. It must be unique within a KeyRing and match the
-  /// regular expression `[a-zA-Z0-9_-]{1,63}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -631,8 +631,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<CryptoKey> create(
     CryptoKey request,
     core.String parent, {
-    core.bool skipInitialVersionCreation,
     core.String cryptoKeyId,
+    core.bool skipInitialVersionCreation,
     core.String $fields,
   }) {
     core.String _url;
@@ -648,13 +648,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (cryptoKeyId != null) {
+      _queryParams['cryptoKeyId'] = [cryptoKeyId];
+    }
     if (skipInitialVersionCreation != null) {
       _queryParams['skipInitialVersionCreation'] = [
         '${skipInitialVersionCreation}'
       ];
-    }
-    if (cryptoKeyId != null) {
-      _queryParams['cryptoKeyId'] = [cryptoKeyId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -921,19 +921,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// format `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [versionView] - The fields of the primary version to include in the
-  /// response.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : Default view for each
-  /// CryptoKeyVersion. Does not include the attestation field.
-  /// - "FULL" : Provides all fields in each CryptoKeyVersion, including the
-  /// attestation.
-  ///
-  /// [pageToken] - Optional. Optional pagination token, returned earlier via
-  /// ListCryptoKeysResponse.next_page_token.
-  ///
   /// [filter] - Optional. Only include resources that match the filter in the
   /// response. For more information, see [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the results will be sorted in the default order. For more
+  /// information, see [Sorting and filtering list
   /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [pageSize] - Optional. Optional limit on the number of CryptoKeys to
@@ -941,10 +935,16 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// by including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request. If unspecified, the server will pick an appropriate default.
   ///
-  /// [orderBy] - Optional. Specify how the results should be sorted. If not
-  /// specified, the results will be sorted in the default order. For more
-  /// information, see [Sorting and filtering list
-  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListCryptoKeysResponse.next_page_token.
+  ///
+  /// [versionView] - The fields of the primary version to include in the
+  /// response.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : Default view for each
+  /// CryptoKeyVersion. Does not include the attestation field.
+  /// - "FULL" : Provides all fields in each CryptoKeyVersion, including the
+  /// attestation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -958,11 +958,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(
     core.String parent, {
-    core.String versionView,
-    core.String pageToken,
     core.String filter,
-    core.int pageSize,
     core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String versionView,
     core.String $fields,
   }) {
     core.String _url;
@@ -975,20 +975,20 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (versionView != null) {
-      _queryParams['versionView'] = [versionView];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (versionView != null) {
+      _queryParams['versionView'] = [versionView];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1684,6 +1684,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// response. For more information, see [Sorting and filtering list
   /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the results will be sorted in the default order. For more
+  /// information, see [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
   /// [pageSize] - Optional. Optional limit on the number of CryptoKeyVersions
   /// to include in the response. Further CryptoKeyVersions can subsequently be
   /// obtained by including the ListCryptoKeyVersionsResponse.next_page_token in
@@ -1692,11 +1697,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListCryptoKeyVersionsResponse.next_page_token.
-  ///
-  /// [orderBy] - Optional. Specify how the results should be sorted. If not
-  /// specified, the results will be sorted in the default order. For more
-  /// information, see [Sorting and filtering list
-  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [view] - The fields to include in the response.
   /// Possible string values are:
@@ -1718,9 +1718,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   async.Future<ListCryptoKeyVersionsResponse> list(
     core.String parent, {
     core.String filter,
+    core.String orderBy,
     core.int pageSize,
     core.String pageToken,
-    core.String orderBy,
     core.String view,
     core.String $fields,
   }) {
@@ -1737,14 +1737,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
     }
     if (view != null) {
       _queryParams['view'] = [view];
@@ -2094,8 +2094,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// format `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [pageToken] - Optional. Optional pagination token, returned earlier via
-  /// ListImportJobsResponse.next_page_token.
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For more information, see [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the results will be sorted in the default order. For more
@@ -2107,9 +2108,8 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// by including the ListImportJobsResponse.next_page_token in a subsequent
   /// request. If unspecified, the server will pick an appropriate default.
   ///
-  /// [filter] - Optional. Only include resources that match the filter in the
-  /// response. For more information, see [Sorting and filtering list
-  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListImportJobsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2123,10 +2123,10 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListImportJobsResponse> list(
     core.String parent, {
-    core.String pageToken,
+    core.String filter,
     core.String orderBy,
     core.int pageSize,
-    core.String filter,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2139,8 +2139,8 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
@@ -2148,8 +2148,8 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

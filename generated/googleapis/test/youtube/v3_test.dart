@@ -8450,14 +8450,14 @@ void main() {
       var mock = HttpServerMock();
       api.ActivitiesResourceApi res = api.YoutubeApi(mock).activities;
       var arg_part = buildUnnamed2399();
-      var arg_publishedAfter = 'foo';
-      var arg_mine = true;
       var arg_channelId = 'foo';
+      var arg_home = true;
       var arg_maxResults = 42;
+      var arg_mine = true;
+      var arg_pageToken = 'foo';
+      var arg_publishedAfter = 'foo';
       var arg_publishedBefore = 'foo';
       var arg_regionCode = 'foo';
-      var arg_home = true;
-      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8486,20 +8486,20 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["publishedAfter"].first,
-            unittest.equals(arg_publishedAfter));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(
             queryMap["channelId"].first, unittest.equals(arg_channelId));
+        unittest.expect(queryMap["home"].first, unittest.equals("$arg_home"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["publishedAfter"].first,
+            unittest.equals(arg_publishedAfter));
         unittest.expect(queryMap["publishedBefore"].first,
             unittest.equals(arg_publishedBefore));
         unittest.expect(
             queryMap["regionCode"].first, unittest.equals(arg_regionCode));
-        unittest.expect(queryMap["home"].first, unittest.equals("$arg_home"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8510,14 +8510,14 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              publishedAfter: arg_publishedAfter,
-              mine: arg_mine,
               channelId: arg_channelId,
+              home: arg_home,
               maxResults: arg_maxResults,
+              mine: arg_mine,
+              pageToken: arg_pageToken,
+              publishedAfter: arg_publishedAfter,
               publishedBefore: arg_publishedBefore,
               regionCode: arg_regionCode,
-              home: arg_home,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkActivityListResponse(response);
@@ -8587,10 +8587,10 @@ void main() {
       var mock = HttpServerMock();
       api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
       var arg_id = 'foo';
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOf = 'foo';
-      var arg_tlang = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_tfmt = 'foo';
+      var arg_tlang = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8621,12 +8621,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["onBehalfOf"].first, unittest.equals(arg_onBehalfOf));
-        unittest.expect(queryMap["tlang"].first, unittest.equals(arg_tlang));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["tfmt"].first, unittest.equals(arg_tfmt));
+        unittest.expect(queryMap["tlang"].first, unittest.equals(arg_tlang));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8637,10 +8637,10 @@ void main() {
       }), true);
       res
           .download(arg_id,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               onBehalfOf: arg_onBehalfOf,
-              tlang: arg_tlang,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               tfmt: arg_tfmt,
+              tlang: arg_tlang,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
@@ -8653,8 +8653,8 @@ void main() {
       api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
       var arg_request = buildCaption();
       var arg_part = buildUnnamed2400();
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOf = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_sync = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8687,10 +8687,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["onBehalfOf"].first, unittest.equals(arg_onBehalfOf));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["sync"].first, unittest.equals("$arg_sync"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -8702,8 +8702,8 @@ void main() {
       }), true);
       res
           .insert(arg_request, arg_part,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               onBehalfOf: arg_onBehalfOf,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               sync: arg_sync,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -8716,9 +8716,9 @@ void main() {
       api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
       var arg_videoId = 'foo';
       var arg_part = buildUnnamed2401();
+      var arg_id = buildUnnamed2402();
       var arg_onBehalfOf = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
-      var arg_id = buildUnnamed2402();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8749,11 +8749,11 @@ void main() {
         unittest.expect(
             queryMap["videoId"].first, unittest.equals(arg_videoId));
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(
             queryMap["onBehalfOf"].first, unittest.equals(arg_onBehalfOf));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8764,9 +8764,9 @@ void main() {
       }), true);
       res
           .list(arg_videoId, arg_part,
+              id: arg_id,
               onBehalfOf: arg_onBehalfOf,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              id: arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCaptionListResponse(response);
@@ -8781,9 +8781,9 @@ void main() {
       api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
       var arg_request = buildCaption();
       var arg_part = buildUnnamed2403();
-      var arg_sync = true;
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOf = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_sync = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Caption.fromJson(json);
@@ -8815,11 +8815,11 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["sync"].first, unittest.equals("$arg_sync"));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["onBehalfOf"].first, unittest.equals(arg_onBehalfOf));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["sync"].first, unittest.equals("$arg_sync"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8830,9 +8830,9 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_part,
-              sync: arg_sync,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               onBehalfOf: arg_onBehalfOf,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              sync: arg_sync,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCaption(response);
@@ -8848,8 +8848,8 @@ void main() {
       var mock = HttpServerMock();
       api.ChannelBannersResourceApi res = api.YoutubeApi(mock).channelBanners;
       var arg_request = buildChannelBannerResource();
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_channelId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8881,10 +8881,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["channelId"].first, unittest.equals(arg_channelId));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
             unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -8897,8 +8897,8 @@ void main() {
       }), true);
       res
           .insert(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               channelId: arg_channelId,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -9022,10 +9022,10 @@ void main() {
       var mock = HttpServerMock();
       api.ChannelSectionsResourceApi res = api.YoutubeApi(mock).channelSections;
       var arg_part = buildUnnamed2405();
-      var arg_id = buildUnnamed2406();
-      var arg_mine = true;
       var arg_channelId = 'foo';
       var arg_hl = 'foo';
+      var arg_id = buildUnnamed2406();
+      var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9055,11 +9055,11 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(
             queryMap["channelId"].first, unittest.equals(arg_channelId));
         unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -9072,10 +9072,10 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              id: arg_id,
-              mine: arg_mine,
               channelId: arg_channelId,
               hl: arg_hl,
+              id: arg_id,
+              mine: arg_mine,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -9145,16 +9145,16 @@ void main() {
       var mock = HttpServerMock();
       api.ChannelsResourceApi res = api.YoutubeApi(mock).channels;
       var arg_part = buildUnnamed2408();
-      var arg_id = buildUnnamed2409();
       var arg_categoryId = 'foo';
-      var arg_hl = 'foo';
-      var arg_maxResults = 42;
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_forUsername = 'foo';
+      var arg_hl = 'foo';
+      var arg_id = buildUnnamed2409();
       var arg_managedByMe = true;
-      var arg_pageToken = 'foo';
+      var arg_maxResults = 42;
       var arg_mine = true;
       var arg_mySubscribers = true;
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9183,23 +9183,23 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(
             queryMap["categoryId"].first, unittest.equals(arg_categoryId));
-        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["forUsername"].first, unittest.equals(arg_forUsername));
+        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(
             queryMap["managedByMe"].first, unittest.equals("$arg_managedByMe"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["mySubscribers"].first,
             unittest.equals("$arg_mySubscribers"));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9210,16 +9210,16 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              id: arg_id,
               categoryId: arg_categoryId,
-              hl: arg_hl,
-              maxResults: arg_maxResults,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               forUsername: arg_forUsername,
+              hl: arg_hl,
+              id: arg_id,
               managedByMe: arg_managedByMe,
-              pageToken: arg_pageToken,
+              maxResults: arg_maxResults,
               mine: arg_mine,
               mySubscribers: arg_mySubscribers,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannelListResponse(response);
@@ -9339,16 +9339,16 @@ void main() {
       var mock = HttpServerMock();
       api.CommentThreadsResourceApi res = api.YoutubeApi(mock).commentThreads;
       var arg_part = buildUnnamed2412();
-      var arg_order = 'foo';
-      var arg_videoId = 'foo';
-      var arg_maxResults = 42;
-      var arg_id = buildUnnamed2413();
-      var arg_moderationStatus = 'foo';
+      var arg_allThreadsRelatedToChannelId = 'foo';
       var arg_channelId = 'foo';
+      var arg_id = buildUnnamed2413();
+      var arg_maxResults = 42;
+      var arg_moderationStatus = 'foo';
+      var arg_order = 'foo';
       var arg_pageToken = 'foo';
       var arg_searchTerms = 'foo';
-      var arg_allThreadsRelatedToChannelId = 'foo';
       var arg_textFormat = 'foo';
+      var arg_videoId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9377,24 +9377,24 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
-        unittest.expect(
-            queryMap["videoId"].first, unittest.equals(arg_videoId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(queryMap["moderationStatus"].first,
-            unittest.equals(arg_moderationStatus));
+        unittest.expect(queryMap["allThreadsRelatedToChannelId"].first,
+            unittest.equals(arg_allThreadsRelatedToChannelId));
         unittest.expect(
             queryMap["channelId"].first, unittest.equals(arg_channelId));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["moderationStatus"].first,
+            unittest.equals(arg_moderationStatus));
+        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["searchTerms"].first, unittest.equals(arg_searchTerms));
-        unittest.expect(queryMap["allThreadsRelatedToChannelId"].first,
-            unittest.equals(arg_allThreadsRelatedToChannelId));
         unittest.expect(
             queryMap["textFormat"].first, unittest.equals(arg_textFormat));
+        unittest.expect(
+            queryMap["videoId"].first, unittest.equals(arg_videoId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9405,16 +9405,16 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              order: arg_order,
-              videoId: arg_videoId,
-              maxResults: arg_maxResults,
-              id: arg_id,
-              moderationStatus: arg_moderationStatus,
+              allThreadsRelatedToChannelId: arg_allThreadsRelatedToChannelId,
               channelId: arg_channelId,
+              id: arg_id,
+              maxResults: arg_maxResults,
+              moderationStatus: arg_moderationStatus,
+              order: arg_order,
               pageToken: arg_pageToken,
               searchTerms: arg_searchTerms,
-              allThreadsRelatedToChannelId: arg_allThreadsRelatedToChannelId,
               textFormat: arg_textFormat,
+              videoId: arg_videoId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCommentThreadListResponse(response);
@@ -9575,10 +9575,10 @@ void main() {
       api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
       var arg_part = buildUnnamed2416();
       var arg_id = buildUnnamed2417();
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
-      var arg_textFormat = 'foo';
+      var arg_pageToken = 'foo';
       var arg_parentId = 'foo';
+      var arg_textFormat = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9608,14 +9608,14 @@ void main() {
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["textFormat"].first, unittest.equals(arg_textFormat));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["parentId"].first, unittest.equals(arg_parentId));
+        unittest.expect(
+            queryMap["textFormat"].first, unittest.equals(arg_textFormat));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9627,10 +9627,10 @@ void main() {
       res
           .list(arg_part,
               id: arg_id,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
-              textFormat: arg_textFormat,
+              pageToken: arg_pageToken,
               parentId: arg_parentId,
+              textFormat: arg_textFormat,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCommentListResponse(response);
@@ -9895,8 +9895,8 @@ void main() {
       var arg_id = 'foo';
       var arg_part = buildUnnamed2423();
       var arg_onBehalfOfContentOwner = 'foo';
-      var arg_streamId = 'foo';
       var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_streamId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9928,10 +9928,10 @@ void main() {
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(
-            queryMap["streamId"].first, unittest.equals(arg_streamId));
         unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
             unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(
+            queryMap["streamId"].first, unittest.equals(arg_streamId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9943,8 +9943,8 @@ void main() {
       res
           .bind(arg_id, arg_part,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              streamId: arg_streamId,
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              streamId: arg_streamId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveBroadcast(response);
@@ -9957,10 +9957,10 @@ void main() {
       var arg_id = 'foo';
       var arg_part = buildUnnamed2424();
       var arg_displaySlate = true;
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_walltime = 'foo';
       var arg_offsetTimeMs = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_walltime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9992,14 +9992,14 @@ void main() {
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(queryMap["displaySlate"].first,
             unittest.equals("$arg_displaySlate"));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(
-            queryMap["walltime"].first, unittest.equals(arg_walltime));
         unittest.expect(
             queryMap["offsetTimeMs"].first, unittest.equals(arg_offsetTimeMs));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(
+            queryMap["walltime"].first, unittest.equals(arg_walltime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10011,10 +10011,10 @@ void main() {
       res
           .control(arg_id, arg_part,
               displaySlate: arg_displaySlate,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              walltime: arg_walltime,
               offsetTimeMs: arg_offsetTimeMs,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              walltime: arg_walltime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveBroadcast(response);
@@ -10080,8 +10080,8 @@ void main() {
       api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_request = buildLiveBroadcast();
       var arg_part = buildUnnamed2425();
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LiveBroadcast.fromJson(json);
@@ -10113,10 +10113,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10127,8 +10127,8 @@ void main() {
       }), true);
       res
           .insert(arg_request, arg_part,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveBroadcast(response);
@@ -10139,14 +10139,14 @@ void main() {
       var mock = HttpServerMock();
       api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_part = buildUnnamed2426();
-      var arg_maxResults = 42;
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_broadcastType = 'foo';
       var arg_broadcastStatus = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_mine = true;
+      var arg_broadcastType = 'foo';
       var arg_id = buildUnnamed2427();
+      var arg_maxResults = 42;
+      var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10175,20 +10175,20 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(queryMap["broadcastType"].first,
-            unittest.equals(arg_broadcastType));
         unittest.expect(queryMap["broadcastStatus"].first,
             unittest.equals(arg_broadcastStatus));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
+        unittest.expect(queryMap["broadcastType"].first,
+            unittest.equals(arg_broadcastType));
         unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10199,14 +10199,14 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              maxResults: arg_maxResults,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              broadcastType: arg_broadcastType,
               broadcastStatus: arg_broadcastStatus,
-              pageToken: arg_pageToken,
-              mine: arg_mine,
+              broadcastType: arg_broadcastType,
               id: arg_id,
+              maxResults: arg_maxResults,
+              mine: arg_mine,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveBroadcastListResponse(response);
@@ -10219,8 +10219,8 @@ void main() {
       var arg_id = 'foo';
       var arg_broadcastStatus = 'foo';
       var arg_part = buildUnnamed2428();
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10252,10 +10252,10 @@ void main() {
         unittest.expect(queryMap["broadcastStatus"].first,
             unittest.equals(arg_broadcastStatus));
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10266,8 +10266,8 @@ void main() {
       }), true);
       res
           .transition(arg_id, arg_broadcastStatus, arg_part,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveBroadcast(response);
@@ -10538,10 +10538,10 @@ void main() {
           api.YoutubeApi(mock).liveChatMessages;
       var arg_liveChatId = 'foo';
       var arg_part = buildUnnamed2432();
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
-      var arg_profileImageSize = 42;
       var arg_hl = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_profileImageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10572,13 +10572,13 @@ void main() {
         unittest.expect(
             queryMap["liveChatId"].first, unittest.equals(arg_liveChatId));
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["profileImageSize"].first),
             unittest.equals(arg_profileImageSize));
-        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10589,10 +10589,10 @@ void main() {
       }), true);
       res
           .list(arg_liveChatId, arg_part,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
-              profileImageSize: arg_profileImageSize,
               hl: arg_hl,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              profileImageSize: arg_profileImageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveChatMessageListResponse(response);
@@ -10765,8 +10765,8 @@ void main() {
       var mock = HttpServerMock();
       api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
       var arg_id = 'foo';
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10795,10 +10795,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10809,8 +10809,8 @@ void main() {
       }), true);
       res
           .delete(arg_id,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
@@ -10880,11 +10880,11 @@ void main() {
       api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
       var arg_part = buildUnnamed2436();
       var arg_id = buildUnnamed2437();
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_mine = true;
       var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
+      var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10914,15 +10914,15 @@ void main() {
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10934,11 +10934,11 @@ void main() {
       res
           .list(arg_part,
               id: arg_id,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              mine: arg_mine,
               maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
+              mine: arg_mine,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveStreamListResponse(response);
@@ -10950,8 +10950,8 @@ void main() {
       api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
       var arg_request = buildLiveStream();
       var arg_part = buildUnnamed2438();
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LiveStream.fromJson(json);
@@ -10983,10 +10983,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10997,8 +10997,8 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_part,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLiveStream(response);
@@ -11012,10 +11012,10 @@ void main() {
       api.MembersResourceApi res = api.YoutubeApi(mock).members;
       var arg_part = buildUnnamed2439();
       var arg_filterByMemberChannelId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_mode = 'foo';
-      var arg_maxResults = 42;
       var arg_hasAccessToLevel = 'foo';
+      var arg_maxResults = 42;
+      var arg_mode = 'foo';
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11046,13 +11046,13 @@ void main() {
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(queryMap["filterByMemberChannelId"].first,
             unittest.equals(arg_filterByMemberChannelId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["mode"].first, unittest.equals(arg_mode));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["hasAccessToLevel"].first,
             unittest.equals(arg_hasAccessToLevel));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["mode"].first, unittest.equals(arg_mode));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11064,10 +11064,10 @@ void main() {
       res
           .list(arg_part,
               filterByMemberChannelId: arg_filterByMemberChannelId,
-              pageToken: arg_pageToken,
-              mode: arg_mode,
-              maxResults: arg_maxResults,
               hasAccessToLevel: arg_hasAccessToLevel,
+              maxResults: arg_maxResults,
+              mode: arg_mode,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMemberListResponse(response);
@@ -11236,12 +11236,12 @@ void main() {
       var mock = HttpServerMock();
       api.PlaylistItemsResourceApi res = api.YoutubeApi(mock).playlistItems;
       var arg_part = buildUnnamed2442();
+      var arg_id = buildUnnamed2443();
       var arg_maxResults = 42;
       var arg_onBehalfOfContentOwner = 'foo';
-      var arg_playlistId = 'foo';
       var arg_pageToken = 'foo';
+      var arg_playlistId = 'foo';
       var arg_videoId = 'foo';
-      var arg_id = buildUnnamed2443();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11270,17 +11270,17 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
-            queryMap["playlistId"].first, unittest.equals(arg_playlistId));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
+            queryMap["playlistId"].first, unittest.equals(arg_playlistId));
+        unittest.expect(
             queryMap["videoId"].first, unittest.equals(arg_videoId));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11291,12 +11291,12 @@ void main() {
       }), true);
       res
           .list(arg_part,
+              id: arg_id,
               maxResults: arg_maxResults,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              playlistId: arg_playlistId,
               pageToken: arg_pageToken,
+              playlistId: arg_playlistId,
               videoId: arg_videoId,
-              id: arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlaylistItemListResponse(response);
@@ -11416,8 +11416,8 @@ void main() {
       api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
       var arg_request = buildPlaylist();
       var arg_part = buildUnnamed2445();
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Playlist.fromJson(json);
@@ -11449,10 +11449,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11463,8 +11463,8 @@ void main() {
       }), true);
       res
           .insert(arg_request, arg_part,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlaylist(response);
@@ -11475,13 +11475,13 @@ void main() {
       var mock = HttpServerMock();
       api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
       var arg_part = buildUnnamed2446();
-      var arg_onBehalfOfContentOwner = 'foo';
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_maxResults = 42;
+      var arg_channelId = 'foo';
       var arg_hl = 'foo';
       var arg_id = buildUnnamed2447();
+      var arg_maxResults = 42;
       var arg_mine = true;
-      var arg_channelId = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11511,17 +11511,17 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
+        unittest.expect(
+            queryMap["channelId"].first, unittest.equals(arg_channelId));
+        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
             unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
-        unittest.expect(
-            queryMap["channelId"].first, unittest.equals(arg_channelId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -11534,13 +11534,13 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              maxResults: arg_maxResults,
+              channelId: arg_channelId,
               hl: arg_hl,
               id: arg_id,
+              maxResults: arg_maxResults,
               mine: arg_mine,
-              channelId: arg_channelId,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -11610,36 +11610,36 @@ void main() {
       var mock = HttpServerMock();
       api.SearchResourceApi res = api.YoutubeApi(mock).search;
       var arg_part = buildUnnamed2449();
-      var arg_videoType = 'foo';
-      var arg_videoDimension = 'foo';
-      var arg_forDeveloper = true;
-      var arg_videoCategoryId = 'foo';
-      var arg_forContentOwner = true;
-      var arg_videoLicense = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_videoSyndicated = 'foo';
-      var arg_eventType = 'foo';
-      var arg_forMine = true;
-      var arg_publishedBefore = 'foo';
-      var arg_safeSearch = 'foo';
-      var arg_q = 'foo';
-      var arg_location = 'foo';
-      var arg_relatedToVideoId = 'foo';
-      var arg_locationRadius = 'foo';
-      var arg_order = 'foo';
-      var arg_videoDuration = 'foo';
-      var arg_videoDefinition = 'foo';
-      var arg_channelType = 'foo';
-      var arg_onBehalfOfContentOwner = 'foo';
       var arg_channelId = 'foo';
-      var arg_relevanceLanguage = 'foo';
+      var arg_channelType = 'foo';
+      var arg_eventType = 'foo';
+      var arg_forContentOwner = true;
+      var arg_forDeveloper = true;
+      var arg_forMine = true;
+      var arg_location = 'foo';
+      var arg_locationRadius = 'foo';
+      var arg_maxResults = 42;
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_order = 'foo';
+      var arg_pageToken = 'foo';
       var arg_publishedAfter = 'foo';
+      var arg_publishedBefore = 'foo';
+      var arg_q = 'foo';
+      var arg_regionCode = 'foo';
+      var arg_relatedToVideoId = 'foo';
+      var arg_relevanceLanguage = 'foo';
+      var arg_safeSearch = 'foo';
+      var arg_topicId = 'foo';
       var arg_type = buildUnnamed2450();
       var arg_videoCaption = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_topicId = 'foo';
-      var arg_maxResults = 42;
+      var arg_videoCategoryId = 'foo';
+      var arg_videoDefinition = 'foo';
+      var arg_videoDimension = 'foo';
+      var arg_videoDuration = 'foo';
       var arg_videoEmbeddable = 'foo';
+      var arg_videoLicense = 'foo';
+      var arg_videoSyndicated = 'foo';
+      var arg_videoType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11669,62 +11669,62 @@ void main() {
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(
-            queryMap["videoType"].first, unittest.equals(arg_videoType));
-        unittest.expect(queryMap["videoDimension"].first,
-            unittest.equals(arg_videoDimension));
-        unittest.expect(queryMap["forDeveloper"].first,
-            unittest.equals("$arg_forDeveloper"));
-        unittest.expect(queryMap["videoCategoryId"].first,
-            unittest.equals(arg_videoCategoryId));
-        unittest.expect(queryMap["forContentOwner"].first,
-            unittest.equals("$arg_forContentOwner"));
-        unittest.expect(
-            queryMap["videoLicense"].first, unittest.equals(arg_videoLicense));
-        unittest.expect(
-            queryMap["regionCode"].first, unittest.equals(arg_regionCode));
-        unittest.expect(queryMap["videoSyndicated"].first,
-            unittest.equals(arg_videoSyndicated));
-        unittest.expect(
-            queryMap["eventType"].first, unittest.equals(arg_eventType));
-        unittest.expect(
-            queryMap["forMine"].first, unittest.equals("$arg_forMine"));
-        unittest.expect(queryMap["publishedBefore"].first,
-            unittest.equals(arg_publishedBefore));
-        unittest.expect(
-            queryMap["safeSearch"].first, unittest.equals(arg_safeSearch));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(queryMap["relatedToVideoId"].first,
-            unittest.equals(arg_relatedToVideoId));
-        unittest.expect(queryMap["locationRadius"].first,
-            unittest.equals(arg_locationRadius));
-        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
-        unittest.expect(queryMap["videoDuration"].first,
-            unittest.equals(arg_videoDuration));
-        unittest.expect(queryMap["videoDefinition"].first,
-            unittest.equals(arg_videoDefinition));
+            queryMap["channelId"].first, unittest.equals(arg_channelId));
         unittest.expect(
             queryMap["channelType"].first, unittest.equals(arg_channelType));
+        unittest.expect(
+            queryMap["eventType"].first, unittest.equals(arg_eventType));
+        unittest.expect(queryMap["forContentOwner"].first,
+            unittest.equals("$arg_forContentOwner"));
+        unittest.expect(queryMap["forDeveloper"].first,
+            unittest.equals("$arg_forDeveloper"));
+        unittest.expect(
+            queryMap["forMine"].first, unittest.equals("$arg_forMine"));
+        unittest.expect(
+            queryMap["location"].first, unittest.equals(arg_location));
+        unittest.expect(queryMap["locationRadius"].first,
+            unittest.equals(arg_locationRadius));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
         unittest.expect(
-            queryMap["channelId"].first, unittest.equals(arg_channelId));
-        unittest.expect(queryMap["relevanceLanguage"].first,
-            unittest.equals(arg_relevanceLanguage));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["publishedAfter"].first,
             unittest.equals(arg_publishedAfter));
+        unittest.expect(queryMap["publishedBefore"].first,
+            unittest.equals(arg_publishedBefore));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
+        unittest.expect(
+            queryMap["regionCode"].first, unittest.equals(arg_regionCode));
+        unittest.expect(queryMap["relatedToVideoId"].first,
+            unittest.equals(arg_relatedToVideoId));
+        unittest.expect(queryMap["relevanceLanguage"].first,
+            unittest.equals(arg_relevanceLanguage));
+        unittest.expect(
+            queryMap["safeSearch"].first, unittest.equals(arg_safeSearch));
+        unittest.expect(
+            queryMap["topicId"].first, unittest.equals(arg_topicId));
         unittest.expect(queryMap["type"], unittest.equals(arg_type));
         unittest.expect(
             queryMap["videoCaption"].first, unittest.equals(arg_videoCaption));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["topicId"].first, unittest.equals(arg_topicId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["videoCategoryId"].first,
+            unittest.equals(arg_videoCategoryId));
+        unittest.expect(queryMap["videoDefinition"].first,
+            unittest.equals(arg_videoDefinition));
+        unittest.expect(queryMap["videoDimension"].first,
+            unittest.equals(arg_videoDimension));
+        unittest.expect(queryMap["videoDuration"].first,
+            unittest.equals(arg_videoDuration));
         unittest.expect(queryMap["videoEmbeddable"].first,
             unittest.equals(arg_videoEmbeddable));
+        unittest.expect(
+            queryMap["videoLicense"].first, unittest.equals(arg_videoLicense));
+        unittest.expect(queryMap["videoSyndicated"].first,
+            unittest.equals(arg_videoSyndicated));
+        unittest.expect(
+            queryMap["videoType"].first, unittest.equals(arg_videoType));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11735,36 +11735,36 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              videoType: arg_videoType,
-              videoDimension: arg_videoDimension,
-              forDeveloper: arg_forDeveloper,
-              videoCategoryId: arg_videoCategoryId,
-              forContentOwner: arg_forContentOwner,
-              videoLicense: arg_videoLicense,
-              regionCode: arg_regionCode,
-              videoSyndicated: arg_videoSyndicated,
-              eventType: arg_eventType,
-              forMine: arg_forMine,
-              publishedBefore: arg_publishedBefore,
-              safeSearch: arg_safeSearch,
-              q: arg_q,
-              location: arg_location,
-              relatedToVideoId: arg_relatedToVideoId,
-              locationRadius: arg_locationRadius,
-              order: arg_order,
-              videoDuration: arg_videoDuration,
-              videoDefinition: arg_videoDefinition,
-              channelType: arg_channelType,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               channelId: arg_channelId,
-              relevanceLanguage: arg_relevanceLanguage,
+              channelType: arg_channelType,
+              eventType: arg_eventType,
+              forContentOwner: arg_forContentOwner,
+              forDeveloper: arg_forDeveloper,
+              forMine: arg_forMine,
+              location: arg_location,
+              locationRadius: arg_locationRadius,
+              maxResults: arg_maxResults,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              order: arg_order,
+              pageToken: arg_pageToken,
               publishedAfter: arg_publishedAfter,
+              publishedBefore: arg_publishedBefore,
+              q: arg_q,
+              regionCode: arg_regionCode,
+              relatedToVideoId: arg_relatedToVideoId,
+              relevanceLanguage: arg_relevanceLanguage,
+              safeSearch: arg_safeSearch,
+              topicId: arg_topicId,
               type: arg_type,
               videoCaption: arg_videoCaption,
-              pageToken: arg_pageToken,
-              topicId: arg_topicId,
-              maxResults: arg_maxResults,
+              videoCategoryId: arg_videoCategoryId,
+              videoDefinition: arg_videoDefinition,
+              videoDimension: arg_videoDimension,
+              videoDuration: arg_videoDuration,
               videoEmbeddable: arg_videoEmbeddable,
+              videoLicense: arg_videoLicense,
+              videoSyndicated: arg_videoSyndicated,
+              videoType: arg_videoType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchListResponse(response);
@@ -11777,9 +11777,9 @@ void main() {
       var mock = HttpServerMock();
       api.SponsorsResourceApi res = api.YoutubeApi(mock).sponsors;
       var arg_part = buildUnnamed2451();
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_filter = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11808,11 +11808,11 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11823,9 +11823,9 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               filter: arg_filter,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSponsorListResponse(response);
@@ -11934,16 +11934,16 @@ void main() {
       var mock = HttpServerMock();
       api.SubscriptionsResourceApi res = api.YoutubeApi(mock).subscriptions;
       var arg_part = buildUnnamed2453();
-      var arg_onBehalfOfContentOwner = 'foo';
-      var arg_mine = true;
       var arg_channelId = 'foo';
       var arg_forChannelId = 'foo';
-      var arg_maxResults = 42;
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_order = 'foo';
       var arg_id = buildUnnamed2454();
+      var arg_maxResults = 42;
+      var arg_mine = true;
       var arg_myRecentSubscribers = true;
       var arg_mySubscribers = true;
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_order = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11973,23 +11973,23 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(
             queryMap["channelId"].first, unittest.equals(arg_channelId));
         unittest.expect(
             queryMap["forChannelId"].first, unittest.equals(arg_forChannelId));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["myRecentSubscribers"].first,
             unittest.equals("$arg_myRecentSubscribers"));
         unittest.expect(queryMap["mySubscribers"].first,
             unittest.equals("$arg_mySubscribers"));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -12002,16 +12002,16 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              mine: arg_mine,
               channelId: arg_channelId,
               forChannelId: arg_forChannelId,
-              maxResults: arg_maxResults,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              order: arg_order,
               id: arg_id,
+              maxResults: arg_maxResults,
+              mine: arg_mine,
               myRecentSubscribers: arg_myRecentSubscribers,
               mySubscribers: arg_mySubscribers,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              order: arg_order,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -12241,8 +12241,8 @@ void main() {
       var mock = HttpServerMock();
       api.ThirdPartyLinksResourceApi res = api.YoutubeApi(mock).thirdPartyLinks;
       var arg_part = buildUnnamed2459();
-      var arg_type = 'foo';
       var arg_linkingToken = 'foo';
+      var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12271,9 +12271,9 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(
             queryMap["linkingToken"].first, unittest.equals(arg_linkingToken));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12284,8 +12284,8 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              type: arg_type,
               linkingToken: arg_linkingToken,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkThirdPartyLink(response);
@@ -12460,9 +12460,9 @@ void main() {
       var mock = HttpServerMock();
       api.VideoCategoriesResourceApi res = api.YoutubeApi(mock).videoCategories;
       var arg_part = buildUnnamed2462();
-      var arg_regionCode = 'foo';
-      var arg_id = buildUnnamed2463();
       var arg_hl = 'foo';
+      var arg_id = buildUnnamed2463();
+      var arg_regionCode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12491,10 +12491,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
+        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
         unittest.expect(
             queryMap["regionCode"].first, unittest.equals(arg_regionCode));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12505,9 +12505,9 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              regionCode: arg_regionCode,
-              id: arg_id,
               hl: arg_hl,
+              id: arg_id,
+              regionCode: arg_regionCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVideoCategoryListResponse(response);
@@ -12627,10 +12627,10 @@ void main() {
       var arg_request = buildVideo();
       var arg_part = buildUnnamed2465();
       var arg_autoLevels = true;
-      var arg_onBehalfOfContentOwnerChannel = 'foo';
-      var arg_stabilize = true;
       var arg_notifySubscribers = true;
       var arg_onBehalfOfContentOwner = 'foo';
+      var arg_onBehalfOfContentOwnerChannel = 'foo';
+      var arg_stabilize = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Video.fromJson(json);
@@ -12664,14 +12664,14 @@ void main() {
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
         unittest.expect(
             queryMap["autoLevels"].first, unittest.equals("$arg_autoLevels"));
-        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
-            unittest.equals(arg_onBehalfOfContentOwnerChannel));
-        unittest.expect(
-            queryMap["stabilize"].first, unittest.equals("$arg_stabilize"));
         unittest.expect(queryMap["notifySubscribers"].first,
             unittest.equals("$arg_notifySubscribers"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["onBehalfOfContentOwnerChannel"].first,
+            unittest.equals(arg_onBehalfOfContentOwnerChannel));
+        unittest.expect(
+            queryMap["stabilize"].first, unittest.equals("$arg_stabilize"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12683,10 +12683,10 @@ void main() {
       res
           .insert(arg_request, arg_part,
               autoLevels: arg_autoLevels,
-              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
-              stabilize: arg_stabilize,
               notifySubscribers: arg_notifySubscribers,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
+              stabilize: arg_stabilize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVideo(response);
@@ -12697,18 +12697,18 @@ void main() {
       var mock = HttpServerMock();
       api.VideosResourceApi res = api.YoutubeApi(mock).videos;
       var arg_part = buildUnnamed2466();
-      var arg_maxWidth = 42;
       var arg_chart = 'foo';
-      var arg_maxHeight = 42;
-      var arg_myRating = 'foo';
-      var arg_regionCode = 'foo';
-      var arg_id = buildUnnamed2467();
-      var arg_pageToken = 'foo';
-      var arg_locale = 'foo';
-      var arg_onBehalfOfContentOwner = 'foo';
-      var arg_videoCategoryId = 'foo';
       var arg_hl = 'foo';
+      var arg_id = buildUnnamed2467();
+      var arg_locale = 'foo';
+      var arg_maxHeight = 42;
       var arg_maxResults = 42;
+      var arg_maxWidth = 42;
+      var arg_myRating = 'foo';
+      var arg_onBehalfOfContentOwner = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_regionCode = 'foo';
+      var arg_videoCategoryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12737,26 +12737,26 @@ void main() {
           }
         }
         unittest.expect(queryMap["part"], unittest.equals(arg_part));
-        unittest.expect(core.int.parse(queryMap["maxWidth"].first),
-            unittest.equals(arg_maxWidth));
         unittest.expect(queryMap["chart"].first, unittest.equals(arg_chart));
+        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
+        unittest.expect(queryMap["id"], unittest.equals(arg_id));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(core.int.parse(queryMap["maxHeight"].first),
             unittest.equals(arg_maxHeight));
-        unittest.expect(
-            queryMap["myRating"].first, unittest.equals(arg_myRating));
-        unittest.expect(
-            queryMap["regionCode"].first, unittest.equals(arg_regionCode));
-        unittest.expect(queryMap["id"], unittest.equals(arg_id));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["videoCategoryId"].first,
-            unittest.equals(arg_videoCategoryId));
-        unittest.expect(queryMap["hl"].first, unittest.equals(arg_hl));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["maxWidth"].first),
+            unittest.equals(arg_maxWidth));
+        unittest.expect(
+            queryMap["myRating"].first, unittest.equals(arg_myRating));
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["regionCode"].first, unittest.equals(arg_regionCode));
+        unittest.expect(queryMap["videoCategoryId"].first,
+            unittest.equals(arg_videoCategoryId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12767,18 +12767,18 @@ void main() {
       }), true);
       res
           .list(arg_part,
-              maxWidth: arg_maxWidth,
               chart: arg_chart,
-              maxHeight: arg_maxHeight,
-              myRating: arg_myRating,
-              regionCode: arg_regionCode,
-              id: arg_id,
-              pageToken: arg_pageToken,
-              locale: arg_locale,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              videoCategoryId: arg_videoCategoryId,
               hl: arg_hl,
+              id: arg_id,
+              locale: arg_locale,
+              maxHeight: arg_maxHeight,
               maxResults: arg_maxResults,
+              maxWidth: arg_maxWidth,
+              myRating: arg_myRating,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              pageToken: arg_pageToken,
+              regionCode: arg_regionCode,
+              videoCategoryId: arg_videoCategoryId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVideoListResponse(response);

@@ -1366,11 +1366,6 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project for which to list Cloud SQL
   /// instances.
   ///
-  /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
-  ///
-  /// [maxResults] - The maximum number of results to return per response.
-  ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression is in the form of field:value. For example,
   /// 'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per
@@ -1378,6 +1373,11 @@ class InstancesResourceApi {
   /// Multiple filter queries are space-separated. For example. 'state:RUNNABLE
   /// instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND
   /// expression. However, you can include AND and OR expressions explicitly.
+  ///
+  /// [maxResults] - The maximum number of results to return per response.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1391,9 +1391,9 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<InstancesListResponse> list(
     core.String project, {
-    core.String pageToken,
-    core.int maxResults,
     core.String filter,
+    core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1406,14 +1406,14 @@ class InstancesResourceApi {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2185,10 +2185,10 @@ class OperationsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [maxResults] - Maximum number of operations per response.
+  ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
-  ///
-  /// [maxResults] - Maximum number of operations per response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2203,8 +2203,8 @@ class OperationsResourceApi {
   async.Future<OperationsListResponse> list(
     core.String project, {
     core.String instance,
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2220,11 +2220,11 @@ class OperationsResourceApi {
     if (instance != null) {
       _queryParams['instance'] = [instance];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

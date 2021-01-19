@@ -240,11 +240,11 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The standard list page size.
+  /// [filter] - The standard list filter.
   ///
   /// [name] - The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
   ///
@@ -259,9 +259,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.int pageSize,
-    core.String name,
     core.String filter,
+    core.String name,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -272,14 +272,14 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (name != null) {
       _queryParams['name'] = [name];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -627,14 +627,14 @@ class ServicesResourceApi {
   /// `projects/123` where `123` is the project number.
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [filter] - Only list services that conform to the given filter. The
+  /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
+  ///
   /// [pageSize] - Requested size of the next page of data. Requested page size
   /// cannot exceed 200. If not set, the default page size is 50.
   ///
   /// [pageToken] - Token identifying which result to start with, which is
   /// returned by a previous list call.
-  ///
-  /// [filter] - Only list services that conform to the given filter. The
-  /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -648,9 +648,9 @@ class ServicesResourceApi {
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String parent, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -663,14 +663,14 @@ class ServicesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

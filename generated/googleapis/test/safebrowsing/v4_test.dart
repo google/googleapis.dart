@@ -1089,8 +1089,8 @@ void main() {
       api.EncodedFullHashesResourceApi res =
           api.SafebrowsingApi(mock).encodedFullHashes;
       var arg_encodedRequest = 'foo';
-      var arg_clientVersion = 'foo';
       var arg_clientId = 'foo';
+      var arg_clientVersion = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1121,10 +1121,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["clientVersion"].first,
-            unittest.equals(arg_clientVersion));
         unittest.expect(
             queryMap["clientId"].first, unittest.equals(arg_clientId));
+        unittest.expect(queryMap["clientVersion"].first,
+            unittest.equals(arg_clientVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1135,8 +1135,8 @@ void main() {
       }), true);
       res
           .get(arg_encodedRequest,
-              clientVersion: arg_clientVersion,
               clientId: arg_clientId,
+              clientVersion: arg_clientVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFindFullHashesResponse(response);

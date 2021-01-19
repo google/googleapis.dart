@@ -548,12 +548,12 @@ class TasksResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [parent] - Parent task identifier. If the task is created at the top
+  /// level, this parameter is omitted. Optional.
+  ///
   /// [previous] - Previous sibling task identifier. If the task is created at
   /// the first position among its siblings, this parameter is omitted.
   /// Optional.
-  ///
-  /// [parent] - Parent task identifier. If the task is created at the top
-  /// level, this parameter is omitted. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -568,8 +568,8 @@ class TasksResourceApi {
   async.Future<Task> insert(
     Task request,
     core.String tasklist, {
-    core.String previous,
     core.String parent,
+    core.String previous,
     core.String $fields,
   }) {
     core.String _url;
@@ -585,11 +585,11 @@ class TasksResourceApi {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    if (previous != null) {
-      _queryParams['previous'] = [previous];
-    }
     if (parent != null) {
       _queryParams['parent'] = [parent];
+    }
+    if (previous != null) {
+      _queryParams['previous'] = [previous];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -617,39 +617,39 @@ class TasksResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
+  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// completion date.
+  ///
   /// [completedMin] - Lower bound for a task's completion date (as a RFC 3339
   /// timestamp) to filter by. Optional. The default is not to filter by
   /// completion date.
+  ///
+  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
+  ///
+  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
+  ///
+  /// [maxResults] - Maximum number of task lists returned on one page.
+  /// Optional. The default is 20 (max allowed: 100).
+  ///
+  /// [pageToken] - Token specifying the result page to return. Optional.
   ///
   /// [showCompleted] - Flag indicating whether completed tasks are returned in
   /// the result. Optional. The default is True. Note that showHidden must also
   /// be True to show tasks completed in first party clients, such as the web UI
   /// and Google's mobile apps.
   ///
-  /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 20 (max allowed: 100).
-  ///
-  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
-  /// timestamp) to filter by. Optional. The default is not to filter by
-  /// completion date.
-  ///
-  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
-  ///
   /// [showDeleted] - Flag indicating whether deleted tasks are returned in the
+  /// result. Optional. The default is False.
+  ///
+  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
   /// result. Optional. The default is False.
   ///
   /// [updatedMin] - Lower bound for a task's last modification time (as a RFC
   /// 3339 timestamp) to filter by. Optional. The default is not to filter by
   /// last modification time.
-  ///
-  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
-  /// filter by. Optional. The default is not to filter by due date.
-  ///
-  /// [pageToken] - Token specifying the result page to return. Optional.
-  ///
-  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
-  /// result. Optional. The default is False.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -663,16 +663,16 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Tasks> list(
     core.String tasklist, {
-    core.String completedMin,
-    core.bool showCompleted,
-    core.int maxResults,
     core.String completedMax,
-    core.String dueMin,
-    core.bool showDeleted,
-    core.String updatedMin,
+    core.String completedMin,
     core.String dueMax,
+    core.String dueMin,
+    core.int maxResults,
     core.String pageToken,
+    core.bool showCompleted,
+    core.bool showDeleted,
     core.bool showHidden,
+    core.String updatedMin,
     core.String $fields,
   }) {
     core.String _url;
@@ -685,35 +685,35 @@ class TasksResourceApi {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    if (completedMin != null) {
-      _queryParams['completedMin'] = [completedMin];
-    }
-    if (showCompleted != null) {
-      _queryParams['showCompleted'] = ['${showCompleted}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
     if (completedMax != null) {
       _queryParams['completedMax'] = [completedMax];
     }
-    if (dueMin != null) {
-      _queryParams['dueMin'] = [dueMin];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [updatedMin];
+    if (completedMin != null) {
+      _queryParams['completedMin'] = [completedMin];
     }
     if (dueMax != null) {
       _queryParams['dueMax'] = [dueMax];
     }
+    if (dueMin != null) {
+      _queryParams['dueMin'] = [dueMin];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
+    if (showCompleted != null) {
+      _queryParams['showCompleted'] = ['${showCompleted}'];
+    }
+    if (showDeleted != null) {
+      _queryParams['showDeleted'] = ['${showDeleted}'];
+    }
     if (showHidden != null) {
       _queryParams['showHidden'] = ['${showHidden}'];
+    }
+    if (updatedMin != null) {
+      _queryParams['updatedMin'] = [updatedMin];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -127,11 +127,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -145,9 +145,9 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String pageToken,
     core.String filter,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -160,14 +160,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -887,8 +887,6 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of files to return.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `name` * `owner` An example of using a filter: *
@@ -896,6 +894,8 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// "` --> Files with an ID starting with "a/b/". *
   /// `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
   /// --> Files owned by the version `1.0` in package `pkg1`.
+  ///
+  /// [pageSize] - The maximum number of files to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -912,8 +912,8 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilesResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -927,11 +927,11 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -1077,10 +1077,10 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of packages to return.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of packages to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1094,8 +1094,8 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListPackagesResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1108,11 +1108,11 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1313,13 +1313,13 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of tags to return.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `version` An example of using a filter: *
   /// `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
   /// --> Tags that are applied to the version `1.0` in package `pkg1`.
+  ///
+  /// [pageSize] - The maximum number of tags to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
@@ -1336,8 +1336,8 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -1351,11 +1351,11 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -1580,6 +1580,8 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of versions to return.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
   ///
@@ -1590,8 +1592,6 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
   /// - "BASIC" : Includes basic information about the version, but not any
   /// related tags.
   /// - "FULL" : Include everything.
-  ///
-  /// [pageSize] - The maximum number of versions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1605,9 +1605,9 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
     core.String parent, {
+    core.int pageSize,
     core.String pageToken,
     core.String view,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -1620,14 +1620,14 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (view != null) {
       _queryParams['view'] = [view];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

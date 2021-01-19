@@ -2265,8 +2265,8 @@ void main() {
       api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
       var arg_includeSpamTrash = true;
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_q = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2306,10 +2306,10 @@ void main() {
         }
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -2322,8 +2322,8 @@ void main() {
       res
           .list(arg_userId,
               includeSpamTrash: arg_includeSpamTrash,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2467,8 +2467,8 @@ void main() {
       var arg_userId = 'foo';
       var arg_historyTypes = buildUnnamed3205();
       var arg_labelId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_startHistoryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2510,10 +2510,10 @@ void main() {
             queryMap["historyTypes"], unittest.equals(arg_historyTypes));
         unittest.expect(
             queryMap["labelId"].first, unittest.equals(arg_labelId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["startHistoryId"].first,
             unittest.equals(arg_startHistoryId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2528,8 +2528,8 @@ void main() {
           .list(arg_userId,
               historyTypes: arg_historyTypes,
               labelId: arg_labelId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               startHistoryId: arg_startHistoryId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3073,8 +3073,8 @@ void main() {
       api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_id = 'foo';
-      var arg_metadataHeaders = buildUnnamed3206();
       var arg_format = 'foo';
+      var arg_metadataHeaders = buildUnnamed3206();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3114,9 +3114,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["metadataHeaders"], unittest.equals(arg_metadataHeaders));
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3127,8 +3127,8 @@ void main() {
       }), true);
       res
           .get(arg_userId, arg_id,
-              metadataHeaders: arg_metadataHeaders,
               format: arg_format,
+              metadataHeaders: arg_metadataHeaders,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMessage(response);
@@ -3143,10 +3143,10 @@ void main() {
       api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = 'foo';
-      var arg_processForCalendar = true;
+      var arg_deleted = true;
       var arg_internalDateSource = 'foo';
       var arg_neverMarkSpam = true;
-      var arg_deleted = true;
+      var arg_processForCalendar = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Message.fromJson(json);
@@ -3186,14 +3186,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["processForCalendar"].first,
-            unittest.equals("$arg_processForCalendar"));
+        unittest.expect(
+            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
         unittest.expect(queryMap["internalDateSource"].first,
             unittest.equals(arg_internalDateSource));
         unittest.expect(queryMap["neverMarkSpam"].first,
             unittest.equals("$arg_neverMarkSpam"));
-        unittest.expect(
-            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
+        unittest.expect(queryMap["processForCalendar"].first,
+            unittest.equals("$arg_processForCalendar"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3204,10 +3204,10 @@ void main() {
       }), true);
       res
           .import(arg_request, arg_userId,
-              processForCalendar: arg_processForCalendar,
+              deleted: arg_deleted,
               internalDateSource: arg_internalDateSource,
               neverMarkSpam: arg_neverMarkSpam,
-              deleted: arg_deleted,
+              processForCalendar: arg_processForCalendar,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMessage(response);
@@ -3289,11 +3289,11 @@ void main() {
       var mock = HttpServerMock();
       api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_q = 'foo';
       var arg_includeSpamTrash = true;
       var arg_labelIds = buildUnnamed3207();
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_q = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3330,14 +3330,14 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
         unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3348,11 +3348,11 @@ void main() {
       }), true);
       res
           .list(arg_userId,
-              pageToken: arg_pageToken,
-              q: arg_q,
               includeSpamTrash: arg_includeSpamTrash,
               labelIds: arg_labelIds,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListMessagesResponse(response);
@@ -5816,8 +5816,8 @@ void main() {
       api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_id = 'foo';
-      var arg_metadataHeaders = buildUnnamed3208();
       var arg_format = 'foo';
+      var arg_metadataHeaders = buildUnnamed3208();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5857,9 +5857,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["metadataHeaders"], unittest.equals(arg_metadataHeaders));
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5870,8 +5870,8 @@ void main() {
       }), true);
       res
           .get(arg_userId, arg_id,
-              metadataHeaders: arg_metadataHeaders,
               format: arg_format,
+              metadataHeaders: arg_metadataHeaders,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkThread(response);
@@ -5882,11 +5882,11 @@ void main() {
       var mock = HttpServerMock();
       api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
-      var arg_labelIds = buildUnnamed3209();
-      var arg_q = 'foo';
-      var arg_pageToken = 'foo';
       var arg_includeSpamTrash = true;
+      var arg_labelIds = buildUnnamed3209();
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
+      var arg_q = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5923,14 +5923,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["includeSpamTrash"].first,
             unittest.equals("$arg_includeSpamTrash"));
+        unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5941,11 +5941,11 @@ void main() {
       }), true);
       res
           .list(arg_userId,
-              labelIds: arg_labelIds,
-              q: arg_q,
-              pageToken: arg_pageToken,
               includeSpamTrash: arg_includeSpamTrash,
+              labelIds: arg_labelIds,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListThreadsResponse(response);

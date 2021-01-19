@@ -121,13 +121,6 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of operations to return. If unspecified,
-  /// defaults to 50. The maximum value is 100.
-  ///
-  /// [name] - Not used.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - A string for filtering Operations. The following filter fields
   /// are supported: * serviceName: Required. Only `=` operator is allowed. *
   /// startTime: The time this job was started, in ISO 8601 format. Allowed
@@ -142,6 +135,13 @@ class OperationsResourceApi {
   /// `serviceName={some-service}.googleapis.com AND (status=done OR
   /// startTime>="2017-02-01")`
   ///
+  /// [name] - Not used.
+  ///
+  /// [pageSize] - The maximum number of operations to return. If unspecified,
+  /// defaults to 50. The maximum value is 100.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -153,10 +153,10 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.int pageSize,
-    core.String name,
-    core.String pageToken,
     core.String filter,
+    core.String name,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -166,17 +166,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (name != null) {
       _queryParams['name'] = [name];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -490,6 +490,10 @@ class ServicesResourceApi {
   /// [overview](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
+  /// [configId] - Required. The id of the service configuration resource. This
+  /// field must be specified for the server to return all fields, including
+  /// `SourceInfo`.
+  ///
   /// [view] - Specifies which parts of the Service Config should be returned in
   /// the response.
   /// Possible string values are:
@@ -498,10 +502,6 @@ class ServicesResourceApi {
   /// SourceFiles are of type 'google.api.servicemanagement.v1.ConfigFile' and
   /// are only available for configs created using the SubmitConfigSource
   /// method.
-  ///
-  /// [configId] - Required. The id of the service configuration resource. This
-  /// field must be specified for the server to return all fields, including
-  /// `SourceInfo`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -515,8 +515,8 @@ class ServicesResourceApi {
   /// call, this method will complete with the same error.
   async.Future<Service> getConfig(
     core.String serviceName, {
-    core.String view,
     core.String configId,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -529,11 +529,11 @@ class ServicesResourceApi {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
     if (configId != null) {
       _queryParams['configId'] = [configId];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -624,17 +624,17 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token identifying which result to start with; returned by a
-  /// previous list call.
+  /// [consumerId] - Include services consumed by the specified consumer. The
+  /// Google Service Management implementation accepts the following forms: -
+  /// project:
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
   /// size is 50 if not specified. Maximum value is 100.
   ///
-  /// [producerProjectId] - Include services produced by the specified project.
+  /// [pageToken] - Token identifying which result to start with; returned by a
+  /// previous list call.
   ///
-  /// [consumerId] - Include services consumed by the specified consumer. The
-  /// Google Service Management implementation accepts the following forms: -
-  /// project:
+  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -647,10 +647,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list({
-    core.String pageToken,
-    core.int pageSize,
-    core.String producerProjectId,
     core.String consumerId,
+    core.int pageSize,
+    core.String pageToken,
+    core.String producerProjectId,
     core.String $fields,
   }) {
     core.String _url;
@@ -660,17 +660,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (consumerId != null) {
+      _queryParams['consumerId'] = [consumerId];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
     if (producerProjectId != null) {
       _queryParams['producerProjectId'] = [producerProjectId];
-    }
-    if (consumerId != null) {
-      _queryParams['consumerId'] = [consumerId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

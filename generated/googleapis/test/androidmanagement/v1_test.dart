@@ -3636,8 +3636,8 @@ void main() {
       api.EnterprisesResourceApi res =
           api.AndroidmanagementApi(mock).enterprises;
       var arg_request = buildEnterprise();
-      var arg_projectId = 'foo';
       var arg_enterpriseToken = 'foo';
+      var arg_projectId = 'foo';
       var arg_signupUrlName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3669,10 +3669,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(queryMap["enterpriseToken"].first,
             unittest.equals(arg_enterpriseToken));
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(queryMap["signupUrlName"].first,
             unittest.equals(arg_signupUrlName));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3685,8 +3685,8 @@ void main() {
       }), true);
       res
           .create(arg_request,
-              projectId: arg_projectId,
               enterpriseToken: arg_enterpriseToken,
+              projectId: arg_projectId,
               signupUrlName: arg_signupUrlName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3858,8 +3858,8 @@ void main() {
       api.EnterprisesDevicesResourceApi res =
           api.AndroidmanagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
-      var arg_wipeReasonMessage = 'foo';
       var arg_wipeDataFlags = buildUnnamed5285();
+      var arg_wipeReasonMessage = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3888,10 +3888,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["wipeReasonMessage"].first,
-            unittest.equals(arg_wipeReasonMessage));
         unittest.expect(
             queryMap["wipeDataFlags"], unittest.equals(arg_wipeDataFlags));
+        unittest.expect(queryMap["wipeReasonMessage"].first,
+            unittest.equals(arg_wipeReasonMessage));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3902,8 +3902,8 @@ void main() {
       }), true);
       res
           .delete(arg_name,
-              wipeReasonMessage: arg_wipeReasonMessage,
               wipeDataFlags: arg_wipeDataFlags,
+              wipeReasonMessage: arg_wipeReasonMessage,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);

@@ -405,7 +405,12 @@ class V1ResourceApi {
   /// "projects/12345").
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [readTimeWindow_startTime] - Start time of the time window (exclusive).
+  /// [assetNames] - A list of the full names of the assets. See:
+  /// https://cloud.google.com/asset-inventory/docs/resource-name-format
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
+  /// The request becomes a no-op if the asset name list is empty, and the max
+  /// size of the asset name list is 100 in one request.
   ///
   /// [contentType] - Optional. The content type.
   /// Possible string values are:
@@ -419,12 +424,7 @@ class V1ResourceApi {
   /// [readTimeWindow_endTime] - End time of the time window (inclusive). If not
   /// specified, the current timestamp is used instead.
   ///
-  /// [assetNames] - A list of the full names of the assets. See:
-  /// https://cloud.google.com/asset-inventory/docs/resource-name-format
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-  /// The request becomes a no-op if the asset name list is empty, and the max
-  /// size of the asset name list is 100 in one request.
+  /// [readTimeWindow_startTime] - Start time of the time window (exclusive).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -438,10 +438,10 @@ class V1ResourceApi {
   /// this method will complete with the same error.
   async.Future<BatchGetAssetsHistoryResponse> batchGetAssetsHistory(
     core.String parent, {
-    core.String readTimeWindow_startTime,
+    core.List<core.String> assetNames,
     core.String contentType,
     core.String readTimeWindow_endTime,
-    core.List<core.String> assetNames,
+    core.String readTimeWindow_startTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -454,8 +454,8 @@ class V1ResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (readTimeWindow_startTime != null) {
-      _queryParams['readTimeWindow.startTime'] = [readTimeWindow_startTime];
+    if (assetNames != null) {
+      _queryParams['assetNames'] = assetNames;
     }
     if (contentType != null) {
       _queryParams['contentType'] = [contentType];
@@ -463,8 +463,8 @@ class V1ResourceApi {
     if (readTimeWindow_endTime != null) {
       _queryParams['readTimeWindow.endTime'] = [readTimeWindow_endTime];
     }
-    if (assetNames != null) {
-      _queryParams['assetNames'] = assetNames;
+    if (readTimeWindow_startTime != null) {
+      _queryParams['readTimeWindow.startTime'] = [readTimeWindow_startTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -694,6 +694,12 @@ class V1ResourceApi {
   /// (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields
   /// (e.g., `additionalAttributes`) are not supported.
   ///
+  /// [pageSize] - Optional. The page size for search result pagination. Page
+  /// size is capped at 500 even if a larger value is given. If set to zero,
+  /// server will pick an appropriate default. Returned results may be fewer
+  /// than requested. When this happens, there could be more results as long as
+  /// `next_page_token` is returned.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. `page_token` must be the
   /// value of `next_page_token` from the previous response. The values of all
@@ -726,12 +732,6 @@ class V1ResourceApi {
   /// searchable fields and are also located in the "us-west1" region or the
   /// "global" location.
   ///
-  /// [pageSize] - Optional. The page size for search result pagination. Page
-  /// size is capped at 500 even if a larger value is given. If set to zero,
-  /// server will pick an appropriate default. Returned results may be fewer
-  /// than requested. When this happens, there could be more results as long as
-  /// `next_page_token` is returned.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -746,9 +746,9 @@ class V1ResourceApi {
     core.String scope, {
     core.List<core.String> assetTypes,
     core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String query,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -767,14 +767,14 @@ class V1ResourceApi {
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (query != null) {
       _queryParams['query'] = [query];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

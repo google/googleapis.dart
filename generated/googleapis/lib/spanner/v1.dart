@@ -461,12 +461,6 @@ class ProjectsInstancesResourceApi {
   /// is requested. Values are of the form `projects/`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults to the server's maximum allowed page size.
-  ///
-  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
-  /// from a previous ListInstancesResponse.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `name` * `display_name` * `labels.key` where key is the name of a label
@@ -478,6 +472,12 @@ class ProjectsInstancesResourceApi {
   /// label contains the string "dev". * `name:howl labels.env:dev` --> The
   /// instance's name contains "howl" and it has the label "env" with its value
   /// containing "dev".
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults to the server's maximum allowed page size.
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListInstancesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -491,9 +491,9 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -506,14 +506,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1107,10 +1107,6 @@ class ProjectsInstancesBackupsResourceApi {
   /// form `projects//instances/`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
-  /// from a previous ListBackupsResponse to the same `parent` and with the same
-  /// `filter`.
-  ///
   /// [filter] - An expression that filters the list of returned backups. A
   /// filter expression consists of a field name, a comparison operator, and a
   /// value for filtering. The value must be a string, a number, or a boolean.
@@ -1135,6 +1131,10 @@ class ProjectsInstancesBackupsResourceApi {
   /// [pageSize] - Number of backups to be returned in the response. If 0 or
   /// less, defaults to the server's maximum allowed page size.
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListBackupsResponse to the same `parent` and with the same
+  /// `filter`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1147,9 +1147,9 @@ class ProjectsInstancesBackupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBackupsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.String filter,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1162,14 +1162,14 @@ class ProjectsInstancesBackupsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1576,11 +1576,11 @@ class ProjectsInstancesBackupsOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1594,9 +1594,9 @@ class ProjectsInstancesBackupsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -1609,14 +1609,14 @@ class ProjectsInstancesBackupsOperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1655,10 +1655,6 @@ class ProjectsInstancesDatabaseOperationsResourceApi {
   /// of the form `projects//instances/`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
-  /// from a previous ListDatabaseOperationsResponse to the same `parent` and
-  /// with the same `filter`.
-  ///
   /// [filter] - An expression that filters the list of returned operations. A
   /// filter expression consists of a field name, a comparison operator, and a
   /// value for filtering. The value must be a string, a number, or a boolean.
@@ -1690,6 +1686,10 @@ class ProjectsInstancesDatabaseOperationsResourceApi {
   /// [pageSize] - Number of operations to be returned in the response. If 0 or
   /// less, defaults to the server's maximum allowed page size.
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListDatabaseOperationsResponse to the same `parent` and
+  /// with the same `filter`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1702,9 +1702,9 @@ class ProjectsInstancesDatabaseOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDatabaseOperationsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.String filter,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1717,14 +1717,14 @@ class ProjectsInstancesDatabaseOperationsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2553,9 +2553,9 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2570,8 +2570,8 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   async.Future<ListOperationsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2587,11 +2587,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3179,15 +3179,15 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
-  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
-  /// less, defaults to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `labels.key` where key is the name of a label Some examples of using
   /// filters are: * `labels.env:*` --> The session has the label "env". *
   /// `labels.env:dev` --> The session has the label "env" and the value of the
   /// label contains the string "dev".
+  ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults to the server's maximum allowed page size.
   ///
   /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
   /// from a previous ListSessionsResponse.
@@ -3204,8 +3204,8 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(
     core.String database, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -3219,11 +3219,11 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

@@ -401,9 +401,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ApplicationsResourceApi res = api.AdminApi(mock).applications;
-      var arg_pageToken = 'foo';
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -432,11 +432,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -447,9 +447,9 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               customerId: arg_customerId,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkApplicationsListResponse(response);
@@ -560,11 +560,11 @@ void main() {
       var mock = HttpServerMock();
       api.TransfersResourceApi res = api.AdminApi(mock).transfers;
       var arg_customerId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_newOwnerUserId = 'foo';
       var arg_maxResults = 42;
-      var arg_status = 'foo';
+      var arg_newOwnerUserId = 'foo';
       var arg_oldOwnerUserId = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_status = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -594,15 +594,15 @@ void main() {
         }
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["newOwnerUserId"].first,
-            unittest.equals(arg_newOwnerUserId));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
+        unittest.expect(queryMap["newOwnerUserId"].first,
+            unittest.equals(arg_newOwnerUserId));
         unittest.expect(queryMap["oldOwnerUserId"].first,
             unittest.equals(arg_oldOwnerUserId));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -614,11 +614,11 @@ void main() {
       res
           .list(
               customerId: arg_customerId,
-              pageToken: arg_pageToken,
-              newOwnerUserId: arg_newOwnerUserId,
               maxResults: arg_maxResults,
-              status: arg_status,
+              newOwnerUserId: arg_newOwnerUserId,
               oldOwnerUserId: arg_oldOwnerUserId,
+              pageToken: arg_pageToken,
+              status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDataTransfersListResponse(response);

@@ -1141,9 +1141,9 @@ void main() {
       var mock = HttpServerMock();
       api.BillingAccountsResourceApi res =
           api.CloudbillingApi(mock).billingAccounts;
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1171,11 +1171,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1186,9 +1186,9 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBillingAccountsResponse(response);
@@ -1519,8 +1519,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.ServicesResourceApi res = api.CloudbillingApi(mock).services;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1548,10 +1548,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1562,8 +1562,8 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListServicesResponse(response);
@@ -1577,10 +1577,10 @@ void main() {
       api.ServicesSkusResourceApi res = api.CloudbillingApi(mock).services.skus;
       var arg_parent = 'foo';
       var arg_currencyCode = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_startTime = 'foo';
       var arg_endTime = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1612,13 +1612,13 @@ void main() {
         unittest.expect(
             queryMap["currencyCode"].first, unittest.equals(arg_currencyCode));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1630,10 +1630,10 @@ void main() {
       res
           .list(arg_parent,
               currencyCode: arg_currencyCode,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              startTime: arg_startTime,
               endTime: arg_endTime,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSkusResponse(response);

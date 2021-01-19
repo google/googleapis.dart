@@ -904,14 +904,14 @@ class BillingAccountsLogsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -925,8 +925,8 @@ class BillingAccountsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -939,11 +939,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1242,6 +1242,15 @@ class BillingAccountsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -1251,15 +1260,6 @@ class BillingAccountsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1274,8 +1274,8 @@ class BillingAccountsSinksResourceApi {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.String updateMask,
     core.bool uniqueWriterIdentity,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -1291,11 +1291,11 @@ class BillingAccountsSinksResourceApi {
     if (sinkName == null) {
       throw core.ArgumentError('Parameter sinkName is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams['uniqueWriterIdentity'] = ['${uniqueWriterIdentity}'];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1700,14 +1700,14 @@ class ExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1721,8 +1721,8 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1735,11 +1735,11 @@ class ExclusionsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2370,14 +2370,14 @@ class FoldersLocationsBucketsResourceApi {
   /// of LOCATION_ID will return all buckets.
   /// Value must have pattern "^folders/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2391,8 +2391,8 @@ class FoldersLocationsBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2405,11 +2405,11 @@ class FoldersLocationsBucketsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2644,14 +2644,14 @@ class FoldersLogsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2665,8 +2665,8 @@ class FoldersLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2679,11 +2679,11 @@ class FoldersLogsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2981,6 +2981,15 @@ class FoldersSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -2990,15 +2999,6 @@ class FoldersSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3013,8 +3013,8 @@ class FoldersSinksResourceApi {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.String updateMask,
     core.bool uniqueWriterIdentity,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -3030,11 +3030,11 @@ class FoldersSinksResourceApi {
     if (sinkName == null) {
       throw core.ArgumentError('Parameter sinkName is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams['uniqueWriterIdentity'] = ['${uniqueWriterIdentity}'];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4096,14 +4096,14 @@ class OrganizationsExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4117,8 +4117,8 @@ class OrganizationsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4131,11 +4131,11 @@ class OrganizationsExclusionsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4437,14 +4437,14 @@ class OrganizationsLocationsBucketsResourceApi {
   /// of LOCATION_ID will return all buckets.
   /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4458,8 +4458,8 @@ class OrganizationsLocationsBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4472,11 +4472,11 @@ class OrganizationsLocationsBucketsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4975,14 +4975,14 @@ class OrganizationsSinksResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4996,8 +4996,8 @@ class OrganizationsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -5010,11 +5010,11 @@ class OrganizationsSinksResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5143,6 +5143,15 @@ class OrganizationsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -5152,15 +5161,6 @@ class OrganizationsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5175,8 +5175,8 @@ class OrganizationsSinksResourceApi {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.String updateMask,
     core.bool uniqueWriterIdentity,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -5192,11 +5192,11 @@ class OrganizationsSinksResourceApi {
     if (sinkName == null) {
       throw core.ArgumentError('Parameter sinkName is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams['uniqueWriterIdentity'] = ['${uniqueWriterIdentity}'];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5417,14 +5417,14 @@ class ProjectsExclusionsResourceApi {
   /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5438,8 +5438,8 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -5452,11 +5452,11 @@ class ProjectsExclusionsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6658,6 +6658,15 @@ class ProjectsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -6667,15 +6676,6 @@ class ProjectsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6690,8 +6690,8 @@ class ProjectsSinksResourceApi {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.String updateMask,
     core.bool uniqueWriterIdentity,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -6707,11 +6707,11 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw core.ArgumentError('Parameter sinkName is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams['uniqueWriterIdentity'] = ['${uniqueWriterIdentity}'];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6749,6 +6749,15 @@ class ProjectsSinksResourceApi {
   /// "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field: If the old and new values of this field are both false or
+  /// both true, then there is no change to the sink's writer_identity. If the
+  /// old value is false and the new value is true, then writer_identity is
+  /// changed to a unique service account. It is an error if the old value is
+  /// true and the new value is set to false or defaulted to false.
+  ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
   /// the update mask. name and output only fields cannot be updated.An empty
@@ -6758,15 +6767,6 @@ class ProjectsSinksResourceApi {
   /// updateMask will be an error.For a detailed FieldMask definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
-  ///
-  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
-  /// this field. When updating a sink, the effect of this field on the value of
-  /// writer_identity in the updated sink depends on both the old and new values
-  /// of this field: If the old and new values of this field are both false or
-  /// both true, then there is no change to the sink's writer_identity. If the
-  /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6781,8 +6781,8 @@ class ProjectsSinksResourceApi {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.String updateMask,
     core.bool uniqueWriterIdentity,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -6798,11 +6798,11 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw core.ArgumentError('Parameter sinkName is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams['uniqueWriterIdentity'] = ['${uniqueWriterIdentity}'];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

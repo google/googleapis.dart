@@ -1590,8 +1590,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_includeInactive = true;
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1642,10 +1642,10 @@ void main() {
         }
         unittest.expect(queryMap["includeInactive"].first,
             unittest.equals("$arg_includeInactive"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1657,8 +1657,8 @@ void main() {
       res
           .list(arg_accountId, arg_adClientId,
               includeInactive: arg_includeInactive,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdUnits(response);
@@ -1825,13 +1825,13 @@ void main() {
       var arg_accountId = 'foo';
       var arg_startDate = 'foo';
       var arg_endDate = 'foo';
-      var arg_filter = buildUnnamed4320();
-      var arg_startIndex = 42;
+      var arg_dimension = buildUnnamed4320();
+      var arg_filter = buildUnnamed4321();
       var arg_locale = 'foo';
-      var arg_metric = buildUnnamed4321();
-      var arg_sort = buildUnnamed4322();
       var arg_maxResults = 42;
-      var arg_dimension = buildUnnamed4323();
+      var arg_metric = buildUnnamed4322();
+      var arg_sort = buildUnnamed4323();
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1875,15 +1875,15 @@ void main() {
             queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(
             queryMap["endDate"].first, unittest.equals(arg_endDate));
+        unittest.expect(queryMap["dimension"], unittest.equals(arg_dimension));
         unittest.expect(queryMap["filter"], unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
-        unittest.expect(queryMap["sort"], unittest.equals(arg_sort));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["dimension"], unittest.equals(arg_dimension));
+        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
+        unittest.expect(queryMap["sort"], unittest.equals(arg_sort));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1894,13 +1894,13 @@ void main() {
       }), true);
       res
           .generate(arg_accountId, arg_startDate, arg_endDate,
+              dimension: arg_dimension,
               filter: arg_filter,
-              startIndex: arg_startIndex,
               locale: arg_locale,
+              maxResults: arg_maxResults,
               metric: arg_metric,
               sort: arg_sort,
-              maxResults: arg_maxResults,
-              dimension: arg_dimension,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkReport(response);
@@ -1964,8 +1964,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AdclientsResourceApi res = api.AdsensehostApi(mock).adclients;
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1996,10 +1996,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2010,8 +2010,8 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAdClients(response);
@@ -2026,9 +2026,9 @@ void main() {
           api.AdsensehostApi(mock).associationsessions;
       var arg_productCode = buildUnnamed4324();
       var arg_websiteUrl = 'foo';
+      var arg_callbackUrl = 'foo';
       var arg_userLocale = 'foo';
       var arg_websiteLocale = 'foo';
-      var arg_callbackUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2064,11 +2064,11 @@ void main() {
         unittest.expect(
             queryMap["websiteUrl"].first, unittest.equals(arg_websiteUrl));
         unittest.expect(
+            queryMap["callbackUrl"].first, unittest.equals(arg_callbackUrl));
+        unittest.expect(
             queryMap["userLocale"].first, unittest.equals(arg_userLocale));
         unittest.expect(queryMap["websiteLocale"].first,
             unittest.equals(arg_websiteLocale));
-        unittest.expect(
-            queryMap["callbackUrl"].first, unittest.equals(arg_callbackUrl));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2079,9 +2079,9 @@ void main() {
       }), true);
       res
           .start(arg_productCode, arg_websiteUrl,
+              callbackUrl: arg_callbackUrl,
               userLocale: arg_userLocale,
               websiteLocale: arg_websiteLocale,
-              callbackUrl: arg_callbackUrl,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAssociationSession(response);
@@ -2335,8 +2335,8 @@ void main() {
       api.CustomchannelsResourceApi res =
           api.AdsensehostApi(mock).customchannels;
       var arg_adClientId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2376,10 +2376,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2390,8 +2390,8 @@ void main() {
       }), true);
       res
           .list(arg_adClientId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCustomChannels(response);
@@ -2536,11 +2536,11 @@ void main() {
       var arg_startDate = 'foo';
       var arg_endDate = 'foo';
       var arg_dimension = buildUnnamed4325();
-      var arg_metric = buildUnnamed4326();
-      var arg_filter = buildUnnamed4327();
-      var arg_maxResults = 42;
-      var arg_sort = buildUnnamed4328();
+      var arg_filter = buildUnnamed4326();
       var arg_locale = 'foo';
+      var arg_maxResults = 42;
+      var arg_metric = buildUnnamed4327();
+      var arg_sort = buildUnnamed4328();
       var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2577,12 +2577,12 @@ void main() {
         unittest.expect(
             queryMap["endDate"].first, unittest.equals(arg_endDate));
         unittest.expect(queryMap["dimension"], unittest.equals(arg_dimension));
-        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
         unittest.expect(queryMap["filter"], unittest.equals(arg_filter));
+        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
         unittest.expect(queryMap["sort"], unittest.equals(arg_sort));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2596,11 +2596,11 @@ void main() {
       res
           .generate(arg_startDate, arg_endDate,
               dimension: arg_dimension,
-              metric: arg_metric,
               filter: arg_filter,
-              maxResults: arg_maxResults,
-              sort: arg_sort,
               locale: arg_locale,
+              maxResults: arg_maxResults,
+              metric: arg_metric,
+              sort: arg_sort,
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2738,8 +2738,8 @@ void main() {
       var mock = HttpServerMock();
       api.UrlchannelsResourceApi res = api.AdsensehostApi(mock).urlchannels;
       var arg_adClientId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2779,10 +2779,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2793,8 +2793,8 @@ void main() {
       }), true);
       res
           .list(arg_adClientId,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUrlChannels(response);

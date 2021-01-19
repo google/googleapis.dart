@@ -877,15 +877,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
-  /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
-  /// gateways are returned. If `NON_GATEWAY` is specified, only non-gateway
-  /// devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is specified, all
-  /// devices are returned.
-  /// Possible string values are:
-  /// - "GATEWAY_TYPE_UNSPECIFIED" : If unspecified, the device is considered a
-  /// non-gateway device.
-  /// - "GATEWAY" : The device is a gateway.
-  /// - "NON_GATEWAY" : The device is not a gateway.
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum IDs: 10,000.
   ///
   /// [fieldMask] - The fields of the `Device` resource to be returned in the
   /// response. The fields `id` and `num_id` are always returned, along with any
@@ -903,20 +899,24 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// `123` is specified, only devices bound to the gateway with `num_id` 123
   /// are returned.
   ///
+  /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
+  /// gateways are returned. If `NON_GATEWAY` is specified, only non-gateway
+  /// devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is specified, all
+  /// devices are returned.
+  /// Possible string values are:
+  /// - "GATEWAY_TYPE_UNSPECIFIED" : If unspecified, the device is considered a
+  /// non-gateway device.
+  /// - "GATEWAY" : The device is a gateway.
+  /// - "NON_GATEWAY" : The device is not a gateway.
+  ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value is zero, the service will select a default size. A call may
   /// return fewer objects than requested. A non-empty `next_page_token` in the
   /// response indicates that more data is available.
   ///
-  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
-  /// ignored. Maximum IDs: 10,000.
-  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates that this is a continuation of a prior `ListDevices` call and
   /// the system should return the next page of data.
-  ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -930,14 +930,14 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(
     core.String parent, {
-    core.String gatewayListOptions_gatewayType,
+    core.List<core.String> deviceIds,
+    core.List<core.String> deviceNumIds,
     core.String fieldMask,
     core.String gatewayListOptions_associationsDeviceId,
     core.String gatewayListOptions_associationsGatewayId,
+    core.String gatewayListOptions_gatewayType,
     core.int pageSize,
-    core.List<core.String> deviceNumIds,
     core.String pageToken,
-    core.List<core.String> deviceIds,
     core.String $fields,
   }) {
     core.String _url;
@@ -950,10 +950,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (gatewayListOptions_gatewayType != null) {
-      _queryParams['gatewayListOptions.gatewayType'] = [
-        gatewayListOptions_gatewayType
-      ];
+    if (deviceIds != null) {
+      _queryParams['deviceIds'] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams['deviceNumIds'] = deviceNumIds;
     }
     if (fieldMask != null) {
       _queryParams['fieldMask'] = [fieldMask];
@@ -968,17 +969,16 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
         gatewayListOptions_associationsGatewayId
       ];
     }
+    if (gatewayListOptions_gatewayType != null) {
+      _queryParams['gatewayListOptions.gatewayType'] = [
+        gatewayListOptions_gatewayType
+      ];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (deviceNumIds != null) {
-      _queryParams['deviceNumIds'] = deviceNumIds;
-    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (deviceIds != null) {
-      _queryParams['deviceIds'] = deviceIds;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1558,6 +1558,22 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
   ///
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum IDs: 10,000.
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. The fields `id` and `num_id` are always returned, along with any
+  /// other fields specified.
+  ///
+  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
+  /// gateways with which the specified device is associated. The device ID can
+  /// be numeric (`num_id`) or the user-defined string (`id`). For example, if
+  /// `456` is specified, returns only the gateways to which the device with
+  /// `num_id` 456 is bound.
+  ///
   /// [gatewayListOptions_associationsGatewayId] - If set, only devices
   /// associated with the specified gateway are returned. The gateway ID can be
   /// numeric (`num_id`) or the user-defined string (`id`). For example, if
@@ -1574,18 +1590,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// - "GATEWAY" : The device is a gateway.
   /// - "NON_GATEWAY" : The device is not a gateway.
   ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
-  ///
-  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
-  /// gateways with which the specified device is associated. The device ID can
-  /// be numeric (`num_id`) or the user-defined string (`id`). For example, if
-  /// `456` is specified, returns only the gateways to which the device with
-  /// `num_id` 456 is bound.
-  ///
-  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
-  /// ignored. Maximum IDs: 10,000.
-  ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value is zero, the service will select a default size. A call may
   /// return fewer objects than requested. A non-empty `next_page_token` in the
@@ -1594,10 +1598,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates that this is a continuation of a prior `ListDevices` call and
   /// the system should return the next page of data.
-  ///
-  /// [fieldMask] - The fields of the `Device` resource to be returned in the
-  /// response. The fields `id` and `num_id` are always returned, along with any
-  /// other fields specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1611,14 +1611,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(
     core.String parent, {
+    core.List<core.String> deviceIds,
+    core.List<core.String> deviceNumIds,
+    core.String fieldMask,
+    core.String gatewayListOptions_associationsDeviceId,
     core.String gatewayListOptions_associationsGatewayId,
     core.String gatewayListOptions_gatewayType,
-    core.List<core.String> deviceIds,
-    core.String gatewayListOptions_associationsDeviceId,
-    core.List<core.String> deviceNumIds,
     core.int pageSize,
     core.String pageToken,
-    core.String fieldMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -1631,6 +1631,20 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (deviceIds != null) {
+      _queryParams['deviceIds'] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams['deviceNumIds'] = deviceNumIds;
+    }
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
+    }
+    if (gatewayListOptions_associationsDeviceId != null) {
+      _queryParams['gatewayListOptions.associationsDeviceId'] = [
+        gatewayListOptions_associationsDeviceId
+      ];
+    }
     if (gatewayListOptions_associationsGatewayId != null) {
       _queryParams['gatewayListOptions.associationsGatewayId'] = [
         gatewayListOptions_associationsGatewayId
@@ -1641,25 +1655,11 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
         gatewayListOptions_gatewayType
       ];
     }
-    if (deviceIds != null) {
-      _queryParams['deviceIds'] = deviceIds;
-    }
-    if (gatewayListOptions_associationsDeviceId != null) {
-      _queryParams['gatewayListOptions.associationsDeviceId'] = [
-        gatewayListOptions_associationsDeviceId
-      ];
-    }
-    if (deviceNumIds != null) {
-      _queryParams['deviceNumIds'] = deviceNumIds;
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (fieldMask != null) {
-      _queryParams['fieldMask'] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

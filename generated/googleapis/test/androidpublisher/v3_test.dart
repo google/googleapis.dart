@@ -5047,9 +5047,9 @@ void main() {
       api.InappproductsResourceApi res =
           api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = 'foo';
-      var arg_token = 'foo';
       var arg_maxResults = 42;
       var arg_startIndex = 42;
+      var arg_token = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5086,11 +5086,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
+        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5101,9 +5101,9 @@ void main() {
       }), true);
       res
           .list(arg_packageName,
-              token: arg_token,
               maxResults: arg_maxResults,
               startIndex: arg_startIndex,
+              token: arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkInappproductsListResponse(response);
@@ -6048,11 +6048,11 @@ void main() {
       api.PurchasesVoidedpurchasesResourceApi res =
           api.AndroidpublisherApi(mock).purchases.voidedpurchases;
       var arg_packageName = 'foo';
-      var arg_startIndex = 42;
-      var arg_maxResults = 42;
-      var arg_token = 'foo';
-      var arg_startTime = 'foo';
       var arg_endTime = 'foo';
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
+      var arg_startTime = 'foo';
+      var arg_token = 'foo';
       var arg_type = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6090,15 +6090,15 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
         unittest.expect(
             core.int.parse(queryMap["type"].first), unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -6111,11 +6111,11 @@ void main() {
       }), true);
       res
           .list(arg_packageName,
-              startIndex: arg_startIndex,
-              maxResults: arg_maxResults,
-              token: arg_token,
-              startTime: arg_startTime,
               endTime: arg_endTime,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              startTime: arg_startTime,
+              token: arg_token,
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6193,10 +6193,10 @@ void main() {
       var mock = HttpServerMock();
       api.ReviewsResourceApi res = api.AndroidpublisherApi(mock).reviews;
       var arg_packageName = 'foo';
-      var arg_translationLanguage = 'foo';
+      var arg_maxResults = 42;
       var arg_startIndex = 42;
       var arg_token = 'foo';
-      var arg_maxResults = 42;
+      var arg_translationLanguage = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6233,13 +6233,13 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["translationLanguage"].first,
-            unittest.equals(arg_translationLanguage));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["startIndex"].first),
             unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+        unittest.expect(queryMap["translationLanguage"].first,
+            unittest.equals(arg_translationLanguage));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6250,10 +6250,10 @@ void main() {
       }), true);
       res
           .list(arg_packageName,
-              translationLanguage: arg_translationLanguage,
+              maxResults: arg_maxResults,
               startIndex: arg_startIndex,
               token: arg_token,
-              maxResults: arg_maxResults,
+              translationLanguage: arg_translationLanguage,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkReviewsListResponse(response);

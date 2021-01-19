@@ -2138,11 +2138,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_customerId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filter = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2170,15 +2170,15 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2189,11 +2189,11 @@ void main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               customerId: arg_customerId,
-              pageToken: arg_pageToken,
               filter: arg_filter,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAlertsResponse(response);
@@ -2330,8 +2330,8 @@ void main() {
       api.AlertsFeedbackResourceApi res =
           api.AlertcenterApi(mock).alerts.feedback;
       var arg_alertId = 'foo';
-      var arg_filter = 'foo';
       var arg_customerId = 'foo';
+      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2368,9 +2368,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2381,8 +2381,8 @@ void main() {
       }), true);
       res
           .list(arg_alertId,
-              filter: arg_filter,
               customerId: arg_customerId,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAlertFeedbackResponse(response);

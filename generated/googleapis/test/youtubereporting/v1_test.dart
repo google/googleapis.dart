@@ -917,10 +917,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.JobsResourceApi res = api.YoutubereportingApi(mock).jobs;
-      var arg_pageToken = 'foo';
+      var arg_includeSystemManaged = true;
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_pageSize = 42;
-      var arg_includeSystemManaged = true;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -948,14 +948,14 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["includeSystemManaged"].first,
+            unittest.equals("$arg_includeSystemManaged"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["includeSystemManaged"].first,
-            unittest.equals("$arg_includeSystemManaged"));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -966,10 +966,10 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
+              includeSystemManaged: arg_includeSystemManaged,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               pageSize: arg_pageSize,
-              includeSystemManaged: arg_includeSystemManaged,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListJobsResponse(response);
@@ -1048,11 +1048,11 @@ void main() {
       api.JobsReportsResourceApi res =
           api.YoutubereportingApi(mock).jobs.reports;
       var arg_jobId = 'foo';
-      var arg_startTimeAtOrAfter = 'foo';
+      var arg_createdAfter = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_createdAfter = 'foo';
+      var arg_startTimeAtOrAfter = 'foo';
       var arg_startTimeBefore = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1090,16 +1090,16 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["startTimeAtOrAfter"].first,
-            unittest.equals(arg_startTimeAtOrAfter));
+        unittest.expect(
+            queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
+        unittest.expect(queryMap["startTimeAtOrAfter"].first,
+            unittest.equals(arg_startTimeAtOrAfter));
         unittest.expect(queryMap["startTimeBefore"].first,
             unittest.equals(arg_startTimeBefore));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1112,11 +1112,11 @@ void main() {
       }), true);
       res
           .list(arg_jobId,
-              startTimeAtOrAfter: arg_startTimeAtOrAfter,
+              createdAfter: arg_createdAfter,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              createdAfter: arg_createdAfter,
+              startTimeAtOrAfter: arg_startTimeAtOrAfter,
               startTimeBefore: arg_startTimeBefore,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

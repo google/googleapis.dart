@@ -2105,8 +2105,8 @@ void main() {
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
       api.EntriesResourceApi res = api.DatacatalogApi(mock).entries;
-      var arg_sqlResource = 'foo';
       var arg_linkedResource = 'foo';
+      var arg_sqlResource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2134,10 +2134,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["sqlResource"].first, unittest.equals(arg_sqlResource));
         unittest.expect(queryMap["linkedResource"].first,
             unittest.equals(arg_linkedResource));
+        unittest.expect(
+            queryMap["sqlResource"].first, unittest.equals(arg_sqlResource));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2149,8 +2149,8 @@ void main() {
       }), true);
       res
           .lookup(
-              sqlResource: arg_sqlResource,
               linkedResource: arg_linkedResource,
+              sqlResource: arg_sqlResource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1Entry(response);
@@ -2802,9 +2802,9 @@ void main() {
       api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_parent = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_readMask = 'foo';
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2833,12 +2833,12 @@ void main() {
             );
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2850,9 +2850,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               readMask: arg_readMask,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(response);
@@ -3076,8 +3076,8 @@ void main() {
       api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3106,10 +3106,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3121,8 +3121,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListTagsResponse(response);
@@ -4168,8 +4168,8 @@ void main() {
       api.ProjectsLocationsTaxonomiesResourceApi res =
           api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
-      var arg_taxonomies = buildUnnamed5871();
       var arg_serializedTaxonomies = true;
+      var arg_taxonomies = buildUnnamed5871();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4198,10 +4198,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["taxonomies"], unittest.equals(arg_taxonomies));
         unittest.expect(queryMap["serializedTaxonomies"].first,
             unittest.equals("$arg_serializedTaxonomies"));
+        unittest.expect(
+            queryMap["taxonomies"], unittest.equals(arg_taxonomies));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4213,8 +4213,8 @@ void main() {
       }), true);
       res
           .export(arg_parent,
-              taxonomies: arg_taxonomies,
               serializedTaxonomies: arg_serializedTaxonomies,
+              taxonomies: arg_taxonomies,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(response);
@@ -4383,8 +4383,8 @@ void main() {
       api.ProjectsLocationsTaxonomiesResourceApi res =
           api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4413,10 +4413,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4428,8 +4428,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(response);

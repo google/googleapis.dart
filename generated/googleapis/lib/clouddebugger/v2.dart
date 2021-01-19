@@ -313,11 +313,11 @@ class DebuggerDebuggeesResourceApi {
   /// [clientVersion] - Required. The client version making the call. Schema:
   /// `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
-  /// [project] - Required. Project number of a Google Cloud project whose
-  /// debuggees to list.
-  ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the result includes only debuggees that are active.
+  ///
+  /// [project] - Required. Project number of a Google Cloud project whose
+  /// debuggees to list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -331,8 +331,8 @@ class DebuggerDebuggeesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list({
     core.String clientVersion,
-    core.String project,
     core.bool includeInactive,
+    core.String project,
     core.String $fields,
   }) {
     core.String _url;
@@ -345,11 +345,11 @@ class DebuggerDebuggeesResourceApi {
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
     }
-    if (project != null) {
-      _queryParams['project'] = [project];
-    }
     if (includeInactive != null) {
       _queryParams['includeInactive'] = ['${includeInactive}'];
+    }
+    if (project != null) {
+      _queryParams['project'] = [project];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -510,15 +510,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - Required. ID of the debuggee whose breakpoints to list.
   ///
-  /// [clientVersion] - Required. The client version making the call. Schema:
-  /// `domain/type/version` (e.g., `google.com/intellij/v1`).
-  ///
-  /// [waitToken] - A wait token that, if specified, blocks the call until the
-  /// breakpoints list has changed, or a server selected timeout has expired.
-  /// The value should be set from the last response. The error code
-  /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which should
-  /// be called again with the same `wait_token`.
-  ///
   /// [action_value] - Only breakpoints with the specified action will pass the
   /// filter.
   /// Possible string values are:
@@ -528,16 +519,25 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// - "LOG" : Log each breakpoint hit. The breakpoint remains active until
   /// deleted or expired.
   ///
-  /// [stripResults] - This field is deprecated. The following fields are always
-  /// stripped out of the result: `stack_frames`, `evaluated_expressions` and
-  /// `variable_table`.
-  ///
-  /// [includeInactive] - When set to `true`, the response includes active and
-  /// inactive breakpoints. Otherwise, it includes only active breakpoints.
+  /// [clientVersion] - Required. The client version making the call. Schema:
+  /// `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [includeAllUsers] - When set to `true`, the response includes the list of
   /// breakpoints set by any user. Otherwise, it includes only breakpoints set
   /// by the caller.
+  ///
+  /// [includeInactive] - When set to `true`, the response includes active and
+  /// inactive breakpoints. Otherwise, it includes only active breakpoints.
+  ///
+  /// [stripResults] - This field is deprecated. The following fields are always
+  /// stripped out of the result: `stack_frames`, `evaluated_expressions` and
+  /// `variable_table`.
+  ///
+  /// [waitToken] - A wait token that, if specified, blocks the call until the
+  /// breakpoints list has changed, or a server selected timeout has expired.
+  /// The value should be set from the last response. The error code
+  /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which should
+  /// be called again with the same `wait_token`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -551,12 +551,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(
     core.String debuggeeId, {
-    core.String clientVersion,
-    core.String waitToken,
     core.String action_value,
-    core.bool stripResults,
-    core.bool includeInactive,
+    core.String clientVersion,
     core.bool includeAllUsers,
+    core.bool includeInactive,
+    core.bool stripResults,
+    core.String waitToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -569,23 +569,23 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if (waitToken != null) {
-      _queryParams['waitToken'] = [waitToken];
-    }
     if (action_value != null) {
       _queryParams['action.value'] = [action_value];
     }
-    if (stripResults != null) {
-      _queryParams['stripResults'] = ['${stripResults}'];
+    if (clientVersion != null) {
+      _queryParams['clientVersion'] = [clientVersion];
+    }
+    if (includeAllUsers != null) {
+      _queryParams['includeAllUsers'] = ['${includeAllUsers}'];
     }
     if (includeInactive != null) {
       _queryParams['includeInactive'] = ['${includeInactive}'];
     }
-    if (includeAllUsers != null) {
-      _queryParams['includeAllUsers'] = ['${includeAllUsers}'];
+    if (stripResults != null) {
+      _queryParams['stripResults'] = ['${stripResults}'];
+    }
+    if (waitToken != null) {
+      _queryParams['waitToken'] = [waitToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -616,9 +616,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// [debuggeeId] - Required. ID of the debuggee where the breakpoint is to be
   /// set.
   ///
-  /// [clientVersion] - Required. The client version making the call. Schema:
-  /// `domain/type/version` (e.g., `google.com/intellij/v1`).
-  ///
   /// [canaryOption] - The canary option set by the user upon setting
   /// breakpoint.
   /// Possible string values are:
@@ -630,6 +627,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// - "CANARY_OPTION_TRY_DISABLE" : Disable the canary for this breakpoint if
   /// the canary_mode of the debuggee is not CANARY_MODE_ALWAYS_ENABLED or
   /// CANARY_MODE_ALWAYS_DISABLED.
+  ///
+  /// [clientVersion] - Required. The client version making the call. Schema:
+  /// `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -644,8 +644,8 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<SetBreakpointResponse> set(
     Breakpoint request,
     core.String debuggeeId, {
-    core.String clientVersion,
     core.String canaryOption,
+    core.String clientVersion,
     core.String $fields,
   }) {
     core.String _url;
@@ -661,11 +661,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
     if (canaryOption != null) {
       _queryParams['canaryOption'] = [canaryOption];
+    }
+    if (clientVersion != null) {
+      _queryParams['clientVersion'] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
