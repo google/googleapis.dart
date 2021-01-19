@@ -21,9 +21,18 @@ class Package {
   final String license;
   final String changelog;
   final String example;
+  final String monoPkg;
 
-  Package(this.name, this.apis, this.pubspec, this.readme, this.license,
-      this.changelog, this.example);
+  Package(
+    this.name,
+    this.apis,
+    this.pubspec,
+    this.readme,
+    this.license,
+    this.changelog,
+    this.example,
+    this.monoPkg,
+  );
 }
 
 /// Configuration of a set of packages generated from a set of APIs exposed by
@@ -151,6 +160,10 @@ class DiscoveryPackagesConfiguration {
         File('$generatedApisDir/$name/CHANGELOG.md')
             .writeAsStringSync(package.changelog);
       }
+      if (package.monoPkg != null) {
+        File('$generatedApisDir/$name/mono_pkg.yaml')
+            .writeAsStringSync(package.monoPkg);
+      }
       if (package.example != null) {
         Directory('$generatedApisDir/$name/example').createSync();
         File('$generatedApisDir/$name/example/main.dart')
@@ -251,6 +264,12 @@ package.
       example = File(exampleFile).readAsStringSync();
     }
 
+    String monoPkg;
+    if (values['mono_pkg'] != null) {
+      final monoPkgFile = configUri.resolve(values['mono_pkg']).path;
+      monoPkg = File(monoPkgFile).readAsStringSync();
+    }
+
     // Generate package description.
     final apiDescriptions = <RestDescription>[];
     const description = 'Auto-generated client libraries for accessing Google '
@@ -271,8 +290,13 @@ package.
     final changelog = File(changelogFile).readAsStringSync();
 
     // Create package description with pubspec.yaml information.
-    final pubspec =
-        Pubspec(name, version, description, author: author, homepage: homepage);
+    final pubspec = Pubspec(
+      name,
+      version,
+      description,
+      author: author,
+      homepage: homepage,
+    );
     return Package(
       name,
       List<String>.from(apis),
@@ -281,6 +305,7 @@ package.
       license,
       changelog,
       example,
+      monoPkg,
     );
   }
 

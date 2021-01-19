@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.cloudkms.v1;
 
@@ -3314,7 +3310,9 @@ class DecryptResponse {
 class DestroyCryptoKeyVersionRequest {
   DestroyCryptoKeyVersionRequest();
 
-  DestroyCryptoKeyVersionRequest.fromJson(core.Map _json) {}
+  DestroyCryptoKeyVersionRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4540,7 +4538,9 @@ class PublicKey {
 class RestoreCryptoKeyVersionRequest {
   RestoreCryptoKeyVersionRequest();
 
-  RestoreCryptoKeyVersionRequest.fromJson(core.Map _json) {}
+  RestoreCryptoKeyVersionRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis_beta.gameservices.v1beta;
 
@@ -2681,7 +2677,9 @@ class Binding {
 class CancelOperationRequest {
   CancelOperationRequest();
 
-  CancelOperationRequest.fromJson(core.Map _json) {}
+  CancelOperationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -3196,7 +3194,9 @@ class DeployedFleetStatus {
 class Empty {
   Empty();
 
-  Empty.fromJson(core.Map _json) {}
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -3278,7 +3278,9 @@ class Expr {
 class FetchDeploymentStateRequest {
   FetchDeploymentStateRequest();
 
-  FetchDeploymentStateRequest.fromJson(core.Map _json) {}
+  FetchDeploymentStateRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

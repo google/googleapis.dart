@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.healthcare.v1;
 
@@ -5946,7 +5942,9 @@ class Binding {
 class CancelOperationRequest {
   CancelOperationRequest();
 
-  CancelOperationRequest.fromJson(core.Map _json) {}
+  CancelOperationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6295,7 +6293,9 @@ class DeidentifyFhirStoreRequest {
 class DeidentifySummary {
   DeidentifySummary();
 
-  DeidentifySummary.fromJson(core.Map _json) {}
+  DeidentifySummary.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6463,7 +6463,9 @@ class DicomStore {
 class Empty {
   Empty();
 
-  Empty.fromJson(core.Map _json) {}
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6518,7 +6520,9 @@ class ExportDicomDataRequest {
 class ExportDicomDataResponse {
   ExportDicomDataResponse();
 
-  ExportDicomDataResponse.fromJson(core.Map _json) {}
+  ExportDicomDataResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6574,7 +6578,9 @@ class ExportResourcesRequest {
 class ExportResourcesResponse {
   ExportResourcesResponse();
 
-  ExportResourcesResponse.fromJson(core.Map _json) {}
+  ExportResourcesResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6898,7 +6904,8 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {
   GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary();
 
   GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary.fromJson(
-      core.Map _json) {}
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6912,7 +6919,8 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
   GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary();
 
   GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary.fromJson(
-      core.Map _json) {}
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -7434,7 +7442,9 @@ class ImportDicomDataRequest {
 class ImportDicomDataResponse {
   ImportDicomDataResponse();
 
-  ImportDicomDataResponse.fromJson(core.Map _json) {}
+  ImportDicomDataResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -7499,7 +7509,9 @@ class ImportResourcesRequest {
 class ImportResourcesResponse {
   ImportResourcesResponse();
 
-  ImportResourcesResponse.fromJson(core.Map _json) {}
+  ImportResourcesResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -8520,7 +8532,9 @@ class ProgressCounter {
 class RedactConfig {
   RedactConfig();
 
-  RedactConfig.fromJson(core.Map _json) {}
+  RedactConfig.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -8535,7 +8549,9 @@ class RedactConfig {
 class ReplaceWithInfoTypeConfig {
   ReplaceWithInfoTypeConfig();
 
-  ReplaceWithInfoTypeConfig.fromJson(core.Map _json) {}
+  ReplaceWithInfoTypeConfig.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

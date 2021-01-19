@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.servicenetworking.v1;
 
@@ -1461,7 +1457,9 @@ class ServicesRolesResourceApi {
 class AddDnsRecordSetMetadata {
   AddDnsRecordSetMetadata();
 
-  AddDnsRecordSetMetadata.fromJson(core.Map _json) {}
+  AddDnsRecordSetMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1521,7 +1519,9 @@ class AddDnsRecordSetRequest {
 class AddDnsZoneMetadata {
   AddDnsZoneMetadata();
 
-  AddDnsZoneMetadata.fromJson(core.Map _json) {}
+  AddDnsZoneMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1617,7 +1617,9 @@ class AddDnsZoneResponse {
 class AddRolesMetadata {
   AddRolesMetadata();
 
-  AddRolesMetadata.fromJson(core.Map _json) {}
+  AddRolesMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2408,7 +2410,9 @@ class BillingDestination {
 class CancelOperationRequest {
   CancelOperationRequest();
 
-  CancelOperationRequest.fromJson(core.Map _json) {}
+  CancelOperationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2746,7 +2750,9 @@ class CustomHttpPattern {
 class DeletePeeredDnsDomainMetadata {
   DeletePeeredDnsDomainMetadata();
 
-  DeletePeeredDnsDomainMetadata.fromJson(core.Map _json) {}
+  DeletePeeredDnsDomainMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -3030,7 +3036,9 @@ class DocumentationRule {
 class Empty {
   Empty();
 
-  Empty.fromJson(core.Map _json) {}
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5046,7 +5054,9 @@ class PeeredDnsDomain {
 class PeeredDnsDomainMetadata {
   PeeredDnsDomainMetadata();
 
-  PeeredDnsDomainMetadata.fromJson(core.Map _json) {}
+  PeeredDnsDomainMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5372,7 +5382,9 @@ class RangeReservation {
 class RemoveDnsRecordSetMetadata {
   RemoveDnsRecordSetMetadata();
 
-  RemoveDnsRecordSetMetadata.fromJson(core.Map _json) {}
+  RemoveDnsRecordSetMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5432,7 +5444,9 @@ class RemoveDnsRecordSetRequest {
 class RemoveDnsRecordSetResponse {
   RemoveDnsRecordSetResponse();
 
-  RemoveDnsRecordSetResponse.fromJson(core.Map _json) {}
+  RemoveDnsRecordSetResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5446,7 +5460,9 @@ class RemoveDnsRecordSetResponse {
 class RemoveDnsZoneMetadata {
   RemoveDnsZoneMetadata();
 
-  RemoveDnsZoneMetadata.fromJson(core.Map _json) {}
+  RemoveDnsZoneMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5496,7 +5512,9 @@ class RemoveDnsZoneRequest {
 class RemoveDnsZoneResponse {
   RemoveDnsZoneResponse();
 
-  RemoveDnsZoneResponse.fromJson(core.Map _json) {}
+  RemoveDnsZoneResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6326,7 +6344,9 @@ class Type {
 class UpdateDnsRecordSetMetadata {
   UpdateDnsRecordSetMetadata();
 
-  UpdateDnsRecordSetMetadata.fromJson(core.Map _json) {}
+  UpdateDnsRecordSetMetadata.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

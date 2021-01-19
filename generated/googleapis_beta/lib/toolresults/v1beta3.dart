@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis_beta.toolresults.v1beta3;
 
@@ -2728,7 +2724,9 @@ class AndroidTest {
 class AndroidTestLoop {
   AndroidTestLoop();
 
-  AndroidTestLoop.fromJson(core.Map _json) {}
+  AndroidTestLoop.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2858,7 +2856,9 @@ class AppStartTime {
 class AvailableDeepLinks {
   AvailableDeepLinks();
 
-  AvailableDeepLinks.fromJson(core.Map _json) {}
+  AvailableDeepLinks.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -3471,7 +3471,9 @@ class Execution {
 class FailedToInstall {
   FailedToInstall();
 
-  FailedToInstall.fromJson(core.Map _json) {}
+  FailedToInstall.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4035,7 +4037,9 @@ class IndividualOutcome {
 class InsufficientCoverage {
   InsufficientCoverage();
 
-  InsufficientCoverage.fromJson(core.Map _json) {}
+  InsufficientCoverage.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4094,7 +4098,9 @@ class IosAppInfo {
 class IosRoboTest {
   IosRoboTest();
 
-  IosRoboTest.fromJson(core.Map _json) {}
+  IosRoboTest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4221,7 +4227,9 @@ class IosXcTest {
 class LauncherActivityNotFound {
   LauncherActivityNotFound();
 
-  LauncherActivityNotFound.fromJson(core.Map _json) {}
+  LauncherActivityNotFound.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4604,7 +4612,9 @@ class ListTestCasesResponse {
 class MatrixDimensionDefinition {
   MatrixDimensionDefinition();
 
-  MatrixDimensionDefinition.fromJson(core.Map _json) {}
+  MatrixDimensionDefinition.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5345,7 +5355,9 @@ class PerfSampleSeries {
 class PerformedGoogleLogin {
   PerformedGoogleLogin();
 
-  PerformedGoogleLogin.fromJson(core.Map _json) {}
+  PerformedGoogleLogin.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6264,7 +6276,9 @@ class StepLabelsEntry {
 class StepSummary {
   StepSummary();
 
-  StepSummary.fromJson(core.Map _json) {}
+  StepSummary.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -7256,7 +7270,9 @@ class UIElementTooDeep {
 class UnspecifiedWarning {
   UnspecifiedWarning();
 
-  UnspecifiedWarning.fromJson(core.Map _json) {}
+  UnspecifiedWarning.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

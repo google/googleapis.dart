@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.dlp.v2;
 
@@ -6866,7 +6862,9 @@ class GooglePrivacyDlpV2Action {
 class GooglePrivacyDlpV2ActivateJobTriggerRequest {
   GooglePrivacyDlpV2ActivateJobTriggerRequest();
 
-  GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -7423,7 +7421,9 @@ class GooglePrivacyDlpV2ByteContentItem {
 class GooglePrivacyDlpV2CancelDlpJobRequest {
   GooglePrivacyDlpV2CancelDlpJobRequest();
 
-  GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -10214,7 +10214,9 @@ class GooglePrivacyDlpV2FindingLimits {
 class GooglePrivacyDlpV2FinishDlpJobRequest {
   GooglePrivacyDlpV2FinishDlpJobRequest();
 
-  GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -10496,7 +10498,9 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
 class GooglePrivacyDlpV2HybridInspectResponse {
   GooglePrivacyDlpV2HybridInspectResponse();
 
-  GooglePrivacyDlpV2HybridInspectResponse.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -11389,7 +11393,9 @@ class GooglePrivacyDlpV2InspectionRuleSet {
 class GooglePrivacyDlpV2JobNotificationEmails {
   GooglePrivacyDlpV2JobNotificationEmails();
 
-  GooglePrivacyDlpV2JobNotificationEmails.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2JobNotificationEmails.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -12290,7 +12296,9 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
 class GooglePrivacyDlpV2LeaveUntransformed {
   GooglePrivacyDlpV2LeaveUntransformed();
 
-  GooglePrivacyDlpV2LeaveUntransformed.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2LeaveUntransformed.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -12620,7 +12628,9 @@ class GooglePrivacyDlpV2Location {
 class GooglePrivacyDlpV2Manual {
   GooglePrivacyDlpV2Manual();
 
-  GooglePrivacyDlpV2Manual.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2Manual.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -13128,7 +13138,8 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
   GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
 
   GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-      core.Map _json) {}
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -13148,7 +13159,9 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
 class GooglePrivacyDlpV2PublishSummaryToCscc {
   GooglePrivacyDlpV2PublishSummaryToCscc();
 
-  GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -13194,7 +13207,9 @@ class GooglePrivacyDlpV2PublishToPubSub {
 class GooglePrivacyDlpV2PublishToStackdriver {
   GooglePrivacyDlpV2PublishToStackdriver();
 
-  GooglePrivacyDlpV2PublishToStackdriver.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2PublishToStackdriver.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -13565,7 +13580,9 @@ class GooglePrivacyDlpV2RecordTransformations {
 class GooglePrivacyDlpV2RedactConfig {
   GooglePrivacyDlpV2RedactConfig();
 
-  GooglePrivacyDlpV2RedactConfig.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2RedactConfig.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -13873,7 +13890,9 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
   GooglePrivacyDlpV2ReplaceWithInfoTypeConfig();
 
-  GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -14576,7 +14595,9 @@ class GooglePrivacyDlpV2SummaryResult {
 class GooglePrivacyDlpV2SurrogateType {
   GooglePrivacyDlpV2SurrogateType();
 
-  GooglePrivacyDlpV2SurrogateType.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2SurrogateType.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -14744,7 +14765,9 @@ class GooglePrivacyDlpV2TaggedField {
 class GooglePrivacyDlpV2ThrowError {
   GooglePrivacyDlpV2ThrowError();
 
-  GooglePrivacyDlpV2ThrowError.fromJson(core.Map _json) {}
+  GooglePrivacyDlpV2ThrowError.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -15429,7 +15452,9 @@ class GooglePrivacyDlpV2WordList {
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
-  GoogleProtobufEmpty.fromJson(core.Map _json) {}
+  GoogleProtobufEmpty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
