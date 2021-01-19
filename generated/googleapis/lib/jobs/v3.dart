@@ -71,6 +71,10 @@ class ProjectsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [companyName] - Optional. If provided, restricts completion to specified
+  /// company. The format is "projects/{project_id}/companies/{company_id}", for
+  /// example, "projects/api-test-project/companies/foo".
+  ///
   /// [languageCode] - Deprecated. Use language_codes instead. Optional. The
   /// language of the query. This is the BCP-47 language code, such as "en-US"
   /// or "sr-Latn". For more information, see [Tags for Identifying
@@ -93,15 +97,11 @@ class ProjectsResourceApi {
   /// or companies having open jobs with the same language_codes are returned.
   /// The maximum number of allowed characters is 255.
   ///
-  /// [companyName] - Optional. If provided, restricts completion to specified
-  /// company. The format is "projects/{project_id}/companies/{company_id}", for
-  /// example, "projects/api-test-project/companies/foo".
+  /// [pageSize] - Required. Completion result count. The maximum allowed page
+  /// size is 10.
   ///
   /// [query] - Required. The query used to generate suggestions. The maximum
   /// number of allowed characters is 255.
-  ///
-  /// [pageSize] - Required. Completion result count. The maximum allowed page
-  /// size is 10.
   ///
   /// [scope] - Optional. The scope of the completion. The defaults is
   /// CompletionScope.PUBLIC.
@@ -132,11 +132,11 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(
     core.String name, {
+    core.String companyName,
     core.String languageCode,
     core.List<core.String> languageCodes,
-    core.String companyName,
-    core.String query,
     core.int pageSize,
+    core.String query,
     core.String scope,
     core.String type,
     core.String $fields,
@@ -151,20 +151,20 @@ class ProjectsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    if (companyName != null) {
+      _queryParams['companyName'] = [companyName];
+    }
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
     }
     if (languageCodes != null) {
       _queryParams['languageCodes'] = languageCodes;
     }
-    if (companyName != null) {
-      _queryParams['companyName'] = [companyName];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (query != null) {
       _queryParams['query'] = [query];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (scope != null) {
       _queryParams['scope'] = [scope];
@@ -436,15 +436,15 @@ class ProjectsCompaniesResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of companies to be returned, at
+  /// most 100. Default is 100 if a non-positive number is provided.
+  ///
   /// [pageToken] - Optional. The starting indicator from which to return
   /// results.
   ///
   /// [requireOpenJobs] - Optional. Set to true if the companies requested must
   /// have open jobs. Defaults to false. If true, at most page_size of companies
   /// are fetched, among which only those with open jobs are returned.
-  ///
-  /// [pageSize] - Optional. The maximum number of companies to be returned, at
-  /// most 100. Default is 100 if a non-positive number is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -458,9 +458,9 @@ class ProjectsCompaniesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(
     core.String parent, {
+    core.int pageSize,
     core.String pageToken,
     core.bool requireOpenJobs,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -473,14 +473,14 @@ class ProjectsCompaniesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (requireOpenJobs != null) {
       _queryParams['requireOpenJobs'] = ['${requireOpenJobs}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -797,13 +797,6 @@ class ProjectsJobsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional. The starting point of a query result.
-  ///
-  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
-  /// of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
-  /// allowed page size is 1000. Otherwise, the maximum allowed page size is
-  /// 100. Default is 100 if empty or a number < 1 is specified.
-  ///
   /// [filter] - Required. The filter string specifies the jobs to be
   /// enumerated. Supported operator: =, AND The fields eligible for filtering
   /// are: * `companyName` (Required) * `requisitionId` (Optional) Sample Query:
@@ -827,6 +820,13 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_FULL" : All available attributes are included in the search
   /// results.
   ///
+  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
+  /// of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
+  /// allowed page size is 1000. Otherwise, the maximum allowed page size is
+  /// 100. Default is 100 if empty or a number < 1 is specified.
+  ///
+  /// [pageToken] - Optional. The starting point of a query result.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -839,10 +839,10 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
     core.String jobView,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -855,17 +855,17 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (jobView != null) {
       _queryParams['jobView'] = [jobView];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

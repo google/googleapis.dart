@@ -838,9 +838,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
+      var arg_id = 'foo';
       var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
-      var arg_id = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -869,10 +869,10 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
         unittest.expect(queryMap["mine"].first, unittest.equals("$arg_mine"));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -885,9 +885,9 @@ void main() {
       }), true);
       res
           .list(
+              id: arg_id,
               mine: arg_mine,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              id: arg_id,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -954,17 +954,17 @@ void main() {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       api.ReportsResourceApi res = api.YoutubeAnalyticsApi(mock).reports;
-      var arg_startIndex = 42;
+      var arg_currency = 'foo';
+      var arg_dimensions = 'foo';
+      var arg_endDate = 'foo';
+      var arg_filters = 'foo';
+      var arg_ids = 'foo';
+      var arg_includeHistoricalChannelData = true;
+      var arg_maxResults = 42;
       var arg_metrics = 'foo';
       var arg_sort = 'foo';
-      var arg_includeHistoricalChannelData = true;
-      var arg_dimensions = 'foo';
-      var arg_filters = 'foo';
-      var arg_maxResults = 42;
-      var arg_currency = 'foo';
-      var arg_endDate = 'foo';
       var arg_startDate = 'foo';
-      var arg_ids = 'foo';
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -992,26 +992,26 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(
-            queryMap["metrics"].first, unittest.equals(arg_metrics));
-        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
-        unittest.expect(queryMap["includeHistoricalChannelData"].first,
-            unittest.equals("$arg_includeHistoricalChannelData"));
-        unittest.expect(
-            queryMap["dimensions"].first, unittest.equals(arg_dimensions));
-        unittest.expect(
-            queryMap["filters"].first, unittest.equals(arg_filters));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["currency"].first, unittest.equals(arg_currency));
         unittest.expect(
+            queryMap["dimensions"].first, unittest.equals(arg_dimensions));
+        unittest.expect(
             queryMap["endDate"].first, unittest.equals(arg_endDate));
         unittest.expect(
-            queryMap["startDate"].first, unittest.equals(arg_startDate));
+            queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
+        unittest.expect(queryMap["includeHistoricalChannelData"].first,
+            unittest.equals("$arg_includeHistoricalChannelData"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["metrics"].first, unittest.equals(arg_metrics));
+        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
+        unittest.expect(
+            queryMap["startDate"].first, unittest.equals(arg_startDate));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1022,17 +1022,17 @@ void main() {
       }), true);
       res
           .query(
-              startIndex: arg_startIndex,
+              currency: arg_currency,
+              dimensions: arg_dimensions,
+              endDate: arg_endDate,
+              filters: arg_filters,
+              ids: arg_ids,
+              includeHistoricalChannelData: arg_includeHistoricalChannelData,
+              maxResults: arg_maxResults,
               metrics: arg_metrics,
               sort: arg_sort,
-              includeHistoricalChannelData: arg_includeHistoricalChannelData,
-              dimensions: arg_dimensions,
-              filters: arg_filters,
-              maxResults: arg_maxResults,
-              currency: arg_currency,
-              endDate: arg_endDate,
               startDate: arg_startDate,
-              ids: arg_ids,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkQueryResponse(response);

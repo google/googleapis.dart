@@ -4602,9 +4602,9 @@ void main() {
       api.AccountsClientsResourceApi res =
           api.Adexchangebuyer2Api(mock).accounts.clients;
       var arg_accountId = 'foo';
-      var arg_partnerClientId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_partnerClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4641,12 +4641,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["partnerClientId"].first,
-            unittest.equals(arg_partnerClientId));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["partnerClientId"].first,
+            unittest.equals(arg_partnerClientId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4657,9 +4657,9 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              partnerClientId: arg_partnerClientId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              partnerClientId: arg_partnerClientId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListClientsResponse(response);
@@ -4881,8 +4881,8 @@ void main() {
           api.Adexchangebuyer2Api(mock).accounts.clients.invitations;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4928,10 +4928,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4943,8 +4943,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_clientAccountId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListClientUserInvitationsResponse(response);
@@ -5305,8 +5305,8 @@ void main() {
       api.AccountsCreativesResourceApi res =
           api.Adexchangebuyer2Api(mock).accounts.creatives;
       var arg_accountId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_query = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5344,10 +5344,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -5359,8 +5359,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5653,9 +5653,9 @@ void main() {
           api.Adexchangebuyer2Api(mock).accounts.creatives.dealAssociations;
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_query = 'foo';
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5701,11 +5701,11 @@ void main() {
             );
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5716,9 +5716,9 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_creativeId,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               query: arg_query,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDealAssociationsResponse(response);
@@ -5803,10 +5803,10 @@ void main() {
       api.AccountsFinalizedProposalsResourceApi res =
           api.Adexchangebuyer2Api(mock).accounts.finalizedProposals;
       var arg_accountId = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filterSyntax = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5843,13 +5843,13 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["filterSyntax"].first, unittest.equals(arg_filterSyntax));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5860,10 +5860,10 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              pageSize: arg_pageSize,
               filter: arg_filter,
-              pageToken: arg_pageToken,
               filterSyntax: arg_filterSyntax,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListProposalsResponse(response);
@@ -6411,10 +6411,10 @@ void main() {
       api.AccountsProposalsResourceApi res =
           api.Adexchangebuyer2Api(mock).accounts.proposals;
       var arg_accountId = 'foo';
+      var arg_filter = 'foo';
+      var arg_filterSyntax = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filterSyntax = 'foo';
-      var arg_filter = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6451,13 +6451,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["filterSyntax"].first, unittest.equals(arg_filterSyntax));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["filterSyntax"].first, unittest.equals(arg_filterSyntax));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6468,10 +6468,10 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
+              filter: arg_filter,
+              filterSyntax: arg_filterSyntax,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filterSyntax: arg_filterSyntax,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListProposalsResponse(response);
@@ -6752,8 +6752,8 @@ void main() {
       api.AccountsPublisherProfilesResourceApi res =
           api.Adexchangebuyer2Api(mock).accounts.publisherProfiles;
       var arg_accountId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6790,10 +6790,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6804,8 +6804,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPublisherProfilesResponse(response);
@@ -7030,8 +7030,8 @@ void main() {
       api.BiddersAccountsFilterSetsBidMetricsResourceApi res =
           api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets.bidMetrics;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7060,10 +7060,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7074,8 +7074,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBidMetricsResponse(response);
@@ -7159,8 +7159,8 @@ void main() {
               .filterSets
               .bidResponsesWithoutBids;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7189,10 +7189,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7204,8 +7204,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBidResponsesWithoutBidsResponse(response);
@@ -7288,8 +7288,8 @@ void main() {
               .filterSets
               .filteredBids;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7318,10 +7318,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7332,8 +7332,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListFilteredBidsResponse(response);
@@ -7354,8 +7354,8 @@ void main() {
               .creatives;
       var arg_filterSetName = 'foo';
       var arg_creativeStatusId = 42;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7384,10 +7384,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7399,8 +7399,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName, arg_creativeStatusId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCreativeStatusBreakdownByCreativeResponse(response);
@@ -7421,8 +7421,8 @@ void main() {
               .details;
       var arg_filterSetName = 'foo';
       var arg_creativeStatusId = 42;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7451,10 +7451,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7466,8 +7466,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName, arg_creativeStatusId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCreativeStatusBreakdownByDetailResponse(response);
@@ -7940,8 +7940,8 @@ void main() {
       api.BiddersFilterSetsBidResponseErrorsResourceApi res =
           api.Adexchangebuyer2Api(mock).bidders.filterSets.bidResponseErrors;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7970,10 +7970,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7984,8 +7984,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBidResponseErrorsResponse(response);
@@ -8003,8 +8003,8 @@ void main() {
               .filterSets
               .bidResponsesWithoutBids;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8033,10 +8033,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8048,8 +8048,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBidResponsesWithoutBidsResponse(response);
@@ -8188,8 +8188,8 @@ void main() {
               .creatives;
       var arg_filterSetName = 'foo';
       var arg_creativeStatusId = 42;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8218,10 +8218,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8233,8 +8233,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName, arg_creativeStatusId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCreativeStatusBreakdownByCreativeResponse(response);
@@ -8250,8 +8250,8 @@ void main() {
           api.Adexchangebuyer2Api(mock).bidders.filterSets.filteredBids.details;
       var arg_filterSetName = 'foo';
       var arg_creativeStatusId = 42;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8280,10 +8280,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8295,8 +8295,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName, arg_creativeStatusId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCreativeStatusBreakdownByDetailResponse(response);
@@ -8310,8 +8310,8 @@ void main() {
       api.BiddersFilterSetsImpressionMetricsResourceApi res =
           api.Adexchangebuyer2Api(mock).bidders.filterSets.impressionMetrics;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8340,10 +8340,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8354,8 +8354,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListImpressionMetricsResponse(response);
@@ -8432,8 +8432,8 @@ void main() {
               .filterSets
               .nonBillableWinningBids;
       var arg_filterSetName = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8462,10 +8462,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8477,8 +8477,8 @@ void main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListNonBillableWinningBidsResponse(response);

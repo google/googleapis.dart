@@ -1538,8 +1538,8 @@ void main() {
       var mock = HttpServerMock();
       api.BlogsResourceApi res = api.BloggerApi(mock).blogs;
       var arg_blogId = 'foo';
-      var arg_view = 'foo';
       var arg_maxPosts = 42;
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1570,9 +1570,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(core.int.parse(queryMap["maxPosts"].first),
             unittest.equals(arg_maxPosts));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1583,7 +1583,7 @@ void main() {
       }), true);
       res
           .get(arg_blogId,
-              view: arg_view, maxPosts: arg_maxPosts, $fields: arg_$fields)
+              maxPosts: arg_maxPosts, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBlog(response);
       })));
@@ -1642,10 +1642,10 @@ void main() {
       var mock = HttpServerMock();
       api.BlogsResourceApi res = api.BloggerApi(mock).blogs;
       var arg_userId = 'foo';
+      var arg_fetchUserInfo = true;
       var arg_role = buildUnnamed159();
       var arg_status = buildUnnamed160();
       var arg_view = 'foo';
-      var arg_fetchUserInfo = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1682,11 +1682,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["fetchUserInfo"].first,
+            unittest.equals("$arg_fetchUserInfo"));
         unittest.expect(queryMap["role"], unittest.equals(arg_role));
         unittest.expect(queryMap["status"], unittest.equals(arg_status));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["fetchUserInfo"].first,
-            unittest.equals("$arg_fetchUserInfo"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1697,10 +1697,10 @@ void main() {
       }), true);
       res
           .listByUser(arg_userId,
+              fetchUserInfo: arg_fetchUserInfo,
               role: arg_role,
               status: arg_status,
               view: arg_view,
-              fetchUserInfo: arg_fetchUserInfo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBlogList(response);
@@ -1928,13 +1928,13 @@ void main() {
       api.CommentsResourceApi res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
+      var arg_endDate = 'foo';
       var arg_fetchBodies = true;
-      var arg_view = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
       var arg_status = 'foo';
-      var arg_endDate = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1981,8 +1981,9 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["endDate"].first, unittest.equals(arg_endDate));
+        unittest.expect(
             queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
@@ -1990,8 +1991,7 @@ void main() {
         unittest.expect(
             queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
-        unittest.expect(
-            queryMap["endDate"].first, unittest.equals(arg_endDate));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2002,13 +2002,13 @@ void main() {
       }), true);
       res
           .list(arg_blogId, arg_postId,
+              endDate: arg_endDate,
               fetchBodies: arg_fetchBodies,
-              view: arg_view,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               startDate: arg_startDate,
               status: arg_status,
-              endDate: arg_endDate,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCommentList(response);
@@ -2019,12 +2019,12 @@ void main() {
       var mock = HttpServerMock();
       api.CommentsResourceApi res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
-      var arg_fetchBodies = true;
       var arg_endDate = 'foo';
+      var arg_fetchBodies = true;
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
       var arg_status = buildUnnamed161();
-      var arg_maxResults = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2062,16 +2062,16 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
-        unittest.expect(
             queryMap["endDate"].first, unittest.equals(arg_endDate));
+        unittest.expect(
+            queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(queryMap["status"], unittest.equals(arg_status));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2082,12 +2082,12 @@ void main() {
       }), true);
       res
           .listByBlog(arg_blogId,
-              fetchBodies: arg_fetchBodies,
               endDate: arg_endDate,
+              fetchBodies: arg_fetchBodies,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               startDate: arg_startDate,
               status: arg_status,
-              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCommentList(response);
@@ -2492,11 +2492,11 @@ void main() {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
-      var arg_view = 'foo';
-      var arg_maxResults = 42;
       var arg_fetchBodies = true;
-      var arg_status = buildUnnamed163();
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_status = buildUnnamed163();
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2533,14 +2533,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(
+            queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
-        unittest.expect(queryMap["status"], unittest.equals(arg_status));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["status"], unittest.equals(arg_status));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2551,11 +2551,11 @@ void main() {
       }), true);
       res
           .list(arg_blogId,
-              view: arg_view,
-              maxResults: arg_maxResults,
               fetchBodies: arg_fetchBodies,
-              status: arg_status,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              status: arg_status,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPageList(response);
@@ -2770,8 +2770,8 @@ void main() {
       var arg_request = buildPage();
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
-      var arg_revert_1 = true;
       var arg_publish_1 = true;
+      var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Page.fromJson(json);
@@ -2815,9 +2815,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["revert"].first, unittest.equals("$arg_revert_1"));
-        unittest.expect(
             queryMap["publish"].first, unittest.equals("$arg_publish_1"));
+        unittest.expect(
+            queryMap["revert"].first, unittest.equals("$arg_revert_1"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2828,8 +2828,8 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_blogId, arg_pageId,
-              revert_1: arg_revert_1,
               publish_1: arg_publish_1,
+              revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPage(response);
@@ -2916,15 +2916,15 @@ void main() {
       api.PostUserInfosResourceApi res = api.BloggerApi(mock).postUserInfos;
       var arg_userId = 'foo';
       var arg_blogId = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_fetchBodies = true;
-      var arg_view = 'foo';
-      var arg_maxResults = 42;
-      var arg_startDate = 'foo';
-      var arg_labels = 'foo';
       var arg_endDate = 'foo';
+      var arg_fetchBodies = true;
+      var arg_labels = 'foo';
+      var arg_maxResults = 42;
+      var arg_orderBy = 'foo';
       var arg_pageToken = 'foo';
+      var arg_startDate = 'foo';
       var arg_status = buildUnnamed164();
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2971,20 +2971,20 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+            queryMap["endDate"].first, unittest.equals(arg_endDate));
         unittest.expect(
             queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(queryMap["labels"].first, unittest.equals(arg_labels));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["startDate"].first, unittest.equals(arg_startDate));
-        unittest.expect(queryMap["labels"].first, unittest.equals(arg_labels));
-        unittest.expect(
-            queryMap["endDate"].first, unittest.equals(arg_endDate));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(queryMap["status"], unittest.equals(arg_status));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2995,15 +2995,15 @@ void main() {
       }), true);
       res
           .list(arg_userId, arg_blogId,
-              orderBy: arg_orderBy,
-              fetchBodies: arg_fetchBodies,
-              view: arg_view,
-              maxResults: arg_maxResults,
-              startDate: arg_startDate,
-              labels: arg_labels,
               endDate: arg_endDate,
+              fetchBodies: arg_fetchBodies,
+              labels: arg_labels,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              startDate: arg_startDate,
               status: arg_status,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPostUserInfosList(response);
@@ -3074,9 +3074,9 @@ void main() {
       api.PostsResourceApi res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
-      var arg_maxComments = 42;
       var arg_fetchBody = true;
       var arg_fetchImages = true;
+      var arg_maxComments = 42;
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3117,12 +3117,12 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxComments"].first),
-            unittest.equals(arg_maxComments));
         unittest.expect(
             queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
         unittest.expect(
             queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
+        unittest.expect(core.int.parse(queryMap["maxComments"].first),
+            unittest.equals(arg_maxComments));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -3134,9 +3134,9 @@ void main() {
       }), true);
       res
           .get(arg_blogId, arg_postId,
-              maxComments: arg_maxComments,
               fetchBody: arg_fetchBody,
               fetchImages: arg_fetchImages,
+              maxComments: arg_maxComments,
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3149,8 +3149,8 @@ void main() {
       api.PostsResourceApi res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_path = 'foo';
-      var arg_view = 'foo';
       var arg_maxComments = 42;
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3188,9 +3188,9 @@ void main() {
           }
         }
         unittest.expect(queryMap["path"].first, unittest.equals(arg_path));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(core.int.parse(queryMap["maxComments"].first),
             unittest.equals(arg_maxComments));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3201,8 +3201,8 @@ void main() {
       }), true);
       res
           .getByPath(arg_blogId, arg_path,
-              view: arg_view,
               maxComments: arg_maxComments,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPost(response);
@@ -3214,9 +3214,9 @@ void main() {
       api.PostsResourceApi res = api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = 'foo';
-      var arg_isDraft = true;
       var arg_fetchBody = true;
       var arg_fetchImages = true;
+      var arg_isDraft = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Post.fromJson(json);
@@ -3257,11 +3257,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["isDraft"].first, unittest.equals("$arg_isDraft"));
-        unittest.expect(
             queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
         unittest.expect(
             queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
+        unittest.expect(
+            queryMap["isDraft"].first, unittest.equals("$arg_isDraft"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3272,9 +3272,9 @@ void main() {
       }), true);
       res
           .insert(arg_request, arg_blogId,
-              isDraft: arg_isDraft,
               fetchBody: arg_fetchBody,
               fetchImages: arg_fetchImages,
+              isDraft: arg_isDraft,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPost(response);
@@ -3285,16 +3285,16 @@ void main() {
       var mock = HttpServerMock();
       api.PostsResourceApi res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
-      var arg_maxResults = 42;
-      var arg_pageToken = 'foo';
-      var arg_fetchBodies = true;
       var arg_endDate = 'foo';
-      var arg_view = 'foo';
+      var arg_fetchBodies = true;
       var arg_fetchImages = true;
+      var arg_labels = 'foo';
+      var arg_maxResults = 42;
       var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
       var arg_status = buildUnnamed165();
-      var arg_labels = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3331,23 +3331,23 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["endDate"].first, unittest.equals(arg_endDate));
         unittest.expect(
             queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
         unittest.expect(
-            queryMap["endDate"].first, unittest.equals(arg_endDate));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(
             queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
+        unittest.expect(queryMap["labels"].first, unittest.equals(arg_labels));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
             queryMap["startDate"].first, unittest.equals(arg_startDate));
         unittest.expect(queryMap["status"], unittest.equals(arg_status));
-        unittest.expect(queryMap["labels"].first, unittest.equals(arg_labels));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3358,16 +3358,16 @@ void main() {
       }), true);
       res
           .list(arg_blogId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              fetchBodies: arg_fetchBodies,
               endDate: arg_endDate,
-              view: arg_view,
+              fetchBodies: arg_fetchBodies,
               fetchImages: arg_fetchImages,
+              labels: arg_labels,
+              maxResults: arg_maxResults,
               orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
               startDate: arg_startDate,
               status: arg_status,
-              labels: arg_labels,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPostList(response);
@@ -3380,10 +3380,10 @@ void main() {
       var arg_request = buildPost();
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
-      var arg_publish_1 = true;
+      var arg_fetchBody = true;
       var arg_fetchImages = true;
       var arg_maxComments = 42;
-      var arg_fetchBody = true;
+      var arg_publish_1 = true;
       var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3428,13 +3428,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["publish"].first, unittest.equals("$arg_publish_1"));
+            queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
         unittest.expect(
             queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
         unittest.expect(core.int.parse(queryMap["maxComments"].first),
             unittest.equals(arg_maxComments));
         unittest.expect(
-            queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
+            queryMap["publish"].first, unittest.equals("$arg_publish_1"));
         unittest.expect(
             queryMap["revert"].first, unittest.equals("$arg_revert_1"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3447,10 +3447,10 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_blogId, arg_postId,
-              publish_1: arg_publish_1,
+              fetchBody: arg_fetchBody,
               fetchImages: arg_fetchImages,
               maxComments: arg_maxComments,
-              fetchBody: arg_fetchBody,
+              publish_1: arg_publish_1,
               revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3597,8 +3597,8 @@ void main() {
       api.PostsResourceApi res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_q = 'foo';
-      var arg_orderBy = 'foo';
       var arg_fetchBodies = true;
+      var arg_orderBy = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3637,9 +3637,9 @@ void main() {
         }
         unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
             queryMap["fetchBodies"].first, unittest.equals("$arg_fetchBodies"));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3650,8 +3650,8 @@ void main() {
       }), true);
       res
           .search(arg_blogId, arg_q,
-              orderBy: arg_orderBy,
               fetchBodies: arg_fetchBodies,
+              orderBy: arg_orderBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPostList(response);
@@ -3664,11 +3664,11 @@ void main() {
       var arg_request = buildPost();
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
+      var arg_fetchBody = true;
+      var arg_fetchImages = true;
+      var arg_maxComments = 42;
       var arg_publish_1 = true;
       var arg_revert_1 = true;
-      var arg_maxComments = 42;
-      var arg_fetchImages = true;
-      var arg_fetchBody = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Post.fromJson(json);
@@ -3712,15 +3712,15 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["publish"].first, unittest.equals("$arg_publish_1"));
+            queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
         unittest.expect(
-            queryMap["revert"].first, unittest.equals("$arg_revert_1"));
+            queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
         unittest.expect(core.int.parse(queryMap["maxComments"].first),
             unittest.equals(arg_maxComments));
         unittest.expect(
-            queryMap["fetchImages"].first, unittest.equals("$arg_fetchImages"));
+            queryMap["publish"].first, unittest.equals("$arg_publish_1"));
         unittest.expect(
-            queryMap["fetchBody"].first, unittest.equals("$arg_fetchBody"));
+            queryMap["revert"].first, unittest.equals("$arg_revert_1"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3731,11 +3731,11 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_blogId, arg_postId,
+              fetchBody: arg_fetchBody,
+              fetchImages: arg_fetchImages,
+              maxComments: arg_maxComments,
               publish_1: arg_publish_1,
               revert_1: arg_revert_1,
-              maxComments: arg_maxComments,
-              fetchImages: arg_fetchImages,
-              fetchBody: arg_fetchBody,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPost(response);

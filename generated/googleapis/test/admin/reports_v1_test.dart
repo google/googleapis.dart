@@ -882,14 +882,14 @@ void main() {
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
       var arg_actorIpAddress = 'foo';
-      var arg_filters = 'foo';
-      var arg_startTime = 'foo';
-      var arg_orgUnitID = 'foo';
-      var arg_endTime = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_customerId = 'foo';
+      var arg_endTime = 'foo';
       var arg_eventName = 'foo';
+      var arg_filters = 'foo';
+      var arg_maxResults = 42;
+      var arg_orgUnitID = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -932,21 +932,21 @@ void main() {
         unittest.expect(queryMap["actorIpAddress"].first,
             unittest.equals(arg_actorIpAddress));
         unittest.expect(
-            queryMap["filters"].first, unittest.equals(arg_filters));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
-            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["eventName"].first, unittest.equals(arg_eventName));
+        unittest.expect(
+            queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
+            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
         unittest.expect(
-            queryMap["eventName"].first, unittest.equals(arg_eventName));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -958,14 +958,14 @@ void main() {
       res
           .list(arg_userKey, arg_applicationName,
               actorIpAddress: arg_actorIpAddress,
-              filters: arg_filters,
-              startTime: arg_startTime,
-              orgUnitID: arg_orgUnitID,
-              endTime: arg_endTime,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               customerId: arg_customerId,
+              endTime: arg_endTime,
               eventName: arg_eventName,
+              filters: arg_filters,
+              maxResults: arg_maxResults,
+              orgUnitID: arg_orgUnitID,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkActivities(response);
@@ -978,14 +978,14 @@ void main() {
       var arg_request = buildChannel();
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
-      var arg_eventName = 'foo';
+      var arg_actorIpAddress = 'foo';
       var arg_customerId = 'foo';
-      var arg_orgUnitID = 'foo';
       var arg_endTime = 'foo';
+      var arg_eventName = 'foo';
       var arg_filters = 'foo';
       var arg_maxResults = 42;
+      var arg_orgUnitID = 'foo';
       var arg_pageToken = 'foo';
-      var arg_actorIpAddress = 'foo';
       var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1035,22 +1035,22 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["eventName"].first, unittest.equals(arg_eventName));
+        unittest.expect(queryMap["actorIpAddress"].first,
+            unittest.equals(arg_actorIpAddress));
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(
-            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
-        unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(
+            queryMap["eventName"].first, unittest.equals(arg_eventName));
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
+            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["actorIpAddress"].first,
-            unittest.equals(arg_actorIpAddress));
         unittest.expect(
             queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1063,14 +1063,14 @@ void main() {
       }), true);
       res
           .watch(arg_request, arg_userKey, arg_applicationName,
-              eventName: arg_eventName,
+              actorIpAddress: arg_actorIpAddress,
               customerId: arg_customerId,
-              orgUnitID: arg_orgUnitID,
               endTime: arg_endTime,
+              eventName: arg_eventName,
               filters: arg_filters,
               maxResults: arg_maxResults,
+              orgUnitID: arg_orgUnitID,
               pageToken: arg_pageToken,
-              actorIpAddress: arg_actorIpAddress,
               startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -1135,8 +1135,8 @@ void main() {
           api.AdminApi(mock).customerUsageReports;
       var arg_date = 'foo';
       var arg_customerId = 'foo';
-      var arg_parameters = 'foo';
       var arg_pageToken = 'foo';
+      var arg_parameters = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1170,9 +1170,9 @@ void main() {
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(
-            queryMap["parameters"].first, unittest.equals(arg_parameters));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1184,8 +1184,8 @@ void main() {
       res
           .get(arg_date,
               customerId: arg_customerId,
-              parameters: arg_parameters,
               pageToken: arg_pageToken,
+              parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUsageReports(response);
@@ -1201,11 +1201,11 @@ void main() {
       var arg_entityType = 'foo';
       var arg_entityKey = 'foo';
       var arg_date = 'foo';
+      var arg_customerId = 'foo';
       var arg_filters = 'foo';
       var arg_maxResults = 42;
-      var arg_parameters = 'foo';
       var arg_pageToken = 'foo';
-      var arg_customerId = 'foo';
+      var arg_parameters = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1255,15 +1255,15 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["parameters"].first, unittest.equals(arg_parameters));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
+            queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1274,11 +1274,11 @@ void main() {
       }), true);
       res
           .get(arg_entityType, arg_entityKey, arg_date,
+              customerId: arg_customerId,
               filters: arg_filters,
               maxResults: arg_maxResults,
-              parameters: arg_parameters,
               pageToken: arg_pageToken,
-              customerId: arg_customerId,
+              parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUsageReports(response);
@@ -1292,12 +1292,12 @@ void main() {
       api.UserUsageReportResourceApi res = api.AdminApi(mock).userUsageReport;
       var arg_userKey = 'foo';
       var arg_date = 'foo';
-      var arg_maxResults = 42;
       var arg_customerId = 'foo';
-      var arg_orgUnitID = 'foo';
-      var arg_parameters = 'foo';
-      var arg_pageToken = 'foo';
       var arg_filters = 'foo';
+      var arg_maxResults = 42;
+      var arg_orgUnitID = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_parameters = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1337,18 +1337,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["customerId"].first, unittest.equals(arg_customerId));
         unittest.expect(
-            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
+            queryMap["filters"].first, unittest.equals(arg_filters));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["parameters"].first, unittest.equals(arg_parameters));
+            queryMap["orgUnitID"].first, unittest.equals(arg_orgUnitID));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
-            queryMap["filters"].first, unittest.equals(arg_filters));
+            queryMap["parameters"].first, unittest.equals(arg_parameters));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1359,12 +1359,12 @@ void main() {
       }), true);
       res
           .get(arg_userKey, arg_date,
-              maxResults: arg_maxResults,
               customerId: arg_customerId,
-              orgUnitID: arg_orgUnitID,
-              parameters: arg_parameters,
-              pageToken: arg_pageToken,
               filters: arg_filters,
+              maxResults: arg_maxResults,
+              orgUnitID: arg_orgUnitID,
+              pageToken: arg_pageToken,
+              parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUsageReports(response);

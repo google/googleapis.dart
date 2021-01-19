@@ -698,14 +698,14 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.AssetsResourceApi res = api.PolyApi(mock).assets;
-      var arg_maxComplexity = 'foo';
-      var arg_pageSize = 42;
-      var arg_keywords = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_curated = true;
-      var arg_orderBy = 'foo';
       var arg_category = 'foo';
+      var arg_curated = true;
       var arg_format = 'foo';
+      var arg_keywords = 'foo';
+      var arg_maxComplexity = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -733,21 +733,21 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["category"].first, unittest.equals(arg_category));
+        unittest.expect(
+            queryMap["curated"].first, unittest.equals("$arg_curated"));
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
+        unittest.expect(
+            queryMap["keywords"].first, unittest.equals(arg_keywords));
         unittest.expect(queryMap["maxComplexity"].first,
             unittest.equals(arg_maxComplexity));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["keywords"].first, unittest.equals(arg_keywords));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["curated"].first, unittest.equals("$arg_curated"));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["category"].first, unittest.equals(arg_category));
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -758,14 +758,14 @@ void main() {
       }), true);
       res
           .list(
-              maxComplexity: arg_maxComplexity,
-              pageSize: arg_pageSize,
-              keywords: arg_keywords,
-              pageToken: arg_pageToken,
-              curated: arg_curated,
-              orderBy: arg_orderBy,
               category: arg_category,
+              curated: arg_curated,
               format: arg_format,
+              keywords: arg_keywords,
+              maxComplexity: arg_maxComplexity,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAssetsResponse(response);
@@ -778,11 +778,11 @@ void main() {
       var mock = HttpServerMock();
       api.UsersAssetsResourceApi res = api.PolyApi(mock).users.assets;
       var arg_name = 'foo';
-      var arg_orderBy = 'foo';
       var arg_format = 'foo';
-      var arg_visibility = 'foo';
-      var arg_pageToken = 'foo';
+      var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_visibility = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -811,15 +811,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
-            queryMap["visibility"].first, unittest.equals(arg_visibility));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["visibility"].first, unittest.equals(arg_visibility));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -830,11 +830,11 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              orderBy: arg_orderBy,
               format: arg_format,
-              visibility: arg_visibility,
-              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              visibility: arg_visibility,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUserAssetsResponse(response);
@@ -847,10 +847,10 @@ void main() {
       var mock = HttpServerMock();
       api.UsersLikedassetsResourceApi res = api.PolyApi(mock).users.likedassets;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
       var arg_format = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -879,13 +879,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -896,10 +896,10 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
               format: arg_format,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLikedAssetsResponse(response);

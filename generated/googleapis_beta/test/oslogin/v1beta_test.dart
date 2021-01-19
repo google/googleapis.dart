@@ -261,8 +261,8 @@ void main() {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.OsloginApi(mock).users;
       var arg_name = 'foo';
-      var arg_systemId = 'foo';
       var arg_projectId = 'foo';
+      var arg_systemId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -292,9 +292,9 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["systemId"].first, unittest.equals(arg_systemId));
-        unittest.expect(
             queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(
+            queryMap["systemId"].first, unittest.equals(arg_systemId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -305,8 +305,8 @@ void main() {
       }), true);
       res
           .getLoginProfile(arg_name,
-              systemId: arg_systemId,
               projectId: arg_projectId,
+              systemId: arg_systemId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLoginProfile(response);

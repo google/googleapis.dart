@@ -2576,11 +2576,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var arg_courseStates = buildUnnamed4691();
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_studentId = 'foo';
       var arg_teacherId = 'foo';
-      var arg_courseStates = buildUnnamed4691();
-      var arg_pageSize = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2609,15 +2609,15 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["courseStates"], unittest.equals(arg_courseStates));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["studentId"].first, unittest.equals(arg_studentId));
         unittest.expect(
             queryMap["teacherId"].first, unittest.equals(arg_teacherId));
-        unittest.expect(
-            queryMap["courseStates"], unittest.equals(arg_courseStates));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2628,11 +2628,11 @@ void main() {
       }), true);
       res
           .list(
+              courseStates: arg_courseStates,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               studentId: arg_studentId,
               teacherId: arg_teacherId,
-              courseStates: arg_courseStates,
-              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCoursesResponse(response);
@@ -3123,10 +3123,10 @@ void main() {
       api.CoursesAnnouncementsResourceApi res =
           api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_announcementStates = buildUnnamed4692();
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3163,14 +3163,14 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["announcementStates"],
             unittest.equals(arg_announcementStates));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3181,10 +3181,10 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               announcementStates: arg_announcementStates,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAnnouncementsResponse(response);
@@ -3517,10 +3517,10 @@ void main() {
       api.CoursesCourseWorkResourceApi res =
           api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_courseWorkStates = buildUnnamed4693();
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3557,14 +3557,14 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["courseWorkStates"],
             unittest.equals(arg_courseWorkStates));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3575,10 +3575,10 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               courseWorkStates: arg_courseWorkStates,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCourseWorkResponse(response);
@@ -3802,11 +3802,11 @@ void main() {
           api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
-      var arg_pageSize = 42;
-      var arg_userId = 'foo';
-      var arg_states = buildUnnamed4694();
       var arg_late = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_states = buildUnnamed4694();
+      var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3852,13 +3852,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["late"].first, unittest.equals(arg_late));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
-        unittest.expect(queryMap["states"], unittest.equals(arg_states));
-        unittest.expect(queryMap["late"].first, unittest.equals(arg_late));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["states"], unittest.equals(arg_states));
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3869,11 +3869,11 @@ void main() {
       }), true);
       res
           .list(arg_courseId, arg_courseWorkId,
-              pageSize: arg_pageSize,
-              userId: arg_userId,
-              states: arg_states,
               late: arg_late,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              states: arg_states,
+              userId: arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListStudentSubmissionsResponse(response);
@@ -4470,12 +4470,12 @@ void main() {
       api.CoursesCourseWorkMaterialsResourceApi res =
           api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_materialLink = 'foo';
-      var arg_pageSize = 42;
-      var arg_orderBy = 'foo';
       var arg_courseWorkMaterialStates = buildUnnamed4695();
       var arg_materialDriveId = 'foo';
+      var arg_materialLink = 'foo';
+      var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4512,18 +4512,18 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["materialLink"].first, unittest.equals(arg_materialLink));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(queryMap["courseWorkMaterialStates"],
             unittest.equals(arg_courseWorkMaterialStates));
         unittest.expect(queryMap["materialDriveId"].first,
             unittest.equals(arg_materialDriveId));
+        unittest.expect(
+            queryMap["materialLink"].first, unittest.equals(arg_materialLink));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4534,12 +4534,12 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              pageToken: arg_pageToken,
-              materialLink: arg_materialLink,
-              pageSize: arg_pageSize,
-              orderBy: arg_orderBy,
               courseWorkMaterialStates: arg_courseWorkMaterialStates,
               materialDriveId: arg_materialDriveId,
+              materialLink: arg_materialLink,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCourseWorkMaterialResponse(response);
@@ -4805,8 +4805,8 @@ void main() {
       api.CoursesStudentsResourceApi res =
           api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4843,10 +4843,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4857,8 +4857,8 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListStudentsResponse(response);
@@ -5052,8 +5052,8 @@ void main() {
       api.CoursesTeachersResourceApi res =
           api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5090,10 +5090,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5104,8 +5104,8 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListTeachersResponse(response);
@@ -5295,8 +5295,8 @@ void main() {
       var mock = HttpServerMock();
       api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5333,10 +5333,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5347,8 +5347,8 @@ void main() {
       }), true);
       res
           .list(arg_courseId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListTopicResponse(response);
@@ -5629,10 +5629,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
-      var arg_pageToken = 'foo';
-      var arg_userId = 'foo';
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5661,12 +5661,12 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
-        unittest.expect(
             queryMap["courseId"].first, unittest.equals(arg_courseId));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["userId"].first, unittest.equals(arg_userId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5677,10 +5677,10 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              userId: arg_userId,
               courseId: arg_courseId,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              userId: arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListInvitationsResponse(response);
@@ -5965,10 +5965,10 @@ void main() {
       api.UserProfilesGuardianInvitationsResourceApi res =
           api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = 'foo';
-      var arg_pageSize = 42;
       var arg_invitedEmailAddress = 'foo';
-      var arg_states = buildUnnamed4696();
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_states = buildUnnamed4696();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6005,13 +6005,13 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["invitedEmailAddress"].first,
             unittest.equals(arg_invitedEmailAddress));
-        unittest.expect(queryMap["states"], unittest.equals(arg_states));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["states"], unittest.equals(arg_states));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6022,10 +6022,10 @@ void main() {
       }), true);
       res
           .list(arg_studentId,
-              pageSize: arg_pageSize,
               invitedEmailAddress: arg_invitedEmailAddress,
-              states: arg_states,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              states: arg_states,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGuardianInvitationsResponse(response);

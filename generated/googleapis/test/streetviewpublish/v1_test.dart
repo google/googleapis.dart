@@ -956,8 +956,8 @@ void main() {
       var mock = HttpServerMock();
       api.PhotoResourceApi res = api.StreetviewpublishApi(mock).photo;
       var arg_photoId = 'foo';
-      var arg_view = 'foo';
       var arg_languageCode = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -988,9 +988,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1001,8 +1001,8 @@ void main() {
       }), true);
       res
           .get(arg_photoId,
-              view: arg_view,
               languageCode: arg_languageCode,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPhoto(response);
@@ -1169,9 +1169,9 @@ void main() {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       api.PhotosResourceApi res = api.StreetviewpublishApi(mock).photos;
-      var arg_view = 'foo';
       var arg_languageCode = 'foo';
       var arg_photoIds = buildUnnamed5731();
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1199,10 +1199,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
         unittest.expect(queryMap["photoIds"], unittest.equals(arg_photoIds));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1213,9 +1213,9 @@ void main() {
       }), true);
       res
           .batchGet(
-              view: arg_view,
               languageCode: arg_languageCode,
               photoIds: arg_photoIds,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBatchGetPhotosResponse(response);
@@ -1274,10 +1274,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PhotosResourceApi res = api.StreetviewpublishApi(mock).photos;
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
       var arg_languageCode = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1306,13 +1306,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -1324,10 +1324,10 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
               languageCode: arg_languageCode,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

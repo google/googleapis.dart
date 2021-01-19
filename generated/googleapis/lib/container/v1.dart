@@ -83,8 +83,10 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   /// the format `projects / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Specifies a page token to use. Set this to the nextPageToken
-  /// returned by previous list requests to get the next page of results.
+  /// [filter] - Filtering currently only supports equality on the
+  /// networkProjectId and must be in the form: "networkProjectId=[PROJECTID]",
+  /// where `networkProjectId` is the project which owns the listed subnetworks.
+  /// This defaults to the parent project ID.
   ///
   /// [pageSize] - The max number of results per page that should be returned.
   /// If the number of available results is larger than `page_size`, a
@@ -92,10 +94,8 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   /// results in subsequent requests. Acceptable values are 0 to 500, inclusive.
   /// (Default: 500)
   ///
-  /// [filter] - Filtering currently only supports equality on the
-  /// networkProjectId and must be in the form: "networkProjectId=[PROJECTID]",
-  /// where `networkProjectId` is the project which owns the listed subnetworks.
-  /// This defaults to the parent project ID.
+  /// [pageToken] - Specifies a page token to use. Set this to the nextPageToken
+  /// returned by previous list requests to get the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -109,9 +109,9 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListUsableSubnetworksResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -124,14 +124,14 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -457,17 +457,17 @@ class ProjectsLocationsClustersResourceApi {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
-  /// cluster resides. This field has been deprecated and replaced by the name
-  /// field.
-  ///
   /// [clusterId] - Deprecated. The name of the cluster to retrieve. This field
   /// has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project number](https://support.google.com/cloud/answer/6158840). This
   /// field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -481,9 +481,9 @@ class ProjectsLocationsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Cluster> get(
     core.String name, {
-    core.String zone,
     core.String clusterId,
     core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -496,14 +496,14 @@ class ProjectsLocationsClustersResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
-    }
     if (clusterId != null) {
       _queryParams['clusterId'] = [clusterId];
     }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -585,14 +585,14 @@ class ProjectsLocationsClustersResourceApi {
   /// "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project number](https://support.google.com/cloud/answer/6158840). This
+  /// field has been deprecated and replaced by the parent field.
+  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
   /// cluster resides, or "-" for all zones. This field has been deprecated and
   /// replaced by the parent field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -606,8 +606,8 @@ class ProjectsLocationsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
     core.String parent, {
-    core.String zone,
     core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -620,11 +620,11 @@ class ProjectsLocationsClustersResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
-    }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1428,18 +1428,18 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the name field.
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
-  /// cluster resides. This field has been deprecated and replaced by the name
-  /// field.
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete. This field
+  /// has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
-  /// [nodePoolId] - Deprecated. The name of the node pool to delete. This field
-  /// has been deprecated and replaced by the name field.
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1454,9 +1454,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   async.Future<Operation> delete(
     core.String name, {
     core.String clusterId,
-    core.String zone,
-    core.String projectId,
     core.String nodePoolId,
+    core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -1472,14 +1472,14 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (clusterId != null) {
       _queryParams['clusterId'] = [clusterId];
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
+    if (nodePoolId != null) {
+      _queryParams['nodePoolId'] = [nodePoolId];
     }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
     }
-    if (nodePoolId != null) {
-      _queryParams['nodePoolId'] = [nodePoolId];
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1512,11 +1512,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the name field.
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
-  /// cluster resides. This field has been deprecated and replaced by the name
-  /// field.
-  ///
   /// [nodePoolId] - Deprecated. The name of the node pool. This field has been
   /// deprecated and replaced by the name field.
   ///
@@ -1524,6 +1519,11 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1538,9 +1538,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   async.Future<NodePool> get(
     core.String name, {
     core.String clusterId,
-    core.String zone,
     core.String nodePoolId,
     core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -1556,14 +1556,14 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (clusterId != null) {
       _queryParams['clusterId'] = [clusterId];
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
-    }
     if (nodePoolId != null) {
       _queryParams['nodePoolId'] = [nodePoolId];
     }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1592,18 +1592,18 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
-  /// cluster resides. This field has been deprecated and replaced by the parent
-  /// field.
+  /// [clusterId] - Deprecated. The name of the cluster. This field has been
+  /// deprecated and replaced by the parent field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
-  /// [clusterId] - Deprecated. The name of the cluster. This field has been
-  /// deprecated and replaced by the parent field.
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1617,9 +1617,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(
     core.String parent, {
-    core.String zone,
-    core.String projectId,
     core.String clusterId,
+    core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -1632,14 +1632,14 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
+    if (clusterId != null) {
+      _queryParams['clusterId'] = [clusterId];
     }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
     }
-    if (clusterId != null) {
-      _queryParams['clusterId'] = [clusterId];
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2094,17 +2094,17 @@ class ProjectsLocationsOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
-  /// cluster resides. This field has been deprecated and replaced by the name
-  /// field.
+  /// [operationId] - Deprecated. The server-assigned `name` of the operation.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project number](https://support.google.com/cloud/answer/6158840). This
   /// field has been deprecated and replaced by the name field.
   ///
-  /// [operationId] - Deprecated. The server-assigned `name` of the operation.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2118,9 +2118,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String zone,
-    core.String projectId,
     core.String operationId,
+    core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -2133,14 +2133,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
+    if (operationId != null) {
+      _queryParams['operationId'] = [operationId];
     }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
     }
-    if (operationId != null) {
-      _queryParams['operationId'] = [operationId];
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2169,14 +2169,14 @@ class ProjectsLocationsOperationsResourceApi {
   /// "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project number](https://support.google.com/cloud/answer/6158840). This
+  /// field has been deprecated and replaced by the parent field.
+  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
   /// operations for, or `-` for all zones. This field has been deprecated and
   /// replaced by the parent field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2190,8 +2190,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String parent, {
-    core.String zone,
     core.String projectId,
+    core.String zone,
     core.String $fields,
   }) {
     core.String _url;
@@ -2204,11 +2204,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (zone != null) {
-      _queryParams['zone'] = [zone];
-    }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams['zone'] = [zone];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -359,6 +359,10 @@ class CompaniesJobsResourceApi {
   /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
   /// Value must have pattern "^companies/[^/]+$".
   ///
+  /// [idsOnly] - Optional. If set to `true`, only job ID, job requisition ID
+  /// and language code will be returned. A typical use is to synchronize job
+  /// repositories. Defaults to false.
+  ///
   /// [includeJobsCount] - Deprecated. Please DO NOT use this field except for
   /// small companies. Suggest counting jobs page by page instead. Optional. Set
   /// to true if the total number of open jobs is to be returned. Defaults to
@@ -375,10 +379,6 @@ class CompaniesJobsResourceApi {
   ///
   /// [pageToken] - Optional. The starting point of a query result.
   ///
-  /// [idsOnly] - Optional. If set to `true`, only job ID, job requisition ID
-  /// and language code will be returned. A typical use is to synchronize job
-  /// repositories. Defaults to false.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -391,11 +391,11 @@ class CompaniesJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCompanyJobsResponse> list(
     core.String companyName, {
+    core.bool idsOnly,
     core.bool includeJobsCount,
     core.String jobRequisitionId,
     core.int pageSize,
     core.String pageToken,
-    core.bool idsOnly,
     core.String $fields,
   }) {
     core.String _url;
@@ -408,6 +408,9 @@ class CompaniesJobsResourceApi {
     if (companyName == null) {
       throw core.ArgumentError('Parameter companyName is required.');
     }
+    if (idsOnly != null) {
+      _queryParams['idsOnly'] = ['${idsOnly}'];
+    }
     if (includeJobsCount != null) {
       _queryParams['includeJobsCount'] = ['${includeJobsCount}'];
     }
@@ -419,9 +422,6 @@ class CompaniesJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (idsOnly != null) {
-      _queryParams['idsOnly'] = ['${idsOnly}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -765,11 +765,6 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
-  /// of results. If ids_only is set to true, the maximum allowed page size is
-  /// 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if
-  /// empty or a number < 1 is specified.
-  ///
   /// [filter] - Required. The filter string specifies the jobs to be
   /// enumerated. Supported operator: =, AND The fields eligible for filtering
   /// are: * `companyName` (Required) * `requisitionId` (Optional) Sample Query:
@@ -779,6 +774,11 @@ class JobsResourceApi {
   /// [idsOnly] - Optional. If set to `true`, only Job.name, Job.requisition_id
   /// and Job.language_code will be returned. A typical use case is to
   /// synchronize job repositories. Defaults to false.
+  ///
+  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
+  /// of results. If ids_only is set to true, the maximum allowed page size is
+  /// 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if
+  /// empty or a number < 1 is specified.
   ///
   /// [pageToken] - Optional. The starting point of a query result.
   ///
@@ -793,9 +793,9 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list({
-    core.int pageSize,
     core.String filter,
     core.bool idsOnly,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -806,14 +806,14 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (idsOnly != null) {
       _queryParams['idsOnly'] = ['${idsOnly}'];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -1010,6 +1010,9 @@ class V2ResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [companyName] - Optional. If provided, restricts completion to the
+  /// specified company.
+  ///
   /// [languageCode] - Required. The language of the query. This is the BCP-47
   /// language code, such as "en-US" or "sr-Latn". For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For
@@ -1019,18 +1022,10 @@ class V2ResourceApi {
   /// type, only open jobs with same language_code or companies having open jobs
   /// with same language_code are returned.
   ///
-  /// [query] - Required. The query used to generate suggestions.
-  ///
   /// [pageSize] - Required. Completion result count. The maximum allowed page
   /// size is 10.
   ///
-  /// [type] - Optional. The completion topic. The default is
-  /// CompletionType.COMBINED.
-  /// Possible string values are:
-  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
-  /// - "JOB_TITLE" : Only suggest job titles.
-  /// - "COMPANY_NAME" : Only suggest company names.
-  /// - "COMBINED" : Suggest both job titles and company names.
+  /// [query] - Required. The query used to generate suggestions.
   ///
   /// [scope] - Optional. The scope of the completion. The defaults is
   /// CompletionScope.PUBLIC.
@@ -1041,8 +1036,13 @@ class V2ResourceApi {
   /// - "PUBLIC" : Suggestions are based on all jobs data in the system that's
   /// visible to the client
   ///
-  /// [companyName] - Optional. If provided, restricts completion to the
-  /// specified company.
+  /// [type] - Optional. The completion topic. The default is
+  /// CompletionType.COMBINED.
+  /// Possible string values are:
+  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
+  /// - "JOB_TITLE" : Only suggest job titles.
+  /// - "COMPANY_NAME" : Only suggest company names.
+  /// - "COMBINED" : Suggest both job titles and company names.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1055,12 +1055,12 @@ class V2ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete({
-    core.String languageCode,
-    core.String query,
-    core.int pageSize,
-    core.String type,
-    core.String scope,
     core.String companyName,
+    core.String languageCode,
+    core.int pageSize,
+    core.String query,
+    core.String scope,
+    core.String type,
     core.String $fields,
   }) {
     core.String _url;
@@ -1070,23 +1070,23 @@ class V2ResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (companyName != null) {
+      _queryParams['companyName'] = [companyName];
+    }
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (type != null) {
-      _queryParams['type'] = [type];
+    if (query != null) {
+      _queryParams['query'] = [query];
     }
     if (scope != null) {
       _queryParams['scope'] = [scope];
     }
-    if (companyName != null) {
-      _queryParams['companyName'] = [companyName];
+    if (type != null) {
+      _queryParams['type'] = [type];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

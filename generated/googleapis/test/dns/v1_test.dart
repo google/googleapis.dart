@@ -1564,10 +1564,10 @@ void main() {
       api.ChangesResourceApi res = api.DnsApi(mock).changes;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
-      var arg_sortBy = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_sortBy = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1613,13 +1613,13 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1630,10 +1630,10 @@ void main() {
       }), true);
       res
           .list(arg_project, arg_managedZone,
-              sortBy: arg_sortBy,
-              sortOrder: arg_sortOrder,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              sortBy: arg_sortBy,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChangesListResponse(response);
@@ -1880,8 +1880,8 @@ void main() {
           api.DnsApi(mock).managedZoneOperations;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_sortBy = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1928,10 +1928,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -1944,8 +1944,8 @@ void main() {
       }), true);
       res
           .list(arg_project, arg_managedZone,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               sortBy: arg_sortBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2146,9 +2146,9 @@ void main() {
       var mock = HttpServerMock();
       api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
+      var arg_dnsName = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_dnsName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2185,12 +2185,12 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["dnsName"].first, unittest.equals(arg_dnsName));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["dnsName"].first, unittest.equals(arg_dnsName));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2201,9 +2201,9 @@ void main() {
       }), true);
       res
           .list(arg_project,
+              dnsName: arg_dnsName,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              dnsName: arg_dnsName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkManagedZonesListResponse(response);
@@ -2537,8 +2537,8 @@ void main() {
       var mock = HttpServerMock();
       api.PoliciesResourceApi res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2575,10 +2575,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2589,8 +2589,8 @@ void main() {
       }), true);
       res
           .list(arg_project,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPoliciesListResponse(response);
@@ -2795,9 +2795,9 @@ void main() {
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_maxResults = 42;
-      var arg_type = 'foo';
       var arg_name = 'foo';
       var arg_pageToken = 'foo';
+      var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2845,10 +2845,10 @@ void main() {
         }
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2860,9 +2860,9 @@ void main() {
       res
           .list(arg_project, arg_managedZone,
               maxResults: arg_maxResults,
-              type: arg_type,
               name: arg_name,
               pageToken: arg_pageToken,
+              type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkResourceRecordSetsListResponse(response);

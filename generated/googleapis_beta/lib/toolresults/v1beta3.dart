@@ -325,12 +325,12 @@ class ProjectsHistoriesResourceApi {
   /// [filterByName] - If set, only return histories with the given name.
   /// Optional.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of Histories to fetch. Default value: 20.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Any value greater than 100 will be treated as 100. Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -345,8 +345,8 @@ class ProjectsHistoriesResourceApi {
   async.Future<ListHistoriesResponse> list(
     core.String projectId, {
     core.String filterByName,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -362,11 +362,11 @@ class ProjectsHistoriesResourceApi {
     if (filterByName != null) {
       _queryParams['filterByName'] = [filterByName];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1368,11 +1368,11 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// [executionId] - A Execution id. Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of Steps to fetch. Default value: 25. The
   /// server will use this default if the field is not set or has a value of 0.
+  /// Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
   /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1389,8 +1389,8 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1409,11 +1409,11 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2096,12 +2096,12 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   ///
   /// [sampleSeriesId] - A sample series id
   ///
-  /// [pageToken] - Optional, the next_page_token returned in the previous
-  /// response
-  ///
   /// [pageSize] - The default page size is 500 samples, and the maximum size is
   /// 5000. If the page_size is greater than 5000, the effective page size will
   /// be 5000
+  ///
+  /// [pageToken] - Optional, the next_page_token returned in the previous
+  /// response
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2119,8 +2119,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     core.String executionId,
     core.String stepId,
     core.String sampleSeriesId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2145,11 +2145,11 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2391,12 +2391,12 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   ///
   /// [stepId] - A Step id. Required.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  /// Optional.
-  ///
   /// [pageSize] - The maximum number of thumbnails to fetch. Default value: 50.
   /// The server will use this default if the field is not set or has a value of
   /// 0. Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2413,8 +2413,8 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2436,11 +2436,11 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

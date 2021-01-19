@@ -69,25 +69,15 @@ class AssetlinksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
-  ///
-  /// [target_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name. For example, the Google Maps app
-  /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  /// [relation] - Query string for the relation. We identify relations with
+  /// strings of the format `/`, where `` must be one of a set of pre-defined
+  /// purpose categories, and `` is a free-form lowercase alphanumeric string
+  /// that describes the specific use case of the statement. Refer to [our API
+  /// documentation](/digital-asset-links/v1/relation-strings) for the current
+  /// list of supported relations. For a query to match an asset link, both the
+  /// query's and the asset link's relation strings must match exactly. Example:
+  /// A query with relation `delegate_permission/common.handle_all_urls` matches
+  /// an asset link with relation `delegate_permission/common.handle_all_urls`.
   ///
   /// [source_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
@@ -104,15 +94,25 @@ class AssetlinksResourceApi {
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
-  /// [relation] - Query string for the relation. We identify relations with
-  /// strings of the format `/`, where `` must be one of a set of pre-defined
-  /// purpose categories, and `` is a free-form lowercase alphanumeric string
-  /// that describes the specific use case of the statement. Refer to [our API
-  /// documentation](/digital-asset-links/v1/relation-strings) for the current
-  /// list of supported relations. For a query to match an asset link, both the
-  /// query's and the asset link's relation strings must match exactly. Example:
-  /// A query with relation `delegate_permission/common.handle_all_urls` matches
-  /// an asset link with relation `delegate_permission/common.handle_all_urls`.
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  ///
+  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
+  /// must be fully qualified: they must end in a single period ("`.`"). Only
+  /// the schemes "http" and "https" are currently allowed. Port numbers are
+  /// given as a decimal number, and they must be omitted if the standard port
+  /// numbers are used: 80 for http and 443 for https. We call this limited URL
+  /// the "site". All URLs that share the same scheme, hostname and port are
+  /// considered to be a part of the site and thus belong to the web asset.
+  /// Example: the asset with the site `https://www.google.com` contains all
+  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
   ///
   /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
@@ -128,6 +128,10 @@ class AssetlinksResourceApi {
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
+  ///
+  /// [target_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [target_web_site] - Web assets are identified by a URL that contains only
   /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
@@ -145,10 +149,6 @@ class AssetlinksResourceApi {
   /// scheme) * `https://google.com/` (hostname does not match) *
   /// `https://www.google.com:444/` (port does not match) REQUIRED
   ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name. For example, the Google Maps app
-  /// uses the package name `com.google.android.apps.maps`. REQUIRED
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -160,13 +160,13 @@ class AssetlinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check({
-    core.String source_web_site,
-    core.String target_androidApp_packageName,
-    core.String source_androidApp_certificate_sha256Fingerprint,
     core.String relation,
-    core.String target_androidApp_certificate_sha256Fingerprint,
-    core.String target_web_site,
+    core.String source_androidApp_certificate_sha256Fingerprint,
     core.String source_androidApp_packageName,
+    core.String source_web_site,
+    core.String target_androidApp_certificate_sha256Fingerprint,
+    core.String target_androidApp_packageName,
+    core.String target_web_site,
     core.String $fields,
   }) {
     core.String _url;
@@ -176,34 +176,34 @@ class AssetlinksResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (source_web_site != null) {
-      _queryParams['source.web.site'] = [source_web_site];
-    }
-    if (target_androidApp_packageName != null) {
-      _queryParams['target.androidApp.packageName'] = [
-        target_androidApp_packageName
-      ];
+    if (relation != null) {
+      _queryParams['relation'] = [relation];
     }
     if (source_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
         source_androidApp_certificate_sha256Fingerprint
       ];
     }
-    if (relation != null) {
-      _queryParams['relation'] = [relation];
+    if (source_androidApp_packageName != null) {
+      _queryParams['source.androidApp.packageName'] = [
+        source_androidApp_packageName
+      ];
+    }
+    if (source_web_site != null) {
+      _queryParams['source.web.site'] = [source_web_site];
     }
     if (target_androidApp_certificate_sha256Fingerprint != null) {
       _queryParams['target.androidApp.certificate.sha256Fingerprint'] = [
         target_androidApp_certificate_sha256Fingerprint
       ];
     }
+    if (target_androidApp_packageName != null) {
+      _queryParams['target.androidApp.packageName'] = [
+        target_androidApp_packageName
+      ];
+    }
     if (target_web_site != null) {
       _queryParams['target.web.site'] = [target_web_site];
-    }
-    if (source_androidApp_packageName != null) {
-      _queryParams['source.androidApp.packageName'] = [
-        source_androidApp_packageName
-      ];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -246,26 +246,6 @@ class StatementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
-  ///
-  /// [source_androidApp_packageName] - Android App assets are naturally
-  /// identified by their Java package name. For example, the Google Maps app
-  /// uses the package name `com.google.android.apps.maps`. REQUIRED
-  ///
   /// [relation] - Use only associations that match the specified relation. See
   /// the [`Statement`](#Statement) message for a detailed definition of
   /// relation strings. For a query to match a statement, one of the following
@@ -290,6 +270,26 @@ class StatementsResourceApi {
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
   ///
+  /// [source_androidApp_packageName] - Android App assets are naturally
+  /// identified by their Java package name. For example, the Google Maps app
+  /// uses the package name `com.google.android.apps.maps`. REQUIRED
+  ///
+  /// [source_web_site] - Web assets are identified by a URL that contains only
+  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
+  /// must be fully qualified: they must end in a single period ("`.`"). Only
+  /// the schemes "http" and "https" are currently allowed. Port numbers are
+  /// given as a decimal number, and they must be omitted if the standard port
+  /// numbers are used: 80 for http and 443 for https. We call this limited URL
+  /// the "site". All URLs that share the same scheme, hostname and port are
+  /// considered to be a part of the site and thus belong to the web asset.
+  /// Example: the asset with the site `https://www.google.com` contains all
+  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
+  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
+  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
+  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
+  /// scheme) * `https://google.com/` (hostname does not match) *
+  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -301,10 +301,10 @@ class StatementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListResponse> list({
-    core.String source_web_site,
-    core.String source_androidApp_packageName,
     core.String relation,
     core.String source_androidApp_certificate_sha256Fingerprint,
+    core.String source_androidApp_packageName,
+    core.String source_web_site,
     core.String $fields,
   }) {
     core.String _url;
@@ -314,14 +314,6 @@ class StatementsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (source_web_site != null) {
-      _queryParams['source.web.site'] = [source_web_site];
-    }
-    if (source_androidApp_packageName != null) {
-      _queryParams['source.androidApp.packageName'] = [
-        source_androidApp_packageName
-      ];
-    }
     if (relation != null) {
       _queryParams['relation'] = [relation];
     }
@@ -329,6 +321,14 @@ class StatementsResourceApi {
       _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
         source_androidApp_certificate_sha256Fingerprint
       ];
+    }
+    if (source_androidApp_packageName != null) {
+      _queryParams['source.androidApp.packageName'] = [
+        source_androidApp_packageName
+      ];
+    }
+    if (source_web_site != null) {
+      _queryParams['source.web.site'] = [source_web_site];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

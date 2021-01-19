@@ -966,8 +966,8 @@ void main() {
           api.BigqueryreservationApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
-      var arg_query = 'foo';
       var arg_pageToken = 'foo';
+      var arg_query = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -998,9 +998,9 @@ void main() {
         }
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1012,8 +1012,8 @@ void main() {
       res
           .searchAllAssignments(arg_parent,
               pageSize: arg_pageSize,
-              query: arg_query,
               pageToken: arg_pageToken,
+              query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchAllAssignmentsResponse(response);
@@ -1310,8 +1310,8 @@ void main() {
               .locations
               .capacityCommitments;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1340,10 +1340,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1354,8 +1354,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCapacityCommitmentsResponse(response);

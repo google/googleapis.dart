@@ -777,8 +777,8 @@ void main() {
       api.TasksResourceApi res = api.TasksApi(mock).tasks;
       var arg_request = buildTask();
       var arg_tasklist = 'foo';
-      var arg_previous = 'foo';
       var arg_parent = 'foo';
+      var arg_previous = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Task.fromJson(json);
@@ -818,9 +818,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -831,7 +831,7 @@ void main() {
       }), true);
       res
           .insert(arg_request, arg_tasklist,
-              previous: arg_previous, parent: arg_parent, $fields: arg_$fields)
+              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTask(response);
       })));
@@ -841,16 +841,16 @@ void main() {
       var mock = HttpServerMock();
       api.TasksResourceApi res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
-      var arg_completedMin = 'foo';
-      var arg_showCompleted = true;
-      var arg_maxResults = 42;
       var arg_completedMax = 'foo';
-      var arg_dueMin = 'foo';
-      var arg_showDeleted = true;
-      var arg_updatedMin = 'foo';
+      var arg_completedMin = 'foo';
       var arg_dueMax = 'foo';
+      var arg_dueMin = 'foo';
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
+      var arg_showCompleted = true;
+      var arg_showDeleted = true;
       var arg_showHidden = true;
+      var arg_updatedMin = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -888,23 +888,23 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
+        unittest.expect(
             queryMap["completedMin"].first, unittest.equals(arg_completedMin));
-        unittest.expect(queryMap["showCompleted"].first,
-            unittest.equals("$arg_showCompleted"));
+        unittest.expect(queryMap["dueMax"].first, unittest.equals(arg_dueMax));
+        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["completedMax"].first, unittest.equals(arg_completedMax));
-        unittest.expect(queryMap["dueMin"].first, unittest.equals(arg_dueMin));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["showCompleted"].first,
+            unittest.equals("$arg_showCompleted"));
         unittest.expect(
             queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(
-            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
-        unittest.expect(queryMap["dueMax"].first, unittest.equals(arg_dueMax));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
+        unittest.expect(
+            queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -915,16 +915,16 @@ void main() {
       }), true);
       res
           .list(arg_tasklist,
-              completedMin: arg_completedMin,
-              showCompleted: arg_showCompleted,
-              maxResults: arg_maxResults,
               completedMax: arg_completedMax,
-              dueMin: arg_dueMin,
-              showDeleted: arg_showDeleted,
-              updatedMin: arg_updatedMin,
+              completedMin: arg_completedMin,
               dueMax: arg_dueMax,
+              dueMin: arg_dueMin,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
+              showCompleted: arg_showCompleted,
+              showDeleted: arg_showDeleted,
               showHidden: arg_showHidden,
+              updatedMin: arg_updatedMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTasks(response);

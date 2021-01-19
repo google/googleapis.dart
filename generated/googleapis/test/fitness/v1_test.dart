@@ -1348,8 +1348,8 @@ void main() {
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_datasetId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_limit = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1374,10 +1374,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["limit"].first),
             unittest.equals(arg_limit));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1388,7 +1388,7 @@ void main() {
       }), true);
       res
           .get(arg_userId, arg_dataSourceId, arg_datasetId,
-              pageToken: arg_pageToken, limit: arg_limit, $fields: arg_$fields)
+              limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDataset(response);
       })));
@@ -1549,8 +1549,8 @@ void main() {
       var mock = HttpServerMock();
       api.UsersSessionsResourceApi res = api.FitnessApi(mock).users.sessions;
       var arg_userId = 'foo';
-      var arg_endTime = 'foo';
       var arg_activityType = buildUnnamed1327();
+      var arg_endTime = 'foo';
       var arg_includeDeleted = true;
       var arg_pageToken = 'foo';
       var arg_startTime = 'foo';
@@ -1578,10 +1578,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(queryMap["activityType"].map(core.int.parse).toList(),
             unittest.equals(arg_activityType));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(queryMap["includeDeleted"].first,
             unittest.equals("$arg_includeDeleted"));
         unittest.expect(
@@ -1598,8 +1598,8 @@ void main() {
       }), true);
       res
           .list(arg_userId,
-              endTime: arg_endTime,
               activityType: arg_activityType,
+              endTime: arg_endTime,
               includeDeleted: arg_includeDeleted,
               pageToken: arg_pageToken,
               startTime: arg_startTime,

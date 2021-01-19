@@ -919,9 +919,9 @@ void main() {
       var arg_startDate = 42;
       var arg_startRow = 42;
       var arg_adGroupId = 'foo';
-      var arg_criterionId = 'foo';
-      var arg_campaignId = 'foo';
       var arg_adId = 'foo';
+      var arg_campaignId = 'foo';
+      var arg_criterionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -986,11 +986,11 @@ void main() {
             unittest.equals(arg_startRow));
         unittest.expect(
             queryMap["adGroupId"].first, unittest.equals(arg_adGroupId));
-        unittest.expect(
-            queryMap["criterionId"].first, unittest.equals(arg_criterionId));
+        unittest.expect(queryMap["adId"].first, unittest.equals(arg_adId));
         unittest.expect(
             queryMap["campaignId"].first, unittest.equals(arg_campaignId));
-        unittest.expect(queryMap["adId"].first, unittest.equals(arg_adId));
+        unittest.expect(
+            queryMap["criterionId"].first, unittest.equals(arg_criterionId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1003,9 +1003,9 @@ void main() {
           .get(arg_agencyId, arg_advertiserId, arg_engineAccountId, arg_endDate,
               arg_rowCount, arg_startDate, arg_startRow,
               adGroupId: arg_adGroupId,
-              criterionId: arg_criterionId,
-              campaignId: arg_campaignId,
               adId: arg_adId,
+              campaignId: arg_campaignId,
+              criterionId: arg_criterionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkConversionList(response);

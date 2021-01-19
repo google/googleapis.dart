@@ -2885,11 +2885,11 @@ class InappproductsResourceApi {
   ///
   /// [packageName] - Package name of the app.
   ///
-  /// [token] - Pagination token. If empty, list starts at the first product.
-  ///
   /// [maxResults] - How many results the list operation should return.
   ///
   /// [startIndex] - The index of the first element to return.
+  ///
+  /// [token] - Pagination token. If empty, list starts at the first product.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2903,9 +2903,9 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<InappproductsListResponse> list(
     core.String packageName, {
-    core.String token,
     core.int maxResults,
     core.int startIndex,
+    core.String token,
     core.String $fields,
   }) {
     core.String _url;
@@ -2918,14 +2918,14 @@ class InappproductsResourceApi {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    if (token != null) {
-      _queryParams['token'] = [token];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (startIndex != null) {
       _queryParams['startIndex'] = ['${startIndex}'];
+    }
+    if (token != null) {
+      _queryParams['token'] = [token];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3939,14 +3939,18 @@ class PurchasesVoidedpurchasesResourceApi {
   /// [packageName] - The package name of the application for which voided
   /// purchases need to be returned (for example, 'com.some.thing').
   ///
-  /// [startIndex] - Defines the index of the first element to return. This can
-  /// only be used if indexed paging is enabled.
+  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be greater than the current time and is ignored if a
+  /// pagination token is set. Default value is current time. Note: This filter
+  /// is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
   ///
   /// [maxResults] - Defines how many results the list operation should return.
   /// The default number depends on the resource collection.
   ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
+  /// [startIndex] - Defines the index of the first element to return. This can
+  /// only be used if indexed paging is enabled.
   ///
   /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
   /// voided purchase that you want to see in the response. The value of this
@@ -3955,12 +3959,8 @@ class PurchasesVoidedpurchasesResourceApi {
   /// filter is applied on the time at which the record is seen as voided by our
   /// systems and not the actual voided time returned in the response.
   ///
-  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
-  /// voided purchase that you want to see in the response. The value of this
-  /// parameter cannot be greater than the current time and is ignored if a
-  /// pagination token is set. Default value is current time. Note: This filter
-  /// is applied on the time at which the record is seen as voided by our
-  /// systems and not the actual voided time returned in the response.
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [type] - The type of voided purchases that you want to see in the
   /// response. Possible values are: 0. Only voided in-app product purchases
@@ -3984,11 +3984,11 @@ class PurchasesVoidedpurchasesResourceApi {
   /// this method will complete with the same error.
   async.Future<VoidedPurchasesListResponse> list(
     core.String packageName, {
-    core.int startIndex,
-    core.int maxResults,
-    core.String token,
-    core.String startTime,
     core.String endTime,
+    core.int maxResults,
+    core.int startIndex,
+    core.String startTime,
+    core.String token,
     core.int type,
     core.String $fields,
   }) {
@@ -4002,20 +4002,20 @@ class PurchasesVoidedpurchasesResourceApi {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
+    if (endTime != null) {
+      _queryParams['endTime'] = [endTime];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (token != null) {
-      _queryParams['token'] = [token];
+    if (startIndex != null) {
+      _queryParams['startIndex'] = ['${startIndex}'];
     }
     if (startTime != null) {
       _queryParams['startTime'] = [startTime];
     }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
+    if (token != null) {
+      _queryParams['token'] = [token];
     }
     if (type != null) {
       _queryParams['type'] = ['${type}'];
@@ -4115,13 +4115,13 @@ class ReviewsResourceApi {
   ///
   /// [packageName] - Package name of the app.
   ///
-  /// [translationLanguage] - Language localization code.
+  /// [maxResults] - How many results the list operation should return.
   ///
   /// [startIndex] - The index of the first element to return.
   ///
   /// [token] - Pagination token. If empty, list starts at the first review.
   ///
-  /// [maxResults] - How many results the list operation should return.
+  /// [translationLanguage] - Language localization code.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4135,10 +4135,10 @@ class ReviewsResourceApi {
   /// this method will complete with the same error.
   async.Future<ReviewsListResponse> list(
     core.String packageName, {
-    core.String translationLanguage,
+    core.int maxResults,
     core.int startIndex,
     core.String token,
-    core.int maxResults,
+    core.String translationLanguage,
     core.String $fields,
   }) {
     core.String _url;
@@ -4151,8 +4151,8 @@ class ReviewsResourceApi {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    if (translationLanguage != null) {
-      _queryParams['translationLanguage'] = [translationLanguage];
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (startIndex != null) {
       _queryParams['startIndex'] = ['${startIndex}'];
@@ -4160,8 +4160,8 @@ class ReviewsResourceApi {
     if (token != null) {
       _queryParams['token'] = [token];
     }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (translationLanguage != null) {
+      _queryParams['translationLanguage'] = [translationLanguage];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

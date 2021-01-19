@@ -8507,11 +8507,11 @@ void main() {
       api.OrganizationsApiproductsResourceApi res =
           api.ApigeeApi(mock).organizations.apiproducts;
       var arg_parent = 'foo';
-      var arg_expand = true;
-      var arg_attributevalue = 'foo';
-      var arg_startKey = 'foo';
-      var arg_count = 'foo';
       var arg_attributename = 'foo';
+      var arg_attributevalue = 'foo';
+      var arg_count = 'foo';
+      var arg_expand = true;
+      var arg_startKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8540,15 +8540,15 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["expand"].first, unittest.equals("$arg_expand"));
-        unittest.expect(queryMap["attributevalue"].first,
-            unittest.equals(arg_attributevalue));
-        unittest.expect(
-            queryMap["startKey"].first, unittest.equals(arg_startKey));
-        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
         unittest.expect(queryMap["attributename"].first,
             unittest.equals(arg_attributename));
+        unittest.expect(queryMap["attributevalue"].first,
+            unittest.equals(arg_attributevalue));
+        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
+        unittest.expect(
+            queryMap["expand"].first, unittest.equals("$arg_expand"));
+        unittest.expect(
+            queryMap["startKey"].first, unittest.equals(arg_startKey));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8560,11 +8560,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              expand: arg_expand,
-              attributevalue: arg_attributevalue,
-              startKey: arg_startKey,
-              count: arg_count,
               attributename: arg_attributename,
+              attributevalue: arg_attributevalue,
+              count: arg_count,
+              expand: arg_expand,
+              startKey: arg_startKey,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListApiProductsResponse(response);
@@ -8830,9 +8830,9 @@ void main() {
           api.ApigeeApi(mock).organizations.apis;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
+      var arg_action = 'foo';
       var arg_name = 'foo';
       var arg_validate = true;
-      var arg_action = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
@@ -8864,10 +8864,10 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["action"].first, unittest.equals(arg_action));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
         unittest.expect(
             queryMap["validate"].first, unittest.equals("$arg_validate"));
-        unittest.expect(queryMap["action"].first, unittest.equals(arg_action));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8879,9 +8879,9 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_parent,
+              action: arg_action,
               name: arg_name,
               validate: arg_validate,
-              action: arg_action,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ApiProxyRevision(response);
@@ -9460,15 +9460,15 @@ void main() {
       api.OrganizationsAppsResourceApi res =
           api.ApigeeApi(mock).organizations.apps;
       var arg_parent = 'foo';
-      var arg_startKey = 'foo';
-      var arg_expand = true;
-      var arg_includeCred = true;
-      var arg_rows = 'foo';
-      var arg_status = 'foo';
-      var arg_keyStatus = 'foo';
-      var arg_apptype = 'foo';
       var arg_apiProduct = 'foo';
+      var arg_apptype = 'foo';
+      var arg_expand = true;
       var arg_ids = 'foo';
+      var arg_includeCred = true;
+      var arg_keyStatus = 'foo';
+      var arg_rows = 'foo';
+      var arg_startKey = 'foo';
+      var arg_status = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9498,20 +9498,20 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["startKey"].first, unittest.equals(arg_startKey));
-        unittest.expect(
-            queryMap["expand"].first, unittest.equals("$arg_expand"));
-        unittest.expect(
-            queryMap["includeCred"].first, unittest.equals("$arg_includeCred"));
-        unittest.expect(queryMap["rows"].first, unittest.equals(arg_rows));
-        unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
-        unittest.expect(
-            queryMap["keyStatus"].first, unittest.equals(arg_keyStatus));
+            queryMap["apiProduct"].first, unittest.equals(arg_apiProduct));
         unittest.expect(
             queryMap["apptype"].first, unittest.equals(arg_apptype));
         unittest.expect(
-            queryMap["apiProduct"].first, unittest.equals(arg_apiProduct));
+            queryMap["expand"].first, unittest.equals("$arg_expand"));
         unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
+        unittest.expect(
+            queryMap["includeCred"].first, unittest.equals("$arg_includeCred"));
+        unittest.expect(
+            queryMap["keyStatus"].first, unittest.equals(arg_keyStatus));
+        unittest.expect(queryMap["rows"].first, unittest.equals(arg_rows));
+        unittest.expect(
+            queryMap["startKey"].first, unittest.equals(arg_startKey));
+        unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9523,15 +9523,15 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              startKey: arg_startKey,
-              expand: arg_expand,
-              includeCred: arg_includeCred,
-              rows: arg_rows,
-              status: arg_status,
-              keyStatus: arg_keyStatus,
-              apptype: arg_apptype,
               apiProduct: arg_apiProduct,
+              apptype: arg_apptype,
+              expand: arg_expand,
               ids: arg_ids,
+              includeCred: arg_includeCred,
+              keyStatus: arg_keyStatus,
+              rows: arg_rows,
+              startKey: arg_startKey,
+              status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListAppsResponse(response);
@@ -9801,11 +9801,11 @@ void main() {
       api.OrganizationsDevelopersResourceApi res =
           api.ApigeeApi(mock).organizations.developers;
       var arg_parent = 'foo';
+      var arg_count = 'foo';
       var arg_expand = true;
+      var arg_ids = 'foo';
       var arg_includeCompany = true;
       var arg_startKey = 'foo';
-      var arg_ids = 'foo';
-      var arg_count = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9834,14 +9834,14 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
         unittest.expect(
             queryMap["expand"].first, unittest.equals("$arg_expand"));
+        unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
         unittest.expect(queryMap["includeCompany"].first,
             unittest.equals("$arg_includeCompany"));
         unittest.expect(
             queryMap["startKey"].first, unittest.equals(arg_startKey));
-        unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
-        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9853,11 +9853,11 @@ void main() {
       }), true);
       res
           .list(arg_parent,
+              count: arg_count,
               expand: arg_expand,
+              ids: arg_ids,
               includeCompany: arg_includeCompany,
               startKey: arg_startKey,
-              ids: arg_ids,
-              count: arg_count,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListOfDevelopersResponse(response);
@@ -10181,8 +10181,8 @@ void main() {
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_name = 'foo';
-      var arg_query = 'foo';
       var arg_entity = 'foo';
+      var arg_query = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10211,8 +10211,8 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["entity"].first, unittest.equals(arg_entity));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10223,7 +10223,7 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              query: arg_query, entity: arg_entity, $fields: arg_$fields)
+              entity: arg_entity, query: arg_query, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1DeveloperApp(response);
       })));
@@ -10234,10 +10234,10 @@ void main() {
       api.OrganizationsDevelopersAppsResourceApi res =
           api.ApigeeApi(mock).organizations.developers.apps;
       var arg_parent = 'foo';
-      var arg_startKey = 'foo';
-      var arg_shallowExpand = true;
-      var arg_expand = true;
       var arg_count = 'foo';
+      var arg_expand = true;
+      var arg_shallowExpand = true;
+      var arg_startKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10266,13 +10266,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
         unittest.expect(
-            queryMap["startKey"].first, unittest.equals(arg_startKey));
+            queryMap["expand"].first, unittest.equals("$arg_expand"));
         unittest.expect(queryMap["shallowExpand"].first,
             unittest.equals("$arg_shallowExpand"));
         unittest.expect(
-            queryMap["expand"].first, unittest.equals("$arg_expand"));
-        unittest.expect(queryMap["count"].first, unittest.equals(arg_count));
+            queryMap["startKey"].first, unittest.equals(arg_startKey));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10284,10 +10284,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              startKey: arg_startKey,
-              shallowExpand: arg_shallowExpand,
-              expand: arg_expand,
               count: arg_count,
+              expand: arg_expand,
+              shallowExpand: arg_shallowExpand,
+              startKey: arg_startKey,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListDeveloperAppsResponse(response);
@@ -11323,8 +11323,8 @@ void main() {
       api.OrganizationsEnvgroupsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11353,10 +11353,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11368,8 +11368,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(response);
@@ -11589,8 +11589,8 @@ void main() {
       api.OrganizationsEnvgroupsAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11619,10 +11619,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11634,8 +11634,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
@@ -12210,8 +12210,8 @@ void main() {
           api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1DebugMask();
       var arg_name = 'foo';
-      var arg_updateMask = 'foo';
       var arg_replaceRepeatedFields = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleCloudApigeeV1DebugMask.fromJson(json);
@@ -12243,10 +12243,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["replaceRepeatedFields"].first,
             unittest.equals("$arg_replaceRepeatedFields"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12257,8 +12257,8 @@ void main() {
       }), true);
       res
           .updateDebugmask(arg_request, arg_name,
-              updateMask: arg_updateMask,
               replaceRepeatedFields: arg_replaceRepeatedFields,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1DebugMask(response);
@@ -12915,8 +12915,8 @@ void main() {
               .revisions
               .debugsessions;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12945,10 +12945,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -12960,8 +12960,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListDebugSessionsResponse(response);
@@ -13560,11 +13560,11 @@ void main() {
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
-      var arg_alias = 'foo';
-      var arg_ignoreNewlineValidation = true;
       var arg_P_password = 'foo';
-      var arg_ignoreExpiryValidation = true;
+      var arg_alias = 'foo';
       var arg_format = 'foo';
+      var arg_ignoreExpiryValidation = true;
+      var arg_ignoreNewlineValidation = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
@@ -13596,14 +13596,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alias"].first, unittest.equals(arg_alias));
-        unittest.expect(queryMap["ignoreNewlineValidation"].first,
-            unittest.equals("$arg_ignoreNewlineValidation"));
         unittest.expect(
             queryMap["_password"].first, unittest.equals(arg_P_password));
+        unittest.expect(queryMap["alias"].first, unittest.equals(arg_alias));
+        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(queryMap["ignoreExpiryValidation"].first,
             unittest.equals("$arg_ignoreExpiryValidation"));
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
+        unittest.expect(queryMap["ignoreNewlineValidation"].first,
+            unittest.equals("$arg_ignoreNewlineValidation"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13614,11 +13614,11 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_parent,
-              alias: arg_alias,
-              ignoreNewlineValidation: arg_ignoreNewlineValidation,
               P_password: arg_P_password,
-              ignoreExpiryValidation: arg_ignoreExpiryValidation,
+              alias: arg_alias,
               format: arg_format,
+              ignoreExpiryValidation: arg_ignoreExpiryValidation,
+              ignoreNewlineValidation: arg_ignoreNewlineValidation,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1Alias(response);
@@ -13823,8 +13823,8 @@ void main() {
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
       var arg_name = 'foo';
-      var arg_ignoreNewlineValidation = true;
       var arg_ignoreExpiryValidation = true;
+      var arg_ignoreNewlineValidation = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
@@ -13856,10 +13856,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ignoreNewlineValidation"].first,
-            unittest.equals("$arg_ignoreNewlineValidation"));
         unittest.expect(queryMap["ignoreExpiryValidation"].first,
             unittest.equals("$arg_ignoreExpiryValidation"));
+        unittest.expect(queryMap["ignoreNewlineValidation"].first,
+            unittest.equals("$arg_ignoreNewlineValidation"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -13870,8 +13870,8 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_name,
-              ignoreNewlineValidation: arg_ignoreNewlineValidation,
               ignoreExpiryValidation: arg_ignoreExpiryValidation,
+              ignoreNewlineValidation: arg_ignoreNewlineValidation,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1Alias(response);
@@ -13989,21 +13989,21 @@ void main() {
       api.OrganizationsEnvironmentsOptimizedStatsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.optimizedStats;
       var arg_name = 'foo';
-      var arg_offset = 'foo';
-      var arg_sonar = true;
       var arg_accuracy = 'foo';
-      var arg_limit = 'foo';
-      var arg_timeUnit = 'foo';
-      var arg_sort = 'foo';
-      var arg_realtime = true;
       var arg_aggTable = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_tzo = 'foo';
-      var arg_sortby = 'foo';
-      var arg_topk = 'foo';
-      var arg_select = 'foo';
-      var arg_tsAscending = true;
       var arg_filter = 'foo';
+      var arg_limit = 'foo';
+      var arg_offset = 'foo';
+      var arg_realtime = true;
+      var arg_select = 'foo';
+      var arg_sonar = true;
+      var arg_sort = 'foo';
+      var arg_sortby = 'foo';
+      var arg_timeRange = 'foo';
+      var arg_timeUnit = 'foo';
+      var arg_topk = 'foo';
+      var arg_tsAscending = true;
+      var arg_tzo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14032,27 +14032,27 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["offset"].first, unittest.equals(arg_offset));
-        unittest.expect(queryMap["sonar"].first, unittest.equals("$arg_sonar"));
         unittest.expect(
             queryMap["accuracy"].first, unittest.equals(arg_accuracy));
-        unittest.expect(queryMap["limit"].first, unittest.equals(arg_limit));
-        unittest.expect(
-            queryMap["timeUnit"].first, unittest.equals(arg_timeUnit));
-        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
-        unittest.expect(
-            queryMap["realtime"].first, unittest.equals("$arg_realtime"));
         unittest.expect(
             queryMap["aggTable"].first, unittest.equals(arg_aggTable));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["limit"].first, unittest.equals(arg_limit));
+        unittest.expect(queryMap["offset"].first, unittest.equals(arg_offset));
+        unittest.expect(
+            queryMap["realtime"].first, unittest.equals("$arg_realtime"));
+        unittest.expect(queryMap["select"].first, unittest.equals(arg_select));
+        unittest.expect(queryMap["sonar"].first, unittest.equals("$arg_sonar"));
+        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
+        unittest.expect(queryMap["sortby"].first, unittest.equals(arg_sortby));
         unittest.expect(
             queryMap["timeRange"].first, unittest.equals(arg_timeRange));
-        unittest.expect(queryMap["tzo"].first, unittest.equals(arg_tzo));
-        unittest.expect(queryMap["sortby"].first, unittest.equals(arg_sortby));
+        unittest.expect(
+            queryMap["timeUnit"].first, unittest.equals(arg_timeUnit));
         unittest.expect(queryMap["topk"].first, unittest.equals(arg_topk));
-        unittest.expect(queryMap["select"].first, unittest.equals(arg_select));
         unittest.expect(
             queryMap["tsAscending"].first, unittest.equals("$arg_tsAscending"));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["tzo"].first, unittest.equals(arg_tzo));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14064,21 +14064,21 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              offset: arg_offset,
-              sonar: arg_sonar,
               accuracy: arg_accuracy,
-              limit: arg_limit,
-              timeUnit: arg_timeUnit,
-              sort: arg_sort,
-              realtime: arg_realtime,
               aggTable: arg_aggTable,
-              timeRange: arg_timeRange,
-              tzo: arg_tzo,
-              sortby: arg_sortby,
-              topk: arg_topk,
-              select: arg_select,
-              tsAscending: arg_tsAscending,
               filter: arg_filter,
+              limit: arg_limit,
+              offset: arg_offset,
+              realtime: arg_realtime,
+              select: arg_select,
+              sonar: arg_sonar,
+              sort: arg_sort,
+              sortby: arg_sortby,
+              timeRange: arg_timeRange,
+              timeUnit: arg_timeUnit,
+              topk: arg_topk,
+              tsAscending: arg_tsAscending,
+              tzo: arg_tzo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1OptimizedStats(response);
@@ -14240,12 +14240,12 @@ void main() {
       api.OrganizationsEnvironmentsQueriesResourceApi res =
           api.ApigeeApi(mock).organizations.environments.queries;
       var arg_parent = 'foo';
-      var arg_submittedBy = 'foo';
+      var arg_dataset = 'foo';
       var arg_from = 'foo';
       var arg_inclQueriesWithoutReport = 'foo';
-      var arg_to = 'foo';
       var arg_status = 'foo';
-      var arg_dataset = 'foo';
+      var arg_submittedBy = 'foo';
+      var arg_to = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14275,14 +14275,14 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["submittedBy"].first, unittest.equals(arg_submittedBy));
+            queryMap["dataset"].first, unittest.equals(arg_dataset));
         unittest.expect(queryMap["from"].first, unittest.equals(arg_from));
         unittest.expect(queryMap["inclQueriesWithoutReport"].first,
             unittest.equals(arg_inclQueriesWithoutReport));
-        unittest.expect(queryMap["to"].first, unittest.equals(arg_to));
         unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
         unittest.expect(
-            queryMap["dataset"].first, unittest.equals(arg_dataset));
+            queryMap["submittedBy"].first, unittest.equals(arg_submittedBy));
+        unittest.expect(queryMap["to"].first, unittest.equals(arg_to));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14294,12 +14294,12 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              submittedBy: arg_submittedBy,
+              dataset: arg_dataset,
               from: arg_from,
               inclQueriesWithoutReport: arg_inclQueriesWithoutReport,
-              to: arg_to,
               status: arg_status,
-              dataset: arg_dataset,
+              submittedBy: arg_submittedBy,
+              to: arg_to,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListAsyncQueriesResponse(response);
@@ -14517,8 +14517,8 @@ void main() {
           api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
-      var arg_type = 'foo';
       var arg_name = 'foo';
+      var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleApiHttpBody.fromJson(json);
@@ -14550,8 +14550,8 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
+        unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -14562,7 +14562,7 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_parent,
-              type: arg_type, name: arg_name, $fields: arg_$fields)
+              name: arg_name, type: arg_type, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ResourceFile(response);
       })));
@@ -15038,21 +15038,21 @@ void main() {
       api.OrganizationsEnvironmentsStatsResourceApi res =
           api.ApigeeApi(mock).organizations.environments.stats;
       var arg_name = 'foo';
-      var arg_realtime = true;
-      var arg_timeUnit = 'foo';
-      var arg_sortby = 'foo';
       var arg_accuracy = 'foo';
-      var arg_filter = 'foo';
-      var arg_tzo = 'foo';
-      var arg_sort = 'foo';
-      var arg_select = 'foo';
-      var arg_offset = 'foo';
-      var arg_limit = 'foo';
-      var arg_sonar = true;
-      var arg_topk = 'foo';
-      var arg_timeRange = 'foo';
-      var arg_tsAscending = true;
       var arg_aggTable = 'foo';
+      var arg_filter = 'foo';
+      var arg_limit = 'foo';
+      var arg_offset = 'foo';
+      var arg_realtime = true;
+      var arg_select = 'foo';
+      var arg_sonar = true;
+      var arg_sort = 'foo';
+      var arg_sortby = 'foo';
+      var arg_timeRange = 'foo';
+      var arg_timeUnit = 'foo';
+      var arg_topk = 'foo';
+      var arg_tsAscending = true;
+      var arg_tzo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15082,26 +15082,26 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["realtime"].first, unittest.equals("$arg_realtime"));
-        unittest.expect(
-            queryMap["timeUnit"].first, unittest.equals(arg_timeUnit));
-        unittest.expect(queryMap["sortby"].first, unittest.equals(arg_sortby));
-        unittest.expect(
             queryMap["accuracy"].first, unittest.equals(arg_accuracy));
+        unittest.expect(
+            queryMap["aggTable"].first, unittest.equals(arg_aggTable));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(queryMap["tzo"].first, unittest.equals(arg_tzo));
-        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
-        unittest.expect(queryMap["select"].first, unittest.equals(arg_select));
-        unittest.expect(queryMap["offset"].first, unittest.equals(arg_offset));
         unittest.expect(queryMap["limit"].first, unittest.equals(arg_limit));
+        unittest.expect(queryMap["offset"].first, unittest.equals(arg_offset));
+        unittest.expect(
+            queryMap["realtime"].first, unittest.equals("$arg_realtime"));
+        unittest.expect(queryMap["select"].first, unittest.equals(arg_select));
         unittest.expect(queryMap["sonar"].first, unittest.equals("$arg_sonar"));
-        unittest.expect(queryMap["topk"].first, unittest.equals(arg_topk));
+        unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
+        unittest.expect(queryMap["sortby"].first, unittest.equals(arg_sortby));
         unittest.expect(
             queryMap["timeRange"].first, unittest.equals(arg_timeRange));
         unittest.expect(
-            queryMap["tsAscending"].first, unittest.equals("$arg_tsAscending"));
+            queryMap["timeUnit"].first, unittest.equals(arg_timeUnit));
+        unittest.expect(queryMap["topk"].first, unittest.equals(arg_topk));
         unittest.expect(
-            queryMap["aggTable"].first, unittest.equals(arg_aggTable));
+            queryMap["tsAscending"].first, unittest.equals("$arg_tsAscending"));
+        unittest.expect(queryMap["tzo"].first, unittest.equals(arg_tzo));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15112,21 +15112,21 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              realtime: arg_realtime,
-              timeUnit: arg_timeUnit,
-              sortby: arg_sortby,
               accuracy: arg_accuracy,
-              filter: arg_filter,
-              tzo: arg_tzo,
-              sort: arg_sort,
-              select: arg_select,
-              offset: arg_offset,
-              limit: arg_limit,
-              sonar: arg_sonar,
-              topk: arg_topk,
-              timeRange: arg_timeRange,
-              tsAscending: arg_tsAscending,
               aggTable: arg_aggTable,
+              filter: arg_filter,
+              limit: arg_limit,
+              offset: arg_offset,
+              realtime: arg_realtime,
+              select: arg_select,
+              sonar: arg_sonar,
+              sort: arg_sort,
+              sortby: arg_sortby,
+              timeRange: arg_timeRange,
+              timeUnit: arg_timeUnit,
+              topk: arg_topk,
+              tsAscending: arg_tsAscending,
+              tzo: arg_tzo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1Stats(response);
@@ -15756,8 +15756,8 @@ void main() {
       api.OrganizationsInstancesAttachmentsResourceApi res =
           api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -15786,10 +15786,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -15801,8 +15801,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(response);

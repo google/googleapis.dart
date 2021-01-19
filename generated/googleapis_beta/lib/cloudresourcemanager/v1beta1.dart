@@ -184,13 +184,6 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The maximum number of Organizations to return in the
-  /// response. This field is optional.
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations` that indicates from where listing should continue.
-  /// This field is optional.
-  ///
   /// [filter] - An optional query string used to filter the Organizations to
   /// return in the response. Filter rules are case-insensitive. Organizations
   /// may be filtered by `owner.directoryCustomerId` or by `domain`, where the
@@ -199,6 +192,13 @@ class OrganizationsResourceApi {
   /// `owner.directory_customer_id` equal to `123456789`. * Filter
   /// `domain:google.com` returns Organization resources corresponding to the
   /// domain `google.com`. This field is optional.
+  ///
+  /// [pageSize] - The maximum number of Organizations to return in the
+  /// response. This field is optional.
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations` that indicates from where listing should continue.
+  /// This field is optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -211,9 +211,9 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list({
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -223,14 +223,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

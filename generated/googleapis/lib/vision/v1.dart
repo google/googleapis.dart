@@ -529,11 +529,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -547,9 +547,9 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String pageToken,
     core.String filter,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -562,14 +562,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

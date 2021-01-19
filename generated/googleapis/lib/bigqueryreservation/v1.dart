@@ -274,12 +274,12 @@ class ProjectsLocationsResourceApi {
   ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
   /// [query] - Please specify resource name as assignee in the query. Examples:
   /// * `assignee=projects/myproject` * `assignee=folders/123` *
   /// `assignee=organizations/456`
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,8 +294,8 @@ class ProjectsLocationsResourceApi {
   async.Future<SearchAllAssignmentsResponse> searchAllAssignments(
     core.String parent, {
     core.int pageSize,
-    core.String query,
     core.String pageToken,
+    core.String query,
     core.String $fields,
   }) {
     core.String _url;
@@ -311,11 +311,11 @@ class ProjectsLocationsResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -675,10 +675,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
   /// `projects/myproject/locations/US`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of items to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -692,8 +692,8 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCapacityCommitmentsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -706,11 +706,11 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

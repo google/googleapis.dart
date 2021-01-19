@@ -250,22 +250,23 @@ class OrganizationsAssetsResourceApi {
   /// format is "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,resource_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
-  /// name desc , resource_properties.a_property " are equivalent. The following
-  /// fields are supported: name update_time resource_properties
-  /// security_marks.marks security_center_properties.resource_name
-  /// security_center_properties.resource_display_name
-  /// security_center_properties.resource_parent
-  /// security_center_properties.resource_parent_display_name
-  /// security_center_properties.resource_project
-  /// security_center_properties.resource_project_display_name
-  /// security_center_properties.resource_type
+  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
+  /// "state_change" attribute is updated to indicate whether the asset was
+  /// added, removed, or remained present during the compare_duration period of
+  /// time that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence of the asset at the two points in time. Intermediate state
+  /// changes between the two times don't affect the result. For example, the
+  /// results aren't affected if the asset is removed and re-created again.
+  /// Possible "state_change" values when compare_duration is specified: *
+  /// "ADDED": indicates that the asset was not present at the start of
+  /// compare_duration, but present at read_time. * "REMOVED": indicates that
+  /// the asset was present at the start of compare_duration, but not present at
+  /// read_time. * "ACTIVE": indicates that the asset was present at both the
+  /// start and the end of the time period defined by compare_duration and
+  /// read_time. If compare_duration is not specified, then the only possible
+  /// state_change is "UNUSED", which will be the state_change set for all
+  /// assets present at read_time.
   ///
   /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
   /// listed in the response. An empty field mask will list all fields.
@@ -304,35 +305,34 @@ class OrganizationsAssetsResourceApi {
   /// empty string to filter based on a property not existing:
   /// `-resource_properties.my_property : ""`
   ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,resource_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
+  /// name desc , resource_properties.a_property " are equivalent. The following
+  /// fields are supported: name update_time resource_properties
+  /// security_marks.marks security_center_properties.resource_name
+  /// security_center_properties.resource_display_name
+  /// security_center_properties.resource_parent
+  /// security_center_properties.resource_parent_display_name
+  /// security_center_properties.resource_project
+  /// security_center_properties.resource_project_display_name
+  /// security_center_properties.resource_type
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
   /// [pageToken] - The value returned by the last `ListAssetsResponse`;
   /// indicates that this is a continuation of a prior `ListAssets` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
-  /// "state_change" attribute is updated to indicate whether the asset was
-  /// added, removed, or remained present during the compare_duration period of
-  /// time that precedes the read_time. This is the time between (read_time -
-  /// compare_duration) and read_time. The state_change value is derived based
-  /// on the presence of the asset at the two points in time. Intermediate state
-  /// changes between the two times don't affect the result. For example, the
-  /// results aren't affected if the asset is removed and re-created again.
-  /// Possible "state_change" values when compare_duration is specified: *
-  /// "ADDED": indicates that the asset was not present at the start of
-  /// compare_duration, but present at read_time. * "REMOVED": indicates that
-  /// the asset was present at the start of compare_duration, but not present at
-  /// read_time. * "ACTIVE": indicates that the asset was present at both the
-  /// start and the end of the time period defined by compare_duration and
-  /// read_time. If compare_duration is not specified, then the only possible
-  /// state_change is "UNUSED", which will be the state_change set for all
-  /// assets present at read_time.
   ///
   /// [readTime] - Time used as a reference point when filtering assets. The
   /// filter is limited to assets existing at the supplied time and their values
   /// are those at that specific time. Absence of this field will default to the
   /// API's version of NOW.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -346,13 +346,13 @@ class OrganizationsAssetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
     core.String parent, {
-    core.String orderBy,
+    core.String compareDuration,
     core.String fieldMask,
     core.String filter,
-    core.String pageToken,
-    core.String compareDuration,
-    core.String readTime,
+    core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -365,8 +365,8 @@ class OrganizationsAssetsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (compareDuration != null) {
+      _queryParams['compareDuration'] = [compareDuration];
     }
     if (fieldMask != null) {
       _queryParams['fieldMask'] = [fieldMask];
@@ -374,17 +374,17 @@ class OrganizationsAssetsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (compareDuration != null) {
-      _queryParams['compareDuration'] = [compareDuration];
-    }
-    if (readTime != null) {
-      _queryParams['readTime'] = [readTime];
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readTime != null) {
+      _queryParams['readTime'] = [readTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -723,13 +723,13 @@ class OrganizationsNotificationConfigsResourceApi {
   /// configs. Its format is "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
   /// [pageToken] - The value returned by the last
   /// `ListNotificationConfigsResponse`; indicates that this is a continuation
   /// of a prior `ListNotificationConfigs` call, and that the system should
   /// return the next page of data.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -743,8 +743,8 @@ class OrganizationsNotificationConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNotificationConfigsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -757,11 +757,11 @@ class OrganizationsNotificationConfigsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1276,12 +1276,12 @@ class OrganizationsSourcesResourceApi {
   /// format should be "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
   /// [pageToken] - The value returned by the last `ListSourcesResponse`;
   /// indicates that this is a continuation of a prior `ListSources` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1295,8 +1295,8 @@ class OrganizationsSourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSourcesResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1309,11 +1309,11 @@ class OrganizationsSourcesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1663,10 +1663,6 @@ class OrganizationsSourcesFindingsResourceApi {
   /// organizations/{organization_id}/sources/-
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
-  /// indicates that this is a continuation of a prior `ListFindings` call, and
-  /// that the system should return the next page of data.
-  ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
   /// "state_change" attribute is updated to indicate whether the finding had
   /// its state changed, the finding's state remained unchanged, or if the
@@ -1690,19 +1686,8 @@ class OrganizationsSourcesFindingsResourceApi {
   /// "UNUSED", which will be the state_change set for all findings present at
   /// read_time.
   ///
-  /// [pageSize] - The maximum number of results to return in a single response.
-  /// Default is 10, minimum is 1, maximum is 1000.
-  ///
-  /// [orderBy] - Expression that defines what fields and order to use for
-  /// sorting. The string value should follow SQL syntax: comma separated list
-  /// of fields. For example: "name,resource_properties.a_property". The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix " desc" should be appended to the field name. For example: "name
-  /// desc,source_properties.a_property". Redundant space characters in the
-  /// syntax are insignificant. "name desc,source_properties.a_property" and "
-  /// name desc , source_properties.a_property " are equivalent. The following
-  /// fields are supported: name parent state category resource_name event_time
-  /// source_properties security_marks.marks
+  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
+  /// the response. An empty field mask will list all fields.
   ///
   /// [filter] - Expression that defines the filter to apply across findings.
   /// The expression is a list of one or more restrictions combined via logical
@@ -1726,13 +1711,28 @@ class OrganizationsSourcesFindingsResourceApi {
   /// partial match on the empty string to filter based on a property not
   /// existing: `-source_properties.my_property : ""`
   ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,source_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,source_properties.a_property" and "
+  /// name desc , source_properties.a_property " are equivalent. The following
+  /// fields are supported: name parent state category resource_name event_time
+  /// source_properties security_marks.marks
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
+  /// indicates that this is a continuation of a prior `ListFindings` call, and
+  /// that the system should return the next page of data.
+  ///
   /// [readTime] - Time used as a reference point when filtering findings. The
   /// filter is limited to findings existing at the supplied time and their
   /// values are those at that specific time. Absence of this field will default
   /// to the API's version of NOW.
-  ///
-  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
-  /// the response. An empty field mask will list all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1746,13 +1746,13 @@ class OrganizationsSourcesFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.String compareDuration,
-    core.int pageSize,
-    core.String orderBy,
-    core.String filter,
-    core.String readTime,
     core.String fieldMask,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -1765,26 +1765,26 @@ class OrganizationsSourcesFindingsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (compareDuration != null) {
       _queryParams['compareDuration'] = [compareDuration];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
     }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
     if (readTime != null) {
       _queryParams['readTime'] = [readTime];
-    }
-    if (fieldMask != null) {
-      _queryParams['fieldMask'] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1948,14 +1948,14 @@ class OrganizationsSourcesFindingsResourceApi {
   /// Value must have pattern
   /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$".
   ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
   /// set to "marks", all marks will be replaced. Individual marks can be
   /// updated using "marks.".
-  ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect. If
-  /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1970,8 +1970,8 @@ class OrganizationsSourcesFindingsResourceApi {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String updateMask,
     core.String startTime,
+    core.String updateMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -1987,11 +1987,11 @@ class OrganizationsSourcesFindingsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
     if (startTime != null) {
       _queryParams['startTime'] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -527,10 +527,10 @@ class CustomersDevicesResourceApi {
   /// name in the format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
-  /// [pageToken] - A token specifying which result page to return.
-  ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
   /// Must be between 1 and 100 inclusive.
+  ///
+  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -544,8 +544,8 @@ class CustomersDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomerListDevicesResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.String pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -558,11 +558,11 @@ class CustomersDevicesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = [pageSize];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

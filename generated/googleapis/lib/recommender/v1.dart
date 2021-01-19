@@ -369,14 +369,14 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   /// Supported filter fields: state_info.state Eg:
   /// `state_info.state:"DISMISSED" or state_info.state:"FAILED"
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
   /// [pageToken] - Optional. If present, retrieves the next batch of results
   /// from the preceding call to this method. `page_token` must be the value of
   /// `next_page_token` from the previous response. The values of other method
   /// parameters must be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. If not specified, the server
-  /// will determine the number of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -391,8 +391,8 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
     core.String parent, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -408,11 +408,11 @@ class ProjectsLocationsRecommendersRecommendationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

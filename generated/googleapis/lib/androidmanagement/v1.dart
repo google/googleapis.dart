@@ -73,10 +73,10 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [enterpriseToken] - The enterprise token appended to the callback URL.
+  ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
-  ///
-  /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
   /// enterprise.
@@ -93,8 +93,8 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<Enterprise> create(
     Enterprise request, {
-    core.String projectId,
     core.String enterpriseToken,
+    core.String projectId,
     core.String signupUrlName,
     core.String $fields,
   }) {
@@ -108,11 +108,11 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
-    }
     if (enterpriseToken != null) {
       _queryParams['enterpriseToken'] = [enterpriseToken];
+    }
+    if (projectId != null) {
+      _queryParams['projectId'] = [projectId];
     }
     if (signupUrlName != null) {
       _queryParams['signupUrlName'] = [signupUrlName];
@@ -331,11 +331,11 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
+  ///
   /// [wipeReasonMessage] - Optional. A short message displayed to the user
   /// before wiping the work profile on personal devices. This has no effect on
   /// company owned devices. The maximum message length is 200 characters.
-  ///
-  /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -349,8 +349,8 @@ class EnterprisesDevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String wipeReasonMessage,
     core.List<core.String> wipeDataFlags,
+    core.String wipeReasonMessage,
     core.String $fields,
   }) {
     core.String _url;
@@ -363,11 +363,11 @@ class EnterprisesDevicesResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (wipeReasonMessage != null) {
-      _queryParams['wipeReasonMessage'] = [wipeReasonMessage];
-    }
     if (wipeDataFlags != null) {
       _queryParams['wipeDataFlags'] = wipeDataFlags;
+    }
+    if (wipeReasonMessage != null) {
+      _queryParams['wipeReasonMessage'] = [wipeReasonMessage];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

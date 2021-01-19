@@ -579,11 +579,11 @@ void main() {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       api.ClaimsResourceApi res = api.FactchecktoolsApi(mock).claims;
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_maxAgeDays = 42;
       var arg_languageCode = 'foo';
+      var arg_maxAgeDays = 42;
       var arg_offset = 42;
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_query = 'foo';
       var arg_reviewPublisherSiteFilter = 'foo';
       var arg_$fields = 'foo';
@@ -614,15 +614,15 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
         unittest.expect(core.int.parse(queryMap["maxAgeDays"].first),
             unittest.equals(arg_maxAgeDays));
-        unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
         unittest.expect(core.int.parse(queryMap["offset"].first),
             unittest.equals(arg_offset));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["reviewPublisherSiteFilter"].first,
             unittest.equals(arg_reviewPublisherSiteFilter));
@@ -637,11 +637,11 @@ void main() {
       }), true);
       res
           .search(
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              maxAgeDays: arg_maxAgeDays,
               languageCode: arg_languageCode,
+              maxAgeDays: arg_maxAgeDays,
               offset: arg_offset,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               query: arg_query,
               reviewPublisherSiteFilter: arg_reviewPublisherSiteFilter,
               $fields: arg_$fields)
@@ -806,11 +806,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.PagesResourceApi res = api.FactchecktoolsApi(mock).pages;
-      var arg_url = 'foo';
-      var arg_pageSize = 42;
       var arg_offset = 42;
       var arg_organization = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_url = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -838,15 +838,15 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(core.int.parse(queryMap["offset"].first),
             unittest.equals(arg_offset));
         unittest.expect(
             queryMap["organization"].first, unittest.equals(arg_organization));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -858,11 +858,11 @@ void main() {
       }), true);
       res
           .list(
-              url: arg_url,
-              pageSize: arg_pageSize,
               offset: arg_offset,
               organization: arg_organization,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              url: arg_url,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(

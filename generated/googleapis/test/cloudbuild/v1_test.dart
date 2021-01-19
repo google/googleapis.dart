@@ -2213,10 +2213,10 @@ void main() {
       api.ProjectsBuildsResourceApi res =
           api.CloudbuildApi(mock).projects.builds;
       var arg_projectId = 'foo';
-      var arg_parent = 'foo';
       var arg_filter = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2253,12 +2253,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2269,10 +2269,10 @@ void main() {
       }), true);
       res
           .list(arg_projectId,
-              parent: arg_parent,
               filter: arg_filter,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              parent: arg_parent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBuildsResponse(response);
@@ -2518,10 +2518,10 @@ void main() {
       api.ProjectsLocationsBuildsResourceApi res =
           api.CloudbuildApi(mock).projects.locations.builds;
       var arg_parent = 'foo';
-      var arg_projectId = 'foo';
+      var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
-      var arg_filter = 'foo';
+      var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2550,13 +2550,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["projectId"].first, unittest.equals(arg_projectId));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["projectId"].first, unittest.equals(arg_projectId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2567,10 +2567,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              projectId: arg_projectId,
+              filter: arg_filter,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
-              filter: arg_filter,
+              projectId: arg_projectId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBuildsResponse(response);
@@ -2918,8 +2918,8 @@ void main() {
       api.ProjectsTriggersResourceApi res =
           api.CloudbuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2956,10 +2956,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2970,8 +2970,8 @@ void main() {
       }), true);
       res
           .list(arg_projectId,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBuildTriggersResponse(response);

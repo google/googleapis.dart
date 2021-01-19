@@ -556,10 +556,10 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
-  ///
   /// [completionToken] - The Completion token initially returned by
   /// GenerateSignupUrl.
+  ///
+  /// [enterpriseToken] - The Enterprise token appended to the Callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -572,8 +572,8 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> completeSignup({
-    core.String enterpriseToken,
     core.String completionToken,
+    core.String enterpriseToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -583,11 +583,11 @@ class EnterprisesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (enterpriseToken != null) {
-      _queryParams['enterpriseToken'] = [enterpriseToken];
-    }
     if (completionToken != null) {
       _queryParams['completionToken'] = [completionToken];
+    }
+    if (enterpriseToken != null) {
+      _queryParams['enterpriseToken'] = [enterpriseToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3131,20 +3131,20 @@ class ProductsResourceApi {
   /// among only products that have been approved (true). Only "true" is
   /// supported, and should be specified.
   ///
+  /// [language] - The BCP47 tag for the user's preferred language (e.g.
+  /// "en-US", "de"). Results are returned in the language best matching the
+  /// preferred language.
+  ///
   /// [maxResults] - Defines how many results the list operation should return.
   /// The default number depends on the resource collection.
-  ///
-  /// [token] - Defines the token of the page to return, usually taken from
-  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [query] - The search query as typed in the Google Play store search box.
   /// If omitted, all approved apps will be returned (using the pagination
   /// parameters), including apps that are not available in the store (e.g.
   /// unpublished apps).
   ///
-  /// [language] - The BCP47 tag for the user's preferred language (e.g.
-  /// "en-US", "de"). Results are returned in the language best matching the
-  /// preferred language.
+  /// [token] - Defines the token of the page to return, usually taken from
+  /// TokenPagination. This can only be used if token paging is enabled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3159,10 +3159,10 @@ class ProductsResourceApi {
   async.Future<ProductsListResponse> list(
     core.String enterpriseId, {
     core.bool approved,
-    core.int maxResults,
-    core.String token,
-    core.String query,
     core.String language,
+    core.int maxResults,
+    core.String query,
+    core.String token,
     core.String $fields,
   }) {
     core.String _url;
@@ -3178,17 +3178,17 @@ class ProductsResourceApi {
     if (approved != null) {
       _queryParams['approved'] = ['${approved}'];
     }
+    if (language != null) {
+      _queryParams['language'] = [language];
+    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (token != null) {
-      _queryParams['token'] = [token];
     }
     if (query != null) {
       _queryParams['query'] = [query];
     }
-    if (language != null) {
-      _queryParams['language'] = [language];
+    if (token != null) {
+      _queryParams['token'] = [token];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

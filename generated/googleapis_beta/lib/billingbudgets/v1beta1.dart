@@ -242,13 +242,13 @@ class BillingAccountsBudgetsResourceApi {
   /// are of the form `billingAccounts/{billingAccountId}`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of budgets to return per page.
+  /// The default and maximum value are 100.
+  ///
   /// [pageToken] - Optional. The value returned by the last
   /// `ListBudgetsResponse` which indicates that this is a continuation of a
   /// prior `ListBudgets` call, and that the system should return the next page
   /// of data.
-  ///
-  /// [pageSize] - Optional. The maximum number of budgets to return per page.
-  /// The default and maximum value are 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -262,8 +262,8 @@ class BillingAccountsBudgetsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -276,11 +276,11 @@ class BillingAccountsBudgetsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

@@ -3464,10 +3464,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.OtherContactsResourceApi res = api.PeopleApi(mock).otherContacts;
-      var arg_requestSyncToken = true;
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_readMask = 'foo';
-      var arg_pageSize = 42;
+      var arg_requestSyncToken = true;
       var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3496,14 +3496,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["requestSyncToken"].first,
-            unittest.equals("$arg_requestSyncToken"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["requestSyncToken"].first,
+            unittest.equals("$arg_requestSyncToken"));
         unittest.expect(
             queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3516,10 +3516,10 @@ void main() {
       }), true);
       res
           .list(
-              requestSyncToken: arg_requestSyncToken,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               readMask: arg_readMask,
-              pageSize: arg_pageSize,
+              requestSyncToken: arg_requestSyncToken,
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3637,8 +3637,8 @@ void main() {
       var mock = HttpServerMock();
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
       var arg_resourceName = 'foo';
-      var arg_sources = buildUnnamed4918();
       var arg_personFields = 'foo';
+      var arg_sources = buildUnnamed4918();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3667,9 +3667,9 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(
             queryMap["personFields"].first, unittest.equals(arg_personFields));
+        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3680,8 +3680,8 @@ void main() {
       }), true);
       res
           .deleteContactPhoto(arg_resourceName,
-              sources: arg_sources,
               personFields: arg_personFields,
+              sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDeleteContactPhotoResponse(response);
@@ -3692,9 +3692,9 @@ void main() {
       var mock = HttpServerMock();
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
       var arg_resourceName = 'foo';
-      var arg_sources = buildUnnamed4919();
-      var arg_requestMask_includeField = 'foo';
       var arg_personFields = 'foo';
+      var arg_requestMask_includeField = 'foo';
+      var arg_sources = buildUnnamed4919();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3723,11 +3723,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
-        unittest.expect(queryMap["requestMask.includeField"].first,
-            unittest.equals(arg_requestMask_includeField));
         unittest.expect(
             queryMap["personFields"].first, unittest.equals(arg_personFields));
+        unittest.expect(queryMap["requestMask.includeField"].first,
+            unittest.equals(arg_requestMask_includeField));
+        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3738,9 +3738,9 @@ void main() {
       }), true);
       res
           .get(arg_resourceName,
-              sources: arg_sources,
-              requestMask_includeField: arg_requestMask_includeField,
               personFields: arg_personFields,
+              requestMask_includeField: arg_requestMask_includeField,
+              sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPerson(response);
@@ -3750,8 +3750,8 @@ void main() {
     unittest.test('method--getBatchGet', () {
       var mock = HttpServerMock();
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
-      var arg_requestMask_includeField = 'foo';
       var arg_personFields = 'foo';
+      var arg_requestMask_includeField = 'foo';
       var arg_resourceNames = buildUnnamed4920();
       var arg_sources = buildUnnamed4921();
       var arg_$fields = 'foo';
@@ -3781,10 +3781,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["requestMask.includeField"].first,
-            unittest.equals(arg_requestMask_includeField));
         unittest.expect(
             queryMap["personFields"].first, unittest.equals(arg_personFields));
+        unittest.expect(queryMap["requestMask.includeField"].first,
+            unittest.equals(arg_requestMask_includeField));
         unittest.expect(
             queryMap["resourceNames"], unittest.equals(arg_resourceNames));
         unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
@@ -3798,8 +3798,8 @@ void main() {
       }), true);
       res
           .getBatchGet(
-              requestMask_includeField: arg_requestMask_includeField,
               personFields: arg_personFields,
+              requestMask_includeField: arg_requestMask_includeField,
               resourceNames: arg_resourceNames,
               sources: arg_sources,
               $fields: arg_$fields)
@@ -3811,13 +3811,13 @@ void main() {
     unittest.test('method--listDirectoryPeople', () {
       var mock = HttpServerMock();
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
-      var arg_syncToken = 'foo';
       var arg_mergeSources = buildUnnamed4922();
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
+      var arg_readMask = 'foo';
       var arg_requestSyncToken = true;
       var arg_sources = buildUnnamed4923();
-      var arg_readMask = 'foo';
-      var arg_pageSize = 42;
+      var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3846,18 +3846,18 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(
             queryMap["mergeSources"], unittest.equals(arg_mergeSources));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["readMask"].first, unittest.equals(arg_readMask));
         unittest.expect(queryMap["requestSyncToken"].first,
             unittest.equals("$arg_requestSyncToken"));
         unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3868,13 +3868,13 @@ void main() {
       }), true);
       res
           .listDirectoryPeople(
-              syncToken: arg_syncToken,
               mergeSources: arg_mergeSources,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              readMask: arg_readMask,
               requestSyncToken: arg_requestSyncToken,
               sources: arg_sources,
-              readMask: arg_readMask,
-              pageSize: arg_pageSize,
+              syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDirectoryPeopleResponse(response);
@@ -3885,11 +3885,11 @@ void main() {
       var mock = HttpServerMock();
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
       var arg_mergeSources = buildUnnamed4924();
-      var arg_sources = buildUnnamed4925();
-      var arg_query = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_readMask = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_query = 'foo';
+      var arg_readMask = 'foo';
+      var arg_sources = buildUnnamed4925();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3919,14 +3919,14 @@ void main() {
         }
         unittest.expect(
             queryMap["mergeSources"], unittest.equals(arg_mergeSources));
-        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["readMask"].first, unittest.equals(arg_readMask));
+        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3938,11 +3938,11 @@ void main() {
       res
           .searchDirectoryPeople(
               mergeSources: arg_mergeSources,
-              sources: arg_sources,
-              query: arg_query,
-              pageToken: arg_pageToken,
-              readMask: arg_readMask,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              query: arg_query,
+              readMask: arg_readMask,
+              sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSearchDirectoryPeopleResponse(response);
@@ -3954,9 +3954,9 @@ void main() {
       api.PeopleResourceApi res = api.PeopleApi(mock).people;
       var arg_request = buildPerson();
       var arg_resourceName = 'foo';
-      var arg_updatePersonFields = 'foo';
-      var arg_sources = buildUnnamed4926();
       var arg_personFields = 'foo';
+      var arg_sources = buildUnnamed4926();
+      var arg_updatePersonFields = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Person.fromJson(json);
@@ -3988,11 +3988,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["updatePersonFields"].first,
-            unittest.equals(arg_updatePersonFields));
-        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(
             queryMap["personFields"].first, unittest.equals(arg_personFields));
+        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
+        unittest.expect(queryMap["updatePersonFields"].first,
+            unittest.equals(arg_updatePersonFields));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4003,9 +4003,9 @@ void main() {
       }), true);
       res
           .updateContact(arg_request, arg_resourceName,
-              updatePersonFields: arg_updatePersonFields,
-              sources: arg_sources,
               personFields: arg_personFields,
+              sources: arg_sources,
+              updatePersonFields: arg_updatePersonFields,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPerson(response);
@@ -4071,13 +4071,13 @@ void main() {
       api.PeopleConnectionsResourceApi res =
           api.PeopleApi(mock).people.connections;
       var arg_resourceName = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_requestSyncToken = true;
       var arg_pageSize = 42;
-      var arg_sources = buildUnnamed4927();
-      var arg_requestMask_includeField = 'foo';
       var arg_pageToken = 'foo';
       var arg_personFields = 'foo';
+      var arg_requestMask_includeField = 'foo';
+      var arg_requestSyncToken = true;
+      var arg_sortOrder = 'foo';
+      var arg_sources = buildUnnamed4927();
       var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4107,19 +4107,19 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["requestSyncToken"].first,
-            unittest.equals("$arg_requestSyncToken"));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
-        unittest.expect(queryMap["requestMask.includeField"].first,
-            unittest.equals(arg_requestMask_includeField));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["personFields"].first, unittest.equals(arg_personFields));
+        unittest.expect(queryMap["requestMask.includeField"].first,
+            unittest.equals(arg_requestMask_includeField));
+        unittest.expect(queryMap["requestSyncToken"].first,
+            unittest.equals("$arg_requestSyncToken"));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(queryMap["sources"], unittest.equals(arg_sources));
         unittest.expect(
             queryMap["syncToken"].first, unittest.equals(arg_syncToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4132,13 +4132,13 @@ void main() {
       }), true);
       res
           .list(arg_resourceName,
-              sortOrder: arg_sortOrder,
-              requestSyncToken: arg_requestSyncToken,
               pageSize: arg_pageSize,
-              sources: arg_sources,
-              requestMask_includeField: arg_requestMask_includeField,
               pageToken: arg_pageToken,
               personFields: arg_personFields,
+              requestMask_includeField: arg_requestMask_includeField,
+              requestSyncToken: arg_requestSyncToken,
+              sortOrder: arg_sortOrder,
+              sources: arg_sources,
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {

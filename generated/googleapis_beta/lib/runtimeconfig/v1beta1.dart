@@ -890,16 +890,16 @@ class ProjectsConfigsVariablesResourceApi {
   /// example:
   /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
   ///
-  /// [returnValues] - The flag indicates whether the user wants to return
-  /// values of variables. If true, then only those variables that user has IAM
-  /// GetVariable permission will be returned along with their values.
+  /// [pageSize] - Specifies the number of results to return per page. If there
+  /// are fewer elements than the specified number, returns all elements.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken` returned by a previous list request to get the next page
   /// of results.
   ///
-  /// [pageSize] - Specifies the number of results to return per page. If there
-  /// are fewer elements than the specified number, returns all elements.
+  /// [returnValues] - The flag indicates whether the user wants to return
+  /// values of variables. If true, then only those variables that user has IAM
+  /// GetVariable permission will be returned along with their values.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -914,9 +914,9 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<ListVariablesResponse> list(
     core.String parent, {
     core.String filter,
-    core.bool returnValues,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
+    core.bool returnValues,
     core.String $fields,
   }) {
     core.String _url;
@@ -932,14 +932,14 @@ class ProjectsConfigsVariablesResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (returnValues != null) {
-      _queryParams['returnValues'] = ['${returnValues}'];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (returnValues != null) {
+      _queryParams['returnValues'] = ['${returnValues}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

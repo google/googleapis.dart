@@ -325,6 +325,14 @@ class CoursesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [courseStates] - Restricts returned courses to those in one of the
+  /// specified states The default value is ACTIVE, ARCHIVED, PROVISIONED,
+  /// DECLINED.
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
@@ -340,14 +348,6 @@ class CoursesResourceApi {
   /// the numeric identifier for the user * the email address of the user * the
   /// string literal `"me"`, indicating the requesting user
   ///
-  /// [courseStates] - Restricts returned courses to those in one of the
-  /// specified states The default value is ACTIVE, ARCHIVED, PROVISIONED,
-  /// DECLINED.
-  ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the server may assign a maximum. The server may return
-  /// fewer than the specified number of results.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -359,11 +359,11 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoursesResponse> list({
+    core.List<core.String> courseStates,
+    core.int pageSize,
     core.String pageToken,
     core.String studentId,
     core.String teacherId,
-    core.List<core.String> courseStates,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -373,6 +373,12 @@ class CoursesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (courseStates != null) {
+      _queryParams['courseStates'] = courseStates;
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -381,12 +387,6 @@ class CoursesResourceApi {
     }
     if (teacherId != null) {
       _queryParams['teacherId'] = [teacherId];
-    }
-    if (courseStates != null) {
-      _queryParams['courseStates'] = courseStates;
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -953,24 +953,24 @@ class CoursesAnnouncementsResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned. If this argument is left unspecified, the default value is
+  /// `PUBLISHED`.
+  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with an optional sort direction keyword. Supported field is
   /// `updateTime`. Supported direction keywords are `asc` and `desc`. If not
   /// specified, `updateTime desc` is the default behavior. Examples:
   /// `updateTime asc`, `updateTime`
   ///
-  /// [pageToken] - nextPageToken value returned from a previous list call,
-  /// indicating that the subsequent page of results should be returned. The
-  /// list request must be otherwise identical to the one that resulted in this
-  /// token.
-  ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the server may assign a maximum. The server may return
   /// fewer than the specified number of results.
   ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned. If this argument is left unspecified, the default value is
-  /// `PUBLISHED`.
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -984,10 +984,10 @@ class CoursesAnnouncementsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(
     core.String courseId, {
-    core.String orderBy,
-    core.String pageToken,
-    core.int pageSize,
     core.List<core.String> announcementStates,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1000,17 +1000,17 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
+    if (announcementStates != null) {
+      _queryParams['announcementStates'] = announcementStates;
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (announcementStates != null) {
-      _queryParams['announcementStates'] = announcementStates;
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1406,24 +1406,24 @@ class CoursesCourseWorkResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
+  /// [courseWorkStates] - Restriction on the work status to return. Only
+  /// courseWork that matches is returned. If unspecified, items with a work
+  /// status of `PUBLISHED` is returned.
+  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with an optional sort direction keyword. Supported fields are
   /// `updateTime` and `dueDate`. Supported direction keywords are `asc` and
   /// `desc`. If not specified, `updateTime desc` is the default behavior.
   /// Examples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc`
   ///
-  /// [pageToken] - nextPageToken value returned from a previous list call,
-  /// indicating that the subsequent page of results should be returned. The
-  /// list request must be otherwise identical to the one that resulted in this
-  /// token.
-  ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the server may assign a maximum. The server may return
   /// fewer than the specified number of results.
   ///
-  /// [courseWorkStates] - Restriction on the work status to return. Only
-  /// courseWork that matches is returned. If unspecified, items with a work
-  /// status of `PUBLISHED` is returned.
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1437,10 +1437,10 @@ class CoursesCourseWorkResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCourseWorkResponse> list(
     core.String courseId, {
-    core.String orderBy,
-    core.String pageToken,
-    core.int pageSize,
     core.List<core.String> courseWorkStates,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1453,17 +1453,17 @@ class CoursesCourseWorkResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
+    if (courseWorkStates != null) {
+      _queryParams['courseWorkStates'] = courseWorkStates;
+    }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (courseWorkStates != null) {
-      _queryParams['courseWorkStates'] = courseWorkStates;
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1741,19 +1741,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// set to the string literal `"-"` to request student work for all course
   /// work in the specified course.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the server may assign a maximum. The server may return
-  /// fewer than the specified number of results.
-  ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the student with the specified identifier. The identifier can be
-  /// one of the following: * the numeric identifier for the user * the email
-  /// address of the user * the string literal `"me"`, indicating the requesting
-  /// user
-  ///
-  /// [states] - Requested submission states. If specified, returned student
-  /// submissions match one of the specified submission states.
-  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are restricted by the requested value. If unspecified,
   /// submissions are returned regardless of `late` value.
@@ -1763,10 +1750,23 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// - "LATE_ONLY" : Return StudentSubmissions where late is true.
   /// - "NOT_LATE_ONLY" : Return StudentSubmissions where late is false.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
   /// token.
+  ///
+  /// [states] - Requested submission states. If specified, returned student
+  /// submissions match one of the specified submission states.
+  ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the student with the specified identifier. The identifier can be
+  /// one of the following: * the numeric identifier for the user * the email
+  /// address of the user * the string literal `"me"`, indicating the requesting
+  /// user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1781,11 +1781,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   async.Future<ListStudentSubmissionsResponse> list(
     core.String courseId,
     core.String courseWorkId, {
-    core.int pageSize,
-    core.String userId,
-    core.List<core.String> states,
     core.String late,
+    core.int pageSize,
     core.String pageToken,
+    core.List<core.String> states,
+    core.String userId,
     core.String $fields,
   }) {
     core.String _url;
@@ -1801,20 +1801,20 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw core.ArgumentError('Parameter courseWorkId is required.');
     }
+    if (late != null) {
+      _queryParams['late'] = [late];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (userId != null) {
-      _queryParams['userId'] = [userId];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (states != null) {
       _queryParams['states'] = states;
     }
-    if (late != null) {
-      _queryParams['late'] = [late];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (userId != null) {
+      _queryParams['userId'] = [userId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2482,24 +2482,6 @@ class CoursesCourseWorkMaterialsResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
-  /// [pageToken] - nextPageToken value returned from a previous list call,
-  /// indicating that the subsequent page of results should be returned. The
-  /// list request must be otherwise identical to the one that resulted in this
-  /// token.
-  ///
-  /// [materialLink] - Optional filtering for course work material with at least
-  /// one link material whose URL partially matches the provided string.
-  ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the server may assign a maximum. The server may return
-  /// fewer than the specified number of results.
-  ///
-  /// [orderBy] - Optional sort ordering for results. A comma-separated list of
-  /// fields with an optional sort direction keyword. Supported field is
-  /// `updateTime`. Supported direction keywords are `asc` and `desc`. If not
-  /// specified, `updateTime desc` is the default behavior. Examples:
-  /// `updateTime asc`, `updateTime`
-  ///
   /// [courseWorkMaterialStates] - Restriction on the work status to return.
   /// Only course work material that matches is returned. If unspecified, items
   /// with a work status of `PUBLISHED` is returned.
@@ -2508,6 +2490,24 @@ class CoursesCourseWorkMaterialsResourceApi {
   /// least one Drive material whose ID matches the provided string. If
   /// `material_link` is also specified, course work material must have
   /// materials matching both filters.
+  ///
+  /// [materialLink] - Optional filtering for course work material with at least
+  /// one link material whose URL partially matches the provided string.
+  ///
+  /// [orderBy] - Optional sort ordering for results. A comma-separated list of
+  /// fields with an optional sort direction keyword. Supported field is
+  /// `updateTime`. Supported direction keywords are `asc` and `desc`. If not
+  /// specified, `updateTime desc` is the default behavior. Examples:
+  /// `updateTime asc`, `updateTime`
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
+  ///
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2521,12 +2521,12 @@ class CoursesCourseWorkMaterialsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCourseWorkMaterialResponse> list(
     core.String courseId, {
-    core.String pageToken,
-    core.String materialLink,
-    core.int pageSize,
-    core.String orderBy,
     core.List<core.String> courseWorkMaterialStates,
     core.String materialDriveId,
+    core.String materialLink,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2539,23 +2539,23 @@ class CoursesCourseWorkMaterialsResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (materialLink != null) {
-      _queryParams['materialLink'] = [materialLink];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
     if (courseWorkMaterialStates != null) {
       _queryParams['courseWorkMaterialStates'] = courseWorkMaterialStates;
     }
     if (materialDriveId != null) {
       _queryParams['materialDriveId'] = [materialDriveId];
+    }
+    if (materialLink != null) {
+      _queryParams['materialLink'] = [materialLink];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2879,14 +2879,14 @@ class CoursesStudentsResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
+  /// [pageSize] - Maximum number of items to return. The default is 30 if
+  /// unspecified or `0`. The server may return fewer than the specified number
+  /// of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
   /// token.
-  ///
-  /// [pageSize] - Maximum number of items to return. The default is 30 if
-  /// unspecified or `0`. The server may return fewer than the specified number
-  /// of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2900,8 +2900,8 @@ class CoursesStudentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentsResponse> list(
     core.String courseId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2914,11 +2914,11 @@ class CoursesStudentsResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3150,14 +3150,14 @@ class CoursesTeachersResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
+  /// [pageSize] - Maximum number of items to return. The default is 30 if
+  /// unspecified or `0`. The server may return fewer than the specified number
+  /// of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
   /// token.
-  ///
-  /// [pageSize] - Maximum number of items to return. The default is 30 if
-  /// unspecified or `0`. The server may return fewer than the specified number
-  /// of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3171,8 +3171,8 @@ class CoursesTeachersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTeachersResponse> list(
     core.String courseId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3185,11 +3185,11 @@ class CoursesTeachersResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3411,14 +3411,14 @@ class CoursesTopicsResourceApi {
   /// [courseId] - Identifier of the course. This identifier can be either the
   /// Classroom-assigned identifier or an alias.
   ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
   /// token.
-  ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the server may assign a maximum. The server may return
-  /// fewer than the specified number of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3432,8 +3432,8 @@ class CoursesTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTopicResponse> list(
     core.String courseId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3446,11 +3446,11 @@ class CoursesTopicsResourceApi {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3779,6 +3779,13 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified identifier.
+  ///
+  /// [pageSize] - Maximum number of items to return. The default is 500 if
+  /// unspecified or `0`. The server may return fewer than the specified number
+  /// of results.
+  ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
@@ -3788,13 +3795,6 @@ class InvitationsResourceApi {
   /// The identifier can be one of the following: * the numeric identifier for
   /// the user * the email address of the user * the string literal `"me"`,
   /// indicating the requesting user
-  ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified identifier.
-  ///
-  /// [pageSize] - Maximum number of items to return. The default is 500 if
-  /// unspecified or `0`. The server may return fewer than the specified number
-  /// of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3807,10 +3807,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list({
-    core.String pageToken,
-    core.String userId,
     core.String courseId,
     core.int pageSize,
+    core.String pageToken,
+    core.String userId,
     core.String $fields,
   }) {
     core.String _url;
@@ -3820,17 +3820,17 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (userId != null) {
-      _queryParams['userId'] = [userId];
-    }
     if (courseId != null) {
       _queryParams['courseId'] = [courseId];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (userId != null) {
+      _queryParams['userId'] = [userId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4218,20 +4218,20 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// indicating that results should be returned for all students that the
   /// requesting user is permitted to view guardian invitations.
   ///
-  /// [pageSize] - Maximum number of items to return. Zero or unspecified
-  /// indicates that the server may assign a maximum. The server may return
-  /// fewer than the specified number of results.
-  ///
   /// [invitedEmailAddress] - If specified, only results with the specified
   /// `invited_email_address` are returned.
   ///
-  /// [states] - If specified, only results with the specified `state` values
-  /// are returned. Otherwise, results with a `state` of `PENDING` are returned.
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
   ///
   /// [pageToken] - nextPageToken value returned from a previous list call,
   /// indicating that the subsequent page of results should be returned. The
   /// list request must be otherwise identical to the one that resulted in this
   /// token.
+  ///
+  /// [states] - If specified, only results with the specified `state` values
+  /// are returned. Otherwise, results with a `state` of `PENDING` are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4245,10 +4245,10 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListGuardianInvitationsResponse> list(
     core.String studentId, {
-    core.int pageSize,
     core.String invitedEmailAddress,
-    core.List<core.String> states,
+    core.int pageSize,
     core.String pageToken,
+    core.List<core.String> states,
     core.String $fields,
   }) {
     core.String _url;
@@ -4261,17 +4261,17 @@ class UserProfilesGuardianInvitationsResourceApi {
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (invitedEmailAddress != null) {
       _queryParams['invitedEmailAddress'] = [invitedEmailAddress];
     }
-    if (states != null) {
-      _queryParams['states'] = states;
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
+    }
+    if (states != null) {
+      _queryParams['states'] = states;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

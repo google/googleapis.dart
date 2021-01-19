@@ -4236,9 +4236,9 @@ void main() {
       var mock = HttpServerMock();
       api.InstancesResourceApi res = api.SqladminApi(mock).instances;
       var arg_project = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_filter = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4275,11 +4275,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4290,9 +4290,9 @@ void main() {
       }), true);
       res
           .list(arg_project,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               filter: arg_filter,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkInstancesListResponse(response);
@@ -5091,8 +5091,8 @@ void main() {
       api.OperationsResourceApi res = api.SqladminApi(mock).operations;
       var arg_project = 'foo';
       var arg_instance = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5131,10 +5131,10 @@ void main() {
         }
         unittest.expect(
             queryMap["instance"].first, unittest.equals(arg_instance));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5146,8 +5146,8 @@ void main() {
       res
           .list(arg_project,
               instance: arg_instance,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperationsListResponse(response);

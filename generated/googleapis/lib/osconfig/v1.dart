@@ -483,14 +483,14 @@ class ProjectsPatchJobsResourceApi {
   /// [parent] - Required. In the form of `projects / * `
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by patch jobs to be included in the response. Currently, filtering is only
+  /// available on the patch_deployment field.
+  ///
   /// [pageSize] - The maximum number of instance status to return.
   ///
   /// [pageToken] - A pagination token returned from a previous call that
   /// indicates where this listing should continue from.
-  ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by patch jobs to be included in the response. Currently, filtering is only
-  /// available on the patch_deployment field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -504,9 +504,9 @@ class ProjectsPatchJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListPatchJobsResponse> list(
     core.String parent, {
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -519,14 +519,14 @@ class ProjectsPatchJobsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

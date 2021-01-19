@@ -387,14 +387,14 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - Required. ID of the project.
   ///
-  /// [parent] - The parent of the collection of `Builds`. Format:
-  /// `projects/{project}/locations/location`
-  ///
   /// [filter] - The raw filter text to constrain the results.
+  ///
+  /// [pageSize] - Number of results to return in the list.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
-  /// [pageSize] - Number of results to return in the list.
+  /// [parent] - The parent of the collection of `Builds`. Format:
+  /// `projects/{project}/locations/location`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -408,10 +408,10 @@ class ProjectsBuildsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String projectId, {
-    core.String parent,
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
+    core.String parent,
     core.String $fields,
   }) {
     core.String _url;
@@ -424,17 +424,17 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (parent != null) {
+      _queryParams['parent'] = [parent];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -748,13 +748,13 @@ class ProjectsLocationsBuildsResourceApi {
   /// `projects/{project}/locations/location`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [projectId] - Required. ID of the project.
+  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [pageSize] - Number of results to return in the list.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
-  /// [filter] - The raw filter text to constrain the results.
+  /// [projectId] - Required. ID of the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -768,10 +768,10 @@ class ProjectsLocationsBuildsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String parent, {
-    core.String projectId,
+    core.String filter,
     core.int pageSize,
     core.String pageToken,
-    core.String filter,
+    core.String projectId,
     core.String $fields,
   }) {
     core.String _url;
@@ -784,8 +784,8 @@ class ProjectsLocationsBuildsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -793,8 +793,8 @@ class ProjectsLocationsBuildsResourceApi {
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (projectId != null) {
+      _queryParams['projectId'] = [projectId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1194,9 +1194,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - Required. ID of the project for which to list BuildTriggers.
   ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
   /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1210,8 +1210,8 @@ class ProjectsTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(
     core.String projectId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1224,11 +1224,11 @@ class ProjectsTriggersResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

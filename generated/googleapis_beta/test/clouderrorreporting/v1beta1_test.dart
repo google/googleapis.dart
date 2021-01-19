@@ -682,13 +682,13 @@ void main() {
       api.ProjectsEventsResourceApi res =
           api.ClouderrorreportingApi(mock).projects.events;
       var arg_projectName = 'foo';
-      var arg_pageSize = 42;
-      var arg_timeRange_period = 'foo';
-      var arg_serviceFilter_service = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_serviceFilter_version = 'foo';
       var arg_groupId = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_serviceFilter_resourceType = 'foo';
+      var arg_serviceFilter_service = 'foo';
+      var arg_serviceFilter_version = 'foo';
+      var arg_timeRange_period = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -717,20 +717,20 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["timeRange.period"].first,
-            unittest.equals(arg_timeRange_period));
-        unittest.expect(queryMap["serviceFilter.service"].first,
-            unittest.equals(arg_serviceFilter_service));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["serviceFilter.version"].first,
-            unittest.equals(arg_serviceFilter_version));
         unittest.expect(
             queryMap["groupId"].first, unittest.equals(arg_groupId));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["serviceFilter.resourceType"].first,
             unittest.equals(arg_serviceFilter_resourceType));
+        unittest.expect(queryMap["serviceFilter.service"].first,
+            unittest.equals(arg_serviceFilter_service));
+        unittest.expect(queryMap["serviceFilter.version"].first,
+            unittest.equals(arg_serviceFilter_version));
+        unittest.expect(queryMap["timeRange.period"].first,
+            unittest.equals(arg_timeRange_period));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -741,13 +741,13 @@ void main() {
       }), true);
       res
           .list(arg_projectName,
-              pageSize: arg_pageSize,
-              timeRange_period: arg_timeRange_period,
-              serviceFilter_service: arg_serviceFilter_service,
-              pageToken: arg_pageToken,
-              serviceFilter_version: arg_serviceFilter_version,
               groupId: arg_groupId,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               serviceFilter_resourceType: arg_serviceFilter_resourceType,
+              serviceFilter_service: arg_serviceFilter_service,
+              serviceFilter_version: arg_serviceFilter_version,
+              timeRange_period: arg_timeRange_period,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListEventsResponse(response);
@@ -813,17 +813,17 @@ void main() {
       api.ProjectsGroupStatsResourceApi res =
           api.ClouderrorreportingApi(mock).projects.groupStats;
       var arg_projectName = 'foo';
-      var arg_serviceFilter_service = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_groupId = buildUnnamed6410();
-      var arg_timeRange_period = 'foo';
-      var arg_serviceFilter_resourceType = 'foo';
-      var arg_order = 'foo';
-      var arg_serviceFilter_version = 'foo';
-      var arg_alignmentTime = 'foo';
       var arg_alignment = 'foo';
-      var arg_timedCountDuration = 'foo';
+      var arg_alignmentTime = 'foo';
+      var arg_groupId = buildUnnamed6410();
+      var arg_order = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_serviceFilter_resourceType = 'foo';
+      var arg_serviceFilter_service = 'foo';
+      var arg_serviceFilter_version = 'foo';
+      var arg_timeRange_period = 'foo';
+      var arg_timedCountDuration = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -852,26 +852,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["serviceFilter.service"].first,
-            unittest.equals(arg_serviceFilter_service));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["groupId"], unittest.equals(arg_groupId));
-        unittest.expect(queryMap["timeRange.period"].first,
-            unittest.equals(arg_timeRange_period));
-        unittest.expect(queryMap["serviceFilter.resourceType"].first,
-            unittest.equals(arg_serviceFilter_resourceType));
-        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
-        unittest.expect(queryMap["serviceFilter.version"].first,
-            unittest.equals(arg_serviceFilter_version));
-        unittest.expect(queryMap["alignmentTime"].first,
-            unittest.equals(arg_alignmentTime));
         unittest.expect(
             queryMap["alignment"].first, unittest.equals(arg_alignment));
-        unittest.expect(queryMap["timedCountDuration"].first,
-            unittest.equals(arg_timedCountDuration));
+        unittest.expect(queryMap["alignmentTime"].first,
+            unittest.equals(arg_alignmentTime));
+        unittest.expect(queryMap["groupId"], unittest.equals(arg_groupId));
+        unittest.expect(queryMap["order"].first, unittest.equals(arg_order));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["serviceFilter.resourceType"].first,
+            unittest.equals(arg_serviceFilter_resourceType));
+        unittest.expect(queryMap["serviceFilter.service"].first,
+            unittest.equals(arg_serviceFilter_service));
+        unittest.expect(queryMap["serviceFilter.version"].first,
+            unittest.equals(arg_serviceFilter_version));
+        unittest.expect(queryMap["timeRange.period"].first,
+            unittest.equals(arg_timeRange_period));
+        unittest.expect(queryMap["timedCountDuration"].first,
+            unittest.equals(arg_timedCountDuration));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -882,17 +882,17 @@ void main() {
       }), true);
       res
           .list(arg_projectName,
-              serviceFilter_service: arg_serviceFilter_service,
-              pageToken: arg_pageToken,
-              groupId: arg_groupId,
-              timeRange_period: arg_timeRange_period,
-              serviceFilter_resourceType: arg_serviceFilter_resourceType,
-              order: arg_order,
-              serviceFilter_version: arg_serviceFilter_version,
-              alignmentTime: arg_alignmentTime,
               alignment: arg_alignment,
-              timedCountDuration: arg_timedCountDuration,
+              alignmentTime: arg_alignmentTime,
+              groupId: arg_groupId,
+              order: arg_order,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              serviceFilter_resourceType: arg_serviceFilter_resourceType,
+              serviceFilter_service: arg_serviceFilter_service,
+              serviceFilter_version: arg_serviceFilter_version,
+              timeRange_period: arg_timeRange_period,
+              timedCountDuration: arg_timedCountDuration,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListGroupStatsResponse(response);

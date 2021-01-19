@@ -2481,8 +2481,8 @@ void main() {
       var mock = HttpServerMock();
       api.AchievementDefinitionsResourceApi res =
           api.GamesApi(mock).achievementDefinitions;
-      var arg_maxResults = 42;
       var arg_language = 'foo';
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2511,10 +2511,10 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2528,8 +2528,8 @@ void main() {
       }), true);
       res
           .list(
-              maxResults: arg_maxResults,
               language: arg_language,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2605,10 +2605,10 @@ void main() {
       var mock = HttpServerMock();
       api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
       var arg_playerId = 'foo';
-      var arg_state = 'foo';
+      var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_language = 'foo';
+      var arg_state = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2645,13 +2645,13 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2662,10 +2662,10 @@ void main() {
       }), true);
       res
           .list(arg_playerId,
-              state: arg_state,
+              language: arg_language,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              language: arg_language,
+              state: arg_state,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlayerAchievementListResponse(response);
@@ -3052,9 +3052,9 @@ void main() {
     unittest.test('method--listByPlayer', () {
       var mock = HttpServerMock();
       api.EventsResourceApi res = api.GamesApi(mock).events;
-      var arg_pageToken = 'foo';
       var arg_language = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3083,11 +3083,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3098,9 +3098,9 @@ void main() {
       }), true);
       res
           .listByPlayer(
-              pageToken: arg_pageToken,
               language: arg_language,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlayerEventListResponse(response);
@@ -3111,8 +3111,8 @@ void main() {
       var mock = HttpServerMock();
       api.EventsResourceApi res = api.GamesApi(mock).events;
       var arg_language = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3142,10 +3142,10 @@ void main() {
         }
         unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3157,8 +3157,8 @@ void main() {
       res
           .listDefinitions(
               language: arg_language,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEventDefinitionListResponse(response);
@@ -3274,9 +3274,9 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.LeaderboardsResourceApi res = api.GamesApi(mock).leaderboards;
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_language = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3305,11 +3305,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["language"].first, unittest.equals(arg_language));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3320,9 +3320,9 @@ void main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               language: arg_language,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLeaderboardListResponse(response);
@@ -3506,9 +3506,9 @@ void main() {
       var mock = HttpServerMock();
       api.PlayersResourceApi res = api.GamesApi(mock).players;
       var arg_collection = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_maxResults = 42;
       var arg_language = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3540,11 +3540,11 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["language"].first, unittest.equals(arg_language));
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3555,9 +3555,9 @@ void main() {
       }), true);
       res
           .list(arg_collection,
-              pageToken: arg_pageToken,
-              maxResults: arg_maxResults,
               language: arg_language,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlayerListResponse(response);
@@ -3622,10 +3622,10 @@ void main() {
       var arg_playerId = 'foo';
       var arg_leaderboardId = 'foo';
       var arg_timeSpan = 'foo';
-      var arg_maxResults = 42;
       var arg_includeRankType = 'foo';
-      var arg_pageToken = 'foo';
       var arg_language = 'foo';
+      var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3674,14 +3674,14 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["includeRankType"].first,
             unittest.equals(arg_includeRankType));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3693,10 +3693,10 @@ void main() {
       }), true);
       res
           .get(arg_playerId, arg_leaderboardId, arg_timeSpan,
-              maxResults: arg_maxResults,
               includeRankType: arg_includeRankType,
-              pageToken: arg_pageToken,
               language: arg_language,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlayerLeaderboardScoreListResponse(response);
@@ -3709,9 +3709,9 @@ void main() {
       var arg_leaderboardId = 'foo';
       var arg_collection = 'foo';
       var arg_timeSpan = 'foo';
-      var arg_pageToken = 'foo';
       var arg_language = 'foo';
       var arg_maxResults = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3754,11 +3754,11 @@ void main() {
         unittest.expect(
             queryMap["timeSpan"].first, unittest.equals(arg_timeSpan));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3769,9 +3769,9 @@ void main() {
       }), true);
       res
           .list(arg_leaderboardId, arg_collection, arg_timeSpan,
-              pageToken: arg_pageToken,
               language: arg_language,
               maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLeaderboardScores(response);
@@ -3784,11 +3784,11 @@ void main() {
       var arg_leaderboardId = 'foo';
       var arg_collection = 'foo';
       var arg_timeSpan = 'foo';
+      var arg_language = 'foo';
+      var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_resultsAbove = 42;
       var arg_returnTopIfAbsent = true;
-      var arg_language = 'foo';
-      var arg_maxResults = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3831,15 +3831,15 @@ void main() {
         unittest.expect(
             queryMap["timeSpan"].first, unittest.equals(arg_timeSpan));
         unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["resultsAbove"].first),
             unittest.equals(arg_resultsAbove));
         unittest.expect(queryMap["returnTopIfAbsent"].first,
             unittest.equals("$arg_returnTopIfAbsent"));
-        unittest.expect(
-            queryMap["language"].first, unittest.equals(arg_language));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3850,11 +3850,11 @@ void main() {
       }), true);
       res
           .listWindow(arg_leaderboardId, arg_collection, arg_timeSpan,
+              language: arg_language,
+              maxResults: arg_maxResults,
               pageToken: arg_pageToken,
               resultsAbove: arg_resultsAbove,
               returnTopIfAbsent: arg_returnTopIfAbsent,
-              language: arg_language,
-              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLeaderboardScores(response);
@@ -3866,8 +3866,8 @@ void main() {
       api.ScoresResourceApi res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_score = 'foo';
-      var arg_scoreTag = 'foo';
       var arg_language = 'foo';
+      var arg_scoreTag = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3906,9 +3906,9 @@ void main() {
         }
         unittest.expect(queryMap["score"].first, unittest.equals(arg_score));
         unittest.expect(
-            queryMap["scoreTag"].first, unittest.equals(arg_scoreTag));
-        unittest.expect(
             queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(
+            queryMap["scoreTag"].first, unittest.equals(arg_scoreTag));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3919,8 +3919,8 @@ void main() {
       }), true);
       res
           .submit(arg_leaderboardId, arg_score,
-              scoreTag: arg_scoreTag,
               language: arg_language,
+              scoreTag: arg_scoreTag,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPlayerScoreResponse(response);
@@ -4038,9 +4038,9 @@ void main() {
       var mock = HttpServerMock();
       api.SnapshotsResourceApi res = api.GamesApi(mock).snapshots;
       var arg_playerId = 'foo';
+      var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_language = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4077,12 +4077,12 @@ void main() {
             );
           }
         }
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["language"].first, unittest.equals(arg_language));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4093,9 +4093,9 @@ void main() {
       }), true);
       res
           .list(arg_playerId,
+              language: arg_language,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              language: arg_language,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSnapshotListResponse(response);

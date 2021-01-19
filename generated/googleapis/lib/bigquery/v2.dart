@@ -631,20 +631,20 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
+  /// [location] - The geographic location where the job should run. Required
+  /// except for US and EU. See details at
+  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  ///
   /// [maxResults] - Maximum number of results to read
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
   ///
   /// [startIndex] - Zero-based index of the starting row
   ///
   /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
   /// before returning. Default is 10 seconds. If the timeout passes before the
   /// job completes, the 'jobComplete' field in the response will be false
-  ///
-  /// [location] - The geographic location where the job should run. Required
-  /// except for US and EU. See details at
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,11 +659,11 @@ class JobsResourceApi {
   async.Future<GetQueryResultsResponse> getQueryResults(
     core.String projectId,
     core.String jobId, {
+    core.String location,
     core.int maxResults,
+    core.String pageToken,
     core.String startIndex,
     core.int timeoutMs,
-    core.String location,
-    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -679,20 +679,20 @@ class JobsResourceApi {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    if (location != null) {
+      _queryParams['location'] = [location];
+    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (startIndex != null) {
       _queryParams['startIndex'] = [startIndex];
     }
     if (timeoutMs != null) {
       _queryParams['timeoutMs'] = ['${timeoutMs}'];
-    }
-    if (location != null) {
-      _queryParams['location'] = [location];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -801,17 +801,21 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the jobs to list
   ///
+  /// [allUsers] - Whether to display jobs owned by all users in the project.
+  /// Default false
+  ///
   /// [maxCreationTime] - Max value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created before or at this timestamp are
   /// returned
   ///
   /// [maxResults] - Maximum number of results to return
   ///
-  /// [stateFilter] - Filter for job state
-  ///
   /// [minCreationTime] - Min value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created after or at this timestamp are
   /// returned
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
   ///
   /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
   /// Otherwise, retrieves only jobs which have no parent
@@ -821,11 +825,7 @@ class JobsResourceApi {
   /// - "full" : Includes all job data
   /// - "minimal" : Does not include the job configuration
   ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
-  ///
-  /// [allUsers] - Whether to display jobs owned by all users in the project.
-  /// Default false
+  /// [stateFilter] - Filter for job state
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,14 +839,14 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<JobList> list(
     core.String projectId, {
+    core.bool allUsers,
     core.String maxCreationTime,
     core.int maxResults,
-    core.List<core.String> stateFilter,
     core.String minCreationTime,
+    core.String pageToken,
     core.String parentJobId,
     core.String projection,
-    core.String pageToken,
-    core.bool allUsers,
+    core.List<core.String> stateFilter,
     core.String $fields,
   }) {
     core.String _url;
@@ -859,17 +859,20 @@ class JobsResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    if (allUsers != null) {
+      _queryParams['allUsers'] = ['${allUsers}'];
+    }
     if (maxCreationTime != null) {
       _queryParams['maxCreationTime'] = [maxCreationTime];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (stateFilter != null) {
-      _queryParams['stateFilter'] = stateFilter;
-    }
     if (minCreationTime != null) {
       _queryParams['minCreationTime'] = [minCreationTime];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (parentJobId != null) {
       _queryParams['parentJobId'] = [parentJobId];
@@ -877,11 +880,8 @@ class JobsResourceApi {
     if (projection != null) {
       _queryParams['projection'] = [projection];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (allUsers != null) {
-      _queryParams['allUsers'] = ['${allUsers}'];
+    if (stateFilter != null) {
+      _queryParams['stateFilter'] = stateFilter;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1110,12 +1110,12 @@ class ModelsResourceApi {
   /// [datasetId] - Required. Dataset ID of the models to list.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [pageToken] - Page token, returned by a previous call to request the next
-  /// page of results
-  ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
   /// collection.
+  ///
+  /// [pageToken] - Page token, returned by a previous call to request the next
+  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1130,8 +1130,8 @@ class ModelsResourceApi {
   async.Future<ListModelsResponse> list(
     core.String projectId,
     core.String datasetId, {
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1147,11 +1147,11 @@ class ModelsResourceApi {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1310,10 +1310,10 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1326,8 +1326,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list({
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1337,11 +1337,11 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1587,23 +1587,23 @@ class RoutinesResourceApi {
   /// [datasetId] - Required. Dataset ID of the routines to list
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [readMask] - If set, then only the Routine fields in the field mask, as
-  /// well as project_id, dataset_id and routine_id, are returned in the
-  /// response. If unset, then the following Routine fields are returned: etag,
-  /// project_id, dataset_id, routine_id, routine_type, creation_time,
-  /// last_modified_time, and language.
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// [filter] - If set, then only the Routines matching this filter are
+  /// returned. The current supported form is either "routine_type:" or
+  /// "routineType:", where is a RoutineType enum. Example:
+  /// "routineType:SCALAR_FUNCTION".
   ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
   /// collection.
   ///
-  /// [filter] - If set, then only the Routines matching this filter are
-  /// returned. The current supported form is either "routine_type:" or
-  /// "routineType:", where is a RoutineType enum. Example:
-  /// "routineType:SCALAR_FUNCTION".
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [readMask] - If set, then only the Routine fields in the field mask, as
+  /// well as project_id, dataset_id and routine_id, are returned in the
+  /// response. If unset, then the following Routine fields are returned: etag,
+  /// project_id, dataset_id, routine_id, routine_type, creation_time,
+  /// last_modified_time, and language.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1618,10 +1618,10 @@ class RoutinesResourceApi {
   async.Future<ListRoutinesResponse> list(
     core.String projectId,
     core.String datasetId, {
-    core.String readMask,
-    core.String pageToken,
-    core.int maxResults,
     core.String filter,
+    core.int maxResults,
+    core.String pageToken,
+    core.String readMask,
     core.String $fields,
   }) {
     core.String _url;
@@ -1637,17 +1637,17 @@ class RoutinesResourceApi {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    if (readMask != null) {
-      _queryParams['readMask'] = [readMask];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readMask != null) {
+      _queryParams['readMask'] = [readMask];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1838,13 +1838,13 @@ class TabledataResourceApi {
   ///
   /// [maxResults] - Maximum number of results to return
   ///
+  /// [pageToken] - Page token, returned by a previous call, identifying the
+  /// result set
+  ///
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
   /// [startIndex] - Zero-based index of the starting row to read
-  ///
-  /// [pageToken] - Page token, returned by a previous call, identifying the
-  /// result set
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1861,9 +1861,9 @@ class TabledataResourceApi {
     core.String datasetId,
     core.String tableId, {
     core.int maxResults,
+    core.String pageToken,
     core.String selectedFields,
     core.String startIndex,
-    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1885,14 +1885,14 @@ class TabledataResourceApi {
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
     if (selectedFields != null) {
       _queryParams['selectedFields'] = [selectedFields];
     }
     if (startIndex != null) {
       _queryParams['startIndex'] = [startIndex];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2195,10 +2195,10 @@ class TablesResourceApi {
   ///
   /// [datasetId] - Dataset ID of the tables to list
   ///
+  /// [maxResults] - Maximum number of results to return
+  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2213,8 +2213,8 @@ class TablesResourceApi {
   async.Future<TableList> list(
     core.String projectId,
     core.String datasetId, {
-    core.String pageToken,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2230,11 +2230,11 @@ class TablesResourceApi {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

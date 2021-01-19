@@ -116,9 +116,9 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [name] - The name of the operation's parent resource.
   ///
   /// [pageSize] - The standard list page size.
   ///
@@ -135,8 +135,8 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.String name,
     core.String filter,
+    core.String name,
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -148,11 +148,11 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (name != null) {
+      _queryParams['name'] = [name];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -271,9 +271,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
   ///
@@ -289,8 +289,8 @@ class ProjectsLocationsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -304,11 +304,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

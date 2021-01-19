@@ -128,9 +128,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -145,8 +145,8 @@ class ProjectsLocationsResourceApi {
   async.Future<ListLocationsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -162,11 +162,11 @@ class ProjectsLocationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -252,14 +252,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
   /// [filter] - List filter.
   ///
   /// [orderBy] - Sort results.
   ///
   /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,10 +273,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(
     core.String parent, {
-    core.String pageToken,
     core.String filter,
     core.String orderBy,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -289,9 +289,6 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -300,6 +297,9 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -912,9 +912,9 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -929,8 +929,8 @@ class ProjectsLocationsOperationsResourceApi {
   async.Future<ListOperationsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -946,11 +946,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1036,11 +1036,11 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return.
-  ///
   /// [filter] - List filter.
   ///
   /// [orderBy] - Sort results.
+  ///
+  /// [pageSize] - The maximum number of items to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
@@ -1057,9 +1057,9 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTensorFlowVersionsResponse> list(
     core.String parent, {
-    core.int pageSize,
     core.String filter,
     core.String orderBy,
+    core.int pageSize,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -1073,14 +1073,14 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
     if (orderBy != null) {
       _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

@@ -219,11 +219,11 @@ class AccessPoliciesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Next page token for the next batch of AccessPolicy
-  /// instances. Defaults to the first page of results.
-  ///
   /// [pageSize] - Number of AccessPolicy instances to include in the list.
   /// Default 100.
+  ///
+  /// [pageToken] - Next page token for the next batch of AccessPolicy
+  /// instances. Defaults to the first page of results.
   ///
   /// [parent] - Required. Resource name for the container to list AccessPolicy
   /// instances from. Format: `organizations/{org_id}`
@@ -239,8 +239,8 @@ class AccessPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccessPoliciesResponse> list({
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String parent,
     core.String $fields,
   }) {
@@ -251,11 +251,11 @@ class AccessPoliciesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (parent != null) {
       _queryParams['parent'] = [parent];
@@ -1370,11 +1370,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1388,9 +1388,9 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1403,14 +1403,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

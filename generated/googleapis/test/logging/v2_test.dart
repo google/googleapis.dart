@@ -2343,8 +2343,8 @@ void main() {
       api.BillingAccountsLogsResourceApi res =
           api.LoggingApi(mock).billingAccounts.logs;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2373,10 +2373,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2387,8 +2387,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
@@ -2613,8 +2613,8 @@ void main() {
           api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
-      var arg_updateMask = 'foo';
       var arg_uniqueWriterIdentity = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LogSink.fromJson(json);
@@ -2646,10 +2646,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["uniqueWriterIdentity"].first,
             unittest.equals("$arg_uniqueWriterIdentity"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2660,8 +2660,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_sinkName,
-              updateMask: arg_updateMask,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
@@ -2980,8 +2980,8 @@ void main() {
       var mock = HttpServerMock();
       api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3010,10 +3010,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3024,8 +3024,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
@@ -3509,8 +3509,8 @@ void main() {
       api.FoldersLocationsBucketsResourceApi res =
           api.LoggingApi(mock).folders.locations.buckets;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3539,10 +3539,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3553,8 +3553,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBucketsResponse(response);
@@ -3722,8 +3722,8 @@ void main() {
       var mock = HttpServerMock();
       api.FoldersLogsResourceApi res = api.LoggingApi(mock).folders.logs;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3752,10 +3752,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3766,8 +3766,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLogsResponse(response);
@@ -3987,8 +3987,8 @@ void main() {
       api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
-      var arg_updateMask = 'foo';
       var arg_uniqueWriterIdentity = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LogSink.fromJson(json);
@@ -4020,10 +4020,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["uniqueWriterIdentity"].first,
             unittest.equals("$arg_uniqueWriterIdentity"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4034,8 +4034,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_sinkName,
-              updateMask: arg_updateMask,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
@@ -4843,8 +4843,8 @@ void main() {
       api.OrganizationsExclusionsResourceApi res =
           api.LoggingApi(mock).organizations.exclusions;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4873,10 +4873,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4887,8 +4887,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
@@ -5110,8 +5110,8 @@ void main() {
       api.OrganizationsLocationsBucketsResourceApi res =
           api.LoggingApi(mock).organizations.locations.buckets;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5140,10 +5140,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5154,8 +5154,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListBucketsResponse(response);
@@ -5537,8 +5537,8 @@ void main() {
       api.OrganizationsSinksResourceApi res =
           api.LoggingApi(mock).organizations.sinks;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5567,10 +5567,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5581,8 +5581,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSinksResponse(response);
@@ -5656,8 +5656,8 @@ void main() {
           api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
-      var arg_updateMask = 'foo';
       var arg_uniqueWriterIdentity = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LogSink.fromJson(json);
@@ -5689,10 +5689,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["uniqueWriterIdentity"].first,
             unittest.equals("$arg_uniqueWriterIdentity"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5703,8 +5703,8 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_sinkName,
-              updateMask: arg_updateMask,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
@@ -5866,8 +5866,8 @@ void main() {
       api.ProjectsExclusionsResourceApi res =
           api.LoggingApi(mock).projects.exclusions;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5896,10 +5896,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5910,8 +5910,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListExclusionsResponse(response);
@@ -6870,8 +6870,8 @@ void main() {
       api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
-      var arg_updateMask = 'foo';
       var arg_uniqueWriterIdentity = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LogSink.fromJson(json);
@@ -6903,10 +6903,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["uniqueWriterIdentity"].first,
             unittest.equals("$arg_uniqueWriterIdentity"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6917,8 +6917,8 @@ void main() {
       }), true);
       res
           .patch(arg_request, arg_sinkName,
-              updateMask: arg_updateMask,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLogSink(response);
@@ -6930,8 +6930,8 @@ void main() {
       api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
-      var arg_updateMask = 'foo';
       var arg_uniqueWriterIdentity = true;
+      var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.LogSink.fromJson(json);
@@ -6963,10 +6963,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["uniqueWriterIdentity"].first,
             unittest.equals("$arg_uniqueWriterIdentity"));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6977,8 +6977,8 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_sinkName,
-              updateMask: arg_updateMask,
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkLogSink(response);

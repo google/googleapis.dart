@@ -1109,10 +1109,10 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.FoldersResourceApi res = api.CloudresourcemanagerApi(mock).folders;
-      var arg_showDeleted = true;
-      var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_parent = 'foo';
+      var arg_showDeleted = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1140,13 +1140,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1157,10 +1157,10 @@ void main() {
       }), true);
       res
           .list(
-              showDeleted: arg_showDeleted,
-              parent: arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              parent: arg_parent,
+              showDeleted: arg_showDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListFoldersResponse(response);

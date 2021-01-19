@@ -112,12 +112,12 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Token to specify next page in the list.
-  ///
   /// [customerId] - Immutable ID of the Google Apps account.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
+  ///
+  /// [pageToken] - Token to specify next page in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -130,9 +130,9 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationsListResponse> list({
-    core.String pageToken,
     core.String customerId,
     core.int maxResults,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -142,14 +142,14 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -280,16 +280,16 @@ class TransfersResourceApi {
   ///
   /// [customerId] - Immutable ID of the Google Apps account.
   ///
-  /// [pageToken] - Token to specify the next page in the list.
-  ///
-  /// [newOwnerUserId] - Destination user's profile ID.
-  ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
   ///
-  /// [status] - Status of the transfer.
+  /// [newOwnerUserId] - Destination user's profile ID.
   ///
   /// [oldOwnerUserId] - Source user's profile ID.
+  ///
+  /// [pageToken] - Token to specify the next page in the list.
+  ///
+  /// [status] - Status of the transfer.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -303,11 +303,11 @@ class TransfersResourceApi {
   /// this method will complete with the same error.
   async.Future<DataTransfersListResponse> list({
     core.String customerId,
-    core.String pageToken,
-    core.String newOwnerUserId,
     core.int maxResults,
-    core.String status,
+    core.String newOwnerUserId,
     core.String oldOwnerUserId,
+    core.String pageToken,
+    core.String status,
     core.String $fields,
   }) {
     core.String _url;
@@ -320,20 +320,20 @@ class TransfersResourceApi {
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (newOwnerUserId != null) {
       _queryParams['newOwnerUserId'] = [newOwnerUserId];
     }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
+    if (oldOwnerUserId != null) {
+      _queryParams['oldOwnerUserId'] = [oldOwnerUserId];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (status != null) {
       _queryParams['status'] = [status];
-    }
-    if (oldOwnerUserId != null) {
-      _queryParams['oldOwnerUserId'] = [oldOwnerUserId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

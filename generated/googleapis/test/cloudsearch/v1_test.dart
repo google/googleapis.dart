@@ -5891,8 +5891,8 @@ void main() {
           api.CloudsearchApi(mock).debug.datasources.items.unmappedids;
       var arg_parent = 'foo';
       var arg_debugOptions_enableDebugging = true;
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5923,10 +5923,10 @@ void main() {
         }
         unittest.expect(queryMap["debugOptions.enableDebugging"].first,
             unittest.equals("$arg_debugOptions_enableDebugging"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5938,8 +5938,8 @@ void main() {
       res
           .list(arg_parent,
               debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUnmappedIdentitiesResponse(response);
@@ -5953,11 +5953,11 @@ void main() {
       api.DebugIdentitysourcesItemsResourceApi res =
           api.CloudsearchApi(mock).debug.identitysources.items;
       var arg_parent = 'foo';
-      var arg_userResourceName = 'foo';
-      var arg_groupResourceName = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_debugOptions_enableDebugging = true;
+      var arg_groupResourceName = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_userResourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5986,16 +5986,16 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["userResourceName"].first,
-            unittest.equals(arg_userResourceName));
-        unittest.expect(queryMap["groupResourceName"].first,
-            unittest.equals(arg_groupResourceName));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["debugOptions.enableDebugging"].first,
             unittest.equals("$arg_debugOptions_enableDebugging"));
+        unittest.expect(queryMap["groupResourceName"].first,
+            unittest.equals(arg_groupResourceName));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["userResourceName"].first,
+            unittest.equals(arg_userResourceName));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6007,11 +6007,11 @@ void main() {
       }), true);
       res
           .listForunmappedidentity(arg_parent,
-              userResourceName: arg_userResourceName,
-              groupResourceName: arg_groupResourceName,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+              groupResourceName: arg_groupResourceName,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              userResourceName: arg_userResourceName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListItemNamesForUnmappedIdentityResponse(response);
@@ -6025,10 +6025,10 @@ void main() {
       api.DebugIdentitysourcesUnmappedidsResourceApi res =
           api.CloudsearchApi(mock).debug.identitysources.unmappedids;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
-      var arg_resolutionStatusCode = 'foo';
       var arg_debugOptions_enableDebugging = true;
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_resolutionStatusCode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6057,14 +6057,14 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["resolutionStatusCode"].first,
-            unittest.equals(arg_resolutionStatusCode));
         unittest.expect(queryMap["debugOptions.enableDebugging"].first,
             unittest.equals("$arg_debugOptions_enableDebugging"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["resolutionStatusCode"].first,
+            unittest.equals(arg_resolutionStatusCode));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6075,10 +6075,10 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              resolutionStatusCode: arg_resolutionStatusCode,
               debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              resolutionStatusCode: arg_resolutionStatusCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListUnmappedIdentitiesResponse(response);
@@ -6252,10 +6252,10 @@ void main() {
       api.IndexingDatasourcesItemsResourceApi res =
           api.CloudsearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
-      var arg_debugOptions_enableDebugging = true;
-      var arg_version = 'foo';
       var arg_connectorName = 'foo';
+      var arg_debugOptions_enableDebugging = true;
       var arg_mode = 'foo';
+      var arg_version = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6284,13 +6284,13 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["debugOptions.enableDebugging"].first,
-            unittest.equals("$arg_debugOptions_enableDebugging"));
-        unittest.expect(
-            queryMap["version"].first, unittest.equals(arg_version));
         unittest.expect(queryMap["connectorName"].first,
             unittest.equals(arg_connectorName));
+        unittest.expect(queryMap["debugOptions.enableDebugging"].first,
+            unittest.equals("$arg_debugOptions_enableDebugging"));
         unittest.expect(queryMap["mode"].first, unittest.equals(arg_mode));
+        unittest.expect(
+            queryMap["version"].first, unittest.equals(arg_version));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6301,10 +6301,10 @@ void main() {
       }), true);
       res
           .delete(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              version: arg_version,
               connectorName: arg_connectorName,
+              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
               mode: arg_mode,
+              version: arg_version,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkOperation(response);
@@ -6477,9 +6477,9 @@ void main() {
       api.IndexingDatasourcesItemsResourceApi res =
           api.CloudsearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
+      var arg_brief = true;
       var arg_connectorName = 'foo';
       var arg_debugOptions_enableDebugging = true;
-      var arg_brief = true;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -6510,11 +6510,11 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["brief"].first, unittest.equals("$arg_brief"));
         unittest.expect(queryMap["connectorName"].first,
             unittest.equals(arg_connectorName));
         unittest.expect(queryMap["debugOptions.enableDebugging"].first,
             unittest.equals("$arg_debugOptions_enableDebugging"));
-        unittest.expect(queryMap["brief"].first, unittest.equals("$arg_brief"));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
@@ -6529,9 +6529,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
+              brief: arg_brief,
               connectorName: arg_connectorName,
               debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              brief: arg_brief,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
@@ -6860,9 +6860,9 @@ void main() {
       api.OperationsLroResourceApi res =
           api.CloudsearchApi(mock).operations.lro;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6891,11 +6891,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6906,9 +6906,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -7020,11 +7020,11 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.QuerySourcesResourceApi res = api.CloudsearchApi(mock).query.sources;
-      var arg_requestOptions_languageCode = 'foo';
-      var arg_requestOptions_debugOptions_enableDebugging = true;
       var arg_pageToken = 'foo';
-      var arg_requestOptions_timeZone = 'foo';
+      var arg_requestOptions_debugOptions_enableDebugging = true;
+      var arg_requestOptions_languageCode = 'foo';
       var arg_requestOptions_searchApplicationId = 'foo';
+      var arg_requestOptions_timeZone = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7052,18 +7052,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["requestOptions.languageCode"].first,
-            unittest.equals(arg_requestOptions_languageCode));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["requestOptions.debugOptions.enableDebugging"].first,
             unittest
                 .equals("$arg_requestOptions_debugOptions_enableDebugging"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["requestOptions.timeZone"].first,
-            unittest.equals(arg_requestOptions_timeZone));
+        unittest.expect(queryMap["requestOptions.languageCode"].first,
+            unittest.equals(arg_requestOptions_languageCode));
         unittest.expect(queryMap["requestOptions.searchApplicationId"].first,
             unittest.equals(arg_requestOptions_searchApplicationId));
+        unittest.expect(queryMap["requestOptions.timeZone"].first,
+            unittest.equals(arg_requestOptions_timeZone));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7074,13 +7074,13 @@ void main() {
       }), true);
       res
           .list(
-              requestOptions_languageCode: arg_requestOptions_languageCode,
+              pageToken: arg_pageToken,
               requestOptions_debugOptions_enableDebugging:
                   arg_requestOptions_debugOptions_enableDebugging,
-              pageToken: arg_pageToken,
-              requestOptions_timeZone: arg_requestOptions_timeZone,
+              requestOptions_languageCode: arg_requestOptions_languageCode,
               requestOptions_searchApplicationId:
                   arg_requestOptions_searchApplicationId,
+              requestOptions_timeZone: arg_requestOptions_timeZone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListQuerySourcesResponse(response);
@@ -7249,8 +7249,8 @@ void main() {
       var mock = HttpServerMock();
       api.SettingsDatasourcesResourceApi res =
           api.CloudsearchApi(mock).settings.datasources;
-      var arg_pageSize = 42;
       var arg_debugOptions_enableDebugging = true;
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7279,10 +7279,10 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["debugOptions.enableDebugging"].first,
             unittest.equals("$arg_debugOptions_enableDebugging"));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -7295,8 +7295,8 @@ void main() {
       }), true);
       res
           .list(
-              pageSize: arg_pageSize,
               debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -7682,12 +7682,12 @@ void main() {
     unittest.test('method--getIndex', () {
       var mock = HttpServerMock();
       api.StatsResourceApi res = api.CloudsearchApi(mock).stats;
-      var arg_toDate_month = 42;
-      var arg_toDate_year = 42;
+      var arg_fromDate_day = 42;
+      var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
       var arg_toDate_day = 42;
-      var arg_fromDate_month = 42;
-      var arg_fromDate_day = 42;
+      var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7715,18 +7715,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
-            unittest.equals(arg_toDate_month));
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
+        unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
+            unittest.equals(arg_fromDate_day));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
         unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
             unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["toDate.day"].first),
             unittest.equals(arg_toDate_day));
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
-        unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
-            unittest.equals(arg_fromDate_day));
+        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
+            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7737,12 +7737,12 @@ void main() {
       }), true);
       res
           .getIndex(
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
+              fromDate_day: arg_fromDate_day,
+              fromDate_month: arg_fromDate_month,
               fromDate_year: arg_fromDate_year,
               toDate_day: arg_toDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_day: arg_fromDate_day,
+              toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetCustomerIndexStatsResponse(response);
@@ -7752,12 +7752,12 @@ void main() {
     unittest.test('method--getQuery', () {
       var mock = HttpServerMock();
       api.StatsResourceApi res = api.CloudsearchApi(mock).stats;
-      var arg_toDate_month = 42;
-      var arg_fromDate_year = 42;
       var arg_fromDate_day = 42;
-      var arg_toDate_year = 42;
       var arg_fromDate_month = 42;
+      var arg_fromDate_year = 42;
       var arg_toDate_day = 42;
+      var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7785,18 +7785,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
-            unittest.equals(arg_toDate_month));
-        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
-            unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
         unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
             unittest.equals(arg_fromDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
+            unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["toDate.day"].first),
             unittest.equals(arg_toDate_day));
+        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
+            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7807,12 +7807,12 @@ void main() {
       }), true);
       res
           .getQuery(
-              toDate_month: arg_toDate_month,
-              fromDate_year: arg_fromDate_year,
               fromDate_day: arg_fromDate_day,
-              toDate_year: arg_toDate_year,
               fromDate_month: arg_fromDate_month,
+              fromDate_year: arg_fromDate_year,
               toDate_day: arg_toDate_day,
+              toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetCustomerQueryStatsResponse(response);
@@ -7822,12 +7822,12 @@ void main() {
     unittest.test('method--getSession', () {
       var mock = HttpServerMock();
       api.StatsResourceApi res = api.CloudsearchApi(mock).stats;
-      var arg_fromDate_year = 42;
-      var arg_fromDate_month = 42;
       var arg_fromDate_day = 42;
+      var arg_fromDate_month = 42;
+      var arg_fromDate_year = 42;
+      var arg_toDate_day = 42;
       var arg_toDate_month = 42;
       var arg_toDate_year = 42;
-      var arg_toDate_day = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7855,18 +7855,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
-            unittest.equals(arg_fromDate_year));
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
+            unittest.equals(arg_fromDate_year));
+        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
+            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["toDate.month"].first),
             unittest.equals(arg_toDate_month));
         unittest.expect(core.int.parse(queryMap["toDate.year"].first),
             unittest.equals(arg_toDate_year));
-        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
-            unittest.equals(arg_toDate_day));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7877,12 +7877,12 @@ void main() {
       }), true);
       res
           .getSession(
-              fromDate_year: arg_fromDate_year,
-              fromDate_month: arg_fromDate_month,
               fromDate_day: arg_fromDate_day,
+              fromDate_month: arg_fromDate_month,
+              fromDate_year: arg_fromDate_year,
+              toDate_day: arg_toDate_day,
               toDate_month: arg_toDate_month,
               toDate_year: arg_toDate_year,
-              toDate_day: arg_toDate_day,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetCustomerSessionStatsResponse(response);
@@ -7892,11 +7892,11 @@ void main() {
     unittest.test('method--getUser', () {
       var mock = HttpServerMock();
       api.StatsResourceApi res = api.CloudsearchApi(mock).stats;
-      var arg_fromDate_month = 42;
-      var arg_toDate_day = 42;
       var arg_fromDate_day = 42;
-      var arg_toDate_month = 42;
+      var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
+      var arg_toDate_day = 42;
+      var arg_toDate_month = 42;
       var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7925,16 +7925,16 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
-        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
-            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
-        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
-            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
         unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
             unittest.equals(arg_fromDate_year));
+        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
+            unittest.equals(arg_toDate_day));
+        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
+            unittest.equals(arg_toDate_month));
         unittest.expect(core.int.parse(queryMap["toDate.year"].first),
             unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -7947,11 +7947,11 @@ void main() {
       }), true);
       res
           .getUser(
-              fromDate_month: arg_fromDate_month,
-              toDate_day: arg_toDate_day,
               fromDate_day: arg_fromDate_day,
-              toDate_month: arg_toDate_month,
+              fromDate_month: arg_fromDate_month,
               fromDate_year: arg_fromDate_year,
+              toDate_day: arg_toDate_day,
+              toDate_month: arg_toDate_month,
               toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -7966,12 +7966,12 @@ void main() {
       api.StatsIndexDatasourcesResourceApi res =
           api.CloudsearchApi(mock).stats.index.datasources;
       var arg_name = 'foo';
-      var arg_fromDate_month = 42;
-      var arg_toDate_day = 42;
       var arg_fromDate_day = 42;
+      var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
-      var arg_toDate_year = 42;
+      var arg_toDate_day = 42;
       var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8000,18 +8000,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
-        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
-            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
         unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
             unittest.equals(arg_fromDate_year));
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
+        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
+            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["toDate.month"].first),
             unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8022,12 +8022,12 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              fromDate_month: arg_fromDate_month,
-              toDate_day: arg_toDate_day,
               fromDate_day: arg_fromDate_day,
+              fromDate_month: arg_fromDate_month,
               fromDate_year: arg_fromDate_year,
-              toDate_year: arg_toDate_year,
+              toDate_day: arg_toDate_day,
               toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetDataSourceIndexStatsResponse(response);
@@ -8041,12 +8041,12 @@ void main() {
       api.StatsQuerySearchapplicationsResourceApi res =
           api.CloudsearchApi(mock).stats.query.searchapplications;
       var arg_name = 'foo';
-      var arg_toDate_year = 42;
-      var arg_fromDate_year = 42;
       var arg_fromDate_day = 42;
-      var arg_toDate_day = 42;
       var arg_fromDate_month = 42;
+      var arg_fromDate_year = 42;
+      var arg_toDate_day = 42;
       var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8075,18 +8075,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
-        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
-            unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
-        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
-            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
             unittest.equals(arg_fromDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
+            unittest.equals(arg_fromDate_year));
+        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
+            unittest.equals(arg_toDate_day));
         unittest.expect(core.int.parse(queryMap["toDate.month"].first),
             unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8098,12 +8098,12 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              toDate_year: arg_toDate_year,
-              fromDate_year: arg_fromDate_year,
               fromDate_day: arg_fromDate_day,
-              toDate_day: arg_toDate_day,
               fromDate_month: arg_fromDate_month,
+              fromDate_year: arg_fromDate_year,
+              toDate_day: arg_toDate_day,
               toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetSearchApplicationQueryStatsResponse(response);
@@ -8117,12 +8117,12 @@ void main() {
       api.StatsSessionSearchapplicationsResourceApi res =
           api.CloudsearchApi(mock).stats.session.searchapplications;
       var arg_name = 'foo';
-      var arg_toDate_month = 42;
-      var arg_fromDate_month = 42;
-      var arg_toDate_year = 42;
-      var arg_toDate_day = 42;
-      var arg_fromDate_year = 42;
       var arg_fromDate_day = 42;
+      var arg_fromDate_month = 42;
+      var arg_fromDate_year = 42;
+      var arg_toDate_day = 42;
+      var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8151,18 +8151,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
-            unittest.equals(arg_toDate_month));
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
-        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
-            unittest.equals(arg_toDate_day));
-        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
-            unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
+            unittest.equals(arg_fromDate_year));
+        unittest.expect(core.int.parse(queryMap["toDate.day"].first),
+            unittest.equals(arg_toDate_day));
+        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
+            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8174,12 +8174,12 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              toDate_month: arg_toDate_month,
-              fromDate_month: arg_fromDate_month,
-              toDate_year: arg_toDate_year,
-              toDate_day: arg_toDate_day,
-              fromDate_year: arg_fromDate_year,
               fromDate_day: arg_fromDate_day,
+              fromDate_month: arg_fromDate_month,
+              fromDate_year: arg_fromDate_year,
+              toDate_day: arg_toDate_day,
+              toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetSearchApplicationSessionStatsResponse(response);
@@ -8193,12 +8193,12 @@ void main() {
       api.StatsUserSearchapplicationsResourceApi res =
           api.CloudsearchApi(mock).stats.user.searchapplications;
       var arg_name = 'foo';
-      var arg_fromDate_year = 42;
-      var arg_toDate_year = 42;
-      var arg_fromDate_month = 42;
       var arg_fromDate_day = 42;
-      var arg_toDate_month = 42;
+      var arg_fromDate_month = 42;
+      var arg_fromDate_year = 42;
       var arg_toDate_day = 42;
+      var arg_toDate_month = 42;
+      var arg_toDate_year = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8227,18 +8227,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
-            unittest.equals(arg_fromDate_year));
-        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
-            unittest.equals(arg_toDate_year));
-        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
-            unittest.equals(arg_fromDate_month));
         unittest.expect(core.int.parse(queryMap["fromDate.day"].first),
             unittest.equals(arg_fromDate_day));
-        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
-            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.month"].first),
+            unittest.equals(arg_fromDate_month));
+        unittest.expect(core.int.parse(queryMap["fromDate.year"].first),
+            unittest.equals(arg_fromDate_year));
         unittest.expect(core.int.parse(queryMap["toDate.day"].first),
             unittest.equals(arg_toDate_day));
+        unittest.expect(core.int.parse(queryMap["toDate.month"].first),
+            unittest.equals(arg_toDate_month));
+        unittest.expect(core.int.parse(queryMap["toDate.year"].first),
+            unittest.equals(arg_toDate_year));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8250,12 +8250,12 @@ void main() {
       }), true);
       res
           .get(arg_name,
-              fromDate_year: arg_fromDate_year,
-              toDate_year: arg_toDate_year,
-              fromDate_month: arg_fromDate_month,
               fromDate_day: arg_fromDate_day,
-              toDate_month: arg_toDate_month,
+              fromDate_month: arg_fromDate_month,
+              fromDate_year: arg_fromDate_year,
               toDate_day: arg_toDate_day,
+              toDate_month: arg_toDate_month,
+              toDate_year: arg_toDate_year,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetSearchApplicationUserStatsResponse(response);

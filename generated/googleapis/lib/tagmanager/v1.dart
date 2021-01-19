@@ -1319,11 +1319,11 @@ class AccountsContainersMoveFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
-  /// [variableId] - The variables to be moved to the folder.
-  ///
   /// [tagId] - The tags to be moved to the folder.
   ///
   /// [triggerId] - The triggers to be moved to the folder.
+  ///
+  /// [variableId] - The variables to be moved to the folder.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1338,9 +1338,9 @@ class AccountsContainersMoveFoldersResourceApi {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.List<core.String> variableId,
     core.List<core.String> tagId,
     core.List<core.String> triggerId,
+    core.List<core.String> variableId,
     core.String $fields,
   }) {
     core.String _url;
@@ -1362,14 +1362,14 @@ class AccountsContainersMoveFoldersResourceApi {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    if (variableId != null) {
-      _queryParams['variableId'] = variableId;
-    }
     if (tagId != null) {
       _queryParams['tagId'] = tagId;
     }
     if (triggerId != null) {
       _queryParams['triggerId'] = triggerId;
+    }
+    if (variableId != null) {
+      _queryParams['variableId'] = variableId;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2697,9 +2697,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
-  /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
-  ///
   /// [headers] - Retrieve headers only when true.
+  ///
+  /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2714,8 +2714,8 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ListContainerVersionsResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.bool includeDeleted,
     core.bool headers,
+    core.bool includeDeleted,
     core.String $fields,
   }) {
     core.String _url;
@@ -2731,11 +2731,11 @@ class AccountsContainersVersionsResourceApi {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
     if (headers != null) {
       _queryParams['headers'] = ['${headers}'];
+    }
+    if (includeDeleted != null) {
+      _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

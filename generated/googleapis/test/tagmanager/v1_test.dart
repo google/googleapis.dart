@@ -3095,9 +3095,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_folderId = 'foo';
-      var arg_variableId = buildUnnamed1898();
-      var arg_tagId = buildUnnamed1899();
-      var arg_triggerId = buildUnnamed1900();
+      var arg_tagId = buildUnnamed1898();
+      var arg_triggerId = buildUnnamed1899();
+      var arg_variableId = buildUnnamed1900();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Folder.fromJson(json);
@@ -3149,10 +3149,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["variableId"], unittest.equals(arg_variableId));
         unittest.expect(queryMap["tagId"], unittest.equals(arg_tagId));
         unittest.expect(queryMap["triggerId"], unittest.equals(arg_triggerId));
+        unittest.expect(
+            queryMap["variableId"], unittest.equals(arg_variableId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3163,9 +3163,9 @@ void main() {
       }), true);
       res
           .update(arg_request, arg_accountId, arg_containerId, arg_folderId,
-              variableId: arg_variableId,
               tagId: arg_tagId,
               triggerId: arg_triggerId,
+              variableId: arg_variableId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
@@ -4539,8 +4539,8 @@ void main() {
           api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
-      var arg_includeDeleted = true;
       var arg_headers = true;
+      var arg_includeDeleted = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4586,10 +4586,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeDeleted"].first,
-            unittest.equals("$arg_includeDeleted"));
         unittest.expect(
             queryMap["headers"].first, unittest.equals("$arg_headers"));
+        unittest.expect(queryMap["includeDeleted"].first,
+            unittest.equals("$arg_includeDeleted"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4600,8 +4600,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_containerId,
-              includeDeleted: arg_includeDeleted,
               headers: arg_headers,
+              includeDeleted: arg_includeDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListContainerVersionsResponse(response);

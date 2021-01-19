@@ -202,16 +202,16 @@ class AccountsClientsResourceApi {
   /// [accountId] - Unique numerical account ID of the sponsor buyer to list the
   /// clients for.
   ///
-  /// [partnerClientId] - Optional unique identifier (from the standpoint of an
-  /// Ad Exchange sponsor buyer partner) of the client to return. If specified,
-  /// at most one client will be returned in the response.
+  /// [pageSize] - Requested page size. The server may return fewer clients than
+  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of ListClientsResponse.nextPageToken
   /// returned from the previous call to the accounts.clients.list method.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer clients than
-  /// requested. If unspecified, the server will pick an appropriate default.
+  /// [partnerClientId] - Optional unique identifier (from the standpoint of an
+  /// Ad Exchange sponsor buyer partner) of the client to return. If specified,
+  /// at most one client will be returned in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -225,9 +225,9 @@ class AccountsClientsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClientsResponse> list(
     core.String accountId, {
-    core.String partnerClientId,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
+    core.String partnerClientId,
     core.String $fields,
   }) {
     core.String _url;
@@ -240,14 +240,14 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (partnerClientId != null) {
-      _queryParams['partnerClientId'] = [partnerClientId];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (partnerClientId != null) {
+      _queryParams['partnerClientId'] = [partnerClientId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -490,13 +490,13 @@ class AccountsClientsInvitationsResourceApi {
   /// representation of a numerical account identifier or the `-` character to
   /// list all the invitations for all the clients of a given sponsor buyer.
   ///
+  /// [pageSize] - Requested page size. Server may return fewer clients than
+  /// requested. If unspecified, server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListClientUserInvitationsResponse.nextPageToken returned from the previous
   /// call to the clients.invitations.list method.
-  ///
-  /// [pageSize] - Requested page size. Server may return fewer clients than
-  /// requested. If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -511,8 +511,8 @@ class AccountsClientsInvitationsResourceApi {
   async.Future<ListClientUserInvitationsResponse> list(
     core.String accountId,
     core.String clientAccountId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -528,11 +528,11 @@ class AccountsClientsInvitationsResourceApi {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -930,15 +930,15 @@ class AccountsCreativesResourceApi {
   /// [accountId] - The account to list the creatives from. Specify "-" to list
   /// all creatives the current user has access to.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of
-  /// ListCreativesResponse.next_page_token returned from the previous call to
-  /// 'ListCreatives' method.
-  ///
   /// [pageSize] - Requested page size. The server may return fewer creatives
   /// than requested (due to timeout constraint) even if more are available via
   /// another call. If unspecified, server will pick an appropriate default.
   /// Acceptable values are 1 to 1000, inclusive.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListCreativesResponse.next_page_token returned from the previous call to
+  /// 'ListCreatives' method.
   ///
   /// [query] - An optional query string to filter creatives. If no filter is
   /// specified, all active creatives will be returned. Supported queries are: -
@@ -962,8 +962,8 @@ class AccountsCreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(
     core.String accountId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String query,
     core.String $fields,
   }) {
@@ -977,11 +977,11 @@ class AccountsCreativesResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (query != null) {
       _queryParams['query'] = [query];
@@ -1286,6 +1286,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// [creativeId] - The creative ID to list the associations from. Specify "-"
   /// to list all creatives under the above account.
   ///
+  /// [pageSize] - Requested page size. Server may return fewer associations
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListDealAssociationsResponse.next_page_token returned from the previous
@@ -1298,9 +1301,6 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// disapproved, not_checked} - openAuctionStatus:{approved,
   /// conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345
   /// AND dealsStatus:disapproved'
-  ///
-  /// [pageSize] - Requested page size. Server may return fewer associations
-  /// than requested. If unspecified, server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1315,9 +1315,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   async.Future<ListDealAssociationsResponse> list(
     core.String accountId,
     core.String creativeId, {
+    core.int pageSize,
     core.String pageToken,
     core.String query,
-    core.int pageSize,
     core.String $fields,
   }) {
     core.String _url;
@@ -1333,14 +1333,14 @@ class AccountsCreativesDealAssociationsResourceApi {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
     if (query != null) {
       _queryParams['query'] = [query];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1444,14 +1444,9 @@ class AccountsFinalizedProposalsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
-  ///
   /// [filter] - An optional PQL filter query used to query for proposals.
   /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot
   /// be filtered.
-  ///
-  /// [pageToken] - The page token as returned from ListProposalsResponse.
   ///
   /// [filterSyntax] - Syntax the filter is written in. Current implementation
   /// defaults to PQL but in the future it will be LIST_FILTER.
@@ -1465,6 +1460,11 @@ class AccountsFinalizedProposalsResourceApi {
   /// at
   /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1477,10 +1477,10 @@ class AccountsFinalizedProposalsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(
     core.String accountId, {
-    core.int pageSize,
     core.String filter,
-    core.String pageToken,
     core.String filterSyntax,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1493,17 +1493,17 @@ class AccountsFinalizedProposalsResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (filterSyntax != null) {
       _queryParams['filterSyntax'] = [filterSyntax];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2063,10 +2063,9 @@ class AccountsProposalsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
-  ///
-  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  /// [filter] - An optional PQL filter query used to query for proposals.
+  /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot
+  /// be filtered.
   ///
   /// [filterSyntax] - Syntax the filter is written in. Current implementation
   /// defaults to PQL but in the future it will be LIST_FILTER.
@@ -2080,9 +2079,10 @@ class AccountsProposalsResourceApi {
   /// at
   /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
   ///
-  /// [filter] - An optional PQL filter query used to query for proposals.
-  /// Nested repeated fields, such as proposal.deals.targetingCriterion, cannot
-  /// be filtered.
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2096,10 +2096,10 @@ class AccountsProposalsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(
     core.String accountId, {
+    core.String filter,
+    core.String filterSyntax,
     core.int pageSize,
     core.String pageToken,
-    core.String filterSyntax,
-    core.String filter,
     core.String $fields,
   }) {
     core.String _url;
@@ -2112,17 +2112,17 @@ class AccountsProposalsResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (filterSyntax != null) {
+      _queryParams['filterSyntax'] = [filterSyntax];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
-    }
-    if (filterSyntax != null) {
-      _queryParams['filterSyntax'] = [filterSyntax];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2423,9 +2423,9 @@ class AccountsPublisherProfilesResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
-  /// [pageToken] - The page token as return from ListPublisherProfilesResponse.
-  ///
   /// [pageSize] - Specify the number of results to include per page.
+  ///
+  /// [pageToken] - The page token as return from ListPublisherProfilesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2439,8 +2439,8 @@ class AccountsPublisherProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListPublisherProfilesResponse> list(
     core.String accountId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2453,11 +2453,11 @@ class AccountsPublisherProfilesResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2802,13 +2802,13 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListBidMetricsResponse.nextPageToken returned from the previous call to
   /// the bidMetrics.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2822,8 +2822,8 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -2836,11 +2836,11 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2968,13 +2968,13 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListBidResponsesWithoutBidsResponse.nextPageToken returned from the
   /// previous call to the bidResponsesWithoutBids.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2988,8 +2988,8 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidResponsesWithoutBidsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3002,11 +3002,11 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3138,13 +3138,13 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListFilteredBidsResponse.nextPageToken returned from the previous call to
   /// the filteredBids.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3158,8 +3158,8 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3172,11 +3172,11 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3224,13 +3224,13 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   /// breakdown by creative. See
   /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from
   /// the previous call to the filteredBids.creatives.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3245,8 +3245,8 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3262,11 +3262,11 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3319,13 +3319,13 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from
   /// the previous call to the filteredBids.details.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3340,8 +3340,8 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -3357,11 +3357,11 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4012,13 +4012,13 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListBidResponseErrorsResponse.nextPageToken returned from the previous
   /// call to the bidResponseErrors.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4032,8 +4032,8 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidResponseErrorsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4046,11 +4046,11 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4096,13 +4096,13 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListBidResponsesWithoutBidsResponse.nextPageToken returned from the
   /// previous call to the bidResponsesWithoutBids.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4116,8 +4116,8 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidResponsesWithoutBidsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4130,11 +4130,11 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4350,13 +4350,13 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
   /// breakdown by creative. See
   /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from
   /// the previous call to the filteredBids.creatives.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4371,8 +4371,8 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4388,11 +4388,11 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4444,13 +4444,13 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from
   /// the previous call to the filteredBids.details.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4465,8 +4465,8 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4482,11 +4482,11 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4531,13 +4531,13 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListImpressionMetricsResponse.nextPageToken returned from the previous
   /// call to the impressionMetrics.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4551,8 +4551,8 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4565,11 +4565,11 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4695,13 +4695,13 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
   /// `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of
   /// ListNonBillableWinningBidsResponse.nextPageToken returned from the
   /// previous call to the nonBillableWinningBids.list method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested. If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4715,8 +4715,8 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
     core.String filterSetName, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -4729,11 +4729,11 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

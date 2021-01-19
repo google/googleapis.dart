@@ -4301,13 +4301,13 @@ void main() {
       var mock = HttpServerMock();
       api.ChromeosdevicesResourceApi res = api.AdminApi(mock).chromeosdevices;
       var arg_customerId = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_query = 'foo';
       var arg_maxResults = 42;
-      var arg_projection = 'foo';
+      var arg_orderBy = 'foo';
       var arg_orgUnitPath = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_pageToken = 'foo';
+      var arg_projection = 'foo';
+      var arg_query = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4344,19 +4344,19 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["orgUnitPath"].first, unittest.equals(arg_orgUnitPath));
         unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4367,13 +4367,13 @@ void main() {
       }), true);
       res
           .list(arg_customerId,
-              orderBy: arg_orderBy,
-              query: arg_query,
               maxResults: arg_maxResults,
-              projection: arg_projection,
+              orderBy: arg_orderBy,
               orgUnitPath: arg_orgUnitPath,
-              sortOrder: arg_sortOrder,
               pageToken: arg_pageToken,
+              projection: arg_projection,
+              query: arg_query,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChromeOsDevices(response);
@@ -5350,14 +5350,14 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.GroupsResourceApi res = api.AdminApi(mock).groups;
+      var arg_customer = 'foo';
+      var arg_domain = 'foo';
+      var arg_maxResults = 42;
       var arg_orderBy = 'foo';
       var arg_pageToken = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_customer = 'foo';
       var arg_query = 'foo';
-      var arg_domain = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_userKey = 'foo';
-      var arg_maxResults = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5386,19 +5386,19 @@ void main() {
           }
         }
         unittest.expect(
+            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
-        unittest.expect(
             queryMap["userKey"].first, unittest.equals(arg_userKey));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5409,14 +5409,14 @@ void main() {
       }), true);
       res
           .list(
+              customer: arg_customer,
+              domain: arg_domain,
+              maxResults: arg_maxResults,
               orderBy: arg_orderBy,
               pageToken: arg_pageToken,
-              sortOrder: arg_sortOrder,
-              customer: arg_customer,
               query: arg_query,
-              domain: arg_domain,
+              sortOrder: arg_sortOrder,
               userKey: arg_userKey,
-              maxResults: arg_maxResults,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGroups(response);
@@ -5942,9 +5942,9 @@ void main() {
       var mock = HttpServerMock();
       api.MembersResourceApi res = api.AdminApi(mock).members;
       var arg_groupKey = 'foo';
+      var arg_includeDerivedMembership = true;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_includeDerivedMembership = true;
       var arg_roles = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5982,12 +5982,12 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["includeDerivedMembership"].first,
+            unittest.equals("$arg_includeDerivedMembership"));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["includeDerivedMembership"].first,
-            unittest.equals("$arg_includeDerivedMembership"));
         unittest.expect(queryMap["roles"].first, unittest.equals(arg_roles));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -5999,9 +5999,9 @@ void main() {
       }), true);
       res
           .list(arg_groupKey,
+              includeDerivedMembership: arg_includeDerivedMembership,
               maxResults: arg_maxResults,
               pageToken: arg_pageToken,
-              includeDerivedMembership: arg_includeDerivedMembership,
               roles: arg_roles,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -6330,12 +6330,12 @@ void main() {
       var mock = HttpServerMock();
       api.MobiledevicesResourceApi res = api.AdminApi(mock).mobiledevices;
       var arg_customerId = 'foo';
-      var arg_projection = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_query = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_sortOrder = 'foo';
       var arg_maxResults = 42;
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_projection = 'foo';
+      var arg_query = 'foo';
+      var arg_sortOrder = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6372,17 +6372,17 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6393,12 +6393,12 @@ void main() {
       }), true);
       res
           .list(arg_customerId,
-              projection: arg_projection,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              orderBy: arg_orderBy,
-              sortOrder: arg_sortOrder,
               maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
+              projection: arg_projection,
+              query: arg_query,
+              sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMobileDevices(response);
@@ -7392,10 +7392,10 @@ void main() {
       api.ResourcesCalendarsResourceApi res =
           api.AdminApi(mock).resources.calendars;
       var arg_customer = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_query = 'foo';
-      var arg_pageToken = 'foo';
       var arg_maxResults = 42;
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
+      var arg_query = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7432,13 +7432,13 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7449,10 +7449,10 @@ void main() {
       }), true);
       res
           .list(arg_customer,
-              orderBy: arg_orderBy,
-              query: arg_query,
-              pageToken: arg_pageToken,
               maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
+              query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCalendarResources(response);
@@ -9289,9 +9289,9 @@ void main() {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.AdminApi(mock).users;
       var arg_userKey = 'foo';
-      var arg_viewType = 'foo';
       var arg_customFieldMask = 'foo';
       var arg_projection = 'foo';
+      var arg_viewType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9322,12 +9322,12 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["viewType"].first, unittest.equals(arg_viewType));
         unittest.expect(queryMap["customFieldMask"].first,
             unittest.equals(arg_customFieldMask));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(
+            queryMap["viewType"].first, unittest.equals(arg_viewType));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9338,9 +9338,9 @@ void main() {
       }), true);
       res
           .get(arg_userKey,
-              viewType: arg_viewType,
               customFieldMask: arg_customFieldMask,
               projection: arg_projection,
+              viewType: arg_viewType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUser(response);
@@ -9399,17 +9399,17 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.AdminApi(mock).users;
-      var arg_maxResults = 42;
+      var arg_customFieldMask = 'foo';
+      var arg_customer = 'foo';
       var arg_domain = 'foo';
+      var arg_maxResults = 42;
+      var arg_orderBy = 'foo';
       var arg_pageToken = 'foo';
+      var arg_projection = 'foo';
+      var arg_query = 'foo';
+      var arg_showDeleted = 'foo';
       var arg_sortOrder = 'foo';
       var arg_viewType = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_showDeleted = 'foo';
-      var arg_query = 'foo';
-      var arg_projection = 'foo';
-      var arg_customer = 'foo';
-      var arg_customFieldMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9437,26 +9437,26 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["customFieldMask"].first,
+            unittest.equals(arg_customFieldMask));
+        unittest.expect(
+            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
         unittest.expect(core.int.parse(queryMap["maxResults"].first),
             unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals(arg_showDeleted));
         unittest.expect(
             queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
         unittest.expect(
             queryMap["viewType"].first, unittest.equals(arg_viewType));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals(arg_showDeleted));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
-        unittest.expect(queryMap["customFieldMask"].first,
-            unittest.equals(arg_customFieldMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9467,17 +9467,17 @@ void main() {
       }), true);
       res
           .list(
-              maxResults: arg_maxResults,
+              customFieldMask: arg_customFieldMask,
+              customer: arg_customer,
               domain: arg_domain,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
               pageToken: arg_pageToken,
+              projection: arg_projection,
+              query: arg_query,
+              showDeleted: arg_showDeleted,
               sortOrder: arg_sortOrder,
               viewType: arg_viewType,
-              orderBy: arg_orderBy,
-              showDeleted: arg_showDeleted,
-              query: arg_query,
-              projection: arg_projection,
-              customer: arg_customer,
-              customFieldMask: arg_customFieldMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUsers(response);
@@ -9761,18 +9761,18 @@ void main() {
       var mock = HttpServerMock();
       api.UsersResourceApi res = api.AdminApi(mock).users;
       var arg_request = buildChannel();
-      var arg_viewType = 'foo';
-      var arg_query = 'foo';
-      var arg_domain = 'foo';
-      var arg_sortOrder = 'foo';
-      var arg_event = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_customer = 'foo';
-      var arg_orderBy = 'foo';
-      var arg_maxResults = 42;
       var arg_customFieldMask = 'foo';
-      var arg_showDeleted = 'foo';
+      var arg_customer = 'foo';
+      var arg_domain = 'foo';
+      var arg_event = 'foo';
+      var arg_maxResults = 42;
+      var arg_orderBy = 'foo';
+      var arg_pageToken = 'foo';
       var arg_projection = 'foo';
+      var arg_query = 'foo';
+      var arg_showDeleted = 'foo';
+      var arg_sortOrder = 'foo';
+      var arg_viewType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.Channel.fromJson(json);
@@ -9803,27 +9803,27 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["viewType"].first, unittest.equals(arg_viewType));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
-        unittest.expect(
-            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-        unittest.expect(queryMap["event"].first, unittest.equals(arg_event));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["customer"].first, unittest.equals(arg_customer));
-        unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["customFieldMask"].first,
             unittest.equals(arg_customFieldMask));
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals(arg_showDeleted));
+            queryMap["customer"].first, unittest.equals(arg_customer));
+        unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
+        unittest.expect(queryMap["event"].first, unittest.equals(arg_event));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(
+            queryMap["showDeleted"].first, unittest.equals(arg_showDeleted));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
+        unittest.expect(
+            queryMap["viewType"].first, unittest.equals(arg_viewType));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9834,18 +9834,18 @@ void main() {
       }), true);
       res
           .watch(arg_request,
-              viewType: arg_viewType,
-              query: arg_query,
-              domain: arg_domain,
-              sortOrder: arg_sortOrder,
-              event: arg_event,
-              pageToken: arg_pageToken,
-              customer: arg_customer,
-              orderBy: arg_orderBy,
-              maxResults: arg_maxResults,
               customFieldMask: arg_customFieldMask,
-              showDeleted: arg_showDeleted,
+              customer: arg_customer,
+              domain: arg_domain,
+              event: arg_event,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken,
               projection: arg_projection,
+              query: arg_query,
+              showDeleted: arg_showDeleted,
+              sortOrder: arg_sortOrder,
+              viewType: arg_viewType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);

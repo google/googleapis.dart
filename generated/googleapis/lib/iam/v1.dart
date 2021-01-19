@@ -427,6 +427,11 @@ class OrganizationsRolesResourceApi {
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
   ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
   /// list of all permissions in the role. The default value is `BASIC`, which
@@ -435,11 +440,6 @@ class OrganizationsRolesResourceApi {
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -454,9 +454,9 @@ class OrganizationsRolesResourceApi {
   async.Future<ListRolesResponse> list(
     core.String parent, {
     core.int pageSize,
-    core.String view,
-    core.bool showDeleted,
     core.String pageToken,
+    core.bool showDeleted,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -472,14 +472,14 @@ class OrganizationsRolesResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if (showDeleted != null) {
       _queryParams['showDeleted'] = ['${showDeleted}'];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -964,6 +964,14 @@ class ProjectsRolesResourceApi {
   /// ID or organization ID.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response. The default is 300, and the maximum is 1,000.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
   /// list of all permissions in the role. The default value is `BASIC`, which
@@ -972,14 +980,6 @@ class ProjectsRolesResourceApi {
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response. The default is 300, and the maximum is 1,000.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -993,10 +993,10 @@ class ProjectsRolesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
     core.String parent, {
-    core.String view,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.bool showDeleted,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -1009,17 +1009,17 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (showDeleted != null) {
       _queryParams['showDeleted'] = ['${showDeleted}'];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1586,13 +1586,13 @@ class ProjectsServiceAccountsResourceApi {
   /// service accounts, such as `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListServiceAccountsResponse.next_page_token.
-  ///
   /// [pageSize] - Optional limit on the number of service accounts to include
   /// in the response. Further accounts can subsequently be obtained by
   /// including the ListServiceAccountsResponse.next_page_token in a subsequent
   /// request. The default is 20, and the maximum is 100.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListServiceAccountsResponse.next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1606,8 +1606,8 @@ class ProjectsServiceAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListServiceAccountsResponse> list(
     core.String name, {
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -1620,11 +1620,11 @@ class ProjectsServiceAccountsResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2499,6 +2499,12 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response. The default is 300, and the maximum is 1,000.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely [`roles`](/iam/reference/rest/v1/roles),
   /// [`projects`](/iam/reference/rest/v1/projects.roles), or
@@ -2520,11 +2526,7 @@ class RolesResourceApi {
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
   ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response. The default is 300, and the maximum is 1,000.
+  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [view] - Optional view for the returned Role objects. When `FULL` is
   /// specified, the `includedPermissions` field is returned, which includes a
@@ -2534,8 +2536,6 @@ class RolesResourceApi {
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  ///
-  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2548,11 +2548,11 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list({
-    core.String parent,
-    core.String pageToken,
     core.int pageSize,
-    core.String view,
+    core.String pageToken,
+    core.String parent,
     core.bool showDeleted,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -2562,20 +2562,20 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
+    if (parent != null) {
+      _queryParams['parent'] = [parent];
     }
     if (showDeleted != null) {
       _queryParams['showDeleted'] = ['${showDeleted}'];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

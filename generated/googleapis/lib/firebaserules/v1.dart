@@ -387,14 +387,6 @@ class ProjectsReleasesResourceApi {
   /// [name] - Resource name for the project. Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Next page token for the next batch of `Release` instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
-  /// `page_size` is just a hint and the service may choose to load fewer than
-  /// `page_size` results due to the size of the output. To traverse all of the
-  /// releases, the caller should iterate until the `page_token` on the response
-  /// is empty.
-  ///
   /// [filter] - `Release` filter. The list method supports filters with
   /// restrictions on the `Release.name`, `Release.ruleset_name`, and
   /// `Release.test_suite_name`. Example 1: A filter of 'name=prod*' might
@@ -412,6 +404,14 @@ class ProjectsReleasesResourceApi {
   /// the search filters are relative to the project. Fully qualified prefixed
   /// may also be used. e.g. `test_suite_name=projects/foo/testsuites/uuid1`
   ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
+  /// `page_size` is just a hint and the service may choose to load fewer than
+  /// `page_size` results due to the size of the output. To traverse all of the
+  /// releases, the caller should iterate until the `page_token` on the response
+  /// is empty.
+  ///
+  /// [pageToken] - Next page token for the next batch of `Release` instances.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -424,9 +424,9 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(
     core.String name, {
-    core.String pageToken,
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -439,14 +439,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -707,13 +707,13 @@ class ProjectsRulesetsResourceApi {
   /// date/time specifications. Example: `create_time >
   /// date("2017-01-01T00:00:00Z") AND name=UUID-*`
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
   /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10. Note:
   /// `page_size` is just a hint and the service may choose to load less than
   /// `page_size` due to the size of the output. To traverse all of the
   /// releases, caller should iterate until the `page_token` is empty.
+  ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -728,8 +728,8 @@ class ProjectsRulesetsResourceApi {
   async.Future<ListRulesetsResponse> list(
     core.String name, {
     core.String filter,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -745,11 +745,11 @@ class ProjectsRulesetsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

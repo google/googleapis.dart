@@ -74,9 +74,9 @@ class UsersResourceApi {
   /// [name] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [systemId] - A system ID for filtering the results of the request.
-  ///
   /// [projectId] - The project ID of the Google Cloud Platform project.
+  ///
+  /// [systemId] - A system ID for filtering the results of the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -90,8 +90,8 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(
     core.String name, {
-    core.String systemId,
     core.String projectId,
+    core.String systemId,
     core.String $fields,
   }) {
     core.String _url;
@@ -104,11 +104,11 @@ class UsersResourceApi {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (systemId != null) {
-      _queryParams['systemId'] = [systemId];
-    }
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
+    }
+    if (systemId != null) {
+      _queryParams['systemId'] = [systemId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

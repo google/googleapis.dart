@@ -912,13 +912,13 @@ void main() {
       var mock = HttpServerMock();
       api.PagespeedapiResourceApi res =
           api.PagespeedonlineApi(mock).pagespeedapi;
-      var arg_strategy = 'foo';
-      var arg_utmCampaign = 'foo';
+      var arg_captchaToken = 'foo';
       var arg_category = buildUnnamed2498();
       var arg_locale = 'foo';
+      var arg_strategy = 'foo';
       var arg_url = 'foo';
+      var arg_utmCampaign = 'foo';
       var arg_utmSource = 'foo';
-      var arg_captchaToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -947,16 +947,16 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["strategy"].first, unittest.equals(arg_strategy));
-        unittest.expect(
-            queryMap["utm_campaign"].first, unittest.equals(arg_utmCampaign));
+            queryMap["captchaToken"].first, unittest.equals(arg_captchaToken));
         unittest.expect(queryMap["category"], unittest.equals(arg_category));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
+        unittest.expect(
+            queryMap["strategy"].first, unittest.equals(arg_strategy));
         unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
         unittest.expect(
-            queryMap["utm_source"].first, unittest.equals(arg_utmSource));
+            queryMap["utm_campaign"].first, unittest.equals(arg_utmCampaign));
         unittest.expect(
-            queryMap["captchaToken"].first, unittest.equals(arg_captchaToken));
+            queryMap["utm_source"].first, unittest.equals(arg_utmSource));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -967,13 +967,13 @@ void main() {
       }), true);
       res
           .runpagespeed(
-              strategy: arg_strategy,
-              utmCampaign: arg_utmCampaign,
+              captchaToken: arg_captchaToken,
               category: arg_category,
               locale: arg_locale,
+              strategy: arg_strategy,
               url: arg_url,
+              utmCampaign: arg_utmCampaign,
               utmSource: arg_utmSource,
-              captchaToken: arg_captchaToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPagespeedApiPagespeedResponseV5(response);

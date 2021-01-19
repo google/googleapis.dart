@@ -1462,9 +1462,9 @@ void main() {
       var mock = HttpServerMock();
       api.ElectionsResourceApi res = api.CivicinfoApi(mock).elections;
       var arg_address = 'foo';
-      var arg_returnAllAvailableData = true;
-      var arg_officialOnly = true;
       var arg_electionId = 'foo';
+      var arg_officialOnly = true;
+      var arg_returnAllAvailableData = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1494,12 +1494,12 @@ void main() {
         }
         unittest.expect(
             queryMap["address"].first, unittest.equals(arg_address));
-        unittest.expect(queryMap["returnAllAvailableData"].first,
-            unittest.equals("$arg_returnAllAvailableData"));
-        unittest.expect(queryMap["officialOnly"].first,
-            unittest.equals("$arg_officialOnly"));
         unittest.expect(
             queryMap["electionId"].first, unittest.equals(arg_electionId));
+        unittest.expect(queryMap["officialOnly"].first,
+            unittest.equals("$arg_officialOnly"));
+        unittest.expect(queryMap["returnAllAvailableData"].first,
+            unittest.equals("$arg_returnAllAvailableData"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1510,9 +1510,9 @@ void main() {
       }), true);
       res
           .voterInfoQuery(arg_address,
-              returnAllAvailableData: arg_returnAllAvailableData,
-              officialOnly: arg_officialOnly,
               electionId: arg_electionId,
+              officialOnly: arg_officialOnly,
+              returnAllAvailableData: arg_returnAllAvailableData,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkVoterInfoResponse(response);
@@ -1525,10 +1525,10 @@ void main() {
       var mock = HttpServerMock();
       api.RepresentativesResourceApi res =
           api.CivicinfoApi(mock).representatives;
-      var arg_levels = buildUnnamed2258();
-      var arg_includeOffices = true;
-      var arg_roles = buildUnnamed2259();
       var arg_address = 'foo';
+      var arg_includeOffices = true;
+      var arg_levels = buildUnnamed2258();
+      var arg_roles = buildUnnamed2259();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1556,12 +1556,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["levels"], unittest.equals(arg_levels));
-        unittest.expect(queryMap["includeOffices"].first,
-            unittest.equals("$arg_includeOffices"));
-        unittest.expect(queryMap["roles"], unittest.equals(arg_roles));
         unittest.expect(
             queryMap["address"].first, unittest.equals(arg_address));
+        unittest.expect(queryMap["includeOffices"].first,
+            unittest.equals("$arg_includeOffices"));
+        unittest.expect(queryMap["levels"], unittest.equals(arg_levels));
+        unittest.expect(queryMap["roles"], unittest.equals(arg_roles));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1572,10 +1572,10 @@ void main() {
       }), true);
       res
           .representativeInfoByAddress(
-              levels: arg_levels,
-              includeOffices: arg_includeOffices,
-              roles: arg_roles,
               address: arg_address,
+              includeOffices: arg_includeOffices,
+              levels: arg_levels,
+              roles: arg_roles,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkRepresentativeInfoResponse(response);
@@ -1587,9 +1587,9 @@ void main() {
       api.RepresentativesResourceApi res =
           api.CivicinfoApi(mock).representatives;
       var arg_ocdId = 'foo';
-      var arg_roles = buildUnnamed2260();
+      var arg_levels = buildUnnamed2260();
       var arg_recursive = true;
-      var arg_levels = buildUnnamed2261();
+      var arg_roles = buildUnnamed2261();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1620,10 +1620,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["roles"], unittest.equals(arg_roles));
+        unittest.expect(queryMap["levels"], unittest.equals(arg_levels));
         unittest.expect(
             queryMap["recursive"].first, unittest.equals("$arg_recursive"));
-        unittest.expect(queryMap["levels"], unittest.equals(arg_levels));
+        unittest.expect(queryMap["roles"], unittest.equals(arg_roles));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1634,9 +1634,9 @@ void main() {
       }), true);
       res
           .representativeInfoByDivision(arg_ocdId,
-              roles: arg_roles,
-              recursive: arg_recursive,
               levels: arg_levels,
+              recursive: arg_recursive,
+              roles: arg_roles,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkRepresentativeInfoData(response);

@@ -241,10 +241,9 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return. Typically, this is the value of
-  /// ListReportTypesResponse.next_page_token returned in response to the
-  /// previous call to the `ListJobs` method.
+  /// [includeSystemManaged] - If set to true, also system-managed jobs will be
+  /// returned; otherwise only user-created jobs will be returned.
+  /// System-managed jobs can neither be modified nor deleted.
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
   /// the user is acting on. If not set, the user is acting for himself (his own
@@ -253,9 +252,10 @@ class JobsResourceApi {
   /// [pageSize] - Requested page size. Server may return fewer jobs than
   /// requested. If unspecified, server will pick an appropriate default.
   ///
-  /// [includeSystemManaged] - If set to true, also system-managed jobs will be
-  /// returned; otherwise only user-created jobs will be returned.
-  /// System-managed jobs can neither be modified nor deleted.
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListReportTypesResponse.next_page_token returned in response to the
+  /// previous call to the `ListJobs` method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -268,10 +268,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list({
-    core.String pageToken,
+    core.bool includeSystemManaged,
     core.String onBehalfOfContentOwner,
     core.int pageSize,
-    core.bool includeSystemManaged,
+    core.String pageToken,
     core.String $fields,
   }) {
     core.String _url;
@@ -281,8 +281,8 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (includeSystemManaged != null) {
+      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
@@ -290,8 +290,8 @@ class JobsResourceApi {
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (includeSystemManaged != null) {
-      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -389,8 +389,8 @@ class JobsReportsResourceApi {
   ///
   /// [jobId] - The ID of the job.
   ///
-  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
-  /// than or equal the specified date/time are returned.
+  /// [createdAfter] - If set, only reports created after the specified
+  /// date/time are returned.
   ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
   /// the user is acting on. If not set, the user is acting for himself (his own
@@ -404,8 +404,8 @@ class JobsReportsResourceApi {
   /// ListReportsResponse.next_page_token returned in response to the previous
   /// call to the `ListReports` method.
   ///
-  /// [createdAfter] - If set, only reports created after the specified
-  /// date/time are returned.
+  /// [startTimeAtOrAfter] - If set, only reports whose start time is greater
+  /// than or equal the specified date/time are returned.
   ///
   /// [startTimeBefore] - If set, only reports whose start time is smaller than
   /// the specified date/time are returned.
@@ -422,11 +422,11 @@ class JobsReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(
     core.String jobId, {
-    core.String startTimeAtOrAfter,
+    core.String createdAfter,
     core.String onBehalfOfContentOwner,
     core.int pageSize,
     core.String pageToken,
-    core.String createdAfter,
+    core.String startTimeAtOrAfter,
     core.String startTimeBefore,
     core.String $fields,
   }) {
@@ -440,8 +440,8 @@ class JobsReportsResourceApi {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    if (startTimeAtOrAfter != null) {
-      _queryParams['startTimeAtOrAfter'] = [startTimeAtOrAfter];
+    if (createdAfter != null) {
+      _queryParams['createdAfter'] = [createdAfter];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
@@ -452,8 +452,8 @@ class JobsReportsResourceApi {
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (createdAfter != null) {
-      _queryParams['createdAfter'] = [createdAfter];
+    if (startTimeAtOrAfter != null) {
+      _queryParams['startTimeAtOrAfter'] = [startTimeAtOrAfter];
     }
     if (startTimeBefore != null) {
       _queryParams['startTimeBefore'] = [startTimeBefore];

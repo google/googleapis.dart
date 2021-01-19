@@ -3967,9 +3967,9 @@ void main() {
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
-      var arg_inlineStdout = true;
-      var arg_inlineStderr = true;
       var arg_inlineOutputFiles = buildUnnamed5190();
+      var arg_inlineStderr = true;
+      var arg_inlineStdout = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3998,12 +3998,12 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["inlineStdout"].first,
-            unittest.equals("$arg_inlineStdout"));
-        unittest.expect(queryMap["inlineStderr"].first,
-            unittest.equals("$arg_inlineStderr"));
         unittest.expect(queryMap["inlineOutputFiles"],
             unittest.equals(arg_inlineOutputFiles));
+        unittest.expect(queryMap["inlineStderr"].first,
+            unittest.equals("$arg_inlineStderr"));
+        unittest.expect(queryMap["inlineStdout"].first,
+            unittest.equals("$arg_inlineStdout"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4015,9 +4015,9 @@ void main() {
       }), true);
       res
           .get(arg_instanceName, arg_hash, arg_sizeBytes,
-              inlineStdout: arg_inlineStdout,
-              inlineStderr: arg_inlineStderr,
               inlineOutputFiles: arg_inlineOutputFiles,
+              inlineStderr: arg_inlineStderr,
+              inlineStdout: arg_inlineStdout,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBuildBazelRemoteExecutionV2ActionResult(response);
@@ -4309,8 +4309,8 @@ void main() {
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4339,10 +4339,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4354,8 +4354,8 @@ void main() {
       }), true);
       res
           .getTree(arg_instanceName, arg_hash, arg_sizeBytes,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBuildBazelRemoteExecutionV2GetTreeResponse(response);

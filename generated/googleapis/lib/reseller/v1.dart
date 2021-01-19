@@ -937,20 +937,6 @@ class SubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - When retrieving a large list, the maxResults is the maximum
-  /// number of results per page. The nextPageToken value takes you to the next
-  /// page. The default is 20.
-  /// Value must be between "1" and "100".
-  ///
-  /// [customerNamePrefix] - When retrieving all of your subscriptions and
-  /// filtering for specific customers, you can enter a prefix for a customer
-  /// name. Using an example customer group that includes exam.com,
-  /// example20.com and example.com:
-  /// - exa -- Returns all customer names that start with 'exa' which could
-  /// include exam.com, example20.com, and example.com. A name prefix is similar
-  /// to using a regular expression's asterisk, exa*.
-  /// - example -- Returns example20.com and example.com.
-  ///
   /// [customerAuthToken] - The customerAuthToken query string is required when
   /// creating a resold account that transfers a direct customer's subscription
   /// or transfers another reseller customer's subscription to your reseller
@@ -962,6 +948,20 @@ class SubscriptionsResourceApi {
   /// unique identifier. If using the domain name, we do not recommend using a
   /// customerId as a key for persistent data. If the domain name for a
   /// customerId is changed, the Google system automatically updates.
+  ///
+  /// [customerNamePrefix] - When retrieving all of your subscriptions and
+  /// filtering for specific customers, you can enter a prefix for a customer
+  /// name. Using an example customer group that includes exam.com,
+  /// example20.com and example.com:
+  /// - exa -- Returns all customer names that start with 'exa' which could
+  /// include exam.com, example20.com, and example.com. A name prefix is similar
+  /// to using a regular expression's asterisk, exa*.
+  /// - example -- Returns example20.com and example.com.
+  ///
+  /// [maxResults] - When retrieving a large list, the maxResults is the maximum
+  /// number of results per page. The nextPageToken value takes you to the next
+  /// page. The default is 20.
+  /// Value must be between "1" and "100".
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
@@ -976,10 +976,10 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscriptions> list({
-    core.int maxResults,
-    core.String customerNamePrefix,
     core.String customerAuthToken,
     core.String customerId,
+    core.String customerNamePrefix,
+    core.int maxResults,
     core.String pageToken,
     core.String $fields,
   }) {
@@ -990,17 +990,17 @@ class SubscriptionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (customerNamePrefix != null) {
-      _queryParams['customerNamePrefix'] = [customerNamePrefix];
-    }
     if (customerAuthToken != null) {
       _queryParams['customerAuthToken'] = [customerAuthToken];
     }
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
+    }
+    if (customerNamePrefix != null) {
+      _queryParams['customerNamePrefix'] = [customerNamePrefix];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];

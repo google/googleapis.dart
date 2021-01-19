@@ -2509,9 +2509,9 @@ void main() {
       api.OperationsProjectsOperationsResourceApi res =
           api.BigtableadminApi(mock).operations.projects.operations;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2540,11 +2540,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2555,9 +2555,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListOperationsResponse(response);
@@ -3037,8 +3037,8 @@ void main() {
           api.BigtableadminApi(mock).projects.instances.appProfiles;
       var arg_request = buildAppProfile();
       var arg_parent = 'foo';
-      var arg_ignoreWarnings = true;
       var arg_appProfileId = 'foo';
+      var arg_ignoreWarnings = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.AppProfile.fromJson(json);
@@ -3070,10 +3070,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ignoreWarnings"].first,
-            unittest.equals("$arg_ignoreWarnings"));
         unittest.expect(
             queryMap["appProfileId"].first, unittest.equals(arg_appProfileId));
+        unittest.expect(queryMap["ignoreWarnings"].first,
+            unittest.equals("$arg_ignoreWarnings"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3084,8 +3084,8 @@ void main() {
       }), true);
       res
           .create(arg_request, arg_parent,
-              ignoreWarnings: arg_ignoreWarnings,
               appProfileId: arg_appProfileId,
+              ignoreWarnings: arg_ignoreWarnings,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAppProfile(response);
@@ -3197,8 +3197,8 @@ void main() {
       api.ProjectsInstancesAppProfilesResourceApi res =
           api.BigtableadminApi(mock).projects.instances.appProfiles;
       var arg_parent = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3227,10 +3227,10 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3241,8 +3241,8 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListAppProfilesResponse(response);
@@ -3779,8 +3779,8 @@ void main() {
           api.BigtableadminApi(mock).projects.instances.clusters.backups;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
-      var arg_pageSize = 42;
       var arg_orderBy = 'foo';
+      var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3811,10 +3811,10 @@ void main() {
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3828,8 +3828,8 @@ void main() {
       res
           .list(arg_parent,
               filter: arg_filter,
-              pageSize: arg_pageSize,
               orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4362,9 +4362,9 @@ void main() {
       api.ProjectsInstancesTablesResourceApi res =
           api.BigtableadminApi(mock).projects.instances.tables;
       var arg_parent = 'foo';
-      var arg_view = 'foo';
-      var arg_pageToken = 'foo';
       var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
+      var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4393,11 +4393,11 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4408,9 +4408,9 @@ void main() {
       }), true);
       res
           .list(arg_parent,
-              view: arg_view,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListTablesResponse(response);
@@ -4680,9 +4680,9 @@ void main() {
       api.ProjectsLocationsResourceApi res =
           api.BigtableadminApi(mock).projects.locations;
       var arg_name = 'foo';
-      var arg_pageToken = 'foo';
-      var arg_pageSize = 42;
       var arg_filter = 'foo';
+      var arg_pageSize = 42;
+      var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4711,11 +4711,11 @@ void main() {
             );
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4726,9 +4726,9 @@ void main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
               filter: arg_filter,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListLocationsResponse(response);

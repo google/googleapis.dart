@@ -577,9 +577,28 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
+  /// jobs ordered on descending `JobUuid`.
+  /// - "ALL" : Returns all running jobs first ordered on creation timestamp,
+  /// then returns all terminated jobs ordered on the termination timestamp.
+  /// - "TERMINATED" : Filters the jobs that have a terminated state, ordered on
+  /// the termination timestamp. Example terminated states: `JOB_STATE_STOPPED`,
+  /// `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
+  /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
+  /// timestamp.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
+  ///
+  /// [pageToken] - Set this to the 'next_page_token' field of a previous
+  /// response to request additional results in a long list.
   ///
   /// [view] - Level of information requested in response. Default is
   /// `JOB_VIEW_SUMMARY`.
@@ -594,25 +613,6 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-  /// contains this job.
-  ///
-  /// [pageToken] - Set this to the 'next_page_token' field of a previous
-  /// response to request additional results in a long list.
-  ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
-  /// jobs ordered on descending `JobUuid`.
-  /// - "ALL" : Returns all running jobs first ordered on creation timestamp,
-  /// then returns all terminated jobs ordered on the termination timestamp.
-  /// - "TERMINATED" : Filters the jobs that have a terminated state, ordered on
-  /// the termination timestamp. Example terminated states: `JOB_STATE_STOPPED`,
-  /// `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
-  /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
-  /// timestamp.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -625,11 +625,11 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(
     core.String projectId, {
-    core.int pageSize,
-    core.String view,
-    core.String location,
-    core.String pageToken,
     core.String filter,
+    core.String location,
+    core.int pageSize,
+    core.String pageToken,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -642,20 +642,20 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
     }
     if (location != null) {
       _queryParams['location'] = [location];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -690,11 +690,11 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
-  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
@@ -721,8 +721,8 @@ class ProjectsJobsResourceApi {
   async.Future<Job> create(
     Job request,
     core.String projectId, {
-    core.String replaceJobId,
     core.String location,
+    core.String replaceJobId,
     core.String view,
     core.String $fields,
   }) {
@@ -739,11 +739,11 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (replaceJobId != null) {
-      _queryParams['replaceJobId'] = [replaceJobId];
-    }
     if (location != null) {
       _queryParams['location'] = [location];
+    }
+    if (replaceJobId != null) {
+      _queryParams['replaceJobId'] = [replaceJobId];
     }
     if (view != null) {
       _queryParams['view'] = [view];
@@ -782,6 +782,10 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : The job view to return isn't specified, or is
@@ -793,10 +797,6 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : Request all information available for this job.
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
-  ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-  /// contains this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -811,8 +811,8 @@ class ProjectsJobsResourceApi {
   async.Future<Job> get(
     core.String projectId,
     core.String jobId, {
-    core.String view,
     core.String location,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -828,11 +828,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
     if (location != null) {
       _queryParams['location'] = [location];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -867,12 +867,12 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job to get metrics for.
   ///
-  /// [startTime] - Return only metric data that has changed since this time.
-  /// Default is to return all information about all metrics for the job.
-  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains the job specified by job_id.
+  ///
+  /// [startTime] - Return only metric data that has changed since this time.
+  /// Default is to return all information about all metrics for the job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -887,8 +887,8 @@ class ProjectsJobsResourceApi {
   async.Future<JobMetrics> getMetrics(
     core.String projectId,
     core.String jobId, {
-    core.String startTime,
     core.String location,
+    core.String startTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -904,11 +904,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
     if (location != null) {
       _queryParams['location'] = [location];
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -955,9 +955,16 @@ class ProjectsJobsResourceApi {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
+  ///
+  /// [pageToken] - Set this to the 'next_page_token' field of a previous
+  /// response to request additional results in a long list.
   ///
   /// [view] - Level of information requested in response. Default is
   /// `JOB_VIEW_SUMMARY`.
@@ -972,13 +979,6 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-  /// contains this job.
-  ///
-  /// [pageToken] - Set this to the 'next_page_token' field of a previous
-  /// response to request additional results in a long list.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -992,10 +992,10 @@ class ProjectsJobsResourceApi {
   async.Future<ListJobsResponse> list(
     core.String projectId, {
     core.String filter,
-    core.int pageSize,
-    core.String view,
     core.String location,
+    core.int pageSize,
     core.String pageToken,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -1011,17 +1011,17 @@ class ProjectsJobsResourceApi {
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
     if (location != null) {
       _queryParams['location'] = [location];
     }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1345,18 +1345,6 @@ class ProjectsJobsMessagesResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains the job specified by job_id.
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time. The default is the job creation time (i.e. beginning of
-  /// messages).
-  ///
-  /// [pageToken] - If supplied, this should be the value of next_page_token
-  /// returned by an earlier call. This will cause the next page of results to
-  /// be returned.
-  ///
-  /// [pageSize] - If specified, determines the maximum number of messages to
-  /// return. If unspecified, the service may choose an appropriate default, or
-  /// may return an arbitrarily large number of results.
-  ///
   /// [minimumImportance] - Filter to only get messages with importance >= level
   /// Possible string values are:
   /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : The message importance isn't
@@ -1383,6 +1371,18 @@ class ProjectsJobsMessagesResourceApi {
   /// runners display log messages at this level by default, and these messages
   /// are displayed by default in the Dataflow monitoring UI.
   ///
+  /// [pageSize] - If specified, determines the maximum number of messages to
+  /// return. If unspecified, the service may choose an appropriate default, or
+  /// may return an arbitrarily large number of results.
+  ///
+  /// [pageToken] - If supplied, this should be the value of next_page_token
+  /// returned by an earlier call. This will cause the next page of results to
+  /// be returned.
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time. The default is the job creation time (i.e. beginning of
+  /// messages).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1398,10 +1398,10 @@ class ProjectsJobsMessagesResourceApi {
     core.String jobId, {
     core.String endTime,
     core.String location,
-    core.String startTime,
-    core.String pageToken,
-    core.int pageSize,
     core.String minimumImportance,
+    core.int pageSize,
+    core.String pageToken,
+    core.String startTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -1423,17 +1423,17 @@ class ProjectsJobsMessagesResourceApi {
     if (location != null) {
       _queryParams['location'] = [location];
     }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
+    if (minimumImportance != null) {
+      _queryParams['minimumImportance'] = [minimumImportance];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
-    if (minimumImportance != null) {
-      _queryParams['minimumImportance'] = [minimumImportance];
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1786,6 +1786,8 @@ class ProjectsLocationsJobsResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
   ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : The job view to return isn't specified, or is
@@ -1797,8 +1799,6 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : Request all information available for this job.
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1814,8 +1814,8 @@ class ProjectsLocationsJobsResourceApi {
     Job request,
     core.String projectId,
     core.String location, {
-    core.String view,
     core.String replaceJobId,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -1834,11 +1834,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
     if (replaceJobId != null) {
       _queryParams['replaceJobId'] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2130,10 +2130,6 @@ class ProjectsLocationsJobsResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
   ///
-  /// [pageSize] - If there are many jobs, limit response to at most this many.
-  /// The actual number of jobs returned will be the lesser of max_responses and
-  /// an unspecified server-defined limit.
-  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : The filter isn't specified, or is unknown. This returns all
@@ -2145,6 +2141,10 @@ class ProjectsLocationsJobsResourceApi {
   /// `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
+  ///
+  /// [pageSize] - If there are many jobs, limit response to at most this many.
+  /// The actual number of jobs returned will be the lesser of max_responses and
+  /// an unspecified server-defined limit.
   ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
@@ -2175,8 +2175,8 @@ class ProjectsLocationsJobsResourceApi {
   async.Future<ListJobsResponse> list(
     core.String projectId,
     core.String location, {
-    core.int pageSize,
     core.String filter,
+    core.int pageSize,
     core.String pageToken,
     core.String view,
     core.String $fields,
@@ -2194,11 +2194,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -2557,18 +2557,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time. The default is the job creation time (i.e. beginning of
-  /// messages).
-  ///
-  /// [pageSize] - If specified, determines the maximum number of messages to
-  /// return. If unspecified, the service may choose an appropriate default, or
-  /// may return an arbitrarily large number of results.
-  ///
-  /// [pageToken] - If supplied, this should be the value of next_page_token
-  /// returned by an earlier call. This will cause the next page of results to
-  /// be returned.
-  ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now (i.e. return up to the latest messages available).
   ///
@@ -2598,6 +2586,18 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// runners display log messages at this level by default, and these messages
   /// are displayed by default in the Dataflow monitoring UI.
   ///
+  /// [pageSize] - If specified, determines the maximum number of messages to
+  /// return. If unspecified, the service may choose an appropriate default, or
+  /// may return an arbitrarily large number of results.
+  ///
+  /// [pageToken] - If supplied, this should be the value of next_page_token
+  /// returned by an earlier call. This will cause the next page of results to
+  /// be returned.
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time. The default is the job creation time (i.e. beginning of
+  /// messages).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2612,11 +2612,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String startTime,
-    core.int pageSize,
-    core.String pageToken,
     core.String endTime,
     core.String minimumImportance,
+    core.int pageSize,
+    core.String pageToken,
+    core.String startTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -2635,8 +2635,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
+    if (endTime != null) {
+      _queryParams['endTime'] = [endTime];
+    }
+    if (minimumImportance != null) {
+      _queryParams['minimumImportance'] = [minimumImportance];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -2644,11 +2647,8 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
-    if (minimumImportance != null) {
-      _queryParams['minimumImportance'] = [minimumImportance];
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2772,15 +2772,15 @@ class ProjectsLocationsJobsStagesResourceApi {
   ///
   /// [endTime] - Upper time bound of work items to include, by start time.
   ///
-  /// [startTime] - Lower time bound of work items to include, by start time.
+  /// [pageSize] - If specified, determines the maximum number of work items to
+  /// return. If unspecified, the service may choose an appropriate default, or
+  /// may return an arbitrarily large number of results.
   ///
   /// [pageToken] - If supplied, this should be the value of next_page_token
   /// returned by an earlier call. This will cause the next page of results to
   /// be returned.
   ///
-  /// [pageSize] - If specified, determines the maximum number of work items to
-  /// return. If unspecified, the service may choose an appropriate default, or
-  /// may return an arbitrarily large number of results.
+  /// [startTime] - Lower time bound of work items to include, by start time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2798,9 +2798,9 @@ class ProjectsLocationsJobsStagesResourceApi {
     core.String jobId,
     core.String stageId, {
     core.String endTime,
-    core.String startTime,
-    core.String pageToken,
     core.int pageSize,
+    core.String pageToken,
+    core.String startTime,
     core.String $fields,
   }) {
     core.String _url;
@@ -2825,14 +2825,14 @@ class ProjectsLocationsJobsStagesResourceApi {
     if (endTime != null) {
       _queryParams['endTime'] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3381,13 +3381,13 @@ class ProjectsLocationsTemplatesResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
   ///
+  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
+  /// create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
   /// - "METADATA_ONLY" : Template view that retrieves only the metadata
   /// associated with the template.
-  ///
-  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
-  /// create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3402,8 +3402,8 @@ class ProjectsLocationsTemplatesResourceApi {
   async.Future<GetTemplateResponse> get(
     core.String projectId,
     core.String location, {
-    core.String view,
     core.String gcsPath,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -3419,11 +3419,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
     if (gcsPath != null) {
       _queryParams['gcsPath'] = [gcsPath];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3460,8 +3460,8 @@ class ProjectsLocationsTemplatesResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
   ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed. Defaults to false.
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
+  /// file must be a Json serialized DynamicTemplateFieSpec object.
   ///
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -3469,8 +3469,8 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [gcsPath] - A Cloud Storage path to the template from which to create the
   /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
-  /// file must be a Json serialized DynamicTemplateFieSpec object.
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed. Defaults to false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3486,10 +3486,10 @@ class ProjectsLocationsTemplatesResourceApi {
     LaunchTemplateParameters request,
     core.String projectId,
     core.String location, {
-    core.bool validateOnly,
+    core.String dynamicTemplate_gcsPath,
     core.String dynamicTemplate_stagingLocation,
     core.String gcsPath,
-    core.String dynamicTemplate_gcsPath,
+    core.bool validateOnly,
     core.String $fields,
   }) {
     core.String _url;
@@ -3508,8 +3508,8 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
-    if (validateOnly != null) {
-      _queryParams['validateOnly'] = ['${validateOnly}'];
+    if (dynamicTemplate_gcsPath != null) {
+      _queryParams['dynamicTemplate.gcsPath'] = [dynamicTemplate_gcsPath];
     }
     if (dynamicTemplate_stagingLocation != null) {
       _queryParams['dynamicTemplate.stagingLocation'] = [
@@ -3519,8 +3519,8 @@ class ProjectsLocationsTemplatesResourceApi {
     if (gcsPath != null) {
       _queryParams['gcsPath'] = [gcsPath];
     }
-    if (dynamicTemplate_gcsPath != null) {
-      _queryParams['dynamicTemplate.gcsPath'] = [dynamicTemplate_gcsPath];
+    if (validateOnly != null) {
+      _queryParams['validateOnly'] = ['${validateOnly}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3825,17 +3825,17 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
-  /// Possible string values are:
-  /// - "METADATA_ONLY" : Template view that retrieves only the metadata
-  /// associated with the template.
+  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
+  /// create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
   ///
-  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
-  /// create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.
+  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
+  /// Possible string values are:
+  /// - "METADATA_ONLY" : Template view that retrieves only the metadata
+  /// associated with the template.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3849,9 +3849,9 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(
     core.String projectId, {
-    core.String view,
-    core.String location,
     core.String gcsPath,
+    core.String location,
+    core.String view,
     core.String $fields,
   }) {
     core.String _url;
@@ -3864,14 +3864,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (view != null) {
-      _queryParams['view'] = [view];
+    if (gcsPath != null) {
+      _queryParams['gcsPath'] = [gcsPath];
     }
     if (location != null) {
       _queryParams['location'] = [location];
     }
-    if (gcsPath != null) {
-      _queryParams['gcsPath'] = [gcsPath];
+    if (view != null) {
+      _queryParams['view'] = [view];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3902,21 +3902,21 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
+  /// file must be a Json serialized DynamicTemplateFieSpec object.
+  ///
+  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
+  /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// [gcsPath] - A Cloud Storage path to the template from which to create the
+  /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed. Defaults to false.
-  ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
-  /// file must be a Json serialized DynamicTemplateFieSpec object.
-  ///
-  /// [gcsPath] - A Cloud Storage path to the template from which to create the
-  /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
-  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
-  /// dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3931,11 +3931,11 @@ class ProjectsTemplatesResourceApi {
   async.Future<LaunchTemplateResponse> launch(
     LaunchTemplateParameters request,
     core.String projectId, {
+    core.String dynamicTemplate_gcsPath,
+    core.String dynamicTemplate_stagingLocation,
+    core.String gcsPath,
     core.String location,
     core.bool validateOnly,
-    core.String dynamicTemplate_gcsPath,
-    core.String gcsPath,
-    core.String dynamicTemplate_stagingLocation,
     core.String $fields,
   }) {
     core.String _url;
@@ -3951,22 +3951,22 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    if (location != null) {
-      _queryParams['location'] = [location];
-    }
-    if (validateOnly != null) {
-      _queryParams['validateOnly'] = ['${validateOnly}'];
-    }
     if (dynamicTemplate_gcsPath != null) {
       _queryParams['dynamicTemplate.gcsPath'] = [dynamicTemplate_gcsPath];
-    }
-    if (gcsPath != null) {
-      _queryParams['gcsPath'] = [gcsPath];
     }
     if (dynamicTemplate_stagingLocation != null) {
       _queryParams['dynamicTemplate.stagingLocation'] = [
         dynamicTemplate_stagingLocation
       ];
+    }
+    if (gcsPath != null) {
+      _queryParams['gcsPath'] = [gcsPath];
+    }
+    if (location != null) {
+      _queryParams['location'] = [location];
+    }
+    if (validateOnly != null) {
+      _queryParams['validateOnly'] = ['${validateOnly}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
