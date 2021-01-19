@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.serviceconsumermanagement.v1;
 
@@ -1735,7 +1731,9 @@ class BillingDestination {
 class CancelOperationRequest {
   CancelOperationRequest();
 
-  CancelOperationRequest.fromJson(core.Map _json) {}
+  CancelOperationRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2194,7 +2192,9 @@ class DocumentationRule {
 class Empty {
   Empty();
 
-  Empty.fromJson(core.Map _json) {}
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5491,7 +5491,9 @@ class V1Beta1BatchCreateProducerOverridesResponse {
 class V1Beta1DisableConsumerResponse {
   V1Beta1DisableConsumerResponse();
 
-  V1Beta1DisableConsumerResponse.fromJson(core.Map _json) {}
+  V1Beta1DisableConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5506,7 +5508,9 @@ class V1Beta1DisableConsumerResponse {
 class V1Beta1EnableConsumerResponse {
   V1Beta1EnableConsumerResponse();
 
-  V1Beta1EnableConsumerResponse.fromJson(core.Map _json) {}
+  V1Beta1EnableConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5777,7 +5781,9 @@ class V1Beta1QuotaOverride {
 class V1Beta1RefreshConsumerResponse {
   V1Beta1RefreshConsumerResponse();
 
-  V1Beta1RefreshConsumerResponse.fromJson(core.Map _json) {}
+  V1Beta1RefreshConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5887,7 +5893,9 @@ class V1DefaultIdentity {
 class V1DisableConsumerResponse {
   V1DisableConsumerResponse();
 
-  V1DisableConsumerResponse.fromJson(core.Map _json) {}
+  V1DisableConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -5902,7 +5910,9 @@ class V1DisableConsumerResponse {
 class V1EnableConsumerResponse {
   V1EnableConsumerResponse();
 
-  V1EnableConsumerResponse.fromJson(core.Map _json) {}
+  V1EnableConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -6001,7 +6011,9 @@ class V1GenerateServiceAccountResponse {
 class V1RefreshConsumerResponse {
   V1RefreshConsumerResponse();
 
-  V1RefreshConsumerResponse.fromJson(core.Map _json) {}
+  V1RefreshConsumerResponse.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

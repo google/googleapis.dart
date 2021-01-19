@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.driveactivity.v2;
 
@@ -345,7 +341,9 @@ class Actor {
 class Administrator {
   Administrator();
 
-  Administrator.fromJson(core.Map _json) {}
+  Administrator.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -359,7 +357,9 @@ class Administrator {
 class AnonymousUser {
   AnonymousUser();
 
-  AnonymousUser.fromJson(core.Map _json) {}
+  AnonymousUser.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -372,7 +372,9 @@ class AnonymousUser {
 class Anyone {
   Anyone();
 
-  Anyone.fromJson(core.Map _json) {}
+  Anyone.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -665,7 +667,9 @@ class Delete {
 class DeletedUser {
   DeletedUser();
 
-  DeletedUser.fromJson(core.Map _json) {}
+  DeletedUser.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -836,7 +840,9 @@ class DriveActivity {
 class DriveFile {
   DriveFile();
 
-  DriveFile.fromJson(core.Map _json) {}
+  DriveFile.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1066,7 +1072,9 @@ class DriveReference {
 class Edit {
   Edit();
 
-  Edit.fromJson(core.Map _json) {}
+  Edit.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1079,7 +1087,9 @@ class Edit {
 class File {
   File();
 
-  File.fromJson(core.Map _json) {}
+  File.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1274,7 +1284,9 @@ class KnownUser {
 class Legacy {
   Legacy();
 
-  Legacy.fromJson(core.Map _json) {}
+  Legacy.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1325,7 +1337,9 @@ class Move {
 class New {
   New();
 
-  New.fromJson(core.Map _json) {}
+  New.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -1338,7 +1352,9 @@ class New {
 class NoConsolidation {
   NoConsolidation();
 
-  NoConsolidation.fromJson(core.Map _json) {}
+  NoConsolidation.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2066,7 +2082,9 @@ class TimeRange {
 class UnknownUser {
   UnknownUser();
 
-  UnknownUser.fromJson(core.Map _json) {}
+  UnknownUser.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2079,7 +2097,9 @@ class UnknownUser {
 class Upload {
   Upload();
 
-  Upload.fromJson(core.Map _json) {}
+  Upload.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =

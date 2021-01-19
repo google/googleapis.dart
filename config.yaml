@@ -8,6 +8,7 @@ packages:
     license: resources/LICENSE
     changelog: resources/googleapis/CHANGELOG.md
     example: resources/googleapis/examples/main.dart
+    mono_pkg: resources/googleapis/_mono_pkg.yaml
     apis:
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
@@ -180,6 +181,7 @@ packages:
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
+    mono_pkg: resources/googleapis_beta/_mono_pkg.yaml
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/

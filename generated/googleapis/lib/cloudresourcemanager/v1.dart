@@ -1,11 +1,9 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: avoid_unused_constructor_parameters
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
-// ignore_for_file: empty_constructor_bodies
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
@@ -16,8 +14,6 @@
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
-// ignore_for_file: unused_field
-// ignore_for_file: unused_import
 
 library googleapis.cloudresourcemanager.v1;
 
@@ -2587,7 +2583,9 @@ class Binding {
 class BooleanConstraint {
   BooleanConstraint();
 
-  BooleanConstraint.fromJson(core.Map _json) {}
+  BooleanConstraint.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2790,7 +2788,9 @@ class Constraint {
 class Empty {
   Empty();
 
-  Empty.fromJson(core.Map _json) {}
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2972,7 +2972,9 @@ class FolderOperationError {
 class GetAncestryRequest {
   GetAncestryRequest();
 
-  GetAncestryRequest.fromJson(core.Map _json) {}
+  GetAncestryRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4186,7 +4188,9 @@ class ResourceId {
 class RestoreDefault {
   RestoreDefault();
 
-  RestoreDefault.fromJson(core.Map _json) {}
+  RestoreDefault.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -4453,7 +4457,9 @@ class TestIamPermissionsResponse {
 class UndeleteProjectRequest {
   UndeleteProjectRequest();
 
-  UndeleteProjectRequest.fromJson(core.Map _json) {}
+  UndeleteProjectRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
