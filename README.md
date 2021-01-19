@@ -476,9 +476,10 @@ Here's a convenient list of the resources you might need:
 The following notes for those who are contributing to this package.
 If you are only using this package, you can skip this section.
 
-* Clone this package and run `pub upgrade` from the top-level directory.
+* Clone this package and run `pub upgrade` from the `generator` directory.
 
   ```console
+  $ cd generator
   $ rm -rf .dart_tool
   $ pub upgrade
   ```
@@ -487,7 +488,7 @@ If you are only using this package, you can skip this section.
   (avoid doing this on corp network, use cloudshell instead).
 
   ```console
-  $ dart bin/generate.dart run_config download
+  $ dart generator/bin/generate.dart run_config download
   ```
 
 **Note:**
@@ -498,7 +499,7 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
 * Generate the APIs.
 
   ```console
-  $ dart bin/generate.dart run_config generate
+  $ dart generator/bin/generate.dart run_config generate
   ```
 
 * Create a diff with the previous APIs to determine whether a minor or a major

@@ -11,7 +11,3 @@ dependencies:
   io: ^0.3.3
   pool: ^1.4.0
   yaml: ^2.1.0
-
-dev_dependencies:
-  googleapis: any
-  googleapis_auth: any
