@@ -19,7 +19,8 @@ ArgParser runConfigCommandArgParser() => ArgParser()
   ..addCommand('generate')
   ..addOption('config-file',
       help: 'Configuration file describing package generation.',
-      defaultsTo: 'config.yaml');
+      defaultsTo: 'config.yaml')
+  ..addFlag('generate-null-safe', help: 'Whether to generate null safe code.');
 
 ArgParser globalArgParser() => ArgParser()
   ..addCommand('download', downloadCommandArgParser())
@@ -83,12 +84,13 @@ void main(List<String> arguments) {
       }
 
       final configFile = commandOptions['config-file'];
+      final generateNullSafe = commandOptions['generate-null-safe'] as bool;
       switch (commandOptions.command.name) {
         case 'download':
           downloadFromConfiguration(configFile).then((_) => print('Done!'));
           break;
         case 'generate':
-          generateFromConfiguration(configFile);
+          generateFromConfiguration(configFile, generateNullSafe);
           print('Done');
           break;
       }

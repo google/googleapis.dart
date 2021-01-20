@@ -123,7 +123,8 @@ class DiscoveryPackagesConfiguration {
   ///
   /// [generatedApisDir] is the directory where the packages are generated.
   /// Each package is generated in a sub-directory.
-  void generate(String discoveryDocsDir, String generatedApisDir) {
+  void generate(
+      String discoveryDocsDir, String generatedApisDir, bool generateNullSafe) {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
     if (!dir.existsSync()) {
@@ -142,8 +143,9 @@ class DiscoveryPackagesConfiguration {
 
     // Generate packages.
     packages.forEach((name, package) {
-      final results = generateAllLibraries('$discoveryDocsDir/$name',
-          '$generatedApisDir/$name', package.pubspec);
+      final results = generateAllLibraries(
+          '$discoveryDocsDir/$name', '$generatedApisDir/$name', package.pubspec,
+          generateNullSafe: generateNullSafe);
       for (final result in results) {
         if (!result.success) {
           print(result.toString());
