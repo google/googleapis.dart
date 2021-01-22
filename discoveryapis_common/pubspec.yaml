@@ -1,0 +1,22 @@
+name: _discoveryapis_commons
+version: 0.3.0-dev
+author: Dart Team <misc@dartlang.org>
+description: Library for use by client APIs generated from Discovery Documents.
+homepage: https://github.com/dart-lang/discoveryapis_commons
+environment:
+  sdk: '>=2.12.0-0 <3.0.0'
+
+dependencies:
+  # Not published yet.
+  http:
+    git:
+      url: git://github.com/dart-lang/http.git
+      ref: 3845753a54624b070828cb3eff7a6c2a4e046cfb
+
+dev_dependencies:
+  test: ^1.16.0-nullsafety.9
+
+dependency_overrides:
+  # Needs bump in `packge:test`.
+  crypto: ^3.0.0-nullsafety.0
+  http_parser: ^4.0.0-nullsafety
