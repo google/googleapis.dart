@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,38 +29,38 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client tagmanager/v1';
+const userAgent = 'dart-api-client tagmanager/v1';
 
 /// This API allows clients to access and modify container and tag
 /// configuration.
 class TagmanagerApi {
   /// Delete your Google Tag Manager containers
-  static const TagmanagerDeleteContainersScope =
+  static const tagmanagerDeleteContainersScope =
       'https://www.googleapis.com/auth/tagmanager.delete.containers';
 
   /// Manage your Google Tag Manager container and its subcomponents, excluding
   /// versioning and publishing
-  static const TagmanagerEditContainersScope =
+  static const tagmanagerEditContainersScope =
       'https://www.googleapis.com/auth/tagmanager.edit.containers';
 
   /// Manage your Google Tag Manager container versions
-  static const TagmanagerEditContainerversionsScope =
+  static const tagmanagerEditContainerversionsScope =
       'https://www.googleapis.com/auth/tagmanager.edit.containerversions';
 
   /// View and manage your Google Tag Manager accounts
-  static const TagmanagerManageAccountsScope =
+  static const tagmanagerManageAccountsScope =
       'https://www.googleapis.com/auth/tagmanager.manage.accounts';
 
   /// Manage user permissions of your Google Tag Manager account and container
-  static const TagmanagerManageUsersScope =
+  static const tagmanagerManageUsersScope =
       'https://www.googleapis.com/auth/tagmanager.manage.users';
 
   /// Publish your Google Tag Manager container versions
-  static const TagmanagerPublishScope =
+  static const tagmanagerPublishScope =
       'https://www.googleapis.com/auth/tagmanager.publish';
 
   /// View your Google Tag Manager container and its subcomponents
-  static const TagmanagerReadonlyScope =
+  static const tagmanagerReadonlyScope =
       'https://www.googleapis.com/auth/tagmanager.readonly';
 
   final commons.ApiRequester _requester;
@@ -72,7 +71,7 @@ class TagmanagerApi {
       {core.String rootUrl = 'https://tagmanager.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountsResourceApi {

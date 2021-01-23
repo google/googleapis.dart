@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,12 +37,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client androidpublisher/v3';
+const userAgent = 'dart-api-client androidpublisher/v3';
 
 /// Lets Android application developers access their Google Play accounts.
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
-  static const AndroidpublisherScope =
+  static const androidpublisherScope =
       'https://www.googleapis.com/auth/androidpublisher';
 
   final commons.ApiRequester _requester;
@@ -62,7 +61,7 @@ class AndroidpublisherApi {
       {core.String rootUrl = 'https://androidpublisher.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class EditsResourceApi {

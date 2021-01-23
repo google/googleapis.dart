@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -29,21 +28,21 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client oauth2/v2';
+const userAgent = 'dart-api-client oauth2/v2';
 
 /// Obtains end-user authorization grants for use with other Google APIs.
 class Oauth2Api {
   /// View your email address
-  static const UserinfoEmailScope =
+  static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
   /// See your personal info, including any personal info you've made publicly
   /// available
-  static const UserinfoProfileScope =
+  static const userinfoProfileScope =
       'https://www.googleapis.com/auth/userinfo.profile';
 
   /// Associate you with your personal info on Google
-  static const OpenidScope = 'openid';
+  static const openidScope = 'openid';
 
   final commons.ApiRequester _requester;
 
@@ -53,7 +52,7 @@ class Oauth2Api {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 
   /// Request parameters:
   ///

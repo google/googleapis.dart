@@ -35,19 +35,25 @@ void main() {
 
     test('scope-name', () {
       String scopename(x) => Scope.toValidScopeName(x);
-      expect(scopename('https://www.googleapis.com/auth/youtube.readonly'),
-          equals('YoutubeReadonlyScope'));
-      expect(scopename('https://www.googleapis.com/auth/youtube-readonly'),
-          equals('YoutubeReadonlyScope'));
-      expect(scopename('https://www.googleapis.com/auth/youtube_readonly'),
-          equals('YoutubeReadonlyScope'));
-      expect(scopename('https://www.googleapis.com/auth/youtube/readonly'),
-          equals('YoutubeReadonlyScope'));
+      expect(
+        scopename('https://www.googleapis.com/auth/youtube.readonly'),
+        'youtubeReadonlyScope',
+      );
+      expect(
+        scopename('https://www.googleapis.com/auth/youtube-readonly'),
+        'youtubeReadonlyScope',
+      );
+      expect(
+        scopename('https://www.googleapis.com/auth/youtube_readonly'),
+        'youtubeReadonlyScope',
+      );
+      expect(
+        scopename('https://www.googleapis.com/auth/youtube/readonly'),
+        'youtubeReadonlyScope',
+      );
 
-      expect(
-          scopename('https://mail.google.com'), equals('MailGoogleComScope'));
-      expect(
-          scopename('https://mail.google.com/'), equals('MailGoogleComScope'));
+      expect(scopename('https://mail.google.com'), 'mailGoogleComScope');
+      expect(scopename('https://mail.google.com/'), 'mailGoogleComScope');
     });
 
     test('identifier', () {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -29,7 +28,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client adexperiencereport/v1';
+const userAgent = 'dart-api-client adexperiencereport/v1';
 
 /// Views Ad Experience Report data, and gets a list of sites that have a
 /// significant number of annoying ads.
@@ -44,7 +43,7 @@ class AdexperiencereportApi {
       {core.String rootUrl = 'https://adexperiencereport.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class SitesResourceApi {

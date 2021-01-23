@@ -121,7 +121,7 @@ class Scope {
     const httpsPrefix = 'https://';
 
     // Defined by openid-connect-core 1.0
-    const openidScopes = [
+    const openidScopes = {
       // https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
       'openid',
       // https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
@@ -131,7 +131,7 @@ class Scope {
       'phone',
       // https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess
       'offline_access',
-    ];
+    };
 
     String name;
     if (scope.startsWith(googleAuthPrefix)) {
@@ -149,11 +149,14 @@ class Scope {
     name = Scope.capitalizeAtChar(name, '_');
     name = Scope.capitalizeAtChar(name, '/');
 
-    return toValidIdentifier(capitalize('${name}Scope'));
+    return toValidIdentifier('${name}Scope');
   }
 
-  static String capitalizeAtChar(String name, String char,
-      {bool keepEnding = false}) {
+  static String capitalizeAtChar(
+    String name,
+    String char, {
+    bool keepEnding = false,
+  }) {
     var index = -1;
     while ((index = name.indexOf(char, 1)) > 0) {
       if (index == (name.length - 1)) {

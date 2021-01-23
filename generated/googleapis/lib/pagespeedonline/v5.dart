@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -29,7 +28,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client pagespeedonline/v5';
+const userAgent = 'dart-api-client pagespeedonline/v5';
 
 /// The PageSpeed Insights API lets you analyze the performance of your website
 /// with a simple API. It offers tailored suggestions for how you can optimize
@@ -37,7 +36,7 @@ const core.String USER_AGENT = 'dart-api-client pagespeedonline/v5';
 /// your development tools and workflow.
 class PagespeedonlineApi {
   /// Associate you with your personal info on Google
-  static const OpenidScope = 'openid';
+  static const openidScope = 'openid';
 
   final commons.ApiRequester _requester;
 
@@ -48,7 +47,7 @@ class PagespeedonlineApi {
       {core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class PagespeedapiResourceApi {

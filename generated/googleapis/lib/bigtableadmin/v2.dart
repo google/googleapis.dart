@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,44 +29,44 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client bigtableadmin/v2';
+const userAgent = 'dart-api-client bigtableadmin/v2';
 
 /// Administer your Cloud Bigtable tables and instances.
 class BigtableadminApi {
   /// Administer your Cloud Bigtable tables and clusters
-  static const BigtableAdminScope =
+  static const bigtableAdminScope =
       'https://www.googleapis.com/auth/bigtable.admin';
 
   /// Administer your Cloud Bigtable clusters
-  static const BigtableAdminClusterScope =
+  static const bigtableAdminClusterScope =
       'https://www.googleapis.com/auth/bigtable.admin.cluster';
 
   /// Administer your Cloud Bigtable clusters
-  static const BigtableAdminInstanceScope =
+  static const bigtableAdminInstanceScope =
       'https://www.googleapis.com/auth/bigtable.admin.instance';
 
   /// Administer your Cloud Bigtable tables
-  static const BigtableAdminTableScope =
+  static const bigtableAdminTableScope =
       'https://www.googleapis.com/auth/bigtable.admin.table';
 
   /// Administer your Cloud Bigtable tables and clusters
-  static const CloudBigtableAdminScope =
+  static const cloudBigtableAdminScope =
       'https://www.googleapis.com/auth/cloud-bigtable.admin';
 
   /// Administer your Cloud Bigtable clusters
-  static const CloudBigtableAdminClusterScope =
+  static const cloudBigtableAdminClusterScope =
       'https://www.googleapis.com/auth/cloud-bigtable.admin.cluster';
 
   /// Administer your Cloud Bigtable tables
-  static const CloudBigtableAdminTableScope =
+  static const cloudBigtableAdminTableScope =
       'https://www.googleapis.com/auth/cloud-bigtable.admin.table';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   final commons.ApiRequester _requester;
@@ -79,7 +78,7 @@ class BigtableadminApi {
       {core.String rootUrl = 'https://bigtableadmin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class OperationsResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,21 +29,21 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client cloudbilling/v1';
+const userAgent = 'dart-api-client cloudbilling/v1';
 
 /// Allows developers to manage billing for their Google Cloud Platform projects
 /// programmatically.
 class CloudbillingApi {
   /// View and manage your Google Cloud Platform billing accounts
-  static const CloudBillingScope =
+  static const cloudBillingScope =
       'https://www.googleapis.com/auth/cloud-billing';
 
   /// View your Google Cloud Platform billing accounts
-  static const CloudBillingReadonlyScope =
+  static const cloudBillingReadonlyScope =
       'https://www.googleapis.com/auth/cloud-billing.readonly';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
@@ -58,7 +57,7 @@ class CloudbillingApi {
       {core.String rootUrl = 'https://cloudbilling.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class BillingAccountsResourceApi {

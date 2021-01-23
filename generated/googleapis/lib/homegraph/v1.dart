@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,11 +29,11 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client homegraph/v1';
+const userAgent = 'dart-api-client homegraph/v1';
 
 class HomegraphApi {
   /// New Service: https://www.googleapis.com/auth/homegraph
-  static const HomegraphScope = 'https://www.googleapis.com/auth/homegraph';
+  static const homegraphScope = 'https://www.googleapis.com/auth/homegraph';
 
   final commons.ApiRequester _requester;
 
@@ -45,7 +44,7 @@ class HomegraphApi {
       {core.String rootUrl = 'https://homegraph.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AgentUsersResourceApi {

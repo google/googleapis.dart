@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,16 +29,16 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client blogger/v3';
+const userAgent = 'dart-api-client blogger/v3';
 
 /// The Blogger API provides access to posts, comments and pages of a Blogger
 /// blog.
 class BloggerApi {
   /// Manage your Blogger account
-  static const BloggerScope = 'https://www.googleapis.com/auth/blogger';
+  static const bloggerScope = 'https://www.googleapis.com/auth/blogger';
 
   /// View your Blogger account
-  static const BloggerReadonlyScope =
+  static const bloggerReadonlyScope =
       'https://www.googleapis.com/auth/blogger.readonly';
 
   final commons.ApiRequester _requester;
@@ -59,7 +58,7 @@ class BloggerApi {
       {core.String rootUrl = 'https://blogger.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class BlogUserInfosResourceApi {

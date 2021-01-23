@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,13 +29,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client adexchangebuyer/v1.4';
+const userAgent = 'dart-api-client adexchangebuyer/v1.4';
 
 /// Accesses your bidding-account information, submits creatives for validation,
 /// finds available direct deals, and retrieves performance reports.
 class AdexchangebuyerApi {
   /// Manage your Ad Exchange buyer account configuration
-  static const AdexchangeBuyerScope =
+  static const adexchangeBuyerScope =
       'https://www.googleapis.com/auth/adexchange.buyer';
 
   final commons.ApiRequester _requester;
@@ -63,7 +62,7 @@ class AdexchangebuyerApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adexchangebuyer/v1.4/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountsResourceApi {

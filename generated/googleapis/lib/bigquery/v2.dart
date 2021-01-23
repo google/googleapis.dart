@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -39,39 +38,39 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client bigquery/v2';
+const userAgent = 'dart-api-client bigquery/v2';
 
 /// A data platform for customers to create, manage, share and query data.
 class BigqueryApi {
   /// View and manage your data in Google BigQuery
-  static const BigqueryScope = 'https://www.googleapis.com/auth/bigquery';
+  static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
   /// Insert data into Google BigQuery
-  static const BigqueryInsertdataScope =
+  static const bigqueryInsertdataScope =
       'https://www.googleapis.com/auth/bigquery.insertdata';
 
   /// View your data in Google BigQuery
-  static const BigqueryReadonlyScope =
+  static const bigqueryReadonlyScope =
       'https://www.googleapis.com/auth/bigquery.readonly';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// Manage your data and permissions in Google Cloud Storage
-  static const DevstorageFullControlScope =
+  static const devstorageFullControlScope =
       'https://www.googleapis.com/auth/devstorage.full_control';
 
   /// View your data in Google Cloud Storage
-  static const DevstorageReadOnlyScope =
+  static const devstorageReadOnlyScope =
       'https://www.googleapis.com/auth/devstorage.read_only';
 
   /// Manage your data in Google Cloud Storage
-  static const DevstorageReadWriteScope =
+  static const devstorageReadWriteScope =
       'https://www.googleapis.com/auth/devstorage.read_write';
 
   final commons.ApiRequester _requester;
@@ -88,7 +87,7 @@ class BigqueryApi {
       {core.String rootUrl = 'https://bigquery.googleapis.com/',
       core.String servicePath = 'bigquery/v2/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DatasetsResourceApi {

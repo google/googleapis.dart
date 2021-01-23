@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,75 +29,75 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client script/v1';
+const userAgent = 'dart-api-client script/v1';
 
 /// Manages and executes Google Apps Script projects.
 class ScriptApi {
   /// Read, compose, send, and permanently delete all your email from Gmail
-  static const MailGoogleComScope = 'https://mail.google.com/';
+  static const mailGoogleComScope = 'https://mail.google.com/';
 
   /// See, edit, share, and permanently delete all the calendars you can access
   /// using Google Calendar
-  static const WwwGoogleComCalendarFeedsScope =
+  static const wwwGoogleComCalendarFeedsScope =
       'https://www.google.com/calendar/feeds';
 
   /// See, edit, download, and permanently delete your contacts
-  static const WwwGoogleComM8FeedsScope = 'https://www.google.com/m8/feeds';
+  static const wwwGoogleComM8FeedsScope = 'https://www.google.com/m8/feeds';
 
   /// View and manage the provisioning of groups on your domain
-  static const AdminDirectoryGroupScope =
+  static const adminDirectoryGroupScope =
       'https://www.googleapis.com/auth/admin.directory.group';
 
   /// View and manage the provisioning of users on your domain
-  static const AdminDirectoryUserScope =
+  static const adminDirectoryUserScope =
       'https://www.googleapis.com/auth/admin.directory.user';
 
   /// View and manage your Google Docs documents
-  static const DocumentsScope = 'https://www.googleapis.com/auth/documents';
+  static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = 'https://www.googleapis.com/auth/drive';
+  static const driveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage your forms in Google Drive
-  static const FormsScope = 'https://www.googleapis.com/auth/forms';
+  static const formsScope = 'https://www.googleapis.com/auth/forms';
 
   /// View and manage forms that this application has been installed in
-  static const FormsCurrentonlyScope =
+  static const formsCurrentonlyScope =
       'https://www.googleapis.com/auth/forms.currentonly';
 
   /// View and manage your Google Groups
-  static const GroupsScope = 'https://www.googleapis.com/auth/groups';
+  static const groupsScope = 'https://www.googleapis.com/auth/groups';
 
   /// Create and update Google Apps Script deployments
-  static const ScriptDeploymentsScope =
+  static const scriptDeploymentsScope =
       'https://www.googleapis.com/auth/script.deployments';
 
   /// View Google Apps Script deployments
-  static const ScriptDeploymentsReadonlyScope =
+  static const scriptDeploymentsReadonlyScope =
       'https://www.googleapis.com/auth/script.deployments.readonly';
 
   /// View Google Apps Script project's metrics
-  static const ScriptMetricsScope =
+  static const scriptMetricsScope =
       'https://www.googleapis.com/auth/script.metrics';
 
   /// View Google Apps Script processes
-  static const ScriptProcessesScope =
+  static const scriptProcessesScope =
       'https://www.googleapis.com/auth/script.processes';
 
   /// Create and update Google Apps Script projects
-  static const ScriptProjectsScope =
+  static const scriptProjectsScope =
       'https://www.googleapis.com/auth/script.projects';
 
   /// View Google Apps Script projects
-  static const ScriptProjectsReadonlyScope =
+  static const scriptProjectsReadonlyScope =
       'https://www.googleapis.com/auth/script.projects.readonly';
 
   /// See, edit, create, and delete your spreadsheets in Google Drive
-  static const SpreadsheetsScope =
+  static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 
   /// View your email address
-  static const UserinfoEmailScope =
+  static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
@@ -111,7 +110,7 @@ class ScriptApi {
       {core.String rootUrl = 'https://script.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ProcessesResourceApi {

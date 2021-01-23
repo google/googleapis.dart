@@ -13,7 +13,6 @@ import 'utils.dart';
 const _ignoreForFileSet = {
   'camel_case_types', // violated by `container` v1 API,
   'comment_references',
-  'constant_identifier_names',
   'directives_ordering',
   'file_names',
   'library_names',
@@ -157,7 +156,7 @@ import 'package:http/http.dart' as ${imports.http};
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
 
-const ${imports.core.ref()}String USER_AGENT = 'dart-api-client ${description.name}/${description.version}';
+const userAgent = 'dart-api-client ${description.name}/${description.version}';
 
 """}""";
   }

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,28 +29,28 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client calendar/v3';
+const userAgent = 'dart-api-client calendar/v3';
 
 /// Manipulates events and other calendar data.
 class CalendarApi {
   /// See, edit, share, and permanently delete all the calendars you can access
   /// using Google Calendar
-  static const CalendarScope = 'https://www.googleapis.com/auth/calendar';
+  static const calendarScope = 'https://www.googleapis.com/auth/calendar';
 
   /// View and edit events on all your calendars
-  static const CalendarEventsScope =
+  static const calendarEventsScope =
       'https://www.googleapis.com/auth/calendar.events';
 
   /// View events on all your calendars
-  static const CalendarEventsReadonlyScope =
+  static const calendarEventsReadonlyScope =
       'https://www.googleapis.com/auth/calendar.events.readonly';
 
   /// View your calendars
-  static const CalendarReadonlyScope =
+  static const calendarReadonlyScope =
       'https://www.googleapis.com/auth/calendar.readonly';
 
   /// View your Calendar settings
-  static const CalendarSettingsReadonlyScope =
+  static const calendarSettingsReadonlyScope =
       'https://www.googleapis.com/auth/calendar.settings.readonly';
 
   final commons.ApiRequester _requester;
@@ -70,7 +69,7 @@ class CalendarApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'calendar/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AclResourceApi {

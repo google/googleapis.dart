@@ -11,7 +11,7 @@ final _credentials = ServiceAccountCredentials.fromJson(r'''
 }
 ''');
 
-const _scopes = [StorageApi.DevstorageReadOnlyScope];
+const _scopes = [StorageApi.devstorageReadOnlyScope];
 
 void main() {
   clientViaServiceAccount(_credentials, _scopes).then((httpClient) {

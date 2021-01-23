@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,23 +29,23 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client dataflow/v1b3';
+const userAgent = 'dart-api-client dataflow/v1b3';
 
 /// Manages Google Cloud Dataflow projects on Google Cloud Platform.
 class DataflowApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage your Google Compute Engine resources
-  static const ComputeScope = 'https://www.googleapis.com/auth/compute';
+  static const computeScope = 'https://www.googleapis.com/auth/compute';
 
   /// View your Google Compute Engine resources
-  static const ComputeReadonlyScope =
+  static const computeReadonlyScope =
       'https://www.googleapis.com/auth/compute.readonly';
 
   /// View your email address
-  static const UserinfoEmailScope =
+  static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
@@ -57,7 +56,7 @@ class DataflowApi {
       {core.String rootUrl = 'https://dataflow.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ProjectsResourceApi {

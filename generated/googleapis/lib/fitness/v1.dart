@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,90 +29,90 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client fitness/v1';
+const userAgent = 'dart-api-client fitness/v1';
 
 /// The Fitness API for managing users' fitness tracking data.
 class FitnessApi {
   /// Use Google Fit to see and store your physical activity data
-  static const FitnessActivityReadScope =
+  static const fitnessActivityReadScope =
       'https://www.googleapis.com/auth/fitness.activity.read';
 
   /// See and add to your Google Fit physical activity data
-  static const FitnessActivityWriteScope =
+  static const fitnessActivityWriteScope =
       'https://www.googleapis.com/auth/fitness.activity.write';
 
   /// See info about your blood glucose in Google Fit. I consent to Google
   /// sharing my blood glucose information with this app.
-  static const FitnessBloodGlucoseReadScope =
+  static const fitnessBloodGlucoseReadScope =
       'https://www.googleapis.com/auth/fitness.blood_glucose.read';
 
   /// See and add info about your blood glucose to Google Fit. I consent to
   /// Google sharing my blood glucose information with this app.
-  static const FitnessBloodGlucoseWriteScope =
+  static const fitnessBloodGlucoseWriteScope =
       'https://www.googleapis.com/auth/fitness.blood_glucose.write';
 
   /// See info about your blood pressure in Google Fit. I consent to Google
   /// sharing my blood pressure information with this app.
-  static const FitnessBloodPressureReadScope =
+  static const fitnessBloodPressureReadScope =
       'https://www.googleapis.com/auth/fitness.blood_pressure.read';
 
   /// See and add info about your blood pressure in Google Fit. I consent to
   /// Google sharing my blood pressure information with this app.
-  static const FitnessBloodPressureWriteScope =
+  static const fitnessBloodPressureWriteScope =
       'https://www.googleapis.com/auth/fitness.blood_pressure.write';
 
   /// See info about your body measurements and heart rate in Google Fit
-  static const FitnessBodyReadScope =
+  static const fitnessBodyReadScope =
       'https://www.googleapis.com/auth/fitness.body.read';
 
   /// See and add info about your body measurements and heart rate to Google Fit
-  static const FitnessBodyWriteScope =
+  static const fitnessBodyWriteScope =
       'https://www.googleapis.com/auth/fitness.body.write';
 
   /// See info about your body temperature in Google Fit. I consent to Google
   /// sharing my body temperature information with this app.
-  static const FitnessBodyTemperatureReadScope =
+  static const fitnessBodyTemperatureReadScope =
       'https://www.googleapis.com/auth/fitness.body_temperature.read';
 
   /// See and add to info about your body temperature in Google Fit. I consent
   /// to Google sharing my body temperature information with this app.
-  static const FitnessBodyTemperatureWriteScope =
+  static const fitnessBodyTemperatureWriteScope =
       'https://www.googleapis.com/auth/fitness.body_temperature.write';
 
   /// See your Google Fit speed and distance data
-  static const FitnessLocationReadScope =
+  static const fitnessLocationReadScope =
       'https://www.googleapis.com/auth/fitness.location.read';
 
   /// See and add to your Google Fit location data
-  static const FitnessLocationWriteScope =
+  static const fitnessLocationWriteScope =
       'https://www.googleapis.com/auth/fitness.location.write';
 
   /// See info about your nutrition in Google Fit
-  static const FitnessNutritionReadScope =
+  static const fitnessNutritionReadScope =
       'https://www.googleapis.com/auth/fitness.nutrition.read';
 
   /// See and add to info about your nutrition in Google Fit
-  static const FitnessNutritionWriteScope =
+  static const fitnessNutritionWriteScope =
       'https://www.googleapis.com/auth/fitness.nutrition.write';
 
   /// See info about your oxygen saturation in Google Fit. I consent to Google
   /// sharing my oxygen saturation information with this app.
-  static const FitnessOxygenSaturationReadScope =
+  static const fitnessOxygenSaturationReadScope =
       'https://www.googleapis.com/auth/fitness.oxygen_saturation.read';
 
   /// See and add info about your oxygen saturation in Google Fit. I consent to
   /// Google sharing my oxygen saturation information with this app.
-  static const FitnessOxygenSaturationWriteScope =
+  static const fitnessOxygenSaturationWriteScope =
       'https://www.googleapis.com/auth/fitness.oxygen_saturation.write';
 
   /// See info about your reproductive health in Google Fit. I consent to Google
   /// sharing my reproductive health information with this app.
-  static const FitnessReproductiveHealthReadScope =
+  static const fitnessReproductiveHealthReadScope =
       'https://www.googleapis.com/auth/fitness.reproductive_health.read';
 
   /// See and add info about your reproductive health in Google Fit. I consent
   /// to Google sharing my reproductive health information with this app.
-  static const FitnessReproductiveHealthWriteScope =
+  static const fitnessReproductiveHealthWriteScope =
       'https://www.googleapis.com/auth/fitness.reproductive_health.write';
 
   final commons.ApiRequester _requester;
@@ -124,7 +123,7 @@ class FitnessApi {
       {core.String rootUrl = 'https://fitness.googleapis.com/',
       core.String servicePath = 'fitness/v1/users/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class UsersResourceApi {

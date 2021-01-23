@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,36 +37,36 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client analytics/v3';
+const userAgent = 'dart-api-client analytics/v3';
 
 /// Views and manages your Google Analytics data.
 class AnalyticsApi {
   /// View and manage your Google Analytics data
-  static const AnalyticsScope = 'https://www.googleapis.com/auth/analytics';
+  static const analyticsScope = 'https://www.googleapis.com/auth/analytics';
 
   /// Edit Google Analytics management entities
-  static const AnalyticsEditScope =
+  static const analyticsEditScope =
       'https://www.googleapis.com/auth/analytics.edit';
 
   /// Manage Google Analytics Account users by email address
-  static const AnalyticsManageUsersScope =
+  static const analyticsManageUsersScope =
       'https://www.googleapis.com/auth/analytics.manage.users';
 
   /// View Google Analytics user permissions
-  static const AnalyticsManageUsersReadonlyScope =
+  static const analyticsManageUsersReadonlyScope =
       'https://www.googleapis.com/auth/analytics.manage.users.readonly';
 
   /// Create a new Google Analytics account along with its default property and
   /// view
-  static const AnalyticsProvisionScope =
+  static const analyticsProvisionScope =
       'https://www.googleapis.com/auth/analytics.provision';
 
   /// View your Google Analytics data
-  static const AnalyticsReadonlyScope =
+  static const analyticsReadonlyScope =
       'https://www.googleapis.com/auth/analytics.readonly';
 
   /// Manage Google Analytics user deletion requests
-  static const AnalyticsUserDeletionScope =
+  static const analyticsUserDeletionScope =
       'https://www.googleapis.com/auth/analytics.user.deletion';
 
   final commons.ApiRequester _requester;
@@ -84,7 +83,7 @@ class AnalyticsApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'analytics/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DataResourceApi {

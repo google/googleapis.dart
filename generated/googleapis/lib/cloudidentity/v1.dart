@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,26 +29,26 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client cloudidentity/v1';
+const userAgent = 'dart-api-client cloudidentity/v1';
 
 /// API for provisioning and managing identity resources.
 class CloudidentityApi {
   /// See your device details
-  static const CloudIdentityDevicesLookupScope =
+  static const cloudIdentityDevicesLookupScope =
       'https://www.googleapis.com/auth/cloud-identity.devices.lookup';
 
   /// See, change, create, and delete any of the Cloud Identity Groups that you
   /// can access, including the members of each group
-  static const CloudIdentityGroupsScope =
+  static const cloudIdentityGroupsScope =
       'https://www.googleapis.com/auth/cloud-identity.groups';
 
   /// See any Cloud Identity Groups that you can access, including group members
   /// and their emails
-  static const CloudIdentityGroupsReadonlyScope =
+  static const cloudIdentityGroupsReadonlyScope =
       'https://www.googleapis.com/auth/cloud-identity.groups.readonly';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
@@ -61,7 +60,7 @@ class CloudidentityApi {
       {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DevicesResourceApi {

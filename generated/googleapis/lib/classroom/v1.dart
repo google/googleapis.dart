@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,99 +29,99 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client classroom/v1';
+const userAgent = 'dart-api-client classroom/v1';
 
 /// Manages classes, rosters, and invitations in Google Classroom.
 class ClassroomApi {
   /// View and manage announcements in Google Classroom
-  static const ClassroomAnnouncementsScope =
+  static const classroomAnnouncementsScope =
       'https://www.googleapis.com/auth/classroom.announcements';
 
   /// View announcements in Google Classroom
-  static const ClassroomAnnouncementsReadonlyScope =
+  static const classroomAnnouncementsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.announcements.readonly';
 
   /// Manage your Google Classroom classes
-  static const ClassroomCoursesScope =
+  static const classroomCoursesScope =
       'https://www.googleapis.com/auth/classroom.courses';
 
   /// View your Google Classroom classes
-  static const ClassroomCoursesReadonlyScope =
+  static const classroomCoursesReadonlyScope =
       'https://www.googleapis.com/auth/classroom.courses.readonly';
 
   /// Manage your course work and view your grades in Google Classroom
-  static const ClassroomCourseworkMeScope =
+  static const classroomCourseworkMeScope =
       'https://www.googleapis.com/auth/classroom.coursework.me';
 
   /// View your course work and grades in Google Classroom
-  static const ClassroomCourseworkMeReadonlyScope =
+  static const classroomCourseworkMeReadonlyScope =
       'https://www.googleapis.com/auth/classroom.coursework.me.readonly';
 
   /// Manage course work and grades for students in the Google Classroom classes
   /// you teach and view the course work and grades for classes you administer
-  static const ClassroomCourseworkStudentsScope =
+  static const classroomCourseworkStudentsScope =
       'https://www.googleapis.com/auth/classroom.coursework.students';
 
   /// View course work and grades for students in the Google Classroom classes
   /// you teach or administer
-  static const ClassroomCourseworkStudentsReadonlyScope =
+  static const classroomCourseworkStudentsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.coursework.students.readonly';
 
   /// See, edit, and create classwork materials in Google Classroom
-  static const ClassroomCourseworkmaterialsScope =
+  static const classroomCourseworkmaterialsScope =
       'https://www.googleapis.com/auth/classroom.courseworkmaterials';
 
   /// See all classwork materials for your Google Classroom classes
-  static const ClassroomCourseworkmaterialsReadonlyScope =
+  static const classroomCourseworkmaterialsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly';
 
   /// View your Google Classroom guardians
-  static const ClassroomGuardianlinksMeReadonlyScope =
+  static const classroomGuardianlinksMeReadonlyScope =
       'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly';
 
   /// View and manage guardians for students in your Google Classroom classes
-  static const ClassroomGuardianlinksStudentsScope =
+  static const classroomGuardianlinksStudentsScope =
       'https://www.googleapis.com/auth/classroom.guardianlinks.students';
 
   /// View guardians for students in your Google Classroom classes
-  static const ClassroomGuardianlinksStudentsReadonlyScope =
+  static const classroomGuardianlinksStudentsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.guardianlinks.students.readonly';
 
   /// View the email addresses of people in your classes
-  static const ClassroomProfileEmailsScope =
+  static const classroomProfileEmailsScope =
       'https://www.googleapis.com/auth/classroom.profile.emails';
 
   /// View the profile photos of people in your classes
-  static const ClassroomProfilePhotosScope =
+  static const classroomProfilePhotosScope =
       'https://www.googleapis.com/auth/classroom.profile.photos';
 
   /// Receive notifications about your Google Classroom data
-  static const ClassroomPushNotificationsScope =
+  static const classroomPushNotificationsScope =
       'https://www.googleapis.com/auth/classroom.push-notifications';
 
   /// Manage your Google Classroom class rosters
-  static const ClassroomRostersScope =
+  static const classroomRostersScope =
       'https://www.googleapis.com/auth/classroom.rosters';
 
   /// View your Google Classroom class rosters
-  static const ClassroomRostersReadonlyScope =
+  static const classroomRostersReadonlyScope =
       'https://www.googleapis.com/auth/classroom.rosters.readonly';
 
   /// View your course work and grades in Google Classroom
-  static const ClassroomStudentSubmissionsMeReadonlyScope =
+  static const classroomStudentSubmissionsMeReadonlyScope =
       'https://www.googleapis.com/auth/classroom.student-submissions.me.readonly';
 
   /// View course work and grades for students in the Google Classroom classes
   /// you teach or administer
-  static const ClassroomStudentSubmissionsStudentsReadonlyScope =
+  static const classroomStudentSubmissionsStudentsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.student-submissions.students.readonly';
 
   /// See, create, and edit topics in Google Classroom
-  static const ClassroomTopicsScope =
+  static const classroomTopicsScope =
       'https://www.googleapis.com/auth/classroom.topics';
 
   /// View topics in Google Classroom
-  static const ClassroomTopicsReadonlyScope =
+  static const classroomTopicsReadonlyScope =
       'https://www.googleapis.com/auth/classroom.topics.readonly';
 
   final commons.ApiRequester _requester;
@@ -138,7 +137,7 @@ class ClassroomApi {
       {core.String rootUrl = 'https://classroom.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class CoursesResourceApi {

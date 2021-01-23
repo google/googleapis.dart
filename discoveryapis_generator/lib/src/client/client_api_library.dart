@@ -138,7 +138,7 @@ $schemaImports
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
     ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
 
-const ${imports.core.ref()}String USER_AGENT = 'dart-api-client ${description.name}/${description.version}';
+const userAgent = 'dart-api-client ${description.name}/${description.version}';
 
 """}""";
   }

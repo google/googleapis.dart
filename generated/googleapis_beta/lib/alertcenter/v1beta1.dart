@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,12 +29,12 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client alertcenter/v1beta1';
+const userAgent = 'dart-api-client alertcenter/v1beta1';
 
 /// Manages alerts on issues affecting your domain.
 class AlertcenterApi {
   /// See and delete your domain's G Suite alerts, and send alert feedback
-  static const AppsAlertsScope = 'https://www.googleapis.com/auth/apps.alerts';
+  static const appsAlertsScope = 'https://www.googleapis.com/auth/apps.alerts';
 
   final commons.ApiRequester _requester;
 
@@ -46,7 +45,7 @@ class AlertcenterApi {
       {core.String rootUrl = 'https://alertcenter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AlertsResourceApi {

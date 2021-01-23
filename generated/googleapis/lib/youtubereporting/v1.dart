@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,18 +37,18 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client youtubereporting/v1';
+const userAgent = 'dart-api-client youtubereporting/v1';
 
 /// Schedules reporting jobs containing your YouTube Analytics data and
 /// downloads the resulting bulk data reports in the form of CSV files.
 class YoutubereportingApi {
   /// View monetary and non-monetary YouTube Analytics reports for your YouTube
   /// content
-  static const YtAnalyticsMonetaryReadonlyScope =
+  static const ytAnalyticsMonetaryReadonlyScope =
       'https://www.googleapis.com/auth/yt-analytics-monetary.readonly';
 
   /// View YouTube Analytics reports for your YouTube content
-  static const YtAnalyticsReadonlyScope =
+  static const ytAnalyticsReadonlyScope =
       'https://www.googleapis.com/auth/yt-analytics.readonly';
 
   final commons.ApiRequester _requester;
@@ -62,7 +61,7 @@ class YoutubereportingApi {
       {core.String rootUrl = 'https://youtubereporting.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class JobsResourceApi {

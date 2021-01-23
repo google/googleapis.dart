@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,7 +29,7 @@ import 'package:discoveryapis_tests/messages.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client toyApi/0.1';
+const userAgent = 'dart-api-client toyApi/0.1';
 
 class ToyApi {
   final commons.ApiRequester _requester;
@@ -42,7 +41,7 @@ class ToyApi {
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/toyApi/0.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 
   /// Request parameters:
   ///

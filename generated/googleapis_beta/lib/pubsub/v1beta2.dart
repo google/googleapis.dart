@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,17 +29,17 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client pubsub/v1beta2';
+const userAgent = 'dart-api-client pubsub/v1beta2';
 
 /// Provides reliable, many-to-many, asynchronous messaging between
 /// applications.
 class PubsubApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage Pub/Sub topics and subscriptions
-  static const PubsubScope = 'https://www.googleapis.com/auth/pubsub';
+  static const pubsubScope = 'https://www.googleapis.com/auth/pubsub';
 
   final commons.ApiRequester _requester;
 
@@ -50,7 +49,7 @@ class PubsubApi {
       {core.String rootUrl = 'https://pubsub.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ProjectsResourceApi {

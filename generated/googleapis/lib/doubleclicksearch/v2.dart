@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -39,13 +38,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
+const userAgent = 'dart-api-client doubleclicksearch/v2';
 
 /// The Search Ads 360 API allows developers to automate uploading conversions
 /// and downloading reports from Search Ads 360.
 class DoubleclicksearchApi {
   /// View and manage your advertising data in DoubleClick Search
-  static const DoubleclicksearchScope =
+  static const doubleclicksearchScope =
       'https://www.googleapis.com/auth/doubleclicksearch';
 
   final commons.ApiRequester _requester;
@@ -59,7 +58,7 @@ class DoubleclicksearchApi {
       {core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ConversionResourceApi {

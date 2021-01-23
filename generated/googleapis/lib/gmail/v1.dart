@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,64 +37,64 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client gmail/v1';
+const userAgent = 'dart-api-client gmail/v1';
 
 /// The Gmail API lets you view and manage Gmail mailbox data like threads,
 /// messages, and labels.
 class GmailApi {
   /// Read, compose, send, and permanently delete all your email from Gmail
-  static const MailGoogleComScope = 'https://mail.google.com/';
+  static const mailGoogleComScope = 'https://mail.google.com/';
 
   /// Manage drafts and send emails when you interact with the add-on
-  static const GmailAddonsCurrentActionComposeScope =
+  static const gmailAddonsCurrentActionComposeScope =
       'https://www.googleapis.com/auth/gmail.addons.current.action.compose';
 
   /// View your email messages when you interact with the add-on
-  static const GmailAddonsCurrentMessageActionScope =
+  static const gmailAddonsCurrentMessageActionScope =
       'https://www.googleapis.com/auth/gmail.addons.current.message.action';
 
   /// View your email message metadata when the add-on is running
-  static const GmailAddonsCurrentMessageMetadataScope =
+  static const gmailAddonsCurrentMessageMetadataScope =
       'https://www.googleapis.com/auth/gmail.addons.current.message.metadata';
 
   /// View your email messages when the add-on is running
-  static const GmailAddonsCurrentMessageReadonlyScope =
+  static const gmailAddonsCurrentMessageReadonlyScope =
       'https://www.googleapis.com/auth/gmail.addons.current.message.readonly';
 
   /// Manage drafts and send emails
-  static const GmailComposeScope =
+  static const gmailComposeScope =
       'https://www.googleapis.com/auth/gmail.compose';
 
   /// Insert mail into your mailbox
-  static const GmailInsertScope =
+  static const gmailInsertScope =
       'https://www.googleapis.com/auth/gmail.insert';
 
   /// Manage mailbox labels
-  static const GmailLabelsScope =
+  static const gmailLabelsScope =
       'https://www.googleapis.com/auth/gmail.labels';
 
   /// View your email message metadata such as labels and headers, but not the
   /// email body
-  static const GmailMetadataScope =
+  static const gmailMetadataScope =
       'https://www.googleapis.com/auth/gmail.metadata';
 
   /// View and modify but not delete your email
-  static const GmailModifyScope =
+  static const gmailModifyScope =
       'https://www.googleapis.com/auth/gmail.modify';
 
   /// View your email messages and settings
-  static const GmailReadonlyScope =
+  static const gmailReadonlyScope =
       'https://www.googleapis.com/auth/gmail.readonly';
 
   /// Send email on your behalf
-  static const GmailSendScope = 'https://www.googleapis.com/auth/gmail.send';
+  static const gmailSendScope = 'https://www.googleapis.com/auth/gmail.send';
 
   /// Manage your basic mail settings
-  static const GmailSettingsBasicScope =
+  static const gmailSettingsBasicScope =
       'https://www.googleapis.com/auth/gmail.settings.basic';
 
   /// Manage your sensitive mail settings, including who can manage your mail
-  static const GmailSettingsSharingScope =
+  static const gmailSettingsSharingScope =
       'https://www.googleapis.com/auth/gmail.settings.sharing';
 
   final commons.ApiRequester _requester;
@@ -106,7 +105,7 @@ class GmailApi {
       {core.String rootUrl = 'https://gmail.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class UsersResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,21 +37,21 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client dfareporting/v3.4';
+const userAgent = 'dart-api-client dfareporting/v3.4';
 
 /// Manage your DoubleClick Campaign Manager ad campaigns and reports.
 class DfareportingApi {
   /// Manage DoubleClick Digital Marketing conversions
-  static const DdmconversionsScope =
+  static const ddmconversionsScope =
       'https://www.googleapis.com/auth/ddmconversions';
 
   /// View and manage DoubleClick for Advertisers reports
-  static const DfareportingScope =
+  static const dfareportingScope =
       'https://www.googleapis.com/auth/dfareporting';
 
   /// View and manage your DoubleClick Campaign Manager's (DCM) display ad
   /// campaigns
-  static const DfatraffickingScope =
+  static const dfatraffickingScope =
       'https://www.googleapis.com/auth/dfatrafficking';
 
   final commons.ApiRequester _requester;
@@ -159,7 +158,7 @@ class DfareportingApi {
       {core.String rootUrl = 'https://dfareporting.googleapis.com/',
       core.String servicePath = 'dfareporting/v3.4/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountActiveAdSummariesResourceApi {

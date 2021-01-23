@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,7 +29,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client acceleratedmobilepageurl/v1';
+const userAgent = 'dart-api-client acceleratedmobilepageurl/v1';
 
 /// Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
 /// list of public URL(s).
@@ -43,7 +42,7 @@ class AcceleratedmobilepageurlApi {
       {core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AmpUrlsResourceApi {

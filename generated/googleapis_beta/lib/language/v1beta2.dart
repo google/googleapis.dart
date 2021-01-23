@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,18 +29,18 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client language/v1beta2';
+const userAgent = 'dart-api-client language/v1beta2';
 
 /// Provides natural language understanding technologies, such as sentiment
 /// analysis, entity recognition, entity sentiment analysis, and other text
 /// annotations, to developers.
 class LanguageApi {
   /// Apply machine learning models to reveal the structure and meaning of text
-  static const CloudLanguageScope =
+  static const cloudLanguageScope =
       'https://www.googleapis.com/auth/cloud-language';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
@@ -52,7 +51,7 @@ class LanguageApi {
       {core.String rootUrl = 'https://language.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DocumentsResourceApi {

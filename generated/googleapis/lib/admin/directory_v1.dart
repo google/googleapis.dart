@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -31,118 +30,118 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client admin/directory_v1';
+const userAgent = 'dart-api-client admin/directory_v1';
 
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 class AdminApi {
   /// View and manage customer related information
-  static const AdminDirectoryCustomerScope =
+  static const adminDirectoryCustomerScope =
       'https://www.googleapis.com/auth/admin.directory.customer';
 
   /// View customer related information
-  static const AdminDirectoryCustomerReadonlyScope =
+  static const adminDirectoryCustomerReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.customer.readonly';
 
   /// View and manage your Chrome OS devices' metadata
-  static const AdminDirectoryDeviceChromeosScope =
+  static const adminDirectoryDeviceChromeosScope =
       'https://www.googleapis.com/auth/admin.directory.device.chromeos';
 
   /// View your Chrome OS devices' metadata
-  static const AdminDirectoryDeviceChromeosReadonlyScope =
+  static const adminDirectoryDeviceChromeosReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly';
 
   /// View and manage your mobile devices' metadata
-  static const AdminDirectoryDeviceMobileScope =
+  static const adminDirectoryDeviceMobileScope =
       'https://www.googleapis.com/auth/admin.directory.device.mobile';
 
   /// Manage your mobile devices by performing administrative tasks
-  static const AdminDirectoryDeviceMobileActionScope =
+  static const adminDirectoryDeviceMobileActionScope =
       'https://www.googleapis.com/auth/admin.directory.device.mobile.action';
 
   /// View your mobile devices' metadata
-  static const AdminDirectoryDeviceMobileReadonlyScope =
+  static const adminDirectoryDeviceMobileReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.device.mobile.readonly';
 
   /// View and manage the provisioning of domains for your customers
-  static const AdminDirectoryDomainScope =
+  static const adminDirectoryDomainScope =
       'https://www.googleapis.com/auth/admin.directory.domain';
 
   /// View domains related to your customers
-  static const AdminDirectoryDomainReadonlyScope =
+  static const adminDirectoryDomainReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.domain.readonly';
 
   /// View and manage the provisioning of groups on your domain
-  static const AdminDirectoryGroupScope =
+  static const adminDirectoryGroupScope =
       'https://www.googleapis.com/auth/admin.directory.group';
 
   /// View and manage group subscriptions on your domain
-  static const AdminDirectoryGroupMemberScope =
+  static const adminDirectoryGroupMemberScope =
       'https://www.googleapis.com/auth/admin.directory.group.member';
 
   /// View group subscriptions on your domain
-  static const AdminDirectoryGroupMemberReadonlyScope =
+  static const adminDirectoryGroupMemberReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.group.member.readonly';
 
   /// View groups on your domain
-  static const AdminDirectoryGroupReadonlyScope =
+  static const adminDirectoryGroupReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.group.readonly';
 
   /// View and manage organization units on your domain
-  static const AdminDirectoryOrgunitScope =
+  static const adminDirectoryOrgunitScope =
       'https://www.googleapis.com/auth/admin.directory.orgunit';
 
   /// View organization units on your domain
-  static const AdminDirectoryOrgunitReadonlyScope =
+  static const adminDirectoryOrgunitReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.orgunit.readonly';
 
   /// View and manage the provisioning of calendar resources on your domain
-  static const AdminDirectoryResourceCalendarScope =
+  static const adminDirectoryResourceCalendarScope =
       'https://www.googleapis.com/auth/admin.directory.resource.calendar';
 
   /// View calendar resources on your domain
-  static const AdminDirectoryResourceCalendarReadonlyScope =
+  static const adminDirectoryResourceCalendarReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly';
 
   /// Manage delegated admin roles for your domain
-  static const AdminDirectoryRolemanagementScope =
+  static const adminDirectoryRolemanagementScope =
       'https://www.googleapis.com/auth/admin.directory.rolemanagement';
 
   /// View delegated admin roles for your domain
-  static const AdminDirectoryRolemanagementReadonlyScope =
+  static const adminDirectoryRolemanagementReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly';
 
   /// View and manage the provisioning of users on your domain
-  static const AdminDirectoryUserScope =
+  static const adminDirectoryUserScope =
       'https://www.googleapis.com/auth/admin.directory.user';
 
   /// View and manage user aliases on your domain
-  static const AdminDirectoryUserAliasScope =
+  static const adminDirectoryUserAliasScope =
       'https://www.googleapis.com/auth/admin.directory.user.alias';
 
   /// View user aliases on your domain
-  static const AdminDirectoryUserAliasReadonlyScope =
+  static const adminDirectoryUserAliasReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.user.alias.readonly';
 
   /// View users on your domain
-  static const AdminDirectoryUserReadonlyScope =
+  static const adminDirectoryUserReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.user.readonly';
 
   /// Manage data access permissions for users on your domain
-  static const AdminDirectoryUserSecurityScope =
+  static const adminDirectoryUserSecurityScope =
       'https://www.googleapis.com/auth/admin.directory.user.security';
 
   /// View and manage the provisioning of user schemas on your domain
-  static const AdminDirectoryUserschemaScope =
+  static const adminDirectoryUserschemaScope =
       'https://www.googleapis.com/auth/admin.directory.userschema';
 
   /// View user schemas on your domain
-  static const AdminDirectoryUserschemaReadonlyScope =
+  static const adminDirectoryUserschemaReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.userschema.readonly';
 
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   final commons.ApiRequester _requester;
@@ -177,7 +176,7 @@ class AdminApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AspsResourceApi {

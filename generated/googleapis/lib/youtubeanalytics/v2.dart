@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,28 +29,28 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client youtubeAnalytics/v2';
+const userAgent = 'dart-api-client youtubeAnalytics/v2';
 
 /// Retrieves your YouTube Analytics data.
 class YoutubeAnalyticsApi {
   /// Manage your YouTube account
-  static const YoutubeScope = 'https://www.googleapis.com/auth/youtube';
+  static const youtubeScope = 'https://www.googleapis.com/auth/youtube';
 
   /// View your YouTube account
-  static const YoutubeReadonlyScope =
+  static const youtubeReadonlyScope =
       'https://www.googleapis.com/auth/youtube.readonly';
 
   /// View and manage your assets and associated content on YouTube
-  static const YoutubepartnerScope =
+  static const youtubepartnerScope =
       'https://www.googleapis.com/auth/youtubepartner';
 
   /// View monetary and non-monetary YouTube Analytics reports for your YouTube
   /// content
-  static const YtAnalyticsMonetaryReadonlyScope =
+  static const ytAnalyticsMonetaryReadonlyScope =
       'https://www.googleapis.com/auth/yt-analytics-monetary.readonly';
 
   /// View YouTube Analytics reports for your YouTube content
-  static const YtAnalyticsReadonlyScope =
+  static const ytAnalyticsReadonlyScope =
       'https://www.googleapis.com/auth/yt-analytics.readonly';
 
   final commons.ApiRequester _requester;
@@ -64,7 +63,7 @@ class YoutubeAnalyticsApi {
       {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class GroupItemsResourceApi {

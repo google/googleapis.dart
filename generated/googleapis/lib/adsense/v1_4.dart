@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -37,15 +36,15 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client adsense/v1.4';
+const userAgent = 'dart-api-client adsense/v1.4';
 
 /// Accesses AdSense publishers' inventory and generates performance reports.
 class AdsenseApi {
   /// View and manage your AdSense data
-  static const AdsenseScope = 'https://www.googleapis.com/auth/adsense';
+  static const adsenseScope = 'https://www.googleapis.com/auth/adsense';
 
   /// View your AdSense data
-  static const AdsenseReadonlyScope =
+  static const adsenseReadonlyScope =
       'https://www.googleapis.com/auth/adsense.readonly';
 
   final commons.ApiRequester _requester;
@@ -67,7 +66,7 @@ class AdsenseApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adsense/v1.4/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountsResourceApi {

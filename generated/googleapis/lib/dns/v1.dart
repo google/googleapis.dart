@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,23 +29,23 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client dns/v1';
+const userAgent = 'dart-api-client dns/v1';
 
 class DnsApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// View your DNS records hosted by Google Cloud DNS
-  static const NdevClouddnsReadonlyScope =
+  static const ndevClouddnsReadonlyScope =
       'https://www.googleapis.com/auth/ndev.clouddns.readonly';
 
   /// View and manage your DNS records hosted by Google Cloud DNS
-  static const NdevClouddnsReadwriteScope =
+  static const ndevClouddnsReadwriteScope =
       'https://www.googleapis.com/auth/ndev.clouddns.readwrite';
 
   final commons.ApiRequester _requester;
@@ -66,7 +65,7 @@ class DnsApi {
       {core.String rootUrl = 'https://dns.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ChangesResourceApi {

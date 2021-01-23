@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,13 +29,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client verifiedaccess/v1';
+const userAgent = 'dart-api-client verifiedaccess/v1';
 
 /// API for Verified Access chrome extension to provide credential verification
 /// for chrome devices connecting to an enterprise network
 class VerifiedaccessApi {
   /// Verify your enterprise credentials
-  static const VerifiedaccessScope =
+  static const verifiedaccessScope =
       'https://www.googleapis.com/auth/verifiedaccess';
 
   final commons.ApiRequester _requester;
@@ -47,7 +46,7 @@ class VerifiedaccessApi {
       {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ChallengeResourceApi {

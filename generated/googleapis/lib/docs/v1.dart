@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,26 +29,26 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client docs/v1';
+const userAgent = 'dart-api-client docs/v1';
 
 /// Reads and writes Google Docs documents.
 class DocsApi {
   /// View and manage your Google Docs documents
-  static const DocumentsScope = 'https://www.googleapis.com/auth/documents';
+  static const documentsScope = 'https://www.googleapis.com/auth/documents';
 
   /// View your Google Docs documents
-  static const DocumentsReadonlyScope =
+  static const documentsReadonlyScope =
       'https://www.googleapis.com/auth/documents.readonly';
 
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = 'https://www.googleapis.com/auth/drive';
+  static const driveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
-  static const DriveFileScope = 'https://www.googleapis.com/auth/drive.file';
+  static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// See and download all your Google Drive files
-  static const DriveReadonlyScope =
+  static const driveReadonlyScope =
       'https://www.googleapis.com/auth/drive.readonly';
 
   final commons.ApiRequester _requester;
@@ -60,7 +59,7 @@ class DocsApi {
       {core.String rootUrl = 'https://docs.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DocumentsResourceApi {

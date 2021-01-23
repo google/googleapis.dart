@@ -6,7 +6,6 @@ stages:
 - analyze_and_format:
   - group:
     - dartfmt
-    # Skipping until we can setup dependencies for the example
-    #- dartanalyzer: --fatal-infos .
+    - dartanalyzer: --fatal-infos .
 - unittest:
   - test:

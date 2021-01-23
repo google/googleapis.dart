@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,27 +29,27 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client sheets/v4';
+const userAgent = 'dart-api-client sheets/v4';
 
 /// Reads and writes Google Sheets.
 class SheetsApi {
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = 'https://www.googleapis.com/auth/drive';
+  static const driveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
-  static const DriveFileScope = 'https://www.googleapis.com/auth/drive.file';
+  static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// See and download all your Google Drive files
-  static const DriveReadonlyScope =
+  static const driveReadonlyScope =
       'https://www.googleapis.com/auth/drive.readonly';
 
   /// See, edit, create, and delete your spreadsheets in Google Drive
-  static const SpreadsheetsScope =
+  static const spreadsheetsScope =
       'https://www.googleapis.com/auth/spreadsheets';
 
   /// View your Google Spreadsheets
-  static const SpreadsheetsReadonlyScope =
+  static const spreadsheetsReadonlyScope =
       'https://www.googleapis.com/auth/spreadsheets.readonly';
 
   final commons.ApiRequester _requester;
@@ -62,7 +61,7 @@ class SheetsApi {
       {core.String rootUrl = 'https://sheets.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class SpreadsheetsResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,56 +29,56 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client people/v1';
+const userAgent = 'dart-api-client people/v1';
 
 /// Provides access to information about profiles and contacts.
 class PeopleApi {
   /// See, edit, download, and permanently delete your contacts
-  static const ContactsScope = 'https://www.googleapis.com/auth/contacts';
+  static const contactsScope = 'https://www.googleapis.com/auth/contacts';
 
   /// See and download contact info automatically saved in your "Other contacts"
-  static const ContactsOtherReadonlyScope =
+  static const contactsOtherReadonlyScope =
       'https://www.googleapis.com/auth/contacts.other.readonly';
 
   /// See and download your contacts
-  static const ContactsReadonlyScope =
+  static const contactsReadonlyScope =
       'https://www.googleapis.com/auth/contacts.readonly';
 
   /// See and download your organization's GSuite directory
-  static const DirectoryReadonlyScope =
+  static const directoryReadonlyScope =
       'https://www.googleapis.com/auth/directory.readonly';
 
   /// View your street addresses
-  static const UserAddressesReadScope =
+  static const userAddressesReadScope =
       'https://www.googleapis.com/auth/user.addresses.read';
 
   /// View your complete date of birth
-  static const UserBirthdayReadScope =
+  static const userBirthdayReadScope =
       'https://www.googleapis.com/auth/user.birthday.read';
 
   /// View your email addresses
-  static const UserEmailsReadScope =
+  static const userEmailsReadScope =
       'https://www.googleapis.com/auth/user.emails.read';
 
   /// See your gender
-  static const UserGenderReadScope =
+  static const userGenderReadScope =
       'https://www.googleapis.com/auth/user.gender.read';
 
   /// See your education, work history and org info
-  static const UserOrganizationReadScope =
+  static const userOrganizationReadScope =
       'https://www.googleapis.com/auth/user.organization.read';
 
   /// View your phone numbers
-  static const UserPhonenumbersReadScope =
+  static const userPhonenumbersReadScope =
       'https://www.googleapis.com/auth/user.phonenumbers.read';
 
   /// View your email address
-  static const UserinfoEmailScope =
+  static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
 
   /// See your personal info, including any personal info you've made publicly
   /// available
-  static const UserinfoProfileScope =
+  static const userinfoProfileScope =
       'https://www.googleapis.com/auth/userinfo.profile';
 
   final commons.ApiRequester _requester;
@@ -94,7 +93,7 @@ class PeopleApi {
       {core.String rootUrl = 'https://people.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ContactGroupsResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,7 +29,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client logging/v2';
+const userAgent = 'dart-api-client logging/v2';
 
 /// Writes log entries and manages your Cloud Logging configuration. The table
 /// entries below are presented in alphabetical order, not in order of common
@@ -38,23 +37,23 @@ const core.String USER_AGENT = 'dart-api-client logging/v2';
 /// documentation at https://cloud.google.com/logging/docs.
 class LoggingApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// Administrate log data for your projects
-  static const LoggingAdminScope =
+  static const loggingAdminScope =
       'https://www.googleapis.com/auth/logging.admin';
 
   /// View log data for your projects
-  static const LoggingReadScope =
+  static const loggingReadScope =
       'https://www.googleapis.com/auth/logging.read';
 
   /// Submit log data for your projects
-  static const LoggingWriteScope =
+  static const loggingWriteScope =
       'https://www.googleapis.com/auth/logging.write';
 
   final commons.ApiRequester _requester;
@@ -78,7 +77,7 @@ class LoggingApi {
       {core.String rootUrl = 'https://logging.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class BillingAccountsResourceApi {

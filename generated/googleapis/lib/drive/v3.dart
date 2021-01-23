@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,40 +37,40 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client drive/v3';
+const userAgent = 'dart-api-client drive/v3';
 
 /// Manages files in Drive including uploading, downloading, searching,
 /// detecting changes, and updating sharing permissions.
 class DriveApi {
   /// See, edit, create, and delete all of your Google Drive files
-  static const DriveScope = 'https://www.googleapis.com/auth/drive';
+  static const driveScope = 'https://www.googleapis.com/auth/drive';
 
   /// View and manage its own configuration data in your Google Drive
-  static const DriveAppdataScope =
+  static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
 
   /// View and manage Google Drive files and folders that you have opened or
   /// created with this app
-  static const DriveFileScope = 'https://www.googleapis.com/auth/drive.file';
+  static const driveFileScope = 'https://www.googleapis.com/auth/drive.file';
 
   /// View and manage metadata of files in your Google Drive
-  static const DriveMetadataScope =
+  static const driveMetadataScope =
       'https://www.googleapis.com/auth/drive.metadata';
 
   /// View metadata for files in your Google Drive
-  static const DriveMetadataReadonlyScope =
+  static const driveMetadataReadonlyScope =
       'https://www.googleapis.com/auth/drive.metadata.readonly';
 
   /// View the photos, videos and albums in your Google Photos
-  static const DrivePhotosReadonlyScope =
+  static const drivePhotosReadonlyScope =
       'https://www.googleapis.com/auth/drive.photos.readonly';
 
   /// See and download all your Google Drive files
-  static const DriveReadonlyScope =
+  static const driveReadonlyScope =
       'https://www.googleapis.com/auth/drive.readonly';
 
   /// Modify your Google Apps Script scripts' behavior
-  static const DriveScriptsScope =
+  static const driveScriptsScope =
       'https://www.googleapis.com/auth/drive.scripts';
 
   final commons.ApiRequester _requester;
@@ -91,7 +90,7 @@ class DriveApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'drive/v3/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AboutResourceApi {

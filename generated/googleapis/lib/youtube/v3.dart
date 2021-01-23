@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,39 +37,39 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client youtube/v3';
+const userAgent = 'dart-api-client youtube/v3';
 
 /// The YouTube Data API v3 is an API that provides access to YouTube data, such
 /// as videos, playlists, and channels.
 class YoutubeApi {
   /// Manage your YouTube account
-  static const YoutubeScope = 'https://www.googleapis.com/auth/youtube';
+  static const youtubeScope = 'https://www.googleapis.com/auth/youtube';
 
   /// See a list of your current active channel members, their current level,
   /// and when they became a member
-  static const YoutubeChannelMembershipsCreatorScope =
+  static const youtubeChannelMembershipsCreatorScope =
       'https://www.googleapis.com/auth/youtube.channel-memberships.creator';
 
   /// See, edit, and permanently delete your YouTube videos, ratings, comments
   /// and captions
-  static const YoutubeForceSslScope =
+  static const youtubeForceSslScope =
       'https://www.googleapis.com/auth/youtube.force-ssl';
 
   /// View your YouTube account
-  static const YoutubeReadonlyScope =
+  static const youtubeReadonlyScope =
       'https://www.googleapis.com/auth/youtube.readonly';
 
   /// Manage your YouTube videos
-  static const YoutubeUploadScope =
+  static const youtubeUploadScope =
       'https://www.googleapis.com/auth/youtube.upload';
 
   /// View and manage your assets and associated content on YouTube
-  static const YoutubepartnerScope =
+  static const youtubepartnerScope =
       'https://www.googleapis.com/auth/youtubepartner';
 
   /// View private information of your YouTube channel relevant during the audit
   /// process with a YouTube partner
-  static const YoutubepartnerChannelAuditScope =
+  static const youtubepartnerChannelAuditScope =
       'https://www.googleapis.com/auth/youtubepartner-channel-audit';
 
   final commons.ApiRequester _requester;
@@ -126,7 +125,7 @@ class YoutubeApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AbuseReportsResourceApi {

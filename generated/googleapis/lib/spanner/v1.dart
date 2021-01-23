@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,21 +29,21 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client spanner/v1';
+const userAgent = 'dart-api-client spanner/v1';
 
 /// Cloud Spanner is a managed, mission-critical, globally consistent and
 /// scalable relational database service.
 class SpannerApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// Administer your Spanner databases
-  static const SpannerAdminScope =
+  static const spannerAdminScope =
       'https://www.googleapis.com/auth/spanner.admin';
 
   /// View and manage the contents of your Spanner databases
-  static const SpannerDataScope =
+  static const spannerDataScope =
       'https://www.googleapis.com/auth/spanner.data';
 
   final commons.ApiRequester _requester;
@@ -55,7 +54,7 @@ class SpannerApi {
       {core.String rootUrl = 'https://spanner.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ProjectsResourceApi {

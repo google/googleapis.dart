@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,13 +29,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client gamesManagement/v1management';
+const userAgent = 'dart-api-client gamesManagement/v1management';
 
 /// The Google Play Game Management API allows developers to manage resources
 /// from the Google Play Game service.
 class GamesManagementApi {
   /// Create, edit, and delete your Google Play Games activity
-  static const GamesScope = 'https://www.googleapis.com/auth/games';
+  static const gamesScope = 'https://www.googleapis.com/auth/games';
 
   final commons.ApiRequester _requester;
 
@@ -52,7 +51,7 @@ class GamesManagementApi {
       {core.String rootUrl = 'https://gamesmanagement.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AchievementsResourceApi {

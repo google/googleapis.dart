@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,7 +29,7 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client monitoring/v3';
+const userAgent = 'dart-api-client monitoring/v3';
 
 /// Manages your Cloud Monitoring data and configurations. Most projects must be
 /// associated with a Workspace, with a few exceptions as noted on the
@@ -40,19 +39,19 @@ const core.String USER_AGENT = 'dart-api-client monitoring/v3';
 /// documentation.
 class MonitoringApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and write monitoring data for all of your Google and third-party
   /// Cloud and API projects
-  static const MonitoringScope = 'https://www.googleapis.com/auth/monitoring';
+  static const monitoringScope = 'https://www.googleapis.com/auth/monitoring';
 
   /// View monitoring data for all of your Google Cloud and third-party projects
-  static const MonitoringReadScope =
+  static const monitoringReadScope =
       'https://www.googleapis.com/auth/monitoring.read';
 
   /// Publish metric data to your Google Cloud projects
-  static const MonitoringWriteScope =
+  static const monitoringWriteScope =
       'https://www.googleapis.com/auth/monitoring.write';
 
   final commons.ApiRequester _requester;
@@ -66,7 +65,7 @@ class MonitoringApi {
       {core.String rootUrl = 'https://monitoring.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ProjectsResourceApi {

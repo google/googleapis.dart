@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,31 +29,31 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client compute/v1';
+const userAgent = 'dart-api-client compute/v1';
 
 /// Creates and runs virtual machines on Google Cloud Platform.
 class ComputeApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View and manage your Google Compute Engine resources
-  static const ComputeScope = 'https://www.googleapis.com/auth/compute';
+  static const computeScope = 'https://www.googleapis.com/auth/compute';
 
   /// View your Google Compute Engine resources
-  static const ComputeReadonlyScope =
+  static const computeReadonlyScope =
       'https://www.googleapis.com/auth/compute.readonly';
 
   /// Manage your data and permissions in Google Cloud Storage
-  static const DevstorageFullControlScope =
+  static const devstorageFullControlScope =
       'https://www.googleapis.com/auth/devstorage.full_control';
 
   /// View your data in Google Cloud Storage
-  static const DevstorageReadOnlyScope =
+  static const devstorageReadOnlyScope =
       'https://www.googleapis.com/auth/devstorage.read_only';
 
   /// Manage your data in Google Cloud Storage
-  static const DevstorageReadWriteScope =
+  static const devstorageReadWriteScope =
       'https://www.googleapis.com/auth/devstorage.read_write';
 
   final commons.ApiRequester _requester;
@@ -188,7 +187,7 @@ class ComputeApi {
       {core.String rootUrl = 'https://compute.googleapis.com/',
       core.String servicePath = 'compute/v1/projects/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AcceleratorTypesResourceApi {

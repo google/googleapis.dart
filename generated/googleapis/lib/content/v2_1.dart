@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,13 +29,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client content/v2.1';
+const userAgent = 'dart-api-client content/v2.1';
 
 /// Manages product items, inventory, and Merchant Center accounts for Google
 /// Shopping.
 class ContentApi {
   /// Manage your product listings and accounts for Google Shopping
-  static const ContentScope = 'https://www.googleapis.com/auth/content';
+  static const contentScope = 'https://www.googleapis.com/auth/content';
 
   final commons.ApiRequester _requester;
 
@@ -80,7 +79,7 @@ class ContentApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'content/v2.1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountsResourceApi {

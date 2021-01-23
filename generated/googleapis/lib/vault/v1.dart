@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,15 +29,15 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client vault/v1';
+const userAgent = 'dart-api-client vault/v1';
 
 /// Archiving and eDiscovery for G Suite.
 class VaultApi {
   /// Manage your eDiscovery data
-  static const EdiscoveryScope = 'https://www.googleapis.com/auth/ediscovery';
+  static const ediscoveryScope = 'https://www.googleapis.com/auth/ediscovery';
 
   /// View your eDiscovery data
-  static const EdiscoveryReadonlyScope =
+  static const ediscoveryReadonlyScope =
       'https://www.googleapis.com/auth/ediscovery.readonly';
 
   final commons.ApiRequester _requester;
@@ -50,7 +49,7 @@ class VaultApi {
       {core.String rootUrl = 'https://vault.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class MattersResourceApi {

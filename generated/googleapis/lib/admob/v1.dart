@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,13 +29,13 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client admob/v1';
+const userAgent = 'dart-api-client admob/v1';
 
 /// The AdMob API allows publishers to programmatically get information about
 /// their AdMob account.
 class AdmobApi {
   /// See your AdMob data
-  static const AdmobReportScope =
+  static const admobReportScope =
       'https://www.googleapis.com/auth/admob.report';
 
   final commons.ApiRequester _requester;
@@ -47,7 +46,7 @@ class AdmobApi {
       {core.String rootUrl = 'https://admob.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AccountsResourceApi {

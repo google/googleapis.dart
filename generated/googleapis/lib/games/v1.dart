@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,17 +29,17 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client games/v1';
+const userAgent = 'dart-api-client games/v1';
 
 /// The Google Play games service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 class GamesApi {
   /// View and manage its own configuration data in your Google Drive
-  static const DriveAppdataScope =
+  static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
 
   /// Create, edit, and delete your Google Play Games activity
-  static const GamesScope = 'https://www.googleapis.com/auth/games';
+  static const gamesScope = 'https://www.googleapis.com/auth/games';
 
   final commons.ApiRequester _requester;
 
@@ -64,7 +63,7 @@ class GamesApi {
       {core.String rootUrl = 'https://games.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AchievementDefinitionsResourceApi {

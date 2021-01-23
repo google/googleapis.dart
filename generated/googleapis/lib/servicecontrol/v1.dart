@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,17 +29,17 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client servicecontrol/v1';
+const userAgent = 'dart-api-client servicecontrol/v1';
 
 /// Provides control plane functionality to managed services, such as logging,
 /// monitoring, and status checks.
 class ServicecontrolApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// Manage your Google Service Control data
-  static const ServicecontrolScope =
+  static const servicecontrolScope =
       'https://www.googleapis.com/auth/servicecontrol';
 
   final commons.ApiRequester _requester;
@@ -51,7 +50,7 @@ class ServicecontrolApi {
       {core.String rootUrl = 'https://servicecontrol.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ServicesResourceApi {

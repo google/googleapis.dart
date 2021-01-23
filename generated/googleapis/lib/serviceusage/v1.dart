@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,22 +29,22 @@ import 'package:http/http.dart' as http_1;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client serviceusage/v1';
+const userAgent = 'dart-api-client serviceusage/v1';
 
 /// Enables services that service consumers want to use on Google Cloud
 /// Platform, lists the available or enabled services, or disables services that
 /// service consumers no longer use.
 class ServiceusageApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// Manage your Google API service configuration
-  static const ServiceManagementScope =
+  static const serviceManagementScope =
       'https://www.googleapis.com/auth/service.management';
 
   final commons.ApiRequester _requester;
@@ -57,7 +56,7 @@ class ServiceusageApi {
       {core.String rootUrl = 'https://serviceusage.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class OperationsResourceApi {

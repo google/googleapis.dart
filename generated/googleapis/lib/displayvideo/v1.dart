@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,27 +37,27 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client displayvideo/v1';
+const userAgent = 'dart-api-client displayvideo/v1';
 
 /// Display & Video 360 API allows users to manage and create campaigns and
 /// reports.
 class DisplayvideoApi {
   /// Create, see, edit, and permanently delete your Display & Video 360
   /// entities and reports
-  static const DisplayVideoScope =
+  static const displayVideoScope =
       'https://www.googleapis.com/auth/display-video';
 
   /// Create, see, and edit Display & Video 360 Campaign entities and see
   /// billing invoices
-  static const DisplayVideoMediaplanningScope =
+  static const displayVideoMediaplanningScope =
       'https://www.googleapis.com/auth/display-video-mediaplanning';
 
   /// New Service: https://www.googleapis.com/auth/display-video-user-management
-  static const DisplayVideoUserManagementScope =
+  static const displayVideoUserManagementScope =
       'https://www.googleapis.com/auth/display-video-user-management';
 
   /// View and manage your reports in DoubleClick Bid Manager
-  static const DoubleclickbidmanagerScope =
+  static const doubleclickbidmanagerScope =
       'https://www.googleapis.com/auth/doubleclickbidmanager';
 
   final commons.ApiRequester _requester;
@@ -91,7 +90,7 @@ class DisplayvideoApi {
       {core.String rootUrl = 'https://displayvideo.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class AdvertisersResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,14 +29,14 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client streetviewpublish/v1';
+const userAgent = 'dart-api-client streetviewpublish/v1';
 
 /// Publishes 360 photos to Google Maps, along with position, orientation, and
 /// connectivity metadata. Apps can offer an interface for positioning,
 /// connecting, and uploading user-generated Street View images.
 class StreetviewpublishApi {
   /// Publish and manage your 360 photos on Google Street View
-  static const StreetviewpublishScope =
+  static const streetviewpublishScope =
       'https://www.googleapis.com/auth/streetviewpublish';
 
   final commons.ApiRequester _requester;
@@ -49,7 +48,7 @@ class StreetviewpublishApi {
       {core.String rootUrl = 'https://streetviewpublish.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class PhotoResourceApi {

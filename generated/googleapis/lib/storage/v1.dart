@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,28 +37,28 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client storage/v1';
+const userAgent = 'dart-api-client storage/v1';
 
 /// Stores and retrieves potentially large, immutable data objects.
 class StorageApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// Manage your data and permissions in Google Cloud Storage
-  static const DevstorageFullControlScope =
+  static const devstorageFullControlScope =
       'https://www.googleapis.com/auth/devstorage.full_control';
 
   /// View your data in Google Cloud Storage
-  static const DevstorageReadOnlyScope =
+  static const devstorageReadOnlyScope =
       'https://www.googleapis.com/auth/devstorage.read_only';
 
   /// Manage your data in Google Cloud Storage
-  static const DevstorageReadWriteScope =
+  static const devstorageReadWriteScope =
       'https://www.googleapis.com/auth/devstorage.read_write';
 
   final commons.ApiRequester _requester;
@@ -81,7 +80,7 @@ class StorageApi {
       {core.String rootUrl = 'https://storage.googleapis.com/',
       core.String servicePath = 'storage/v1/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class BucketAccessControlsResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -37,13 +36,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client groupsmigration/v1';
+const userAgent = 'dart-api-client groupsmigration/v1';
 
 /// The Groups Migration API allows domain administrators to archive emails into
 /// Google groups.
 class GroupsmigrationApi {
   /// Manage messages in groups on your domain
-  static const AppsGroupsMigrationScope =
+  static const appsGroupsMigrationScope =
       'https://www.googleapis.com/auth/apps.groups.migration';
 
   final commons.ApiRequester _requester;
@@ -54,7 +53,7 @@ class GroupsmigrationApi {
       {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ArchiveResourceApi {

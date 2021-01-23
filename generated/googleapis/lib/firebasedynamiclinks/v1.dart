@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,12 +29,12 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client firebasedynamiclinks/v1';
+const userAgent = 'dart-api-client firebasedynamiclinks/v1';
 
 /// Programmatically creates and manages Firebase Dynamic Links.
 class FirebasedynamiclinksApi {
   /// View and administer all your Firebase data and settings
-  static const FirebaseScope = 'https://www.googleapis.com/auth/firebase';
+  static const firebaseScope = 'https://www.googleapis.com/auth/firebase';
 
   final commons.ApiRequester _requester;
 
@@ -48,7 +47,7 @@ class FirebasedynamiclinksApi {
       {core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class ManagedShortLinksResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,27 +29,27 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client deploymentmanager/v2';
+const userAgent = 'dart-api-client deploymentmanager/v2';
 
 /// Declares, configures, and deploys complex solutions on Google Cloud
 /// Platform.
 class DeploymentmanagerApi {
   /// View and manage your data across Google Cloud Platform services
-  static const CloudPlatformScope =
+  static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
   /// View your data across Google Cloud Platform services
-  static const CloudPlatformReadOnlyScope =
+  static const cloudPlatformReadOnlyScope =
       'https://www.googleapis.com/auth/cloud-platform.read-only';
 
   /// View and manage your Google Cloud Platform management resources and
   /// deployment status information
-  static const NdevCloudmanScope =
+  static const ndevCloudmanScope =
       'https://www.googleapis.com/auth/ndev.cloudman';
 
   /// View your Google Cloud Platform management resources and deployment status
   /// information
-  static const NdevCloudmanReadonlyScope =
+  static const ndevCloudmanReadonlyScope =
       'https://www.googleapis.com/auth/ndev.cloudman.readonly';
 
   final commons.ApiRequester _requester;
@@ -65,7 +64,7 @@ class DeploymentmanagerApi {
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'deploymentmanager/v2/projects/'})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DeploymentsResourceApi {

@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -38,45 +37,45 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client cloudsearch/v1';
+const userAgent = 'dart-api-client cloudsearch/v1';
 
 /// Cloud Search provides cloud-based search capabilities over G Suite data. The
 /// Cloud Search API allows indexing of non-G Suite data into Cloud Search.
 class CloudsearchApi {
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchScope =
+  static const cloudSearchScope =
       'https://www.googleapis.com/auth/cloud_search';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchDebugScope =
+  static const cloudSearchDebugScope =
       'https://www.googleapis.com/auth/cloud_search.debug';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchIndexingScope =
+  static const cloudSearchIndexingScope =
       'https://www.googleapis.com/auth/cloud_search.indexing';
 
   /// Search your organization's data in the Cloud Search index
-  static const CloudSearchQueryScope =
+  static const cloudSearchQueryScope =
       'https://www.googleapis.com/auth/cloud_search.query';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchSettingsScope =
+  static const cloudSearchSettingsScope =
       'https://www.googleapis.com/auth/cloud_search.settings';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchSettingsIndexingScope =
+  static const cloudSearchSettingsIndexingScope =
       'https://www.googleapis.com/auth/cloud_search.settings.indexing';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchSettingsQueryScope =
+  static const cloudSearchSettingsQueryScope =
       'https://www.googleapis.com/auth/cloud_search.settings.query';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchStatsScope =
+  static const cloudSearchStatsScope =
       'https://www.googleapis.com/auth/cloud_search.stats';
 
   /// Index and serve your organization's data with Cloud Search
-  static const CloudSearchStatsIndexingScope =
+  static const cloudSearchStatsIndexingScope =
       'https://www.googleapis.com/auth/cloud_search.stats.indexing';
 
   final commons.ApiRequester _requester;
@@ -93,7 +92,7 @@ class CloudsearchApi {
       {core.String rootUrl = 'https://cloudsearch.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class DebugResourceApi {

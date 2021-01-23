@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: constant_identifier_names
 // ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
@@ -30,15 +29,15 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client tasks/v1';
+const userAgent = 'dart-api-client tasks/v1';
 
 /// The Google Tasks API lets you manage your tasks and task lists.
 class TasksApi {
   /// Create, edit, organize, and delete all your tasks
-  static const TasksScope = 'https://www.googleapis.com/auth/tasks';
+  static const tasksScope = 'https://www.googleapis.com/auth/tasks';
 
   /// View your tasks
-  static const TasksReadonlyScope =
+  static const tasksReadonlyScope =
       'https://www.googleapis.com/auth/tasks.readonly';
 
   final commons.ApiRequester _requester;
@@ -50,7 +49,7 @@ class TasksApi {
       {core.String rootUrl = 'https://tasks.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+            commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
 class TasklistsResourceApi {
