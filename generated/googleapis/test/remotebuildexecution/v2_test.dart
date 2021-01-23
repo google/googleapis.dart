@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3963,8 +3962,7 @@ void main() {
   unittest.group('resource-ActionResultsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ActionResultsResourceApi res =
-          api.RemotebuildexecutionApi(mock).actionResults;
+      var res = api.RemotebuildexecutionApi(mock).actionResults;
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
@@ -4027,8 +4025,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ActionResultsResourceApi res =
-          api.RemotebuildexecutionApi(mock).actionResults;
+      var res = api.RemotebuildexecutionApi(mock).actionResults;
       var arg_request = buildBuildBazelRemoteExecutionV2ActionResult();
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
@@ -4090,7 +4087,7 @@ void main() {
   unittest.group('resource-ActionsResourceApi', () {
     unittest.test('method--execute', () {
       var mock = HttpServerMock();
-      api.ActionsResourceApi res = api.RemotebuildexecutionApi(mock).actions;
+      var res = api.RemotebuildexecutionApi(mock).actions;
       var arg_request = buildBuildBazelRemoteExecutionV2ExecuteRequest();
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
@@ -4143,7 +4140,7 @@ void main() {
   unittest.group('resource-BlobsResourceApi', () {
     unittest.test('method--batchRead', () {
       var mock = HttpServerMock();
-      api.BlobsResourceApi res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemotebuildexecutionApi(mock).blobs;
       var arg_request = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
@@ -4196,7 +4193,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.BlobsResourceApi res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemotebuildexecutionApi(mock).blobs;
       var arg_request =
           buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
       var arg_instanceName = 'foo';
@@ -4251,7 +4248,7 @@ void main() {
 
     unittest.test('method--findMissing', () {
       var mock = HttpServerMock();
-      api.BlobsResourceApi res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemotebuildexecutionApi(mock).blobs;
       var arg_request =
           buildBuildBazelRemoteExecutionV2FindMissingBlobsRequest();
       var arg_instanceName = 'foo';
@@ -4306,7 +4303,7 @@ void main() {
 
     unittest.test('method--getTree', () {
       var mock = HttpServerMock();
-      api.BlobsResourceApi res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemotebuildexecutionApi(mock).blobs;
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
@@ -4367,8 +4364,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--waitExecution', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res =
-          api.RemotebuildexecutionApi(mock).operations;
+      var res = api.RemotebuildexecutionApi(mock).operations;
       var arg_request = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4422,7 +4418,7 @@ void main() {
   unittest.group('resource-V2ResourceApi', () {
     unittest.test('method--getCapabilities', () {
       var mock = HttpServerMock();
-      api.V2ResourceApi res = api.RemotebuildexecutionApi(mock).v2;
+      var res = api.RemotebuildexecutionApi(mock).v2;
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -349,8 +348,7 @@ class AgentDeviceId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -378,8 +376,7 @@ class AgentOtherDeviceId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentId != null) {
       _json['agentId'] = agentId;
     }
@@ -496,8 +493,7 @@ class Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes;
     }
@@ -571,8 +567,7 @@ class DeviceInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hwVersion != null) {
       _json['hwVersion'] = hwVersion;
     }
@@ -616,8 +611,7 @@ class DeviceNames {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultNames != null) {
       _json['defaultNames'] = defaultNames;
     }
@@ -644,8 +638,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -680,8 +673,7 @@ class QueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentUserId != null) {
       _json['agentUserId'] = agentUserId;
     }
@@ -709,8 +701,7 @@ class QueryRequestInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (payload != null) {
       _json['payload'] = payload.toJson();
     }
@@ -734,8 +725,7 @@ class QueryRequestPayload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -770,8 +760,7 @@ class QueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (payload != null) {
       _json['payload'] = payload.toJson();
     }
@@ -803,8 +792,7 @@ class QueryResponsePayload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices;
     }
@@ -843,8 +831,7 @@ class ReportStateAndNotificationDevice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (notifications != null) {
       _json['notifications'] = notifications;
     }
@@ -904,8 +891,7 @@ class ReportStateAndNotificationRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentUserId != null) {
       _json['agentUserId'] = agentUserId;
     }
@@ -941,8 +927,7 @@ class ReportStateAndNotificationResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestId != null) {
       _json['requestId'] = requestId;
     }
@@ -974,8 +959,7 @@ class RequestSyncDevicesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentUserId != null) {
       _json['agentUserId'] = agentUserId;
     }
@@ -998,8 +982,7 @@ class RequestSyncDevicesResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1018,8 +1001,7 @@ class StateAndNotificationPayload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.toJson();
     }
@@ -1048,8 +1030,7 @@ class SyncRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentUserId != null) {
       _json['agentUserId'] = agentUserId;
     }
@@ -1091,8 +1072,7 @@ class SyncResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (payload != null) {
       _json['payload'] = payload.toJson();
     }
@@ -1125,8 +1105,7 @@ class SyncResponsePayload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentUserId != null) {
       _json['agentUserId'] = agentUserId;
     }

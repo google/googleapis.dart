@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1560,8 +1559,7 @@ class Assignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assignee != null) {
       _json['assignee'] = assignee;
     }
@@ -1605,8 +1603,7 @@ class BiReservation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1726,8 +1723,7 @@ class CapacityCommitment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (commitmentEndTime != null) {
       _json['commitmentEndTime'] = commitmentEndTime;
     }
@@ -1771,8 +1767,7 @@ class CreateSlotPoolMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (slotPool != null) {
       _json['slotPool'] = slotPool;
     }
@@ -1793,8 +1788,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1822,8 +1816,7 @@ class ListAssignmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assignments != null) {
       _json['assignments'] =
           assignments.map((value) => value.toJson()).toList();
@@ -1859,8 +1852,7 @@ class ListCapacityCommitmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (capacityCommitments != null) {
       _json['capacityCommitments'] =
           capacityCommitments.map((value) => value.toJson()).toList();
@@ -1894,8 +1886,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1929,8 +1920,7 @@ class ListReservationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1960,8 +1950,7 @@ class MergeCapacityCommitmentsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (capacityCommitmentIds != null) {
       _json['capacityCommitmentIds'] = capacityCommitmentIds;
     }
@@ -1988,8 +1977,7 @@ class MoveAssignmentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destinationId != null) {
       _json['destinationId'] = destinationId;
     }
@@ -2057,8 +2045,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -2125,8 +2112,7 @@ class Reservation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime;
     }
@@ -2169,8 +2155,7 @@ class SearchAllAssignmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assignments != null) {
       _json['assignments'] =
           assignments.map((value) => value.toJson()).toList();
@@ -2205,8 +2190,7 @@ class SearchAssignmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assignments != null) {
       _json['assignments'] =
           assignments.map((value) => value.toJson()).toList();
@@ -2232,8 +2216,7 @@ class SplitCapacityCommitmentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (slotCount != null) {
       _json['slotCount'] = slotCount;
     }
@@ -2261,8 +2244,7 @@ class SplitCapacityCommitmentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (first != null) {
       _json['first'] = first.toJson();
     }
@@ -2313,8 +2295,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }

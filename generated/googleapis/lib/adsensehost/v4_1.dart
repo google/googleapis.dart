@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1860,8 +1859,7 @@ class Account {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -1905,8 +1903,7 @@ class Accounts {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -1958,8 +1955,7 @@ class AdClient {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arcOptIn != null) {
       _json['arcOptIn'] = arcOptIn;
     }
@@ -2013,8 +2009,7 @@ class AdClients {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -2050,8 +2045,7 @@ class AdCode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adCode != null) {
       _json['adCode'] = adCode;
     }
@@ -2101,8 +2095,7 @@ class AdStyleColors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (background != null) {
       _json['background'] = background;
     }
@@ -2144,8 +2137,7 @@ class AdStyleFont {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (family != null) {
       _json['family'] = family;
     }
@@ -2188,8 +2180,7 @@ class AdStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.toJson();
     }
@@ -2234,8 +2225,7 @@ class AdUnitContentAdsSettingsBackupOption {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color;
     }
@@ -2278,8 +2268,7 @@ class AdUnitContentAdsSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backupOption != null) {
       _json['backupOption'] = backupOption.toJson();
     }
@@ -2325,8 +2314,7 @@ class AdUnitMobileContentAdsSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (markupLanguage != null) {
       _json['markupLanguage'] = markupLanguage;
     }
@@ -2410,8 +2398,7 @@ class AdUnit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2474,8 +2461,7 @@ class AdUnits {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -2558,8 +2544,7 @@ class AssociationSession {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -2624,8 +2609,7 @@ class CustomChannel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2676,8 +2660,7 @@ class CustomChannels {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -2721,8 +2704,7 @@ class ReportHeaders {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currency != null) {
       _json['currency'] = currency;
     }
@@ -2798,8 +2780,7 @@ class Report {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (averages != null) {
       _json['averages'] = averages;
     }
@@ -2852,8 +2833,7 @@ class UrlChannel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2901,8 +2881,7 @@ class UrlChannels {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }

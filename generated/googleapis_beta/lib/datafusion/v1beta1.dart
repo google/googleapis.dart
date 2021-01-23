@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1200,8 +1199,7 @@ class Accelerator {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (acceleratorType != null) {
       _json['acceleratorType'] = acceleratorType;
     }
@@ -1248,8 +1246,7 @@ class AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -1292,8 +1289,7 @@ class AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -1372,8 +1368,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindingId != null) {
       _json['bindingId'] = bindingId;
     }
@@ -1399,8 +1394,7 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1418,8 +1412,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1475,8 +1468,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1693,8 +1685,7 @@ class Instance {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accelerators != null) {
       _json['accelerators'] =
           accelerators.map((value) => value.toJson()).toList();
@@ -1799,8 +1790,7 @@ class ListAvailableVersionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (availableVersions != null) {
       _json['availableVersions'] =
           availableVersions.map((value) => value.toJson()).toList();
@@ -1841,8 +1831,7 @@ class ListInstancesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instances != null) {
       _json['instances'] = instances.map((value) => value.toJson()).toList();
     }
@@ -1878,8 +1867,7 @@ class ListLocationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locations != null) {
       _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
@@ -1912,8 +1900,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1970,8 +1957,7 @@ class Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -2021,8 +2007,7 @@ class NetworkConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ipAllocation != null) {
       _json['ipAllocation'] = ipAllocation;
     }
@@ -2093,8 +2078,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -2167,8 +2151,7 @@ class OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiVersion != null) {
       _json['apiVersion'] = apiVersion;
     }
@@ -2290,8 +2273,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -2318,8 +2300,7 @@ class RestartInstanceRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2349,8 +2330,7 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -2401,8 +2381,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2433,8 +2412,7 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -2457,8 +2435,7 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -2476,8 +2453,7 @@ class UpgradeInstanceRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2509,8 +2485,7 @@ class Version {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (availableFeatures != null) {
       _json['availableFeatures'] = availableFeatures;
     }

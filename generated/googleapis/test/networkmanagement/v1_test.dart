@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1740,8 +1739,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.NetworkmanagementApi(mock).projects.locations;
+      var res = api.NetworkmanagementApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1788,8 +1786,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.NetworkmanagementApi(mock).projects.locations;
+      var res = api.NetworkmanagementApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1851,12 +1848,11 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_request = buildConnectivityTest();
       var arg_parent = 'foo';
       var arg_testId = 'foo';
@@ -1910,12 +1906,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1962,12 +1957,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2014,12 +2008,11 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2073,12 +2066,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -2141,12 +2133,11 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_request = buildConnectivityTest();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2201,12 +2192,11 @@ void main() {
 
     unittest.test('method--rerun', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_request = buildRerunConnectivityTestRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2257,12 +2247,11 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2313,12 +2302,11 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalConnectivityTestsResourceApi res =
-          api.NetworkmanagementApi(mock)
-              .projects
-              .locations
-              .global
-              .connectivityTests;
+      var res = api.NetworkmanagementApi(mock)
+          .projects
+          .locations
+          .global
+          .connectivityTests;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2371,7 +2359,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.NetworkmanagementApi(mock).projects.locations.global.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
@@ -2423,7 +2411,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.NetworkmanagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2471,7 +2459,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.NetworkmanagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2519,7 +2507,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.NetworkmanagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';

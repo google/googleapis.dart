@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1057,8 +1056,7 @@ class Activities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -1110,8 +1108,7 @@ class ActivityActor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (callerType != null) {
       _json['callerType'] = callerType;
     }
@@ -1147,8 +1144,7 @@ class ActivityEventsParametersMessageValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameter != null) {
       _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
@@ -1171,8 +1167,7 @@ class ActivityEventsParametersMultiMessageValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameter != null) {
       _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
@@ -1242,8 +1237,7 @@ class ActivityEventsParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -1315,8 +1309,7 @@ class ActivityEvents {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1363,8 +1356,7 @@ class ActivityId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (applicationName != null) {
       _json['applicationName'] = applicationName;
     }
@@ -1439,8 +1431,7 @@ class Activity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actor != null) {
       _json['actor'] = actor.toJson();
     }
@@ -1538,8 +1529,7 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address;
     }
@@ -1624,8 +1614,7 @@ class NestedParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -1691,8 +1680,7 @@ class UsageReportEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerId != null) {
       _json['customerId'] = customerId;
     }
@@ -1762,8 +1750,7 @@ class UsageReportParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -1830,8 +1817,7 @@ class UsageReport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (date != null) {
       _json['date'] = date;
     }
@@ -1872,8 +1858,7 @@ class UsageReportsWarningsData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -1916,8 +1901,7 @@ class UsageReportsWarnings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1977,8 +1961,7 @@ class UsageReports {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }

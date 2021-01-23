@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1365,8 +1364,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRegistriesResourceApi', () {
     unittest.test('method--bindDeviceToGateway', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildBindDeviceToGatewayRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1417,8 +1415,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildDeviceRegistry();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1469,8 +1466,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1517,8 +1513,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1565,8 +1560,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1617,8 +1611,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1674,8 +1667,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildDeviceRegistry();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1730,8 +1722,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1782,8 +1773,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1834,8 +1824,7 @@ void main() {
 
     unittest.test('method--unbindDeviceFromGateway', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries;
+      var res = api.CloudiotApi(mock).projects.locations.registries;
       var arg_request = buildUnbindDeviceFromGatewayRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1889,8 +1878,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRegistriesDevicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_request = buildDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1941,8 +1929,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1989,8 +1976,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_name = 'foo';
       var arg_fieldMask = 'foo';
       var arg_$fields = 'foo';
@@ -2040,8 +2026,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_parent = 'foo';
       var arg_deviceIds = buildUnnamed2513();
       var arg_deviceNumIds = buildUnnamed2514();
@@ -2125,8 +2110,7 @@ void main() {
 
     unittest.test('method--modifyCloudToDeviceConfig', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_request = buildModifyCloudToDeviceConfigRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2178,8 +2162,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_request = buildDevice();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2234,8 +2217,7 @@ void main() {
 
     unittest.test('method--sendCommandToDevice', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.devices;
+      var res = api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_request = buildSendCommandToDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2290,13 +2272,12 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi res =
-          api.CloudiotApi(mock)
-              .projects
-              .locations
-              .registries
-              .devices
-              .configVersions;
+      var res = api.CloudiotApi(mock)
+          .projects
+          .locations
+          .registries
+          .devices
+          .configVersions;
       var arg_name = 'foo';
       var arg_numVersions = 42;
       var arg_$fields = 'foo';
@@ -2349,7 +2330,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesDevicesStatesResourceApi res =
+      var res =
           api.CloudiotApi(mock).projects.locations.registries.devices.states;
       var arg_name = 'foo';
       var arg_numStates = 42;
@@ -2402,8 +2383,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRegistriesGroupsResourceApi', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesGroupsResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.groups;
+      var res = api.CloudiotApi(mock).projects.locations.registries.groups;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2454,8 +2434,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesGroupsResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.groups;
+      var res = api.CloudiotApi(mock).projects.locations.registries.groups;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2506,8 +2485,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesGroupsResourceApi res =
-          api.CloudiotApi(mock).projects.locations.registries.groups;
+      var res = api.CloudiotApi(mock).projects.locations.registries.groups;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2561,7 +2539,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRegistriesGroupsDevicesResourceApi res =
+      var res =
           api.CloudiotApi(mock).projects.locations.registries.groups.devices;
       var arg_parent = 'foo';
       var arg_deviceIds = buildUnnamed2515();

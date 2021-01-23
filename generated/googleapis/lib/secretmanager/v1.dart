@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1104,8 +1103,7 @@ class AccessSecretVersionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1130,8 +1128,7 @@ class AddSecretVersionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (payload != null) {
       _json['payload'] = payload.toJson();
     }
@@ -1178,8 +1175,7 @@ class AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -1222,8 +1218,7 @@ class AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -1254,8 +1249,7 @@ class Automatic {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerManagedEncryption != null) {
       _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
     }
@@ -1280,8 +1274,7 @@ class AutomaticStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerManagedEncryption != null) {
       _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
     }
@@ -1357,8 +1350,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindingId != null) {
       _json['bindingId'] = bindingId;
     }
@@ -1395,8 +1387,7 @@ class CustomerManagedEncryption {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json['kmsKeyName'] = kmsKeyName;
     }
@@ -1420,8 +1411,7 @@ class CustomerManagedEncryptionStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kmsKeyVersionName != null) {
       _json['kmsKeyVersionName'] = kmsKeyVersionName;
     }
@@ -1438,8 +1428,7 @@ class DestroySecretVersionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1453,8 +1442,7 @@ class DisableSecretVersionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1472,8 +1460,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1487,8 +1474,7 @@ class EnableSecretVersionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1544,8 +1530,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1584,8 +1569,7 @@ class ListLocationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locations != null) {
       _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
@@ -1626,8 +1610,7 @@ class ListSecretVersionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1670,8 +1653,7 @@ class ListSecretsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1731,8 +1713,7 @@ class Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -1848,8 +1829,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -1893,8 +1873,7 @@ class Replica {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerManagedEncryption != null) {
       _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
     }
@@ -1928,8 +1907,7 @@ class ReplicaStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerManagedEncryption != null) {
       _json['customerManagedEncryption'] = customerManagedEncryption.toJson();
     }
@@ -1960,8 +1938,7 @@ class Replication {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (automatic != null) {
       _json['automatic'] = automatic.toJson();
     }
@@ -1996,8 +1973,7 @@ class ReplicationStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (automatic != null) {
       _json['automatic'] = automatic.toJson();
     }
@@ -2051,8 +2027,7 @@ class Secret {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -2090,8 +2065,7 @@ class SecretPayload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -2148,8 +2122,7 @@ class SecretVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -2194,8 +2167,7 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -2223,8 +2195,7 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -2247,8 +2218,7 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -2273,8 +2243,7 @@ class UserManaged {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (replicas != null) {
       _json['replicas'] = replicas.map((value) => value.toJson()).toList();
     }
@@ -2299,8 +2268,7 @@ class UserManagedStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (replicas != null) {
       _json['replicas'] = replicas.map((value) => value.toJson()).toList();
     }

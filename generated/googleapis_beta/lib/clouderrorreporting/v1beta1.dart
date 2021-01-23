@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -600,8 +599,7 @@ class DeleteEventsResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -651,8 +649,7 @@ class ErrorContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (httpRequest != null) {
       _json['httpRequest'] = httpRequest.toJson();
     }
@@ -704,8 +701,7 @@ class ErrorEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -769,8 +765,7 @@ class ErrorGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groupId != null) {
       _json['groupId'] = groupId;
     }
@@ -877,8 +872,7 @@ class ErrorGroupStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (affectedServices != null) {
       _json['affectedServices'] =
           affectedServices.map((value) => value.toJson()).toList();
@@ -960,8 +954,7 @@ class HttpRequestContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (method != null) {
       _json['method'] = method;
     }
@@ -1015,8 +1008,7 @@ class ListEventsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorEvents != null) {
       _json['errorEvents'] =
           errorEvents.map((value) => value.toJson()).toList();
@@ -1064,8 +1056,7 @@ class ListGroupStatsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorGroupStats != null) {
       _json['errorGroupStats'] =
           errorGroupStats.map((value) => value.toJson()).toList();
@@ -1090,8 +1081,7 @@ class ReportErrorEventResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1148,8 +1138,7 @@ class ReportedErrorEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -1203,8 +1192,7 @@ class ServiceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceType != null) {
       _json['resourceType'] = resourceType;
     }
@@ -1250,8 +1238,7 @@ class SourceLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filePath != null) {
       _json['filePath'] = filePath;
     }
@@ -1288,8 +1275,7 @@ class SourceReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (repository != null) {
       _json['repository'] = repository;
     }
@@ -1327,8 +1313,7 @@ class TimedCount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -1357,8 +1342,7 @@ class TrackingIssue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }

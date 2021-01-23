@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -508,8 +507,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claimDate != null) {
       _json['claimDate'] = claimDate;
     }
@@ -560,8 +558,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageUrl != null) {
       _json['imageUrl'] = imageUrl;
     }
@@ -626,8 +623,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestRating != null) {
       _json['bestRating'] = bestRating;
     }
@@ -695,8 +691,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -741,8 +736,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageUrl != null) {
       _json['imageUrl'] = imageUrl;
     }
@@ -825,8 +819,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claimAppearances != null) {
       _json['claimAppearances'] = claimAppearances;
     }
@@ -920,8 +913,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claimReviewAuthor != null) {
       _json['claimReviewAuthor'] = claimReviewAuthor.toJson();
     }
@@ -971,8 +963,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claims != null) {
       _json['claims'] = claims.map((value) => value.toJson()).toList();
     }
@@ -1012,8 +1003,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claimReviewMarkupPages != null) {
       _json['claimReviewMarkupPages'] =
           claimReviewMarkupPages.map((value) => value.toJson()).toList();
@@ -1047,8 +1037,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1072,8 +1061,7 @@ class GoogleProtobufEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }

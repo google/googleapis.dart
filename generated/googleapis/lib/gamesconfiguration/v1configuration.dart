@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -774,8 +773,7 @@ class AchievementConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (achievementType != null) {
       _json['achievementType'] = achievementType;
     }
@@ -849,8 +847,7 @@ class AchievementConfigurationDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description.toJson();
     }
@@ -903,8 +900,7 @@ class AchievementConfigurationListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (items != null) {
       _json['items'] = items.map((value) => value.toJson()).toList();
     }
@@ -970,8 +966,7 @@ class GamesNumberAffixConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (few != null) {
       _json['few'] = few.toJson();
     }
@@ -1035,8 +1030,7 @@ class GamesNumberFormatConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currencyCode != null) {
       _json['currencyCode'] = currencyCode;
     }
@@ -1090,8 +1084,7 @@ class ImageConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageType != null) {
       _json['imageType'] = imageType;
     }
@@ -1169,8 +1162,7 @@ class LeaderboardConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (draft != null) {
       _json['draft'] = draft.toJson();
     }
@@ -1239,8 +1231,7 @@ class LeaderboardConfigurationDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iconUrl != null) {
       _json['iconUrl'] = iconUrl;
     }
@@ -1290,8 +1281,7 @@ class LeaderboardConfigurationListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (items != null) {
       _json['items'] = items.map((value) => value.toJson()).toList();
     }
@@ -1332,8 +1322,7 @@ class LocalizedString {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1370,8 +1359,7 @@ class LocalizedStringBundle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4549,7 +4548,7 @@ void main() {
   unittest.group('resource-BookshelvesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BookshelvesResourceApi res = api.BooksApi(mock).bookshelves;
+      var res = api.BooksApi(mock).bookshelves;
       var arg_userId = 'foo';
       var arg_shelf = 'foo';
       var arg_source = 'foo';
@@ -4610,7 +4609,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BookshelvesResourceApi res = api.BooksApi(mock).bookshelves;
+      var res = api.BooksApi(mock).bookshelves;
       var arg_userId = 'foo';
       var arg_source = 'foo';
       var arg_$fields = 'foo';
@@ -4669,8 +4668,7 @@ void main() {
   unittest.group('resource-BookshelvesVolumesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BookshelvesVolumesResourceApi res =
-          api.BooksApi(mock).bookshelves.volumes;
+      var res = api.BooksApi(mock).bookshelves.volumes;
       var arg_userId = 'foo';
       var arg_shelf = 'foo';
       var arg_maxResults = 42;
@@ -4753,7 +4751,7 @@ void main() {
   unittest.group('resource-CloudloadingResourceApi', () {
     unittest.test('method--addBook', () {
       var mock = HttpServerMock();
-      api.CloudloadingResourceApi res = api.BooksApi(mock).cloudloading;
+      var res = api.BooksApi(mock).cloudloading;
       var arg_driveDocumentId = 'foo';
       var arg_mimeType = 'foo';
       var arg_name = 'foo';
@@ -4814,7 +4812,7 @@ void main() {
 
     unittest.test('method--deleteBook', () {
       var mock = HttpServerMock();
-      api.CloudloadingResourceApi res = api.BooksApi(mock).cloudloading;
+      var res = api.BooksApi(mock).cloudloading;
       var arg_volumeId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4862,7 +4860,7 @@ void main() {
 
     unittest.test('method--updateBook', () {
       var mock = HttpServerMock();
-      api.CloudloadingResourceApi res = api.BooksApi(mock).cloudloading;
+      var res = api.BooksApi(mock).cloudloading;
       var arg_request = buildBooksCloudloadingResource();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4913,7 +4911,7 @@ void main() {
   unittest.group('resource-DictionaryResourceApi', () {
     unittest.test('method--listOfflineMetadata', () {
       var mock = HttpServerMock();
-      api.DictionaryResourceApi res = api.BooksApi(mock).dictionary;
+      var res = api.BooksApi(mock).dictionary;
       var arg_cpksver = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4963,7 +4961,7 @@ void main() {
   unittest.group('resource-FamilysharingResourceApi', () {
     unittest.test('method--getFamilyInfo', () {
       var mock = HttpServerMock();
-      api.FamilysharingResourceApi res = api.BooksApi(mock).familysharing;
+      var res = api.BooksApi(mock).familysharing;
       var arg_source = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5010,7 +5008,7 @@ void main() {
 
     unittest.test('method--share', () {
       var mock = HttpServerMock();
-      api.FamilysharingResourceApi res = api.BooksApi(mock).familysharing;
+      var res = api.BooksApi(mock).familysharing;
       var arg_docId = 'foo';
       var arg_source = 'foo';
       var arg_volumeId = 'foo';
@@ -5066,7 +5064,7 @@ void main() {
 
     unittest.test('method--unshare', () {
       var mock = HttpServerMock();
-      api.FamilysharingResourceApi res = api.BooksApi(mock).familysharing;
+      var res = api.BooksApi(mock).familysharing;
       var arg_docId = 'foo';
       var arg_source = 'foo';
       var arg_volumeId = 'foo';
@@ -5124,7 +5122,7 @@ void main() {
   unittest.group('resource-LayersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LayersResourceApi res = api.BooksApi(mock).layers;
+      var res = api.BooksApi(mock).layers;
       var arg_volumeId = 'foo';
       var arg_summaryId = 'foo';
       var arg_contentVersion = 'foo';
@@ -5191,7 +5189,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LayersResourceApi res = api.BooksApi(mock).layers;
+      var res = api.BooksApi(mock).layers;
       var arg_volumeId = 'foo';
       var arg_contentVersion = 'foo';
       var arg_maxResults = 42;
@@ -5264,8 +5262,7 @@ void main() {
   unittest.group('resource-LayersAnnotationDataResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LayersAnnotationDataResourceApi res =
-          api.BooksApi(mock).layers.annotationData;
+      var res = api.BooksApi(mock).layers.annotationData;
       var arg_volumeId = 'foo';
       var arg_layerId = 'foo';
       var arg_annotationDataId = 'foo';
@@ -5361,8 +5358,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LayersAnnotationDataResourceApi res =
-          api.BooksApi(mock).layers.annotationData;
+      var res = api.BooksApi(mock).layers.annotationData;
       var arg_volumeId = 'foo';
       var arg_layerId = 'foo';
       var arg_annotationDataId = buildUnnamed5828();
@@ -5472,8 +5468,7 @@ void main() {
   unittest.group('resource-LayersVolumeAnnotationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LayersVolumeAnnotationsResourceApi res =
-          api.BooksApi(mock).layers.volumeAnnotations;
+      var res = api.BooksApi(mock).layers.volumeAnnotations;
       var arg_volumeId = 'foo';
       var arg_layerId = 'foo';
       var arg_annotationId = 'foo';
@@ -5547,8 +5542,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LayersVolumeAnnotationsResourceApi res =
-          api.BooksApi(mock).layers.volumeAnnotations;
+      var res = api.BooksApi(mock).layers.volumeAnnotations;
       var arg_volumeId = 'foo';
       var arg_layerId = 'foo';
       var arg_contentVersion = 'foo';
@@ -5660,7 +5654,7 @@ void main() {
   unittest.group('resource-MyconfigResourceApi', () {
     unittest.test('method--getUserSettings', () {
       var mock = HttpServerMock();
-      api.MyconfigResourceApi res = api.BooksApi(mock).myconfig;
+      var res = api.BooksApi(mock).myconfig;
       var arg_country = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5708,7 +5702,7 @@ void main() {
 
     unittest.test('method--releaseDownloadAccess', () {
       var mock = HttpServerMock();
-      api.MyconfigResourceApi res = api.BooksApi(mock).myconfig;
+      var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
       var arg_locale = 'foo';
       var arg_source = 'foo';
@@ -5767,7 +5761,7 @@ void main() {
 
     unittest.test('method--requestAccess', () {
       var mock = HttpServerMock();
-      api.MyconfigResourceApi res = api.BooksApi(mock).myconfig;
+      var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
       var arg_licenseTypes = 'foo';
       var arg_locale = 'foo';
@@ -5834,7 +5828,7 @@ void main() {
 
     unittest.test('method--syncVolumeLicenses', () {
       var mock = HttpServerMock();
-      api.MyconfigResourceApi res = api.BooksApi(mock).myconfig;
+      var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
       var arg_features = buildUnnamed5830();
       var arg_includeNonComicsSeries = true;
@@ -5907,7 +5901,7 @@ void main() {
 
     unittest.test('method--updateUserSettings', () {
       var mock = HttpServerMock();
-      api.MyconfigResourceApi res = api.BooksApi(mock).myconfig;
+      var res = api.BooksApi(mock).myconfig;
       var arg_request = buildUsersettings();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5958,8 +5952,7 @@ void main() {
   unittest.group('resource-MylibraryAnnotationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MylibraryAnnotationsResourceApi res =
-          api.BooksApi(mock).mylibrary.annotations;
+      var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_annotationId = 'foo';
       var arg_source = 'foo';
       var arg_$fields = 'foo';
@@ -6010,8 +6003,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.MylibraryAnnotationsResourceApi res =
-          api.BooksApi(mock).mylibrary.annotations;
+      var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_request = buildAnnotation();
       var arg_annotationId = 'foo';
       var arg_country = 'foo';
@@ -6076,8 +6068,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MylibraryAnnotationsResourceApi res =
-          api.BooksApi(mock).mylibrary.annotations;
+      var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_contentVersion = 'foo';
       var arg_layerId = 'foo';
       var arg_layerIds = buildUnnamed5832();
@@ -6161,8 +6152,7 @@ void main() {
 
     unittest.test('method--summary', () {
       var mock = HttpServerMock();
-      api.MylibraryAnnotationsResourceApi res =
-          api.BooksApi(mock).mylibrary.annotations;
+      var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_layerIds = buildUnnamed5833();
       var arg_volumeId = 'foo';
       var arg_$fields = 'foo';
@@ -6215,8 +6205,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.MylibraryAnnotationsResourceApi res =
-          api.BooksApi(mock).mylibrary.annotations;
+      var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_request = buildAnnotation();
       var arg_annotationId = 'foo';
       var arg_source = 'foo';
@@ -6274,8 +6263,7 @@ void main() {
   unittest.group('resource-MylibraryBookshelvesResourceApi', () {
     unittest.test('method--addVolume', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
       var arg_reason = 'foo';
       var arg_source = 'foo';
@@ -6341,8 +6329,7 @@ void main() {
 
     unittest.test('method--clearVolumes', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
       var arg_source = 'foo';
       var arg_$fields = 'foo';
@@ -6399,8 +6386,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
       var arg_source = 'foo';
       var arg_$fields = 'foo';
@@ -6451,8 +6437,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_source = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6499,8 +6484,7 @@ void main() {
 
     unittest.test('method--moveVolume', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
       var arg_source = 'foo';
       var arg_volumeId = 'foo';
@@ -6567,8 +6551,7 @@ void main() {
 
     unittest.test('method--removeVolume', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves;
+      var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
       var arg_reason = 'foo';
       var arg_source = 'foo';
@@ -6636,8 +6619,7 @@ void main() {
   unittest.group('resource-MylibraryBookshelvesVolumesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MylibraryBookshelvesVolumesResourceApi res =
-          api.BooksApi(mock).mylibrary.bookshelves.volumes;
+      var res = api.BooksApi(mock).mylibrary.bookshelves.volumes;
       var arg_shelf = 'foo';
       var arg_country = 'foo';
       var arg_maxResults = 42;
@@ -6721,8 +6703,7 @@ void main() {
   unittest.group('resource-MylibraryReadingpositionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MylibraryReadingpositionsResourceApi res =
-          api.BooksApi(mock).mylibrary.readingpositions;
+      var res = api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = 'foo';
       var arg_contentVersion = 'foo';
       var arg_source = 'foo';
@@ -6779,8 +6760,7 @@ void main() {
 
     unittest.test('method--setPosition', () {
       var mock = HttpServerMock();
-      api.MylibraryReadingpositionsResourceApi res =
-          api.BooksApi(mock).mylibrary.readingpositions;
+      var res = api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = 'foo';
       var arg_action = 'foo';
       var arg_contentVersion = 'foo';
@@ -6860,7 +6840,7 @@ void main() {
   unittest.group('resource-NotificationResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NotificationResourceApi res = api.BooksApi(mock).notification;
+      var res = api.BooksApi(mock).notification;
       var arg_locale = 'foo';
       var arg_notificationId = 'foo';
       var arg_source = 'foo';
@@ -6918,7 +6898,7 @@ void main() {
   unittest.group('resource-OnboardingResourceApi', () {
     unittest.test('method--listCategories', () {
       var mock = HttpServerMock();
-      api.OnboardingResourceApi res = api.BooksApi(mock).onboarding;
+      var res = api.BooksApi(mock).onboarding;
       var arg_locale = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6965,7 +6945,7 @@ void main() {
 
     unittest.test('method--listCategoryVolumes', () {
       var mock = HttpServerMock();
-      api.OnboardingResourceApi res = api.BooksApi(mock).onboarding;
+      var res = api.BooksApi(mock).onboarding;
       var arg_categoryId = buildUnnamed5834();
       var arg_locale = 'foo';
       var arg_maxAllowedMaturityRating = 'foo';
@@ -7032,8 +7012,7 @@ void main() {
   unittest.group('resource-PersonalizedstreamResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PersonalizedstreamResourceApi res =
-          api.BooksApi(mock).personalizedstream;
+      var res = api.BooksApi(mock).personalizedstream;
       var arg_locale = 'foo';
       var arg_maxAllowedMaturityRating = 'foo';
       var arg_source = 'foo';
@@ -7091,7 +7070,7 @@ void main() {
   unittest.group('resource-PromoofferResourceApi', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
-      api.PromoofferResourceApi res = api.BooksApi(mock).promooffer;
+      var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
       var arg_device = 'foo';
       var arg_manufacturer = 'foo';
@@ -7166,7 +7145,7 @@ void main() {
 
     unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
-      api.PromoofferResourceApi res = api.BooksApi(mock).promooffer;
+      var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
       var arg_device = 'foo';
       var arg_manufacturer = 'foo';
@@ -7237,7 +7216,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PromoofferResourceApi res = api.BooksApi(mock).promooffer;
+      var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
       var arg_device = 'foo';
       var arg_manufacturer = 'foo';
@@ -7306,7 +7285,7 @@ void main() {
   unittest.group('resource-SeriesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SeriesResourceApi res = api.BooksApi(mock).series;
+      var res = api.BooksApi(mock).series;
       var arg_seriesId = buildUnnamed5835();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7355,8 +7334,7 @@ void main() {
   unittest.group('resource-SeriesMembershipResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SeriesMembershipResourceApi res =
-          api.BooksApi(mock).series.membership;
+      var res = api.BooksApi(mock).series.membership;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_seriesId = 'foo';
@@ -7416,7 +7394,7 @@ void main() {
   unittest.group('resource-VolumesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.VolumesResourceApi res = api.BooksApi(mock).volumes;
+      var res = api.BooksApi(mock).volumes;
       var arg_volumeId = 'foo';
       var arg_country = 'foo';
       var arg_includeNonComicsSeries = true;
@@ -7489,7 +7467,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VolumesResourceApi res = api.BooksApi(mock).volumes;
+      var res = api.BooksApi(mock).volumes;
       var arg_download = 'foo';
       var arg_filter = 'foo';
       var arg_langRestrict = 'foo';
@@ -7590,8 +7568,7 @@ void main() {
   unittest.group('resource-VolumesAssociatedResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VolumesAssociatedResourceApi res =
-          api.BooksApi(mock).volumes.associated;
+      var res = api.BooksApi(mock).volumes.associated;
       var arg_volumeId = 'foo';
       var arg_association = 'foo';
       var arg_locale = 'foo';
@@ -7663,7 +7640,7 @@ void main() {
   unittest.group('resource-VolumesMybooksResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VolumesMybooksResourceApi res = api.BooksApi(mock).volumes.mybooks;
+      var res = api.BooksApi(mock).volumes.mybooks;
       var arg_acquireMethod = buildUnnamed5836();
       var arg_country = 'foo';
       var arg_locale = 'foo';
@@ -7737,8 +7714,7 @@ void main() {
   unittest.group('resource-VolumesRecommendedResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VolumesRecommendedResourceApi res =
-          api.BooksApi(mock).volumes.recommended;
+      var res = api.BooksApi(mock).volumes.recommended;
       var arg_locale = 'foo';
       var arg_maxAllowedMaturityRating = 'foo';
       var arg_source = 'foo';
@@ -7794,8 +7770,7 @@ void main() {
 
     unittest.test('method--rate', () {
       var mock = HttpServerMock();
-      api.VolumesRecommendedResourceApi res =
-          api.BooksApi(mock).volumes.recommended;
+      var res = api.BooksApi(mock).volumes.recommended;
       var arg_locale = 'foo';
       var arg_rating = 'foo';
       var arg_source = 'foo';
@@ -7857,8 +7832,7 @@ void main() {
   unittest.group('resource-VolumesUseruploadedResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VolumesUseruploadedResourceApi res =
-          api.BooksApi(mock).volumes.useruploaded;
+      var res = api.BooksApi(mock).volumes.useruploaded;
       var arg_locale = 'foo';
       var arg_maxResults = 42;
       var arg_processingState = buildUnnamed5838();

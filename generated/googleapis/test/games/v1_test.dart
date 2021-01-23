@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2480,8 +2479,7 @@ void main() {
   unittest.group('resource-AchievementDefinitionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AchievementDefinitionsResourceApi res =
-          api.GamesApi(mock).achievementDefinitions;
+      var res = api.GamesApi(mock).achievementDefinitions;
       var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2542,7 +2540,7 @@ void main() {
   unittest.group('resource-AchievementsResourceApi', () {
     unittest.test('method--increment', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_stepsToIncrement = 42;
       var arg_requestId = 'foo';
@@ -2604,7 +2602,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_playerId = 'foo';
       var arg_language = 'foo';
       var arg_maxResults = 42;
@@ -2675,7 +2673,7 @@ void main() {
 
     unittest.test('method--reveal', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2730,7 +2728,7 @@ void main() {
 
     unittest.test('method--setStepsAtLeast', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_steps = 42;
       var arg_$fields = 'foo';
@@ -2789,7 +2787,7 @@ void main() {
 
     unittest.test('method--unlock', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2844,7 +2842,7 @@ void main() {
 
     unittest.test('method--updateMultiple', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res = api.GamesApi(mock).achievements;
+      var res = api.GamesApi(mock).achievements;
       var arg_request = buildAchievementUpdateMultipleRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2896,7 +2894,7 @@ void main() {
   unittest.group('resource-ApplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
+      var res = api.GamesApi(mock).applications;
       var arg_applicationId = 'foo';
       var arg_language = 'foo';
       var arg_platformType = 'foo';
@@ -2954,7 +2952,7 @@ void main() {
 
     unittest.test('method--played', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
+      var res = api.GamesApi(mock).applications;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2995,7 +2993,7 @@ void main() {
 
     unittest.test('method--verify', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res = api.GamesApi(mock).applications;
+      var res = api.GamesApi(mock).applications;
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3052,7 +3050,7 @@ void main() {
   unittest.group('resource-EventsResourceApi', () {
     unittest.test('method--listByPlayer', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesApi(mock).events;
+      var res = api.GamesApi(mock).events;
       var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -3110,7 +3108,7 @@ void main() {
 
     unittest.test('method--listDefinitions', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesApi(mock).events;
+      var res = api.GamesApi(mock).events;
       var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -3168,7 +3166,7 @@ void main() {
 
     unittest.test('method--record', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesApi(mock).events;
+      var res = api.GamesApi(mock).events;
       var arg_request = buildEventRecordRequest();
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -3222,7 +3220,7 @@ void main() {
   unittest.group('resource-LeaderboardsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LeaderboardsResourceApi res = api.GamesApi(mock).leaderboards;
+      var res = api.GamesApi(mock).leaderboards;
       var arg_leaderboardId = 'foo';
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -3274,7 +3272,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LeaderboardsResourceApi res = api.GamesApi(mock).leaderboards;
+      var res = api.GamesApi(mock).leaderboards;
       var arg_language = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -3334,7 +3332,7 @@ void main() {
   unittest.group('resource-MetagameResourceApi', () {
     unittest.test('method--getMetagameConfig', () {
       var mock = HttpServerMock();
-      api.MetagameResourceApi res = api.GamesApi(mock).metagame;
+      var res = api.GamesApi(mock).metagame;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3379,7 +3377,7 @@ void main() {
 
     unittest.test('method--listCategoriesByPlayer', () {
       var mock = HttpServerMock();
-      api.MetagameResourceApi res = api.GamesApi(mock).metagame;
+      var res = api.GamesApi(mock).metagame;
       var arg_playerId = 'foo';
       var arg_collection = 'foo';
       var arg_language = 'foo';
@@ -3453,7 +3451,7 @@ void main() {
   unittest.group('resource-PlayersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PlayersResourceApi res = api.GamesApi(mock).players;
+      var res = api.GamesApi(mock).players;
       var arg_playerId = 'foo';
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -3505,7 +3503,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlayersResourceApi res = api.GamesApi(mock).players;
+      var res = api.GamesApi(mock).players;
       var arg_collection = 'foo';
       var arg_language = 'foo';
       var arg_maxResults = 42;
@@ -3569,7 +3567,7 @@ void main() {
   unittest.group('resource-RevisionsResourceApi', () {
     unittest.test('method--check', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.GamesApi(mock).revisions;
+      var res = api.GamesApi(mock).revisions;
       var arg_clientRevision = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3619,7 +3617,7 @@ void main() {
   unittest.group('resource-ScoresResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesApi(mock).scores;
+      var res = api.GamesApi(mock).scores;
       var arg_playerId = 'foo';
       var arg_leaderboardId = 'foo';
       var arg_timeSpan = 'foo';
@@ -3706,7 +3704,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesApi(mock).scores;
+      var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_collection = 'foo';
       var arg_timeSpan = 'foo';
@@ -3781,7 +3779,7 @@ void main() {
 
     unittest.test('method--listWindow', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesApi(mock).scores;
+      var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_collection = 'foo';
       var arg_timeSpan = 'foo';
@@ -3864,7 +3862,7 @@ void main() {
 
     unittest.test('method--submit', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesApi(mock).scores;
+      var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_score = 'foo';
       var arg_language = 'foo';
@@ -3930,7 +3928,7 @@ void main() {
 
     unittest.test('method--submitMultiple', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesApi(mock).scores;
+      var res = api.GamesApi(mock).scores;
       var arg_request = buildPlayerScoreSubmissionList();
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -3985,7 +3983,7 @@ void main() {
   unittest.group('resource-SnapshotsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.GamesApi(mock).snapshots;
+      var res = api.GamesApi(mock).snapshots;
       var arg_snapshotId = 'foo';
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -4037,7 +4035,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.GamesApi(mock).snapshots;
+      var res = api.GamesApi(mock).snapshots;
       var arg_playerId = 'foo';
       var arg_language = 'foo';
       var arg_maxResults = 42;
@@ -4107,7 +4105,7 @@ void main() {
   unittest.group('resource-StatsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.StatsResourceApi res = api.GamesApi(mock).stats;
+      var res = api.GamesApi(mock).stats;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

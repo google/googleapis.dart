@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -879,7 +878,7 @@ void main() {
   unittest.group('resource-ActivitiesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ActivitiesResourceApi res = api.AdminApi(mock).activities;
+      var res = api.AdminApi(mock).activities;
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
       var arg_actorIpAddress = 'foo';
@@ -975,7 +974,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.ActivitiesResourceApi res = api.AdminApi(mock).activities;
+      var res = api.AdminApi(mock).activities;
       var arg_request = buildChannel();
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
@@ -1083,7 +1082,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.AdminApi(mock).channels;
+      var res = api.AdminApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1132,8 +1131,7 @@ void main() {
   unittest.group('resource-CustomerUsageReportsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CustomerUsageReportsResourceApi res =
-          api.AdminApi(mock).customerUsageReports;
+      var res = api.AdminApi(mock).customerUsageReports;
       var arg_date = 'foo';
       var arg_customerId = 'foo';
       var arg_pageToken = 'foo';
@@ -1197,8 +1195,7 @@ void main() {
   unittest.group('resource-EntityUsageReportsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.EntityUsageReportsResourceApi res =
-          api.AdminApi(mock).entityUsageReports;
+      var res = api.AdminApi(mock).entityUsageReports;
       var arg_entityType = 'foo';
       var arg_entityKey = 'foo';
       var arg_date = 'foo';
@@ -1290,7 +1287,7 @@ void main() {
   unittest.group('resource-UserUsageReportResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserUsageReportResourceApi res = api.AdminApi(mock).userUsageReport;
+      var res = api.AdminApi(mock).userUsageReport;
       var arg_userKey = 'foo';
       var arg_date = 'foo';
       var arg_customerId = 'foo';

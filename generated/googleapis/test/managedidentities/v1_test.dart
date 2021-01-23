@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1731,8 +1730,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.ManagedidentitiesApi(mock).projects.locations;
+      var res = api.ManagedidentitiesApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1779,8 +1777,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.ManagedidentitiesApi(mock).projects.locations;
+      var res = api.ManagedidentitiesApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_includeUnrevealedLocations = true;
@@ -1845,7 +1842,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalDomainsResourceApi', () {
     unittest.test('method--attachTrust', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildAttachTrustRequest();
       var arg_name = 'foo';
@@ -1897,7 +1894,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildDomain();
       var arg_parent = 'foo';
@@ -1953,7 +1950,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2001,7 +1998,7 @@ void main() {
 
     unittest.test('method--detachTrust', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildDetachTrustRequest();
       var arg_name = 'foo';
@@ -2053,7 +2050,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2101,7 +2098,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
@@ -2156,7 +2153,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
@@ -2220,7 +2217,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildDomain();
       var arg_name = 'foo';
@@ -2276,7 +2273,7 @@ void main() {
 
     unittest.test('method--reconfigureTrust', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildReconfigureTrustRequest();
       var arg_name = 'foo';
@@ -2328,7 +2325,7 @@ void main() {
 
     unittest.test('method--resetAdminPassword', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildResetAdminPasswordRequest();
       var arg_name = 'foo';
@@ -2380,7 +2377,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
@@ -2432,7 +2429,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
@@ -2484,7 +2481,7 @@ void main() {
 
     unittest.test('method--validateTrust', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalDomainsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.domains;
       var arg_request = buildValidateTrustRequest();
       var arg_name = 'foo';
@@ -2538,7 +2535,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
@@ -2590,7 +2587,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2638,7 +2635,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2686,7 +2683,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlobalOperationsResourceApi res =
+      var res =
           api.ManagedidentitiesApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';

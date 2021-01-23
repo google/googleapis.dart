@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -8396,7 +8395,7 @@ void main() {
   unittest.group('resource-AbuseReportsResourceApi', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AbuseReportsResourceApi res = api.YoutubeApi(mock).abuseReports;
+      var res = api.YoutubeApi(mock).abuseReports;
       var arg_request = buildAbuseReport();
       var arg_part = buildUnnamed2398();
       var arg_$fields = 'foo';
@@ -8449,7 +8448,7 @@ void main() {
   unittest.group('resource-ActivitiesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ActivitiesResourceApi res = api.YoutubeApi(mock).activities;
+      var res = api.YoutubeApi(mock).activities;
       var arg_part = buildUnnamed2399();
       var arg_channelId = 'foo';
       var arg_home = true;
@@ -8529,7 +8528,7 @@ void main() {
   unittest.group('resource-CaptionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
+      var res = api.YoutubeApi(mock).captions;
       var arg_id = 'foo';
       var arg_onBehalfOf = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
@@ -8586,7 +8585,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
+      var res = api.YoutubeApi(mock).captions;
       var arg_id = 'foo';
       var arg_onBehalfOf = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
@@ -8651,7 +8650,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
+      var res = api.YoutubeApi(mock).captions;
       var arg_request = buildCaption();
       var arg_part = buildUnnamed2400();
       var arg_onBehalfOf = 'foo';
@@ -8714,7 +8713,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
+      var res = api.YoutubeApi(mock).captions;
       var arg_videoId = 'foo';
       var arg_part = buildUnnamed2401();
       var arg_id = buildUnnamed2402();
@@ -8779,7 +8778,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.CaptionsResourceApi res = api.YoutubeApi(mock).captions;
+      var res = api.YoutubeApi(mock).captions;
       var arg_request = buildCaption();
       var arg_part = buildUnnamed2403();
       var arg_onBehalfOf = 'foo';
@@ -8847,7 +8846,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ChannelBannersResourceApi res = api.YoutubeApi(mock).channelBanners;
+      var res = api.YoutubeApi(mock).channelBanners;
       var arg_request = buildChannelBannerResource();
       var arg_channelId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
@@ -8911,7 +8910,7 @@ void main() {
   unittest.group('resource-ChannelSectionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ChannelSectionsResourceApi res = api.YoutubeApi(mock).channelSections;
+      var res = api.YoutubeApi(mock).channelSections;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -8961,7 +8960,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ChannelSectionsResourceApi res = api.YoutubeApi(mock).channelSections;
+      var res = api.YoutubeApi(mock).channelSections;
       var arg_request = buildChannelSection();
       var arg_part = buildUnnamed2404();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -9021,7 +9020,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChannelSectionsResourceApi res = api.YoutubeApi(mock).channelSections;
+      var res = api.YoutubeApi(mock).channelSections;
       var arg_part = buildUnnamed2405();
       var arg_channelId = 'foo';
       var arg_hl = 'foo';
@@ -9086,7 +9085,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ChannelSectionsResourceApi res = api.YoutubeApi(mock).channelSections;
+      var res = api.YoutubeApi(mock).channelSections;
       var arg_request = buildChannelSection();
       var arg_part = buildUnnamed2407();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -9144,7 +9143,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.YoutubeApi(mock).channels;
+      var res = api.YoutubeApi(mock).channels;
       var arg_part = buildUnnamed2408();
       var arg_categoryId = 'foo';
       var arg_forUsername = 'foo';
@@ -9229,7 +9228,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.YoutubeApi(mock).channels;
+      var res = api.YoutubeApi(mock).channels;
       var arg_request = buildChannel();
       var arg_part = buildUnnamed2410();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -9287,7 +9286,7 @@ void main() {
   unittest.group('resource-CommentThreadsResourceApi', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CommentThreadsResourceApi res = api.YoutubeApi(mock).commentThreads;
+      var res = api.YoutubeApi(mock).commentThreads;
       var arg_request = buildCommentThread();
       var arg_part = buildUnnamed2411();
       var arg_$fields = 'foo';
@@ -9338,7 +9337,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CommentThreadsResourceApi res = api.YoutubeApi(mock).commentThreads;
+      var res = api.YoutubeApi(mock).commentThreads;
       var arg_part = buildUnnamed2412();
       var arg_allThreadsRelatedToChannelId = 'foo';
       var arg_channelId = 'foo';
@@ -9424,7 +9423,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CommentThreadsResourceApi res = api.YoutubeApi(mock).commentThreads;
+      var res = api.YoutubeApi(mock).commentThreads;
       var arg_request = buildCommentThread();
       var arg_part = buildUnnamed2414();
       var arg_$fields = 'foo';
@@ -9477,7 +9476,7 @@ void main() {
   unittest.group('resource-CommentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9522,7 +9521,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_request = buildComment();
       var arg_part = buildUnnamed2415();
       var arg_$fields = 'foo';
@@ -9573,7 +9572,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_part = buildUnnamed2416();
       var arg_id = buildUnnamed2417();
       var arg_maxResults = 42;
@@ -9640,7 +9639,7 @@ void main() {
 
     unittest.test('method--markAsSpam', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_id = buildUnnamed2418();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9685,7 +9684,7 @@ void main() {
 
     unittest.test('method--setModerationStatus', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_id = buildUnnamed2419();
       var arg_moderationStatus = 'foo';
       var arg_banAuthor = true;
@@ -9737,7 +9736,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.YoutubeApi(mock).comments;
+      var res = api.YoutubeApi(mock).comments;
       var arg_request = buildComment();
       var arg_part = buildUnnamed2420();
       var arg_$fields = 'foo';
@@ -9790,7 +9789,7 @@ void main() {
   unittest.group('resource-I18nLanguagesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.I18nLanguagesResourceApi res = api.YoutubeApi(mock).i18nLanguages;
+      var res = api.YoutubeApi(mock).i18nLanguages;
       var arg_part = buildUnnamed2421();
       var arg_hl = 'foo';
       var arg_$fields = 'foo';
@@ -9841,7 +9840,7 @@ void main() {
   unittest.group('resource-I18nRegionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.I18nRegionsResourceApi res = api.YoutubeApi(mock).i18nRegions;
+      var res = api.YoutubeApi(mock).i18nRegions;
       var arg_part = buildUnnamed2422();
       var arg_hl = 'foo';
       var arg_$fields = 'foo';
@@ -9892,7 +9891,7 @@ void main() {
   unittest.group('resource-LiveBroadcastsResourceApi', () {
     unittest.test('method--bind', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_id = 'foo';
       var arg_part = buildUnnamed2423();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -9954,7 +9953,7 @@ void main() {
 
     unittest.test('method--control', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_id = 'foo';
       var arg_part = buildUnnamed2424();
       var arg_displaySlate = true;
@@ -10024,7 +10023,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOfContentOwnerChannel = 'foo';
@@ -10078,7 +10077,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_request = buildLiveBroadcast();
       var arg_part = buildUnnamed2425();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -10138,7 +10137,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_part = buildUnnamed2426();
       var arg_broadcastStatus = 'foo';
       var arg_broadcastType = 'foo';
@@ -10216,7 +10215,7 @@ void main() {
 
     unittest.test('method--transition', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_id = 'foo';
       var arg_broadcastStatus = 'foo';
       var arg_part = buildUnnamed2428();
@@ -10277,7 +10276,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.LiveBroadcastsResourceApi res = api.YoutubeApi(mock).liveBroadcasts;
+      var res = api.YoutubeApi(mock).liveBroadcasts;
       var arg_request = buildLiveBroadcast();
       var arg_part = buildUnnamed2429();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -10339,7 +10338,7 @@ void main() {
   unittest.group('resource-LiveChatBansResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LiveChatBansResourceApi res = api.YoutubeApi(mock).liveChatBans;
+      var res = api.YoutubeApi(mock).liveChatBans;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10384,7 +10383,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LiveChatBansResourceApi res = api.YoutubeApi(mock).liveChatBans;
+      var res = api.YoutubeApi(mock).liveChatBans;
       var arg_request = buildLiveChatBan();
       var arg_part = buildUnnamed2430();
       var arg_$fields = 'foo';
@@ -10437,8 +10436,7 @@ void main() {
   unittest.group('resource-LiveChatMessagesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LiveChatMessagesResourceApi res =
-          api.YoutubeApi(mock).liveChatMessages;
+      var res = api.YoutubeApi(mock).liveChatMessages;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10483,8 +10481,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LiveChatMessagesResourceApi res =
-          api.YoutubeApi(mock).liveChatMessages;
+      var res = api.YoutubeApi(mock).liveChatMessages;
       var arg_request = buildLiveChatMessage();
       var arg_part = buildUnnamed2431();
       var arg_$fields = 'foo';
@@ -10535,8 +10532,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LiveChatMessagesResourceApi res =
-          api.YoutubeApi(mock).liveChatMessages;
+      var res = api.YoutubeApi(mock).liveChatMessages;
       var arg_liveChatId = 'foo';
       var arg_part = buildUnnamed2432();
       var arg_hl = 'foo';
@@ -10604,8 +10600,7 @@ void main() {
   unittest.group('resource-LiveChatModeratorsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LiveChatModeratorsResourceApi res =
-          api.YoutubeApi(mock).liveChatModerators;
+      var res = api.YoutubeApi(mock).liveChatModerators;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10650,8 +10645,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LiveChatModeratorsResourceApi res =
-          api.YoutubeApi(mock).liveChatModerators;
+      var res = api.YoutubeApi(mock).liveChatModerators;
       var arg_request = buildLiveChatModerator();
       var arg_part = buildUnnamed2433();
       var arg_$fields = 'foo';
@@ -10702,8 +10696,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LiveChatModeratorsResourceApi res =
-          api.YoutubeApi(mock).liveChatModerators;
+      var res = api.YoutubeApi(mock).liveChatModerators;
       var arg_liveChatId = 'foo';
       var arg_part = buildUnnamed2434();
       var arg_maxResults = 42;
@@ -10764,7 +10757,7 @@ void main() {
   unittest.group('resource-LiveStreamsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
+      var res = api.YoutubeApi(mock).liveStreams;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_onBehalfOfContentOwnerChannel = 'foo';
@@ -10818,7 +10811,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
+      var res = api.YoutubeApi(mock).liveStreams;
       var arg_request = buildLiveStream();
       var arg_part = buildUnnamed2435();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -10878,7 +10871,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
+      var res = api.YoutubeApi(mock).liveStreams;
       var arg_part = buildUnnamed2436();
       var arg_id = buildUnnamed2437();
       var arg_maxResults = 42;
@@ -10948,7 +10941,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.LiveStreamsResourceApi res = api.YoutubeApi(mock).liveStreams;
+      var res = api.YoutubeApi(mock).liveStreams;
       var arg_request = buildLiveStream();
       var arg_part = buildUnnamed2438();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -11010,7 +11003,7 @@ void main() {
   unittest.group('resource-MembersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MembersResourceApi res = api.YoutubeApi(mock).members;
+      var res = api.YoutubeApi(mock).members;
       var arg_part = buildUnnamed2439();
       var arg_filterByMemberChannelId = 'foo';
       var arg_hasAccessToLevel = 'foo';
@@ -11079,8 +11072,7 @@ void main() {
   unittest.group('resource-MembershipsLevelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MembershipsLevelsResourceApi res =
-          api.YoutubeApi(mock).membershipsLevels;
+      var res = api.YoutubeApi(mock).membershipsLevels;
       var arg_part = buildUnnamed2440();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11129,7 +11121,7 @@ void main() {
   unittest.group('resource-PlaylistItemsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PlaylistItemsResourceApi res = api.YoutubeApi(mock).playlistItems;
+      var res = api.YoutubeApi(mock).playlistItems;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -11179,7 +11171,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PlaylistItemsResourceApi res = api.YoutubeApi(mock).playlistItems;
+      var res = api.YoutubeApi(mock).playlistItems;
       var arg_request = buildPlaylistItem();
       var arg_part = buildUnnamed2441();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -11235,7 +11227,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlaylistItemsResourceApi res = api.YoutubeApi(mock).playlistItems;
+      var res = api.YoutubeApi(mock).playlistItems;
       var arg_part = buildUnnamed2442();
       var arg_id = buildUnnamed2443();
       var arg_maxResults = 42;
@@ -11306,7 +11298,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PlaylistItemsResourceApi res = api.YoutubeApi(mock).playlistItems;
+      var res = api.YoutubeApi(mock).playlistItems;
       var arg_request = buildPlaylistItem();
       var arg_part = buildUnnamed2444();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -11364,7 +11356,7 @@ void main() {
   unittest.group('resource-PlaylistsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
+      var res = api.YoutubeApi(mock).playlists;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -11414,7 +11406,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
+      var res = api.YoutubeApi(mock).playlists;
       var arg_request = buildPlaylist();
       var arg_part = buildUnnamed2445();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -11474,7 +11466,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
+      var res = api.YoutubeApi(mock).playlists;
       var arg_part = buildUnnamed2446();
       var arg_channelId = 'foo';
       var arg_hl = 'foo';
@@ -11551,7 +11543,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PlaylistsResourceApi res = api.YoutubeApi(mock).playlists;
+      var res = api.YoutubeApi(mock).playlists;
       var arg_request = buildPlaylist();
       var arg_part = buildUnnamed2448();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -11609,7 +11601,7 @@ void main() {
   unittest.group('resource-SearchResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SearchResourceApi res = api.YoutubeApi(mock).search;
+      var res = api.YoutubeApi(mock).search;
       var arg_part = buildUnnamed2449();
       var arg_channelId = 'foo';
       var arg_channelType = 'foo';
@@ -11776,7 +11768,7 @@ void main() {
   unittest.group('resource-SponsorsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SponsorsResourceApi res = api.YoutubeApi(mock).sponsors;
+      var res = api.YoutubeApi(mock).sponsors;
       var arg_part = buildUnnamed2451();
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -11837,7 +11829,7 @@ void main() {
   unittest.group('resource-SubscriptionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.YoutubeApi(mock).subscriptions;
+      var res = api.YoutubeApi(mock).subscriptions;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11882,7 +11874,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.YoutubeApi(mock).subscriptions;
+      var res = api.YoutubeApi(mock).subscriptions;
       var arg_request = buildSubscription();
       var arg_part = buildUnnamed2452();
       var arg_$fields = 'foo';
@@ -11933,7 +11925,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.YoutubeApi(mock).subscriptions;
+      var res = api.YoutubeApi(mock).subscriptions;
       var arg_part = buildUnnamed2453();
       var arg_channelId = 'foo';
       var arg_forChannelId = 'foo';
@@ -12024,7 +12016,7 @@ void main() {
   unittest.group('resource-SuperChatEventsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SuperChatEventsResourceApi res = api.YoutubeApi(mock).superChatEvents;
+      var res = api.YoutubeApi(mock).superChatEvents;
       var arg_part = buildUnnamed2455();
       var arg_hl = 'foo';
       var arg_maxResults = 42;
@@ -12085,7 +12077,7 @@ void main() {
   unittest.group('resource-TestsResourceApi', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TestsResourceApi res = api.YoutubeApi(mock).tests;
+      var res = api.YoutubeApi(mock).tests;
       var arg_request = buildTestItem();
       var arg_part = buildUnnamed2456();
       var arg_$fields = 'foo';
@@ -12138,7 +12130,7 @@ void main() {
   unittest.group('resource-ThirdPartyLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ThirdPartyLinksResourceApi res = api.YoutubeApi(mock).thirdPartyLinks;
+      var res = api.YoutubeApi(mock).thirdPartyLinks;
       var arg_linkingToken = 'foo';
       var arg_type = 'foo';
       var arg_part = buildUnnamed2457();
@@ -12189,7 +12181,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ThirdPartyLinksResourceApi res = api.YoutubeApi(mock).thirdPartyLinks;
+      var res = api.YoutubeApi(mock).thirdPartyLinks;
       var arg_request = buildThirdPartyLink();
       var arg_part = buildUnnamed2458();
       var arg_$fields = 'foo';
@@ -12240,7 +12232,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ThirdPartyLinksResourceApi res = api.YoutubeApi(mock).thirdPartyLinks;
+      var res = api.YoutubeApi(mock).thirdPartyLinks;
       var arg_part = buildUnnamed2459();
       var arg_linkingToken = 'foo';
       var arg_type = 'foo';
@@ -12295,7 +12287,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ThirdPartyLinksResourceApi res = api.YoutubeApi(mock).thirdPartyLinks;
+      var res = api.YoutubeApi(mock).thirdPartyLinks;
       var arg_request = buildThirdPartyLink();
       var arg_part = buildUnnamed2460();
       var arg_$fields = 'foo';
@@ -12351,7 +12343,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ThumbnailsResourceApi res = api.YoutubeApi(mock).thumbnails;
+      var res = api.YoutubeApi(mock).thumbnails;
       var arg_videoId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -12406,8 +12398,7 @@ void main() {
   unittest.group('resource-VideoAbuseReportReasonsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VideoAbuseReportReasonsResourceApi res =
-          api.YoutubeApi(mock).videoAbuseReportReasons;
+      var res = api.YoutubeApi(mock).videoAbuseReportReasons;
       var arg_part = buildUnnamed2461();
       var arg_hl = 'foo';
       var arg_$fields = 'foo';
@@ -12459,7 +12450,7 @@ void main() {
   unittest.group('resource-VideoCategoriesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VideoCategoriesResourceApi res = api.YoutubeApi(mock).videoCategories;
+      var res = api.YoutubeApi(mock).videoCategories;
       var arg_part = buildUnnamed2462();
       var arg_hl = 'foo';
       var arg_id = buildUnnamed2463();
@@ -12519,7 +12510,7 @@ void main() {
   unittest.group('resource-VideosResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -12569,7 +12560,7 @@ void main() {
 
     unittest.test('method--getRating', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_id = buildUnnamed2464();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -12624,7 +12615,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_request = buildVideo();
       var arg_part = buildUnnamed2465();
       var arg_autoLevels = true;
@@ -12696,7 +12687,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_part = buildUnnamed2466();
       var arg_chart = 'foo';
       var arg_hl = 'foo';
@@ -12788,7 +12779,7 @@ void main() {
 
     unittest.test('method--rate', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_id = 'foo';
       var arg_rating = 'foo';
       var arg_$fields = 'foo';
@@ -12835,7 +12826,7 @@ void main() {
 
     unittest.test('method--reportAbuse', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_request = buildVideoAbuseReport();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -12887,7 +12878,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.VideosResourceApi res = api.YoutubeApi(mock).videos;
+      var res = api.YoutubeApi(mock).videos;
       var arg_request = buildVideo();
       var arg_part = buildUnnamed2468();
       var arg_onBehalfOfContentOwner = 'foo';
@@ -12948,7 +12939,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.WatermarksResourceApi res = api.YoutubeApi(mock).watermarks;
+      var res = api.YoutubeApi(mock).watermarks;
       var arg_request = buildInvideoBranding();
       var arg_channelId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
@@ -13003,7 +12994,7 @@ void main() {
 
     unittest.test('method--unset', () {
       var mock = HttpServerMock();
-      api.WatermarksResourceApi res = api.YoutubeApi(mock).watermarks;
+      var res = api.YoutubeApi(mock).watermarks;
       var arg_channelId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';

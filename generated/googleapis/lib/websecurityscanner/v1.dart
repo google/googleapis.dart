@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -912,8 +911,7 @@ class Authentication {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customAccount != null) {
       _json['customAccount'] = customAccount.toJson();
     }
@@ -956,8 +954,7 @@ class CrawledUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body;
     }
@@ -999,8 +996,7 @@ class CustomAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (loginUrl != null) {
       _json['loginUrl'] = loginUrl;
     }
@@ -1027,8 +1023,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1169,8 +1164,7 @@ class Finding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body;
     }
@@ -1247,8 +1241,7 @@ class FindingTypeStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (findingCount != null) {
       _json['findingCount'] = findingCount;
     }
@@ -1279,8 +1272,7 @@ class Form {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionUri != null) {
       _json['actionUri'] = actionUri;
     }
@@ -1313,8 +1305,7 @@ class GoogleAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (password != null) {
       _json['password'] = password;
     }
@@ -1345,8 +1336,7 @@ class Header {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1373,8 +1363,7 @@ class IapCredential {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iapTestServiceAccountInfo != null) {
       _json['iapTestServiceAccountInfo'] = iapTestServiceAccountInfo.toJson();
     }
@@ -1398,8 +1387,7 @@ class IapTestServiceAccountInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (targetAudienceClientId != null) {
       _json['targetAudienceClientId'] = targetAudienceClientId;
     }
@@ -1430,8 +1418,7 @@ class ListCrawledUrlsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (crawledUrls != null) {
       _json['crawledUrls'] =
           crawledUrls.map((value) => value.toJson()).toList();
@@ -1459,8 +1446,7 @@ class ListFindingTypeStatsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (findingTypeStats != null) {
       _json['findingTypeStats'] =
           findingTypeStats.map((value) => value.toJson()).toList();
@@ -1492,8 +1478,7 @@ class ListFindingsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (findings != null) {
       _json['findings'] = findings.map((value) => value.toJson()).toList();
     }
@@ -1527,8 +1512,7 @@ class ListScanConfigsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1563,8 +1547,7 @@ class ListScanRunsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1601,8 +1584,7 @@ class OutdatedLibrary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (learnMoreUrls != null) {
       _json['learnMoreUrls'] = learnMoreUrls;
     }
@@ -1723,8 +1705,7 @@ class ScanConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (authentication != null) {
       _json['authentication'] = authentication.toJson();
     }
@@ -1871,8 +1852,7 @@ class ScanConfigError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1985,8 +1965,7 @@ class ScanRun {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -2074,8 +2053,7 @@ class ScanRunErrorTrace {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2119,8 +2097,7 @@ class ScanRunWarningTrace {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2151,8 +2128,7 @@ class Schedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (intervalDurationDays != null) {
       _json['intervalDurationDays'] = intervalDurationDays;
     }
@@ -2172,8 +2148,7 @@ class StartScanRunRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2187,8 +2162,7 @@ class StopScanRunRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2214,8 +2188,7 @@ class ViolatingResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contentType != null) {
       _json['contentType'] = contentType;
     }
@@ -2250,8 +2223,7 @@ class VulnerableHeaders {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (headers != null) {
       _json['headers'] = headers.map((value) => value.toJson()).toList();
     }
@@ -2278,8 +2250,7 @@ class VulnerableParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameterNames != null) {
       _json['parameterNames'] = parameterNames;
     }
@@ -2342,8 +2313,7 @@ class Xss {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attackVector != null) {
       _json['attackVector'] = attackVector;
     }

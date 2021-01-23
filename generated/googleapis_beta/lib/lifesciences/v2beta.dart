@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -495,8 +494,7 @@ class Accelerator {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -698,8 +696,7 @@ class Action {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alwaysRun != null) {
       _json['alwaysRun'] = alwaysRun;
     }
@@ -767,8 +764,7 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -789,8 +785,7 @@ class ContainerKilledEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionId != null) {
       _json['actionId'] = actionId;
     }
@@ -830,8 +825,7 @@ class ContainerStartedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionId != null) {
       _json['actionId'] = actionId;
     }
@@ -877,8 +871,7 @@ class ContainerStoppedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionId != null) {
       _json['actionId'] = actionId;
     }
@@ -918,8 +911,7 @@ class DelayedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cause != null) {
       _json['cause'] = cause;
     }
@@ -971,8 +963,7 @@ class Disk {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1002,8 +993,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1093,8 +1083,7 @@ class Event {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (containerKilled != null) {
       _json['containerKilled'] = containerKilled.toJson();
     }
@@ -1236,8 +1225,7 @@ class FailedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cause != null) {
       _json['cause'] = cause;
     }
@@ -1270,8 +1258,7 @@ class ListLocationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locations != null) {
       _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
@@ -1304,8 +1291,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1362,8 +1348,7 @@ class Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -1431,8 +1416,7 @@ class Metadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -1481,8 +1465,7 @@ class Mount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disk != null) {
       _json['disk'] = disk;
     }
@@ -1534,8 +1517,7 @@ class Network {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (network != null) {
       _json['network'] = network;
     }
@@ -1600,8 +1582,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -1662,8 +1643,7 @@ class Pipeline {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actions != null) {
       _json['actions'] = actions.map((value) => value.toJson()).toList();
     }
@@ -1694,8 +1674,7 @@ class PullStartedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageUri != null) {
       _json['imageUri'] = imageUri;
     }
@@ -1717,8 +1696,7 @@ class PullStoppedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageUri != null) {
       _json['imageUri'] = imageUri;
     }
@@ -1755,8 +1733,7 @@ class Resources {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (regions != null) {
       _json['regions'] = regions;
     }
@@ -1796,8 +1773,7 @@ class RunPipelineRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (labels != null) {
       _json['labels'] = labels;
     }
@@ -1818,8 +1794,7 @@ class RunPipelineResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1848,8 +1823,7 @@ class Secret {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cipherText != null) {
       _json['cipherText'] = cipherText;
     }
@@ -1882,8 +1856,7 @@ class ServiceAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1934,8 +1907,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1972,8 +1944,7 @@ class UnexpectedExitStatusEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionId != null) {
       _json['actionId'] = actionId;
     }
@@ -2114,8 +2085,7 @@ class VirtualMachine {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accelerators != null) {
       _json['accelerators'] =
           accelerators.map((value) => value.toJson()).toList();
@@ -2186,8 +2156,7 @@ class WorkerAssignedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instance != null) {
       _json['instance'] = instance;
     }
@@ -2222,8 +2191,7 @@ class WorkerReleasedEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instance != null) {
       _json['instance'] = instance;
     }

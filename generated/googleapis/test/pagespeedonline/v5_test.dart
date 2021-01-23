@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -911,8 +910,7 @@ void main() {
   unittest.group('resource-PagespeedapiResourceApi', () {
     unittest.test('method--runpagespeed', () {
       var mock = HttpServerMock();
-      api.PagespeedapiResourceApi res =
-          api.PagespeedonlineApi(mock).pagespeedapi;
+      var res = api.PagespeedonlineApi(mock).pagespeedapi;
       var arg_captchaToken = 'foo';
       var arg_category = buildUnnamed2498();
       var arg_locale = 'foo';

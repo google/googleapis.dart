@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1324,8 +1323,7 @@ void main() {
   unittest.group('resource-ProjectsPatchDeploymentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchDeploymentsResourceApi res =
-          api.OsconfigApi(mock).projects.patchDeployments;
+      var res = api.OsconfigApi(mock).projects.patchDeployments;
       var arg_request = buildPatchDeployment();
       var arg_parent = 'foo';
       var arg_patchDeploymentId = 'foo';
@@ -1380,8 +1378,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchDeploymentsResourceApi res =
-          api.OsconfigApi(mock).projects.patchDeployments;
+      var res = api.OsconfigApi(mock).projects.patchDeployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1428,8 +1425,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchDeploymentsResourceApi res =
-          api.OsconfigApi(mock).projects.patchDeployments;
+      var res = api.OsconfigApi(mock).projects.patchDeployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1476,8 +1472,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchDeploymentsResourceApi res =
-          api.OsconfigApi(mock).projects.patchDeployments;
+      var res = api.OsconfigApi(mock).projects.patchDeployments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1535,8 +1530,7 @@ void main() {
   unittest.group('resource-ProjectsPatchJobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchJobsResourceApi res =
-          api.OsconfigApi(mock).projects.patchJobs;
+      var res = api.OsconfigApi(mock).projects.patchJobs;
       var arg_request = buildCancelPatchJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1587,8 +1581,7 @@ void main() {
 
     unittest.test('method--execute', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchJobsResourceApi res =
-          api.OsconfigApi(mock).projects.patchJobs;
+      var res = api.OsconfigApi(mock).projects.patchJobs;
       var arg_request = buildExecutePatchJobRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1639,8 +1632,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchJobsResourceApi res =
-          api.OsconfigApi(mock).projects.patchJobs;
+      var res = api.OsconfigApi(mock).projects.patchJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1687,8 +1679,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchJobsResourceApi res =
-          api.OsconfigApi(mock).projects.patchJobs;
+      var res = api.OsconfigApi(mock).projects.patchJobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1749,8 +1740,7 @@ void main() {
   unittest.group('resource-ProjectsPatchJobsInstanceDetailsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsPatchJobsInstanceDetailsResourceApi res =
-          api.OsconfigApi(mock).projects.patchJobs.instanceDetails;
+      var res = api.OsconfigApi(mock).projects.patchJobs.instanceDetails;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

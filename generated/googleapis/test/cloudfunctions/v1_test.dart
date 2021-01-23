@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1263,7 +1262,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.CloudfunctionsApi(mock).operations;
+      var res = api.CloudfunctionsApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1310,7 +1309,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.CloudfunctionsApi(mock).operations;
+      var res = api.CloudfunctionsApi(mock).operations;
       var arg_filter = 'foo';
       var arg_name = 'foo';
       var arg_pageSize = 42;
@@ -1372,8 +1371,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations;
+      var res = api.CloudfunctionsApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1434,8 +1432,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsFunctionsResourceApi', () {
     unittest.test('method--call', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildCallFunctionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1486,8 +1483,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildCloudFunction();
       var arg_location = 'foo';
       var arg_$fields = 'foo';
@@ -1538,8 +1534,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1586,8 +1581,7 @@ void main() {
 
     unittest.test('method--generateDownloadUrl', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildGenerateDownloadUrlRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1638,8 +1632,7 @@ void main() {
 
     unittest.test('method--generateUploadUrl', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildGenerateUploadUrlRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1690,8 +1683,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1738,8 +1730,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1793,8 +1784,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1850,8 +1840,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildCloudFunction();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1906,8 +1895,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1958,8 +1946,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFunctionsResourceApi res =
-          api.CloudfunctionsApi(mock).projects.locations.functions;
+      var res = api.CloudfunctionsApi(mock).projects.locations.functions;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

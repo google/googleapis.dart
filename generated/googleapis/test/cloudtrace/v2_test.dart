@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -713,8 +712,7 @@ void main() {
   unittest.group('resource-ProjectsTracesResourceApi', () {
     unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
-      api.ProjectsTracesResourceApi res =
-          api.CloudtraceApi(mock).projects.traces;
+      var res = api.CloudtraceApi(mock).projects.traces;
       var arg_request = buildBatchWriteSpansRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -767,8 +765,7 @@ void main() {
   unittest.group('resource-ProjectsTracesSpansResourceApi', () {
     unittest.test('method--createSpan', () {
       var mock = HttpServerMock();
-      api.ProjectsTracesSpansResourceApi res =
-          api.CloudtraceApi(mock).projects.traces.spans;
+      var res = api.CloudtraceApi(mock).projects.traces.spans;
       var arg_request = buildSpan();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

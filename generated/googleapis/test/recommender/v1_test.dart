@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -997,7 +996,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInsightTypesInsightsResourceApi res =
+      var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1045,7 +1044,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInsightTypesInsightsResourceApi res =
+      var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
@@ -1106,7 +1105,7 @@ void main() {
 
     unittest.test('method--markAccepted', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInsightTypesInsightsResourceApi res =
+      var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
       var arg_request =
           buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
@@ -1164,12 +1163,11 @@ void main() {
       'resource-ProjectsLocationsRecommendersRecommendationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRecommendersRecommendationsResourceApi res =
-          api.RecommenderApi(mock)
-              .projects
-              .locations
-              .recommenders
-              .recommendations;
+      var res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1217,12 +1215,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRecommendersRecommendationsResourceApi res =
-          api.RecommenderApi(mock)
-              .projects
-              .locations
-              .recommenders
-              .recommendations;
+      var res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1282,12 +1279,11 @@ void main() {
 
     unittest.test('method--markClaimed', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRecommendersRecommendationsResourceApi res =
-          api.RecommenderApi(mock)
-              .projects
-              .locations
-              .recommenders
-              .recommendations;
+      var res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
       var arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       var arg_name = 'foo';
@@ -1341,12 +1337,11 @@ void main() {
 
     unittest.test('method--markFailed', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRecommendersRecommendationsResourceApi res =
-          api.RecommenderApi(mock)
-              .projects
-              .locations
-              .recommenders
-              .recommendations;
+      var res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
       var arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       var arg_name = 'foo';
@@ -1400,12 +1395,11 @@ void main() {
 
     unittest.test('method--markSucceeded', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRecommendersRecommendationsResourceApi res =
-          api.RecommenderApi(mock)
-              .projects
-              .locations
-              .recommenders
-              .recommendations;
+      var res = api.RecommenderApi(mock)
+          .projects
+          .locations
+          .recommenders
+          .recommendations;
       var arg_request =
           buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       var arg_name = 'foo';

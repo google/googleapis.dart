@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -325,7 +324,7 @@ void main() {
   unittest.group('resource-TextResourceApi', () {
     unittest.test('method--synthesize', () {
       var mock = HttpServerMock();
-      api.TextResourceApi res = api.TexttospeechApi(mock).text;
+      var res = api.TexttospeechApi(mock).text;
       var arg_request = buildSynthesizeSpeechRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -376,7 +375,7 @@ void main() {
   unittest.group('resource-VoicesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VoicesResourceApi res = api.TexttospeechApi(mock).voices;
+      var res = api.TexttospeechApi(mock).voices;
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

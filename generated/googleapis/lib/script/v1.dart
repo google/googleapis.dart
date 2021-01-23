@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1263,8 +1262,7 @@ class Content {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (files != null) {
       _json['files'] = files.map((value) => value.toJson()).toList();
     }
@@ -1297,8 +1295,7 @@ class CreateProjectRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parentId != null) {
       _json['parentId'] = parentId;
     }
@@ -1343,8 +1340,7 @@ class Deployment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deploymentConfig != null) {
       _json['deploymentConfig'] = deploymentConfig.toJson();
     }
@@ -1394,8 +1390,7 @@ class DeploymentConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1425,8 +1420,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1469,8 +1463,7 @@ class EntryPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addOn != null) {
       _json['addOn'] = addOn.toJson();
     }
@@ -1502,8 +1495,7 @@ class ExecuteStreamResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (result != null) {
       _json['result'] = result.toJson();
     }
@@ -1549,8 +1541,7 @@ class ExecutionError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorMessage != null) {
       _json['errorMessage'] = errorMessage;
     }
@@ -1621,8 +1612,7 @@ class ExecutionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devMode != null) {
       _json['devMode'] = devMode;
     }
@@ -1662,8 +1652,7 @@ class ExecutionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (result != null) {
       _json['result'] = result;
     }
@@ -1737,8 +1726,7 @@ class File {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -1812,8 +1800,7 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addOnType != null) {
       _json['addOnType'] = addOnType;
     }
@@ -1860,8 +1847,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access;
     }
@@ -1884,8 +1870,7 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entryPointConfig != null) {
       _json['entryPointConfig'] = entryPointConfig.toJson();
     }
@@ -1907,8 +1892,7 @@ class GoogleAppsScriptTypeFunction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1933,8 +1917,7 @@ class GoogleAppsScriptTypeFunctionSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values.map((value) => value.toJson()).toList();
     }
@@ -2023,8 +2006,7 @@ class GoogleAppsScriptTypeProcess {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (duration != null) {
       _json['duration'] = duration;
     }
@@ -2082,8 +2064,7 @@ class GoogleAppsScriptTypeUser {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domain != null) {
       _json['domain'] = domain;
     }
@@ -2135,8 +2116,7 @@ class GoogleAppsScriptTypeWebAppConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access;
     }
@@ -2168,8 +2148,7 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entryPointConfig != null) {
       _json['entryPointConfig'] = entryPointConfig.toJson();
     }
@@ -2203,8 +2182,7 @@ class ListDeploymentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deployments != null) {
       _json['deployments'] =
           deployments.map((value) => value.toJson()).toList();
@@ -2240,8 +2218,7 @@ class ListScriptProcessesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -2276,8 +2253,7 @@ class ListUserProcessesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -2304,8 +2280,7 @@ class ListValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values.map((value) => value.toJson()).toList();
     }
@@ -2336,8 +2311,7 @@ class ListVersionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -2381,8 +2355,7 @@ class Metrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeUsers != null) {
       _json['activeUsers'] =
           activeUsers.map((value) => value.toJson()).toList();
@@ -2425,8 +2398,7 @@ class MetricsValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -2492,8 +2464,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -2560,8 +2531,7 @@ class Project {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -2601,8 +2571,7 @@ class ScriptExecutionResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (returnValue != null) {
       _json['returnValue'] = returnValue.toJson();
     }
@@ -2630,8 +2599,7 @@ class ScriptStackTraceElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (function != null) {
       _json['function'] = function;
     }
@@ -2681,8 +2649,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2713,8 +2680,7 @@ class Struct {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] =
           commons.mapMap<Value, core.Map<core.String, core.Object>>(
@@ -2738,8 +2704,7 @@ class UpdateDeploymentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deploymentConfig != null) {
       _json['deploymentConfig'] = deploymentConfig.toJson();
     }
@@ -2823,8 +2788,7 @@ class Value {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -2891,8 +2855,7 @@ class Version {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }

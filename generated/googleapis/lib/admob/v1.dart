@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -340,8 +339,7 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -377,8 +375,7 @@ class DateRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endDate != null) {
       _json['endDate'] = endDate.toJson();
     }
@@ -403,8 +400,7 @@ class GenerateMediationReportRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (reportSpec != null) {
       _json['reportSpec'] = reportSpec.toJson();
     }
@@ -449,8 +445,7 @@ class GenerateMediationReportResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footer != null) {
       _json['footer'] = footer.toJson();
     }
@@ -478,8 +473,7 @@ class GenerateNetworkReportRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (reportSpec != null) {
       _json['reportSpec'] = reportSpec.toJson();
     }
@@ -524,8 +518,7 @@ class GenerateNetworkReportResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footer != null) {
       _json['footer'] = footer.toJson();
     }
@@ -562,8 +555,7 @@ class ListPublisherAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (account != null) {
       _json['account'] = account.map((value) => value.toJson()).toList();
     }
@@ -599,8 +591,7 @@ class LocalizationSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currencyCode != null) {
       _json['currencyCode'] = currencyCode;
     }
@@ -698,8 +689,7 @@ class MediationReportSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateRange != null) {
       _json['dateRange'] = dateRange.toJson();
     }
@@ -777,8 +767,7 @@ class MediationReportSpecDimensionFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -872,8 +861,7 @@ class MediationReportSpecSortCondition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -975,8 +963,7 @@ class NetworkReportSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateRange != null) {
       _json['dateRange'] = dateRange.toJson();
     }
@@ -1053,8 +1040,7 @@ class NetworkReportSpecDimensionFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -1148,8 +1134,7 @@ class NetworkReportSpecSortCondition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -1201,8 +1186,7 @@ class PublisherAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currencyCode != null) {
       _json['currencyCode'] = currencyCode;
     }
@@ -1244,8 +1228,7 @@ class ReportFooter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matchingRowCount != null) {
       _json['matchingRowCount'] = matchingRowCount;
     }
@@ -1287,8 +1270,7 @@ class ReportHeader {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateRange != null) {
       _json['dateRange'] = dateRange.toJson();
     }
@@ -1328,8 +1310,7 @@ class ReportRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionValues != null) {
       _json['dimensionValues'] = commons
           .mapMap<ReportRowDimensionValue, core.Map<core.String, core.Object>>(
@@ -1366,8 +1347,7 @@ class ReportRowDimensionValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayLabel != null) {
       _json['displayLabel'] = displayLabel;
     }
@@ -1406,8 +1386,7 @@ class ReportRowMetricValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (doubleValue != null) {
       _json['doubleValue'] = doubleValue;
     }
@@ -1458,8 +1437,7 @@ class ReportWarning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1484,8 +1462,7 @@ class StringList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -607,8 +606,7 @@ void main() {
   unittest.group('resource-AchievementsResourceApi', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res =
-          api.GamesManagementApi(mock).achievements;
+      var res = api.GamesManagementApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -663,8 +661,7 @@ void main() {
 
     unittest.test('method--resetAll', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res =
-          api.GamesManagementApi(mock).achievements;
+      var res = api.GamesManagementApi(mock).achievements;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -709,8 +706,7 @@ void main() {
 
     unittest.test('method--resetAllForAllPlayers', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res =
-          api.GamesManagementApi(mock).achievements;
+      var res = api.GamesManagementApi(mock).achievements;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -755,8 +751,7 @@ void main() {
 
     unittest.test('method--resetForAllPlayers', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res =
-          api.GamesManagementApi(mock).achievements;
+      var res = api.GamesManagementApi(mock).achievements;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -809,8 +804,7 @@ void main() {
 
     unittest.test('method--resetMultipleForAllPlayers', () {
       var mock = HttpServerMock();
-      api.AchievementsResourceApi res =
-          api.GamesManagementApi(mock).achievements;
+      var res = api.GamesManagementApi(mock).achievements;
       var arg_request = buildAchievementResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -861,8 +855,7 @@ void main() {
   unittest.group('resource-ApplicationsResourceApi', () {
     unittest.test('method--listHidden', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res =
-          api.GamesManagementApi(mock).applications;
+      var res = api.GamesManagementApi(mock).applications;
       var arg_applicationId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -928,7 +921,7 @@ void main() {
   unittest.group('resource-EventsResourceApi', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesManagementApi(mock).events;
+      var res = api.GamesManagementApi(mock).events;
       var arg_eventId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -981,7 +974,7 @@ void main() {
 
     unittest.test('method--resetAll', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesManagementApi(mock).events;
+      var res = api.GamesManagementApi(mock).events;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1022,7 +1015,7 @@ void main() {
 
     unittest.test('method--resetAllForAllPlayers', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesManagementApi(mock).events;
+      var res = api.GamesManagementApi(mock).events;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1065,7 +1058,7 @@ void main() {
 
     unittest.test('method--resetForAllPlayers', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesManagementApi(mock).events;
+      var res = api.GamesManagementApi(mock).events;
       var arg_eventId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1118,7 +1111,7 @@ void main() {
 
     unittest.test('method--resetMultipleForAllPlayers', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.GamesManagementApi(mock).events;
+      var res = api.GamesManagementApi(mock).events;
       var arg_request = buildEventsResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1169,7 +1162,7 @@ void main() {
   unittest.group('resource-PlayersResourceApi', () {
     unittest.test('method--hide', () {
       var mock = HttpServerMock();
-      api.PlayersResourceApi res = api.GamesManagementApi(mock).players;
+      var res = api.GamesManagementApi(mock).players;
       var arg_applicationId = 'foo';
       var arg_playerId = 'foo';
       var arg_$fields = 'foo';
@@ -1226,7 +1219,7 @@ void main() {
 
     unittest.test('method--unhide', () {
       var mock = HttpServerMock();
-      api.PlayersResourceApi res = api.GamesManagementApi(mock).players;
+      var res = api.GamesManagementApi(mock).players;
       var arg_applicationId = 'foo';
       var arg_playerId = 'foo';
       var arg_$fields = 'foo';
@@ -1285,7 +1278,7 @@ void main() {
   unittest.group('resource-ScoresResourceApi', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesManagementApi(mock).scores;
+      var res = api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1340,7 +1333,7 @@ void main() {
 
     unittest.test('method--resetAll', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesManagementApi(mock).scores;
+      var res = api.GamesManagementApi(mock).scores;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1385,7 +1378,7 @@ void main() {
 
     unittest.test('method--resetAllForAllPlayers', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesManagementApi(mock).scores;
+      var res = api.GamesManagementApi(mock).scores;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1428,7 +1421,7 @@ void main() {
 
     unittest.test('method--resetForAllPlayers', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesManagementApi(mock).scores;
+      var res = api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1481,7 +1474,7 @@ void main() {
 
     unittest.test('method--resetMultipleForAllPlayers', () {
       var mock = HttpServerMock();
-      api.ScoresResourceApi res = api.GamesManagementApi(mock).scores;
+      var res = api.GamesManagementApi(mock).scores;
       var arg_request = buildScoresResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

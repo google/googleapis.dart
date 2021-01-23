@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1051,7 +1050,7 @@ void main() {
   unittest.group('resource-ApisResourceApi', () {
     unittest.test('method--getRest', () {
       var mock = HttpServerMock();
-      api.ApisResourceApi res = api.DiscoveryApi(mock).apis;
+      var res = api.DiscoveryApi(mock).apis;
       var arg_api = 'foo';
       var arg_version = 'foo';
       var arg_$fields = 'foo';
@@ -1119,7 +1118,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ApisResourceApi res = api.DiscoveryApi(mock).apis;
+      var res = api.DiscoveryApi(mock).apis;
       var arg_name = 'foo';
       var arg_preferred = true;
       var arg_$fields = 'foo';

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7359,8 +7358,7 @@ class BigQueryOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (usePartitionedTables != null) {
       _json['usePartitionedTables'] = usePartitionedTables;
     }
@@ -7410,8 +7408,7 @@ class BucketOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (explicitBuckets != null) {
       _json['explicitBuckets'] = explicitBuckets.toJson();
     }
@@ -7479,8 +7476,7 @@ class CmekSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json['kmsKeyName'] = kmsKeyName;
     }
@@ -7507,8 +7503,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7534,8 +7529,7 @@ class Explicit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bounds != null) {
       _json['bounds'] = bounds;
     }
@@ -7574,8 +7568,7 @@ class Exponential {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (growthFactor != null) {
       _json['growthFactor'] = growthFactor;
     }
@@ -7702,8 +7695,7 @@ class HttpRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cacheFillBytes != null) {
       _json['cacheFillBytes'] = cacheFillBytes;
     }
@@ -7783,8 +7775,7 @@ class LabelDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -7829,8 +7820,7 @@ class Linear {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numFiniteBuckets != null) {
       _json['numFiniteBuckets'] = numFiniteBuckets;
     }
@@ -7868,8 +7858,7 @@ class ListBucketsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (buckets != null) {
       _json['buckets'] = buckets.map((value) => value.toJson()).toList();
     }
@@ -7904,8 +7893,7 @@ class ListExclusionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exclusions != null) {
       _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
     }
@@ -7983,8 +7971,7 @@ class ListLogEntriesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter;
     }
@@ -8039,8 +8026,7 @@ class ListLogEntriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entries != null) {
       _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
@@ -8075,8 +8061,7 @@ class ListLogMetricsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metrics != null) {
       _json['metrics'] = metrics.map((value) => value.toJson()).toList();
     }
@@ -8110,8 +8095,7 @@ class ListLogsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (logNames != null) {
       _json['logNames'] = logNames;
     }
@@ -8147,8 +8131,7 @@ class ListMonitoredResourceDescriptorsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -8184,8 +8167,7 @@ class ListSinksResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -8262,8 +8244,7 @@ class LogBucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -8482,8 +8463,7 @@ class LogEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (httpRequest != null) {
       _json['httpRequest'] = httpRequest.toJson();
     }
@@ -8576,8 +8556,7 @@ class LogEntryOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (first != null) {
       _json['first'] = first;
     }
@@ -8627,8 +8606,7 @@ class LogEntrySourceLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (file != null) {
       _json['file'] = file;
     }
@@ -8705,8 +8683,7 @@ class LogExclusion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -8774,8 +8751,7 @@ class LogLine {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (logMessage != null) {
       _json['logMessage'] = logMessage;
     }
@@ -8924,8 +8900,7 @@ class LogMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketOptions != null) {
       _json['bucketOptions'] = bucketOptions.toJson();
     }
@@ -9090,8 +9065,7 @@ class LogSink {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bigqueryOptions != null) {
       _json['bigqueryOptions'] = bigqueryOptions.toJson();
     }
@@ -9339,8 +9313,7 @@ class MetricDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -9441,8 +9414,7 @@ class MetricDescriptorMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ingestDelay != null) {
       _json['ingestDelay'] = ingestDelay;
     }
@@ -9489,8 +9461,7 @@ class MonitoredResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (labels != null) {
       _json['labels'] = labels;
     }
@@ -9614,8 +9585,7 @@ class MonitoredResourceDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -9672,8 +9642,7 @@ class MonitoredResourceMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (systemLabels != null) {
       _json['systemLabels'] = systemLabels;
     }
@@ -9912,8 +9881,7 @@ class RequestLog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appEngineRelease != null) {
       _json['appEngineRelease'] = appEngineRelease;
     }
@@ -10049,8 +10017,7 @@ class SourceLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (file != null) {
       _json['file'] = file;
     }
@@ -10087,8 +10054,7 @@ class SourceReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (repository != null) {
       _json['repository'] = repository;
     }
@@ -10108,8 +10074,7 @@ class UndeleteBucketRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -10201,8 +10166,7 @@ class WriteLogEntriesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dryRun != null) {
       _json['dryRun'] = dryRun;
     }
@@ -10234,8 +10198,7 @@ class WriteLogEntriesResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }

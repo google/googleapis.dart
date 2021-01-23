@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4080,8 +4079,7 @@ void main() {
   unittest.group('resource-ProjectsAlertPoliciesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAlertPoliciesResourceApi res =
-          api.MonitoringApi(mock).projects.alertPolicies;
+      var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_request = buildAlertPolicy();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4132,8 +4130,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAlertPoliciesResourceApi res =
-          api.MonitoringApi(mock).projects.alertPolicies;
+      var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4180,8 +4177,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAlertPoliciesResourceApi res =
-          api.MonitoringApi(mock).projects.alertPolicies;
+      var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4228,8 +4224,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAlertPoliciesResourceApi res =
-          api.MonitoringApi(mock).projects.alertPolicies;
+      var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -4292,8 +4287,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAlertPoliciesResourceApi res =
-          api.MonitoringApi(mock).projects.alertPolicies;
+      var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_request = buildAlertPolicy();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4350,8 +4344,7 @@ void main() {
   unittest.group('resource-ProjectsCollectdTimeSeriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsCollectdTimeSeriesResourceApi res =
-          api.MonitoringApi(mock).projects.collectdTimeSeries;
+      var res = api.MonitoringApi(mock).projects.collectdTimeSeries;
       var arg_request = buildCreateCollectdTimeSeriesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4404,8 +4397,7 @@ void main() {
   unittest.group('resource-ProjectsGroupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.MonitoringApi(mock).projects.groups;
+      var res = api.MonitoringApi(mock).projects.groups;
       var arg_request = buildGroup();
       var arg_name = 'foo';
       var arg_validateOnly = true;
@@ -4460,8 +4452,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.MonitoringApi(mock).projects.groups;
+      var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
       var arg_recursive = true;
       var arg_$fields = 'foo';
@@ -4511,8 +4502,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.MonitoringApi(mock).projects.groups;
+      var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4559,8 +4549,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.MonitoringApi(mock).projects.groups;
+      var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
       var arg_ancestorsOfGroup = 'foo';
       var arg_childrenOfGroup = 'foo';
@@ -4628,8 +4617,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.MonitoringApi(mock).projects.groups;
+      var res = api.MonitoringApi(mock).projects.groups;
       var arg_request = buildGroup();
       var arg_name = 'foo';
       var arg_validateOnly = true;
@@ -4686,8 +4674,7 @@ void main() {
   unittest.group('resource-ProjectsGroupsMembersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsMembersResourceApi res =
-          api.MonitoringApi(mock).projects.groups.members;
+      var res = api.MonitoringApi(mock).projects.groups.members;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_interval_endTime = 'foo';
@@ -4756,8 +4743,7 @@ void main() {
   unittest.group('resource-ProjectsMetricDescriptorsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.metricDescriptors;
+      var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_request = buildMetricDescriptor();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4808,8 +4794,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.metricDescriptors;
+      var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4856,8 +4841,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.metricDescriptors;
+      var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4904,8 +4888,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.metricDescriptors;
+      var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4967,8 +4950,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsMonitoredResourceDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
+      var res = api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5015,8 +4997,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsMonitoredResourceDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
+      var res = api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -5079,8 +5060,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannelDescriptors;
+      var res = api.MonitoringApi(mock).projects.notificationChannelDescriptors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5127,8 +5107,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelDescriptorsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannelDescriptors;
+      var res = api.MonitoringApi(mock).projects.notificationChannelDescriptors;
       var arg_name = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5187,8 +5166,7 @@ void main() {
   unittest.group('resource-ProjectsNotificationChannelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildNotificationChannel();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5239,8 +5217,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -5289,8 +5266,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5337,8 +5313,7 @@ void main() {
 
     unittest.test('method--getVerificationCode', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildGetNotificationChannelVerificationCodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5391,8 +5366,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -5455,8 +5429,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildNotificationChannel();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5511,8 +5484,7 @@ void main() {
 
     unittest.test('method--sendVerificationCode', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildSendNotificationChannelVerificationCodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5564,8 +5536,7 @@ void main() {
 
     unittest.test('method--verify', () {
       var mock = HttpServerMock();
-      api.ProjectsNotificationChannelsResourceApi res =
-          api.MonitoringApi(mock).projects.notificationChannels;
+      var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildVerifyNotificationChannelRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5618,8 +5589,7 @@ void main() {
   unittest.group('resource-ProjectsTimeSeriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsTimeSeriesResourceApi res =
-          api.MonitoringApi(mock).projects.timeSeries;
+      var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_request = buildCreateTimeSeriesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5670,8 +5640,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTimeSeriesResourceApi res =
-          api.MonitoringApi(mock).projects.timeSeries;
+      var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_name = 'foo';
       var arg_aggregation_alignmentPeriod = 'foo';
       var arg_aggregation_crossSeriesReducer = 'foo';
@@ -5762,8 +5731,7 @@ void main() {
 
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.ProjectsTimeSeriesResourceApi res =
-          api.MonitoringApi(mock).projects.timeSeries;
+      var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_request = buildQueryTimeSeriesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5816,8 +5784,7 @@ void main() {
   unittest.group('resource-ProjectsUptimeCheckConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsUptimeCheckConfigsResourceApi res =
-          api.MonitoringApi(mock).projects.uptimeCheckConfigs;
+      var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_request = buildUptimeCheckConfig();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5868,8 +5835,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsUptimeCheckConfigsResourceApi res =
-          api.MonitoringApi(mock).projects.uptimeCheckConfigs;
+      var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5916,8 +5882,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsUptimeCheckConfigsResourceApi res =
-          api.MonitoringApi(mock).projects.uptimeCheckConfigs;
+      var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5964,8 +5929,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsUptimeCheckConfigsResourceApi res =
-          api.MonitoringApi(mock).projects.uptimeCheckConfigs;
+      var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6021,8 +5985,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsUptimeCheckConfigsResourceApi res =
-          api.MonitoringApi(mock).projects.uptimeCheckConfigs;
+      var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_request = buildUptimeCheckConfig();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -6079,7 +6042,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.MonitoringApi(mock).services;
+      var res = api.MonitoringApi(mock).services;
       var arg_request = buildService();
       var arg_parent = 'foo';
       var arg_serviceId = 'foo';
@@ -6134,7 +6097,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.MonitoringApi(mock).services;
+      var res = api.MonitoringApi(mock).services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6181,7 +6144,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.MonitoringApi(mock).services;
+      var res = api.MonitoringApi(mock).services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6228,7 +6191,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.MonitoringApi(mock).services;
+      var res = api.MonitoringApi(mock).services;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6287,7 +6250,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.MonitoringApi(mock).services;
+      var res = api.MonitoringApi(mock).services;
       var arg_request = buildService();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -6344,8 +6307,7 @@ void main() {
   unittest.group('resource-ServicesServiceLevelObjectivesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ServicesServiceLevelObjectivesResourceApi res =
-          api.MonitoringApi(mock).services.serviceLevelObjectives;
+      var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_request = buildServiceLevelObjective();
       var arg_parent = 'foo';
       var arg_serviceLevelObjectiveId = 'foo';
@@ -6401,8 +6363,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ServicesServiceLevelObjectivesResourceApi res =
-          api.MonitoringApi(mock).services.serviceLevelObjectives;
+      var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6449,8 +6410,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ServicesServiceLevelObjectivesResourceApi res =
-          api.MonitoringApi(mock).services.serviceLevelObjectives;
+      var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_name = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -6499,8 +6459,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ServicesServiceLevelObjectivesResourceApi res =
-          api.MonitoringApi(mock).services.serviceLevelObjectives;
+      var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6563,8 +6522,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ServicesServiceLevelObjectivesResourceApi res =
-          api.MonitoringApi(mock).services.serviceLevelObjectives;
+      var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_request = buildServiceLevelObjective();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -6621,8 +6579,7 @@ void main() {
   unittest.group('resource-UptimeCheckIpsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UptimeCheckIpsResourceApi res =
-          api.MonitoringApi(mock).uptimeCheckIps;
+      var res = api.MonitoringApi(mock).uptimeCheckIps;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';

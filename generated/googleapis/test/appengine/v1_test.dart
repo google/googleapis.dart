@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2939,7 +2938,7 @@ void main() {
   unittest.group('resource-AppsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.AppengineApi(mock).apps;
+      var res = api.AppengineApi(mock).apps;
       var arg_request = buildApplication();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2988,7 +2987,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.AppengineApi(mock).apps;
+      var res = api.AppengineApi(mock).apps;
       var arg_appsId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3037,7 +3036,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.AppengineApi(mock).apps;
+      var res = api.AppengineApi(mock).apps;
       var arg_request = buildApplication();
       var arg_appsId = 'foo';
       var arg_updateMask = 'foo';
@@ -3094,7 +3093,7 @@ void main() {
 
     unittest.test('method--repair', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.AppengineApi(mock).apps;
+      var res = api.AppengineApi(mock).apps;
       var arg_request = buildRepairApplicationRequest();
       var arg_appsId = 'foo';
       var arg_$fields = 'foo';
@@ -3155,8 +3154,7 @@ void main() {
   unittest.group('resource-AppsAuthorizedCertificatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedCertificatesResourceApi res =
-          api.AppengineApi(mock).apps.authorizedCertificates;
+      var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_request = buildAuthorizedCertificate();
       var arg_appsId = 'foo';
       var arg_$fields = 'foo';
@@ -3215,8 +3213,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedCertificatesResourceApi res =
-          api.AppengineApi(mock).apps.authorizedCertificates;
+      var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
       var arg_authorizedCertificatesId = 'foo';
       var arg_$fields = 'foo';
@@ -3277,8 +3274,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedCertificatesResourceApi res =
-          api.AppengineApi(mock).apps.authorizedCertificates;
+      var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
       var arg_authorizedCertificatesId = 'foo';
       var arg_view = 'foo';
@@ -3341,8 +3337,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedCertificatesResourceApi res =
-          api.AppengineApi(mock).apps.authorizedCertificates;
+      var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3410,8 +3405,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedCertificatesResourceApi res =
-          api.AppengineApi(mock).apps.authorizedCertificates;
+      var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_request = buildAuthorizedCertificate();
       var arg_appsId = 'foo';
       var arg_authorizedCertificatesId = 'foo';
@@ -3481,8 +3475,7 @@ void main() {
   unittest.group('resource-AppsAuthorizedDomainsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsAuthorizedDomainsResourceApi res =
-          api.AppengineApi(mock).apps.authorizedDomains;
+      var res = api.AppengineApi(mock).apps.authorizedDomains;
       var arg_appsId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3548,8 +3541,7 @@ void main() {
   unittest.group('resource-AppsDomainMappingsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AppsDomainMappingsResourceApi res =
-          api.AppengineApi(mock).apps.domainMappings;
+      var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_request = buildDomainMapping();
       var arg_appsId = 'foo';
       var arg_overrideStrategy = 'foo';
@@ -3612,8 +3604,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsDomainMappingsResourceApi res =
-          api.AppengineApi(mock).apps.domainMappings;
+      var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
       var arg_domainMappingsId = 'foo';
       var arg_$fields = 'foo';
@@ -3672,8 +3663,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsDomainMappingsResourceApi res =
-          api.AppengineApi(mock).apps.domainMappings;
+      var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
       var arg_domainMappingsId = 'foo';
       var arg_$fields = 'foo';
@@ -3732,8 +3722,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsDomainMappingsResourceApi res =
-          api.AppengineApi(mock).apps.domainMappings;
+      var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3797,8 +3786,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsDomainMappingsResourceApi res =
-          api.AppengineApi(mock).apps.domainMappings;
+      var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_request = buildDomainMapping();
       var arg_appsId = 'foo';
       var arg_domainMappingsId = 'foo';
@@ -3867,8 +3855,7 @@ void main() {
   unittest.group('resource-AppsFirewallIngressRulesResourceApi', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildBatchUpdateIngressRulesRequest();
       var arg_appsId = 'foo';
       var arg_$fields = 'foo';
@@ -3927,8 +3914,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildFirewallRule();
       var arg_appsId = 'foo';
       var arg_$fields = 'foo';
@@ -3987,8 +3973,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
       var arg_ingressRulesId = 'foo';
       var arg_$fields = 'foo';
@@ -4047,8 +4032,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
       var arg_ingressRulesId = 'foo';
       var arg_$fields = 'foo';
@@ -4107,8 +4091,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
       var arg_matchingAddress = 'foo';
       var arg_pageSize = 42;
@@ -4176,8 +4159,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsFirewallIngressRulesResourceApi res =
-          api.AppengineApi(mock).apps.firewall.ingressRules;
+      var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildFirewallRule();
       var arg_appsId = 'foo';
       var arg_ingressRulesId = 'foo';
@@ -4246,7 +4228,7 @@ void main() {
   unittest.group('resource-AppsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsLocationsResourceApi res = api.AppengineApi(mock).apps.locations;
+      var res = api.AppengineApi(mock).apps.locations;
       var arg_appsId = 'foo';
       var arg_locationsId = 'foo';
       var arg_$fields = 'foo';
@@ -4305,7 +4287,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsLocationsResourceApi res = api.AppengineApi(mock).apps.locations;
+      var res = api.AppengineApi(mock).apps.locations;
       var arg_appsId = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4374,8 +4356,7 @@ void main() {
   unittest.group('resource-AppsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsOperationsResourceApi res =
-          api.AppengineApi(mock).apps.operations;
+      var res = api.AppengineApi(mock).apps.operations;
       var arg_appsId = 'foo';
       var arg_operationsId = 'foo';
       var arg_$fields = 'foo';
@@ -4434,8 +4415,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsOperationsResourceApi res =
-          api.AppengineApi(mock).apps.operations;
+      var res = api.AppengineApi(mock).apps.operations;
       var arg_appsId = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4504,7 +4484,7 @@ void main() {
   unittest.group('resource-AppsServicesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsServicesResourceApi res = api.AppengineApi(mock).apps.services;
+      var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_$fields = 'foo';
@@ -4563,7 +4543,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsServicesResourceApi res = api.AppengineApi(mock).apps.services;
+      var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_$fields = 'foo';
@@ -4622,7 +4602,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsServicesResourceApi res = api.AppengineApi(mock).apps.services;
+      var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4686,7 +4666,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsServicesResourceApi res = api.AppengineApi(mock).apps.services;
+      var res = api.AppengineApi(mock).apps.services;
       var arg_request = buildService();
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
@@ -4760,8 +4740,7 @@ void main() {
   unittest.group('resource-AppsServicesVersionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsResourceApi res =
-          api.AppengineApi(mock).apps.services.versions;
+      var res = api.AppengineApi(mock).apps.services.versions;
       var arg_request = buildVersion();
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
@@ -4830,8 +4809,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsResourceApi res =
-          api.AppengineApi(mock).apps.services.versions;
+      var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_versionsId = 'foo';
@@ -4901,8 +4879,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsResourceApi res =
-          api.AppengineApi(mock).apps.services.versions;
+      var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_versionsId = 'foo';
@@ -4974,8 +4951,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsResourceApi res =
-          api.AppengineApi(mock).apps.services.versions;
+      var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_pageSize = 42;
@@ -5052,8 +5028,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsResourceApi res =
-          api.AppengineApi(mock).apps.services.versions;
+      var res = api.AppengineApi(mock).apps.services.versions;
       var arg_request = buildVersion();
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
@@ -5132,8 +5107,7 @@ void main() {
   unittest.group('resource-AppsServicesVersionsInstancesResourceApi', () {
     unittest.test('method--debug', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsInstancesResourceApi res =
-          api.AppengineApi(mock).apps.services.versions.instances;
+      var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_request = buildDebugInstanceRequest();
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
@@ -5224,8 +5198,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsInstancesResourceApi res =
-          api.AppengineApi(mock).apps.services.versions.instances;
+      var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_versionsId = 'foo';
@@ -5305,8 +5278,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsInstancesResourceApi res =
-          api.AppengineApi(mock).apps.services.versions.instances;
+      var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_versionsId = 'foo';
@@ -5386,8 +5358,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsServicesVersionsInstancesResourceApi res =
-          api.AppengineApi(mock).apps.services.versions.instances;
+      var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
       var arg_servicesId = 'foo';
       var arg_versionsId = 'foo';

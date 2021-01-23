@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -207,8 +206,7 @@ void main() {
   unittest.group('resource-ProjectsProfilesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsProfilesResourceApi res =
-          api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildCreateProfileRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -259,8 +257,7 @@ void main() {
 
     unittest.test('method--createOffline', () {
       var mock = HttpServerMock();
-      api.ProjectsProfilesResourceApi res =
-          api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -311,8 +308,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsProfilesResourceApi res =
-          api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudprofilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

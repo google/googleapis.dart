@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4936,8 +4935,7 @@ class Account {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -4981,8 +4979,7 @@ class AccountAccess {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permission != null) {
       _json['permission'] = permission;
     }
@@ -5152,8 +5149,7 @@ class BuiltInVariable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -5266,8 +5262,7 @@ class Client {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -5355,8 +5350,7 @@ class Condition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameter != null) {
       _json['parameter'] = parameter.map((value) => value.toJson()).toList();
     }
@@ -5443,8 +5437,7 @@ class Container {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -5509,8 +5502,7 @@ class ContainerAccess {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (containerId != null) {
       _json['containerId'] = containerId;
     }
@@ -5656,8 +5648,7 @@ class ContainerVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -5804,8 +5795,7 @@ class ContainerVersionHeader {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -5864,8 +5854,7 @@ class CreateBuiltInVariableResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (builtInVariable != null) {
       _json['builtInVariable'] =
           builtInVariable.map((value) => value.toJson()).toList();
@@ -5894,8 +5883,7 @@ class CreateContainerVersionRequestVersionOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -5941,8 +5929,7 @@ class CreateContainerVersionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compilerError != null) {
       _json['compilerError'] = compilerError;
     }
@@ -6028,8 +6015,7 @@ class CustomTemplate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -6109,8 +6095,7 @@ class Entity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changeStatus != null) {
       _json['changeStatus'] = changeStatus;
     }
@@ -6245,8 +6230,7 @@ class Environment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -6363,8 +6347,7 @@ class Folder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -6434,8 +6417,7 @@ class FolderEntities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6499,8 +6481,7 @@ class GalleryReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (host != null) {
       _json['host'] = host;
     }
@@ -6548,8 +6529,7 @@ class GetWorkspaceStatusResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json['mergeConflict'] =
           mergeConflict.map((value) => value.toJson()).toList();
@@ -6584,8 +6564,7 @@ class ListAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (account != null) {
       _json['account'] = account.map((value) => value.toJson()).toList();
     }
@@ -6619,8 +6598,7 @@ class ListContainerVersionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (containerVersionHeader != null) {
       _json['containerVersionHeader'] =
           containerVersionHeader.map((value) => value.toJson()).toList();
@@ -6654,8 +6632,7 @@ class ListContainersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (container != null) {
       _json['container'] = container.map((value) => value.toJson()).toList();
     }
@@ -6688,8 +6665,7 @@ class ListEnabledBuiltInVariablesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (builtInVariable != null) {
       _json['builtInVariable'] =
           builtInVariable.map((value) => value.toJson()).toList();
@@ -6723,8 +6699,7 @@ class ListEnvironmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environment != null) {
       _json['environment'] =
           environment.map((value) => value.toJson()).toList();
@@ -6758,8 +6733,7 @@ class ListFoldersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (folder != null) {
       _json['folder'] = folder.map((value) => value.toJson()).toList();
     }
@@ -6792,8 +6766,7 @@ class ListTagsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6825,8 +6798,7 @@ class ListTemplatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6859,8 +6831,7 @@ class ListTriggersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6893,8 +6864,7 @@ class ListUserPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6928,8 +6898,7 @@ class ListVariablesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6962,8 +6931,7 @@ class ListWorkspacesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6995,8 +6963,7 @@ class ListZonesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -7031,8 +6998,7 @@ class MergeConflict {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entityInBaseVersion != null) {
       _json['entityInBaseVersion'] = entityInBaseVersion.toJson();
     }
@@ -7134,8 +7100,7 @@ class Parameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -7175,8 +7140,7 @@ class PublishContainerVersionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compilerError != null) {
       _json['compilerError'] = compilerError;
     }
@@ -7214,8 +7178,7 @@ class QuickPreviewResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compilerError != null) {
       _json['compilerError'] = compilerError;
     }
@@ -7243,8 +7206,7 @@ class RevertBuiltInVariableResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -7268,8 +7230,7 @@ class RevertFolderResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (folder != null) {
       _json['folder'] = folder.toJson();
     }
@@ -7293,8 +7254,7 @@ class RevertTagResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tag != null) {
       _json['tag'] = tag.toJson();
     }
@@ -7318,8 +7278,7 @@ class RevertTemplateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (template != null) {
       _json['template'] = template.toJson();
     }
@@ -7343,8 +7302,7 @@ class RevertTriggerResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (trigger != null) {
       _json['trigger'] = trigger.toJson();
     }
@@ -7368,8 +7326,7 @@ class RevertVariableResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (variable != null) {
       _json['variable'] = variable.toJson();
     }
@@ -7393,8 +7350,7 @@ class RevertZoneResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (zone != null) {
       _json['zone'] = zone.toJson();
     }
@@ -7425,8 +7381,7 @@ class SetupTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stopOnSetupFailure != null) {
       _json['stopOnSetupFailure'] = stopOnSetupFailure;
     }
@@ -7457,8 +7412,7 @@ class SyncStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json['mergeConflict'] = mergeConflict;
     }
@@ -7494,8 +7448,7 @@ class SyncWorkspaceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mergeConflict != null) {
       _json['mergeConflict'] =
           mergeConflict.map((value) => value.toJson()).toList();
@@ -7728,8 +7681,7 @@ class Tag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -7836,8 +7788,7 @@ class TeardownTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stopTeardownOnFailure != null) {
       _json['stopTeardownOnFailure'] = stopTeardownOnFailure;
     }
@@ -8170,8 +8121,7 @@ class Trigger {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -8321,8 +8271,7 @@ class UserPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountAccess != null) {
       _json['accountAccess'] = accountAccess.toJson();
     }
@@ -8479,8 +8428,7 @@ class Variable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -8579,8 +8527,7 @@ class VariableFormatValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (caseConversionType != null) {
       _json['caseConversionType'] = caseConversionType;
     }
@@ -8661,8 +8608,7 @@ class Workspace {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -8775,8 +8721,7 @@ class Zone {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -8842,8 +8787,7 @@ class ZoneBoundary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.map((value) => value.toJson()).toList();
     }
@@ -8874,8 +8818,7 @@ class ZoneChildContainer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nickname != null) {
       _json['nickname'] = nickname;
     }
@@ -8907,8 +8850,7 @@ class ZoneTypeRestriction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enable != null) {
       _json['enable'] = enable;
     }

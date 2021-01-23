@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1950,7 +1949,7 @@ void main() {
   unittest.group('resource-AclResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
       var arg_ruleId = 'foo';
       var arg_$fields = 'foo';
@@ -2010,7 +2009,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
       var arg_ruleId = 'foo';
       var arg_$fields = 'foo';
@@ -2072,7 +2071,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = 'foo';
       var arg_sendNotifications = true;
@@ -2138,7 +2137,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2213,7 +2212,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = 'foo';
       var arg_ruleId = 'foo';
@@ -2283,7 +2282,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
       var arg_calendarId = 'foo';
       var arg_ruleId = 'foo';
@@ -2353,7 +2352,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.AclResourceApi res = api.CalendarApi(mock).acl;
+      var res = api.CalendarApi(mock).acl;
       var arg_request = buildChannel();
       var arg_calendarId = 'foo';
       var arg_maxResults = 42;
@@ -2434,7 +2433,7 @@ void main() {
   unittest.group('resource-CalendarListResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2484,7 +2483,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2536,7 +2535,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_colorRgbFormat = true;
       var arg_$fields = 'foo';
@@ -2592,7 +2591,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_maxResults = 42;
       var arg_minAccessRole = 'foo';
       var arg_pageToken = 'foo';
@@ -2665,7 +2664,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_calendarId = 'foo';
       var arg_colorRgbFormat = true;
@@ -2725,7 +2724,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
       var arg_calendarId = 'foo';
       var arg_colorRgbFormat = true;
@@ -2785,7 +2784,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.CalendarListResourceApi res = api.CalendarApi(mock).calendarList;
+      var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildChannel();
       var arg_maxResults = 42;
       var arg_minAccessRole = 'foo';
@@ -2864,7 +2863,7 @@ void main() {
   unittest.group('resource-CalendarsResourceApi', () {
     unittest.test('method--clear', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2920,7 +2919,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2970,7 +2969,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3022,7 +3021,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3074,7 +3073,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
@@ -3130,7 +3129,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CalendarsResourceApi res = api.CalendarApi(mock).calendars;
+      var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
@@ -3188,7 +3187,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.CalendarApi(mock).channels;
+      var res = api.CalendarApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3240,7 +3239,7 @@ void main() {
   unittest.group('resource-ColorsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ColorsResourceApi res = api.CalendarApi(mock).colors;
+      var res = api.CalendarApi(mock).colors;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3288,7 +3287,7 @@ void main() {
   unittest.group('resource-EventsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
       var arg_sendNotifications = true;
@@ -3357,7 +3356,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
       var arg_alwaysIncludeEmail = true;
@@ -3432,7 +3431,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = 'foo';
       var arg_conferenceDataVersion = 42;
@@ -3503,7 +3502,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = 'foo';
       var arg_conferenceDataVersion = 42;
@@ -3586,7 +3585,7 @@ void main() {
 
     unittest.test('method--instances', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
       var arg_alwaysIncludeEmail = true;
@@ -3691,7 +3690,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_alwaysIncludeEmail = true;
       var arg_iCalUID = 'foo';
@@ -3817,7 +3816,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
       var arg_destination = 'foo';
@@ -3897,7 +3896,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
@@ -3988,7 +3987,7 @@ void main() {
 
     unittest.test('method--quickAdd', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
       var arg_text = 'foo';
       var arg_sendNotifications = true;
@@ -4057,7 +4056,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
       var arg_calendarId = 'foo';
       var arg_eventId = 'foo';
@@ -4148,7 +4147,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.EventsResourceApi res = api.CalendarApi(mock).events;
+      var res = api.CalendarApi(mock).events;
       var arg_request = buildChannel();
       var arg_calendarId = 'foo';
       var arg_alwaysIncludeEmail = true;
@@ -4280,7 +4279,7 @@ void main() {
   unittest.group('resource-FreebusyResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.FreebusyResourceApi res = api.CalendarApi(mock).freebusy;
+      var res = api.CalendarApi(mock).freebusy;
       var arg_request = buildFreeBusyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4334,7 +4333,7 @@ void main() {
   unittest.group('resource-SettingsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SettingsResourceApi res = api.CalendarApi(mock).settings;
+      var res = api.CalendarApi(mock).settings;
       var arg_setting = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4386,7 +4385,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SettingsResourceApi res = api.CalendarApi(mock).settings;
+      var res = api.CalendarApi(mock).settings;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_syncToken = 'foo';
@@ -4447,7 +4446,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.SettingsResourceApi res = api.CalendarApi(mock).settings;
+      var res = api.CalendarApi(mock).settings;
       var arg_request = buildChannel();
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -352,7 +351,7 @@ void main() {
   unittest.group('resource-ApplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res = api.AdminApi(mock).applications;
+      var res = api.AdminApi(mock).applications;
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -401,7 +400,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ApplicationsResourceApi res = api.AdminApi(mock).applications;
+      var res = api.AdminApi(mock).applications;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -461,7 +460,7 @@ void main() {
   unittest.group('resource-TransfersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
+      var res = api.AdminApi(mock).transfers;
       var arg_dataTransferId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -510,7 +509,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
+      var res = api.AdminApi(mock).transfers;
       var arg_request = buildDataTransfer();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -559,7 +558,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TransfersResourceApi res = api.AdminApi(mock).transfers;
+      var res = api.AdminApi(mock).transfers;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_newOwnerUserId = 'foo';

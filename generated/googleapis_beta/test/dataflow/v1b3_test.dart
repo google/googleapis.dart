@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7924,7 +7923,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--deleteSnapshots', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DataflowApi(mock).projects;
+      var res = api.DataflowApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_snapshotId = 'foo';
@@ -7988,7 +7987,7 @@ void main() {
 
     unittest.test('method--workerMessages', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DataflowApi(mock).projects;
+      var res = api.DataflowApi(mock).projects;
       var arg_request = buildSendWorkerMessagesRequest();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -8049,8 +8048,7 @@ void main() {
   unittest.group('resource-ProjectsCatalogTemplatesResourceApi', () {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.catalogTemplates;
+      var res = api.DataflowApi(mock).projects.catalogTemplates;
       var arg_request = buildCommitTemplateVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8101,8 +8099,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.catalogTemplates;
+      var res = api.DataflowApi(mock).projects.catalogTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8149,8 +8146,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.catalogTemplates;
+      var res = api.DataflowApi(mock).projects.catalogTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8197,8 +8193,7 @@ void main() {
 
     unittest.test('method--label', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.catalogTemplates;
+      var res = api.DataflowApi(mock).projects.catalogTemplates;
       var arg_request = buildModifyTemplateVersionLabelRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8250,8 +8245,7 @@ void main() {
 
     unittest.test('method--tag', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.catalogTemplates;
+      var res = api.DataflowApi(mock).projects.catalogTemplates;
       var arg_request = buildModifyTemplateVersionTagRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8305,7 +8299,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsCatalogTemplatesTemplateVersionsResourceApi res =
+      var res =
           api.DataflowApi(mock).projects.catalogTemplates.templateVersions;
       var arg_request = buildCreateTemplateVersionRequest();
       var arg_parent = 'foo';
@@ -8359,7 +8353,7 @@ void main() {
   unittest.group('resource-ProjectsJobsResourceApi', () {
     unittest.test('method--aggregated', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_filter = 'foo';
       var arg_location = 'foo';
@@ -8433,7 +8427,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -8504,7 +8498,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -8569,7 +8563,7 @@ void main() {
 
     unittest.test('method--getMetrics', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -8643,7 +8637,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_projectId = 'foo';
       var arg_filter = 'foo';
       var arg_location = 'foo';
@@ -8717,7 +8711,7 @@ void main() {
 
     unittest.test('method--snapshot', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_request = buildSnapshotJobRequest();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -8786,7 +8780,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsResourceApi res = api.DataflowApi(mock).projects.jobs;
+      var res = api.DataflowApi(mock).projects.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -8855,8 +8849,7 @@ void main() {
   unittest.group('resource-ProjectsJobsDebugResourceApi', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsDebugResourceApi res =
-          api.DataflowApi(mock).projects.jobs.debug;
+      var res = api.DataflowApi(mock).projects.jobs.debug;
       var arg_request = buildGetDebugConfigRequest();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -8926,8 +8919,7 @@ void main() {
 
     unittest.test('method--sendCapture', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsDebugResourceApi res =
-          api.DataflowApi(mock).projects.jobs.debug;
+      var res = api.DataflowApi(mock).projects.jobs.debug;
       var arg_request = buildSendDebugCaptureRequest();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -8999,8 +8991,7 @@ void main() {
   unittest.group('resource-ProjectsJobsMessagesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsMessagesResourceApi res =
-          api.DataflowApi(mock).projects.jobs.messages;
+      var res = api.DataflowApi(mock).projects.jobs.messages;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_endTime = 'foo';
@@ -9092,8 +9083,7 @@ void main() {
   unittest.group('resource-ProjectsJobsWorkItemsResourceApi', () {
     unittest.test('method--lease', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsWorkItemsResourceApi res =
-          api.DataflowApi(mock).projects.jobs.workItems;
+      var res = api.DataflowApi(mock).projects.jobs.workItems;
       var arg_request = buildLeaseWorkItemRequest();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -9162,8 +9152,7 @@ void main() {
 
     unittest.test('method--reportStatus', () {
       var mock = HttpServerMock();
-      api.ProjectsJobsWorkItemsResourceApi res =
-          api.DataflowApi(mock).projects.jobs.workItems;
+      var res = api.DataflowApi(mock).projects.jobs.workItems;
       var arg_request = buildReportWorkItemStatusRequest();
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
@@ -9235,8 +9224,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--workerMessages', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.DataflowApi(mock).projects.locations;
+      var res = api.DataflowApi(mock).projects.locations;
       var arg_request = buildSendWorkerMessagesRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -9308,8 +9296,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsFlexTemplatesResourceApi', () {
     unittest.test('method--launch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFlexTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.locations.flexTemplates;
+      var res = api.DataflowApi(mock).projects.locations.flexTemplates;
       var arg_request = buildLaunchFlexTemplateRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -9381,8 +9368,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -9459,8 +9445,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -9532,8 +9517,7 @@ void main() {
 
     unittest.test('method--getExecutionDetails', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -9617,8 +9601,7 @@ void main() {
 
     unittest.test('method--getMetrics', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -9697,8 +9680,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_filter = 'foo';
@@ -9778,8 +9760,7 @@ void main() {
 
     unittest.test('method--snapshot', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_request = buildSnapshotJobRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -9859,8 +9840,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs;
+      var res = api.DataflowApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -9936,8 +9916,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsDebugResourceApi', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsDebugResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.debug;
+      var res = api.DataflowApi(mock).projects.locations.jobs.debug;
       var arg_request = buildGetDebugConfigRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -10017,8 +9996,7 @@ void main() {
 
     unittest.test('method--sendCapture', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsDebugResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.debug;
+      var res = api.DataflowApi(mock).projects.locations.jobs.debug;
       var arg_request = buildSendDebugCaptureRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -10100,8 +10078,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsMessagesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsMessagesResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.messages;
+      var res = api.DataflowApi(mock).projects.locations.jobs.messages;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -10199,8 +10176,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsSnapshotsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.snapshots;
+      var res = api.DataflowApi(mock).projects.locations.jobs.snapshots;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -10277,8 +10253,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsStagesResourceApi', () {
     unittest.test('method--getExecutionDetails', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsStagesResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.stages;
+      var res = api.DataflowApi(mock).projects.locations.jobs.stages;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -10383,8 +10358,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsWorkItemsResourceApi', () {
     unittest.test('method--lease', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsWorkItemsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.workItems;
+      var res = api.DataflowApi(mock).projects.locations.jobs.workItems;
       var arg_request = buildLeaseWorkItemRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -10464,8 +10438,7 @@ void main() {
 
     unittest.test('method--reportStatus', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobsWorkItemsResourceApi res =
-          api.DataflowApi(mock).projects.locations.jobs.workItems;
+      var res = api.DataflowApi(mock).projects.locations.jobs.workItems;
       var arg_request = buildReportWorkItemStatusRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -10547,8 +10520,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsSnapshotsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.locations.snapshots;
+      var res = api.DataflowApi(mock).projects.locations.snapshots;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_snapshotId = 'foo';
@@ -10618,8 +10590,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.locations.snapshots;
+      var res = api.DataflowApi(mock).projects.locations.snapshots;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_snapshotId = 'foo';
@@ -10689,8 +10660,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.locations.snapshots;
+      var res = api.DataflowApi(mock).projects.locations.snapshots;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_jobId = 'foo';
@@ -10760,8 +10730,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsSqlResourceApi', () {
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsSqlResourceApi res =
-          api.DataflowApi(mock).projects.locations.sql;
+      var res = api.DataflowApi(mock).projects.locations.sql;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_query = 'foo';
@@ -10831,8 +10800,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.locations.templates;
+      var res = api.DataflowApi(mock).projects.locations.templates;
       var arg_request = buildCreateJobFromTemplateRequest();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -10902,8 +10870,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.locations.templates;
+      var res = api.DataflowApi(mock).projects.locations.templates;
       var arg_projectId = 'foo';
       var arg_location = 'foo';
       var arg_gcsPath = 'foo';
@@ -10974,8 +10941,7 @@ void main() {
 
     unittest.test('method--launch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.locations.templates;
+      var res = api.DataflowApi(mock).projects.locations.templates;
       var arg_request = buildLaunchTemplateParameters();
       var arg_projectId = 'foo';
       var arg_location = 'foo';
@@ -11064,8 +11030,7 @@ void main() {
   unittest.group('resource-ProjectsSnapshotsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.snapshots;
+      var res = api.DataflowApi(mock).projects.snapshots;
       var arg_projectId = 'foo';
       var arg_snapshotId = 'foo';
       var arg_location = 'foo';
@@ -11128,8 +11093,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.DataflowApi(mock).projects.snapshots;
+      var res = api.DataflowApi(mock).projects.snapshots;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -11192,8 +11156,7 @@ void main() {
   unittest.group('resource-ProjectsTemplateVersionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTemplateVersionsResourceApi res =
-          api.DataflowApi(mock).projects.templateVersions;
+      var res = api.DataflowApi(mock).projects.templateVersions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11251,8 +11214,7 @@ void main() {
   unittest.group('resource-ProjectsTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.templates;
+      var res = api.DataflowApi(mock).projects.templates;
       var arg_request = buildCreateJobFromTemplateRequest();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -11311,8 +11273,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.templates;
+      var res = api.DataflowApi(mock).projects.templates;
       var arg_projectId = 'foo';
       var arg_gcsPath = 'foo';
       var arg_location = 'foo';
@@ -11379,8 +11340,7 @@ void main() {
 
     unittest.test('method--launch', () {
       var mock = HttpServerMock();
-      api.ProjectsTemplatesResourceApi res =
-          api.DataflowApi(mock).projects.templates;
+      var res = api.DataflowApi(mock).projects.templates;
       var arg_request = buildLaunchTemplateParameters();
       var arg_projectId = 'foo';
       var arg_dynamicTemplate_gcsPath = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2429,7 +2428,7 @@ void main() {
   unittest.group('resource-CoursesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2478,7 +2477,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2527,7 +2526,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2576,7 +2575,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_courseStates = buildUnnamed4691();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2642,7 +2641,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
       var arg_id = 'foo';
       var arg_updateMask = 'foo';
@@ -2699,7 +2698,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CoursesResourceApi res = api.ClassroomApi(mock).courses;
+      var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -2754,8 +2753,7 @@ void main() {
   unittest.group('resource-CoursesAliasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesAliasesResourceApi res =
-          api.ClassroomApi(mock).courses.aliases;
+      var res = api.ClassroomApi(mock).courses.aliases;
       var arg_request = buildCourseAlias();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -2814,8 +2812,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesAliasesResourceApi res =
-          api.ClassroomApi(mock).courses.aliases;
+      var res = api.ClassroomApi(mock).courses.aliases;
       var arg_courseId = 'foo';
       var arg_alias = 'foo';
       var arg_$fields = 'foo';
@@ -2874,8 +2871,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesAliasesResourceApi res =
-          api.ClassroomApi(mock).courses.aliases;
+      var res = api.ClassroomApi(mock).courses.aliases;
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2941,8 +2937,7 @@ void main() {
   unittest.group('resource-CoursesAnnouncementsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildAnnouncement();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -3001,8 +2996,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3061,8 +3055,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3121,8 +3114,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
       var arg_announcementStates = buildUnnamed4692();
       var arg_orderBy = 'foo';
@@ -3194,8 +3186,7 @@ void main() {
 
     unittest.test('method--modifyAssignees', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildModifyAnnouncementAssigneesRequest();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -3265,8 +3256,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesAnnouncementsResourceApi res =
-          api.ClassroomApi(mock).courses.announcements;
+      var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildAnnouncement();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -3335,8 +3325,7 @@ void main() {
   unittest.group('resource-CoursesCourseWorkResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildCourseWork();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -3395,8 +3384,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3455,8 +3443,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3515,8 +3502,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
       var arg_courseWorkStates = buildUnnamed4693();
       var arg_orderBy = 'foo';
@@ -3588,8 +3574,7 @@ void main() {
 
     unittest.test('method--modifyAssignees', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildModifyCourseWorkAssigneesRequest();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -3659,8 +3644,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork;
+      var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildCourseWork();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -3729,8 +3713,7 @@ void main() {
   unittest.group('resource-CoursesCourseWorkStudentSubmissionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
       var arg_id = 'foo';
@@ -3799,8 +3782,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
       var arg_late = 'foo';
@@ -3883,8 +3865,7 @@ void main() {
 
     unittest.test('method--modifyAttachments', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildModifyAttachmentsRequest();
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
@@ -3965,8 +3946,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildStudentSubmission();
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
@@ -4043,8 +4023,7 @@ void main() {
 
     unittest.test('method--reclaim', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildReclaimStudentSubmissionRequest();
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
@@ -4124,8 +4103,7 @@ void main() {
 
     unittest.test('method--return_', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildReturnStudentSubmissionRequest();
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
@@ -4205,8 +4183,7 @@ void main() {
 
     unittest.test('method--turnIn', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkStudentSubmissionsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
+      var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildTurnInStudentSubmissionRequest();
       var arg_courseId = 'foo';
       var arg_courseWorkId = 'foo';
@@ -4288,8 +4265,7 @@ void main() {
   unittest.group('resource-CoursesCourseWorkMaterialsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkMaterialsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWorkMaterials;
+      var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_request = buildCourseWorkMaterial();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -4348,8 +4324,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkMaterialsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWorkMaterials;
+      var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -4408,8 +4383,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkMaterialsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWorkMaterials;
+      var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -4468,8 +4442,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkMaterialsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWorkMaterials;
+      var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
       var arg_courseWorkMaterialStates = buildUnnamed4695();
       var arg_materialDriveId = 'foo';
@@ -4549,8 +4522,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesCourseWorkMaterialsResourceApi res =
-          api.ClassroomApi(mock).courses.courseWorkMaterials;
+      var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_request = buildCourseWorkMaterial();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -4619,8 +4591,7 @@ void main() {
   unittest.group('resource-CoursesStudentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesStudentsResourceApi res =
-          api.ClassroomApi(mock).courses.students;
+      var res = api.ClassroomApi(mock).courses.students;
       var arg_request = buildStudent();
       var arg_courseId = 'foo';
       var arg_enrollmentCode = 'foo';
@@ -4683,8 +4654,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesStudentsResourceApi res =
-          api.ClassroomApi(mock).courses.students;
+      var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4743,8 +4713,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesStudentsResourceApi res =
-          api.ClassroomApi(mock).courses.students;
+      var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4803,8 +4772,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesStudentsResourceApi res =
-          api.ClassroomApi(mock).courses.students;
+      var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4870,8 +4838,7 @@ void main() {
   unittest.group('resource-CoursesTeachersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesTeachersResourceApi res =
-          api.ClassroomApi(mock).courses.teachers;
+      var res = api.ClassroomApi(mock).courses.teachers;
       var arg_request = buildTeacher();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -4930,8 +4897,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesTeachersResourceApi res =
-          api.ClassroomApi(mock).courses.teachers;
+      var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4990,8 +4956,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesTeachersResourceApi res =
-          api.ClassroomApi(mock).courses.teachers;
+      var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -5050,8 +5015,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesTeachersResourceApi res =
-          api.ClassroomApi(mock).courses.teachers;
+      var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5117,7 +5081,7 @@ void main() {
   unittest.group('resource-CoursesTopicsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
+      var res = api.ClassroomApi(mock).courses.topics;
       var arg_request = buildTopic();
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
@@ -5176,7 +5140,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
+      var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -5235,7 +5199,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
+      var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -5294,7 +5258,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
+      var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5358,7 +5322,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CoursesTopicsResourceApi res = api.ClassroomApi(mock).courses.topics;
+      var res = api.ClassroomApi(mock).courses.topics;
       var arg_request = buildTopic();
       var arg_courseId = 'foo';
       var arg_id = 'foo';
@@ -5427,7 +5391,7 @@ void main() {
   unittest.group('resource-InvitationsResourceApi', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
-      api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
+      var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5482,7 +5446,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
+      var res = api.ClassroomApi(mock).invitations;
       var arg_request = buildInvitation();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5531,7 +5495,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
+      var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5580,7 +5544,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
+      var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5629,7 +5593,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InvitationsResourceApi res = api.ClassroomApi(mock).invitations;
+      var res = api.ClassroomApi(mock).invitations;
       var arg_courseId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5692,7 +5656,7 @@ void main() {
   unittest.group('resource-RegistrationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.RegistrationsResourceApi res = api.ClassroomApi(mock).registrations;
+      var res = api.ClassroomApi(mock).registrations;
       var arg_request = buildRegistration();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5741,7 +5705,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegistrationsResourceApi res = api.ClassroomApi(mock).registrations;
+      var res = api.ClassroomApi(mock).registrations;
       var arg_registrationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5792,7 +5756,7 @@ void main() {
   unittest.group('resource-UserProfilesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserProfilesResourceApi res = api.ClassroomApi(mock).userProfiles;
+      var res = api.ClassroomApi(mock).userProfiles;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5843,8 +5807,7 @@ void main() {
   unittest.group('resource-UserProfilesGuardianInvitationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardianInvitationsResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardianInvitations;
+      var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_request = buildGuardianInvitation();
       var arg_studentId = 'foo';
       var arg_$fields = 'foo';
@@ -5903,8 +5866,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardianInvitationsResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardianInvitations;
+      var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = 'foo';
       var arg_invitationId = 'foo';
       var arg_$fields = 'foo';
@@ -5963,8 +5925,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardianInvitationsResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardianInvitations;
+      var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = 'foo';
       var arg_invitedEmailAddress = 'foo';
       var arg_pageSize = 42;
@@ -6035,8 +5996,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardianInvitationsResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardianInvitations;
+      var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_request = buildGuardianInvitation();
       var arg_studentId = 'foo';
       var arg_invitationId = 'foo';
@@ -6105,8 +6065,7 @@ void main() {
   unittest.group('resource-UserProfilesGuardiansResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardiansResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardians;
+      var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
       var arg_guardianId = 'foo';
       var arg_$fields = 'foo';
@@ -6165,8 +6124,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardiansResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardians;
+      var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
       var arg_guardianId = 'foo';
       var arg_$fields = 'foo';
@@ -6225,8 +6183,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserProfilesGuardiansResourceApi res =
-          api.ClassroomApi(mock).userProfiles.guardians;
+      var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
       var arg_invitedEmailAddress = 'foo';
       var arg_pageSize = 42;

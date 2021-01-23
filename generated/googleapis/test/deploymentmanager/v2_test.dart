@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1994,8 +1993,7 @@ void main() {
   unittest.group('resource-DeploymentsResourceApi', () {
     unittest.test('method--cancelPreview', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeploymentsCancelPreviewRequest();
       var arg_project = 'foo';
       var arg_deployment = 'foo';
@@ -2044,8 +2042,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_deletePolicy = 'foo';
@@ -2093,8 +2090,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_$fields = 'foo';
@@ -2138,8 +2134,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_project = 'foo';
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2183,8 +2178,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = 'foo';
       var arg_createPolicy = 'foo';
@@ -2240,8 +2234,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -2300,8 +2293,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = 'foo';
       var arg_deployment = 'foo';
@@ -2362,8 +2354,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildGlobalSetPolicyRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -2412,8 +2403,7 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeploymentsStopRequest();
       var arg_project = 'foo';
       var arg_deployment = 'foo';
@@ -2461,8 +2451,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -2511,8 +2500,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.DeploymentsResourceApi res =
-          api.DeploymentmanagerApi(mock).deployments;
+      var res = api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = 'foo';
       var arg_deployment = 'foo';
@@ -2575,7 +2563,7 @@ void main() {
   unittest.group('resource-ManifestsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManifestsResourceApi res = api.DeploymentmanagerApi(mock).manifests;
+      var res = api.DeploymentmanagerApi(mock).manifests;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_manifest = 'foo';
@@ -2620,7 +2608,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManifestsResourceApi res = api.DeploymentmanagerApi(mock).manifests;
+      var res = api.DeploymentmanagerApi(mock).manifests;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_filter = 'foo';
@@ -2682,7 +2670,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.DeploymentmanagerApi(mock).operations;
+      var res = api.DeploymentmanagerApi(mock).operations;
       var arg_project = 'foo';
       var arg_operation = 'foo';
       var arg_$fields = 'foo';
@@ -2726,7 +2714,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.DeploymentmanagerApi(mock).operations;
+      var res = api.DeploymentmanagerApi(mock).operations;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -2787,7 +2775,7 @@ void main() {
   unittest.group('resource-ResourcesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ResourcesResourceApi res = api.DeploymentmanagerApi(mock).resources;
+      var res = api.DeploymentmanagerApi(mock).resources;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_resource = 'foo';
@@ -2832,7 +2820,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ResourcesResourceApi res = api.DeploymentmanagerApi(mock).resources;
+      var res = api.DeploymentmanagerApi(mock).resources;
       var arg_project = 'foo';
       var arg_deployment = 'foo';
       var arg_filter = 'foo';
@@ -2894,7 +2882,7 @@ void main() {
   unittest.group('resource-TypesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TypesResourceApi res = api.DeploymentmanagerApi(mock).types;
+      var res = api.DeploymentmanagerApi(mock).types;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;

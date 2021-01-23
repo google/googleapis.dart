@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -127,8 +126,7 @@ class AmpUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ampUrl != null) {
       _json['ampUrl'] = ampUrl;
     }
@@ -182,8 +180,7 @@ class AmpUrlError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCode != null) {
       _json['errorCode'] = errorCode;
     }
@@ -229,8 +226,7 @@ class BatchGetAmpUrlsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (lookupStrategy != null) {
       _json['lookupStrategy'] = lookupStrategy;
     }
@@ -268,8 +264,7 @@ class BatchGetAmpUrlsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ampUrls != null) {
       _json['ampUrls'] = ampUrls.map((value) => value.toJson()).toList();
     }

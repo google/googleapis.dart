@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2549,8 +2548,7 @@ class BlogLocale {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (country != null) {
       _json['country'] = country;
     }
@@ -2584,8 +2582,7 @@ class BlogPages {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
     }
@@ -2624,8 +2621,7 @@ class BlogPosts {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (items != null) {
       _json['items'] = items.map((value) => value.toJson()).toList();
     }
@@ -2727,8 +2723,7 @@ class Blog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customMetaData != null) {
       _json['customMetaData'] = customMetaData;
     }
@@ -2801,8 +2796,7 @@ class BlogList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blogUserInfos != null) {
       _json['blogUserInfos'] =
           blogUserInfos.map((value) => value.toJson()).toList();
@@ -2866,8 +2860,7 @@ class BlogPerUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blogId != null) {
       _json['blogId'] = blogId;
     }
@@ -2915,8 +2908,7 @@ class BlogUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blog != null) {
       _json['blog'] = blog.toJson();
     }
@@ -2944,8 +2936,7 @@ class CommentAuthorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -2985,8 +2976,7 @@ class CommentAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3017,8 +3007,7 @@ class CommentBlog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3040,8 +3029,7 @@ class CommentInReplyTo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3063,8 +3051,7 @@ class CommentPost {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3150,8 +3137,7 @@ class Comment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (author != null) {
       _json['author'] = author.toJson();
     }
@@ -3228,8 +3214,7 @@ class CommentList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -3263,8 +3248,7 @@ class PageAuthorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -3304,8 +3288,7 @@ class PageAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3336,8 +3319,7 @@ class PageBlog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3428,8 +3410,7 @@ class Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (author != null) {
       _json['author'] = author.toJson();
     }
@@ -3503,8 +3484,7 @@ class PageList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -3544,8 +3524,7 @@ class PageviewsCounts {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -3583,8 +3562,7 @@ class Pageviews {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blogId != null) {
       _json['blogId'] = blogId;
     }
@@ -3612,8 +3590,7 @@ class PostAuthorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -3653,8 +3630,7 @@ class PostAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3685,8 +3661,7 @@ class PostBlog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3706,8 +3681,7 @@ class PostImages {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -3747,8 +3721,7 @@ class PostLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (lat != null) {
       _json['lat'] = lat;
     }
@@ -3793,8 +3766,7 @@ class PostReplies {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (items != null) {
       _json['items'] = items.map((value) => value.toJson()).toList();
     }
@@ -3939,8 +3911,7 @@ class Post {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (author != null) {
       _json['author'] = author.toJson();
     }
@@ -4041,8 +4012,7 @@ class PostList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -4099,8 +4069,7 @@ class PostPerUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blogId != null) {
       _json['blogId'] = blogId;
     }
@@ -4145,8 +4114,7 @@ class PostUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -4187,8 +4155,7 @@ class PostUserInfosList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (items != null) {
       _json['items'] = items.map((value) => value.toJson()).toList();
     }
@@ -4216,8 +4183,7 @@ class UserBlogs {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
     }
@@ -4251,8 +4217,7 @@ class UserLocale {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (country != null) {
       _json['country'] = country;
     }
@@ -4327,8 +4292,7 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (about != null) {
       _json['about'] = about;
     }

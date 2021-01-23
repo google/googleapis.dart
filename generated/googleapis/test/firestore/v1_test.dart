@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3186,8 +3185,7 @@ void main() {
   unittest.group('resource-ProjectsDatabasesResourceApi', () {
     unittest.test('method--exportDocuments', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesResourceApi res =
-          api.FirestoreApi(mock).projects.databases;
+      var res = api.FirestoreApi(mock).projects.databases;
       var arg_request = buildGoogleFirestoreAdminV1ExportDocumentsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3239,8 +3237,7 @@ void main() {
 
     unittest.test('method--importDocuments', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesResourceApi res =
-          api.FirestoreApi(mock).projects.databases;
+      var res = api.FirestoreApi(mock).projects.databases;
       var arg_request = buildGoogleFirestoreAdminV1ImportDocumentsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3295,7 +3292,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3343,7 +3340,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
@@ -3404,7 +3401,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsFieldsResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.fields;
       var arg_request = buildGoogleFirestoreAdminV1Field();
       var arg_name = 'foo';
@@ -3463,7 +3460,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_request = buildGoogleFirestoreAdminV1Index();
       var arg_parent = 'foo';
@@ -3515,7 +3512,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3563,7 +3560,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3611,7 +3608,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesCollectionGroupsIndexesResourceApi res =
+      var res =
           api.FirestoreApi(mock).projects.databases.collectionGroups.indexes;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
@@ -3674,8 +3671,7 @@ void main() {
   unittest.group('resource-ProjectsDatabasesDocumentsResourceApi', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBatchGetDocumentsRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -3726,8 +3722,7 @@ void main() {
 
     unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBatchWriteRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -3778,8 +3773,7 @@ void main() {
 
     unittest.test('method--beginTransaction', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildBeginTransactionRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -3830,8 +3824,7 @@ void main() {
 
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildCommitRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -3882,8 +3875,7 @@ void main() {
 
     unittest.test('method--createDocument', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildDocument();
       var arg_parent = 'foo';
       var arg_collectionId = 'foo';
@@ -3944,8 +3936,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_name = 'foo';
       var arg_currentDocument_exists = true;
       var arg_currentDocument_updateTime = 'foo';
@@ -4001,8 +3992,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_name = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3303();
       var arg_readTime = 'foo';
@@ -4062,8 +4052,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_parent = 'foo';
       var arg_collectionId = 'foo';
       var arg_mask_fieldPaths = buildUnnamed3304();
@@ -4140,8 +4129,7 @@ void main() {
 
     unittest.test('method--listCollectionIds', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildListCollectionIdsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4192,8 +4180,7 @@ void main() {
 
     unittest.test('method--listen', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildListenRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -4244,8 +4231,7 @@ void main() {
 
     unittest.test('method--partitionQuery', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildPartitionQueryRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4296,8 +4282,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildDocument();
       var arg_name = 'foo';
       var arg_currentDocument_exists = true;
@@ -4365,8 +4350,7 @@ void main() {
 
     unittest.test('method--rollback', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildRollbackRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -4417,8 +4401,7 @@ void main() {
 
     unittest.test('method--runQuery', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildRunQueryRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4469,8 +4452,7 @@ void main() {
 
     unittest.test('method--write', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesDocumentsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.documents;
+      var res = api.FirestoreApi(mock).projects.databases.documents;
       var arg_request = buildWriteRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -4523,8 +4505,7 @@ void main() {
   unittest.group('resource-ProjectsDatabasesOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesOperationsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.operations;
+      var res = api.FirestoreApi(mock).projects.databases.operations;
       var arg_request = buildGoogleLongrunningCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4575,8 +4556,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesOperationsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.operations;
+      var res = api.FirestoreApi(mock).projects.databases.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4623,8 +4603,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesOperationsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.operations;
+      var res = api.FirestoreApi(mock).projects.databases.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4671,8 +4650,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDatabasesOperationsResourceApi res =
-          api.FirestoreApi(mock).projects.databases.operations;
+      var res = api.FirestoreApi(mock).projects.databases.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4734,8 +4712,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.FirestoreApi(mock).projects.locations;
+      var res = api.FirestoreApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4782,8 +4759,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.FirestoreApi(mock).projects.locations;
+      var res = api.FirestoreApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

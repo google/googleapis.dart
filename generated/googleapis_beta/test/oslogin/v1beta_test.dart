@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -260,7 +259,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--getLoginProfile', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.OsloginApi(mock).users;
+      var res = api.OsloginApi(mock).users;
       var arg_name = 'foo';
       var arg_projectId = 'foo';
       var arg_systemId = 'foo';
@@ -316,7 +315,7 @@ void main() {
 
     unittest.test('method--importSshPublicKey', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.OsloginApi(mock).users;
+      var res = api.OsloginApi(mock).users;
       var arg_request = buildSshPublicKey();
       var arg_parent = 'foo';
       var arg_projectId = 'foo';
@@ -373,7 +372,7 @@ void main() {
   unittest.group('resource-UsersProjectsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersProjectsResourceApi res = api.OsloginApi(mock).users.projects;
+      var res = api.OsloginApi(mock).users.projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -422,8 +421,7 @@ void main() {
   unittest.group('resource-UsersSshPublicKeysResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res =
-          api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -470,8 +468,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res =
-          api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -518,8 +515,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res =
-          api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.OsloginApi(mock).users.sshPublicKeys;
       var arg_request = buildSshPublicKey();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

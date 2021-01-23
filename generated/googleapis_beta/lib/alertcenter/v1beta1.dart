@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -754,8 +753,7 @@ class AccountWarning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -852,8 +850,7 @@ class ActivityRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionNames != null) {
       _json['actionNames'] = actionNames;
     }
@@ -1001,8 +998,7 @@ class Alert {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alertId != null) {
       _json['alertId'] = alertId;
     }
@@ -1095,8 +1091,7 @@ class AlertFeedback {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alertId != null) {
       _json['alertId'] = alertId;
     }
@@ -1182,8 +1177,7 @@ class AlertMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alertId != null) {
       _json['alertId'] = alertId;
     }
@@ -1225,8 +1219,7 @@ class AppMakerSqlSetupNotification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestInfo != null) {
       _json['requestInfo'] =
           requestInfo.map((value) => value.toJson()).toList();
@@ -1249,8 +1242,7 @@ class Attachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (csv != null) {
       _json['csv'] = csv.toJson();
     }
@@ -1293,8 +1285,7 @@ class BadWhitelist {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domainId != null) {
       _json['domainId'] = domainId.toJson();
     }
@@ -1332,8 +1323,7 @@ class BatchDeleteAlertsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alertId != null) {
       _json['alertId'] = alertId;
     }
@@ -1367,8 +1357,7 @@ class BatchDeleteAlertsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (failedAlertStatus != null) {
       _json['failedAlertStatus'] =
           commons.mapMap<Status, core.Map<core.String, core.Object>>(
@@ -1402,8 +1391,7 @@ class BatchUndeleteAlertsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alertId != null) {
       _json['alertId'] = alertId;
     }
@@ -1437,8 +1425,7 @@ class BatchUndeleteAlertsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (failedAlertStatus != null) {
       _json['failedAlertStatus'] =
           commons.mapMap<Status, core.Map<core.String, core.Object>>(
@@ -1480,8 +1467,7 @@ class CloudPubsubTopic {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (payloadFormat != null) {
       _json['payloadFormat'] = payloadFormat;
     }
@@ -1516,8 +1502,7 @@ class Csv {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataRows != null) {
       _json['dataRows'] = dataRows.map((value) => value.toJson()).toList();
     }
@@ -1543,8 +1528,7 @@ class CsvRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entries != null) {
       _json['entries'] = entries;
     }
@@ -1575,8 +1559,7 @@ class DeviceCompromised {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1638,8 +1621,7 @@ class DeviceCompromisedSecurityDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceCompromisedState != null) {
       _json['deviceCompromisedState'] = deviceCompromisedState;
     }
@@ -1683,8 +1665,7 @@ class DlpRuleViolation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ruleViolationInfo != null) {
       _json['ruleViolationInfo'] = ruleViolationInfo.toJson();
     }
@@ -1706,8 +1687,7 @@ class DomainId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerPrimaryDomain != null) {
       _json['customerPrimaryDomain'] = customerPrimaryDomain;
     }
@@ -1736,8 +1716,7 @@ class DomainWideTakeoutInitiated {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1761,8 +1740,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1824,8 +1802,7 @@ class GmailMessageInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attachmentsSha256Hash != null) {
       _json['attachmentsSha256Hash'] = attachmentsSha256Hash;
     }
@@ -1890,8 +1867,7 @@ class GoogleOperations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (affectedUserEmails != null) {
       _json['affectedUserEmails'] = affectedUserEmails;
     }
@@ -1925,8 +1901,7 @@ class ListAlertFeedbackResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (feedback != null) {
       _json['feedback'] = feedback.map((value) => value.toJson()).toList();
     }
@@ -1959,8 +1934,7 @@ class ListAlertsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alerts != null) {
       _json['alerts'] = alerts.map((value) => value.toJson()).toList();
     }
@@ -1993,8 +1967,7 @@ class LoginDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ipAddress != null) {
       _json['ipAddress'] = ipAddress;
     }
@@ -2052,8 +2025,7 @@ class MailPhishing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domainId != null) {
       _json['domainId'] = domainId.toJson();
     }
@@ -2099,8 +2071,7 @@ class MaliciousEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -2136,8 +2107,7 @@ class MatchInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (predefinedDetector != null) {
       _json['predefinedDetector'] = predefinedDetector.toJson();
     }
@@ -2163,8 +2133,7 @@ class Notification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cloudPubsubTopic != null) {
       _json['cloudPubsubTopic'] = cloudPubsubTopic.toJson();
     }
@@ -2209,8 +2178,7 @@ class PhishingSpike {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domainId != null) {
       _json['domainId'] = domainId.toJson();
     }
@@ -2241,8 +2209,7 @@ class PredefinedDetectorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectorName != null) {
       _json['detectorName'] = detectorName;
     }
@@ -2278,8 +2245,7 @@ class RequestInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appDeveloperEmail != null) {
       _json['appDeveloperEmail'] = appDeveloperEmail;
     }
@@ -2313,8 +2279,7 @@ class ResourceInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentId != null) {
       _json['documentId'] = documentId;
     }
@@ -2345,8 +2310,7 @@ class RuleInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -2436,8 +2400,7 @@ class RuleViolationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSource != null) {
       _json['dataSource'] = dataSource;
     }
@@ -2485,8 +2448,7 @@ class Settings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (notifications != null) {
       _json['notifications'] =
           notifications.map((value) => value.toJson()).toList();
@@ -2509,8 +2471,7 @@ class StateSponsoredAttack {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -2558,8 +2519,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -2596,8 +2556,7 @@ class SuspiciousActivity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -2670,8 +2629,7 @@ class SuspiciousActivitySecurityDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -2719,8 +2677,7 @@ class UndeleteAlertRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerId != null) {
       _json['customerId'] = customerId;
     }
@@ -2748,8 +2705,7 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -2780,8 +2736,7 @@ class UserDefinedDetectorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -6148,7 +6147,7 @@ void main() {
   unittest.group('resource-DatasetsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_deleteContents = true;
@@ -6212,7 +6211,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_$fields = 'foo';
@@ -6274,7 +6273,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_request = buildDataset();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -6336,7 +6335,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_projectId = 'foo';
       var arg_all = true;
       var arg_filter = 'foo';
@@ -6409,7 +6408,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_request = buildDataset();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -6476,7 +6475,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.DatasetsResourceApi res = api.BigqueryApi(mock).datasets;
+      var res = api.BigqueryApi(mock).datasets;
       var arg_request = buildDataset();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -6545,7 +6544,7 @@ void main() {
   unittest.group('resource-JobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -6617,7 +6616,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -6683,7 +6682,7 @@ void main() {
 
     unittest.test('method--getQueryResults', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
       var arg_jobId = 'foo';
       var arg_location = 'foo';
@@ -6769,7 +6768,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -6831,7 +6830,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_projectId = 'foo';
       var arg_allUsers = true;
       var arg_maxCreationTime = 'foo';
@@ -6922,7 +6921,7 @@ void main() {
 
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.BigqueryApi(mock).jobs;
+      var res = api.BigqueryApi(mock).jobs;
       var arg_request = buildQueryRequest();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -6986,7 +6985,7 @@ void main() {
   unittest.group('resource-ModelsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ModelsResourceApi res = api.BigqueryApi(mock).models;
+      var res = api.BigqueryApi(mock).models;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_modelId = 'foo';
@@ -7037,7 +7036,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ModelsResourceApi res = api.BigqueryApi(mock).models;
+      var res = api.BigqueryApi(mock).models;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_modelId = 'foo';
@@ -7089,7 +7088,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ModelsResourceApi res = api.BigqueryApi(mock).models;
+      var res = api.BigqueryApi(mock).models;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_maxResults = 42;
@@ -7149,7 +7148,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ModelsResourceApi res = api.BigqueryApi(mock).models;
+      var res = api.BigqueryApi(mock).models;
       var arg_request = buildModel();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -7208,7 +7207,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--getServiceAccount', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.BigqueryApi(mock).projects;
+      var res = api.BigqueryApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7266,7 +7265,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.BigqueryApi(mock).projects;
+      var res = api.BigqueryApi(mock).projects;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -7325,7 +7324,7 @@ void main() {
   unittest.group('resource-RoutinesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
+      var res = api.BigqueryApi(mock).routines;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_routineId = 'foo';
@@ -7376,7 +7375,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
+      var res = api.BigqueryApi(mock).routines;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_routineId = 'foo';
@@ -7432,7 +7431,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
+      var res = api.BigqueryApi(mock).routines;
       var arg_request = buildRoutine();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -7488,7 +7487,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
+      var res = api.BigqueryApi(mock).routines;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_filter = 'foo';
@@ -7555,7 +7554,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RoutinesResourceApi res = api.BigqueryApi(mock).routines;
+      var res = api.BigqueryApi(mock).routines;
       var arg_request = buildRoutine();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -7614,7 +7613,7 @@ void main() {
   unittest.group('resource-TabledataResourceApi', () {
     unittest.test('method--insertAll', () {
       var mock = HttpServerMock();
-      api.TabledataResourceApi res = api.BigqueryApi(mock).tabledata;
+      var res = api.BigqueryApi(mock).tabledata;
       var arg_request = buildTableDataInsertAllRequest();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -7697,7 +7696,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TabledataResourceApi res = api.BigqueryApi(mock).tabledata;
+      var res = api.BigqueryApi(mock).tabledata;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_tableId = 'foo';
@@ -7794,7 +7793,7 @@ void main() {
   unittest.group('resource-TablesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_tableId = 'foo';
@@ -7865,7 +7864,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_tableId = 'foo';
@@ -7941,7 +7940,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -7988,7 +7987,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildTable();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -8061,7 +8060,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
       var arg_maxResults = 42;
@@ -8138,7 +8137,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildTable();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';
@@ -8215,7 +8214,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -8262,7 +8261,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -8309,7 +8308,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.TablesResourceApi res = api.BigqueryApi(mock).tables;
+      var res = api.BigqueryApi(mock).tables;
       var arg_request = buildTable();
       var arg_projectId = 'foo';
       var arg_datasetId = 'foo';

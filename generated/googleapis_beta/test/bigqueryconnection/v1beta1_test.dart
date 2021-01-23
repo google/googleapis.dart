@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -647,8 +646,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsConnectionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildConnection();
       var arg_parent = 'foo';
       var arg_connectionId = 'foo';
@@ -703,8 +701,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -751,8 +748,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -799,8 +795,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -851,8 +846,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_parent = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -908,8 +902,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildConnection();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -964,8 +957,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1016,8 +1008,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1068,8 +1059,7 @@ void main() {
 
     unittest.test('method--updateCredential', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConnectionsResourceApi res =
-          api.BigqueryconnectionApi(mock).projects.locations.connections;
+      var res = api.BigqueryconnectionApi(mock).projects.locations.connections;
       var arg_request = buildConnectionCredential();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

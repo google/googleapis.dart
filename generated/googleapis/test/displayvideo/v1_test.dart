@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -8644,7 +8643,7 @@ void main() {
   unittest.group('resource-AdvertisersResourceApi', () {
     unittest.test('method--audit', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
       var arg_readMask = 'foo';
       var arg_$fields = 'foo';
@@ -8694,7 +8693,7 @@ void main() {
 
     unittest.test('method--bulkEditAdvertiserAssignedTargetingOptions', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_request =
           buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
       var arg_advertiserId = 'foo';
@@ -8751,7 +8750,7 @@ void main() {
 
     unittest.test('method--bulkListAdvertiserAssignedTargetingOptions', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -8815,7 +8814,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8864,7 +8863,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8911,7 +8910,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8958,7 +8957,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
@@ -9023,7 +9022,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DisplayvideoApi(mock).advertisers;
+      var res = api.DisplayvideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
       var arg_advertiserId = 'foo';
       var arg_updateMask = 'foo';
@@ -9083,8 +9082,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.AdvertisersAssetsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.assets;
+      var res = api.DisplayvideoApi(mock).advertisers.assets;
       var arg_request = buildCreateAssetRequest();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -9137,8 +9135,7 @@ void main() {
   unittest.group('resource-AdvertisersCampaignsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersCampaignsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.campaigns;
+      var res = api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -9189,8 +9186,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersCampaignsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.campaigns;
+      var res = api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
       var arg_campaignId = 'foo';
       var arg_$fields = 'foo';
@@ -9238,8 +9234,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersCampaignsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.campaigns;
+      var res = api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
       var arg_campaignId = 'foo';
       var arg_$fields = 'foo';
@@ -9287,8 +9282,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersCampaignsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.campaigns;
+      var res = api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -9351,8 +9345,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersCampaignsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.campaigns;
+      var res = api.DisplayvideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
       var arg_advertiserId = 'foo';
       var arg_campaignId = 'foo';
@@ -9410,8 +9403,7 @@ void main() {
   unittest.group('resource-AdvertisersChannelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels;
+      var res = api.DisplayvideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -9466,8 +9458,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels;
+      var res = api.DisplayvideoApi(mock).advertisers.channels;
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
       var arg_partnerId = 'foo';
@@ -9519,8 +9510,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels;
+      var res = api.DisplayvideoApi(mock).advertisers.channels;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -9587,8 +9577,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels;
+      var res = api.DisplayvideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
@@ -9651,8 +9640,7 @@ void main() {
   unittest.group('resource-AdvertisersChannelsSitesResourceApi', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels.sites;
+      var res = api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
@@ -9714,8 +9702,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels.sites;
+      var res = api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_request = buildSite();
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
@@ -9780,8 +9767,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels.sites;
+      var res = api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
       var arg_urlOrAppId = 'foo';
@@ -9843,8 +9829,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.channels.sites;
+      var res = api.DisplayvideoApi(mock).advertisers.channels.sites;
       var arg_advertiserId = 'foo';
       var arg_channelId = 'foo';
       var arg_filter = 'foo';
@@ -9914,8 +9899,7 @@ void main() {
   unittest.group('resource-AdvertisersCreativesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersCreativesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.creatives;
+      var res = api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -9966,8 +9950,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersCreativesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.creatives;
+      var res = api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
       var arg_creativeId = 'foo';
       var arg_$fields = 'foo';
@@ -10015,8 +9998,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersCreativesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.creatives;
+      var res = api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
       var arg_creativeId = 'foo';
       var arg_$fields = 'foo';
@@ -10064,8 +10046,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersCreativesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.creatives;
+      var res = api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -10128,8 +10109,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersCreativesResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.creatives;
+      var res = api.DisplayvideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
       var arg_advertiserId = 'foo';
       var arg_creativeId = 'foo';
@@ -10187,8 +10167,7 @@ void main() {
   unittest.group('resource-AdvertisersInsertionOrdersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersInsertionOrdersResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.insertionOrders;
+      var res = api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -10239,8 +10218,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersInsertionOrdersResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.insertionOrders;
+      var res = api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
       var arg_insertionOrderId = 'foo';
       var arg_$fields = 'foo';
@@ -10288,8 +10266,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersInsertionOrdersResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.insertionOrders;
+      var res = api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
       var arg_insertionOrderId = 'foo';
       var arg_$fields = 'foo';
@@ -10337,8 +10314,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersInsertionOrdersResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.insertionOrders;
+      var res = api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -10401,8 +10377,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersInsertionOrdersResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.insertionOrders;
+      var res = api.DisplayvideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
       var arg_advertiserId = 'foo';
       var arg_insertionOrderId = 'foo';
@@ -10460,8 +10435,7 @@ void main() {
   unittest.group('resource-AdvertisersLineItemsResourceApi', () {
     unittest.test('method--bulkEditLineItemAssignedTargetingOptions', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildBulkEditLineItemAssignedTargetingOptionsRequest();
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
@@ -10517,8 +10491,7 @@ void main() {
 
     unittest.test('method--bulkListLineItemAssignedTargetingOptions', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_filter = 'foo';
@@ -10584,8 +10557,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -10636,8 +10608,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_$fields = 'foo';
@@ -10685,8 +10656,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_$fields = 'foo';
@@ -10734,8 +10704,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -10798,8 +10767,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.lineItems;
+      var res = api.DisplayvideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
@@ -10859,12 +10827,11 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
-          res = api.DisplayvideoApi(mock)
-              .advertisers
-              .lineItems
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .lineItems
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
@@ -10919,12 +10886,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
-          res = api.DisplayvideoApi(mock)
-              .advertisers
-              .lineItems
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .lineItems
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_targetingType = 'foo';
@@ -10976,12 +10942,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
-          res = api.DisplayvideoApi(mock)
-              .advertisers
-              .lineItems
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .lineItems
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_targetingType = 'foo';
@@ -11033,12 +10998,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
-          res = api.DisplayvideoApi(mock)
-              .advertisers
-              .lineItems
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .lineItems
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_lineItemId = 'foo';
       var arg_targetingType = 'foo';
@@ -11106,8 +11070,7 @@ void main() {
   unittest.group('resource-AdvertisersLocationListsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.locationLists;
+      var res = api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -11158,8 +11121,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.locationLists;
+      var res = api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_advertiserId = 'foo';
       var arg_locationListId = 'foo';
       var arg_$fields = 'foo';
@@ -11207,8 +11169,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.locationLists;
+      var res = api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -11271,8 +11232,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.locationLists;
+      var res = api.DisplayvideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
       var arg_advertiserId = 'foo';
       var arg_locationListId = 'foo';
@@ -11331,7 +11291,7 @@ void main() {
       'resource-AdvertisersLocationListsAssignedLocationsResourceApi', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsAssignedLocationsResourceApi res =
+      var res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_request = buildBulkEditAssignedLocationsRequest();
       var arg_advertiserId = 'foo';
@@ -11395,7 +11355,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsAssignedLocationsResourceApi res =
+      var res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_request = buildAssignedLocation();
       var arg_advertiserId = 'foo';
@@ -11466,7 +11426,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsAssignedLocationsResourceApi res =
+      var res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_advertiserId = 'foo';
       var arg_locationListId = 'foo';
@@ -11535,7 +11495,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersLocationListsAssignedLocationsResourceApi res =
+      var res =
           api.DisplayvideoApi(mock).advertisers.locationLists.assignedLocations;
       var arg_advertiserId = 'foo';
       var arg_locationListId = 'foo';
@@ -11619,8 +11579,7 @@ void main() {
   unittest.group('resource-AdvertisersNegativeKeywordListsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
+      var res = api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -11671,8 +11630,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
+      var res = api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
       var arg_$fields = 'foo';
@@ -11721,8 +11679,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
+      var res = api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
       var arg_$fields = 'foo';
@@ -11771,8 +11728,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
+      var res = api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11828,8 +11784,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsResourceApi res =
-          api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
+      var res = api.DisplayvideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
@@ -11889,11 +11844,10 @@ void main() {
       () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .negativeKeywordLists
-              .negativeKeywords;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .negativeKeywordLists
+          .negativeKeywords;
       var arg_request = buildBulkEditNegativeKeywordsRequest();
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
@@ -11955,11 +11909,10 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .negativeKeywordLists
-              .negativeKeywords;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .negativeKeywordLists
+          .negativeKeywords;
       var arg_request = buildNegativeKeyword();
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
@@ -12021,11 +11974,10 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .negativeKeywordLists
-              .negativeKeywords;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .negativeKeywordLists
+          .negativeKeywords;
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
       var arg_keywordValue = 'foo';
@@ -12084,11 +12036,10 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .negativeKeywordLists
-              .negativeKeywords;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .negativeKeywordLists
+          .negativeKeywords;
       var arg_advertiserId = 'foo';
       var arg_negativeKeywordListId = 'foo';
       var arg_filter = 'foo';
@@ -12156,11 +12107,10 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
       var arg_advertiserId = 'foo';
       var arg_targetingType = 'foo';
@@ -12213,11 +12163,10 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_targetingType = 'foo';
       var arg_assignedTargetingOptionId = 'foo';
@@ -12268,11 +12217,10 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_targetingType = 'foo';
       var arg_assignedTargetingOptionId = 'foo';
@@ -12323,11 +12271,10 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .advertisers
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .advertisers
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_advertiserId = 'foo';
       var arg_targetingType = 'foo';
       var arg_filter = 'foo';
@@ -12394,8 +12341,7 @@ void main() {
   unittest.group('resource-CombinedAudiencesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CombinedAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).combinedAudiences;
+      var res = api.DisplayvideoApi(mock).combinedAudiences;
       var arg_combinedAudienceId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -12451,8 +12397,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CombinedAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).combinedAudiences;
+      var res = api.DisplayvideoApi(mock).combinedAudiences;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -12523,8 +12468,7 @@ void main() {
   unittest.group('resource-CustomBiddingAlgorithmsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CustomBiddingAlgorithmsResourceApi res =
-          api.DisplayvideoApi(mock).customBiddingAlgorithms;
+      var res = api.DisplayvideoApi(mock).customBiddingAlgorithms;
       var arg_customBiddingAlgorithmId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -12580,8 +12524,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CustomBiddingAlgorithmsResourceApi res =
-          api.DisplayvideoApi(mock).customBiddingAlgorithms;
+      var res = api.DisplayvideoApi(mock).customBiddingAlgorithms;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -12653,7 +12596,7 @@ void main() {
   unittest.group('resource-CustomListsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CustomListsResourceApi res = api.DisplayvideoApi(mock).customLists;
+      var res = api.DisplayvideoApi(mock).customLists;
       var arg_customListId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
@@ -12704,7 +12647,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CustomListsResourceApi res = api.DisplayvideoApi(mock).customLists;
+      var res = api.DisplayvideoApi(mock).customLists;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -12771,8 +12714,7 @@ void main() {
   unittest.group('resource-FirstAndThirdPartyAudiencesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FirstAndThirdPartyAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
+      var res = api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
       var arg_firstAndThirdPartyAudienceId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -12828,8 +12770,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FirstAndThirdPartyAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
+      var res = api.DisplayvideoApi(mock).firstAndThirdPartyAudiences;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -12901,8 +12842,7 @@ void main() {
   unittest.group('resource-FloodlightGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FloodlightGroupsResourceApi res =
-          api.DisplayvideoApi(mock).floodlightGroups;
+      var res = api.DisplayvideoApi(mock).floodlightGroups;
       var arg_floodlightGroupId = 'foo';
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -12953,8 +12893,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FloodlightGroupsResourceApi res =
-          api.DisplayvideoApi(mock).floodlightGroups;
+      var res = api.DisplayvideoApi(mock).floodlightGroups;
       var arg_request = buildFloodlightGroup();
       var arg_floodlightGroupId = 'foo';
       var arg_partnerId = 'foo';
@@ -13018,8 +12957,7 @@ void main() {
   unittest.group('resource-GoogleAudiencesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GoogleAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).googleAudiences;
+      var res = api.DisplayvideoApi(mock).googleAudiences;
       var arg_googleAudienceId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -13075,8 +13013,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GoogleAudiencesResourceApi res =
-          api.DisplayvideoApi(mock).googleAudiences;
+      var res = api.DisplayvideoApi(mock).googleAudiences;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -13147,8 +13084,7 @@ void main() {
   unittest.group('resource-InventorySourceGroupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsResourceApi res =
-          api.DisplayvideoApi(mock).inventorySourceGroups;
+      var res = api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -13206,8 +13142,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsResourceApi res =
-          api.DisplayvideoApi(mock).inventorySourceGroups;
+      var res = api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -13263,8 +13198,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsResourceApi res =
-          api.DisplayvideoApi(mock).inventorySourceGroups;
+      var res = api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_partnerId = 'foo';
@@ -13320,8 +13254,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsResourceApi res =
-          api.DisplayvideoApi(mock).inventorySourceGroups;
+      var res = api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -13391,8 +13324,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsResourceApi res =
-          api.DisplayvideoApi(mock).inventorySourceGroups;
+      var res = api.DisplayvideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
       var arg_inventorySourceGroupId = 'foo';
       var arg_advertiserId = 'foo';
@@ -13462,10 +13394,9 @@ void main() {
       'resource-InventorySourceGroupsAssignedInventorySourcesResourceApi', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock)
-              .inventorySourceGroups
-              .assignedInventorySources;
+      var res = api.DisplayvideoApi(mock)
+          .inventorySourceGroups
+          .assignedInventorySources;
       var arg_request = buildBulkEditAssignedInventorySourcesRequest();
       var arg_inventorySourceGroupId = 'foo';
       var arg_$fields = 'foo';
@@ -13518,10 +13449,9 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock)
-              .inventorySourceGroups
-              .assignedInventorySources;
+      var res = api.DisplayvideoApi(mock)
+          .inventorySourceGroups
+          .assignedInventorySources;
       var arg_request = buildAssignedInventorySource();
       var arg_inventorySourceGroupId = 'foo';
       var arg_advertiserId = 'foo';
@@ -13581,10 +13511,9 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock)
-              .inventorySourceGroups
-              .assignedInventorySources;
+      var res = api.DisplayvideoApi(mock)
+          .inventorySourceGroups
+          .assignedInventorySources;
       var arg_inventorySourceGroupId = 'foo';
       var arg_assignedInventorySourceId = 'foo';
       var arg_advertiserId = 'foo';
@@ -13641,10 +13570,9 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InventorySourceGroupsAssignedInventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock)
-              .inventorySourceGroups
-              .assignedInventorySources;
+      var res = api.DisplayvideoApi(mock)
+          .inventorySourceGroups
+          .assignedInventorySources;
       var arg_inventorySourceGroupId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
@@ -13718,8 +13646,7 @@ void main() {
   unittest.group('resource-InventorySourcesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock).inventorySources;
+      var res = api.DisplayvideoApi(mock).inventorySources;
       var arg_inventorySourceId = 'foo';
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -13770,8 +13697,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InventorySourcesResourceApi res =
-          api.DisplayvideoApi(mock).inventorySources;
+      var res = api.DisplayvideoApi(mock).inventorySources;
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -13845,7 +13771,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.MediaResourceApi res = api.DisplayvideoApi(mock).media;
+      var res = api.DisplayvideoApi(mock).media;
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13894,7 +13820,7 @@ void main() {
   unittest.group('resource-PartnersResourceApi', () {
     unittest.test('method--bulkEditPartnerAssignedTargetingOptions', () {
       var mock = HttpServerMock();
-      api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
+      var res = api.DisplayvideoApi(mock).partners;
       var arg_request = buildBulkEditPartnerAssignedTargetingOptionsRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -13948,7 +13874,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
+      var res = api.DisplayvideoApi(mock).partners;
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13995,7 +13921,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PartnersResourceApi res = api.DisplayvideoApi(mock).partners;
+      var res = api.DisplayvideoApi(mock).partners;
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
@@ -14058,8 +13984,7 @@ void main() {
   unittest.group('resource-PartnersChannelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels;
+      var res = api.DisplayvideoApi(mock).partners.channels;
       var arg_request = buildChannel();
       var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
@@ -14114,8 +14039,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels;
+      var res = api.DisplayvideoApi(mock).partners.channels;
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
       var arg_advertiserId = 'foo';
@@ -14167,8 +14091,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels;
+      var res = api.DisplayvideoApi(mock).partners.channels;
       var arg_partnerId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
@@ -14235,8 +14158,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels;
+      var res = api.DisplayvideoApi(mock).partners.channels;
       var arg_request = buildChannel();
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
@@ -14299,8 +14221,7 @@ void main() {
   unittest.group('resource-PartnersChannelsSitesResourceApi', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels.sites;
+      var res = api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
@@ -14362,8 +14283,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels.sites;
+      var res = api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_request = buildSite();
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
@@ -14428,8 +14348,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels.sites;
+      var res = api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
       var arg_urlOrAppId = 'foo';
@@ -14491,8 +14410,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PartnersChannelsSitesResourceApi res =
-          api.DisplayvideoApi(mock).partners.channels.sites;
+      var res = api.DisplayvideoApi(mock).partners.channels.sites;
       var arg_partnerId = 'foo';
       var arg_channelId = 'foo';
       var arg_advertiserId = 'foo';
@@ -14563,11 +14481,10 @@ void main() {
       'resource-PartnersTargetingTypesAssignedTargetingOptionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .partners
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .partners
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_request = buildAssignedTargetingOption();
       var arg_partnerId = 'foo';
       var arg_targetingType = 'foo';
@@ -14620,11 +14537,10 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .partners
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .partners
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_partnerId = 'foo';
       var arg_targetingType = 'foo';
       var arg_assignedTargetingOptionId = 'foo';
@@ -14675,11 +14591,10 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .partners
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .partners
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_partnerId = 'foo';
       var arg_targetingType = 'foo';
       var arg_assignedTargetingOptionId = 'foo';
@@ -14729,11 +14644,10 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PartnersTargetingTypesAssignedTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock)
-              .partners
-              .targetingTypes
-              .assignedTargetingOptions;
+      var res = api.DisplayvideoApi(mock)
+          .partners
+          .targetingTypes
+          .assignedTargetingOptions;
       var arg_partnerId = 'foo';
       var arg_targetingType = 'foo';
       var arg_filter = 'foo';
@@ -14800,8 +14714,7 @@ void main() {
   unittest.group('resource-SdfdownloadtasksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.SdfdownloadtasksResourceApi res =
-          api.DisplayvideoApi(mock).sdfdownloadtasks;
+      var res = api.DisplayvideoApi(mock).sdfdownloadtasks;
       var arg_request = buildCreateSdfDownloadTaskRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14852,8 +14765,7 @@ void main() {
   unittest.group('resource-SdfdownloadtasksOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SdfdownloadtasksOperationsResourceApi res =
-          api.DisplayvideoApi(mock).sdfdownloadtasks.operations;
+      var res = api.DisplayvideoApi(mock).sdfdownloadtasks.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14902,8 +14814,7 @@ void main() {
   unittest.group('resource-TargetingTypesTargetingOptionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetingTypesTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
+      var res = api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
       var arg_targetingType = 'foo';
       var arg_targetingOptionId = 'foo';
       var arg_advertiserId = 'foo';
@@ -14955,8 +14866,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetingTypesTargetingOptionsResourceApi res =
-          api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
+      var res = api.DisplayvideoApi(mock).targetingTypes.targetingOptions;
       var arg_targetingType = 'foo';
       var arg_advertiserId = 'foo';
       var arg_filter = 'foo';
@@ -15025,7 +14935,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--bulkEditAssignedUserRoles', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_request = buildBulkEditAssignedUserRolesRequest();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -15078,7 +14988,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_request = buildUser();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15127,7 +15037,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15174,7 +15084,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15221,7 +15131,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
       var arg_pageSize = 42;
@@ -15282,7 +15192,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.DisplayvideoApi(mock).users;
+      var res = api.DisplayvideoApi(mock).users;
       var arg_request = buildUser();
       var arg_userId = 'foo';
       var arg_updateMask = 'foo';

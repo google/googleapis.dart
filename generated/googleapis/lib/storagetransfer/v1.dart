@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -690,8 +689,7 @@ class AwsAccessKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessKeyId != null) {
       _json['accessKeyId'] = accessKeyId;
     }
@@ -726,8 +724,7 @@ class AwsS3Data {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (awsAccessKey != null) {
       _json['awsAccessKey'] = awsAccessKey.toJson();
     }
@@ -771,8 +768,7 @@ class AzureBlobStorageData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (azureCredentials != null) {
       _json['azureCredentials'] = azureCredentials.toJson();
     }
@@ -802,8 +798,7 @@ class AzureCredentials {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sasToken != null) {
       _json['sasToken'] = sasToken;
     }
@@ -820,8 +815,7 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -863,8 +857,7 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -891,8 +884,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -918,8 +910,7 @@ class ErrorLogEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorDetails != null) {
       _json['errorDetails'] = errorDetails;
     }
@@ -1040,8 +1031,7 @@ class ErrorSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCode != null) {
       _json['errorCode'] = errorCode;
     }
@@ -1074,8 +1064,7 @@ class GcsData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketName != null) {
       _json['bucketName'] = bucketName;
     }
@@ -1097,8 +1086,7 @@ class GoogleServiceAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountEmail != null) {
       _json['accountEmail'] = accountEmail;
     }
@@ -1146,8 +1134,7 @@ class HttpData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listUrl != null) {
       _json['listUrl'] = listUrl;
     }
@@ -1177,8 +1164,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1211,8 +1197,7 @@ class ListTransferJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -1268,8 +1253,7 @@ class NotificationConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventTypes != null) {
       _json['eventTypes'] = eventTypes;
     }
@@ -1373,8 +1357,7 @@ class ObjectConditions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (excludePrefixes != null) {
       _json['excludePrefixes'] = excludePrefixes;
     }
@@ -1457,8 +1440,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -1487,8 +1469,7 @@ class PauseTransferOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1502,8 +1483,7 @@ class ResumeTransferOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1556,8 +1536,7 @@ class Schedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (scheduleEndDate != null) {
       _json['scheduleEndDate'] = scheduleEndDate.toJson();
     }
@@ -1611,8 +1590,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1662,8 +1640,7 @@ class TimeOfDay {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hours != null) {
       _json['hours'] = hours;
     }
@@ -1792,8 +1769,7 @@ class TransferCounters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bytesCopiedToSink != null) {
       _json['bytesCopiedToSink'] = bytesCopiedToSink;
     }
@@ -1938,8 +1914,7 @@ class TransferJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime;
     }
@@ -2054,8 +2029,7 @@ class TransferOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (counters != null) {
       _json['counters'] = counters.toJson();
     }
@@ -2123,8 +2097,7 @@ class TransferOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deleteObjectsFromSourceAfterTransfer != null) {
       _json['deleteObjectsFromSourceAfterTransfer'] =
           deleteObjectsFromSourceAfterTransfer;
@@ -2195,8 +2168,7 @@ class TransferSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (awsS3DataSource != null) {
       _json['awsS3DataSource'] = awsS3DataSource.toJson();
     }
@@ -2258,8 +2230,7 @@ class UpdateTransferJobRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectId != null) {
       _json['projectId'] = projectId;
     }

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3365,7 +3364,7 @@ void main() {
   unittest.group('resource-DevicesResourceApi', () {
     unittest.test('method--forceReportUpload', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -3439,7 +3438,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -3508,7 +3507,7 @@ void main() {
 
     unittest.test('method--getState', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -3584,7 +3583,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -3649,7 +3648,7 @@ void main() {
 
     unittest.test('method--setState', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_request = buildDeviceState();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -3729,7 +3728,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.DevicesResourceApi res = api.AndroidenterpriseApi(mock).devices;
+      var res = api.AndroidenterpriseApi(mock).devices;
       var arg_request = buildDevice();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -3808,8 +3807,7 @@ void main() {
   unittest.group('resource-EnterprisesResourceApi', () {
     unittest.test('method--acknowledgeNotificationSet', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_notificationSetId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3858,8 +3856,7 @@ void main() {
 
     unittest.test('method--completeSignup', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_completionToken = 'foo';
       var arg_enterpriseToken = 'foo';
       var arg_$fields = 'foo';
@@ -3913,8 +3910,7 @@ void main() {
 
     unittest.test('method--createWebToken', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildAdministratorWebTokenSpec();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -3973,8 +3969,7 @@ void main() {
 
     unittest.test('method--enroll', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildEnterprise();
       var arg_token = 'foo';
       var arg_$fields = 'foo';
@@ -4025,8 +4020,7 @@ void main() {
 
     unittest.test('method--generateSignupUrl', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_callbackUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4074,8 +4068,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4124,8 +4117,7 @@ void main() {
 
     unittest.test('method--getServiceAccount', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
       var arg_keyType = 'foo';
       var arg_$fields = 'foo';
@@ -4184,8 +4176,7 @@ void main() {
 
     unittest.test('method--getStoreLayout', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4240,8 +4231,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_domain = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4288,8 +4278,7 @@ void main() {
 
     unittest.test('method--pullNotificationSet', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_requestMode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4340,8 +4329,7 @@ void main() {
 
     unittest.test('method--sendTestPushNotification', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4397,8 +4385,7 @@ void main() {
 
     unittest.test('method--setAccount', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildEnterpriseAccount();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -4457,8 +4444,7 @@ void main() {
 
     unittest.test('method--setStoreLayout', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildStoreLayout();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -4517,8 +4503,7 @@ void main() {
 
     unittest.test('method--unenroll', () {
       var mock = HttpServerMock();
-      api.EnterprisesResourceApi res =
-          api.AndroidenterpriseApi(mock).enterprises;
+      var res = api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4573,8 +4558,7 @@ void main() {
   unittest.group('resource-EntitlementsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.EntitlementsResourceApi res =
-          api.AndroidenterpriseApi(mock).entitlements;
+      var res = api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_entitlementId = 'foo';
@@ -4642,8 +4626,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.EntitlementsResourceApi res =
-          api.AndroidenterpriseApi(mock).entitlements;
+      var res = api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_entitlementId = 'foo';
@@ -4713,8 +4696,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.EntitlementsResourceApi res =
-          api.AndroidenterpriseApi(mock).entitlements;
+      var res = api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4779,8 +4761,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.EntitlementsResourceApi res =
-          api.AndroidenterpriseApi(mock).entitlements;
+      var res = api.AndroidenterpriseApi(mock).entitlements;
       var arg_request = buildEntitlement();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -4859,8 +4840,7 @@ void main() {
   unittest.group('resource-GrouplicensesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GrouplicensesResourceApi res =
-          api.AndroidenterpriseApi(mock).grouplicenses;
+      var res = api.AndroidenterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = 'foo';
       var arg_groupLicenseId = 'foo';
       var arg_$fields = 'foo';
@@ -4919,8 +4899,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GrouplicensesResourceApi res =
-          api.AndroidenterpriseApi(mock).grouplicenses;
+      var res = api.AndroidenterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4977,8 +4956,7 @@ void main() {
   unittest.group('resource-GrouplicenseusersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GrouplicenseusersResourceApi res =
-          api.AndroidenterpriseApi(mock).grouplicenseusers;
+      var res = api.AndroidenterpriseApi(mock).grouplicenseusers;
       var arg_enterpriseId = 'foo';
       var arg_groupLicenseId = 'foo';
       var arg_$fields = 'foo';
@@ -5045,7 +5023,7 @@ void main() {
   unittest.group('resource-InstallsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InstallsResourceApi res = api.AndroidenterpriseApi(mock).installs;
+      var res = api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5123,7 +5101,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InstallsResourceApi res = api.AndroidenterpriseApi(mock).installs;
+      var res = api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5203,7 +5181,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InstallsResourceApi res = api.AndroidenterpriseApi(mock).installs;
+      var res = api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5279,7 +5257,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.InstallsResourceApi res = api.AndroidenterpriseApi(mock).installs;
+      var res = api.AndroidenterpriseApi(mock).installs;
       var arg_request = buildInstall();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -5366,8 +5344,7 @@ void main() {
   unittest.group('resource-ManagedconfigurationsfordeviceResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5447,8 +5424,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5530,8 +5506,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_deviceId = 'foo';
@@ -5608,8 +5583,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -5697,8 +5671,7 @@ void main() {
   unittest.group('resource-ManagedconfigurationsforuserResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_managedConfigurationForUserId = 'foo';
@@ -5768,8 +5741,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_managedConfigurationForUserId = 'foo';
@@ -5840,8 +5812,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -5907,8 +5878,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -5986,8 +5956,7 @@ void main() {
   unittest.group('resource-ManagedconfigurationssettingsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagedconfigurationssettingsResourceApi res =
-          api.AndroidenterpriseApi(mock).managedconfigurationssettings;
+      var res = api.AndroidenterpriseApi(mock).managedconfigurationssettings;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_$fields = 'foo';
@@ -6055,8 +6024,7 @@ void main() {
   unittest.group('resource-PermissionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res =
-          api.AndroidenterpriseApi(mock).permissions;
+      var res = api.AndroidenterpriseApi(mock).permissions;
       var arg_permissionId = 'foo';
       var arg_language = 'foo';
       var arg_$fields = 'foo';
@@ -6110,7 +6078,7 @@ void main() {
   unittest.group('resource-ProductsResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_request = buildProductsApproveRequest();
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
@@ -6178,7 +6146,7 @@ void main() {
 
     unittest.test('method--generateApprovalUrl', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_languageCode = 'foo';
@@ -6248,7 +6216,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_language = 'foo';
@@ -6311,7 +6279,7 @@ void main() {
 
     unittest.test('method--getAppRestrictionsSchema', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_language = 'foo';
@@ -6380,7 +6348,7 @@ void main() {
 
     unittest.test('method--getPermissions', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_$fields = 'foo';
@@ -6445,7 +6413,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_approved = true;
       var arg_language = 'foo';
@@ -6519,7 +6487,7 @@ void main() {
 
     unittest.test('method--unapprove', () {
       var mock = HttpServerMock();
-      api.ProductsResourceApi res = api.AndroidenterpriseApi(mock).products;
+      var res = api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
       var arg_productId = 'foo';
       var arg_$fields = 'foo';
@@ -6584,8 +6552,7 @@ void main() {
   unittest.group('resource-ServiceaccountkeysResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ServiceaccountkeysResourceApi res =
-          api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      var res = api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = 'foo';
       var arg_keyId = 'foo';
       var arg_$fields = 'foo';
@@ -6642,8 +6609,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ServiceaccountkeysResourceApi res =
-          api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      var res = api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_request = buildServiceAccountKey();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -6702,8 +6668,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ServiceaccountkeysResourceApi res =
-          api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      var res = api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6760,8 +6725,7 @@ void main() {
   unittest.group('resource-StorelayoutclustersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.StorelayoutclustersResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var res = api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
       var arg_clusterId = 'foo';
@@ -6829,8 +6793,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.StorelayoutclustersResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var res = api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
       var arg_clusterId = 'foo';
@@ -6900,8 +6863,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.StorelayoutclustersResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var res = api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
@@ -6971,8 +6933,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.StorelayoutclustersResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var res = api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -7037,8 +6998,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.StorelayoutclustersResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutclusters;
+      var res = api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
@@ -7114,8 +7074,7 @@ void main() {
   unittest.group('resource-StorelayoutpagesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.StorelayoutpagesResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutpages;
+      var res = api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -7172,8 +7131,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.StorelayoutpagesResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutpages;
+      var res = api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -7232,8 +7190,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.StorelayoutpagesResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutpages;
+      var res = api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -7292,8 +7249,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.StorelayoutpagesResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutpages;
+      var res = api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7348,8 +7304,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.StorelayoutpagesResourceApi res =
-          api.AndroidenterpriseApi(mock).storelayoutpages;
+      var res = api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
       var arg_enterpriseId = 'foo';
       var arg_pageId = 'foo';
@@ -7415,7 +7370,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -7472,7 +7427,7 @@ void main() {
 
     unittest.test('method--generateAuthenticationToken', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -7538,7 +7493,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -7597,7 +7552,7 @@ void main() {
 
     unittest.test('method--getAvailableProductSet', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -7663,7 +7618,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_request = buildUser();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -7722,7 +7677,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_email = 'foo';
       var arg_$fields = 'foo';
@@ -7779,7 +7734,7 @@ void main() {
 
     unittest.test('method--revokeDeviceAccess', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -7843,7 +7798,7 @@ void main() {
 
     unittest.test('method--setAvailableProductSet', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_request = buildProductSet();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -7913,7 +7868,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.AndroidenterpriseApi(mock).users;
+      var res = api.AndroidenterpriseApi(mock).users;
       var arg_request = buildUser();
       var arg_enterpriseId = 'foo';
       var arg_userId = 'foo';
@@ -7979,7 +7934,7 @@ void main() {
   unittest.group('resource-WebappsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.WebappsResourceApi res = api.AndroidenterpriseApi(mock).webapps;
+      var res = api.AndroidenterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
       var arg_webAppId = 'foo';
       var arg_$fields = 'foo';
@@ -8036,7 +7991,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.WebappsResourceApi res = api.AndroidenterpriseApi(mock).webapps;
+      var res = api.AndroidenterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
       var arg_webAppId = 'foo';
       var arg_$fields = 'foo';
@@ -8095,7 +8050,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.WebappsResourceApi res = api.AndroidenterpriseApi(mock).webapps;
+      var res = api.AndroidenterpriseApi(mock).webapps;
       var arg_request = buildWebApp();
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
@@ -8154,7 +8109,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.WebappsResourceApi res = api.AndroidenterpriseApi(mock).webapps;
+      var res = api.AndroidenterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8209,7 +8164,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.WebappsResourceApi res = api.AndroidenterpriseApi(mock).webapps;
+      var res = api.AndroidenterpriseApi(mock).webapps;
       var arg_request = buildWebApp();
       var arg_enterpriseId = 'foo';
       var arg_webAppId = 'foo';

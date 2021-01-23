@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4361,8 +4360,7 @@ class AcceleratorConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (acceleratorCount != null) {
       _json['acceleratorCount'] = acceleratorCount;
     }
@@ -4391,8 +4389,7 @@ class AutoscalingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policyUri != null) {
       _json['policyUri'] = policyUri;
     }
@@ -4449,8 +4446,7 @@ class AutoscalingPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basicAlgorithm != null) {
       _json['basicAlgorithm'] = basicAlgorithm.toJson();
     }
@@ -4492,8 +4488,7 @@ class BasicAutoscalingAlgorithm {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cooldownPeriod != null) {
       _json['cooldownPeriod'] = cooldownPeriod;
     }
@@ -4568,8 +4563,7 @@ class BasicYarnAutoscalingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gracefulDecommissionTimeout != null) {
       _json['gracefulDecommissionTimeout'] = gracefulDecommissionTimeout;
     }
@@ -4658,8 +4652,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindingId != null) {
       _json['bindingId'] = bindingId;
     }
@@ -4685,8 +4678,7 @@ class CancelJobRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4761,8 +4753,7 @@ class Cluster {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterName != null) {
       _json['clusterName'] = clusterName;
     }
@@ -4907,8 +4898,7 @@ class ClusterConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoscalingConfig != null) {
       _json['autoscalingConfig'] = autoscalingConfig.toJson();
     }
@@ -4977,8 +4967,7 @@ class ClusterMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hdfsMetrics != null) {
       _json['hdfsMetrics'] = hdfsMetrics;
     }
@@ -5015,8 +5004,7 @@ class ClusterOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -5089,8 +5077,7 @@ class ClusterOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterName != null) {
       _json['clusterName'] = clusterName;
     }
@@ -5157,8 +5144,7 @@ class ClusterOperationStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (details != null) {
       _json['details'] = details;
     }
@@ -5198,8 +5184,7 @@ class ClusterSelector {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterLabels != null) {
       _json['clusterLabels'] = clusterLabels;
     }
@@ -5262,8 +5247,7 @@ class ClusterStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detail != null) {
       _json['detail'] = detail;
     }
@@ -5289,8 +5273,7 @@ class DiagnoseClusterRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5310,8 +5293,7 @@ class DiagnoseClusterResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputUri != null) {
       _json['outputUri'] = outputUri;
     }
@@ -5351,8 +5333,7 @@ class DiskConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bootDiskSizeGb != null) {
       _json['bootDiskSizeGb'] = bootDiskSizeGb;
     }
@@ -5379,8 +5360,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5400,8 +5380,7 @@ class EncryptionConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcePdKmsKeyName != null) {
       _json['gcePdKmsKeyName'] = gcePdKmsKeyName;
     }
@@ -5432,8 +5411,7 @@ class EndpointConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enableHttpPortAccess != null) {
       _json['enableHttpPortAccess'] = enableHttpPortAccess;
     }
@@ -5495,8 +5473,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -5645,8 +5622,7 @@ class GceClusterConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (internalIpOnly != null) {
       _json['internalIpOnly'] = internalIpOnly;
     }
@@ -5699,8 +5675,7 @@ class GetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (options != null) {
       _json['options'] = options.toJson();
     }
@@ -5728,8 +5703,7 @@ class GetPolicyOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
@@ -5811,8 +5785,7 @@ class HadoopJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (archiveUris != null) {
       _json['archiveUris'] = archiveUris;
     }
@@ -5895,8 +5868,7 @@ class HiveJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (continueOnFailure != null) {
       _json['continueOnFailure'] = continueOnFailure;
     }
@@ -5966,8 +5938,7 @@ class InstanceGroupAutoscalingPolicyConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxInstances != null) {
       _json['maxInstances'] = maxInstances;
     }
@@ -6094,8 +6065,7 @@ class InstanceGroupConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accelerators != null) {
       _json['accelerators'] =
           accelerators.map((value) => value.toJson()).toList();
@@ -6155,8 +6125,7 @@ class InstanceReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instanceId != null) {
       _json['instanceId'] = instanceId;
     }
@@ -6203,8 +6172,7 @@ class InstantiateWorkflowTemplateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameters != null) {
       _json['parameters'] = parameters;
     }
@@ -6362,8 +6330,7 @@ class Job {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -6459,8 +6426,7 @@ class JobMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobId != null) {
       _json['jobId'] = jobId;
     }
@@ -6498,8 +6464,7 @@ class JobPlacement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterName != null) {
       _json['clusterName'] = clusterName;
     }
@@ -6534,8 +6499,7 @@ class JobReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobId != null) {
       _json['jobId'] = jobId;
     }
@@ -6563,8 +6527,7 @@ class JobScheduling {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxFailuresPerHour != null) {
       _json['maxFailuresPerHour'] = maxFailuresPerHour;
     }
@@ -6633,8 +6596,7 @@ class JobStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (details != null) {
       _json['details'] = details;
     }
@@ -6770,8 +6732,7 @@ class KerberosConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (crossRealmTrustAdminServer != null) {
       _json['crossRealmTrustAdminServer'] = crossRealmTrustAdminServer;
     }
@@ -6866,8 +6827,7 @@ class LifecycleConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoDeleteTime != null) {
       _json['autoDeleteTime'] = autoDeleteTime;
     }
@@ -6907,8 +6867,7 @@ class ListAutoscalingPoliciesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6943,8 +6902,7 @@ class ListClustersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusters != null) {
       _json['clusters'] = clusters.map((value) => value.toJson()).toList();
     }
@@ -6979,8 +6937,7 @@ class ListJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobs != null) {
       _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
@@ -7013,8 +6970,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -7049,8 +7005,7 @@ class ListWorkflowTemplatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -7078,8 +7033,7 @@ class LoggingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driverLogLevels != null) {
       _json['driverLogLevels'] = driverLogLevels;
     }
@@ -7121,8 +7075,7 @@ class ManagedCluster {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterName != null) {
       _json['clusterName'] = clusterName;
     }
@@ -7157,8 +7110,7 @@ class ManagedGroupConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instanceGroupManagerName != null) {
       _json['instanceGroupManagerName'] = instanceGroupManagerName;
     }
@@ -7185,8 +7137,7 @@ class NodeGroupAffinity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nodeGroupUri != null) {
       _json['nodeGroupUri'] = nodeGroupUri;
     }
@@ -7220,8 +7171,7 @@ class NodeInitializationAction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (executableFile != null) {
       _json['executableFile'] = executableFile;
     }
@@ -7292,8 +7242,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -7405,8 +7354,7 @@ class OrderedJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hadoopJob != null) {
       _json['hadoopJob'] = hadoopJob.toJson();
     }
@@ -7467,8 +7415,7 @@ class ParameterValidation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (regex != null) {
       _json['regex'] = regex.toJson();
     }
@@ -7539,8 +7486,7 @@ class PigJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (continueOnFailure != null) {
       _json['continueOnFailure'] = continueOnFailure;
     }
@@ -7654,8 +7600,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindings != null) {
       _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
@@ -7728,8 +7673,7 @@ class PrestoJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientTags != null) {
       _json['clientTags'] = clientTags;
     }
@@ -7826,8 +7770,7 @@ class PySparkJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (archiveUris != null) {
       _json['archiveUris'] = archiveUris;
     }
@@ -7875,8 +7818,7 @@ class QueryList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (queries != null) {
       _json['queries'] = queries;
     }
@@ -7900,8 +7842,7 @@ class RegexValidation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (regexes != null) {
       _json['regexes'] = regexes;
     }
@@ -7941,8 +7882,7 @@ class ReservationAffinity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (consumeReservationType != null) {
       _json['consumeReservationType'] = consumeReservationType;
     }
@@ -7970,8 +7910,7 @@ class SecurityConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kerberosConfig != null) {
       _json['kerberosConfig'] = kerberosConfig.toJson();
     }
@@ -7996,8 +7935,7 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -8046,8 +7984,7 @@ class SoftwareConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageVersion != null) {
       _json['imageVersion'] = imageVersion;
     }
@@ -8129,8 +8066,7 @@ class SparkJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (archiveUris != null) {
       _json['archiveUris'] = archiveUris;
     }
@@ -8214,8 +8150,7 @@ class SparkRJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (archiveUris != null) {
       _json['archiveUris'] = archiveUris;
     }
@@ -8288,8 +8223,7 @@ class SparkSqlJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jarFileUris != null) {
       _json['jarFileUris'] = jarFileUris;
     }
@@ -8352,8 +8286,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -8393,8 +8326,7 @@ class SubmitJobRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (job != null) {
       _json['job'] = job.toJson();
     }
@@ -8469,8 +8401,7 @@ class TemplateParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -8504,8 +8435,7 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -8527,8 +8457,7 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -8550,8 +8479,7 @@ class ValueValidation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -8575,8 +8503,7 @@ class WorkflowGraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nodes != null) {
       _json['nodes'] = nodes.map((value) => value.toJson()).toList();
     }
@@ -8672,8 +8599,7 @@ class WorkflowMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterName != null) {
       _json['clusterName'] = clusterName;
     }
@@ -8758,8 +8684,7 @@ class WorkflowNode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error;
     }
@@ -8865,8 +8790,7 @@ class WorkflowTemplate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -8920,8 +8844,7 @@ class WorkflowTemplatePlacement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusterSelector != null) {
       _json['clusterSelector'] = clusterSelector.toJson();
     }
@@ -8980,8 +8903,7 @@ class YarnApplication {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }

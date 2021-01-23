@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1570,7 +1569,7 @@ void main() {
   unittest.group('resource-ProcessesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProcessesResourceApi res = api.ScriptApi(mock).processes;
+      var res = api.ScriptApi(mock).processes;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_userProcessFilter_deploymentId = 'foo';
@@ -1663,7 +1662,7 @@ void main() {
 
     unittest.test('method--listScriptProcesses', () {
       var mock = HttpServerMock();
-      api.ProcessesResourceApi res = api.ScriptApi(mock).processes;
+      var res = api.ScriptApi(mock).processes;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_scriptId = 'foo';
@@ -1754,7 +1753,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ScriptApi(mock).projects;
+      var res = api.ScriptApi(mock).projects;
       var arg_request = buildCreateProjectRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1803,7 +1802,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ScriptApi(mock).projects;
+      var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1852,7 +1851,7 @@ void main() {
 
     unittest.test('method--getContent', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ScriptApi(mock).projects;
+      var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
       var arg_versionNumber = 42;
       var arg_$fields = 'foo';
@@ -1911,7 +1910,7 @@ void main() {
 
     unittest.test('method--getMetrics', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ScriptApi(mock).projects;
+      var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
       var arg_metricsFilter_deploymentId = 'foo';
       var arg_metricsGranularity = 'foo';
@@ -1975,7 +1974,7 @@ void main() {
 
     unittest.test('method--updateContent', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ScriptApi(mock).projects;
+      var res = api.ScriptApi(mock).projects;
       var arg_request = buildContent();
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
@@ -2036,8 +2035,7 @@ void main() {
   unittest.group('resource-ProjectsDeploymentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsDeploymentsResourceApi res =
-          api.ScriptApi(mock).projects.deployments;
+      var res = api.ScriptApi(mock).projects.deployments;
       var arg_request = buildDeploymentConfig();
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
@@ -2096,8 +2094,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDeploymentsResourceApi res =
-          api.ScriptApi(mock).projects.deployments;
+      var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
       var arg_deploymentId = 'foo';
       var arg_$fields = 'foo';
@@ -2156,8 +2153,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDeploymentsResourceApi res =
-          api.ScriptApi(mock).projects.deployments;
+      var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
       var arg_deploymentId = 'foo';
       var arg_$fields = 'foo';
@@ -2216,8 +2212,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDeploymentsResourceApi res =
-          api.ScriptApi(mock).projects.deployments;
+      var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2281,8 +2276,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsDeploymentsResourceApi res =
-          api.ScriptApi(mock).projects.deployments;
+      var res = api.ScriptApi(mock).projects.deployments;
       var arg_request = buildUpdateDeploymentRequest();
       var arg_scriptId = 'foo';
       var arg_deploymentId = 'foo';
@@ -2348,8 +2342,7 @@ void main() {
   unittest.group('resource-ProjectsVersionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsVersionsResourceApi res =
-          api.ScriptApi(mock).projects.versions;
+      var res = api.ScriptApi(mock).projects.versions;
       var arg_request = buildVersion();
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
@@ -2408,8 +2401,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsVersionsResourceApi res =
-          api.ScriptApi(mock).projects.versions;
+      var res = api.ScriptApi(mock).projects.versions;
       var arg_scriptId = 'foo';
       var arg_versionNumber = 42;
       var arg_$fields = 'foo';
@@ -2468,8 +2460,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsVersionsResourceApi res =
-          api.ScriptApi(mock).projects.versions;
+      var res = api.ScriptApi(mock).projects.versions;
       var arg_scriptId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2535,7 +2526,7 @@ void main() {
   unittest.group('resource-ScriptsResourceApi', () {
     unittest.test('method--run', () {
       var mock = HttpServerMock();
-      api.ScriptsResourceApi res = api.ScriptApi(mock).scripts;
+      var res = api.ScriptApi(mock).scripts;
       var arg_request = buildExecutionRequest();
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';

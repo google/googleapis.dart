@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -363,8 +362,7 @@ class AnalyticsInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (googlePlayAnalytics != null) {
       _json['googlePlayAnalytics'] = googlePlayAnalytics.toJson();
     }
@@ -408,8 +406,7 @@ class AndroidInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidFallbackLink != null) {
       _json['androidFallbackLink'] = androidFallbackLink;
     }
@@ -471,8 +468,7 @@ class CreateManagedShortLinkRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dynamicLinkInfo != null) {
       _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
     }
@@ -521,8 +517,7 @@ class CreateManagedShortLinkResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedShortLink != null) {
       _json['managedShortLink'] = managedShortLink.toJson();
     }
@@ -573,8 +568,7 @@ class CreateShortDynamicLinkRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dynamicLinkInfo != null) {
       _json['dynamicLinkInfo'] = dynamicLinkInfo.toJson();
     }
@@ -620,8 +614,7 @@ class CreateShortDynamicLinkResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (previewLink != null) {
       _json['previewLink'] = previewLink;
     }
@@ -649,8 +642,7 @@ class DesktopInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (desktopFallbackLink != null) {
       _json['desktopFallbackLink'] = desktopFallbackLink;
     }
@@ -711,8 +703,7 @@ class DeviceInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceModelName != null) {
       _json['deviceModelName'] = deviceModelName;
     }
@@ -783,8 +774,7 @@ class DynamicLinkEventStat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -876,8 +866,7 @@ class DynamicLinkInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsInfo != null) {
       _json['analyticsInfo'] = analyticsInfo.toJson();
     }
@@ -926,8 +915,7 @@ class DynamicLinkStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (linkEventStats != null) {
       _json['linkEventStats'] =
           linkEventStats.map((value) => value.toJson()).toList();
@@ -1007,8 +995,7 @@ class DynamicLinkWarning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (warningCode != null) {
       _json['warningCode'] = warningCode;
     }
@@ -1099,8 +1086,7 @@ class GetIosPostInstallAttributionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appInstallationTime != null) {
       _json['appInstallationTime'] = appInstallationTime;
     }
@@ -1262,8 +1248,7 @@ class GetIosPostInstallAttributionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appMinimumVersion != null) {
       _json['appMinimumVersion'] = appMinimumVersion;
     }
@@ -1345,8 +1330,7 @@ class GetIosReopenAttributionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bundleId != null) {
       _json['bundleId'] = bundleId;
     }
@@ -1426,8 +1410,7 @@ class GetIosReopenAttributionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deepLink != null) {
       _json['deepLink'] = deepLink;
     }
@@ -1511,8 +1494,7 @@ class GooglePlayAnalytics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gclid != null) {
       _json['gclid'] = gclid;
     }
@@ -1569,8 +1551,7 @@ class ITunesConnectAnalytics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (at != null) {
       _json['at'] = at;
     }
@@ -1639,8 +1620,7 @@ class IosInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iosAppStoreId != null) {
       _json['iosAppStoreId'] = iosAppStoreId;
     }
@@ -1719,8 +1699,7 @@ class ManagedShortLink {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime;
     }
@@ -1758,8 +1737,7 @@ class NavigationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enableForcedRedirect != null) {
       _json['enableForcedRedirect'] = enableForcedRedirect;
     }
@@ -1794,8 +1772,7 @@ class SocialMetaTagInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (socialDescription != null) {
       _json['socialDescription'] = socialDescription;
     }
@@ -1843,8 +1820,7 @@ class Suffix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customSuffix != null) {
       _json['customSuffix'] = customSuffix;
     }

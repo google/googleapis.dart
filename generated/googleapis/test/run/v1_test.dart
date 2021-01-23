@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2872,8 +2871,7 @@ void main() {
   unittest.group('resource-NamespacesAuthorizeddomainsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesAuthorizeddomainsResourceApi res =
-          api.RunApi(mock).namespaces.authorizeddomains;
+      var res = api.RunApi(mock).namespaces.authorizeddomains;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2931,8 +2929,7 @@ void main() {
   unittest.group('resource-NamespacesConfigurationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NamespacesConfigurationsResourceApi res =
-          api.RunApi(mock).namespaces.configurations;
+      var res = api.RunApi(mock).namespaces.configurations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2979,8 +2976,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesConfigurationsResourceApi res =
-          api.RunApi(mock).namespaces.configurations;
+      var res = api.RunApi(mock).namespaces.configurations;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -3057,8 +3053,7 @@ void main() {
   unittest.group('resource-NamespacesDomainmappingsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.NamespacesDomainmappingsResourceApi res =
-          api.RunApi(mock).namespaces.domainmappings;
+      var res = api.RunApi(mock).namespaces.domainmappings;
       var arg_request = buildDomainMapping();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3109,8 +3104,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NamespacesDomainmappingsResourceApi res =
-          api.RunApi(mock).namespaces.domainmappings;
+      var res = api.RunApi(mock).namespaces.domainmappings;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -3169,8 +3163,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NamespacesDomainmappingsResourceApi res =
-          api.RunApi(mock).namespaces.domainmappings;
+      var res = api.RunApi(mock).namespaces.domainmappings;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3217,8 +3210,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesDomainmappingsResourceApi res =
-          api.RunApi(mock).namespaces.domainmappings;
+      var res = api.RunApi(mock).namespaces.domainmappings;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -3295,8 +3287,7 @@ void main() {
   unittest.group('resource-NamespacesRevisionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NamespacesRevisionsResourceApi res =
-          api.RunApi(mock).namespaces.revisions;
+      var res = api.RunApi(mock).namespaces.revisions;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -3355,8 +3346,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NamespacesRevisionsResourceApi res =
-          api.RunApi(mock).namespaces.revisions;
+      var res = api.RunApi(mock).namespaces.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3403,8 +3393,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesRevisionsResourceApi res =
-          api.RunApi(mock).namespaces.revisions;
+      var res = api.RunApi(mock).namespaces.revisions;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -3481,7 +3470,7 @@ void main() {
   unittest.group('resource-NamespacesRoutesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NamespacesRoutesResourceApi res = api.RunApi(mock).namespaces.routes;
+      var res = api.RunApi(mock).namespaces.routes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3528,7 +3517,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesRoutesResourceApi res = api.RunApi(mock).namespaces.routes;
+      var res = api.RunApi(mock).namespaces.routes;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -3605,8 +3594,7 @@ void main() {
   unittest.group('resource-NamespacesServicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.NamespacesServicesResourceApi res =
-          api.RunApi(mock).namespaces.services;
+      var res = api.RunApi(mock).namespaces.services;
       var arg_request = buildService();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3657,8 +3645,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NamespacesServicesResourceApi res =
-          api.RunApi(mock).namespaces.services;
+      var res = api.RunApi(mock).namespaces.services;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -3717,8 +3704,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NamespacesServicesResourceApi res =
-          api.RunApi(mock).namespaces.services;
+      var res = api.RunApi(mock).namespaces.services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3765,8 +3751,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NamespacesServicesResourceApi res =
-          api.RunApi(mock).namespaces.services;
+      var res = api.RunApi(mock).namespaces.services;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -3841,8 +3826,7 @@ void main() {
 
     unittest.test('method--replaceService', () {
       var mock = HttpServerMock();
-      api.NamespacesServicesResourceApi res =
-          api.RunApi(mock).namespaces.services;
+      var res = api.RunApi(mock).namespaces.services;
       var arg_request = buildService();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3895,8 +3879,7 @@ void main() {
   unittest.group('resource-ProjectsAuthorizeddomainsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAuthorizeddomainsResourceApi res =
-          api.RunApi(mock).projects.authorizeddomains;
+      var res = api.RunApi(mock).projects.authorizeddomains;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3954,8 +3937,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.RunApi(mock).projects.locations;
+      var res = api.RunApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4016,8 +3998,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAuthorizeddomainsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAuthorizeddomainsResourceApi res =
-          api.RunApi(mock).projects.locations.authorizeddomains;
+      var res = api.RunApi(mock).projects.locations.authorizeddomains;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4075,8 +4056,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsConfigurationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConfigurationsResourceApi res =
-          api.RunApi(mock).projects.locations.configurations;
+      var res = api.RunApi(mock).projects.locations.configurations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4123,8 +4103,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsConfigurationsResourceApi res =
-          api.RunApi(mock).projects.locations.configurations;
+      var res = api.RunApi(mock).projects.locations.configurations;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -4201,8 +4180,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsDomainmappingsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDomainmappingsResourceApi res =
-          api.RunApi(mock).projects.locations.domainmappings;
+      var res = api.RunApi(mock).projects.locations.domainmappings;
       var arg_request = buildDomainMapping();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4253,8 +4231,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDomainmappingsResourceApi res =
-          api.RunApi(mock).projects.locations.domainmappings;
+      var res = api.RunApi(mock).projects.locations.domainmappings;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -4313,8 +4290,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDomainmappingsResourceApi res =
-          api.RunApi(mock).projects.locations.domainmappings;
+      var res = api.RunApi(mock).projects.locations.domainmappings;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4361,8 +4337,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDomainmappingsResourceApi res =
-          api.RunApi(mock).projects.locations.domainmappings;
+      var res = api.RunApi(mock).projects.locations.domainmappings;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -4439,8 +4414,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRevisionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRevisionsResourceApi res =
-          api.RunApi(mock).projects.locations.revisions;
+      var res = api.RunApi(mock).projects.locations.revisions;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -4499,8 +4473,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRevisionsResourceApi res =
-          api.RunApi(mock).projects.locations.revisions;
+      var res = api.RunApi(mock).projects.locations.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4547,8 +4520,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRevisionsResourceApi res =
-          api.RunApi(mock).projects.locations.revisions;
+      var res = api.RunApi(mock).projects.locations.revisions;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -4625,8 +4597,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRoutesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRoutesResourceApi res =
-          api.RunApi(mock).projects.locations.routes;
+      var res = api.RunApi(mock).projects.locations.routes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4673,8 +4644,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsRoutesResourceApi res =
-          api.RunApi(mock).projects.locations.routes;
+      var res = api.RunApi(mock).projects.locations.routes;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -4751,8 +4721,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsServicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_request = buildService();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4803,8 +4772,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_name = 'foo';
       var arg_apiVersion = 'foo';
       var arg_kind = 'foo';
@@ -4863,8 +4831,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4911,8 +4878,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -4966,8 +4932,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_parent = 'foo';
       var arg_continue_ = 'foo';
       var arg_fieldSelector = 'foo';
@@ -5042,8 +5007,7 @@ void main() {
 
     unittest.test('method--replaceService', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_request = buildService();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5094,8 +5058,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5146,8 +5109,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsServicesResourceApi res =
-          api.RunApi(mock).projects.locations.services;
+      var res = api.RunApi(mock).projects.locations.services;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

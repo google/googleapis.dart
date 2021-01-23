@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1416,7 +1415,7 @@ void main() {
   unittest.group('resource-ChangesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DnsApi(mock).changes;
+      var res = api.DnsApi(mock).changes;
       var arg_request = buildChange();
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
@@ -1489,7 +1488,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DnsApi(mock).changes;
+      var res = api.DnsApi(mock).changes;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_changeId = 'foo';
@@ -1562,7 +1561,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DnsApi(mock).changes;
+      var res = api.DnsApi(mock).changes;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_maxResults = 42;
@@ -1645,7 +1644,7 @@ void main() {
   unittest.group('resource-DnsKeysResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DnsKeysResourceApi res = api.DnsApi(mock).dnsKeys;
+      var res = api.DnsApi(mock).dnsKeys;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_dnsKeyId = 'foo';
@@ -1723,7 +1722,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DnsKeysResourceApi res = api.DnsApi(mock).dnsKeys;
+      var res = api.DnsApi(mock).dnsKeys;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_digestType = 'foo';
@@ -1803,8 +1802,7 @@ void main() {
   unittest.group('resource-ManagedZoneOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagedZoneOperationsResourceApi res =
-          api.DnsApi(mock).managedZoneOperations;
+      var res = api.DnsApi(mock).managedZoneOperations;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_operation = 'foo';
@@ -1877,8 +1875,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagedZoneOperationsResourceApi res =
-          api.DnsApi(mock).managedZoneOperations;
+      var res = api.DnsApi(mock).managedZoneOperations;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_maxResults = 42;
@@ -1958,7 +1955,7 @@ void main() {
   unittest.group('resource-ManagedZonesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
       var arg_project = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2021,7 +2018,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2082,7 +2079,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2145,7 +2142,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
       var arg_dnsName = 'foo';
       var arg_maxResults = 42;
@@ -2213,7 +2210,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
@@ -2280,7 +2277,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagedZonesResourceApi res = api.DnsApi(mock).managedZones;
+      var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
@@ -2349,7 +2346,7 @@ void main() {
   unittest.group('resource-PoliciesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
       var arg_project = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2412,7 +2409,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
       var arg_policy = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2473,7 +2470,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
       var arg_policy = 'foo';
       var arg_clientOperationId = 'foo';
@@ -2536,7 +2533,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2600,7 +2597,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
       var arg_project = 'foo';
       var arg_policy = 'foo';
@@ -2667,7 +2664,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PoliciesResourceApi res = api.DnsApi(mock).policies;
+      var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
       var arg_project = 'foo';
       var arg_policy = 'foo';
@@ -2736,7 +2733,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DnsApi(mock).projects;
+      var res = api.DnsApi(mock).projects;
       var arg_project = 'foo';
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
@@ -2791,8 +2788,7 @@ void main() {
   unittest.group('resource-ResourceRecordSetsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ResourceRecordSetsResourceApi res =
-          api.DnsApi(mock).resourceRecordSets;
+      var res = api.DnsApi(mock).resourceRecordSets;
       var arg_project = 'foo';
       var arg_managedZone = 'foo';
       var arg_maxResults = 42;

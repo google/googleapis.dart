@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -145,8 +144,7 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullResourceName != null) {
       _json['fullResourceName'] = fullResourceName;
     }
@@ -269,8 +267,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access;
     }
@@ -342,8 +339,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (membership != null) {
       _json['membership'] = membership;
     }
@@ -426,8 +422,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access;
     }
@@ -465,8 +460,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessTuple != null) {
       _json['accessTuple'] = accessTuple.toJson();
     }
@@ -514,8 +508,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access;
     }
@@ -567,8 +560,7 @@ class GoogleIamV1AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -611,8 +603,7 @@ class GoogleIamV1AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -684,8 +675,7 @@ class GoogleIamV1Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -797,8 +787,7 @@ class GoogleIamV1Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -867,8 +856,7 @@ class GoogleTypeExpr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -182,8 +181,7 @@ class DirectoryListItemsIcons {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x16 != null) {
       _json['x16'] = x16;
     }
@@ -273,8 +271,7 @@ class DirectoryListItems {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -343,8 +340,7 @@ class DirectoryList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (discoveryVersion != null) {
       _json['discoveryVersion'] = discoveryVersion;
     }
@@ -372,8 +368,7 @@ class JsonSchemaAnnotations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (required != null) {
       _json['required'] = required;
     }
@@ -397,8 +392,7 @@ class JsonSchemaVariantMap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (P_ref != null) {
       _json['\$ref'] = P_ref;
     }
@@ -434,8 +428,7 @@ class JsonSchemaVariant {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (discriminant != null) {
       _json['discriminant'] = discriminant;
     }
@@ -590,8 +583,7 @@ class JsonSchema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (P_ref != null) {
       _json['\$ref'] = P_ref;
     }
@@ -672,8 +664,7 @@ class RestDescriptionAuthOauth2ScopesValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -698,8 +689,7 @@ class RestDescriptionAuthOauth2 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (scopes != null) {
       _json['scopes'] = commons.mapMap<RestDescriptionAuthOauth2ScopesValue,
               core.Map<core.String, core.Object>>(
@@ -723,8 +713,7 @@ class RestDescriptionAuth {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (oauth2 != null) {
       _json['oauth2'] = oauth2.toJson();
     }
@@ -752,8 +741,7 @@ class RestDescriptionIcons {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x16 != null) {
       _json['x16'] = x16;
     }
@@ -960,8 +948,7 @@ class RestDescription {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auth != null) {
       _json['auth'] = auth.toJson();
     }
@@ -1085,8 +1072,7 @@ class RestMethodMediaUploadProtocolsResumable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (multipart != null) {
       _json['multipart'] = multipart;
     }
@@ -1118,8 +1104,7 @@ class RestMethodMediaUploadProtocolsSimple {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (multipart != null) {
       _json['multipart'] = multipart;
     }
@@ -1151,8 +1136,7 @@ class RestMethodMediaUploadProtocols {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resumable != null) {
       _json['resumable'] = resumable.toJson();
     }
@@ -1189,8 +1173,7 @@ class RestMethodMediaUpload {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accept != null) {
       _json['accept'] = accept;
     }
@@ -1224,8 +1207,7 @@ class RestMethodRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (P_ref != null) {
       _json['\$ref'] = P_ref;
     }
@@ -1250,8 +1232,7 @@ class RestMethodResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (P_ref != null) {
       _json['\$ref'] = P_ref;
     }
@@ -1366,8 +1347,7 @@ class RestMethod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1442,8 +1422,7 @@ class RestResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (methods != null) {
       _json['methods'] =
           commons.mapMap<RestMethod, core.Map<core.String, core.Object>>(

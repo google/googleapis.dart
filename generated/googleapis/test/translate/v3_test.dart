@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1233,7 +1232,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--detectLanguage', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
+      var res = api.TranslateApi(mock).projects;
       var arg_request = buildDetectLanguageRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1284,7 +1283,7 @@ void main() {
 
     unittest.test('method--getSupportedLanguages', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
+      var res = api.TranslateApi(mock).projects;
       var arg_parent = 'foo';
       var arg_displayLanguageCode = 'foo';
       var arg_model = 'foo';
@@ -1339,7 +1338,7 @@ void main() {
 
     unittest.test('method--translateText', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.TranslateApi(mock).projects;
+      var res = api.TranslateApi(mock).projects;
       var arg_request = buildTranslateTextRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1392,8 +1391,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--batchTranslateText', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildBatchTranslateTextRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1444,8 +1442,7 @@ void main() {
 
     unittest.test('method--detectLanguage', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildDetectLanguageRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1496,8 +1493,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1544,8 +1540,7 @@ void main() {
 
     unittest.test('method--getSupportedLanguages', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_displayLanguageCode = 'foo';
       var arg_model = 'foo';
@@ -1600,8 +1595,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1660,8 +1654,7 @@ void main() {
 
     unittest.test('method--translateText', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.TranslateApi(mock).projects.locations;
+      var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildTranslateTextRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1714,8 +1707,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlossariesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlossariesResourceApi res =
-          api.TranslateApi(mock).projects.locations.glossaries;
+      var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_request = buildGlossary();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1766,8 +1758,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlossariesResourceApi res =
-          api.TranslateApi(mock).projects.locations.glossaries;
+      var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1814,8 +1805,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlossariesResourceApi res =
-          api.TranslateApi(mock).projects.locations.glossaries;
+      var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1862,8 +1852,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsGlossariesResourceApi res =
-          api.TranslateApi(mock).projects.locations.glossaries;
+      var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1924,8 +1913,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.TranslateApi(mock).projects.locations.operations;
+      var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1976,8 +1964,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.TranslateApi(mock).projects.locations.operations;
+      var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2024,8 +2011,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.TranslateApi(mock).projects.locations.operations;
+      var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2072,8 +2058,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.TranslateApi(mock).projects.locations.operations;
+      var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2132,8 +2117,7 @@ void main() {
 
     unittest.test('method--wait', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.TranslateApi(mock).projects.locations.operations;
+      var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildWaitOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -912,8 +911,7 @@ void main() {
   unittest.group('resource-OrganizationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_name = 'foo';
       var arg_organizationId = 'foo';
       var arg_$fields = 'foo';
@@ -964,8 +962,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1016,8 +1013,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1074,8 +1070,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1126,8 +1121,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1178,8 +1172,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.CloudresourcemanagerApi(mock).organizations;
+      var res = api.CloudresourcemanagerApi(mock).organizations;
       var arg_request = buildOrganization();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1232,7 +1225,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
       var arg_useLegacyStack = true;
       var arg_$fields = 'foo';
@@ -1285,7 +1278,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1334,7 +1327,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1383,7 +1376,7 @@ void main() {
 
     unittest.test('method--getAncestry', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetAncestryRequest();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -1442,7 +1435,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1501,7 +1494,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1558,7 +1551,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1617,7 +1610,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1676,7 +1669,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildUndeleteProjectRequest();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -1735,7 +1728,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudresourcemanagerApi(mock).projects;
+      var res = api.CloudresourcemanagerApi(mock).projects;
       var arg_request = buildProject();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';

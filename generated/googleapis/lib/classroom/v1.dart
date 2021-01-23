@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4732,8 +4731,7 @@ class Announcement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -4789,8 +4787,7 @@ class Assignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (studentWorkFolder != null) {
       _json['studentWorkFolder'] = studentWorkFolder.toJson();
     }
@@ -4819,8 +4816,7 @@ class AssignmentSubmission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attachments != null) {
       _json['attachments'] =
           attachments.map((value) => value.toJson()).toList();
@@ -4862,8 +4858,7 @@ class Attachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveFile != null) {
       _json['driveFile'] = driveFile.toJson();
     }
@@ -4898,8 +4893,7 @@ class CloudPubsubTopic {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (topicName != null) {
       _json['topicName'] = topicName;
     }
@@ -5076,8 +5070,7 @@ class Course {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -5164,8 +5157,7 @@ class CourseAlias {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alias != null) {
       _json['alias'] = alias;
     }
@@ -5205,8 +5197,7 @@ class CourseMaterial {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveFile != null) {
       _json['driveFile'] = driveFile.toJson();
     }
@@ -5247,8 +5238,7 @@ class CourseMaterialSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (materials != null) {
       _json['materials'] = materials.map((value) => value.toJson()).toList();
     }
@@ -5273,8 +5263,7 @@ class CourseRosterChangesInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -5475,8 +5464,7 @@ class CourseWork {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -5561,8 +5549,7 @@ class CourseWorkChangesInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -5695,8 +5682,7 @@ class CourseWorkMaterial {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -5780,8 +5766,7 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -5827,8 +5812,7 @@ class DriveFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -5871,8 +5855,7 @@ class DriveFolder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -5899,8 +5882,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5955,8 +5937,7 @@ class Feed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseRosterChangesInfo != null) {
       _json['courseRosterChangesInfo'] = courseRosterChangesInfo.toJson();
     }
@@ -6004,8 +5985,7 @@ class Form {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (formUrl != null) {
       _json['formUrl'] = formUrl;
     }
@@ -6040,8 +6020,7 @@ class GlobalPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permission != null) {
       _json['permission'] = permission;
     }
@@ -6095,8 +6074,7 @@ class GradeHistory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actorUserId != null) {
       _json['actorUserId'] = actorUserId;
     }
@@ -6150,8 +6128,7 @@ class Guardian {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (guardianId != null) {
       _json['guardianId'] = guardianId;
     }
@@ -6213,8 +6190,7 @@ class GuardianInvitation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime;
     }
@@ -6250,8 +6226,7 @@ class IndividualStudentsOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (studentIds != null) {
       _json['studentIds'] = studentIds;
     }
@@ -6299,8 +6274,7 @@ class Invitation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -6344,8 +6318,7 @@ class Link {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (thumbnailUrl != null) {
       _json['thumbnailUrl'] = thumbnailUrl;
     }
@@ -6382,8 +6355,7 @@ class ListAnnouncementsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (announcements != null) {
       _json['announcements'] =
           announcements.map((value) => value.toJson()).toList();
@@ -6418,8 +6390,7 @@ class ListCourseAliasesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliases != null) {
       _json['aliases'] = aliases.map((value) => value.toJson()).toList();
     }
@@ -6454,8 +6425,7 @@ class ListCourseWorkMaterialResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseWorkMaterial != null) {
       _json['courseWorkMaterial'] =
           courseWorkMaterial.map((value) => value.toJson()).toList();
@@ -6490,8 +6460,7 @@ class ListCourseWorkResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseWork != null) {
       _json['courseWork'] = courseWork.map((value) => value.toJson()).toList();
     }
@@ -6525,8 +6494,7 @@ class ListCoursesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courses != null) {
       _json['courses'] = courses.map((value) => value.toJson()).toList();
     }
@@ -6561,8 +6529,7 @@ class ListGuardianInvitationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (guardianInvitations != null) {
       _json['guardianInvitations'] =
           guardianInvitations.map((value) => value.toJson()).toList();
@@ -6598,8 +6565,7 @@ class ListGuardiansResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (guardians != null) {
       _json['guardians'] = guardians.map((value) => value.toJson()).toList();
     }
@@ -6633,8 +6599,7 @@ class ListInvitationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (invitations != null) {
       _json['invitations'] =
           invitations.map((value) => value.toJson()).toList();
@@ -6669,8 +6634,7 @@ class ListStudentSubmissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6705,8 +6669,7 @@ class ListStudentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6740,8 +6703,7 @@ class ListTeachersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6775,8 +6737,7 @@ class ListTopicResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -6821,8 +6782,7 @@ class Material {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveFile != null) {
       _json['driveFile'] = driveFile.toJson();
     }
@@ -6868,8 +6828,7 @@ class ModifyAnnouncementAssigneesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assigneeMode != null) {
       _json['assigneeMode'] = assigneeMode;
     }
@@ -6898,8 +6857,7 @@ class ModifyAttachmentsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addAttachments != null) {
       _json['addAttachments'] =
           addAttachments.map((value) => value.toJson()).toList();
@@ -6937,8 +6895,7 @@ class ModifyCourseWorkAssigneesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assigneeMode != null) {
       _json['assigneeMode'] = assigneeMode;
     }
@@ -6974,8 +6931,7 @@ class ModifyIndividualStudentsOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addStudentIds != null) {
       _json['addStudentIds'] = addStudentIds;
     }
@@ -7000,8 +6956,7 @@ class MultipleChoiceQuestion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (choices != null) {
       _json['choices'] = choices;
     }
@@ -7023,8 +6978,7 @@ class MultipleChoiceSubmission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (answer != null) {
       _json['answer'] = answer;
     }
@@ -7059,8 +7013,7 @@ class Name {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (familyName != null) {
       _json['familyName'] = familyName;
     }
@@ -7083,8 +7036,7 @@ class ReclaimStudentSubmissionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7124,8 +7076,7 @@ class Registration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cloudPubsubTopic != null) {
       _json['cloudPubsubTopic'] = cloudPubsubTopic.toJson();
     }
@@ -7151,8 +7102,7 @@ class ReturnStudentSubmissionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7183,8 +7133,7 @@ class SharedDriveFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveFile != null) {
       _json['driveFile'] = driveFile.toJson();
     }
@@ -7209,8 +7158,7 @@ class ShortAnswerSubmission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (answer != null) {
       _json['answer'] = answer;
     }
@@ -7257,8 +7205,7 @@ class StateHistory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actorUserId != null) {
       _json['actorUserId'] = actorUserId;
     }
@@ -7308,8 +7255,7 @@ class Student {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -7472,8 +7418,7 @@ class StudentSubmission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }
@@ -7551,8 +7496,7 @@ class SubmissionHistory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gradeHistory != null) {
       _json['gradeHistory'] = gradeHistory.toJson();
     }
@@ -7592,8 +7536,7 @@ class Teacher {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -7643,8 +7586,7 @@ class TimeOfDay {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hours != null) {
       _json['hours'] = hours;
     }
@@ -7697,8 +7639,7 @@ class Topic {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (courseId != null) {
       _json['courseId'] = courseId;
     }
@@ -7724,8 +7665,7 @@ class TurnInStudentSubmissionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7779,8 +7719,7 @@ class UserProfile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emailAddress != null) {
       _json['emailAddress'] = emailAddress;
     }
@@ -7836,8 +7775,7 @@ class YouTubeVideo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateLink != null) {
       _json['alternateLink'] = alternateLink;
     }

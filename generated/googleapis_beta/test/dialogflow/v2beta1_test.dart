@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -9950,7 +9949,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--deleteAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DialogflowApi(mock).projects;
+      var res = api.DialogflowApi(mock).projects;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9997,7 +9996,7 @@ void main() {
 
     unittest.test('method--getAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DialogflowApi(mock).projects;
+      var res = api.DialogflowApi(mock).projects;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10045,7 +10044,7 @@ void main() {
 
     unittest.test('method--setAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DialogflowApi(mock).projects;
+      var res = api.DialogflowApi(mock).projects;
       var arg_request = buildGoogleCloudDialogflowV2beta1Agent();
       var arg_parent = 'foo';
       var arg_updateMask = 'foo';
@@ -10103,7 +10102,7 @@ void main() {
   unittest.group('resource-ProjectsAgentResourceApi', () {
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ExportAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10155,7 +10154,7 @@ void main() {
 
     unittest.test('method--getFulfillment', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10203,7 +10202,7 @@ void main() {
 
     unittest.test('method--getValidationResult', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
@@ -10255,7 +10254,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ImportAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10307,7 +10306,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1RestoreAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10359,7 +10358,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -10416,7 +10415,7 @@ void main() {
 
     unittest.test('method--train', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1TrainAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10468,7 +10467,7 @@ void main() {
 
     unittest.test('method--updateFulfillment', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentResourceApi res = api.DialogflowApi(mock).projects.agent;
+      var res = api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1Fulfillment();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -10526,8 +10525,7 @@ void main() {
   unittest.group('resource-ProjectsAgentEntityTypesResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest();
       var arg_parent = 'foo';
@@ -10580,8 +10578,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest();
       var arg_parent = 'foo';
@@ -10634,8 +10631,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
@@ -10691,8 +10687,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10739,8 +10734,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_name = 'foo';
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
@@ -10791,8 +10785,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
       var arg_pageSize = 42;
@@ -10853,8 +10846,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_name = 'foo';
       var arg_languageCode = 'foo';
@@ -10917,8 +10909,7 @@ void main() {
   unittest.group('resource-ProjectsAgentEntityTypesEntitiesResourceApi', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes.entities;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest();
       var arg_parent = 'foo';
@@ -10972,8 +10963,7 @@ void main() {
 
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes.entities;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest();
       var arg_parent = 'foo';
@@ -11027,8 +11017,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.entityTypes.entities;
+      var res = api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest();
       var arg_parent = 'foo';
@@ -11084,8 +11073,7 @@ void main() {
   unittest.group('resource-ProjectsAgentEnvironmentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.environments;
+      var res = api.DialogflowApi(mock).projects.agent.environments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11145,7 +11133,7 @@ void main() {
       () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.agent.environments.users.sessions;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11193,7 +11181,7 @@ void main() {
 
     unittest.test('method--detectIntent', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.agent.environments.users.sessions;
       var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
       var arg_session = 'foo';
@@ -11250,14 +11238,13 @@ void main() {
       'resource-ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11309,14 +11296,13 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11363,14 +11349,13 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11418,14 +11403,13 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11482,14 +11466,13 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -11549,14 +11532,13 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11609,14 +11591,13 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11663,14 +11644,13 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11718,14 +11698,13 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11783,14 +11762,13 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -11849,8 +11827,7 @@ void main() {
   unittest.group('resource-ProjectsAgentIntentsResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest();
       var arg_parent = 'foo';
@@ -11904,8 +11881,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest();
       var arg_parent = 'foo';
@@ -11959,8 +11935,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_parent = 'foo';
       var arg_intentView = 'foo';
@@ -12021,8 +11996,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12069,8 +12043,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_name = 'foo';
       var arg_intentView = 'foo';
       var arg_languageCode = 'foo';
@@ -12127,8 +12100,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_parent = 'foo';
       var arg_intentView = 'foo';
       var arg_languageCode = 'foo';
@@ -12193,8 +12165,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.intents;
+      var res = api.DialogflowApi(mock).projects.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_name = 'foo';
       var arg_intentView = 'foo';
@@ -12261,8 +12232,7 @@ void main() {
   unittest.group('resource-ProjectsAgentKnowledgeBasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12314,8 +12284,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -12364,8 +12333,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12413,8 +12381,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -12474,8 +12441,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -12534,8 +12500,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12586,8 +12551,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12634,8 +12598,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12683,8 +12646,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -12744,8 +12706,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -12800,8 +12761,7 @@ void main() {
 
     unittest.test('method--reload', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1ReloadDocumentRequest();
       var arg_name = 'foo';
@@ -12857,8 +12817,7 @@ void main() {
   unittest.group('resource-ProjectsAgentSessionsResourceApi', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions;
+      var res = api.DialogflowApi(mock).projects.agent.sessions;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12905,8 +12864,7 @@ void main() {
 
     unittest.test('method--detectIntent', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions;
+      var res = api.DialogflowApi(mock).projects.agent.sessions;
       var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -12961,8 +12919,7 @@ void main() {
   unittest.group('resource-ProjectsAgentSessionsContextsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsContextsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.contexts;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13014,8 +12971,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsContextsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.contexts;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13062,8 +13018,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsContextsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.contexts;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13111,8 +13066,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsContextsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.contexts;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -13169,8 +13123,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsContextsResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.contexts;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -13228,8 +13181,7 @@ void main() {
   unittest.group('resource-ProjectsAgentSessionsEntityTypesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13282,8 +13234,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13330,8 +13281,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13379,8 +13329,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -13438,8 +13387,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
+      var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -13498,8 +13446,7 @@ void main() {
   unittest.group('resource-ProjectsKnowledgeBasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13551,8 +13498,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -13601,8 +13547,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13650,8 +13595,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -13711,8 +13655,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -13770,8 +13713,7 @@ void main() {
   unittest.group('resource-ProjectsKnowledgeBasesDocumentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13822,8 +13764,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13870,8 +13811,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13919,8 +13859,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -13980,8 +13919,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -14036,8 +13974,7 @@ void main() {
 
     unittest.test('method--reload', () {
       var mock = HttpServerMock();
-      api.ProjectsKnowledgeBasesDocumentsResourceApi res =
-          api.DialogflowApi(mock).projects.knowledgeBases.documents;
+      var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1ReloadDocumentRequest();
       var arg_name = 'foo';
@@ -14093,8 +14030,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--deleteAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations;
+      var res = api.DialogflowApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14141,8 +14077,7 @@ void main() {
 
     unittest.test('method--getAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations;
+      var res = api.DialogflowApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14190,8 +14125,7 @@ void main() {
 
     unittest.test('method--setAgent', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations;
+      var res = api.DialogflowApi(mock).projects.locations;
       var arg_request = buildGoogleCloudDialogflowV2beta1Agent();
       var arg_parent = 'foo';
       var arg_updateMask = 'foo';
@@ -14249,8 +14183,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentResourceApi', () {
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ExportAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14302,8 +14235,7 @@ void main() {
 
     unittest.test('method--getFulfillment', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14351,8 +14283,7 @@ void main() {
 
     unittest.test('method--getValidationResult', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
@@ -14404,8 +14335,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ImportAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14457,8 +14387,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1RestoreAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14510,8 +14439,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -14568,8 +14496,7 @@ void main() {
 
     unittest.test('method--train', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1TrainAgentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14621,8 +14548,7 @@ void main() {
 
     unittest.test('method--updateFulfillment', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent;
+      var res = api.DialogflowApi(mock).projects.locations.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1Fulfillment();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -14680,8 +14606,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentEntityTypesResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest();
       var arg_parent = 'foo';
@@ -14734,8 +14659,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest();
       var arg_parent = 'foo';
@@ -14788,8 +14712,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
@@ -14845,8 +14768,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14893,8 +14815,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_name = 'foo';
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
@@ -14945,8 +14866,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_parent = 'foo';
       var arg_languageCode = 'foo';
       var arg_pageSize = 42;
@@ -15007,8 +14927,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_name = 'foo';
       var arg_languageCode = 'foo';
@@ -15072,7 +14991,7 @@ void main() {
       'resource-ProjectsLocationsAgentEntityTypesEntitiesResourceApi', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest();
@@ -15127,7 +15046,7 @@ void main() {
 
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest();
@@ -15182,7 +15101,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest();
@@ -15239,8 +15158,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentEnvironmentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.environments;
+      var res = api.DialogflowApi(mock).projects.locations.agent.environments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -15301,14 +15219,13 @@ void main() {
       () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15355,14 +15272,13 @@ void main() {
 
     unittest.test('method--detectIntent', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi res =
-          api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions;
       var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -15419,15 +15335,14 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -15479,15 +15394,14 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15534,15 +15448,14 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15590,15 +15503,14 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -15655,15 +15567,14 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .contexts;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -15723,15 +15634,14 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -15784,15 +15694,14 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15839,15 +15748,14 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15895,15 +15803,14 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -15961,15 +15868,14 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-          res = api.DialogflowApi(mock)
-              .projects
-              .locations
-              .agent
-              .environments
-              .users
-              .sessions
-              .entityTypes;
+      var res = api.DialogflowApi(mock)
+          .projects
+          .locations
+          .agent
+          .environments
+          .users
+          .sessions
+          .entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -16028,8 +15934,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentIntentsResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest();
       var arg_parent = 'foo';
@@ -16083,8 +15988,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest();
       var arg_parent = 'foo';
@@ -16138,8 +16042,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_parent = 'foo';
       var arg_intentView = 'foo';
@@ -16200,8 +16103,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16248,8 +16150,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_name = 'foo';
       var arg_intentView = 'foo';
       var arg_languageCode = 'foo';
@@ -16306,8 +16207,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_parent = 'foo';
       var arg_intentView = 'foo';
       var arg_languageCode = 'foo';
@@ -16372,8 +16272,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentIntentsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.intents;
+      var res = api.DialogflowApi(mock).projects.locations.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_name = 'foo';
       var arg_intentView = 'foo';
@@ -16440,8 +16339,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAgentSessionsResourceApi', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions;
+      var res = api.DialogflowApi(mock).projects.locations.agent.sessions;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16488,8 +16386,7 @@ void main() {
 
     unittest.test('method--detectIntent', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.agent.sessions;
+      var res = api.DialogflowApi(mock).projects.locations.agent.sessions;
       var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -16545,7 +16442,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_parent = 'foo';
@@ -16598,7 +16495,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -16646,7 +16543,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -16695,7 +16592,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
@@ -16753,7 +16650,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_name = 'foo';
@@ -16813,7 +16710,7 @@ void main() {
       'resource-ProjectsLocationsAgentSessionsEntityTypesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_parent = 'foo';
@@ -16867,7 +16764,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -16915,7 +16812,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -16964,7 +16861,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
@@ -17023,7 +16920,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+      var res =
           api.DialogflowApi(mock).projects.locations.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_name = 'foo';
@@ -17083,8 +16980,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.operations;
+      var res = api.DialogflowApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17131,8 +17027,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.operations;
+      var res = api.DialogflowApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17179,8 +17074,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.locations.operations;
+      var res = api.DialogflowApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -17242,8 +17136,7 @@ void main() {
   unittest.group('resource-ProjectsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.operations;
+      var res = api.DialogflowApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17290,8 +17183,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.operations;
+      var res = api.DialogflowApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17338,8 +17230,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsOperationsResourceApi res =
-          api.DialogflowApi(mock).projects.operations;
+      var res = api.DialogflowApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

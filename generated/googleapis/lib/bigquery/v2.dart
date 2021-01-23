@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2591,8 +2590,7 @@ class AggregateClassificationMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accuracy != null) {
       _json['accuracy'] = accuracy;
     }
@@ -2663,8 +2661,7 @@ class Argument {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (argumentKind != null) {
       _json['argumentKind'] = argumentKind;
     }
@@ -2713,8 +2710,7 @@ class ArimaCoefficients {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoRegressiveCoefficients != null) {
       _json['autoRegressiveCoefficients'] = autoRegressiveCoefficients;
     }
@@ -2754,8 +2750,7 @@ class ArimaFittingMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aic != null) {
       _json['aic'] = aic;
     }
@@ -2827,8 +2822,7 @@ class ArimaForecastingMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaFittingMetrics != null) {
       _json['arimaFittingMetrics'] =
           arimaFittingMetrics.map((value) => value.toJson()).toList();
@@ -2905,8 +2899,7 @@ class ArimaModelInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaCoefficients != null) {
       _json['arimaCoefficients'] = arimaCoefficients.toJson();
     }
@@ -2955,8 +2948,7 @@ class ArimaOrder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (d != null) {
       _json['d'] = d;
     }
@@ -2996,8 +2988,7 @@ class ArimaResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaModelInfo != null) {
       _json['arimaModelInfo'] =
           arimaModelInfo.map((value) => value.toJson()).toList();
@@ -3051,8 +3042,7 @@ class ArimaSingleModelForecastingMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaFittingMetrics != null) {
       _json['arimaFittingMetrics'] = arimaFittingMetrics.toJson();
     }
@@ -3111,8 +3101,7 @@ class AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -3155,8 +3144,7 @@ class AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -3189,8 +3177,7 @@ class BigQueryModelTraining {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currentIteration != null) {
       _json['currentIteration'] = currentIteration;
     }
@@ -3271,8 +3258,7 @@ class BigtableColumn {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encoding != null) {
       _json['encoding'] = encoding;
     }
@@ -3350,8 +3336,7 @@ class BigtableColumnFamily {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
@@ -3412,8 +3397,7 @@ class BigtableOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnFamilies != null) {
       _json['columnFamilies'] =
           columnFamilies.map((value) => value.toJson()).toList();
@@ -3466,8 +3450,7 @@ class BinaryClassificationMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregateClassificationMetrics != null) {
       _json['aggregateClassificationMetrics'] =
           aggregateClassificationMetrics.toJson();
@@ -3550,8 +3533,7 @@ class BinaryConfusionMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accuracy != null) {
       _json['accuracy'] = accuracy;
     }
@@ -3644,8 +3626,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -3704,8 +3685,7 @@ class BqmlIterationResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (durationMs != null) {
       _json['durationMs'] = durationMs;
     }
@@ -3774,8 +3754,7 @@ class BqmlTrainingRunTrainingOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (earlyStop != null) {
       _json['earlyStop'] = earlyStop;
     }
@@ -3851,8 +3830,7 @@ class BqmlTrainingRun {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iterationResults != null) {
       _json['iterationResults'] =
           iterationResults.map((value) => value.toJson()).toList();
@@ -3889,8 +3867,7 @@ class CategoricalValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categoryCounts != null) {
       _json['categoryCounts'] =
           categoryCounts.map((value) => value.toJson()).toList();
@@ -3919,8 +3896,7 @@ class CategoryCount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (category != null) {
       _json['category'] = category;
     }
@@ -3959,8 +3935,7 @@ class Cluster {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (centroidId != null) {
       _json['centroidId'] = centroidId;
     }
@@ -4002,8 +3977,7 @@ class ClusterInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (centroidId != null) {
       _json['centroidId'] = centroidId;
     }
@@ -4034,8 +4008,7 @@ class Clustering {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -4071,8 +4044,7 @@ class ClusteringMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusters != null) {
       _json['clusters'] = clusters.map((value) => value.toJson()).toList();
     }
@@ -4109,8 +4081,7 @@ class ConfusionMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidenceThreshold != null) {
       _json['confidenceThreshold'] = confidenceThreshold;
     }
@@ -4140,8 +4111,7 @@ class ConnectionProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -4223,8 +4193,7 @@ class CsvOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowJaggedRows != null) {
       _json['allowJaggedRows'] = allowJaggedRows;
     }
@@ -4268,8 +4237,7 @@ class DataSplitResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (evaluationTable != null) {
       _json['evaluationTable'] = evaluationTable.toJson();
     }
@@ -4349,8 +4317,7 @@ class DatasetAccess {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domain != null) {
       _json['domain'] = domain;
     }
@@ -4516,8 +4483,7 @@ class Dataset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (access != null) {
       _json['access'] = access.map((value) => value.toJson()).toList();
     }
@@ -4617,8 +4583,7 @@ class DatasetListDatasets {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetReference != null) {
       _json['datasetReference'] = datasetReference.toJson();
     }
@@ -4681,8 +4646,7 @@ class DatasetList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasets != null) {
       _json['datasets'] = datasets.map((value) => value.toJson()).toList();
     }
@@ -4720,8 +4684,7 @@ class DatasetReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -4766,8 +4729,7 @@ class DestinationTableProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -4796,8 +4758,7 @@ class EncryptionConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json['kmsKeyName'] = kmsKeyName;
     }
@@ -4826,8 +4787,7 @@ class Entry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (itemCount != null) {
       _json['itemCount'] = itemCount;
     }
@@ -4870,8 +4830,7 @@ class ErrorProto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (debugInfo != null) {
       _json['debugInfo'] = debugInfo;
     }
@@ -4941,8 +4900,7 @@ class EvaluationMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaForecastingMetrics != null) {
       _json['arimaForecastingMetrics'] = arimaForecastingMetrics.toJson();
     }
@@ -5157,8 +5115,7 @@ class ExplainQueryStage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completedParallelInputs != null) {
       _json['completedParallelInputs'] = completedParallelInputs;
     }
@@ -5272,8 +5229,7 @@ class ExplainQueryStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -5335,8 +5291,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -5464,8 +5419,7 @@ class ExternalDataConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autodetect != null) {
       _json['autodetect'] = autodetect;
     }
@@ -5532,8 +5486,7 @@ class FeatureValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categoricalValue != null) {
       _json['categoricalValue'] = categoricalValue.toJson();
     }
@@ -5562,8 +5515,7 @@ class GetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (options != null) {
       _json['options'] = options.toJson();
     }
@@ -5591,8 +5543,7 @@ class GetPolicyOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
@@ -5699,8 +5650,7 @@ class GetQueryResultsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cacheHit != null) {
       _json['cacheHit'] = cacheHit;
     }
@@ -5760,8 +5710,7 @@ class GetServiceAccountResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -5803,8 +5752,7 @@ class GoogleSheetsOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range;
     }
@@ -5859,8 +5807,7 @@ class HivePartitioningOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mode != null) {
       _json['mode'] = mode;
     }
@@ -5925,8 +5872,7 @@ class IterationResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arimaResult != null) {
       _json['arimaResult'] = arimaResult.toJson();
     }
@@ -6016,8 +5962,7 @@ class Job {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configuration != null) {
       _json['configuration'] = configuration.toJson();
     }
@@ -6068,8 +6013,7 @@ class JobCancelResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (job != null) {
       _json['job'] = job.toJson();
     }
@@ -6145,8 +6089,7 @@ class JobConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (copy != null) {
       _json['copy'] = copy.toJson();
     }
@@ -6253,8 +6196,7 @@ class JobConfigurationExtract {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compression != null) {
       _json['compression'] = compression;
     }
@@ -6572,8 +6514,7 @@ class JobConfigurationLoad {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowJaggedRows != null) {
       _json['allowJaggedRows'] = allowJaggedRows;
     }
@@ -6880,8 +6821,7 @@ class JobConfigurationQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowLargeResults != null) {
       _json['allowLargeResults'] = allowLargeResults;
     }
@@ -7036,8 +6976,7 @@ class JobConfigurationTableCopy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createDisposition != null) {
       _json['createDisposition'] = createDisposition;
     }
@@ -7131,8 +7070,7 @@ class JobListJobs {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configuration != null) {
       _json['configuration'] = configuration.toJson();
     }
@@ -7197,8 +7135,7 @@ class JobList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -7243,8 +7180,7 @@ class JobReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobId != null) {
       _json['jobId'] = jobId;
     }
@@ -7278,8 +7214,7 @@ class JobStatisticsReservationUsage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -7415,8 +7350,7 @@ class JobStatistics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionRatio != null) {
       _json['completionRatio'] = completionRatio;
     }
@@ -7493,8 +7427,7 @@ class JobStatistics2ReservationUsage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -7719,8 +7652,7 @@ class JobStatistics2 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (billingTier != null) {
       _json['billingTier'] = billingTier;
     }
@@ -7848,8 +7780,7 @@ class JobStatistics3 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (badRecords != null) {
       _json['badRecords'] = badRecords;
     }
@@ -7892,8 +7823,7 @@ class JobStatistics4 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destinationUriFileCounts != null) {
       _json['destinationUriFileCounts'] = destinationUriFileCounts;
     }
@@ -7935,8 +7865,7 @@ class JobStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorResult != null) {
       _json['errorResult'] = errorResult.toJson();
     }
@@ -8007,8 +7936,7 @@ class ListModelsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (models != null) {
       _json['models'] = models.map((value) => value.toJson()).toList();
     }
@@ -8042,8 +7970,7 @@ class ListRoutinesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -8070,8 +7997,7 @@ class LocationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (legacyLocationId != null) {
       _json['legacyLocationId'] = legacyLocationId;
     }
@@ -8114,8 +8040,7 @@ class MaterializedViewDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enableRefresh != null) {
       _json['enableRefresh'] = enableRefresh;
     }
@@ -8261,8 +8186,7 @@ class Model {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime;
     }
@@ -8335,8 +8259,7 @@ class ModelDefinitionModelOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (labels != null) {
       _json['labels'] = labels;
     }
@@ -8377,8 +8300,7 @@ class ModelDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (modelOptions != null) {
       _json['modelOptions'] = modelOptions.toJson();
     }
@@ -8417,8 +8339,7 @@ class ModelReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -8455,8 +8376,7 @@ class MultiClassClassificationMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregateClassificationMetrics != null) {
       _json['aggregateClassificationMetrics'] =
           aggregateClassificationMetrics.toJson();
@@ -8565,8 +8485,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -8621,8 +8540,7 @@ class ProjectListProjects {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (friendlyName != null) {
       _json['friendlyName'] = friendlyName;
     }
@@ -8682,8 +8600,7 @@ class ProjectList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -8717,8 +8634,7 @@ class ProjectReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectId != null) {
       _json['projectId'] = projectId;
     }
@@ -8752,8 +8668,7 @@ class QueryParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -8792,8 +8707,7 @@ class QueryParameterTypeStructTypes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -8836,8 +8750,7 @@ class QueryParameterType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arrayType != null) {
       _json['arrayType'] = arrayType.toJson();
     }
@@ -8883,8 +8796,7 @@ class QueryParameterValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arrayValues != null) {
       _json['arrayValues'] =
           arrayValues.map((value) => value.toJson()).toList();
@@ -9061,8 +8973,7 @@ class QueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (connectionProperties != null) {
       _json['connectionProperties'] =
           connectionProperties.map((value) => value.toJson()).toList();
@@ -9210,8 +9121,7 @@ class QueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cacheHit != null) {
       _json['cacheHit'] = cacheHit;
     }
@@ -9288,8 +9198,7 @@ class QueryTimelineSample {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeUnits != null) {
       _json['activeUnits'] = activeUnits;
     }
@@ -9335,8 +9244,7 @@ class RangePartitioningRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (end != null) {
       _json['end'] = end;
     }
@@ -9371,8 +9279,7 @@ class RangePartitioning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (field != null) {
       _json['field'] = field;
     }
@@ -9424,8 +9331,7 @@ class RankingMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (averageRank != null) {
       _json['averageRank'] = averageRank;
     }
@@ -9482,8 +9388,7 @@ class RegressionMetrics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (meanAbsoluteError != null) {
       _json['meanAbsoluteError'] = meanAbsoluteError;
     }
@@ -9626,8 +9531,7 @@ class Routine {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arguments != null) {
       _json['arguments'] = arguments.map((value) => value.toJson()).toList();
     }
@@ -9695,8 +9599,7 @@ class RoutineReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -9732,8 +9635,7 @@ class Row {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actualLabel != null) {
       _json['actualLabel'] = actualLabel;
     }
@@ -9777,8 +9679,7 @@ class RowAccessPolicyReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -9809,8 +9710,7 @@ class RowLevelSecurityStatistics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rowLevelSecurityApplied != null) {
       _json['rowLevelSecurityApplied'] = rowLevelSecurityApplied;
     }
@@ -9862,8 +9762,7 @@ class ScriptStackFrame {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endColumn != null) {
       _json['endColumn'] = endColumn;
     }
@@ -9909,8 +9808,7 @@ class ScriptStatistics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (evaluationKind != null) {
       _json['evaluationKind'] = evaluationKind;
     }
@@ -9947,8 +9845,7 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -9978,8 +9875,7 @@ class SnapshotDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (baseTableReference != null) {
       _json['baseTableReference'] = baseTableReference.toJson();
     }
@@ -10042,8 +9938,7 @@ class StandardSqlDataType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arrayElementType != null) {
       _json['arrayElementType'] = arrayElementType.toJson();
     }
@@ -10079,8 +9974,7 @@ class StandardSqlField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -10105,8 +9999,7 @@ class StandardSqlStructType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
@@ -10143,8 +10036,7 @@ class Streamingbuffer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (estimatedBytes != null) {
       _json['estimatedBytes'] = estimatedBytes;
     }
@@ -10381,8 +10273,7 @@ class Table {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clustering != null) {
       _json['clustering'] = clustering.toJson();
     }
@@ -10490,8 +10381,7 @@ class TableCell {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (v != null) {
       _json['v'] = v;
     }
@@ -10520,8 +10410,7 @@ class TableDataInsertAllRequestRows {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (insertId != null) {
       _json['insertId'] = insertId;
     }
@@ -10581,8 +10470,7 @@ class TableDataInsertAllRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ignoreUnknownValues != null) {
       _json['ignoreUnknownValues'] = ignoreUnknownValues;
     }
@@ -10623,8 +10511,7 @@ class TableDataInsertAllResponseInsertErrors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errors != null) {
       _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
@@ -10657,8 +10544,7 @@ class TableDataInsertAllResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (insertErrors != null) {
       _json['insertErrors'] =
           insertErrors.map((value) => value.toJson()).toList();
@@ -10711,8 +10597,7 @@ class TableDataList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -10748,8 +10633,7 @@ class TableFieldSchemaCategories {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (names != null) {
       _json['names'] = names;
     }
@@ -10772,8 +10656,7 @@ class TableFieldSchemaPolicyTags {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (names != null) {
       _json['names'] = names;
     }
@@ -10839,8 +10722,7 @@ class TableFieldSchema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categories != null) {
       _json['categories'] = categories.toJson();
     }
@@ -10880,8 +10762,7 @@ class TableListTablesView {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (useLegacySql != null) {
       _json['useLegacySql'] = useLegacySql;
     }
@@ -10972,8 +10853,7 @@ class TableListTables {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clustering != null) {
       _json['clustering'] = clustering.toJson();
     }
@@ -11053,8 +10933,7 @@ class TableList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -11101,8 +10980,7 @@ class TableReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -11132,8 +11010,7 @@ class TableRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (f != null) {
       _json['f'] = f.map((value) => value.toJson()).toList();
     }
@@ -11156,8 +11033,7 @@ class TableSchema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
@@ -11182,8 +11058,7 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -11206,8 +11081,7 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -11252,8 +11126,7 @@ class TimePartitioning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expirationMs != null) {
       _json['expirationMs'] = expirationMs;
     }
@@ -11681,8 +11554,7 @@ class TrainingOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoArima != null) {
       _json['autoArima'] = autoArima;
     }
@@ -11860,8 +11732,7 @@ class TrainingRun {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSplitResult != null) {
       _json['dataSplitResult'] = dataSplitResult.toJson();
     }
@@ -11894,8 +11765,7 @@ class TransactionInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (transactionId != null) {
       _json['transactionId'] = transactionId;
     }
@@ -11930,8 +11800,7 @@ class UserDefinedFunctionResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inlineCode != null) {
       _json['inlineCode'] = inlineCode;
     }
@@ -11974,8 +11843,7 @@ class ViewDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (query != null) {
       _json['query'] = query;
     }

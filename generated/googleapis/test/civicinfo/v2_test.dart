@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1367,7 +1366,7 @@ void main() {
   unittest.group('resource-DivisionsResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.DivisionsResourceApi res = api.CivicinfoApi(mock).divisions;
+      var res = api.CivicinfoApi(mock).divisions;
       var arg_query = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1416,7 +1415,7 @@ void main() {
   unittest.group('resource-ElectionsResourceApi', () {
     unittest.test('method--electionQuery', () {
       var mock = HttpServerMock();
-      api.ElectionsResourceApi res = api.CivicinfoApi(mock).elections;
+      var res = api.CivicinfoApi(mock).elections;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1461,7 +1460,7 @@ void main() {
 
     unittest.test('method--voterInfoQuery', () {
       var mock = HttpServerMock();
-      api.ElectionsResourceApi res = api.CivicinfoApi(mock).elections;
+      var res = api.CivicinfoApi(mock).elections;
       var arg_address = 'foo';
       var arg_electionId = 'foo';
       var arg_officialOnly = true;
@@ -1524,8 +1523,7 @@ void main() {
   unittest.group('resource-RepresentativesResourceApi', () {
     unittest.test('method--representativeInfoByAddress', () {
       var mock = HttpServerMock();
-      api.RepresentativesResourceApi res =
-          api.CivicinfoApi(mock).representatives;
+      var res = api.CivicinfoApi(mock).representatives;
       var arg_address = 'foo';
       var arg_includeOffices = true;
       var arg_levels = buildUnnamed2258();
@@ -1585,8 +1583,7 @@ void main() {
 
     unittest.test('method--representativeInfoByDivision', () {
       var mock = HttpServerMock();
-      api.RepresentativesResourceApi res =
-          api.CivicinfoApi(mock).representatives;
+      var res = api.CivicinfoApi(mock).representatives;
       var arg_ocdId = 'foo';
       var arg_levels = buildUnnamed2260();
       var arg_recursive = true;

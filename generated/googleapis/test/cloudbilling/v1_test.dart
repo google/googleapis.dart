@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -987,8 +986,7 @@ void main() {
   unittest.group('resource-BillingAccountsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildBillingAccount();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1037,8 +1035,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1085,8 +1082,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1140,8 +1136,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1198,8 +1193,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildBillingAccount();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1254,8 +1248,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1306,8 +1299,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.BillingAccountsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts;
+      var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1360,8 +1352,7 @@ void main() {
   unittest.group('resource-BillingAccountsProjectsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsProjectsResourceApi res =
-          api.CloudbillingApi(mock).billingAccounts.projects;
+      var res = api.CloudbillingApi(mock).billingAccounts.projects;
       var arg_name = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1419,7 +1410,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--getBillingInfo', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudbillingApi(mock).projects;
+      var res = api.CloudbillingApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1466,7 +1457,7 @@ void main() {
 
     unittest.test('method--updateBillingInfo', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.CloudbillingApi(mock).projects;
+      var res = api.CloudbillingApi(mock).projects;
       var arg_request = buildProjectBillingInfo();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1519,7 +1510,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.CloudbillingApi(mock).services;
+      var res = api.CloudbillingApi(mock).services;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1575,7 +1566,7 @@ void main() {
   unittest.group('resource-ServicesSkusResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ServicesSkusResourceApi res = api.CloudbillingApi(mock).services.skus;
+      var res = api.CloudbillingApi(mock).services.skus;
       var arg_parent = 'foo';
       var arg_currencyCode = 'foo';
       var arg_endTime = 'foo';

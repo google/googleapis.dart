@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -493,8 +492,7 @@ void main() {
   unittest.group('resource-AchievementConfigurationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AchievementConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).achievementConfigurations;
+      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -541,8 +539,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AchievementConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).achievementConfigurations;
+      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -591,8 +588,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AchievementConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).achievementConfigurations;
+      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
@@ -651,8 +647,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AchievementConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).achievementConfigurations;
+      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_applicationId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -717,8 +712,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AchievementConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).achievementConfigurations;
+      var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
@@ -776,8 +770,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ImageConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).imageConfigurations;
+      var res = api.GamesConfigurationApi(mock).imageConfigurations;
       var arg_resourceId = 'foo';
       var arg_imageType = 'foo';
       var arg_$fields = 'foo';
@@ -838,8 +831,7 @@ void main() {
   unittest.group('resource-LeaderboardConfigurationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -886,8 +878,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -936,8 +927,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
@@ -996,8 +986,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_applicationId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -1062,8 +1051,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res =
-          api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';

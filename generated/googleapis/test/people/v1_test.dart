@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3041,7 +3040,7 @@ void main() {
   unittest.group('resource-ContactGroupsResourceApi', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_maxMembers = 42;
       var arg_resourceNames = buildUnnamed4916();
       var arg_$fields = 'foo';
@@ -3095,7 +3094,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_request = buildCreateContactGroupRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3144,7 +3143,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_resourceName = 'foo';
       var arg_deleteContacts = true;
       var arg_$fields = 'foo';
@@ -3195,7 +3194,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_resourceName = 'foo';
       var arg_maxMembers = 42;
       var arg_$fields = 'foo';
@@ -3246,7 +3245,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_syncToken = 'foo';
@@ -3304,7 +3303,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ContactGroupsResourceApi res = api.PeopleApi(mock).contactGroups;
+      var res = api.PeopleApi(mock).contactGroups;
       var arg_request = buildUpdateContactGroupRequest();
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
@@ -3357,8 +3356,7 @@ void main() {
   unittest.group('resource-ContactGroupsMembersResourceApi', () {
     unittest.test('method--modify', () {
       var mock = HttpServerMock();
-      api.ContactGroupsMembersResourceApi res =
-          api.PeopleApi(mock).contactGroups.members;
+      var res = api.PeopleApi(mock).contactGroups.members;
       var arg_request = buildModifyContactGroupMembersRequest();
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
@@ -3412,7 +3410,7 @@ void main() {
   unittest.group('resource-OtherContactsResourceApi', () {
     unittest.test('method--copyOtherContactToMyContactsGroup', () {
       var mock = HttpServerMock();
-      api.OtherContactsResourceApi res = api.PeopleApi(mock).otherContacts;
+      var res = api.PeopleApi(mock).otherContacts;
       var arg_request = buildCopyOtherContactToMyContactsGroupRequest();
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
@@ -3464,7 +3462,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OtherContactsResourceApi res = api.PeopleApi(mock).otherContacts;
+      var res = api.PeopleApi(mock).otherContacts;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_readMask = 'foo';
@@ -3532,7 +3530,7 @@ void main() {
   unittest.group('resource-PeopleResourceApi', () {
     unittest.test('method--createContact', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_request = buildPerson();
       var arg_personFields = 'foo';
       var arg_sources = buildUnnamed4917();
@@ -3589,7 +3587,7 @@ void main() {
 
     unittest.test('method--deleteContact', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3636,7 +3634,7 @@ void main() {
 
     unittest.test('method--deleteContactPhoto', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_resourceName = 'foo';
       var arg_personFields = 'foo';
       var arg_sources = buildUnnamed4918();
@@ -3691,7 +3689,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_resourceName = 'foo';
       var arg_personFields = 'foo';
       var arg_requestMask_includeField = 'foo';
@@ -3750,7 +3748,7 @@ void main() {
 
     unittest.test('method--getBatchGet', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_personFields = 'foo';
       var arg_requestMask_includeField = 'foo';
       var arg_resourceNames = buildUnnamed4920();
@@ -3811,7 +3809,7 @@ void main() {
 
     unittest.test('method--listDirectoryPeople', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_mergeSources = buildUnnamed4922();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3884,7 +3882,7 @@ void main() {
 
     unittest.test('method--searchDirectoryPeople', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_mergeSources = buildUnnamed4924();
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3952,7 +3950,7 @@ void main() {
 
     unittest.test('method--updateContact', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_request = buildPerson();
       var arg_resourceName = 'foo';
       var arg_personFields = 'foo';
@@ -4015,7 +4013,7 @@ void main() {
 
     unittest.test('method--updateContactPhoto', () {
       var mock = HttpServerMock();
-      api.PeopleResourceApi res = api.PeopleApi(mock).people;
+      var res = api.PeopleApi(mock).people;
       var arg_request = buildUpdateContactPhotoRequest();
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
@@ -4069,8 +4067,7 @@ void main() {
   unittest.group('resource-PeopleConnectionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PeopleConnectionsResourceApi res =
-          api.PeopleApi(mock).people.connections;
+      var res = api.PeopleApi(mock).people.connections;
       var arg_resourceName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3393,8 +3392,7 @@ void main() {
   unittest.group('resource-ProjectsNotesResourceApi', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildBatchCreateNotesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3445,8 +3443,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildNote();
       var arg_parent = 'foo';
       var arg_noteId = 'foo';
@@ -3500,8 +3497,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3548,8 +3544,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3596,8 +3591,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3648,8 +3642,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3708,8 +3701,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildNote();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3764,8 +3756,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3816,8 +3807,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes;
+      var res = api.ContaineranalysisApi(mock).projects.notes;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3870,8 +3860,7 @@ void main() {
   unittest.group('resource-ProjectsNotesOccurrencesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsNotesOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.notes.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.notes.occurrences;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3932,8 +3921,7 @@ void main() {
   unittest.group('resource-ProjectsOccurrencesResourceApi', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildBatchCreateOccurrencesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3984,8 +3972,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildOccurrence();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4036,8 +4023,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4084,8 +4070,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4132,8 +4117,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4184,8 +4168,7 @@ void main() {
 
     unittest.test('method--getNotes', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4232,8 +4215,7 @@ void main() {
 
     unittest.test('method--getVulnerabilitySummary', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_$fields = 'foo';
@@ -4283,8 +4265,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4343,8 +4324,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildOccurrence();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4399,8 +4379,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4451,8 +4430,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsOccurrencesResourceApi res =
-          api.ContaineranalysisApi(mock).projects.occurrences;
+      var res = api.ContaineranalysisApi(mock).projects.occurrences;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4505,8 +4483,7 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsScanConfigsResourceApi res =
-          api.ContaineranalysisApi(mock).projects.scanConfigs;
+      var res = api.ContaineranalysisApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4553,8 +4530,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsScanConfigsResourceApi res =
-          api.ContaineranalysisApi(mock).projects.scanConfigs;
+      var res = api.ContaineranalysisApi(mock).projects.scanConfigs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4613,8 +4589,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsScanConfigsResourceApi res =
-          api.ContaineranalysisApi(mock).projects.scanConfigs;
+      var res = api.ContaineranalysisApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

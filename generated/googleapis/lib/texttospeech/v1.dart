@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -243,8 +242,7 @@ class AudioConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audioEncoding != null) {
       _json['audioEncoding'] = audioEncoding;
     }
@@ -283,8 +281,7 @@ class ListVoicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (voices != null) {
       _json['voices'] = voices.map((value) => value.toJson()).toList();
     }
@@ -318,8 +315,7 @@ class SynthesisInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ssml != null) {
       _json['ssml'] = ssml;
     }
@@ -356,8 +352,7 @@ class SynthesizeSpeechRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audioConfig != null) {
       _json['audioConfig'] = audioConfig.toJson();
     }
@@ -396,8 +391,7 @@ class SynthesizeSpeechResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audioContent != null) {
       _json['audioContent'] = audioContent;
     }
@@ -448,8 +442,7 @@ class Voice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCodes != null) {
       _json['languageCodes'] = languageCodes;
     }
@@ -516,8 +509,7 @@ class VoiceSelectionParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }

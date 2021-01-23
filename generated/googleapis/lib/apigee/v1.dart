@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -11767,8 +11766,7 @@ class GoogleApiHttpBody {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contentType != null) {
       _json['contentType'] = contentType;
     }
@@ -11802,8 +11800,7 @@ class GoogleCloudApigeeV1Access {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (Get != null) {
       _json['Get'] = Get.toJson();
     }
@@ -11835,8 +11832,7 @@ class GoogleCloudApigeeV1AccessGet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -11865,8 +11861,7 @@ class GoogleCloudApigeeV1AccessRemove {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -11899,8 +11894,7 @@ class GoogleCloudApigeeV1AccessSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -11945,8 +11939,7 @@ class GoogleCloudApigeeV1Alias {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alias != null) {
       _json['alias'] = alias;
     }
@@ -11991,8 +11984,7 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (location != null) {
       _json['location'] = location;
     }
@@ -12044,8 +12036,7 @@ class GoogleCloudApigeeV1ApiCategory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.toJson();
     }
@@ -12097,8 +12088,7 @@ class GoogleCloudApigeeV1ApiCategoryData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -12280,8 +12270,7 @@ class GoogleCloudApigeeV1ApiProduct {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiResources != null) {
       _json['apiResources'] = apiResources;
     }
@@ -12350,8 +12339,7 @@ class GoogleCloudApigeeV1ApiProductRef {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiproduct != null) {
       _json['apiproduct'] = apiproduct;
     }
@@ -12394,8 +12382,7 @@ class GoogleCloudApigeeV1ApiProxy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latestRevisionId != null) {
       _json['latestRevisionId'] = latestRevisionId;
     }
@@ -12574,8 +12561,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basepaths != null) {
       _json['basepaths'] = basepaths;
     }
@@ -12677,8 +12663,7 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCode != null) {
       _json['errorCode'] = errorCode;
     }
@@ -12794,8 +12779,7 @@ class GoogleCloudApigeeV1App {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProducts != null) {
       _json['apiProducts'] =
           apiProducts.map((value) => value.toJson()).toList();
@@ -12922,8 +12906,7 @@ class GoogleCloudApigeeV1AsyncQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (created != null) {
       _json['created'] = created;
     }
@@ -12984,8 +12967,7 @@ class GoogleCloudApigeeV1AsyncQueryResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expires != null) {
       _json['expires'] = expires;
     }
@@ -13016,8 +12998,7 @@ class GoogleCloudApigeeV1Attribute {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -13044,8 +13025,7 @@ class GoogleCloudApigeeV1Attributes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attribute != null) {
       _json['attribute'] = attribute.map((value) => value.toJson()).toList();
     }
@@ -13129,8 +13109,7 @@ class GoogleCloudApigeeV1CertInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basicConstraints != null) {
       _json['basicConstraints'] = basicConstraints;
     }
@@ -13184,8 +13163,7 @@ class GoogleCloudApigeeV1Certificate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (certInfo != null) {
       _json['certInfo'] = certInfo.map((value) => value.toJson()).toList();
     }
@@ -13209,8 +13187,7 @@ class GoogleCloudApigeeV1CommonNameConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matchWildCards != null) {
       _json['matchWildCards'] = matchWildCards;
     }
@@ -13242,8 +13219,7 @@ class GoogleCloudApigeeV1ConfigVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (majorVersion != null) {
       _json['majorVersion'] = majorVersion;
     }
@@ -13316,8 +13292,7 @@ class GoogleCloudApigeeV1Credential {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProducts != null) {
       _json['apiProducts'] =
           apiProducts.map((value) => value.toJson()).toList();
@@ -13498,8 +13473,7 @@ class GoogleCloudApigeeV1CustomReport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartType != null) {
       _json['chartType'] = chartType;
     }
@@ -13591,8 +13565,7 @@ class GoogleCloudApigeeV1CustomReportMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (function != null) {
       _json['function'] = function;
     }
@@ -13631,8 +13604,7 @@ class GoogleCloudApigeeV1DataCollectorConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -13699,8 +13671,7 @@ class GoogleCloudApigeeV1Datastore {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -13764,8 +13735,7 @@ class GoogleCloudApigeeV1DatastoreConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketName != null) {
       _json['bucketName'] = bucketName;
     }
@@ -13808,8 +13778,7 @@ class GoogleCloudApigeeV1DateRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (end != null) {
       _json['end'] = end;
     }
@@ -13892,8 +13861,7 @@ class GoogleCloudApigeeV1DebugMask {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (faultJSONPaths != null) {
       _json['faultJSONPaths'] = faultJSONPaths;
     }
@@ -13975,8 +13943,7 @@ class GoogleCloudApigeeV1DebugSession {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -14026,8 +13993,7 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completed != null) {
       _json['completed'] = completed;
     }
@@ -14051,8 +14017,7 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (message != null) {
       _json['message'] = message;
     }
@@ -14150,8 +14115,7 @@ class GoogleCloudApigeeV1Deployment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProxy != null) {
       _json['apiProxy'] = apiProxy;
     }
@@ -14234,8 +14198,7 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (routingChanges != null) {
       _json['routingChanges'] =
           routingChanges.map((value) => value.toJson()).toList();
@@ -14298,8 +14261,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -14350,8 +14312,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conflictingDeployment != null) {
       _json['conflictingDeployment'] = conflictingDeployment.toJson();
     }
@@ -14398,8 +14359,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProxy != null) {
       _json['apiProxy'] = apiProxy;
     }
@@ -14463,8 +14423,7 @@ class GoogleCloudApigeeV1DeploymentConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes;
     }
@@ -14588,8 +14547,7 @@ class GoogleCloudApigeeV1Developer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessType != null) {
       _json['accessType'] = accessType;
     }
@@ -14735,8 +14693,7 @@ class GoogleCloudApigeeV1DeveloperApp {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProducts != null) {
       _json['apiProducts'] = apiProducts;
     }
@@ -14846,8 +14803,7 @@ class GoogleCloudApigeeV1DeveloperAppKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProducts != null) {
       _json['apiProducts'] = apiProducts;
     }
@@ -14899,8 +14855,7 @@ class GoogleCloudApigeeV1DimensionMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metrics != null) {
       _json['metrics'] = metrics.map((value) => value.toJson()).toList();
     }
@@ -14938,8 +14893,7 @@ class GoogleCloudApigeeV1EntityMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15000,8 +14954,7 @@ class GoogleCloudApigeeV1Environment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15162,8 +15115,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -15257,8 +15209,7 @@ class GoogleCloudApigeeV1EnvironmentGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15303,8 +15254,7 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15365,8 +15315,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hostnames != null) {
       _json['hostnames'] = hostnames;
     }
@@ -15456,8 +15405,7 @@ class GoogleCloudApigeeV1Export {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (created != null) {
       _json['created'] = created;
     }
@@ -15537,8 +15485,7 @@ class GoogleCloudApigeeV1ExportRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (csvDelimiter != null) {
       _json['csvDelimiter'] = csvDelimiter;
     }
@@ -15598,8 +15545,7 @@ class GoogleCloudApigeeV1FlowHook {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (continueOnError != null) {
       _json['continueOnError'] = continueOnError;
     }
@@ -15646,8 +15592,7 @@ class GoogleCloudApigeeV1FlowHookConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (continueOnError != null) {
       _json['continueOnError'] = continueOnError;
     }
@@ -15670,8 +15615,7 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -15719,8 +15663,7 @@ class GoogleCloudApigeeV1IngressConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environmentGroups != null) {
       _json['environmentGroups'] =
           environmentGroups.map((value) => value.toJson()).toList();
@@ -15819,8 +15762,7 @@ class GoogleCloudApigeeV1Instance {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15882,8 +15824,7 @@ class GoogleCloudApigeeV1InstanceAttachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -15936,8 +15877,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deployedRevisions != null) {
       _json['deployedRevisions'] =
           deployedRevisions.map((value) => value.toJson()).toList();
@@ -15974,8 +15914,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (percentage != null) {
       _json['percentage'] = percentage;
     }
@@ -16020,8 +15959,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basepath != null) {
       _json['basepath'] = basepath;
     }
@@ -16058,8 +15996,7 @@ class GoogleCloudApigeeV1KeyAliasReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliasId != null) {
       _json['aliasId'] = aliasId;
     }
@@ -16090,8 +16027,7 @@ class GoogleCloudApigeeV1KeyValueMap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encrypted != null) {
       _json['encrypted'] = encrypted;
     }
@@ -16123,8 +16059,7 @@ class GoogleCloudApigeeV1Keystore {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliases != null) {
       _json['aliases'] = aliases;
     }
@@ -16158,8 +16093,7 @@ class GoogleCloudApigeeV1KeystoreConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliases != null) {
       _json['aliases'] = aliases.map((value) => value.toJson()).toList();
     }
@@ -16211,8 +16145,7 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.map((value) => value.toJson()).toList();
     }
@@ -16248,8 +16181,7 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProduct != null) {
       _json['apiProduct'] = apiProduct.map((value) => value.toJson()).toList();
     }
@@ -16272,8 +16204,7 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (proxies != null) {
       _json['proxies'] = proxies.map((value) => value.toJson()).toList();
     }
@@ -16296,8 +16227,7 @@ class GoogleCloudApigeeV1ListAppsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (app != null) {
       _json['app'] = app.map((value) => value.toJson()).toList();
     }
@@ -16322,8 +16252,7 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (queries != null) {
       _json['queries'] = queries.map((value) => value.toJson()).toList();
     }
@@ -16347,8 +16276,7 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (qualifier != null) {
       _json['qualifier'] = qualifier.map((value) => value.toJson()).toList();
     }
@@ -16373,8 +16301,7 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datastores != null) {
       _json['datastores'] = datastores.map((value) => value.toJson()).toList();
     }
@@ -16406,8 +16333,7 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -16434,8 +16360,7 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deployments != null) {
       _json['deployments'] =
           deployments.map((value) => value.toJson()).toList();
@@ -16460,8 +16385,7 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (app != null) {
       _json['app'] = app.map((value) => value.toJson()).toList();
     }
@@ -16496,8 +16420,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environmentGroupAttachments != null) {
       _json['environmentGroupAttachments'] =
           environmentGroupAttachments.map((value) => value.toJson()).toList();
@@ -16533,8 +16456,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environmentGroups != null) {
       _json['environmentGroups'] =
           environmentGroups.map((value) => value.toJson()).toList();
@@ -16563,8 +16485,7 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceFile != null) {
       _json['resourceFile'] =
           resourceFile.map((value) => value.toJson()).toList();
@@ -16590,8 +16511,7 @@ class GoogleCloudApigeeV1ListExportsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exports != null) {
       _json['exports'] = exports.map((value) => value.toJson()).toList();
     }
@@ -16615,8 +16535,7 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (issuers != null) {
       _json['issuers'] = issuers.map((value) => value.toJson()).toList();
     }
@@ -16648,8 +16567,7 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attachments != null) {
       _json['attachments'] =
           attachments.map((value) => value.toJson()).toList();
@@ -16685,8 +16603,7 @@ class GoogleCloudApigeeV1ListInstancesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instances != null) {
       _json['instances'] = instances.map((value) => value.toJson()).toList();
     }
@@ -16713,8 +16630,7 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (developer != null) {
       _json['developer'] = developer.map((value) => value.toJson()).toList();
     }
@@ -16738,8 +16654,7 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (organizations != null) {
       _json['organizations'] =
           organizations.map((value) => value.toJson()).toList();
@@ -16763,8 +16678,7 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sharedFlows != null) {
       _json['sharedFlows'] =
           sharedFlows.map((value) => value.toJson()).toList();
@@ -16797,8 +16711,7 @@ class GoogleCloudApigeeV1Metadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errors != null) {
       _json['errors'] = errors;
     }
@@ -16836,8 +16749,7 @@ class GoogleCloudApigeeV1Metric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -16872,8 +16784,7 @@ class GoogleCloudApigeeV1Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (methods != null) {
       _json['methods'] = methods;
     }
@@ -16927,8 +16838,7 @@ class GoogleCloudApigeeV1OperationConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiSource != null) {
       _json['apiSource'] = apiSource;
     }
@@ -16975,8 +16885,7 @@ class GoogleCloudApigeeV1OperationGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (operationConfigType != null) {
       _json['operationConfigType'] = operationConfigType;
     }
@@ -17024,8 +16933,7 @@ class GoogleCloudApigeeV1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (operationType != null) {
       _json['operationType'] = operationType;
     }
@@ -17062,8 +16970,7 @@ class GoogleCloudApigeeV1OptimizedStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (Response != null) {
       _json['Response'] = Response.toJson();
     }
@@ -17094,8 +17001,7 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -17137,8 +17043,7 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (TimeUnit != null) {
       _json['TimeUnit'] = TimeUnit;
     }
@@ -17293,8 +17198,7 @@ class GoogleCloudApigeeV1Organization {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsRegion != null) {
       _json['analyticsRegion'] = analyticsRegion;
     }
@@ -17366,8 +17270,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (organization != null) {
       _json['organization'] = organization;
     }
@@ -17443,8 +17346,7 @@ class GoogleCloudApigeeV1PodStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appVersion != null) {
       _json['appVersion'] = appVersion;
     }
@@ -17508,8 +17410,7 @@ class GoogleCloudApigeeV1Point {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -17538,8 +17439,7 @@ class GoogleCloudApigeeV1Properties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (property != null) {
       _json['property'] = property.map((value) => value.toJson()).toList();
     }
@@ -17567,8 +17467,7 @@ class GoogleCloudApigeeV1Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -17610,8 +17509,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsRegion != null) {
       _json['analyticsRegion'] = analyticsRegion;
     }
@@ -17719,8 +17617,7 @@ class GoogleCloudApigeeV1Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (csvDelimiter != null) {
       _json['csvDelimiter'] = csvDelimiter;
     }
@@ -17799,8 +17696,7 @@ class GoogleCloudApigeeV1QueryMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensions != null) {
       _json['dimensions'] = dimensions;
     }
@@ -17863,8 +17759,7 @@ class GoogleCloudApigeeV1QueryMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alias != null) {
       _json['alias'] = alias;
     }
@@ -17918,8 +17813,7 @@ class GoogleCloudApigeeV1Quota {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (interval != null) {
       _json['interval'] = interval;
     }
@@ -17970,8 +17864,7 @@ class GoogleCloudApigeeV1Reference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -18010,8 +17903,7 @@ class GoogleCloudApigeeV1ReferenceConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -18054,8 +17946,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instanceUid != null) {
       _json['instanceUid'] = instanceUid;
     }
@@ -18078,8 +17969,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -18106,8 +17996,7 @@ class GoogleCloudApigeeV1ReportProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (property != null) {
       _json['property'] = property;
     }
@@ -18139,8 +18028,7 @@ class GoogleCloudApigeeV1ResourceConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (location != null) {
       _json['location'] = location;
     }
@@ -18171,8 +18059,7 @@ class GoogleCloudApigeeV1ResourceFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -18200,8 +18087,7 @@ class GoogleCloudApigeeV1ResourceFiles {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceFile != null) {
       _json['resourceFile'] =
           resourceFile.map((value) => value.toJson()).toList();
@@ -18250,8 +18136,7 @@ class GoogleCloudApigeeV1ResourceStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resource != null) {
       _json['resource'] = resource;
     }
@@ -18361,8 +18246,7 @@ class GoogleCloudApigeeV1Result {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ActionResult != null) {
       _json['ActionResult'] = ActionResult;
     }
@@ -18432,8 +18316,7 @@ class GoogleCloudApigeeV1RevisionStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errors != null) {
       _json['errors'] = errors.map((value) => value.toJson()).toList();
     }
@@ -18501,8 +18384,7 @@ class GoogleCloudApigeeV1RoutingRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basepath != null) {
       _json['basepath'] = basepath;
     }
@@ -18585,8 +18467,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endpoint != null) {
       _json['endpoint'] = endpoint;
     }
@@ -18662,8 +18543,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiProxy != null) {
       _json['apiProxy'] = apiProxy;
     }
@@ -18745,8 +18625,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorSources != null) {
       _json['errorSources'] = errorSources;
     }
@@ -18791,8 +18670,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (firstResponseCode != null) {
       _json['firstResponseCode'] = firstResponseCode;
     }
@@ -18837,8 +18715,7 @@ class GoogleCloudApigeeV1Schema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensions != null) {
       _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
     }
@@ -18874,8 +18751,7 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -18913,8 +18789,7 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -18947,8 +18822,7 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emailIds != null) {
       _json['emailIds'] = emailIds;
     }
@@ -18979,8 +18853,7 @@ class GoogleCloudApigeeV1Session {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -19023,8 +18896,7 @@ class GoogleCloudApigeeV1SharedFlow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latestRevisionId != null) {
       _json['latestRevisionId'] = latestRevisionId;
     }
@@ -19143,8 +19015,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configurationVersion != null) {
       _json['configurationVersion'] = configurationVersion.toJson();
     }
@@ -19214,8 +19085,7 @@ class GoogleCloudApigeeV1Stats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environments != null) {
       _json['environments'] =
           environments.map((value) => value.toJson()).toList();
@@ -19268,8 +19138,7 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensions != null) {
       _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
     }
@@ -19298,8 +19167,7 @@ class GoogleCloudApigeeV1Subscription {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -19349,8 +19217,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -19415,8 +19282,7 @@ class GoogleCloudApigeeV1TargetServer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -19471,8 +19337,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (host != null) {
       _json['host'] = host;
     }
@@ -19509,8 +19374,7 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error;
     }
@@ -19594,8 +19458,7 @@ class GoogleCloudApigeeV1TlsInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ciphers != null) {
       _json['ciphers'] = ciphers;
     }
@@ -19646,8 +19509,7 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (value != null) {
       _json['value'] = value;
     }
@@ -19729,8 +19591,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ciphers != null) {
       _json['ciphers'] = ciphers;
     }
@@ -19876,8 +19737,7 @@ class GoogleCloudApigeeV1UpdateError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -19934,8 +19794,7 @@ class GoogleIamV1AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -19978,8 +19837,7 @@ class GoogleIamV1AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -20051,8 +19909,7 @@ class GoogleIamV1Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -20164,8 +20021,7 @@ class GoogleIamV1Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -20208,8 +20064,7 @@ class GoogleIamV1SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -20237,8 +20092,7 @@ class GoogleIamV1TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -20261,8 +20115,7 @@ class GoogleIamV1TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -20293,8 +20146,7 @@ class GoogleLongrunningListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -20365,8 +20217,7 @@ class GoogleLongrunningOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -20399,8 +20250,7 @@ class GoogleProtobufEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -20424,8 +20274,7 @@ class GoogleRpcPreconditionFailure {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (violations != null) {
       _json['violations'] = violations.map((value) => value.toJson()).toList();
     }
@@ -20465,8 +20314,7 @@ class GoogleRpcPreconditionFailureViolation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -20520,8 +20368,7 @@ class GoogleRpcStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -20586,8 +20433,7 @@ class GoogleTypeExpr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -383,8 +382,7 @@ class AndroidAppAsset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (certificate != null) {
       _json['certificate'] = certificate.toJson();
     }
@@ -418,8 +416,7 @@ class Asset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidApp != null) {
       _json['androidApp'] = androidApp.toJson();
     }
@@ -457,8 +454,7 @@ class CertificateInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sha256Fingerprint != null) {
       _json['sha256Fingerprint'] = sha256Fingerprint;
     }
@@ -506,8 +502,7 @@ class CheckResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (debugString != null) {
       _json['debugString'] = debugString;
     }
@@ -565,8 +560,7 @@ class ListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (debugString != null) {
       _json['debugString'] = debugString;
     }
@@ -622,8 +616,7 @@ class Statement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (relation != null) {
       _json['relation'] = relation;
     }
@@ -665,8 +658,7 @@ class WebAsset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (site != null) {
       _json['site'] = site;
     }

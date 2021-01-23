@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -837,8 +836,7 @@ class PromotionBodyLines {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (htmlTitle != null) {
       _json['htmlTitle'] = htmlTitle;
     }
@@ -881,8 +879,7 @@ class PromotionImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (height != null) {
       _json['height'] = height;
     }
@@ -946,8 +943,7 @@ class Promotion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bodyLines != null) {
       _json['bodyLines'] = bodyLines.map((value) => value.toJson()).toList();
     }
@@ -1020,8 +1016,7 @@ class ResultImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (byteSize != null) {
       _json['byteSize'] = byteSize;
     }
@@ -1075,8 +1070,7 @@ class ResultLabels {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -1198,8 +1192,7 @@ class Result {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cacheId != null) {
       _json['cacheId'] = cacheId;
     }
@@ -1549,8 +1542,7 @@ class SearchQueriesNextPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -1963,8 +1955,7 @@ class SearchQueriesPreviousPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -2377,8 +2368,7 @@ class SearchQueriesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -2526,8 +2516,7 @@ class SearchQueries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPage != null) {
       _json['nextPage'] = nextPage.map((value) => value.toJson()).toList();
     }
@@ -2575,8 +2564,7 @@ class SearchSearchInformation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (formattedSearchTime != null) {
       _json['formattedSearchTime'] = formattedSearchTime;
     }
@@ -2613,8 +2601,7 @@ class SearchSpelling {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (correctedQuery != null) {
       _json['correctedQuery'] = correctedQuery;
     }
@@ -2648,8 +2635,7 @@ class SearchUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (template != null) {
       _json['template'] = template;
     }
@@ -2732,8 +2718,7 @@ class Search {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context;
     }

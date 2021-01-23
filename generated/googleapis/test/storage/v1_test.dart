@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1924,8 +1923,7 @@ void main() {
   unittest.group('resource-BucketAccessControlsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -1994,8 +1992,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -2066,8 +2063,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -2138,8 +2134,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
       var arg_userProject = 'foo';
@@ -2206,8 +2201,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
@@ -2282,8 +2276,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BucketAccessControlsResourceApi res =
-          api.StorageApi(mock).bucketAccessControls;
+      var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
@@ -2360,7 +2353,7 @@ void main() {
   unittest.group('resource-BucketsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
       var arg_ifMetagenerationNotMatch = 'foo';
@@ -2427,7 +2420,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
       var arg_ifMetagenerationNotMatch = 'foo';
@@ -2500,7 +2493,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
       var arg_optionsRequestedPolicyVersion = 42;
       var arg_provisionalUserProject = 'foo';
@@ -2572,7 +2565,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_project = 'foo';
       var arg_predefinedAcl = 'foo';
@@ -2648,7 +2641,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_project = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2723,7 +2716,7 @@ void main() {
 
     unittest.test('method--lockRetentionPolicy', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -2793,7 +2786,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
@@ -2878,7 +2871,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_request = buildPolicy();
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -2949,7 +2942,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
       var arg_permissions = buildUnnamed3991();
       var arg_provisionalUserProject = 'foo';
@@ -3019,7 +3012,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BucketsResourceApi res = api.StorageApi(mock).buckets;
+      var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
@@ -3106,7 +3099,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.StorageApi(mock).channels;
+      var res = api.StorageApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3158,8 +3151,7 @@ void main() {
   unittest.group('resource-DefaultObjectAccessControlsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3228,8 +3220,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3300,8 +3291,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3372,8 +3362,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
       var arg_ifMetagenerationMatch = 'foo';
       var arg_ifMetagenerationNotMatch = 'foo';
@@ -3448,8 +3437,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
@@ -3524,8 +3512,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.DefaultObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).defaultObjectAccessControls;
+      var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_entity = 'foo';
@@ -3602,7 +3589,7 @@ void main() {
   unittest.group('resource-NotificationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NotificationsResourceApi res = api.StorageApi(mock).notifications;
+      var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
       var arg_notification = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3671,7 +3658,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NotificationsResourceApi res = api.StorageApi(mock).notifications;
+      var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
       var arg_notification = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3742,7 +3729,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.NotificationsResourceApi res = api.StorageApi(mock).notifications;
+      var res = api.StorageApi(mock).notifications;
       var arg_request = buildNotification();
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
@@ -3813,7 +3800,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NotificationsResourceApi res = api.StorageApi(mock).notifications;
+      var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
       var arg_provisionalUserProject = 'foo';
       var arg_userProject = 'foo';
@@ -3882,8 +3869,7 @@ void main() {
   unittest.group('resource-ObjectAccessControlsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_entity = 'foo';
@@ -3966,8 +3952,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_entity = 'foo';
@@ -4052,8 +4037,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -4138,8 +4122,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_generation = 'foo';
@@ -4220,8 +4203,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -4310,8 +4292,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ObjectAccessControlsResourceApi res =
-          api.StorageApi(mock).objectAccessControls;
+      var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -4402,7 +4383,7 @@ void main() {
   unittest.group('resource-ObjectsResourceApi', () {
     unittest.test('method--compose', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildComposeRequest();
       var arg_destinationBucket = 'foo';
       var arg_destinationObject = 'foo';
@@ -4499,7 +4480,7 @@ void main() {
 
     unittest.test('method--copy', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_sourceBucket = 'foo';
       var arg_sourceObject = 'foo';
@@ -4644,7 +4625,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_generation = 'foo';
@@ -4736,7 +4717,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_generation = 'foo';
@@ -4831,7 +4812,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_generation = 'foo';
@@ -4915,7 +4896,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = 'foo';
       var arg_contentEncoding = 'foo';
@@ -5021,7 +5002,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_delimiter = 'foo';
       var arg_endOffset = 'foo';
@@ -5123,7 +5104,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -5226,7 +5207,7 @@ void main() {
 
     unittest.test('method--rewrite', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_sourceBucket = 'foo';
       var arg_sourceObject = 'foo';
@@ -5379,7 +5360,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildPolicy();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -5464,7 +5445,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
       var arg_object = 'foo';
       var arg_permissions = buildUnnamed3992();
@@ -5548,7 +5529,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
       var arg_bucket = 'foo';
       var arg_object = 'foo';
@@ -5651,7 +5632,7 @@ void main() {
 
     unittest.test('method--watchAll', () {
       var mock = HttpServerMock();
-      api.ObjectsResourceApi res = api.StorageApi(mock).objects;
+      var res = api.StorageApi(mock).objects;
       var arg_request = buildChannel();
       var arg_bucket = 'foo';
       var arg_delimiter = 'foo';
@@ -5759,8 +5740,7 @@ void main() {
   unittest.group('resource-ProjectsHmacKeysResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHmacKeysResourceApi res =
-          api.StorageApi(mock).projects.hmacKeys;
+      var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
       var arg_serviceAccountEmail = 'foo';
       var arg_userProject = 'foo';
@@ -5825,8 +5805,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsHmacKeysResourceApi res =
-          api.StorageApi(mock).projects.hmacKeys;
+      var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
       var arg_accessId = 'foo';
       var arg_userProject = 'foo';
@@ -5890,8 +5869,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHmacKeysResourceApi res =
-          api.StorageApi(mock).projects.hmacKeys;
+      var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
       var arg_accessId = 'foo';
       var arg_userProject = 'foo';
@@ -5957,8 +5935,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHmacKeysResourceApi res =
-          api.StorageApi(mock).projects.hmacKeys;
+      var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -6037,8 +6014,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsHmacKeysResourceApi res =
-          api.StorageApi(mock).projects.hmacKeys;
+      var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_request = buildHmacKeyMetadata();
       var arg_projectId = 'foo';
       var arg_accessId = 'foo';
@@ -6110,8 +6086,7 @@ void main() {
   unittest.group('resource-ProjectsServiceAccountResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountResourceApi res =
-          api.StorageApi(mock).projects.serviceAccount;
+      var res = api.StorageApi(mock).projects.serviceAccount;
       var arg_projectId = 'foo';
       var arg_provisionalUserProject = 'foo';
       var arg_userProject = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1229,8 +1228,7 @@ void main() {
   unittest.group('resource-LineitemsResourceApi', () {
     unittest.test('method--downloadlineitems', () {
       var mock = HttpServerMock();
-      api.LineitemsResourceApi res =
-          api.DoubleclickbidmanagerApi(mock).lineitems;
+      var res = api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildDownloadLineItemsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1282,8 +1280,7 @@ void main() {
 
     unittest.test('method--uploadlineitems', () {
       var mock = HttpServerMock();
-      api.LineitemsResourceApi res =
-          api.DoubleclickbidmanagerApi(mock).lineitems;
+      var res = api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildUploadLineItemsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1337,7 +1334,7 @@ void main() {
   unittest.group('resource-QueriesResourceApi', () {
     unittest.test('method--createquery', () {
       var mock = HttpServerMock();
-      api.QueriesResourceApi res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildQuery();
       var arg_asynchronous = true;
       var arg_$fields = 'foo';
@@ -1393,7 +1390,7 @@ void main() {
 
     unittest.test('method--deletequery', () {
       var mock = HttpServerMock();
-      api.QueriesResourceApi res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1443,7 +1440,7 @@ void main() {
 
     unittest.test('method--getquery', () {
       var mock = HttpServerMock();
-      api.QueriesResourceApi res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1495,7 +1492,7 @@ void main() {
 
     unittest.test('method--listqueries', () {
       var mock = HttpServerMock();
-      api.QueriesResourceApi res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleclickbidmanagerApi(mock).queries;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1552,7 +1549,7 @@ void main() {
 
     unittest.test('method--runquery', () {
       var mock = HttpServerMock();
-      api.QueriesResourceApi res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildRunQueryRequest();
       var arg_queryId = 'foo';
       var arg_asynchronous = true;
@@ -1612,7 +1609,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--listreports', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DoubleclickbidmanagerApi(mock).reports;
+      var res = api.DoubleclickbidmanagerApi(mock).reports;
       var arg_queryId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1681,7 +1678,7 @@ void main() {
   unittest.group('resource-SdfResourceApi', () {
     unittest.test('method--download', () {
       var mock = HttpServerMock();
-      api.SdfResourceApi res = api.DoubleclickbidmanagerApi(mock).sdf;
+      var res = api.DoubleclickbidmanagerApi(mock).sdf;
       var arg_request = buildDownloadRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

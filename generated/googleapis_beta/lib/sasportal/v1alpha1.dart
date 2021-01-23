@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3804,8 +3803,7 @@ class SasPortalAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (members != null) {
       _json['members'] = members;
     }
@@ -3832,8 +3830,7 @@ class SasPortalBulkCreateDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (csv != null) {
       _json['csv'] = csv;
     }
@@ -3857,8 +3854,7 @@ class SasPortalBulkCreateDeviceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -3895,8 +3891,7 @@ class SasPortalCreateSignedDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encodedDevice != null) {
       _json['encodedDevice'] = encodedDevice;
     }
@@ -3933,8 +3928,7 @@ class SasPortalCustomer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4021,8 +4015,7 @@ class SasPortalDevice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeConfig != null) {
       _json['activeConfig'] = activeConfig.toJson();
     }
@@ -4087,8 +4080,7 @@ class SasPortalDeviceAirInterface {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (radioTechnology != null) {
       _json['radioTechnology'] = radioTechnology;
     }
@@ -4178,8 +4170,7 @@ class SasPortalDeviceConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (airInterface != null) {
       _json['airInterface'] = airInterface.toJson();
     }
@@ -4292,8 +4283,7 @@ class SasPortalDeviceGrant {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (channelType != null) {
       _json['channelType'] = channelType;
     }
@@ -4331,8 +4321,7 @@ class SasPortalDeviceMetadata {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4375,8 +4364,7 @@ class SasPortalDeviceModel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (firmwareVersion != null) {
       _json['firmwareVersion'] = firmwareVersion;
     }
@@ -4417,8 +4405,7 @@ class SasPortalDpaMoveList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dpaId != null) {
       _json['dpaId'] = dpaId;
     }
@@ -4442,8 +4429,7 @@ class SasPortalEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4468,8 +4454,7 @@ class SasPortalFrequencyRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (highFrequencyMhz != null) {
       _json['highFrequencyMhz'] = highFrequencyMhz;
     }
@@ -4490,8 +4475,7 @@ class SasPortalGenerateSecretRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4510,8 +4494,7 @@ class SasPortalGenerateSecretResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (secret != null) {
       _json['secret'] = secret;
     }
@@ -4533,8 +4516,7 @@ class SasPortalGetPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resource != null) {
       _json['resource'] = resource;
     }
@@ -4668,8 +4650,7 @@ class SasPortalInstallationParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (antennaAzimuth != null) {
       _json['antennaAzimuth'] = antennaAzimuth;
     }
@@ -4740,8 +4721,7 @@ class SasPortalListCustomersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customers != null) {
       _json['customers'] = customers.map((value) => value.toJson()).toList();
     }
@@ -4776,8 +4756,7 @@ class SasPortalListDevicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -4812,8 +4791,7 @@ class SasPortalListNodesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4839,8 +4817,7 @@ class SasPortalMoveDeploymentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destination != null) {
       _json['destination'] = destination;
     }
@@ -4863,8 +4840,7 @@ class SasPortalMoveDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destination != null) {
       _json['destination'] = destination;
     }
@@ -4887,8 +4863,7 @@ class SasPortalMoveNodeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destination != null) {
       _json['destination'] = destination;
     }
@@ -4922,8 +4897,7 @@ class SasPortalNode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4997,8 +4971,7 @@ class SasPortalOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -5054,8 +5027,7 @@ class SasPortalPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assignments != null) {
       _json['assignments'] =
           assignments.map((value) => value.toJson()).toList();
@@ -5088,8 +5060,7 @@ class SasPortalSetPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -5115,8 +5086,7 @@ class SasPortalSignDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.toJson();
     }
@@ -5164,8 +5134,7 @@ class SasPortalStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -5199,8 +5168,7 @@ class SasPortalTestPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -5225,8 +5193,7 @@ class SasPortalTestPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -5263,8 +5230,7 @@ class SasPortalUpdateSignedDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encodedDevice != null) {
       _json['encodedDevice'] = encodedDevice;
     }
@@ -5303,8 +5269,7 @@ class SasPortalValidateInstallerRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encodedSecret != null) {
       _json['encodedSecret'] = encodedSecret;
     }
@@ -5328,8 +5293,7 @@ class SasPortalValidateInstallerResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }

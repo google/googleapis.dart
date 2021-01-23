@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -13282,8 +13281,7 @@ void main() {
   unittest.group('resource-AccountActiveAdSummariesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountActiveAdSummariesResourceApi res =
-          api.DfareportingApi(mock).accountActiveAdSummaries;
+      var res = api.DfareportingApi(mock).accountActiveAdSummaries;
       var arg_profileId = 'foo';
       var arg_summaryAccountId = 'foo';
       var arg_$fields = 'foo';
@@ -13347,8 +13345,7 @@ void main() {
   unittest.group('resource-AccountPermissionGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountPermissionGroupsResourceApi res =
-          api.DfareportingApi(mock).accountPermissionGroups;
+      var res = api.DfareportingApi(mock).accountPermissionGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -13410,8 +13407,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountPermissionGroupsResourceApi res =
-          api.DfareportingApi(mock).accountPermissionGroups;
+      var res = api.DfareportingApi(mock).accountPermissionGroups;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13472,8 +13468,7 @@ void main() {
   unittest.group('resource-AccountPermissionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountPermissionsResourceApi res =
-          api.DfareportingApi(mock).accountPermissions;
+      var res = api.DfareportingApi(mock).accountPermissions;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -13535,8 +13530,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountPermissionsResourceApi res =
-          api.DfareportingApi(mock).accountPermissions;
+      var res = api.DfareportingApi(mock).accountPermissions;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13596,8 +13590,7 @@ void main() {
   unittest.group('resource-AccountUserProfilesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountUserProfilesResourceApi res =
-          api.DfareportingApi(mock).accountUserProfiles;
+      var res = api.DfareportingApi(mock).accountUserProfiles;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -13659,8 +13652,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AccountUserProfilesResourceApi res =
-          api.DfareportingApi(mock).accountUserProfiles;
+      var res = api.DfareportingApi(mock).accountUserProfiles;
       var arg_request = buildAccountUserProfile();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -13722,8 +13714,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountUserProfilesResourceApi res =
-          api.DfareportingApi(mock).accountUserProfiles;
+      var res = api.DfareportingApi(mock).accountUserProfiles;
       var arg_profileId = 'foo';
       var arg_active = true;
       var arg_ids = buildUnnamed4215();
@@ -13817,8 +13808,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AccountUserProfilesResourceApi res =
-          api.DfareportingApi(mock).accountUserProfiles;
+      var res = api.DfareportingApi(mock).accountUserProfiles;
       var arg_request = buildAccountUserProfile();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -13882,8 +13872,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountUserProfilesResourceApi res =
-          api.DfareportingApi(mock).accountUserProfiles;
+      var res = api.DfareportingApi(mock).accountUserProfiles;
       var arg_request = buildAccountUserProfile();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -13947,7 +13936,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.DfareportingApi(mock).accounts;
+      var res = api.DfareportingApi(mock).accounts;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -14009,7 +13998,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.DfareportingApi(mock).accounts;
+      var res = api.DfareportingApi(mock).accounts;
       var arg_profileId = 'foo';
       var arg_active = true;
       var arg_ids = buildUnnamed4216();
@@ -14095,7 +14084,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.DfareportingApi(mock).accounts;
+      var res = api.DfareportingApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -14159,7 +14148,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.DfareportingApi(mock).accounts;
+      var res = api.DfareportingApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -14223,7 +14212,7 @@ void main() {
   unittest.group('resource-AdsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdsResourceApi res = api.DfareportingApi(mock).ads;
+      var res = api.DfareportingApi(mock).ads;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -14285,7 +14274,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AdsResourceApi res = api.DfareportingApi(mock).ads;
+      var res = api.DfareportingApi(mock).ads;
       var arg_request = buildAd();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -14347,7 +14336,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdsResourceApi res = api.DfareportingApi(mock).ads;
+      var res = api.DfareportingApi(mock).ads;
       var arg_profileId = 'foo';
       var arg_active = true;
       var arg_advertiserId = 'foo';
@@ -14496,7 +14485,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdsResourceApi res = api.DfareportingApi(mock).ads;
+      var res = api.DfareportingApi(mock).ads;
       var arg_request = buildAd();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -14560,7 +14549,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AdsResourceApi res = api.DfareportingApi(mock).ads;
+      var res = api.DfareportingApi(mock).ads;
       var arg_request = buildAd();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -14624,8 +14613,7 @@ void main() {
   unittest.group('resource-AdvertiserGroupsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -14685,8 +14673,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -14748,8 +14735,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_request = buildAdvertiserGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -14811,8 +14797,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4227();
       var arg_maxResults = 42;
@@ -14894,8 +14879,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_request = buildAdvertiserGroup();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -14959,8 +14943,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AdvertiserGroupsResourceApi res =
-          api.DfareportingApi(mock).advertiserGroups;
+      var res = api.DfareportingApi(mock).advertiserGroups;
       var arg_request = buildAdvertiserGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -15024,8 +15007,7 @@ void main() {
   unittest.group('resource-AdvertiserLandingPagesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertiserLandingPagesResourceApi res =
-          api.DfareportingApi(mock).advertiserLandingPages;
+      var res = api.DfareportingApi(mock).advertiserLandingPages;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -15087,8 +15069,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AdvertiserLandingPagesResourceApi res =
-          api.DfareportingApi(mock).advertiserLandingPages;
+      var res = api.DfareportingApi(mock).advertiserLandingPages;
       var arg_request = buildLandingPage();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -15150,8 +15131,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertiserLandingPagesResourceApi res =
-          api.DfareportingApi(mock).advertiserLandingPages;
+      var res = api.DfareportingApi(mock).advertiserLandingPages;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4228();
       var arg_archived = true;
@@ -15250,8 +15230,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertiserLandingPagesResourceApi res =
-          api.DfareportingApi(mock).advertiserLandingPages;
+      var res = api.DfareportingApi(mock).advertiserLandingPages;
       var arg_request = buildLandingPage();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -15315,8 +15294,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AdvertiserLandingPagesResourceApi res =
-          api.DfareportingApi(mock).advertiserLandingPages;
+      var res = api.DfareportingApi(mock).advertiserLandingPages;
       var arg_request = buildLandingPage();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -15380,7 +15358,7 @@ void main() {
   unittest.group('resource-AdvertisersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
+      var res = api.DfareportingApi(mock).advertisers;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -15442,7 +15420,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
+      var res = api.DfareportingApi(mock).advertisers;
       var arg_request = buildAdvertiser();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -15504,7 +15482,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
+      var res = api.DfareportingApi(mock).advertisers;
       var arg_profileId = 'foo';
       var arg_advertiserGroupIds = buildUnnamed4231();
       var arg_floodlightConfigurationIds = buildUnnamed4232();
@@ -15610,7 +15588,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
+      var res = api.DfareportingApi(mock).advertisers;
       var arg_request = buildAdvertiser();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -15674,7 +15652,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AdvertisersResourceApi res = api.DfareportingApi(mock).advertisers;
+      var res = api.DfareportingApi(mock).advertisers;
       var arg_request = buildAdvertiser();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -15738,7 +15716,7 @@ void main() {
   unittest.group('resource-BrowsersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BrowsersResourceApi res = api.DfareportingApi(mock).browsers;
+      var res = api.DfareportingApi(mock).browsers;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15798,8 +15776,7 @@ void main() {
   unittest.group('resource-CampaignCreativeAssociationsResourceApi', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CampaignCreativeAssociationsResourceApi res =
-          api.DfareportingApi(mock).campaignCreativeAssociations;
+      var res = api.DfareportingApi(mock).campaignCreativeAssociations;
       var arg_request = buildCampaignCreativeAssociation();
       var arg_profileId = 'foo';
       var arg_campaignId = 'foo';
@@ -15872,8 +15849,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CampaignCreativeAssociationsResourceApi res =
-          api.DfareportingApi(mock).campaignCreativeAssociations;
+      var res = api.DfareportingApi(mock).campaignCreativeAssociations;
       var arg_profileId = 'foo';
       var arg_campaignId = 'foo';
       var arg_maxResults = 42;
@@ -15957,7 +15933,7 @@ void main() {
   unittest.group('resource-CampaignsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
+      var res = api.DfareportingApi(mock).campaigns;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -16019,7 +15995,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
+      var res = api.DfareportingApi(mock).campaigns;
       var arg_request = buildCampaign();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -16081,7 +16057,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
+      var res = api.DfareportingApi(mock).campaigns;
       var arg_profileId = 'foo';
       var arg_advertiserGroupIds = buildUnnamed4234();
       var arg_advertiserIds = buildUnnamed4235();
@@ -16192,7 +16168,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
+      var res = api.DfareportingApi(mock).campaigns;
       var arg_request = buildCampaign();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -16256,7 +16232,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CampaignsResourceApi res = api.DfareportingApi(mock).campaigns;
+      var res = api.DfareportingApi(mock).campaigns;
       var arg_request = buildCampaign();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -16320,7 +16296,7 @@ void main() {
   unittest.group('resource-ChangeLogsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ChangeLogsResourceApi res = api.DfareportingApi(mock).changeLogs;
+      var res = api.DfareportingApi(mock).changeLogs;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -16382,7 +16358,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChangeLogsResourceApi res = api.DfareportingApi(mock).changeLogs;
+      var res = api.DfareportingApi(mock).changeLogs;
       var arg_profileId = 'foo';
       var arg_action = 'foo';
       var arg_ids = buildUnnamed4238();
@@ -16480,7 +16456,7 @@ void main() {
   unittest.group('resource-CitiesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CitiesResourceApi res = api.DfareportingApi(mock).cities;
+      var res = api.DfareportingApi(mock).cities;
       var arg_profileId = 'foo';
       var arg_countryDartIds = buildUnnamed4241();
       var arg_dartIds = buildUnnamed4242();
@@ -16556,8 +16532,7 @@ void main() {
   unittest.group('resource-ConnectionTypesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ConnectionTypesResourceApi res =
-          api.DfareportingApi(mock).connectionTypes;
+      var res = api.DfareportingApi(mock).connectionTypes;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -16619,8 +16594,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ConnectionTypesResourceApi res =
-          api.DfareportingApi(mock).connectionTypes;
+      var res = api.DfareportingApi(mock).connectionTypes;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16680,8 +16654,7 @@ void main() {
   unittest.group('resource-ContentCategoriesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -16741,8 +16714,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -16804,8 +16776,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_request = buildContentCategory();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -16867,8 +16838,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4244();
       var arg_maxResults = 42;
@@ -16950,8 +16920,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_request = buildContentCategory();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -17015,8 +16984,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ContentCategoriesResourceApi res =
-          api.DfareportingApi(mock).contentCategories;
+      var res = api.DfareportingApi(mock).contentCategories;
       var arg_request = buildContentCategory();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -17080,7 +17048,7 @@ void main() {
   unittest.group('resource-ConversionsResourceApi', () {
     unittest.test('method--batchinsert', () {
       var mock = HttpServerMock();
-      api.ConversionsResourceApi res = api.DfareportingApi(mock).conversions;
+      var res = api.DfareportingApi(mock).conversions;
       var arg_request = buildConversionsBatchInsertRequest();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -17142,7 +17110,7 @@ void main() {
 
     unittest.test('method--batchupdate', () {
       var mock = HttpServerMock();
-      api.ConversionsResourceApi res = api.DfareportingApi(mock).conversions;
+      var res = api.DfareportingApi(mock).conversions;
       var arg_request = buildConversionsBatchUpdateRequest();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -17206,7 +17174,7 @@ void main() {
   unittest.group('resource-CountriesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CountriesResourceApi res = api.DfareportingApi(mock).countries;
+      var res = api.DfareportingApi(mock).countries;
       var arg_profileId = 'foo';
       var arg_dartId = 'foo';
       var arg_$fields = 'foo';
@@ -17268,7 +17236,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CountriesResourceApi res = api.DfareportingApi(mock).countries;
+      var res = api.DfareportingApi(mock).countries;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17331,8 +17299,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.CreativeAssetsResourceApi res =
-          api.DfareportingApi(mock).creativeAssets;
+      var res = api.DfareportingApi(mock).creativeAssets;
       var arg_request = buildCreativeAssetMetadata();
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
@@ -17407,8 +17374,7 @@ void main() {
   unittest.group('resource-CreativeFieldValuesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
       var arg_id = 'foo';
@@ -17479,8 +17445,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
       var arg_id = 'foo';
@@ -17552,8 +17517,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_request = buildCreativeFieldValue();
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
@@ -17626,8 +17590,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
       var arg_ids = buildUnnamed4245();
@@ -17719,8 +17682,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_request = buildCreativeFieldValue();
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
@@ -17795,8 +17757,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CreativeFieldValuesResourceApi res =
-          api.DfareportingApi(mock).creativeFieldValues;
+      var res = api.DfareportingApi(mock).creativeFieldValues;
       var arg_request = buildCreativeFieldValue();
       var arg_profileId = 'foo';
       var arg_creativeFieldId = 'foo';
@@ -17871,8 +17832,7 @@ void main() {
   unittest.group('resource-CreativeFieldsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -17932,8 +17892,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -17995,8 +17954,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_request = buildCreativeField();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18058,8 +18016,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4246();
       var arg_ids = buildUnnamed4247();
@@ -18145,8 +18102,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_request = buildCreativeField();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -18210,8 +18166,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CreativeFieldsResourceApi res =
-          api.DfareportingApi(mock).creativeFields;
+      var res = api.DfareportingApi(mock).creativeFields;
       var arg_request = buildCreativeField();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18275,8 +18230,7 @@ void main() {
   unittest.group('resource-CreativeGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CreativeGroupsResourceApi res =
-          api.DfareportingApi(mock).creativeGroups;
+      var res = api.DfareportingApi(mock).creativeGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -18338,8 +18292,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CreativeGroupsResourceApi res =
-          api.DfareportingApi(mock).creativeGroups;
+      var res = api.DfareportingApi(mock).creativeGroups;
       var arg_request = buildCreativeGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18401,8 +18354,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CreativeGroupsResourceApi res =
-          api.DfareportingApi(mock).creativeGroups;
+      var res = api.DfareportingApi(mock).creativeGroups;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4248();
       var arg_groupNumber = 42;
@@ -18492,8 +18444,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CreativeGroupsResourceApi res =
-          api.DfareportingApi(mock).creativeGroups;
+      var res = api.DfareportingApi(mock).creativeGroups;
       var arg_request = buildCreativeGroup();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -18557,8 +18508,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CreativeGroupsResourceApi res =
-          api.DfareportingApi(mock).creativeGroups;
+      var res = api.DfareportingApi(mock).creativeGroups;
       var arg_request = buildCreativeGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18622,7 +18572,7 @@ void main() {
   unittest.group('resource-CreativesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
+      var res = api.DfareportingApi(mock).creatives;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -18684,7 +18634,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
+      var res = api.DfareportingApi(mock).creatives;
       var arg_request = buildCreative();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18746,7 +18696,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
+      var res = api.DfareportingApi(mock).creatives;
       var arg_profileId = 'foo';
       var arg_active = true;
       var arg_advertiserId = 'foo';
@@ -18866,7 +18816,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
+      var res = api.DfareportingApi(mock).creatives;
       var arg_request = buildCreative();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -18930,7 +18880,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.DfareportingApi(mock).creatives;
+      var res = api.DfareportingApi(mock).creatives;
       var arg_request = buildCreative();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -18994,7 +18944,7 @@ void main() {
   unittest.group('resource-CustomEventsResourceApi', () {
     unittest.test('method--batchinsert', () {
       var mock = HttpServerMock();
-      api.CustomEventsResourceApi res = api.DfareportingApi(mock).customEvents;
+      var res = api.DfareportingApi(mock).customEvents;
       var arg_request = buildCustomEventsBatchInsertRequest();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -19058,8 +19008,7 @@ void main() {
   unittest.group('resource-DimensionValuesResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.DimensionValuesResourceApi res =
-          api.DfareportingApi(mock).dimensionValues;
+      var res = api.DfareportingApi(mock).dimensionValues;
       var arg_request = buildDimensionValueRequest();
       var arg_profileId = 'foo';
       var arg_maxResults = 42;
@@ -19132,8 +19081,7 @@ void main() {
   unittest.group('resource-DirectorySitesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DirectorySitesResourceApi res =
-          api.DfareportingApi(mock).directorySites;
+      var res = api.DfareportingApi(mock).directorySites;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -19195,8 +19143,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DirectorySitesResourceApi res =
-          api.DfareportingApi(mock).directorySites;
+      var res = api.DfareportingApi(mock).directorySites;
       var arg_request = buildDirectorySite();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -19258,8 +19205,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DirectorySitesResourceApi res =
-          api.DfareportingApi(mock).directorySites;
+      var res = api.DfareportingApi(mock).directorySites;
       var arg_profileId = 'foo';
       var arg_acceptsInStreamVideoPlacements = true;
       var arg_acceptsInterstitialPlacements = true;
@@ -19365,8 +19311,7 @@ void main() {
   unittest.group('resource-DynamicTargetingKeysResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DynamicTargetingKeysResourceApi res =
-          api.DfareportingApi(mock).dynamicTargetingKeys;
+      var res = api.DfareportingApi(mock).dynamicTargetingKeys;
       var arg_profileId = 'foo';
       var arg_objectId = 'foo';
       var arg_name = 'foo';
@@ -19432,8 +19377,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DynamicTargetingKeysResourceApi res =
-          api.DfareportingApi(mock).dynamicTargetingKeys;
+      var res = api.DfareportingApi(mock).dynamicTargetingKeys;
       var arg_request = buildDynamicTargetingKey();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -19495,8 +19439,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DynamicTargetingKeysResourceApi res =
-          api.DfareportingApi(mock).dynamicTargetingKeys;
+      var res = api.DfareportingApi(mock).dynamicTargetingKeys;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_names = buildUnnamed4257();
@@ -19572,7 +19515,7 @@ void main() {
   unittest.group('resource-EventTagsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -19632,7 +19575,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -19694,7 +19637,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_request = buildEventTag();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -19756,7 +19699,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_profileId = 'foo';
       var arg_adId = 'foo';
       var arg_advertiserId = 'foo';
@@ -19853,7 +19796,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_request = buildEventTag();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -19917,7 +19860,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.EventTagsResourceApi res = api.DfareportingApi(mock).eventTags;
+      var res = api.DfareportingApi(mock).eventTags;
       var arg_request = buildEventTag();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -19984,7 +19927,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DfareportingApi(mock).files;
+      var res = api.DfareportingApi(mock).files;
       var arg_reportId = 'foo';
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
@@ -20046,7 +19989,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DfareportingApi(mock).files;
+      var res = api.DfareportingApi(mock).files;
       var arg_profileId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -20126,8 +20069,7 @@ void main() {
   unittest.group('resource-FloodlightActivitiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -20187,8 +20129,7 @@ void main() {
 
     unittest.test('method--generatetag', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_profileId = 'foo';
       var arg_floodlightActivityId = 'foo';
       var arg_$fields = 'foo';
@@ -20252,8 +20193,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -20315,8 +20255,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_request = buildFloodlightActivity();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -20378,8 +20317,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_floodlightActivityGroupIds = buildUnnamed4260();
@@ -20490,8 +20428,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_request = buildFloodlightActivity();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -20555,8 +20492,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.FloodlightActivitiesResourceApi res =
-          api.DfareportingApi(mock).floodlightActivities;
+      var res = api.DfareportingApi(mock).floodlightActivities;
       var arg_request = buildFloodlightActivity();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -20620,8 +20556,7 @@ void main() {
   unittest.group('resource-FloodlightActivityGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FloodlightActivityGroupsResourceApi res =
-          api.DfareportingApi(mock).floodlightActivityGroups;
+      var res = api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -20683,8 +20618,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.FloodlightActivityGroupsResourceApi res =
-          api.DfareportingApi(mock).floodlightActivityGroups;
+      var res = api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_request = buildFloodlightActivityGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -20746,8 +20680,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FloodlightActivityGroupsResourceApi res =
-          api.DfareportingApi(mock).floodlightActivityGroups;
+      var res = api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_floodlightConfigurationId = 'foo';
@@ -20841,8 +20774,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FloodlightActivityGroupsResourceApi res =
-          api.DfareportingApi(mock).floodlightActivityGroups;
+      var res = api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_request = buildFloodlightActivityGroup();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -20906,8 +20838,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.FloodlightActivityGroupsResourceApi res =
-          api.DfareportingApi(mock).floodlightActivityGroups;
+      var res = api.DfareportingApi(mock).floodlightActivityGroups;
       var arg_request = buildFloodlightActivityGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -20971,8 +20902,7 @@ void main() {
   unittest.group('resource-FloodlightConfigurationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FloodlightConfigurationsResourceApi res =
-          api.DfareportingApi(mock).floodlightConfigurations;
+      var res = api.DfareportingApi(mock).floodlightConfigurations;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -21034,8 +20964,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FloodlightConfigurationsResourceApi res =
-          api.DfareportingApi(mock).floodlightConfigurations;
+      var res = api.DfareportingApi(mock).floodlightConfigurations;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4263();
       var arg_$fields = 'foo';
@@ -21096,8 +21025,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FloodlightConfigurationsResourceApi res =
-          api.DfareportingApi(mock).floodlightConfigurations;
+      var res = api.DfareportingApi(mock).floodlightConfigurations;
       var arg_request = buildFloodlightConfiguration();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -21161,8 +21089,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.FloodlightConfigurationsResourceApi res =
-          api.DfareportingApi(mock).floodlightConfigurations;
+      var res = api.DfareportingApi(mock).floodlightConfigurations;
       var arg_request = buildFloodlightConfiguration();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -21226,8 +21153,7 @@ void main() {
   unittest.group('resource-InventoryItemsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InventoryItemsResourceApi res =
-          api.DfareportingApi(mock).inventoryItems;
+      var res = api.DfareportingApi(mock).inventoryItems;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_id = 'foo';
@@ -21299,8 +21225,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InventoryItemsResourceApi res =
-          api.DfareportingApi(mock).inventoryItems;
+      var res = api.DfareportingApi(mock).inventoryItems;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_ids = buildUnnamed4264();
@@ -21403,7 +21328,7 @@ void main() {
   unittest.group('resource-LanguagesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LanguagesResourceApi res = api.DfareportingApi(mock).languages;
+      var res = api.DfareportingApi(mock).languages;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21463,7 +21388,7 @@ void main() {
   unittest.group('resource-MetrosResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MetrosResourceApi res = api.DfareportingApi(mock).metros;
+      var res = api.DfareportingApi(mock).metros;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21523,7 +21448,7 @@ void main() {
   unittest.group('resource-MobileAppsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MobileAppsResourceApi res = api.DfareportingApi(mock).mobileApps;
+      var res = api.DfareportingApi(mock).mobileApps;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -21585,7 +21510,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MobileAppsResourceApi res = api.DfareportingApi(mock).mobileApps;
+      var res = api.DfareportingApi(mock).mobileApps;
       var arg_profileId = 'foo';
       var arg_directories = buildUnnamed4267();
       var arg_ids = buildUnnamed4268();
@@ -21665,8 +21590,7 @@ void main() {
   unittest.group('resource-MobileCarriersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MobileCarriersResourceApi res =
-          api.DfareportingApi(mock).mobileCarriers;
+      var res = api.DfareportingApi(mock).mobileCarriers;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -21728,8 +21652,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MobileCarriersResourceApi res =
-          api.DfareportingApi(mock).mobileCarriers;
+      var res = api.DfareportingApi(mock).mobileCarriers;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21789,8 +21712,7 @@ void main() {
   unittest.group('resource-OperatingSystemVersionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperatingSystemVersionsResourceApi res =
-          api.DfareportingApi(mock).operatingSystemVersions;
+      var res = api.DfareportingApi(mock).operatingSystemVersions;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -21852,8 +21774,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperatingSystemVersionsResourceApi res =
-          api.DfareportingApi(mock).operatingSystemVersions;
+      var res = api.DfareportingApi(mock).operatingSystemVersions;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21914,8 +21835,7 @@ void main() {
   unittest.group('resource-OperatingSystemsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperatingSystemsResourceApi res =
-          api.DfareportingApi(mock).operatingSystems;
+      var res = api.DfareportingApi(mock).operatingSystems;
       var arg_profileId = 'foo';
       var arg_dartId = 'foo';
       var arg_$fields = 'foo';
@@ -21977,8 +21897,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperatingSystemsResourceApi res =
-          api.DfareportingApi(mock).operatingSystems;
+      var res = api.DfareportingApi(mock).operatingSystems;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -22038,8 +21957,7 @@ void main() {
   unittest.group('resource-OrderDocumentsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrderDocumentsResourceApi res =
-          api.DfareportingApi(mock).orderDocuments;
+      var res = api.DfareportingApi(mock).orderDocuments;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_id = 'foo';
@@ -22111,8 +22029,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrderDocumentsResourceApi res =
-          api.DfareportingApi(mock).orderDocuments;
+      var res = api.DfareportingApi(mock).orderDocuments;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_approved = true;
@@ -22216,7 +22133,7 @@ void main() {
   unittest.group('resource-OrdersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrdersResourceApi res = api.DfareportingApi(mock).orders;
+      var res = api.DfareportingApi(mock).orders;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_id = 'foo';
@@ -22288,7 +22205,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrdersResourceApi res = api.DfareportingApi(mock).orders;
+      var res = api.DfareportingApi(mock).orders;
       var arg_profileId = 'foo';
       var arg_projectId = 'foo';
       var arg_ids = buildUnnamed4272();
@@ -22385,8 +22302,7 @@ void main() {
   unittest.group('resource-PlacementGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PlacementGroupsResourceApi res =
-          api.DfareportingApi(mock).placementGroups;
+      var res = api.DfareportingApi(mock).placementGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -22448,8 +22364,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PlacementGroupsResourceApi res =
-          api.DfareportingApi(mock).placementGroups;
+      var res = api.DfareportingApi(mock).placementGroups;
       var arg_request = buildPlacementGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -22511,8 +22426,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlacementGroupsResourceApi res =
-          api.DfareportingApi(mock).placementGroups;
+      var res = api.DfareportingApi(mock).placementGroups;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4274();
       var arg_archived = true;
@@ -22645,8 +22559,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PlacementGroupsResourceApi res =
-          api.DfareportingApi(mock).placementGroups;
+      var res = api.DfareportingApi(mock).placementGroups;
       var arg_request = buildPlacementGroup();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -22710,8 +22623,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PlacementGroupsResourceApi res =
-          api.DfareportingApi(mock).placementGroups;
+      var res = api.DfareportingApi(mock).placementGroups;
       var arg_request = buildPlacementGroup();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -22775,8 +22687,7 @@ void main() {
   unittest.group('resource-PlacementStrategiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -22836,8 +22747,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -22899,8 +22809,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_request = buildPlacementStrategy();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -22962,8 +22871,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4282();
       var arg_maxResults = 42;
@@ -23045,8 +22953,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_request = buildPlacementStrategy();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -23110,8 +23017,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PlacementStrategiesResourceApi res =
-          api.DfareportingApi(mock).placementStrategies;
+      var res = api.DfareportingApi(mock).placementStrategies;
       var arg_request = buildPlacementStrategy();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -23175,7 +23081,7 @@ void main() {
   unittest.group('resource-PlacementsResourceApi', () {
     unittest.test('method--generatetags', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_profileId = 'foo';
       var arg_campaignId = 'foo';
       var arg_placementIds = buildUnnamed4283();
@@ -23246,7 +23152,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -23308,7 +23214,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_request = buildPlacement();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -23370,7 +23276,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4285();
       var arg_archived = true;
@@ -23513,7 +23419,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_request = buildPlacement();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -23577,7 +23483,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PlacementsResourceApi res = api.DfareportingApi(mock).placements;
+      var res = api.DfareportingApi(mock).placements;
       var arg_request = buildPlacement();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -23641,8 +23547,7 @@ void main() {
   unittest.group('resource-PlatformTypesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PlatformTypesResourceApi res =
-          api.DfareportingApi(mock).platformTypes;
+      var res = api.DfareportingApi(mock).platformTypes;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -23704,8 +23609,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PlatformTypesResourceApi res =
-          api.DfareportingApi(mock).platformTypes;
+      var res = api.DfareportingApi(mock).platformTypes;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -23765,7 +23669,7 @@ void main() {
   unittest.group('resource-PostalCodesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PostalCodesResourceApi res = api.DfareportingApi(mock).postalCodes;
+      var res = api.DfareportingApi(mock).postalCodes;
       var arg_profileId = 'foo';
       var arg_code = 'foo';
       var arg_$fields = 'foo';
@@ -23827,7 +23731,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PostalCodesResourceApi res = api.DfareportingApi(mock).postalCodes;
+      var res = api.DfareportingApi(mock).postalCodes;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -23887,7 +23791,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DfareportingApi(mock).projects;
+      var res = api.DfareportingApi(mock).projects;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -23949,7 +23853,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.DfareportingApi(mock).projects;
+      var res = api.DfareportingApi(mock).projects;
       var arg_profileId = 'foo';
       var arg_advertiserIds = buildUnnamed4296();
       var arg_ids = buildUnnamed4297();
@@ -24037,7 +23941,7 @@ void main() {
   unittest.group('resource-RegionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionsResourceApi res = api.DfareportingApi(mock).regions;
+      var res = api.DfareportingApi(mock).regions;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -24097,8 +24001,7 @@ void main() {
   unittest.group('resource-RemarketingListSharesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RemarketingListSharesResourceApi res =
-          api.DfareportingApi(mock).remarketingListShares;
+      var res = api.DfareportingApi(mock).remarketingListShares;
       var arg_profileId = 'foo';
       var arg_remarketingListId = 'foo';
       var arg_$fields = 'foo';
@@ -24160,8 +24063,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RemarketingListSharesResourceApi res =
-          api.DfareportingApi(mock).remarketingListShares;
+      var res = api.DfareportingApi(mock).remarketingListShares;
       var arg_request = buildRemarketingListShare();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -24225,8 +24127,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RemarketingListSharesResourceApi res =
-          api.DfareportingApi(mock).remarketingListShares;
+      var res = api.DfareportingApi(mock).remarketingListShares;
       var arg_request = buildRemarketingListShare();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -24290,8 +24191,7 @@ void main() {
   unittest.group('resource-RemarketingListsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RemarketingListsResourceApi res =
-          api.DfareportingApi(mock).remarketingLists;
+      var res = api.DfareportingApi(mock).remarketingLists;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -24353,8 +24253,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RemarketingListsResourceApi res =
-          api.DfareportingApi(mock).remarketingLists;
+      var res = api.DfareportingApi(mock).remarketingLists;
       var arg_request = buildRemarketingList();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -24416,8 +24315,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RemarketingListsResourceApi res =
-          api.DfareportingApi(mock).remarketingLists;
+      var res = api.DfareportingApi(mock).remarketingLists;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_active = true;
@@ -24506,8 +24404,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RemarketingListsResourceApi res =
-          api.DfareportingApi(mock).remarketingLists;
+      var res = api.DfareportingApi(mock).remarketingLists;
       var arg_request = buildRemarketingList();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -24571,8 +24468,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RemarketingListsResourceApi res =
-          api.DfareportingApi(mock).remarketingLists;
+      var res = api.DfareportingApi(mock).remarketingLists;
       var arg_request = buildRemarketingList();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -24636,7 +24532,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_$fields = 'foo';
@@ -24696,7 +24592,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_$fields = 'foo';
@@ -24758,7 +24654,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_request = buildReport();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -24820,7 +24716,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_profileId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -24898,7 +24794,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_request = buildReport();
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
@@ -24964,7 +24860,7 @@ void main() {
 
     unittest.test('method--run', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_synchronous = true;
@@ -25036,7 +24932,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.DfareportingApi(mock).reports;
+      var res = api.DfareportingApi(mock).reports;
       var arg_request = buildReport();
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
@@ -25105,8 +25001,7 @@ void main() {
   unittest.group('resource-ReportsCompatibleFieldsResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.ReportsCompatibleFieldsResourceApi res =
-          api.DfareportingApi(mock).reports.compatibleFields;
+      var res = api.DfareportingApi(mock).reports.compatibleFields;
       var arg_request = buildReport();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -25173,7 +25068,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ReportsFilesResourceApi res = api.DfareportingApi(mock).reports.files;
+      var res = api.DfareportingApi(mock).reports.files;
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_fileId = 'foo';
@@ -25245,7 +25140,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ReportsFilesResourceApi res = api.DfareportingApi(mock).reports.files;
+      var res = api.DfareportingApi(mock).reports.files;
       var arg_profileId = 'foo';
       var arg_reportId = 'foo';
       var arg_maxResults = 42;
@@ -25332,7 +25227,7 @@ void main() {
   unittest.group('resource-SitesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.DfareportingApi(mock).sites;
+      var res = api.DfareportingApi(mock).sites;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -25394,7 +25289,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.DfareportingApi(mock).sites;
+      var res = api.DfareportingApi(mock).sites;
       var arg_request = buildSite();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -25456,7 +25351,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.DfareportingApi(mock).sites;
+      var res = api.DfareportingApi(mock).sites;
       var arg_profileId = 'foo';
       var arg_acceptsInStreamVideoPlacements = true;
       var arg_acceptsInterstitialPlacements = true;
@@ -25576,7 +25471,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.DfareportingApi(mock).sites;
+      var res = api.DfareportingApi(mock).sites;
       var arg_request = buildSite();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -25640,7 +25535,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.DfareportingApi(mock).sites;
+      var res = api.DfareportingApi(mock).sites;
       var arg_request = buildSite();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -25704,7 +25599,7 @@ void main() {
   unittest.group('resource-SizesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SizesResourceApi res = api.DfareportingApi(mock).sizes;
+      var res = api.DfareportingApi(mock).sizes;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -25766,7 +25661,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SizesResourceApi res = api.DfareportingApi(mock).sizes;
+      var res = api.DfareportingApi(mock).sizes;
       var arg_request = buildSize();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -25828,7 +25723,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SizesResourceApi res = api.DfareportingApi(mock).sizes;
+      var res = api.DfareportingApi(mock).sizes;
       var arg_profileId = 'foo';
       var arg_height = 42;
       var arg_iabStandard = true;
@@ -25904,7 +25799,7 @@ void main() {
   unittest.group('resource-SubaccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
+      var res = api.DfareportingApi(mock).subaccounts;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -25966,7 +25861,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
+      var res = api.DfareportingApi(mock).subaccounts;
       var arg_request = buildSubaccount();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -26028,7 +25923,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
+      var res = api.DfareportingApi(mock).subaccounts;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4302();
       var arg_maxResults = 42;
@@ -26110,7 +26005,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
+      var res = api.DfareportingApi(mock).subaccounts;
       var arg_request = buildSubaccount();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -26174,7 +26069,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.SubaccountsResourceApi res = api.DfareportingApi(mock).subaccounts;
+      var res = api.DfareportingApi(mock).subaccounts;
       var arg_request = buildSubaccount();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -26238,8 +26133,7 @@ void main() {
   unittest.group('resource-TargetableRemarketingListsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetableRemarketingListsResourceApi res =
-          api.DfareportingApi(mock).targetableRemarketingLists;
+      var res = api.DfareportingApi(mock).targetableRemarketingLists;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -26301,8 +26195,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetableRemarketingListsResourceApi res =
-          api.DfareportingApi(mock).targetableRemarketingLists;
+      var res = api.DfareportingApi(mock).targetableRemarketingLists;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_active = true;
@@ -26390,8 +26283,7 @@ void main() {
   unittest.group('resource-TargetingTemplatesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetingTemplatesResourceApi res =
-          api.DfareportingApi(mock).targetingTemplates;
+      var res = api.DfareportingApi(mock).targetingTemplates;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -26453,8 +26345,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetingTemplatesResourceApi res =
-          api.DfareportingApi(mock).targetingTemplates;
+      var res = api.DfareportingApi(mock).targetingTemplates;
       var arg_request = buildTargetingTemplate();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -26516,8 +26407,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetingTemplatesResourceApi res =
-          api.DfareportingApi(mock).targetingTemplates;
+      var res = api.DfareportingApi(mock).targetingTemplates;
       var arg_profileId = 'foo';
       var arg_advertiserId = 'foo';
       var arg_ids = buildUnnamed4303();
@@ -26603,8 +26493,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.TargetingTemplatesResourceApi res =
-          api.DfareportingApi(mock).targetingTemplates;
+      var res = api.DfareportingApi(mock).targetingTemplates;
       var arg_request = buildTargetingTemplate();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -26668,8 +26557,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.TargetingTemplatesResourceApi res =
-          api.DfareportingApi(mock).targetingTemplates;
+      var res = api.DfareportingApi(mock).targetingTemplates;
       var arg_request = buildTargetingTemplate();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -26733,7 +26621,7 @@ void main() {
   unittest.group('resource-UserProfilesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserProfilesResourceApi res = api.DfareportingApi(mock).userProfiles;
+      var res = api.DfareportingApi(mock).userProfiles;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -26785,7 +26673,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserProfilesResourceApi res = api.DfareportingApi(mock).userProfiles;
+      var res = api.DfareportingApi(mock).userProfiles;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -26833,8 +26721,7 @@ void main() {
   unittest.group('resource-UserRolePermissionGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserRolePermissionGroupsResourceApi res =
-          api.DfareportingApi(mock).userRolePermissionGroups;
+      var res = api.DfareportingApi(mock).userRolePermissionGroups;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -26896,8 +26783,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserRolePermissionGroupsResourceApi res =
-          api.DfareportingApi(mock).userRolePermissionGroups;
+      var res = api.DfareportingApi(mock).userRolePermissionGroups;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -26958,8 +26844,7 @@ void main() {
   unittest.group('resource-UserRolePermissionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserRolePermissionsResourceApi res =
-          api.DfareportingApi(mock).userRolePermissions;
+      var res = api.DfareportingApi(mock).userRolePermissions;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -27021,8 +26906,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserRolePermissionsResourceApi res =
-          api.DfareportingApi(mock).userRolePermissions;
+      var res = api.DfareportingApi(mock).userRolePermissions;
       var arg_profileId = 'foo';
       var arg_ids = buildUnnamed4304();
       var arg_$fields = 'foo';
@@ -27084,7 +26968,7 @@ void main() {
   unittest.group('resource-UserRolesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -27144,7 +27028,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_profileId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -27206,7 +27090,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_request = buildUserRole();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -27268,7 +27152,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_profileId = 'foo';
       var arg_accountUserRoleOnly = true;
       var arg_ids = buildUnnamed4305();
@@ -27358,7 +27242,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_request = buildUserRole();
       var arg_profileId = 'foo';
       var arg_id = 'foo';
@@ -27422,7 +27306,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UserRolesResourceApi res = api.DfareportingApi(mock).userRoles;
+      var res = api.DfareportingApi(mock).userRoles;
       var arg_request = buildUserRole();
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
@@ -27486,7 +27370,7 @@ void main() {
   unittest.group('resource-VideoFormatsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.VideoFormatsResourceApi res = api.DfareportingApi(mock).videoFormats;
+      var res = api.DfareportingApi(mock).videoFormats;
       var arg_profileId = 'foo';
       var arg_id = 42;
       var arg_$fields = 'foo';
@@ -27548,7 +27432,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VideoFormatsResourceApi res = api.DfareportingApi(mock).videoFormats;
+      var res = api.DfareportingApi(mock).videoFormats;
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

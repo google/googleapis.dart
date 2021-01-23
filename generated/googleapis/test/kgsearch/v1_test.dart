@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -186,7 +185,7 @@ void main() {
   unittest.group('resource-EntitiesResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.EntitiesResourceApi res = api.KgsearchApi(mock).entities;
+      var res = api.KgsearchApi(mock).entities;
       var arg_ids = buildUnnamed80();
       var arg_indent = true;
       var arg_languages = buildUnnamed81();

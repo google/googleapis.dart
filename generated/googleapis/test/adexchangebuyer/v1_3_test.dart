@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1712,7 +1711,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
+      var res = api.AdexchangebuyerApi(mock).accounts;
       var arg_id = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1764,7 +1763,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
+      var res = api.AdexchangebuyerApi(mock).accounts;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1810,7 +1809,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
+      var res = api.AdexchangebuyerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_id = 42;
       var arg_$fields = 'foo';
@@ -1866,7 +1865,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.AdexchangebuyerApi(mock).accounts;
+      var res = api.AdexchangebuyerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_id = 42;
       var arg_$fields = 'foo';
@@ -1924,7 +1923,7 @@ void main() {
   unittest.group('resource-BillingInfoResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BillingInfoResourceApi res = api.AdexchangebuyerApi(mock).billingInfo;
+      var res = api.AdexchangebuyerApi(mock).billingInfo;
       var arg_accountId = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1976,7 +1975,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingInfoResourceApi res = api.AdexchangebuyerApi(mock).billingInfo;
+      var res = api.AdexchangebuyerApi(mock).billingInfo;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2024,7 +2023,7 @@ void main() {
   unittest.group('resource-BudgetResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
+      var res = api.AdexchangebuyerApi(mock).budget;
       var arg_accountId = 'foo';
       var arg_billingId = 'foo';
       var arg_$fields = 'foo';
@@ -2086,7 +2085,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
+      var res = api.AdexchangebuyerApi(mock).budget;
       var arg_request = buildBudget();
       var arg_accountId = 'foo';
       var arg_billingId = 'foo';
@@ -2153,7 +2152,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BudgetResourceApi res = api.AdexchangebuyerApi(mock).budget;
+      var res = api.AdexchangebuyerApi(mock).budget;
       var arg_request = buildBudget();
       var arg_accountId = 'foo';
       var arg_billingId = 'foo';
@@ -2222,7 +2221,7 @@ void main() {
   unittest.group('resource-CreativesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
+      var res = api.AdexchangebuyerApi(mock).creatives;
       var arg_accountId = 42;
       var arg_buyerCreativeId = 'foo';
       var arg_$fields = 'foo';
@@ -2284,7 +2283,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
+      var res = api.AdexchangebuyerApi(mock).creatives;
       var arg_request = buildCreative();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2336,7 +2335,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CreativesResourceApi res = api.AdexchangebuyerApi(mock).creatives;
+      var res = api.AdexchangebuyerApi(mock).creatives;
       var arg_accountId = buildUnnamed1725();
       var arg_buyerCreativeId = buildUnnamed1726();
       var arg_maxResults = 42;
@@ -2407,7 +2406,7 @@ void main() {
   unittest.group('resource-DirectDealsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DirectDealsResourceApi res = api.AdexchangebuyerApi(mock).directDeals;
+      var res = api.AdexchangebuyerApi(mock).directDeals;
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2459,7 +2458,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DirectDealsResourceApi res = api.AdexchangebuyerApi(mock).directDeals;
+      var res = api.AdexchangebuyerApi(mock).directDeals;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2507,8 +2506,7 @@ void main() {
   unittest.group('resource-PerformanceReportResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PerformanceReportResourceApi res =
-          api.AdexchangebuyerApi(mock).performanceReport;
+      var res = api.AdexchangebuyerApi(mock).performanceReport;
       var arg_accountId = 'foo';
       var arg_endDateTime = 'foo';
       var arg_startDateTime = 'foo';
@@ -2576,8 +2574,7 @@ void main() {
   unittest.group('resource-PretargetingConfigResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
       var arg_configId = 'foo';
       var arg_$fields = 'foo';
@@ -2637,8 +2634,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
       var arg_configId = 'foo';
       var arg_$fields = 'foo';
@@ -2700,8 +2696,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -2757,8 +2752,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2810,8 +2804,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
       var arg_accountId = 'foo';
       var arg_configId = 'foo';
@@ -2877,8 +2870,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PretargetingConfigResourceApi res =
-          api.AdexchangebuyerApi(mock).pretargetingConfig;
+      var res = api.AdexchangebuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
       var arg_accountId = 'foo';
       var arg_configId = 'foo';

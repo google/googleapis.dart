@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -9150,7 +9149,7 @@ void main() {
   unittest.group('resource-SpreadsheetsResourceApi', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsResourceApi res = api.SheetsApi(mock).spreadsheets;
+      var res = api.SheetsApi(mock).spreadsheets;
       var arg_request = buildBatchUpdateSpreadsheetRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9209,7 +9208,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsResourceApi res = api.SheetsApi(mock).spreadsheets;
+      var res = api.SheetsApi(mock).spreadsheets;
       var arg_request = buildSpreadsheet();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9258,7 +9257,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsResourceApi res = api.SheetsApi(mock).spreadsheets;
+      var res = api.SheetsApi(mock).spreadsheets;
       var arg_spreadsheetId = 'foo';
       var arg_includeGridData = true;
       var arg_ranges = buildUnnamed549();
@@ -9315,7 +9314,7 @@ void main() {
 
     unittest.test('method--getByDataFilter', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsResourceApi res = api.SheetsApi(mock).spreadsheets;
+      var res = api.SheetsApi(mock).spreadsheets;
       var arg_request = buildGetSpreadsheetByDataFilterRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9376,8 +9375,7 @@ void main() {
   unittest.group('resource-SpreadsheetsDeveloperMetadataResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsDeveloperMetadataResourceApi res =
-          api.SheetsApi(mock).spreadsheets.developerMetadata;
+      var res = api.SheetsApi(mock).spreadsheets.developerMetadata;
       var arg_spreadsheetId = 'foo';
       var arg_metadataId = 42;
       var arg_$fields = 'foo';
@@ -9436,8 +9434,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsDeveloperMetadataResourceApi res =
-          api.SheetsApi(mock).spreadsheets.developerMetadata;
+      var res = api.SheetsApi(mock).spreadsheets.developerMetadata;
       var arg_request = buildSearchDeveloperMetadataRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9498,8 +9495,7 @@ void main() {
   unittest.group('resource-SpreadsheetsSheetsResourceApi', () {
     unittest.test('method--copyTo', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsSheetsResourceApi res =
-          api.SheetsApi(mock).spreadsheets.sheets;
+      var res = api.SheetsApi(mock).spreadsheets.sheets;
       var arg_request = buildCopySheetToAnotherSpreadsheetRequest();
       var arg_spreadsheetId = 'foo';
       var arg_sheetId = 42;
@@ -9571,8 +9567,7 @@ void main() {
   unittest.group('resource-SpreadsheetsValuesResourceApi', () {
     unittest.test('method--append', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildValueRange();
       var arg_spreadsheetId = 'foo';
       var arg_range = 'foo';
@@ -9662,8 +9657,7 @@ void main() {
 
     unittest.test('method--batchClear', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildBatchClearValuesRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9722,8 +9716,7 @@ void main() {
 
     unittest.test('method--batchClearByDataFilter', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildBatchClearValuesByDataFilterRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9784,8 +9777,7 @@ void main() {
 
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_spreadsheetId = 'foo';
       var arg_dateTimeRenderOption = 'foo';
       var arg_majorDimension = 'foo';
@@ -9856,8 +9848,7 @@ void main() {
 
     unittest.test('method--batchGetByDataFilter', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildBatchGetValuesByDataFilterRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9918,8 +9909,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildBatchUpdateValuesRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -9978,8 +9968,7 @@ void main() {
 
     unittest.test('method--batchUpdateByDataFilter', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildBatchUpdateValuesByDataFilterRequest();
       var arg_spreadsheetId = 'foo';
       var arg_$fields = 'foo';
@@ -10040,8 +10029,7 @@ void main() {
 
     unittest.test('method--clear', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildClearValuesRequest();
       var arg_spreadsheetId = 'foo';
       var arg_range = 'foo';
@@ -10111,8 +10099,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_spreadsheetId = 'foo';
       var arg_range = 'foo';
       var arg_dateTimeRenderOption = 'foo';
@@ -10184,8 +10171,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.SpreadsheetsValuesResourceApi res =
-          api.SheetsApi(mock).spreadsheets.values;
+      var res = api.SheetsApi(mock).spreadsheets.values;
       var arg_request = buildValueRange();
       var arg_spreadsheetId = 'foo';
       var arg_range = 'foo';

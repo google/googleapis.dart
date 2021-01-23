@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1161,8 +1160,7 @@ void main() {
   unittest.group('resource-GoogleServiceAccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GoogleServiceAccountsResourceApi res =
-          api.StoragetransferApi(mock).googleServiceAccounts;
+      var res = api.StoragetransferApi(mock).googleServiceAccounts;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1213,8 +1211,7 @@ void main() {
   unittest.group('resource-TransferJobsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.TransferJobsResourceApi res =
-          api.StoragetransferApi(mock).transferJobs;
+      var res = api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildTransferJob();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1263,8 +1260,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TransferJobsResourceApi res =
-          api.StoragetransferApi(mock).transferJobs;
+      var res = api.StoragetransferApi(mock).transferJobs;
       var arg_jobName = 'foo';
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -1314,8 +1310,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TransferJobsResourceApi res =
-          api.StoragetransferApi(mock).transferJobs;
+      var res = api.StoragetransferApi(mock).transferJobs;
       var arg_filter = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1372,8 +1367,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.TransferJobsResourceApi res =
-          api.StoragetransferApi(mock).transferJobs;
+      var res = api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildUpdateTransferJobRequest();
       var arg_jobName = 'foo';
       var arg_$fields = 'foo';
@@ -1426,8 +1420,7 @@ void main() {
   unittest.group('resource-TransferOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.TransferOperationsResourceApi res =
-          api.StoragetransferApi(mock).transferOperations;
+      var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1478,8 +1471,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TransferOperationsResourceApi res =
-          api.StoragetransferApi(mock).transferOperations;
+      var res = api.StoragetransferApi(mock).transferOperations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1526,8 +1518,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TransferOperationsResourceApi res =
-          api.StoragetransferApi(mock).transferOperations;
+      var res = api.StoragetransferApi(mock).transferOperations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1586,8 +1577,7 @@ void main() {
 
     unittest.test('method--pause', () {
       var mock = HttpServerMock();
-      api.TransferOperationsResourceApi res =
-          api.StoragetransferApi(mock).transferOperations;
+      var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildPauseTransferOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1638,8 +1628,7 @@ void main() {
 
     unittest.test('method--resume', () {
       var mock = HttpServerMock();
-      api.TransferOperationsResourceApi res =
-          api.StoragetransferApi(mock).transferOperations;
+      var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildResumeTransferOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1855,8 +1854,7 @@ class AccountInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emails != null) {
       _json['emails'] = emails;
     }
@@ -1885,8 +1883,7 @@ class AddHeldAccountResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (account != null) {
       _json['account'] = account.toJson();
     }
@@ -1919,8 +1916,7 @@ class AddHeldAccountsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountIds != null) {
       _json['accountIds'] = accountIds;
     }
@@ -1948,8 +1944,7 @@ class AddHeldAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -1986,8 +1981,7 @@ class AddMatterPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ccMe != null) {
       _json['ccMe'] = ccMe;
     }
@@ -2010,8 +2004,7 @@ class CloseMatterRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2030,8 +2023,7 @@ class CloseMatterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matter != null) {
       _json['matter'] = matter.toJson();
     }
@@ -2074,8 +2066,7 @@ class CloudStorageFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketName != null) {
       _json['bucketName'] = bucketName;
     }
@@ -2108,8 +2099,7 @@ class CloudStorageSink {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (files != null) {
       _json['files'] = files.map((value) => value.toJson()).toList();
     }
@@ -2151,8 +2141,7 @@ class CorpusQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveQuery != null) {
       _json['driveQuery'] = driveQuery.toJson();
     }
@@ -2184,8 +2173,7 @@ class DriveExportOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeAccessInfo != null) {
       _json['includeAccessInfo'] = includeAccessInfo;
     }
@@ -2220,8 +2208,7 @@ class DriveOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeSharedDrives != null) {
       _json['includeSharedDrives'] = includeSharedDrives;
     }
@@ -2248,8 +2235,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2327,8 +2313,7 @@ class Export {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cloudStorageSink != null) {
       _json['cloudStorageSink'] = cloudStorageSink.toJson();
     }
@@ -2408,8 +2393,7 @@ class ExportOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (driveOptions != null) {
       _json['driveOptions'] = driveOptions.toJson();
     }
@@ -2455,8 +2439,7 @@ class ExportStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exportedArtifactCount != null) {
       _json['exportedArtifactCount'] = exportedArtifactCount;
     }
@@ -2488,8 +2471,7 @@ class GroupsExportOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exportFormat != null) {
       _json['exportFormat'] = exportFormat;
     }
@@ -2515,8 +2497,7 @@ class HangoutsChatExportOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exportFormat != null) {
       _json['exportFormat'] = exportFormat;
     }
@@ -2538,8 +2519,7 @@ class HangoutsChatInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (roomId != null) {
       _json['roomId'] = roomId;
     }
@@ -2561,8 +2541,7 @@ class HangoutsChatOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeRooms != null) {
       _json['includeRooms'] = includeRooms;
     }
@@ -2610,8 +2589,7 @@ class HeldAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -2651,8 +2629,7 @@ class HeldDriveQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeSharedDriveFiles != null) {
       _json['includeSharedDriveFiles'] = includeSharedDriveFiles;
     }
@@ -2691,8 +2668,7 @@ class HeldGroupsQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -2720,8 +2696,7 @@ class HeldHangoutsChatQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeRooms != null) {
       _json['includeRooms'] = includeRooms;
     }
@@ -2757,8 +2732,7 @@ class HeldMailQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -2793,8 +2767,7 @@ class HeldOrgUnit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (holdTime != null) {
       _json['holdTime'] = holdTime;
     }
@@ -2869,8 +2842,7 @@ class Hold {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accounts != null) {
       _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
@@ -2918,8 +2890,7 @@ class ListExportsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exports != null) {
       _json['exports'] = exports.map((value) => value.toJson()).toList();
     }
@@ -2946,8 +2917,7 @@ class ListHeldAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accounts != null) {
       _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
@@ -2978,8 +2948,7 @@ class ListHoldsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (holds != null) {
       _json['holds'] = holds.map((value) => value.toJson()).toList();
     }
@@ -3012,8 +2981,7 @@ class ListMattersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matters != null) {
       _json['matters'] = matters.map((value) => value.toJson()).toList();
     }
@@ -3047,8 +3015,7 @@ class ListSavedQueriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3084,8 +3051,7 @@ class MailExportOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exportFormat != null) {
       _json['exportFormat'] = exportFormat;
     }
@@ -3110,8 +3076,7 @@ class MailOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (excludeDrafts != null) {
       _json['excludeDrafts'] = excludeDrafts;
     }
@@ -3166,8 +3131,7 @@ class Matter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -3214,8 +3178,7 @@ class MatterPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -3240,8 +3203,7 @@ class OrgUnitInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (orgUnitId != null) {
       _json['orgUnitId'] = orgUnitId;
     }
@@ -3404,8 +3366,7 @@ class Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountInfo != null) {
       _json['accountInfo'] = accountInfo.toJson();
     }
@@ -3472,8 +3433,7 @@ class RemoveHeldAccountsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountIds != null) {
       _json['accountIds'] = accountIds;
     }
@@ -3498,8 +3458,7 @@ class RemoveHeldAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (statuses != null) {
       _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
@@ -3521,8 +3480,7 @@ class RemoveMatterPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -3539,8 +3497,7 @@ class ReopenMatterRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3559,8 +3516,7 @@ class ReopenMatterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matter != null) {
       _json['matter'] = matter.toJson();
     }
@@ -3609,8 +3565,7 @@ class SavedQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3645,8 +3600,7 @@ class SharedDriveInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sharedDriveIds != null) {
       _json['sharedDriveIds'] = sharedDriveIds;
     }
@@ -3694,8 +3648,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -3723,8 +3676,7 @@ class TeamDriveInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (teamDriveIds != null) {
       _json['teamDriveIds'] = teamDriveIds;
     }
@@ -3741,8 +3693,7 @@ class UndeleteMatterRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3767,8 +3718,7 @@ class UserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }

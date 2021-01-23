@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1183,8 +1182,7 @@ class AggregateBucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activity != null) {
       _json['activity'] = activity;
     }
@@ -1237,8 +1235,7 @@ class AggregateBy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json['dataSourceId'] = dataSourceId;
     }
@@ -1327,8 +1324,7 @@ class AggregateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregateBy != null) {
       _json['aggregateBy'] =
           aggregateBy.map((value) => value.toJson()).toList();
@@ -1373,8 +1369,7 @@ class AggregateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucket != null) {
       _json['bucket'] = bucket.map((value) => value.toJson()).toList();
     }
@@ -1420,8 +1415,7 @@ class Application {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detailsUrl != null) {
       _json['detailsUrl'] = detailsUrl;
     }
@@ -1460,8 +1454,7 @@ class BucketByActivity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activityDataSourceId != null) {
       _json['activityDataSourceId'] = activityDataSourceId;
     }
@@ -1486,8 +1479,7 @@ class BucketBySession {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minDurationMillis != null) {
       _json['minDurationMillis'] = minDurationMillis;
     }
@@ -1514,8 +1506,7 @@ class BucketByTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (durationMillis != null) {
       _json['durationMillis'] = durationMillis;
     }
@@ -1553,8 +1544,7 @@ class BucketByTimePeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (timeZoneId != null) {
       _json['timeZoneId'] = timeZoneId;
     }
@@ -1645,8 +1635,7 @@ class DataPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (computationTimeMillis != null) {
       _json['computationTimeMillis'] = computationTimeMillis;
     }
@@ -1780,8 +1769,7 @@ class DataSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (application != null) {
       _json['application'] = application.toJson();
     }
@@ -1832,8 +1820,7 @@ class DataType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (field != null) {
       _json['field'] = field.map((value) => value.toJson()).toList();
     }
@@ -1881,8 +1868,7 @@ class DataTypeField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (format != null) {
       _json['format'] = format;
     }
@@ -1949,8 +1935,7 @@ class Dataset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json['dataSourceId'] = dataSourceId;
     }
@@ -2030,8 +2015,7 @@ class Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (manufacturer != null) {
       _json['manufacturer'] = manufacturer;
     }
@@ -2089,8 +2073,7 @@ class ListDataPointChangesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json['dataSourceId'] = dataSourceId;
     }
@@ -2124,8 +2107,7 @@ class ListDataSourcesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSource != null) {
       _json['dataSource'] = dataSource.map((value) => value.toJson()).toList();
     }
@@ -2173,8 +2155,7 @@ class ListSessionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deletedSession != null) {
       _json['deletedSession'] =
           deletedSession.map((value) => value.toJson()).toList();
@@ -2207,8 +2188,7 @@ class MapValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fpVal != null) {
       _json['fpVal'] = fpVal;
     }
@@ -2284,8 +2264,7 @@ class Session {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeTimeMillis != null) {
       _json['activeTimeMillis'] = activeTimeMillis;
     }
@@ -2358,8 +2337,7 @@ class Value {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fpVal != null) {
       _json['fpVal'] = fpVal;
     }
@@ -2392,8 +2370,7 @@ class ValueMapValEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }

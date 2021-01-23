@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3180,7 +3179,7 @@ void main() {
   unittest.group('resource-AboutResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AboutResourceApi res = api.DriveApi(mock).about;
+      var res = api.DriveApi(mock).about;
       var arg_includeSubscribed = true;
       var arg_maxChangeIdCount = 'foo';
       var arg_startChangeId = 'foo';
@@ -3243,7 +3242,7 @@ void main() {
   unittest.group('resource-AppsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.DriveApi(mock).apps;
+      var res = api.DriveApi(mock).apps;
       var arg_appId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3295,7 +3294,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AppsResourceApi res = api.DriveApi(mock).apps;
+      var res = api.DriveApi(mock).apps;
       var arg_appFilterExtensions = 'foo';
       var arg_appFilterMimeTypes = 'foo';
       var arg_languageCode = 'foo';
@@ -3358,7 +3357,7 @@ void main() {
   unittest.group('resource-ChangesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DriveApi(mock).changes;
+      var res = api.DriveApi(mock).changes;
       var arg_changeId = 'foo';
       var arg_driveId = 'foo';
       var arg_supportsAllDrives = true;
@@ -3427,7 +3426,7 @@ void main() {
 
     unittest.test('method--getStartPageToken', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DriveApi(mock).changes;
+      var res = api.DriveApi(mock).changes;
       var arg_driveId = 'foo';
       var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
@@ -3492,7 +3491,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DriveApi(mock).changes;
+      var res = api.DriveApi(mock).changes;
       var arg_driveId = 'foo';
       var arg_includeCorpusRemovals = true;
       var arg_includeDeleted = true;
@@ -3596,7 +3595,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.ChangesResourceApi res = api.DriveApi(mock).changes;
+      var res = api.DriveApi(mock).changes;
       var arg_request = buildChannel();
       var arg_driveId = 'foo';
       var arg_includeCorpusRemovals = true;
@@ -3706,7 +3705,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.ChannelsResourceApi res = api.DriveApi(mock).channels;
+      var res = api.DriveApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3758,7 +3757,7 @@ void main() {
   unittest.group('resource-ChildrenResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ChildrenResourceApi res = api.DriveApi(mock).children;
+      var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
       var arg_childId = 'foo';
       var arg_enforceSingleParent = true;
@@ -3823,7 +3822,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ChildrenResourceApi res = api.DriveApi(mock).children;
+      var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
       var arg_childId = 'foo';
       var arg_$fields = 'foo';
@@ -3885,7 +3884,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ChildrenResourceApi res = api.DriveApi(mock).children;
+      var res = api.DriveApi(mock).children;
       var arg_request = buildChildReference();
       var arg_folderId = 'foo';
       var arg_enforceSingleParent = true;
@@ -3960,7 +3959,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ChildrenResourceApi res = api.DriveApi(mock).children;
+      var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
       var arg_maxResults = 42;
       var arg_orderBy = 'foo';
@@ -4036,7 +4035,7 @@ void main() {
   unittest.group('resource-CommentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
       var arg_$fields = 'foo';
@@ -4096,7 +4095,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
       var arg_includeDeleted = true;
@@ -4162,7 +4161,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
@@ -4224,7 +4223,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
       var arg_includeDeleted = true;
       var arg_maxResults = 42;
@@ -4299,7 +4298,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
@@ -4365,7 +4364,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.DriveApi(mock).comments;
+      var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
@@ -4433,7 +4432,7 @@ void main() {
   unittest.group('resource-DrivesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4483,7 +4482,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
@@ -4540,7 +4539,7 @@ void main() {
 
     unittest.test('method--hide', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4598,7 +4597,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
@@ -4653,7 +4652,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_q = 'foo';
@@ -4717,7 +4716,7 @@ void main() {
 
     unittest.test('method--unhide', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4775,7 +4774,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.DrivesResourceApi res = api.DriveApi(mock).drives;
+      var res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
       var arg_driveId = 'foo';
       var arg_useDomainAdminAccess = true;
@@ -4838,7 +4837,7 @@ void main() {
   unittest.group('resource-FilesResourceApi', () {
     unittest.test('method--copy', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = 'foo';
       var arg_convert = true;
@@ -4944,7 +4943,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_enforceSingleParent = true;
       var arg_supportsAllDrives = true;
@@ -5007,7 +5006,7 @@ void main() {
 
     unittest.test('method--emptyTrash', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_enforceSingleParent = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5061,7 +5060,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_mimeType = 'foo';
       var arg_$fields = 'foo';
@@ -5120,7 +5119,7 @@ void main() {
 
     unittest.test('method--generateIds', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_maxResults = 42;
       var arg_space = 'foo';
       var arg_$fields = 'foo';
@@ -5179,7 +5178,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_acknowledgeAbuse = true;
       var arg_includePermissionsForView = 'foo';
@@ -5263,7 +5262,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_convert = true;
       var arg_enforceSingleParent = true;
@@ -5363,7 +5362,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_corpora = 'foo';
       var arg_corpus = 'foo';
       var arg_driveId = 'foo';
@@ -5469,7 +5468,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = 'foo';
       var arg_addParents = 'foo';
@@ -5593,7 +5592,7 @@ void main() {
 
     unittest.test('method--touch', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
@@ -5664,7 +5663,7 @@ void main() {
 
     unittest.test('method--trash', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
@@ -5735,7 +5734,7 @@ void main() {
 
     unittest.test('method--untrash', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
       var arg_includePermissionsForView = 'foo';
       var arg_supportsAllDrives = true;
@@ -5809,7 +5808,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
       var arg_fileId = 'foo';
       var arg_addParents = 'foo';
@@ -5936,7 +5935,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.DriveApi(mock).files;
+      var res = api.DriveApi(mock).files;
       var arg_request = buildChannel();
       var arg_fileId = 'foo';
       var arg_acknowledgeAbuse = true;
@@ -6029,7 +6028,7 @@ void main() {
   unittest.group('resource-ParentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ParentsResourceApi res = api.DriveApi(mock).parents;
+      var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
       var arg_parentId = 'foo';
       var arg_enforceSingleParent = true;
@@ -6094,7 +6093,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ParentsResourceApi res = api.DriveApi(mock).parents;
+      var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
       var arg_parentId = 'foo';
       var arg_$fields = 'foo';
@@ -6156,7 +6155,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ParentsResourceApi res = api.DriveApi(mock).parents;
+      var res = api.DriveApi(mock).parents;
       var arg_request = buildParentReference();
       var arg_fileId = 'foo';
       var arg_enforceSingleParent = true;
@@ -6231,7 +6230,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ParentsResourceApi res = api.DriveApi(mock).parents;
+      var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6291,7 +6290,7 @@ void main() {
   unittest.group('resource-PermissionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
       var arg_permissionId = 'foo';
       var arg_supportsAllDrives = true;
@@ -6364,7 +6363,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
       var arg_permissionId = 'foo';
       var arg_supportsAllDrives = true;
@@ -6439,7 +6438,7 @@ void main() {
 
     unittest.test('method--getIdForEmail', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_email = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6491,7 +6490,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = 'foo';
       var arg_emailMessage = 'foo';
@@ -6582,7 +6581,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
       var arg_includePermissionsForView = 'foo';
       var arg_maxResults = 42;
@@ -6665,7 +6664,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = 'foo';
       var arg_permissionId = 'foo';
@@ -6752,7 +6751,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.DriveApi(mock).permissions;
+      var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
       var arg_fileId = 'foo';
       var arg_permissionId = 'foo';
@@ -6841,7 +6840,7 @@ void main() {
   unittest.group('resource-PropertiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
       var arg_propertyKey = 'foo';
       var arg_visibility = 'foo';
@@ -6905,7 +6904,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
       var arg_propertyKey = 'foo';
       var arg_visibility = 'foo';
@@ -6971,7 +6970,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
@@ -7033,7 +7032,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7091,7 +7090,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = 'foo';
       var arg_propertyKey = 'foo';
@@ -7161,7 +7160,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PropertiesResourceApi res = api.DriveApi(mock).properties;
+      var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
       var arg_fileId = 'foo';
       var arg_propertyKey = 'foo';
@@ -7233,7 +7232,7 @@ void main() {
   unittest.group('resource-RepliesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
       var arg_replyId = 'foo';
@@ -7303,7 +7302,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
       var arg_replyId = 'foo';
@@ -7379,7 +7378,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
@@ -7451,7 +7450,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
       var arg_includeDeleted = true;
@@ -7532,7 +7531,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
@@ -7609,7 +7608,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RepliesResourceApi res = api.DriveApi(mock).replies;
+      var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
       var arg_fileId = 'foo';
       var arg_commentId = 'foo';
@@ -7688,7 +7687,7 @@ void main() {
   unittest.group('resource-RevisionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
+      var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
       var arg_revisionId = 'foo';
       var arg_$fields = 'foo';
@@ -7748,7 +7747,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
+      var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
       var arg_revisionId = 'foo';
       var arg_$fields = 'foo';
@@ -7810,7 +7809,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
+      var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -7877,7 +7876,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
+      var res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
       var arg_fileId = 'foo';
       var arg_revisionId = 'foo';
@@ -7943,7 +7942,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RevisionsResourceApi res = api.DriveApi(mock).revisions;
+      var res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
       var arg_fileId = 'foo';
       var arg_revisionId = 'foo';
@@ -8011,7 +8010,7 @@ void main() {
   unittest.group('resource-TeamdrivesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
+      var res = api.DriveApi(mock).teamdrives;
       var arg_teamDriveId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8061,7 +8060,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
+      var res = api.DriveApi(mock).teamdrives;
       var arg_teamDriveId = 'foo';
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
@@ -8118,7 +8117,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
+      var res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
@@ -8173,7 +8172,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
+      var res = api.DriveApi(mock).teamdrives;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_q = 'foo';
@@ -8237,7 +8236,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.TeamdrivesResourceApi res = api.DriveApi(mock).teamdrives;
+      var res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
       var arg_teamDriveId = 'foo';
       var arg_useDomainAdminAccess = true;

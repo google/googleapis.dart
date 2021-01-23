@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2173,8 +2172,7 @@ void main() {
   unittest.group('resource-RelyingpartyResourceApi', () {
     unittest.test('method--createAuthUri', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2227,8 +2225,7 @@ void main() {
 
     unittest.test('method--deleteAccount', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2281,8 +2278,7 @@ void main() {
 
     unittest.test('method--downloadAccount', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartyDownloadAccountRequest();
       var arg_$fields = 'foo';
@@ -2337,8 +2333,7 @@ void main() {
 
     unittest.test('method--emailLinkSignin', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartyEmailLinkSigninRequest();
       var arg_$fields = 'foo';
@@ -2393,8 +2388,7 @@ void main() {
 
     unittest.test('method--getAccountInfo', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2447,8 +2441,7 @@ void main() {
 
     unittest.test('method--getOobConfirmationCode', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildRelyingparty();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2500,8 +2493,7 @@ void main() {
 
     unittest.test('method--getProjectConfig', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_delegatedProjectNumber = 'foo';
       var arg_projectNumber = 'foo';
       var arg_$fields = 'foo';
@@ -2559,8 +2551,7 @@ void main() {
 
     unittest.test('method--getPublicKeys', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2609,8 +2600,7 @@ void main() {
 
     unittest.test('method--getRecaptchaParam', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2658,8 +2648,7 @@ void main() {
 
     unittest.test('method--resetPassword', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2712,8 +2701,7 @@ void main() {
 
     unittest.test('method--sendVerificationCode', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartySendVerificationCodeRequest();
       var arg_$fields = 'foo';
@@ -2769,8 +2757,7 @@ void main() {
 
     unittest.test('method--setAccountInfo', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2823,8 +2810,7 @@ void main() {
 
     unittest.test('method--setProjectConfig', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartySetProjectConfigRequest();
       var arg_$fields = 'foo';
@@ -2880,8 +2866,7 @@ void main() {
 
     unittest.test('method--signOutUser', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySignOutUserRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2935,8 +2920,7 @@ void main() {
 
     unittest.test('method--signupNewUser', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2989,8 +2973,7 @@ void main() {
 
     unittest.test('method--uploadAccount', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3043,8 +3026,7 @@ void main() {
 
     unittest.test('method--verifyAssertion', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartyVerifyAssertionRequest();
       var arg_$fields = 'foo';
@@ -3099,8 +3081,7 @@ void main() {
 
     unittest.test('method--verifyCustomToken', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
       var arg_$fields = 'foo';
@@ -3155,8 +3136,7 @@ void main() {
 
     unittest.test('method--verifyPassword', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3209,8 +3189,7 @@ void main() {
 
     unittest.test('method--verifyPhoneNumber', () {
       var mock = HttpServerMock();
-      api.RelyingpartyResourceApi res =
-          api.IdentitytoolkitApi(mock).relyingparty;
+      var res = api.IdentitytoolkitApi(mock).relyingparty;
       var arg_request =
           buildIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
       var arg_$fields = 'foo';

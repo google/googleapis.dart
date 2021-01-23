@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2960,8 +2959,7 @@ void main() {
   unittest.group('resource-ApplicationDetailServiceResourceApi', () {
     unittest.test('method--getApkDetails', () {
       var mock = HttpServerMock();
-      api.ApplicationDetailServiceResourceApi res =
-          api.TestingApi(mock).applicationDetailService;
+      var res = api.TestingApi(mock).applicationDetailService;
       var arg_request = buildFileReference();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3012,8 +3010,7 @@ void main() {
   unittest.group('resource-ProjectsTestMatricesResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsTestMatricesResourceApi res =
-          api.TestingApi(mock).projects.testMatrices;
+      var res = api.TestingApi(mock).projects.testMatrices;
       var arg_projectId = 'foo';
       var arg_testMatrixId = 'foo';
       var arg_$fields = 'foo';
@@ -3078,8 +3075,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsTestMatricesResourceApi res =
-          api.TestingApi(mock).projects.testMatrices;
+      var res = api.TestingApi(mock).projects.testMatrices;
       var arg_request = buildTestMatrix();
       var arg_projectId = 'foo';
       var arg_requestId = 'foo';
@@ -3142,8 +3138,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsTestMatricesResourceApi res =
-          api.TestingApi(mock).projects.testMatrices;
+      var res = api.TestingApi(mock).projects.testMatrices;
       var arg_projectId = 'foo';
       var arg_testMatrixId = 'foo';
       var arg_$fields = 'foo';
@@ -3204,8 +3199,7 @@ void main() {
   unittest.group('resource-TestEnvironmentCatalogResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TestEnvironmentCatalogResourceApi res =
-          api.TestingApi(mock).testEnvironmentCatalog;
+      var res = api.TestingApi(mock).testEnvironmentCatalog;
       var arg_environmentType = 'foo';
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';

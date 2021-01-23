@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -563,7 +562,7 @@ void main() {
   unittest.group('resource-CustomersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CustomersResourceApi res = api.ResellerApi(mock).customers;
+      var res = api.ResellerApi(mock).customers;
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -615,7 +614,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.CustomersResourceApi res = api.ResellerApi(mock).customers;
+      var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerAuthToken = 'foo';
       var arg_$fields = 'foo';
@@ -671,7 +670,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CustomersResourceApi res = api.ResellerApi(mock).customers;
+      var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -727,7 +726,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.CustomersResourceApi res = api.ResellerApi(mock).customers;
+      var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -785,7 +784,7 @@ void main() {
   unittest.group('resource-ResellernotifyResourceApi', () {
     unittest.test('method--getwatchdetails', () {
       var mock = HttpServerMock();
-      api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
+      var res = api.ResellerApi(mock).resellernotify;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -834,7 +833,7 @@ void main() {
 
     unittest.test('method--register', () {
       var mock = HttpServerMock();
-      api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
+      var res = api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -887,7 +886,7 @@ void main() {
 
     unittest.test('method--unregister', () {
       var mock = HttpServerMock();
-      api.ResellernotifyResourceApi res = api.ResellerApi(mock).resellernotify;
+      var res = api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -942,7 +941,7 @@ void main() {
   unittest.group('resource-SubscriptionsResourceApi', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
@@ -1010,7 +1009,7 @@ void main() {
 
     unittest.test('method--changePlan', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildChangePlanRequest();
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
@@ -1083,7 +1082,7 @@ void main() {
 
     unittest.test('method--changeRenewalSettings', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildRenewalSettings();
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
@@ -1157,7 +1156,7 @@ void main() {
 
     unittest.test('method--changeSeats', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSeats();
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
@@ -1230,7 +1229,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_deletionType = 'foo';
@@ -1294,7 +1293,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
@@ -1356,7 +1355,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSubscription();
       var arg_customerId = 'foo';
       var arg_customerAuthToken = 'foo';
@@ -1422,7 +1421,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerAuthToken = 'foo';
       var arg_customerId = 'foo';
       var arg_customerNamePrefix = 'foo';
@@ -1491,7 +1490,7 @@ void main() {
 
     unittest.test('method--startPaidService', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
@@ -1560,7 +1559,7 @@ void main() {
 
     unittest.test('method--suspend', () {
       var mock = HttpServerMock();
-      api.SubscriptionsResourceApi res = api.ResellerApi(mock).subscriptions;
+      var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';

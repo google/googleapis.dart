@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3695,8 +3694,7 @@ class AboutDriveThemes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundImageLink != null) {
       _json['backgroundImageLink'] = backgroundImageLink;
     }
@@ -3743,8 +3741,7 @@ class AboutStorageQuota {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (limit != null) {
       _json['limit'] = limit;
     }
@@ -3786,8 +3783,7 @@ class AboutTeamDriveThemes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundImageLink != null) {
       _json['backgroundImageLink'] = backgroundImageLink;
     }
@@ -3900,8 +3896,7 @@ class About {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appInstalled != null) {
       _json['appInstalled'] = appInstalled;
     }
@@ -4026,8 +4021,7 @@ class Change {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changeType != null) {
       _json['changeType'] = changeType;
     }
@@ -4105,8 +4099,7 @@ class ChangeList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changes != null) {
       _json['changes'] = changes.map((value) => value.toJson()).toList();
     }
@@ -4195,8 +4188,7 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address;
     }
@@ -4254,8 +4246,7 @@ class CommentQuotedFileContent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mimeType != null) {
       _json['mimeType'] = mimeType;
     }
@@ -4357,8 +4348,7 @@ class Comment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (anchor != null) {
       _json['anchor'] = anchor;
     }
@@ -4432,8 +4422,7 @@ class CommentList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (comments != null) {
       _json['comments'] = comments.map((value) => value.toJson()).toList();
     }
@@ -4491,8 +4480,7 @@ class ContentRestriction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (readOnly != null) {
       _json['readOnly'] = readOnly;
     }
@@ -4559,8 +4547,7 @@ class DriveBackgroundImageFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -4706,8 +4693,7 @@ class DriveCapabilities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (canAddChildren != null) {
       _json['canAddChildren'] = canAddChildren;
     }
@@ -4810,8 +4796,7 @@ class DriveRestrictions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adminManagedRestrictions != null) {
       _json['adminManagedRestrictions'] = adminManagedRestrictions;
     }
@@ -4915,8 +4900,7 @@ class Drive {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundImageFile != null) {
       _json['backgroundImageFile'] = backgroundImageFile.toJson();
     }
@@ -4987,8 +4971,7 @@ class DriveList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (drives != null) {
       _json['drives'] = drives.map((value) => value.toJson()).toList();
     }
@@ -5243,8 +5226,7 @@ class FileCapabilities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (canAddChildren != null) {
       _json['canAddChildren'] = canAddChildren;
     }
@@ -5379,8 +5361,7 @@ class FileContentHintsThumbnail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -5414,8 +5395,7 @@ class FileContentHints {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexableText != null) {
       _json['indexableText'] = indexableText;
     }
@@ -5452,8 +5432,7 @@ class FileImageMediaMetadataLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (altitude != null) {
       _json['altitude'] = altitude;
     }
@@ -5603,8 +5582,7 @@ class FileImageMediaMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aperture != null) {
       _json['aperture'] = aperture;
     }
@@ -5695,8 +5673,7 @@ class FileShortcutDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (targetId != null) {
       _json['targetId'] = targetId;
     }
@@ -5734,8 +5711,7 @@ class FileVideoMediaMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (durationMillis != null) {
       _json['durationMillis'] = durationMillis;
     }
@@ -6175,8 +6151,7 @@ class File {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appProperties != null) {
       _json['appProperties'] = appProperties;
     }
@@ -6398,8 +6373,7 @@ class FileList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (files != null) {
       _json['files'] = files.map((value) => value.toJson()).toList();
     }
@@ -6443,8 +6417,7 @@ class GeneratedIds {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ids != null) {
       _json['ids'] = ids;
     }
@@ -6500,8 +6473,7 @@ class PermissionPermissionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inherited != null) {
       _json['inherited'] = inherited;
     }
@@ -6549,8 +6521,7 @@ class PermissionTeamDrivePermissionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inherited != null) {
       _json['inherited'] = inherited;
     }
@@ -6699,8 +6670,7 @@ class Permission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowFileDiscovery != null) {
       _json['allowFileDiscovery'] = allowFileDiscovery;
     }
@@ -6782,8 +6752,7 @@ class PermissionList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -6866,8 +6835,7 @@ class Reply {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (action != null) {
       _json['action'] = action;
     }
@@ -6932,8 +6900,7 @@ class ReplyList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -7051,8 +7018,7 @@ class Revision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exportLinks != null) {
       _json['exportLinks'] = exportLinks;
     }
@@ -7132,8 +7098,7 @@ class RevisionList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -7167,8 +7132,7 @@ class StartPageToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -7226,8 +7190,7 @@ class TeamDriveBackgroundImageFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -7379,8 +7342,7 @@ class TeamDriveCapabilities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (canAddChildren != null) {
       _json['canAddChildren'] = canAddChildren;
     }
@@ -7486,8 +7448,7 @@ class TeamDriveRestrictions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adminManagedRestrictions != null) {
       _json['adminManagedRestrictions'] = adminManagedRestrictions;
     }
@@ -7585,8 +7546,7 @@ class TeamDrive {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundImageFile != null) {
       _json['backgroundImageFile'] = backgroundImageFile.toJson();
     }
@@ -7654,8 +7614,7 @@ class TeamDriveList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -7715,8 +7674,7 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }

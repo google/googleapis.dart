@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -778,7 +777,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.SpeechApi(mock).operations;
+      var res = api.SpeechApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -825,7 +824,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.SpeechApi(mock).operations;
+      var res = api.SpeechApi(mock).operations;
       var arg_filter = 'foo';
       var arg_name = 'foo';
       var arg_pageSize = 42;
@@ -887,8 +886,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.SpeechApi(mock).projects.locations.operations;
+      var res = api.SpeechApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -935,8 +933,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.SpeechApi(mock).projects.locations.operations;
+      var res = api.SpeechApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -997,7 +994,7 @@ void main() {
   unittest.group('resource-SpeechResourceApi', () {
     unittest.test('method--longrunningrecognize', () {
       var mock = HttpServerMock();
-      api.SpeechResourceApi res = api.SpeechApi(mock).speech;
+      var res = api.SpeechApi(mock).speech;
       var arg_request = buildLongRunningRecognizeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1046,7 +1043,7 @@ void main() {
 
     unittest.test('method--recognize', () {
       var mock = HttpServerMock();
-      api.SpeechResourceApi res = api.SpeechApi(mock).speech;
+      var res = api.SpeechApi(mock).speech;
       var arg_request = buildRecognizeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

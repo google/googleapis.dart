@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -221,8 +220,7 @@ class Annotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes.toJson();
     }
@@ -259,8 +257,7 @@ class AttributeValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -302,8 +299,7 @@ class Attributes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributeMap != null) {
       _json['attributeMap'] =
           commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(
@@ -333,8 +329,7 @@ class BatchWriteSpansRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (spans != null) {
       _json['spans'] = spans.map((value) => value.toJson()).toList();
     }
@@ -355,8 +350,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -401,8 +395,7 @@ class Link {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes.toJson();
     }
@@ -443,8 +436,7 @@ class Links {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (droppedLinksCount != null) {
       _json['droppedLinksCount'] = droppedLinksCount;
     }
@@ -494,8 +486,7 @@ class MessageEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compressedSizeBytes != null) {
       _json['compressedSizeBytes'] = compressedSizeBytes;
     }
@@ -534,8 +525,7 @@ class Module {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (buildId != null) {
       _json['buildId'] = buildId.toJson();
     }
@@ -681,8 +671,7 @@ class Span {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes.toJson();
     }
@@ -785,8 +774,7 @@ class StackFrame {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnNumber != null) {
       _json['columnNumber'] = columnNumber;
     }
@@ -835,8 +823,7 @@ class StackFrames {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (droppedFramesCount != null) {
       _json['droppedFramesCount'] = droppedFramesCount;
     }
@@ -872,8 +859,7 @@ class StackTrace {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stackFrames != null) {
       _json['stackFrames'] = stackFrames.toJson();
     }
@@ -924,8 +910,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -965,8 +950,7 @@ class TimeEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (annotation != null) {
       _json['annotation'] = annotation.toJson();
     }
@@ -1012,8 +996,7 @@ class TimeEvents {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (droppedAnnotationsCount != null) {
       _json['droppedAnnotationsCount'] = droppedAnnotationsCount;
     }
@@ -1052,8 +1035,7 @@ class TruncatableString {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (truncatedByteCount != null) {
       _json['truncatedByteCount'] = truncatedByteCount;
     }

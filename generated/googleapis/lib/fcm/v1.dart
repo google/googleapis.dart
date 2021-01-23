@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -216,8 +215,7 @@ class AndroidConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (collapseKey != null) {
       _json['collapseKey'] = collapseKey;
     }
@@ -260,8 +258,7 @@ class AndroidFcmOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json['analyticsLabel'] = analyticsLabel;
     }
@@ -533,8 +530,7 @@ class AndroidNotification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body;
     }
@@ -650,8 +646,7 @@ class ApnsConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fcmOptions != null) {
       _json['fcmOptions'] = fcmOptions.toJson();
     }
@@ -687,8 +682,7 @@ class ApnsFcmOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json['analyticsLabel'] = analyticsLabel;
     }
@@ -786,8 +780,7 @@ class Color {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alpha != null) {
       _json['alpha'] = alpha;
     }
@@ -818,8 +811,7 @@ class FcmOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json['analyticsLabel'] = analyticsLabel;
     }
@@ -858,8 +850,7 @@ class LightSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -949,8 +940,7 @@ class Message {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (android != null) {
       _json['android'] = android.toJson();
     }
@@ -1016,8 +1006,7 @@ class Notification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body;
     }
@@ -1051,8 +1040,7 @@ class SendMessageRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (message != null) {
       _json['message'] = message.toJson();
     }
@@ -1107,8 +1095,7 @@ class WebpushConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -1146,8 +1133,7 @@ class WebpushFcmOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analyticsLabel != null) {
       _json['analyticsLabel'] = analyticsLabel;
     }

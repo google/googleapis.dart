@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1682,8 +1681,7 @@ class ClaimDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerId != null) {
       _json['customerId'] = customerId;
     }
@@ -1721,8 +1719,7 @@ class ClaimDeviceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -1751,8 +1748,7 @@ class ClaimDevicesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claims != null) {
       _json['claims'] = claims.map((value) => value.toJson()).toList();
     }
@@ -1825,8 +1821,7 @@ class Company {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adminEmails != null) {
       _json['adminEmails'] = adminEmails;
     }
@@ -1941,8 +1936,7 @@ class Configuration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companyName != null) {
       _json['companyName'] = companyName;
     }
@@ -1994,8 +1988,7 @@ class CreateCustomerRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer.toJson();
     }
@@ -2024,8 +2017,7 @@ class CustomerApplyConfigurationRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configuration != null) {
       _json['configuration'] = configuration;
     }
@@ -2052,8 +2044,7 @@ class CustomerListConfigurationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configurations != null) {
       _json['configurations'] =
           configurations.map((value) => value.toJson()).toList();
@@ -2085,8 +2076,7 @@ class CustomerListCustomersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customers != null) {
       _json['customers'] = customers.map((value) => value.toJson()).toList();
     }
@@ -2120,8 +2110,7 @@ class CustomerListDevicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -2149,8 +2138,7 @@ class CustomerListDpcsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dpcs != null) {
       _json['dpcs'] = dpcs.map((value) => value.toJson()).toList();
     }
@@ -2172,8 +2160,7 @@ class CustomerRemoveConfigurationRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.toJson();
     }
@@ -2195,8 +2182,7 @@ class CustomerUnclaimDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.toJson();
     }
@@ -2258,8 +2244,7 @@ class Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claims != null) {
       _json['claims'] = claims.map((value) => value.toJson()).toList();
     }
@@ -2329,8 +2314,7 @@ class DeviceClaim {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ownerCompanyId != null) {
       _json['ownerCompanyId'] = ownerCompanyId;
     }
@@ -2396,8 +2380,7 @@ class DeviceIdentifier {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imei != null) {
       _json['imei'] = imei;
     }
@@ -2432,8 +2415,7 @@ class DeviceMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entries != null) {
       _json['entries'] = entries;
     }
@@ -2467,8 +2449,7 @@ class DeviceReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -2518,8 +2499,7 @@ class DevicesLongRunningOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devicesCount != null) {
       _json['devicesCount'] = devicesCount;
     }
@@ -2561,8 +2541,7 @@ class DevicesLongRunningOperationResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (perDeviceStatus != null) {
       _json['perDeviceStatus'] =
           perDeviceStatus.map((value) => value.toJson()).toList();
@@ -2610,8 +2589,7 @@ class Dpc {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dpcName != null) {
       _json['dpcName'] = dpcName;
     }
@@ -2638,8 +2616,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2671,8 +2648,7 @@ class FindDevicesByDeviceIdentifierRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceIdentifier != null) {
       _json['deviceIdentifier'] = deviceIdentifier.toJson();
     }
@@ -2715,8 +2691,7 @@ class FindDevicesByDeviceIdentifierResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -2767,8 +2742,7 @@ class FindDevicesByOwnerRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerId != null) {
       _json['customerId'] = customerId;
     }
@@ -2814,8 +2788,7 @@ class FindDevicesByOwnerResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -2858,8 +2831,7 @@ class ListCustomersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customers != null) {
       _json['customers'] = customers.map((value) => value.toJson()).toList();
     }
@@ -2902,8 +2874,7 @@ class ListVendorCustomersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customers != null) {
       _json['customers'] = customers.map((value) => value.toJson()).toList();
     }
@@ -2947,8 +2918,7 @@ class ListVendorsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3020,8 +2990,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -3075,8 +3044,7 @@ class OperationPerDevice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (claim != null) {
       _json['claim'] = claim.toJson();
     }
@@ -3129,8 +3097,7 @@ class PartnerClaim {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customerId != null) {
       _json['customerId'] = customerId;
     }
@@ -3190,8 +3157,7 @@ class PartnerUnclaim {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -3256,8 +3222,7 @@ class PerDeviceStatusInBatch {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -3314,8 +3279,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -3372,8 +3336,7 @@ class UnclaimDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -3409,8 +3372,7 @@ class UnclaimDevicesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (unclaims != null) {
       _json['unclaims'] = unclaims.map((value) => value.toJson()).toList();
     }
@@ -3435,8 +3397,7 @@ class UpdateDeviceMetadataInBatchRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (updates != null) {
       _json['updates'] = updates.map((value) => value.toJson()).toList();
     }
@@ -3458,8 +3419,7 @@ class UpdateDeviceMetadataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceMetadata != null) {
       _json['deviceMetadata'] = deviceMetadata.toJson();
     }
@@ -3493,8 +3453,7 @@ class UpdateMetadataArguments {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }

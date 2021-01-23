@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1791,7 +1790,7 @@ void main() {
   unittest.group('resource-MattersResourceApi', () {
     unittest.test('method--addPermissions', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildAddMatterPermissionsRequest();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -1850,7 +1849,7 @@ void main() {
 
     unittest.test('method--close', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildCloseMatterRequest();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -1909,7 +1908,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildMatter();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1958,7 +1957,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2007,7 +2006,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_matterId = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -2058,7 +2057,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_state = 'foo';
@@ -2118,7 +2117,7 @@ void main() {
 
     unittest.test('method--removePermissions', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildRemoveMatterPermissionsRequest();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2177,7 +2176,7 @@ void main() {
 
     unittest.test('method--reopen', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildReopenMatterRequest();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2236,7 +2235,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildUndeleteMatterRequest();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2295,7 +2294,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.MattersResourceApi res = api.VaultApi(mock).matters;
+      var res = api.VaultApi(mock).matters;
       var arg_request = buildMatter();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2350,7 +2349,7 @@ void main() {
   unittest.group('resource-MattersExportsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.MattersExportsResourceApi res = api.VaultApi(mock).matters.exports;
+      var res = api.VaultApi(mock).matters.exports;
       var arg_request = buildExport();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2409,7 +2408,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MattersExportsResourceApi res = api.VaultApi(mock).matters.exports;
+      var res = api.VaultApi(mock).matters.exports;
       var arg_matterId = 'foo';
       var arg_exportId = 'foo';
       var arg_$fields = 'foo';
@@ -2468,7 +2467,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MattersExportsResourceApi res = api.VaultApi(mock).matters.exports;
+      var res = api.VaultApi(mock).matters.exports;
       var arg_matterId = 'foo';
       var arg_exportId = 'foo';
       var arg_$fields = 'foo';
@@ -2527,7 +2526,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MattersExportsResourceApi res = api.VaultApi(mock).matters.exports;
+      var res = api.VaultApi(mock).matters.exports;
       var arg_matterId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2593,7 +2592,7 @@ void main() {
   unittest.group('resource-MattersHoldsResourceApi', () {
     unittest.test('method--addHeldAccounts', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_request = buildAddHeldAccountsRequest();
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
@@ -2663,7 +2662,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_request = buildHold();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -2722,7 +2721,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
       var arg_$fields = 'foo';
@@ -2781,7 +2780,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
       var arg_view = 'foo';
@@ -2842,7 +2841,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_matterId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2909,7 +2908,7 @@ void main() {
 
     unittest.test('method--removeHeldAccounts', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_request = buildRemoveHeldAccountsRequest();
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
@@ -2979,7 +2978,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.MattersHoldsResourceApi res = api.VaultApi(mock).matters.holds;
+      var res = api.VaultApi(mock).matters.holds;
       var arg_request = buildHold();
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
@@ -3044,8 +3043,7 @@ void main() {
   unittest.group('resource-MattersHoldsAccountsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.MattersHoldsAccountsResourceApi res =
-          api.VaultApi(mock).matters.holds.accounts;
+      var res = api.VaultApi(mock).matters.holds.accounts;
       var arg_request = buildHeldAccount();
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
@@ -3114,8 +3112,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MattersHoldsAccountsResourceApi res =
-          api.VaultApi(mock).matters.holds.accounts;
+      var res = api.VaultApi(mock).matters.holds.accounts;
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
       var arg_accountId = 'foo';
@@ -3184,8 +3181,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MattersHoldsAccountsResourceApi res =
-          api.VaultApi(mock).matters.holds.accounts;
+      var res = api.VaultApi(mock).matters.holds.accounts;
       var arg_matterId = 'foo';
       var arg_holdId = 'foo';
       var arg_$fields = 'foo';
@@ -3252,8 +3248,7 @@ void main() {
   unittest.group('resource-MattersSavedQueriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.MattersSavedQueriesResourceApi res =
-          api.VaultApi(mock).matters.savedQueries;
+      var res = api.VaultApi(mock).matters.savedQueries;
       var arg_request = buildSavedQuery();
       var arg_matterId = 'foo';
       var arg_$fields = 'foo';
@@ -3312,8 +3307,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.MattersSavedQueriesResourceApi res =
-          api.VaultApi(mock).matters.savedQueries;
+      var res = api.VaultApi(mock).matters.savedQueries;
       var arg_matterId = 'foo';
       var arg_savedQueryId = 'foo';
       var arg_$fields = 'foo';
@@ -3372,8 +3366,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MattersSavedQueriesResourceApi res =
-          api.VaultApi(mock).matters.savedQueries;
+      var res = api.VaultApi(mock).matters.savedQueries;
       var arg_matterId = 'foo';
       var arg_savedQueryId = 'foo';
       var arg_$fields = 'foo';
@@ -3432,8 +3425,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MattersSavedQueriesResourceApi res =
-          api.VaultApi(mock).matters.savedQueries;
+      var res = api.VaultApi(mock).matters.savedQueries;
       var arg_matterId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3499,7 +3491,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.VaultApi(mock).operations;
+      var res = api.VaultApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

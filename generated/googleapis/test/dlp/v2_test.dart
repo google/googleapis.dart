@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7367,7 +7366,7 @@ void main() {
   unittest.group('resource-InfoTypesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InfoTypesResourceApi res = api.DlpApi(mock).infoTypes;
+      var res = api.DlpApi(mock).infoTypes;
       var arg_filter = 'foo';
       var arg_languageCode = 'foo';
       var arg_locationId = 'foo';
@@ -7430,8 +7429,7 @@ void main() {
   unittest.group('resource-LocationsInfoTypesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LocationsInfoTypesResourceApi res =
-          api.DlpApi(mock).locations.infoTypes;
+      var res = api.DlpApi(mock).locations.infoTypes;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_languageCode = 'foo';
@@ -7493,8 +7491,7 @@ void main() {
   unittest.group('resource-OrganizationsDeidentifyTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       var arg_parent = 'foo';
@@ -7549,8 +7546,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7597,8 +7593,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7646,8 +7641,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -7712,8 +7706,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       var arg_name = 'foo';
@@ -7770,8 +7763,7 @@ void main() {
   unittest.group('resource-OrganizationsInspectTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -7824,8 +7816,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7872,8 +7863,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7921,8 +7911,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.inspectTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -7987,8 +7976,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8044,8 +8032,7 @@ void main() {
       'resource-OrganizationsLocationsDeidentifyTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       var arg_parent = 'foo';
@@ -8100,8 +8087,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8148,8 +8134,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8197,8 +8182,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -8263,8 +8247,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).organizations.locations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       var arg_name = 'foo';
@@ -8322,8 +8305,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8376,8 +8358,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8424,8 +8405,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8473,8 +8453,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -8539,8 +8518,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).organizations.locations.inspectTemplates;
+      var res = api.DlpApi(mock).organizations.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8596,8 +8574,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8649,8 +8626,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8697,8 +8673,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8745,8 +8720,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -8811,8 +8785,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8866,8 +8839,7 @@ void main() {
   unittest.group('resource-OrganizationsStoredInfoTypesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8919,8 +8891,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8967,8 +8938,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9015,8 +8985,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -9081,8 +9050,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).organizations.storedInfoTypes;
+      var res = api.DlpApi(mock).organizations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -9136,7 +9104,7 @@ void main() {
   unittest.group('resource-ProjectsContentResourceApi', () {
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
-      api.ProjectsContentResourceApi res = api.DlpApi(mock).projects.content;
+      var res = api.DlpApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9188,7 +9156,7 @@ void main() {
 
     unittest.test('method--inspect', () {
       var mock = HttpServerMock();
-      api.ProjectsContentResourceApi res = api.DlpApi(mock).projects.content;
+      var res = api.DlpApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9240,7 +9208,7 @@ void main() {
 
     unittest.test('method--reidentify', () {
       var mock = HttpServerMock();
-      api.ProjectsContentResourceApi res = api.DlpApi(mock).projects.content;
+      var res = api.DlpApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9294,8 +9262,7 @@ void main() {
   unittest.group('resource-ProjectsDeidentifyTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       var arg_parent = 'foo';
@@ -9350,8 +9317,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9398,8 +9364,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9447,8 +9412,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -9513,8 +9477,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       var arg_name = 'foo';
@@ -9571,7 +9534,7 @@ void main() {
   unittest.group('resource-ProjectsDlpJobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
+      var res = api.DlpApi(mock).projects.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -9622,7 +9585,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
+      var res = api.DlpApi(mock).projects.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9673,7 +9636,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
+      var res = api.DlpApi(mock).projects.dlpJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9720,7 +9683,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
+      var res = api.DlpApi(mock).projects.dlpJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9767,7 +9730,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDlpJobsResourceApi res = api.DlpApi(mock).projects.dlpJobs;
+      var res = api.DlpApi(mock).projects.dlpJobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_locationId = 'foo';
@@ -9840,7 +9803,7 @@ void main() {
   unittest.group('resource-ProjectsImageResourceApi', () {
     unittest.test('method--redact', () {
       var mock = HttpServerMock();
-      api.ProjectsImageResourceApi res = api.DlpApi(mock).projects.image;
+      var res = api.DlpApi(mock).projects.image;
       var arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9894,8 +9857,7 @@ void main() {
   unittest.group('resource-ProjectsInspectTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.inspectTemplates;
+      var res = api.DlpApi(mock).projects.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9948,8 +9910,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.inspectTemplates;
+      var res = api.DlpApi(mock).projects.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9996,8 +9957,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.inspectTemplates;
+      var res = api.DlpApi(mock).projects.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10045,8 +10005,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.inspectTemplates;
+      var res = api.DlpApi(mock).projects.inspectTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -10111,8 +10070,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.inspectTemplates;
+      var res = api.DlpApi(mock).projects.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10167,8 +10125,7 @@ void main() {
   unittest.group('resource-ProjectsJobTriggersResourceApi', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10220,8 +10177,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10272,8 +10228,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10320,8 +10275,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10368,8 +10322,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_locationId = 'foo';
@@ -10437,8 +10390,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.jobTriggers;
+      var res = api.DlpApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10491,8 +10443,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsContentResourceApi', () {
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsContentResourceApi res =
-          api.DlpApi(mock).projects.locations.content;
+      var res = api.DlpApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10544,8 +10495,7 @@ void main() {
 
     unittest.test('method--inspect', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsContentResourceApi res =
-          api.DlpApi(mock).projects.locations.content;
+      var res = api.DlpApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10597,8 +10547,7 @@ void main() {
 
     unittest.test('method--reidentify', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsContentResourceApi res =
-          api.DlpApi(mock).projects.locations.content;
+      var res = api.DlpApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10653,8 +10602,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       var arg_parent = 'foo';
@@ -10709,8 +10657,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10757,8 +10704,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10806,8 +10752,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -10872,8 +10817,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDeidentifyTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.deidentifyTemplates;
+      var res = api.DlpApi(mock).projects.locations.deidentifyTemplates;
       var arg_request =
           buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       var arg_name = 'foo';
@@ -10930,8 +10874,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsDlpJobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10982,8 +10925,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11034,8 +10976,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11082,8 +11023,7 @@ void main() {
 
     unittest.test('method--finish', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2FinishDlpJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11134,8 +11074,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11182,8 +11121,7 @@ void main() {
 
     unittest.test('method--hybridInspect', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11236,8 +11174,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDlpJobsResourceApi res =
-          api.DlpApi(mock).projects.locations.dlpJobs;
+      var res = api.DlpApi(mock).projects.locations.dlpJobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_locationId = 'foo';
@@ -11310,8 +11247,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsImageResourceApi', () {
     unittest.test('method--redact', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsImageResourceApi res =
-          api.DlpApi(mock).projects.locations.image;
+      var res = api.DlpApi(mock).projects.locations.image;
       var arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11365,8 +11301,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsInspectTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.inspectTemplates;
+      var res = api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11419,8 +11354,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.inspectTemplates;
+      var res = api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11467,8 +11401,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.inspectTemplates;
+      var res = api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11516,8 +11449,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.inspectTemplates;
+      var res = api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -11582,8 +11514,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsInspectTemplatesResourceApi res =
-          api.DlpApi(mock).projects.locations.inspectTemplates;
+      var res = api.DlpApi(mock).projects.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11638,8 +11569,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobTriggersResourceApi', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11691,8 +11621,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11743,8 +11672,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11791,8 +11719,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11839,8 +11766,7 @@ void main() {
 
     unittest.test('method--hybridInspect', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11893,8 +11819,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_locationId = 'foo';
@@ -11962,8 +11887,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsJobTriggersResourceApi res =
-          api.DlpApi(mock).projects.locations.jobTriggers;
+      var res = api.DlpApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12016,8 +11940,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsStoredInfoTypesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12069,8 +11992,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12117,8 +12039,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12165,8 +12086,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -12231,8 +12151,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.locations.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12286,8 +12205,7 @@ void main() {
   unittest.group('resource-ProjectsStoredInfoTypesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12339,8 +12257,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12387,8 +12304,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.storedInfoTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12435,8 +12351,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.storedInfoTypes;
       var arg_parent = 'foo';
       var arg_locationId = 'foo';
       var arg_orderBy = 'foo';
@@ -12501,8 +12416,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsStoredInfoTypesResourceApi res =
-          api.DlpApi(mock).projects.storedInfoTypes;
+      var res = api.DlpApi(mock).projects.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

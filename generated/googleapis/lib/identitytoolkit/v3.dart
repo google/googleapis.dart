@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1089,8 +1088,7 @@ class CreateAuthUriResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allProviders != null) {
       _json['allProviders'] = allProviders;
     }
@@ -1136,8 +1134,7 @@ class DeleteAccountResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1174,8 +1171,7 @@ class DownloadAccountResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1239,8 +1235,7 @@ class EmailLinkSigninResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1310,8 +1305,7 @@ class EmailTemplate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body;
     }
@@ -1356,8 +1350,7 @@ class GetAccountInfoResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1395,8 +1388,7 @@ class GetOobConfirmationCodeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1437,8 +1429,7 @@ class GetRecaptchaParamResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1571,8 +1562,7 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appId != null) {
       _json['appId'] = appId;
     }
@@ -1652,8 +1642,7 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
@@ -1702,8 +1691,7 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
@@ -1746,8 +1734,7 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -1800,8 +1787,7 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
@@ -1906,8 +1892,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowPasswordUser != null) {
       _json['allowPasswordUser'] = allowPasswordUser;
     }
@@ -2018,8 +2003,7 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -2069,8 +2053,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iosReceipt != null) {
       _json['iosReceipt'] = iosReceipt;
     }
@@ -2102,8 +2085,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sessionInfo != null) {
       _json['sessionInfo'] = sessionInfo;
     }
@@ -2260,8 +2242,7 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json['captchaChallenge'] = captchaChallenge;
     }
@@ -2417,8 +2398,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowPasswordUser != null) {
       _json['allowPasswordUser'] = allowPasswordUser;
     }
@@ -2471,8 +2451,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectId != null) {
       _json['projectId'] = projectId;
     }
@@ -2500,8 +2479,7 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (instanceId != null) {
       _json['instanceId'] = instanceId;
     }
@@ -2526,8 +2504,7 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (localId != null) {
       _json['localId'] = localId;
     }
@@ -2629,8 +2606,7 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json['captchaChallenge'] = captchaChallenge;
     }
@@ -2781,8 +2757,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowOverwrite != null) {
       _json['allowOverwrite'] = allowOverwrite;
     }
@@ -2923,8 +2898,7 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoCreate != null) {
       _json['autoCreate'] = autoCreate;
     }
@@ -3001,8 +2975,7 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (delegatedProjectNumber != null) {
       _json['delegatedProjectNumber'] = delegatedProjectNumber;
     }
@@ -3097,8 +3070,7 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (captchaChallenge != null) {
       _json['captchaChallenge'] = captchaChallenge;
     }
@@ -3176,8 +3148,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -3253,8 +3224,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expiresIn != null) {
       _json['expiresIn'] = expiresIn;
     }
@@ -3335,8 +3305,7 @@ class IdpConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientId != null) {
       _json['clientId'] = clientId;
     }
@@ -3460,8 +3429,7 @@ class Relyingparty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidInstallApp != null) {
       _json['androidInstallApp'] = androidInstallApp;
     }
@@ -3544,8 +3512,7 @@ class ResetPasswordResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -3595,8 +3562,7 @@ class SetAccountInfoResponseProviderUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3704,8 +3670,7 @@ class SetAccountInfoResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3799,8 +3764,7 @@ class SignupNewUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3845,8 +3809,7 @@ class UploadAccountResponseError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -3880,8 +3843,7 @@ class UploadAccountResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.map((value) => value.toJson()).toList();
     }
@@ -3949,8 +3911,7 @@ class UserInfoProviderUserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4117,8 +4078,7 @@ class UserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createdAt != null) {
       _json['createdAt'] = createdAt;
     }
@@ -4438,8 +4398,7 @@ class VerifyAssertionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (action != null) {
       _json['action'] = action;
     }
@@ -4600,8 +4559,7 @@ class VerifyCustomTokenResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expiresIn != null) {
       _json['expiresIn'] = expiresIn;
     }
@@ -4704,8 +4662,7 @@ class VerifyPasswordResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }

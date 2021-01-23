@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4933,8 +4932,7 @@ class Administrator {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -4956,8 +4954,7 @@ class AdministratorWebToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (token != null) {
       _json['token'] = token;
     }
@@ -5024,8 +5021,7 @@ class AdministratorWebTokenSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedConfigurations != null) {
       _json['managedConfigurations'] = managedConfigurations.toJson();
     }
@@ -5064,8 +5060,7 @@ class AdministratorWebTokenSpecManagedConfigurations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5092,8 +5087,7 @@ class AdministratorWebTokenSpecPlaySearch {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (approveApps != null) {
       _json['approveApps'] = approveApps;
     }
@@ -5117,8 +5111,7 @@ class AdministratorWebTokenSpecPrivateApps {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5139,8 +5132,7 @@ class AdministratorWebTokenSpecStoreBuilder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5161,8 +5153,7 @@ class AdministratorWebTokenSpecWebApps {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5194,8 +5185,7 @@ class AppRestrictionsSchema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -5224,8 +5214,7 @@ class AppRestrictionsSchemaChangeEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productId != null) {
       _json['productId'] = productId;
     }
@@ -5314,8 +5303,7 @@ class AppRestrictionsSchemaRestriction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultValue != null) {
       _json['defaultValue'] = defaultValue.toJson();
     }
@@ -5397,8 +5385,7 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -5440,8 +5427,7 @@ class AppState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (keyedAppState != null) {
       _json['keyedAppState'] =
           keyedAppState.map((value) => value.toJson()).toList();
@@ -5471,8 +5457,7 @@ class AppUpdateEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productId != null) {
       _json['productId'] = productId;
     }
@@ -5527,8 +5512,7 @@ class AppVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isProduction != null) {
       _json['isProduction'] = isProduction;
     }
@@ -5563,8 +5547,7 @@ class ApprovalUrlInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (approvalUrl != null) {
       _json['approvalUrl'] = approvalUrl;
     }
@@ -5589,8 +5572,7 @@ class AuthenticationToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (token != null) {
       _json['token'] = token;
     }
@@ -5638,8 +5620,7 @@ class AutoInstallConstraint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chargingStateConstraint != null) {
       _json['chargingStateConstraint'] = chargingStateConstraint;
     }
@@ -5701,8 +5682,7 @@ class AutoInstallPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoInstallConstraint != null) {
       _json['autoInstallConstraint'] =
           autoInstallConstraint.map((value) => value.toJson()).toList();
@@ -5745,8 +5725,7 @@ class ConfigurationVariables {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mcmId != null) {
       _json['mcmId'] = mcmId;
     }
@@ -5806,8 +5785,7 @@ class Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidId != null) {
       _json['androidId'] = androidId;
     }
@@ -5849,8 +5827,7 @@ class DeviceReport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appState != null) {
       _json['appState'] = appState.map((value) => value.toJson()).toList();
     }
@@ -5888,8 +5865,7 @@ class DeviceReportUpdateEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -5924,8 +5900,7 @@ class DeviceState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountState != null) {
       _json['accountState'] = accountState;
     }
@@ -5948,8 +5923,7 @@ class DevicesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.map((value) => value.toJson()).toList();
     }
@@ -6003,8 +5977,7 @@ class Enterprise {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (administrator != null) {
       _json['administrator'] =
           administrator.map((value) => value.toJson()).toList();
@@ -6037,8 +6010,7 @@ class EnterpriseAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountEmail != null) {
       _json['accountEmail'] = accountEmail;
     }
@@ -6061,8 +6033,7 @@ class EnterprisesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enterprise != null) {
       _json['enterprise'] = enterprise.map((value) => value.toJson()).toList();
     }
@@ -6090,8 +6061,7 @@ class EnterprisesSendTestPushNotificationResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (messageId != null) {
       _json['messageId'] = messageId;
     }
@@ -6147,8 +6117,7 @@ class Entitlement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productId != null) {
       _json['productId'] = productId;
     }
@@ -6176,8 +6145,7 @@ class EntitlementsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entitlement != null) {
       _json['entitlement'] =
           entitlement.map((value) => value.toJson()).toList();
@@ -6272,8 +6240,7 @@ class GroupLicense {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (acquisitionKind != null) {
       _json['acquisitionKind'] = acquisitionKind;
     }
@@ -6311,8 +6278,7 @@ class GroupLicenseUsersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (user != null) {
       _json['user'] = user.map((value) => value.toJson()).toList();
     }
@@ -6335,8 +6301,7 @@ class GroupLicensesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groupLicense != null) {
       _json['groupLicense'] =
           groupLicense.map((value) => value.toJson()).toList();
@@ -6396,8 +6361,7 @@ class Install {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (installState != null) {
       _json['installState'] = installState;
     }
@@ -6457,8 +6421,7 @@ class InstallFailureEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -6494,8 +6457,7 @@ class InstallsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (install != null) {
       _json['install'] = install.map((value) => value.toJson()).toList();
     }
@@ -6554,8 +6516,7 @@ class KeyedAppState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -6595,8 +6556,7 @@ class LocalizedText {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locale != null) {
       _json['locale'] = locale;
     }
@@ -6630,8 +6590,7 @@ class MaintenanceWindow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (durationMs != null) {
       _json['durationMs'] = durationMs;
     }
@@ -6681,8 +6640,7 @@ class ManagedConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configurationVariables != null) {
       _json['configurationVariables'] = configurationVariables.toJson();
     }
@@ -6717,8 +6675,7 @@ class ManagedConfigurationsForDeviceListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedConfigurationForDevice != null) {
       _json['managedConfigurationForDevice'] =
           managedConfigurationForDevice.map((value) => value.toJson()).toList();
@@ -6744,8 +6701,7 @@ class ManagedConfigurationsForUserListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedConfigurationForUser != null) {
       _json['managedConfigurationForUser'] =
           managedConfigurationForUser.map((value) => value.toJson()).toList();
@@ -6784,8 +6740,7 @@ class ManagedConfigurationsSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (lastUpdatedTimestampMillis != null) {
       _json['lastUpdatedTimestampMillis'] = lastUpdatedTimestampMillis;
     }
@@ -6817,8 +6772,7 @@ class ManagedConfigurationsSettingsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedConfigurationsSettings != null) {
       _json['managedConfigurationsSettings'] =
           managedConfigurationsSettings.map((value) => value.toJson()).toList();
@@ -6890,8 +6844,7 @@ class ManagedProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -6934,8 +6887,7 @@ class ManagedPropertyBundle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (managedProperty != null) {
       _json['managedProperty'] =
           managedProperty.map((value) => value.toJson()).toList();
@@ -6982,8 +6934,7 @@ class NewDeviceEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceId != null) {
       _json['deviceId'] = deviceId;
     }
@@ -7033,8 +6984,7 @@ class NewPermissionsEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (approvedPermissions != null) {
       _json['approvedPermissions'] = approvedPermissions;
     }
@@ -7145,8 +7095,7 @@ class Notification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appRestrictionsSchemaChangeEvent != null) {
       _json['appRestrictionsSchemaChangeEvent'] =
           appRestrictionsSchemaChangeEvent.toJson();
@@ -7212,8 +7161,7 @@ class NotificationSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (notification != null) {
       _json['notification'] =
           notification.map((value) => value.toJson()).toList();
@@ -7255,8 +7203,7 @@ class PageInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resultPerPage != null) {
       _json['resultPerPage'] = resultPerPage;
     }
@@ -7303,8 +7250,7 @@ class Permission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -7389,8 +7335,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoUpdatePolicy != null) {
       _json['autoUpdatePolicy'] = autoUpdatePolicy;
     }
@@ -7609,8 +7554,7 @@ class Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appTracks != null) {
       _json['appTracks'] = appTracks.map((value) => value.toJson()).toList();
     }
@@ -7714,8 +7658,7 @@ class ProductApprovalEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (approved != null) {
       _json['approved'] = approved;
     }
@@ -7753,8 +7696,7 @@ class ProductAvailabilityChangeEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (availabilityStatus != null) {
       _json['availabilityStatus'] = availabilityStatus;
     }
@@ -7792,8 +7734,7 @@ class ProductPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissionId != null) {
       _json['permissionId'] = permissionId;
     }
@@ -7828,8 +7769,7 @@ class ProductPermissions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permission != null) {
       _json['permission'] = permission.map((value) => value.toJson()).toList();
     }
@@ -7882,8 +7822,7 @@ class ProductPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoInstallPolicy != null) {
       _json['autoInstallPolicy'] = autoInstallPolicy.toJson();
     }
@@ -7956,8 +7895,7 @@ class ProductSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productId != null) {
       _json['productId'] = productId;
     }
@@ -7993,8 +7931,7 @@ class ProductSigningCertificate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (certificateHashSha1 != null) {
       _json['certificateHashSha1'] = certificateHashSha1;
     }
@@ -8033,8 +7970,7 @@ class ProductVisibility {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productId != null) {
       _json['productId'] = productId;
     }
@@ -8083,8 +8019,7 @@ class ProductsApproveRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (approvalUrlInfo != null) {
       _json['approvalUrlInfo'] = approvalUrlInfo.toJson();
     }
@@ -8115,8 +8050,7 @@ class ProductsGenerateApprovalUrlResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -8152,8 +8086,7 @@ class ProductsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageInfo != null) {
       _json['pageInfo'] = pageInfo.toJson();
     }
@@ -8189,8 +8122,7 @@ class ServiceAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key.toJson();
     }
@@ -8246,8 +8178,7 @@ class ServiceAccountKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -8279,8 +8210,7 @@ class ServiceAccountKeysListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (serviceAccountKey != null) {
       _json['serviceAccountKey'] =
           serviceAccountKey.map((value) => value.toJson()).toList();
@@ -8318,8 +8248,7 @@ class SignupInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionToken != null) {
       _json['completionToken'] = completionToken;
     }
@@ -8377,8 +8306,7 @@ class StoreCluster {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -8425,8 +8353,7 @@ class StoreLayout {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (homepageId != null) {
       _json['homepageId'] = homepageId;
     }
@@ -8452,8 +8379,7 @@ class StoreLayoutClustersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cluster != null) {
       _json['cluster'] = cluster.map((value) => value.toJson()).toList();
     }
@@ -8476,8 +8402,7 @@ class StoreLayoutPagesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (page != null) {
       _json['page'] = page.map((value) => value.toJson()).toList();
     }
@@ -8520,8 +8445,7 @@ class StorePage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -8561,8 +8485,7 @@ class TokenPagination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -8596,8 +8519,7 @@ class TrackInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (trackAlias != null) {
       _json['trackAlias'] = trackAlias;
     }
@@ -8680,8 +8602,7 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountIdentifier != null) {
       _json['accountIdentifier'] = accountIdentifier;
     }
@@ -8719,8 +8640,7 @@ class UsersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (user != null) {
       _json['user'] = user.map((value) => value.toJson()).toList();
     }
@@ -8751,8 +8671,7 @@ class VariableSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (placeholder != null) {
       _json['placeholder'] = placeholder;
     }
@@ -8843,8 +8762,7 @@ class WebApp {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayMode != null) {
       _json['displayMode'] = displayMode;
     }
@@ -8887,8 +8805,7 @@ class WebAppIcon {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageData != null) {
       _json['imageData'] = imageData;
     }
@@ -8911,8 +8828,7 @@ class WebAppsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (webApp != null) {
       _json['webApp'] = webApp.map((value) => value.toJson()).toList();
     }

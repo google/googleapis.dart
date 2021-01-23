@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -999,8 +998,7 @@ void main() {
   unittest.group('resource-UsersDataSourcesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesResourceApi res =
-          api.FitnessApi(mock).users.dataSources;
+      var res = api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -1047,8 +1045,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesResourceApi res =
-          api.FitnessApi(mock).users.dataSources;
+      var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_$fields = 'foo';
@@ -1092,8 +1089,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesResourceApi res =
-          api.FitnessApi(mock).users.dataSources;
+      var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_$fields = 'foo';
@@ -1137,8 +1133,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesResourceApi res =
-          api.FitnessApi(mock).users.dataSources;
+      var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
       var arg_dataTypeName = buildUnnamed1326();
       var arg_$fields = 'foo';
@@ -1185,8 +1180,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesResourceApi res =
-          api.FitnessApi(mock).users.dataSources;
+      var res = api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
@@ -1237,8 +1231,7 @@ void main() {
   unittest.group('resource-UsersDataSourcesDataPointChangesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesDataPointChangesResourceApi res =
-          api.FitnessApi(mock).users.dataSources.dataPointChanges;
+      var res = api.FitnessApi(mock).users.dataSources.dataPointChanges;
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_limit = 42;
@@ -1291,8 +1284,7 @@ void main() {
   unittest.group('resource-UsersDataSourcesDatasetsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesDatasetsResourceApi res =
-          api.FitnessApi(mock).users.dataSources.datasets;
+      var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_datasetId = 'foo';
@@ -1344,8 +1336,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesDatasetsResourceApi res =
-          api.FitnessApi(mock).users.dataSources.datasets;
+      var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
       var arg_datasetId = 'foo';
@@ -1397,8 +1388,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UsersDataSourcesDatasetsResourceApi res =
-          api.FitnessApi(mock).users.dataSources.datasets;
+      var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_request = buildDataset();
       var arg_userId = 'foo';
       var arg_dataSourceId = 'foo';
@@ -1453,7 +1443,7 @@ void main() {
   unittest.group('resource-UsersDatasetResourceApi', () {
     unittest.test('method--aggregate', () {
       var mock = HttpServerMock();
-      api.UsersDatasetResourceApi res = api.FitnessApi(mock).users.dataset;
+      var res = api.FitnessApi(mock).users.dataset;
       var arg_request = buildAggregateRequest();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -1502,7 +1492,7 @@ void main() {
   unittest.group('resource-UsersSessionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSessionsResourceApi res = api.FitnessApi(mock).users.sessions;
+      var res = api.FitnessApi(mock).users.sessions;
       var arg_userId = 'foo';
       var arg_sessionId = 'foo';
       var arg_currentTimeMillis = 'foo';
@@ -1548,7 +1538,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSessionsResourceApi res = api.FitnessApi(mock).users.sessions;
+      var res = api.FitnessApi(mock).users.sessions;
       var arg_userId = 'foo';
       var arg_activityType = buildUnnamed1327();
       var arg_endTime = 'foo';
@@ -1612,7 +1602,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UsersSessionsResourceApi res = api.FitnessApi(mock).users.sessions;
+      var res = api.FitnessApi(mock).users.sessions;
       var arg_request = buildSession();
       var arg_userId = 'foo';
       var arg_sessionId = 'foo';

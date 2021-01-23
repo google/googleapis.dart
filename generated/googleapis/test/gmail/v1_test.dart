@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1914,7 +1913,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--getProfile', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.GmailApi(mock).users;
+      var res = api.GmailApi(mock).users;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1969,7 +1968,7 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.GmailApi(mock).users;
+      var res = api.GmailApi(mock).users;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2022,7 +2021,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.GmailApi(mock).users;
+      var res = api.GmailApi(mock).users;
       var arg_request = buildWatchRequest();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -2086,7 +2085,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -2145,7 +2144,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -2202,7 +2201,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_format = 'foo';
@@ -2263,7 +2262,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
       var arg_includeSpamTrash = true;
       var arg_maxResults = 42;
@@ -2337,7 +2336,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -2399,7 +2398,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersDraftsResourceApi res = api.GmailApi(mock).users.drafts;
+      var res = api.GmailApi(mock).users.drafts;
       var arg_request = buildDraft();
       var arg_userId = 'foo';
       var arg_id = 'foo';
@@ -2464,7 +2463,7 @@ void main() {
   unittest.group('resource-UsersHistoryResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersHistoryResourceApi res = api.GmailApi(mock).users.history;
+      var res = api.GmailApi(mock).users.history;
       var arg_userId = 'foo';
       var arg_historyTypes = buildUnnamed3205();
       var arg_labelId = 'foo';
@@ -2542,7 +2541,7 @@ void main() {
   unittest.group('resource-UsersLabelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -2601,7 +2600,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -2658,7 +2657,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -2717,7 +2716,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2772,7 +2771,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = 'foo';
       var arg_id = 'foo';
@@ -2835,7 +2834,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UsersLabelsResourceApi res = api.GmailApi(mock).users.labels;
+      var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
       var arg_userId = 'foo';
       var arg_id = 'foo';
@@ -2900,7 +2899,7 @@ void main() {
   unittest.group('resource-UsersMessagesResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchDeleteMessagesRequest();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -2957,7 +2956,7 @@ void main() {
 
     unittest.test('method--batchModify', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchModifyMessagesRequest();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -3014,7 +3013,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3071,7 +3070,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_format = 'foo';
@@ -3141,7 +3140,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = 'foo';
       var arg_deleted = true;
@@ -3220,7 +3219,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = 'foo';
       var arg_deleted = true;
@@ -3288,7 +3287,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_includeSpamTrash = true;
       var arg_labelIds = buildUnnamed3207();
@@ -3362,7 +3361,7 @@ void main() {
 
     unittest.test('method--modify', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildModifyMessageRequest();
       var arg_userId = 'foo';
       var arg_id = 'foo';
@@ -3434,7 +3433,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_request = buildMessage();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -3493,7 +3492,7 @@ void main() {
 
     unittest.test('method--trash', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3558,7 +3557,7 @@ void main() {
 
     unittest.test('method--untrash', () {
       var mock = HttpServerMock();
-      api.UsersMessagesResourceApi res = api.GmailApi(mock).users.messages;
+      var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -3625,8 +3624,7 @@ void main() {
   unittest.group('resource-UsersMessagesAttachmentsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersMessagesAttachmentsResourceApi res =
-          api.GmailApi(mock).users.messages.attachments;
+      var res = api.GmailApi(mock).users.messages.attachments;
       var arg_userId = 'foo';
       var arg_messageId = 'foo';
       var arg_id = 'foo';
@@ -3697,7 +3695,7 @@ void main() {
   unittest.group('resource-UsersSettingsResourceApi', () {
     unittest.test('method--getAutoForwarding', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3752,7 +3750,7 @@ void main() {
 
     unittest.test('method--getImap', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3807,7 +3805,7 @@ void main() {
 
     unittest.test('method--getLanguage', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3862,7 +3860,7 @@ void main() {
 
     unittest.test('method--getPop', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3917,7 +3915,7 @@ void main() {
 
     unittest.test('method--getVacation', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3972,7 +3970,7 @@ void main() {
 
     unittest.test('method--updateAutoForwarding', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_request = buildAutoForwarding();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4031,7 +4029,7 @@ void main() {
 
     unittest.test('method--updateImap', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_request = buildImapSettings();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4090,7 +4088,7 @@ void main() {
 
     unittest.test('method--updateLanguage', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_request = buildLanguageSettings();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4149,7 +4147,7 @@ void main() {
 
     unittest.test('method--updatePop', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_request = buildPopSettings();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4208,7 +4206,7 @@ void main() {
 
     unittest.test('method--updateVacation', () {
       var mock = HttpServerMock();
-      api.UsersSettingsResourceApi res = api.GmailApi(mock).users.settings;
+      var res = api.GmailApi(mock).users.settings;
       var arg_request = buildVacationSettings();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4269,8 +4267,7 @@ void main() {
   unittest.group('resource-UsersSettingsDelegatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersSettingsDelegatesResourceApi res =
-          api.GmailApi(mock).users.settings.delegates;
+      var res = api.GmailApi(mock).users.settings.delegates;
       var arg_request = buildDelegate();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4329,8 +4326,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSettingsDelegatesResourceApi res =
-          api.GmailApi(mock).users.settings.delegates;
+      var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
       var arg_delegateEmail = 'foo';
       var arg_$fields = 'foo';
@@ -4387,8 +4383,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSettingsDelegatesResourceApi res =
-          api.GmailApi(mock).users.settings.delegates;
+      var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
       var arg_delegateEmail = 'foo';
       var arg_$fields = 'foo';
@@ -4447,8 +4442,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSettingsDelegatesResourceApi res =
-          api.GmailApi(mock).users.settings.delegates;
+      var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4505,8 +4499,7 @@ void main() {
   unittest.group('resource-UsersSettingsFiltersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersSettingsFiltersResourceApi res =
-          api.GmailApi(mock).users.settings.filters;
+      var res = api.GmailApi(mock).users.settings.filters;
       var arg_request = buildFilter();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4565,8 +4558,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSettingsFiltersResourceApi res =
-          api.GmailApi(mock).users.settings.filters;
+      var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -4623,8 +4615,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSettingsFiltersResourceApi res =
-          api.GmailApi(mock).users.settings.filters;
+      var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -4683,8 +4674,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSettingsFiltersResourceApi res =
-          api.GmailApi(mock).users.settings.filters;
+      var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4741,8 +4731,7 @@ void main() {
   unittest.group('resource-UsersSettingsForwardingAddressesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersSettingsForwardingAddressesResourceApi res =
-          api.GmailApi(mock).users.settings.forwardingAddresses;
+      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_request = buildForwardingAddress();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -4801,8 +4790,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSettingsForwardingAddressesResourceApi res =
-          api.GmailApi(mock).users.settings.forwardingAddresses;
+      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
       var arg_forwardingEmail = 'foo';
       var arg_$fields = 'foo';
@@ -4859,8 +4847,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSettingsForwardingAddressesResourceApi res =
-          api.GmailApi(mock).users.settings.forwardingAddresses;
+      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
       var arg_forwardingEmail = 'foo';
       var arg_$fields = 'foo';
@@ -4919,8 +4906,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSettingsForwardingAddressesResourceApi res =
-          api.GmailApi(mock).users.settings.forwardingAddresses;
+      var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4977,8 +4963,7 @@ void main() {
   unittest.group('resource-UsersSettingsSendAsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
@@ -5037,8 +5022,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_$fields = 'foo';
@@ -5095,8 +5079,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_$fields = 'foo';
@@ -5155,8 +5138,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5211,8 +5193,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
@@ -5275,8 +5256,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
@@ -5340,8 +5320,7 @@ void main() {
 
     unittest.test('method--verify', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs;
+      var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_$fields = 'foo';
@@ -5406,8 +5385,7 @@ void main() {
   unittest.group('resource-UsersSettingsSendAsSmimeInfoResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_id = 'foo';
@@ -5474,8 +5452,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_id = 'foo';
@@ -5544,8 +5521,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_request = buildSmimeInfo();
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
@@ -5615,8 +5591,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_$fields = 'foo';
@@ -5681,8 +5656,7 @@ void main() {
 
     unittest.test('method--setDefault', () {
       var mock = HttpServerMock();
-      api.UsersSettingsSendAsSmimeInfoResourceApi res =
-          api.GmailApi(mock).users.settings.sendAs.smimeInfo;
+      var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
       var arg_sendAsEmail = 'foo';
       var arg_id = 'foo';
@@ -5757,7 +5731,7 @@ void main() {
   unittest.group('resource-UsersThreadsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -5814,7 +5788,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_format = 'foo';
@@ -5881,7 +5855,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_includeSpamTrash = true;
       var arg_labelIds = buildUnnamed3209();
@@ -5955,7 +5929,7 @@ void main() {
 
     unittest.test('method--modify', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_request = buildModifyThreadRequest();
       var arg_userId = 'foo';
       var arg_id = 'foo';
@@ -6024,7 +5998,7 @@ void main() {
 
     unittest.test('method--trash', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';
@@ -6089,7 +6063,7 @@ void main() {
 
     unittest.test('method--untrash', () {
       var mock = HttpServerMock();
-      api.UsersThreadsResourceApi res = api.GmailApi(mock).users.threads;
+      var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
       var arg_id = 'foo';
       var arg_$fields = 'foo';

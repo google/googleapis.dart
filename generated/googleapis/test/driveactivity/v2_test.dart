@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1771,7 +1770,7 @@ void main() {
   unittest.group('resource-ActivityResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.ActivityResourceApi res = api.DriveactivityApi(mock).activity;
+      var res = api.DriveactivityApi(mock).activity;
       var arg_request = buildQueryDriveActivityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

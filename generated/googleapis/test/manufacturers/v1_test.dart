@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -693,8 +692,7 @@ void main() {
   unittest.group('resource-AccountsProductsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsProductsResourceApi res =
-          api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturersApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -742,8 +740,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsProductsResourceApi res =
-          api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturersApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_name = 'foo';
       var arg_include = buildUnnamed1739();
@@ -793,8 +790,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsProductsResourceApi res =
-          api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturersApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_include = buildUnnamed1740();
       var arg_pageSize = 42;
@@ -853,8 +849,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsProductsResourceApi res =
-          api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturersApi(mock).accounts.products;
       var arg_request = buildAttributes();
       var arg_parent = 'foo';
       var arg_name = 'foo';

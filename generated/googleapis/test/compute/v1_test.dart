@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -34392,8 +34391,7 @@ void main() {
   unittest.group('resource-AcceleratorTypesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.AcceleratorTypesResourceApi res =
-          api.ComputeApi(mock).acceleratorTypes;
+      var res = api.ComputeApi(mock).acceleratorTypes;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -34460,8 +34458,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AcceleratorTypesResourceApi res =
-          api.ComputeApi(mock).acceleratorTypes;
+      var res = api.ComputeApi(mock).acceleratorTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_acceleratorType = 'foo';
@@ -34506,8 +34503,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AcceleratorTypesResourceApi res =
-          api.ComputeApi(mock).acceleratorTypes;
+      var res = api.ComputeApi(mock).acceleratorTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -34573,7 +34569,7 @@ void main() {
   unittest.group('resource-AddressesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.AddressesResourceApi res = api.ComputeApi(mock).addresses;
+      var res = api.ComputeApi(mock).addresses;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -34640,7 +34636,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AddressesResourceApi res = api.ComputeApi(mock).addresses;
+      var res = api.ComputeApi(mock).addresses;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_address = 'foo';
@@ -34689,7 +34685,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AddressesResourceApi res = api.ComputeApi(mock).addresses;
+      var res = api.ComputeApi(mock).addresses;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_address = 'foo';
@@ -34734,7 +34730,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AddressesResourceApi res = api.ComputeApi(mock).addresses;
+      var res = api.ComputeApi(mock).addresses;
       var arg_request = buildAddress();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -34786,7 +34782,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AddressesResourceApi res = api.ComputeApi(mock).addresses;
+      var res = api.ComputeApi(mock).addresses;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -34852,7 +34848,7 @@ void main() {
   unittest.group('resource-AutoscalersResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -34919,7 +34915,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_autoscaler = 'foo';
@@ -34968,7 +34964,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_autoscaler = 'foo';
@@ -35013,7 +35009,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -35065,7 +35061,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -35129,7 +35125,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -35186,7 +35182,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AutoscalersResourceApi res = api.ComputeApi(mock).autoscalers;
+      var res = api.ComputeApi(mock).autoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -35245,7 +35241,7 @@ void main() {
   unittest.group('resource-BackendBucketsResourceApi', () {
     unittest.test('method--addSignedUrlKey', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_request = buildSignedUrlKey();
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
@@ -35297,7 +35293,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
       var arg_requestId = 'foo';
@@ -35345,7 +35341,7 @@ void main() {
 
     unittest.test('method--deleteSignedUrlKey', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
       var arg_keyName = 'foo';
@@ -35396,7 +35392,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
       var arg_$fields = 'foo';
@@ -35440,7 +35436,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_request = buildBackendBucket();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -35491,7 +35487,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -35554,7 +35550,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_request = buildBackendBucket();
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
@@ -35606,7 +35602,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BackendBucketsResourceApi res = api.ComputeApi(mock).backendBuckets;
+      var res = api.ComputeApi(mock).backendBuckets;
       var arg_request = buildBackendBucket();
       var arg_project = 'foo';
       var arg_backendBucket = 'foo';
@@ -35660,7 +35656,7 @@ void main() {
   unittest.group('resource-BackendServicesResourceApi', () {
     unittest.test('method--addSignedUrlKey', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildSignedUrlKey();
       var arg_project = 'foo';
       var arg_backendService = 'foo';
@@ -35712,7 +35708,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -35779,7 +35775,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_project = 'foo';
       var arg_backendService = 'foo';
       var arg_requestId = 'foo';
@@ -35827,7 +35823,7 @@ void main() {
 
     unittest.test('method--deleteSignedUrlKey', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_project = 'foo';
       var arg_backendService = 'foo';
       var arg_keyName = 'foo';
@@ -35878,7 +35874,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_project = 'foo';
       var arg_backendService = 'foo';
       var arg_$fields = 'foo';
@@ -35922,7 +35918,7 @@ void main() {
 
     unittest.test('method--getHealth', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildResourceGroupReference();
       var arg_project = 'foo';
       var arg_backendService = 'foo';
@@ -35971,7 +35967,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -36022,7 +36018,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -36085,7 +36081,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_backendService = 'foo';
@@ -36137,7 +36133,7 @@ void main() {
 
     unittest.test('method--setSecurityPolicy', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildSecurityPolicyReference();
       var arg_project = 'foo';
       var arg_backendService = 'foo';
@@ -36189,7 +36185,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BackendServicesResourceApi res = api.ComputeApi(mock).backendServices;
+      var res = api.ComputeApi(mock).backendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_backendService = 'foo';
@@ -36243,7 +36239,7 @@ void main() {
   unittest.group('resource-DiskTypesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.DiskTypesResourceApi res = api.ComputeApi(mock).diskTypes;
+      var res = api.ComputeApi(mock).diskTypes;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -36310,7 +36306,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DiskTypesResourceApi res = api.ComputeApi(mock).diskTypes;
+      var res = api.ComputeApi(mock).diskTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_diskType = 'foo';
@@ -36355,7 +36351,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DiskTypesResourceApi res = api.ComputeApi(mock).diskTypes;
+      var res = api.ComputeApi(mock).diskTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -36421,7 +36417,7 @@ void main() {
   unittest.group('resource-DisksResourceApi', () {
     unittest.test('method--addResourcePolicies', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildDisksAddResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -36474,7 +36470,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -36541,7 +36537,7 @@ void main() {
 
     unittest.test('method--createSnapshot', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildSnapshot();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -36599,7 +36595,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_disk = 'foo';
@@ -36648,7 +36644,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_disk = 'foo';
@@ -36693,7 +36689,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_resource = 'foo';
@@ -36744,7 +36740,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildDisk();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -36801,7 +36797,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -36865,7 +36861,7 @@ void main() {
 
     unittest.test('method--removeResourcePolicies', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildDisksRemoveResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -36918,7 +36914,7 @@ void main() {
 
     unittest.test('method--resize', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildDisksResizeRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -36971,7 +36967,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildZoneSetPolicyRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -37021,7 +37017,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildZoneSetLabelsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -37074,7 +37070,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.DisksResourceApi res = api.ComputeApi(mock).disks;
+      var res = api.ComputeApi(mock).disks;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -37126,8 +37122,7 @@ void main() {
   unittest.group('resource-ExternalVpnGatewaysResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_project = 'foo';
       var arg_externalVpnGateway = 'foo';
       var arg_requestId = 'foo';
@@ -37175,8 +37170,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_project = 'foo';
       var arg_externalVpnGateway = 'foo';
       var arg_$fields = 'foo';
@@ -37220,8 +37214,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_request = buildExternalVpnGateway();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -37272,8 +37265,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -37336,8 +37328,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_request = buildGlobalSetLabelsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -37386,8 +37377,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ExternalVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).externalVpnGateways;
+      var res = api.ComputeApi(mock).externalVpnGateways;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -37438,7 +37428,7 @@ void main() {
   unittest.group('resource-FirewallsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_project = 'foo';
       var arg_firewall = 'foo';
       var arg_requestId = 'foo';
@@ -37486,7 +37476,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_project = 'foo';
       var arg_firewall = 'foo';
       var arg_$fields = 'foo';
@@ -37530,7 +37520,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_request = buildFirewall();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -37581,7 +37571,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -37644,7 +37634,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_request = buildFirewall();
       var arg_project = 'foo';
       var arg_firewall = 'foo';
@@ -37696,7 +37686,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.FirewallsResourceApi res = api.ComputeApi(mock).firewalls;
+      var res = api.ComputeApi(mock).firewalls;
       var arg_request = buildFirewall();
       var arg_project = 'foo';
       var arg_firewall = 'foo';
@@ -37750,7 +37740,7 @@ void main() {
   unittest.group('resource-ForwardingRulesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -37817,7 +37807,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_forwardingRule = 'foo';
@@ -37866,7 +37856,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_forwardingRule = 'foo';
@@ -37912,7 +37902,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_request = buildForwardingRule();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -37964,7 +37954,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -38028,7 +38018,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_request = buildForwardingRule();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -38081,7 +38071,7 @@ void main() {
 
     unittest.test('method--setTarget', () {
       var mock = HttpServerMock();
-      api.ForwardingRulesResourceApi res = api.ComputeApi(mock).forwardingRules;
+      var res = api.ComputeApi(mock).forwardingRules;
       var arg_request = buildTargetReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -38136,7 +38126,7 @@ void main() {
   unittest.group('resource-GlobalAddressesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GlobalAddressesResourceApi res = api.ComputeApi(mock).globalAddresses;
+      var res = api.ComputeApi(mock).globalAddresses;
       var arg_project = 'foo';
       var arg_address = 'foo';
       var arg_requestId = 'foo';
@@ -38184,7 +38174,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GlobalAddressesResourceApi res = api.ComputeApi(mock).globalAddresses;
+      var res = api.ComputeApi(mock).globalAddresses;
       var arg_project = 'foo';
       var arg_address = 'foo';
       var arg_$fields = 'foo';
@@ -38228,7 +38218,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.GlobalAddressesResourceApi res = api.ComputeApi(mock).globalAddresses;
+      var res = api.ComputeApi(mock).globalAddresses;
       var arg_request = buildAddress();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -38279,7 +38269,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GlobalAddressesResourceApi res = api.ComputeApi(mock).globalAddresses;
+      var res = api.ComputeApi(mock).globalAddresses;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -38344,8 +38334,7 @@ void main() {
   unittest.group('resource-GlobalForwardingRulesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_project = 'foo';
       var arg_forwardingRule = 'foo';
       var arg_requestId = 'foo';
@@ -38393,8 +38382,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_project = 'foo';
       var arg_forwardingRule = 'foo';
       var arg_$fields = 'foo';
@@ -38438,8 +38426,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_request = buildForwardingRule();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -38490,8 +38477,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -38554,8 +38540,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_request = buildForwardingRule();
       var arg_project = 'foo';
       var arg_forwardingRule = 'foo';
@@ -38607,8 +38592,7 @@ void main() {
 
     unittest.test('method--setTarget', () {
       var mock = HttpServerMock();
-      api.GlobalForwardingRulesResourceApi res =
-          api.ComputeApi(mock).globalForwardingRules;
+      var res = api.ComputeApi(mock).globalForwardingRules;
       var arg_request = buildTargetReference();
       var arg_project = 'foo';
       var arg_forwardingRule = 'foo';
@@ -38662,8 +38646,7 @@ void main() {
   unittest.group('resource-GlobalNetworkEndpointGroupsResourceApi', () {
     unittest.test('method--attachNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_request =
           buildGlobalNetworkEndpointGroupsAttachEndpointsRequest();
       var arg_project = 'foo';
@@ -38719,8 +38702,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_networkEndpointGroup = 'foo';
       var arg_requestId = 'foo';
@@ -38768,8 +38750,7 @@ void main() {
 
     unittest.test('method--detachNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_request =
           buildGlobalNetworkEndpointGroupsDetachEndpointsRequest();
       var arg_project = 'foo';
@@ -38825,8 +38806,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_networkEndpointGroup = 'foo';
       var arg_$fields = 'foo';
@@ -38870,8 +38850,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_request = buildNetworkEndpointGroup();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -38922,8 +38901,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -38986,8 +38964,7 @@ void main() {
 
     unittest.test('method--listNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.GlobalNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).globalNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_networkEndpointGroup = 'foo';
       var arg_filter = 'foo';
@@ -39054,8 +39031,7 @@ void main() {
   unittest.group('resource-GlobalOperationsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.GlobalOperationsResourceApi res =
-          api.ComputeApi(mock).globalOperations;
+      var res = api.ComputeApi(mock).globalOperations;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -39122,8 +39098,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GlobalOperationsResourceApi res =
-          api.ComputeApi(mock).globalOperations;
+      var res = api.ComputeApi(mock).globalOperations;
       var arg_project = 'foo';
       var arg_operation = 'foo';
       var arg_$fields = 'foo';
@@ -39165,8 +39140,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.GlobalOperationsResourceApi res =
-          api.ComputeApi(mock).globalOperations;
+      var res = api.ComputeApi(mock).globalOperations;
       var arg_project = 'foo';
       var arg_operation = 'foo';
       var arg_$fields = 'foo';
@@ -39210,8 +39184,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GlobalOperationsResourceApi res =
-          api.ComputeApi(mock).globalOperations;
+      var res = api.ComputeApi(mock).globalOperations;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -39274,8 +39247,7 @@ void main() {
 
     unittest.test('method--wait', () {
       var mock = HttpServerMock();
-      api.GlobalOperationsResourceApi res =
-          api.ComputeApi(mock).globalOperations;
+      var res = api.ComputeApi(mock).globalOperations;
       var arg_project = 'foo';
       var arg_operation = 'foo';
       var arg_$fields = 'foo';
@@ -39321,7 +39293,7 @@ void main() {
   unittest.group('resource-HealthChecksResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -39388,7 +39360,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_project = 'foo';
       var arg_healthCheck = 'foo';
       var arg_requestId = 'foo';
@@ -39436,7 +39408,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_project = 'foo';
       var arg_healthCheck = 'foo';
       var arg_$fields = 'foo';
@@ -39480,7 +39452,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -39531,7 +39503,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -39594,7 +39566,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_healthCheck = 'foo';
@@ -39646,7 +39618,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.HealthChecksResourceApi res = api.ComputeApi(mock).healthChecks;
+      var res = api.ComputeApi(mock).healthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_healthCheck = 'foo';
@@ -39700,8 +39672,7 @@ void main() {
   unittest.group('resource-HttpHealthChecksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_project = 'foo';
       var arg_httpHealthCheck = 'foo';
       var arg_requestId = 'foo';
@@ -39749,8 +39720,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_project = 'foo';
       var arg_httpHealthCheck = 'foo';
       var arg_$fields = 'foo';
@@ -39794,8 +39764,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_request = buildHttpHealthCheck();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -39846,8 +39815,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -39910,8 +39878,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_request = buildHttpHealthCheck();
       var arg_project = 'foo';
       var arg_httpHealthCheck = 'foo';
@@ -39963,8 +39930,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.HttpHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpHealthChecks;
+      var res = api.ComputeApi(mock).httpHealthChecks;
       var arg_request = buildHttpHealthCheck();
       var arg_project = 'foo';
       var arg_httpHealthCheck = 'foo';
@@ -40018,8 +39984,7 @@ void main() {
   unittest.group('resource-HttpsHealthChecksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_project = 'foo';
       var arg_httpsHealthCheck = 'foo';
       var arg_requestId = 'foo';
@@ -40067,8 +40032,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_project = 'foo';
       var arg_httpsHealthCheck = 'foo';
       var arg_$fields = 'foo';
@@ -40112,8 +40076,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_request = buildHttpsHealthCheck();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -40164,8 +40127,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -40228,8 +40190,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_request = buildHttpsHealthCheck();
       var arg_project = 'foo';
       var arg_httpsHealthCheck = 'foo';
@@ -40281,8 +40242,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.HttpsHealthChecksResourceApi res =
-          api.ComputeApi(mock).httpsHealthChecks;
+      var res = api.ComputeApi(mock).httpsHealthChecks;
       var arg_request = buildHttpsHealthCheck();
       var arg_project = 'foo';
       var arg_httpsHealthCheck = 'foo';
@@ -40336,7 +40296,7 @@ void main() {
   unittest.group('resource-ImagesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_project = 'foo';
       var arg_image = 'foo';
       var arg_requestId = 'foo';
@@ -40384,7 +40344,7 @@ void main() {
 
     unittest.test('method--deprecate', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildDeprecationStatus();
       var arg_project = 'foo';
       var arg_image = 'foo';
@@ -40436,7 +40396,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_project = 'foo';
       var arg_image = 'foo';
       var arg_$fields = 'foo';
@@ -40480,7 +40440,7 @@ void main() {
 
     unittest.test('method--getFromFamily', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_project = 'foo';
       var arg_family = 'foo';
       var arg_$fields = 'foo';
@@ -40524,7 +40484,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_project = 'foo';
       var arg_resource = 'foo';
       var arg_optionsRequestedPolicyVersion = 42;
@@ -40574,7 +40534,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildImage();
       var arg_project = 'foo';
       var arg_forceCreate = true;
@@ -40630,7 +40590,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -40693,7 +40653,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildImage();
       var arg_project = 'foo';
       var arg_image = 'foo';
@@ -40745,7 +40705,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildGlobalSetPolicyRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -40794,7 +40754,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildGlobalSetLabelsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -40843,7 +40803,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.ComputeApi(mock).images;
+      var res = api.ComputeApi(mock).images;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -40894,8 +40854,7 @@ void main() {
   unittest.group('resource-InstanceGroupManagersResourceApi', () {
     unittest.test('method--abandonInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersAbandonInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -40950,8 +40909,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -41019,8 +40977,7 @@ void main() {
 
     unittest.test('method--applyUpdatesToInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersApplyUpdatesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41071,8 +41028,7 @@ void main() {
 
     unittest.test('method--createInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersCreateInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41127,8 +41083,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41177,8 +41132,7 @@ void main() {
 
     unittest.test('method--deleteInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersDeleteInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41233,8 +41187,7 @@ void main() {
 
     unittest.test('method--deletePerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersDeletePerInstanceConfigsReq();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41286,8 +41239,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41333,8 +41285,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManager();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41386,8 +41337,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -41451,8 +41401,7 @@ void main() {
 
     unittest.test('method--listErrors', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41518,8 +41467,7 @@ void main() {
 
     unittest.test('method--listManagedInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41585,8 +41533,7 @@ void main() {
 
     unittest.test('method--listPerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41653,8 +41600,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManager();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41707,8 +41653,7 @@ void main() {
 
     unittest.test('method--patchPerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersPatchPerInstanceConfigsReq();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41763,8 +41708,7 @@ void main() {
 
     unittest.test('method--recreateInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersRecreateInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41819,8 +41763,7 @@ void main() {
 
     unittest.test('method--resize', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -41872,8 +41815,7 @@ void main() {
 
     unittest.test('method--setInstanceTemplate', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersSetInstanceTemplateRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41928,8 +41870,7 @@ void main() {
 
     unittest.test('method--setTargetPools', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersSetTargetPoolsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -41983,8 +41924,7 @@ void main() {
 
     unittest.test('method--updatePerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.InstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).instanceGroupManagers;
+      var res = api.ComputeApi(mock).instanceGroupManagers;
       var arg_request = buildInstanceGroupManagersUpdatePerInstanceConfigsReq();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42041,7 +41981,7 @@ void main() {
   unittest.group('resource-InstanceGroupsResourceApi', () {
     unittest.test('method--addInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_request = buildInstanceGroupsAddInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42094,7 +42034,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -42161,7 +42101,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroup = 'foo';
@@ -42210,7 +42150,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instanceGroup = 'foo';
@@ -42255,7 +42195,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_request = buildInstanceGroup();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42307,7 +42247,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -42371,7 +42311,7 @@ void main() {
 
     unittest.test('method--listInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_request = buildInstanceGroupsListInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42440,7 +42380,7 @@ void main() {
 
     unittest.test('method--removeInstances', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_request = buildInstanceGroupsRemoveInstancesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42494,7 +42434,7 @@ void main() {
 
     unittest.test('method--setNamedPorts', () {
       var mock = HttpServerMock();
-      api.InstanceGroupsResourceApi res = api.ComputeApi(mock).instanceGroups;
+      var res = api.ComputeApi(mock).instanceGroups;
       var arg_request = buildInstanceGroupsSetNamedPortsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42549,8 +42489,7 @@ void main() {
   unittest.group('resource-InstanceTemplatesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_project = 'foo';
       var arg_instanceTemplate = 'foo';
       var arg_requestId = 'foo';
@@ -42598,8 +42537,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_project = 'foo';
       var arg_instanceTemplate = 'foo';
       var arg_$fields = 'foo';
@@ -42643,8 +42581,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_project = 'foo';
       var arg_resource = 'foo';
       var arg_optionsRequestedPolicyVersion = 42;
@@ -42694,8 +42631,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_request = buildInstanceTemplate();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -42746,8 +42682,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -42810,8 +42745,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_request = buildGlobalSetPolicyRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -42860,8 +42794,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.InstanceTemplatesResourceApi res =
-          api.ComputeApi(mock).instanceTemplates;
+      var res = api.ComputeApi(mock).instanceTemplates;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -42912,7 +42845,7 @@ void main() {
   unittest.group('resource-InstancesResourceApi', () {
     unittest.test('method--addAccessConfig', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildAccessConfig();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -42969,7 +42902,7 @@ void main() {
 
     unittest.test('method--addResourcePolicies', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesAddResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -43022,7 +42955,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -43089,7 +43022,7 @@ void main() {
 
     unittest.test('method--attachDisk', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildAttachedDisk();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -43147,7 +43080,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43196,7 +43129,7 @@ void main() {
 
     unittest.test('method--deleteAccessConfig', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43252,7 +43185,7 @@ void main() {
 
     unittest.test('method--detachDisk', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43304,7 +43237,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43349,7 +43282,7 @@ void main() {
 
     unittest.test('method--getGuestAttributes', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43403,7 +43336,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_resource = 'foo';
@@ -43454,7 +43387,7 @@ void main() {
 
     unittest.test('method--getScreenshot', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43500,7 +43433,7 @@ void main() {
 
     unittest.test('method--getSerialPortOutput', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43551,7 +43484,7 @@ void main() {
 
     unittest.test('method--getShieldedInstanceIdentity', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43597,7 +43530,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstance();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -43654,7 +43587,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -43718,7 +43651,7 @@ void main() {
 
     unittest.test('method--listReferrers', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43783,7 +43716,7 @@ void main() {
 
     unittest.test('method--removeResourcePolicies', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesRemoveResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -43837,7 +43770,7 @@ void main() {
 
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43886,7 +43819,7 @@ void main() {
 
     unittest.test('method--setDeletionProtection', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_resource = 'foo';
@@ -43940,7 +43873,7 @@ void main() {
 
     unittest.test('method--setDiskAutoDelete', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -43996,7 +43929,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildZoneSetPolicyRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44046,7 +43979,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesSetLabelsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44099,7 +44032,7 @@ void main() {
 
     unittest.test('method--setMachineResources', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesSetMachineResourcesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44152,7 +44085,7 @@ void main() {
 
     unittest.test('method--setMachineType', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesSetMachineTypeRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44205,7 +44138,7 @@ void main() {
 
     unittest.test('method--setMetadata', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildMetadata();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44258,7 +44191,7 @@ void main() {
 
     unittest.test('method--setMinCpuPlatform', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesSetMinCpuPlatformRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44311,7 +44244,7 @@ void main() {
 
     unittest.test('method--setScheduling', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildScheduling();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44364,7 +44297,7 @@ void main() {
 
     unittest.test('method--setServiceAccount', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesSetServiceAccountRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44417,7 +44350,7 @@ void main() {
 
     unittest.test('method--setShieldedInstanceIntegrityPolicy', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildShieldedInstanceIntegrityPolicy();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44471,7 +44404,7 @@ void main() {
 
     unittest.test('method--setTags', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildTags();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44524,7 +44457,7 @@ void main() {
 
     unittest.test('method--simulateMaintenanceEvent', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -44570,7 +44503,7 @@ void main() {
 
     unittest.test('method--start', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -44619,7 +44552,7 @@ void main() {
 
     unittest.test('method--startWithEncryptionKey', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstancesStartWithEncryptionKeyRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44673,7 +44606,7 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_instance = 'foo';
@@ -44722,7 +44655,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44772,7 +44705,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildInstance();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44834,7 +44767,7 @@ void main() {
 
     unittest.test('method--updateAccessConfig', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildAccessConfig();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44891,7 +44824,7 @@ void main() {
 
     unittest.test('method--updateDisplayDevice', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildDisplayDevice();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -44944,7 +44877,7 @@ void main() {
 
     unittest.test('method--updateNetworkInterface', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildNetworkInterface();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -45001,7 +44934,7 @@ void main() {
 
     unittest.test('method--updateShieldedInstanceConfig', () {
       var mock = HttpServerMock();
-      api.InstancesResourceApi res = api.ComputeApi(mock).instances;
+      var res = api.ComputeApi(mock).instances;
       var arg_request = buildShieldedInstanceConfig();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -45057,8 +44990,7 @@ void main() {
   unittest.group('resource-InterconnectAttachmentsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -45126,8 +45058,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_interconnectAttachment = 'foo';
@@ -45176,8 +45107,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_interconnectAttachment = 'foo';
@@ -45223,8 +45153,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_request = buildInterconnectAttachment();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -45281,8 +45210,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -45346,8 +45274,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.InterconnectAttachmentsResourceApi res =
-          api.ComputeApi(mock).interconnectAttachments;
+      var res = api.ComputeApi(mock).interconnectAttachments;
       var arg_request = buildInterconnectAttachment();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -45403,8 +45330,7 @@ void main() {
   unittest.group('resource-InterconnectLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InterconnectLocationsResourceApi res =
-          api.ComputeApi(mock).interconnectLocations;
+      var res = api.ComputeApi(mock).interconnectLocations;
       var arg_project = 'foo';
       var arg_interconnectLocation = 'foo';
       var arg_$fields = 'foo';
@@ -45448,8 +45374,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InterconnectLocationsResourceApi res =
-          api.ComputeApi(mock).interconnectLocations;
+      var res = api.ComputeApi(mock).interconnectLocations;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -45514,7 +45439,7 @@ void main() {
   unittest.group('resource-InterconnectsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_project = 'foo';
       var arg_interconnect = 'foo';
       var arg_requestId = 'foo';
@@ -45562,7 +45487,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_project = 'foo';
       var arg_interconnect = 'foo';
       var arg_$fields = 'foo';
@@ -45606,7 +45531,7 @@ void main() {
 
     unittest.test('method--getDiagnostics', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_project = 'foo';
       var arg_interconnect = 'foo';
       var arg_$fields = 'foo';
@@ -45651,7 +45576,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_request = buildInterconnect();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -45702,7 +45627,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -45765,7 +45690,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.InterconnectsResourceApi res = api.ComputeApi(mock).interconnects;
+      var res = api.ComputeApi(mock).interconnects;
       var arg_request = buildInterconnect();
       var arg_project = 'foo';
       var arg_interconnect = 'foo';
@@ -45819,7 +45744,7 @@ void main() {
   unittest.group('resource-LicenseCodesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LicenseCodesResourceApi res = api.ComputeApi(mock).licenseCodes;
+      var res = api.ComputeApi(mock).licenseCodes;
       var arg_project = 'foo';
       var arg_licenseCode = 'foo';
       var arg_$fields = 'foo';
@@ -45863,7 +45788,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.LicenseCodesResourceApi res = api.ComputeApi(mock).licenseCodes;
+      var res = api.ComputeApi(mock).licenseCodes;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -45914,7 +45839,7 @@ void main() {
   unittest.group('resource-LicensesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_project = 'foo';
       var arg_license = 'foo';
       var arg_requestId = 'foo';
@@ -45962,7 +45887,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_project = 'foo';
       var arg_license = 'foo';
       var arg_$fields = 'foo';
@@ -46006,7 +45931,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_project = 'foo';
       var arg_resource = 'foo';
       var arg_optionsRequestedPolicyVersion = 42;
@@ -46056,7 +45981,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_request = buildLicense();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -46107,7 +46032,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -46170,7 +46095,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_request = buildGlobalSetPolicyRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -46219,7 +46144,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.LicensesResourceApi res = api.ComputeApi(mock).licenses;
+      var res = api.ComputeApi(mock).licenses;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -46270,7 +46195,7 @@ void main() {
   unittest.group('resource-MachineTypesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.MachineTypesResourceApi res = api.ComputeApi(mock).machineTypes;
+      var res = api.ComputeApi(mock).machineTypes;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -46337,7 +46262,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.MachineTypesResourceApi res = api.ComputeApi(mock).machineTypes;
+      var res = api.ComputeApi(mock).machineTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_machineType = 'foo';
@@ -46382,7 +46307,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MachineTypesResourceApi res = api.ComputeApi(mock).machineTypes;
+      var res = api.ComputeApi(mock).machineTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -46448,8 +46373,7 @@ void main() {
   unittest.group('resource-NetworkEndpointGroupsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -46517,8 +46441,7 @@ void main() {
 
     unittest.test('method--attachNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_request = buildNetworkEndpointGroupsAttachEndpointsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -46573,8 +46496,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_networkEndpointGroup = 'foo';
@@ -46623,8 +46545,7 @@ void main() {
 
     unittest.test('method--detachNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_request = buildNetworkEndpointGroupsDetachEndpointsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -46679,8 +46600,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_networkEndpointGroup = 'foo';
@@ -46726,8 +46646,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_request = buildNetworkEndpointGroup();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -46779,8 +46698,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -46844,8 +46762,7 @@ void main() {
 
     unittest.test('method--listNetworkEndpoints', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_request = buildNetworkEndpointGroupsListEndpointsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -46916,8 +46833,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.NetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).networkEndpointGroups;
+      var res = api.ComputeApi(mock).networkEndpointGroups;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -46969,7 +46885,7 @@ void main() {
   unittest.group('resource-NetworksResourceApi', () {
     unittest.test('method--addPeering', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_request = buildNetworksAddPeeringRequest();
       var arg_project = 'foo';
       var arg_network = 'foo';
@@ -47021,7 +46937,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_project = 'foo';
       var arg_network = 'foo';
       var arg_requestId = 'foo';
@@ -47069,7 +46985,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_project = 'foo';
       var arg_network = 'foo';
       var arg_$fields = 'foo';
@@ -47113,7 +47029,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_request = buildNetwork();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -47164,7 +47080,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -47227,7 +47143,7 @@ void main() {
 
     unittest.test('method--listPeeringRoutes', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_project = 'foo';
       var arg_network = 'foo';
       var arg_direction = 'foo';
@@ -47302,7 +47218,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_request = buildNetwork();
       var arg_project = 'foo';
       var arg_network = 'foo';
@@ -47354,7 +47270,7 @@ void main() {
 
     unittest.test('method--removePeering', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_request = buildNetworksRemovePeeringRequest();
       var arg_project = 'foo';
       var arg_network = 'foo';
@@ -47406,7 +47322,7 @@ void main() {
 
     unittest.test('method--switchToCustomMode', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_project = 'foo';
       var arg_network = 'foo';
       var arg_requestId = 'foo';
@@ -47454,7 +47370,7 @@ void main() {
 
     unittest.test('method--updatePeering', () {
       var mock = HttpServerMock();
-      api.NetworksResourceApi res = api.ComputeApi(mock).networks;
+      var res = api.ComputeApi(mock).networks;
       var arg_request = buildNetworksUpdatePeeringRequest();
       var arg_project = 'foo';
       var arg_network = 'foo';
@@ -47508,7 +47424,7 @@ void main() {
   unittest.group('resource-NodeGroupsResourceApi', () {
     unittest.test('method--addNodes', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildNodeGroupsAddNodesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -47561,7 +47477,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -47628,7 +47544,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_nodeGroup = 'foo';
@@ -47677,7 +47593,7 @@ void main() {
 
     unittest.test('method--deleteNodes', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildNodeGroupsDeleteNodesRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -47730,7 +47646,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_nodeGroup = 'foo';
@@ -47775,7 +47691,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_resource = 'foo';
@@ -47826,7 +47742,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildNodeGroup();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -47881,7 +47797,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -47945,7 +47861,7 @@ void main() {
 
     unittest.test('method--listNodes', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_nodeGroup = 'foo';
@@ -48010,7 +47926,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildNodeGroup();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -48063,7 +47979,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildZoneSetPolicyRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -48113,7 +48029,7 @@ void main() {
 
     unittest.test('method--setNodeTemplate', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildNodeGroupsSetNodeTemplateRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -48166,7 +48082,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.NodeGroupsResourceApi res = api.ComputeApi(mock).nodeGroups;
+      var res = api.ComputeApi(mock).nodeGroups;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -48218,7 +48134,7 @@ void main() {
   unittest.group('resource-NodeTemplatesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -48285,7 +48201,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_nodeTemplate = 'foo';
@@ -48334,7 +48250,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_nodeTemplate = 'foo';
@@ -48379,7 +48295,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resource = 'foo';
@@ -48430,7 +48346,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_request = buildNodeTemplate();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -48482,7 +48398,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -48546,7 +48462,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_request = buildRegionSetPolicyRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -48596,7 +48512,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.NodeTemplatesResourceApi res = api.ComputeApi(mock).nodeTemplates;
+      var res = api.ComputeApi(mock).nodeTemplates;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -48649,7 +48565,7 @@ void main() {
   unittest.group('resource-NodeTypesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.NodeTypesResourceApi res = api.ComputeApi(mock).nodeTypes;
+      var res = api.ComputeApi(mock).nodeTypes;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -48716,7 +48632,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.NodeTypesResourceApi res = api.ComputeApi(mock).nodeTypes;
+      var res = api.ComputeApi(mock).nodeTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_nodeType = 'foo';
@@ -48761,7 +48677,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.NodeTypesResourceApi res = api.ComputeApi(mock).nodeTypes;
+      var res = api.ComputeApi(mock).nodeTypes;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -48827,8 +48743,7 @@ void main() {
   unittest.group('resource-PacketMirroringsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -48895,8 +48810,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_packetMirroring = 'foo';
@@ -48945,8 +48859,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_packetMirroring = 'foo';
@@ -48992,8 +48905,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_request = buildPacketMirroring();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -49045,8 +48957,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -49110,8 +49021,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_request = buildPacketMirroring();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -49164,8 +49074,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.PacketMirroringsResourceApi res =
-          api.ComputeApi(mock).packetMirrorings;
+      var res = api.ComputeApi(mock).packetMirrorings;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -49218,7 +49127,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--disableXpnHost', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_project = 'foo';
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
@@ -49265,7 +49174,7 @@ void main() {
 
     unittest.test('method--disableXpnResource', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildProjectsDisableXpnResourceRequest();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49316,7 +49225,7 @@ void main() {
 
     unittest.test('method--enableXpnHost', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_project = 'foo';
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
@@ -49363,7 +49272,7 @@ void main() {
 
     unittest.test('method--enableXpnResource', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildProjectsEnableXpnResourceRequest();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49414,7 +49323,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_project = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -49457,7 +49366,7 @@ void main() {
 
     unittest.test('method--getXpnHost', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_project = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -49500,7 +49409,7 @@ void main() {
 
     unittest.test('method--getXpnResources', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -49563,7 +49472,7 @@ void main() {
 
     unittest.test('method--listXpnHosts', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildProjectsListXpnHostsRequest();
       var arg_project = 'foo';
       var arg_filter = 'foo';
@@ -49630,7 +49539,7 @@ void main() {
 
     unittest.test('method--moveDisk', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildDiskMoveRequest();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49681,7 +49590,7 @@ void main() {
 
     unittest.test('method--moveInstance', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildInstanceMoveRequest();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49732,7 +49641,7 @@ void main() {
 
     unittest.test('method--setCommonInstanceMetadata', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildMetadata();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49783,7 +49692,7 @@ void main() {
 
     unittest.test('method--setDefaultNetworkTier', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildProjectsSetDefaultNetworkTierRequest();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49834,7 +49743,7 @@ void main() {
 
     unittest.test('method--setUsageExportBucket', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ComputeApi(mock).projects;
+      var res = api.ComputeApi(mock).projects;
       var arg_request = buildUsageExportLocation();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -49887,8 +49796,7 @@ void main() {
   unittest.group('resource-RegionAutoscalersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_autoscaler = 'foo';
@@ -49937,8 +49845,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_autoscaler = 'foo';
@@ -49983,8 +49890,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50036,8 +49942,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -50101,8 +50006,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50159,8 +50063,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RegionAutoscalersResourceApi res =
-          api.ComputeApi(mock).regionAutoscalers;
+      var res = api.ComputeApi(mock).regionAutoscalers;
       var arg_request = buildAutoscaler();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50219,8 +50122,7 @@ void main() {
   unittest.group('resource-RegionBackendServicesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_backendService = 'foo';
@@ -50269,8 +50171,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_backendService = 'foo';
@@ -50316,8 +50217,7 @@ void main() {
 
     unittest.test('method--getHealth', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_request = buildResourceGroupReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50367,8 +50267,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50420,8 +50319,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -50485,8 +50383,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50539,8 +50436,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RegionBackendServicesResourceApi res =
-          api.ComputeApi(mock).regionBackendServices;
+      var res = api.ComputeApi(mock).regionBackendServices;
       var arg_request = buildBackendService();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50595,8 +50491,7 @@ void main() {
   unittest.group('resource-RegionCommitmentsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.RegionCommitmentsResourceApi res =
-          api.ComputeApi(mock).regionCommitments;
+      var res = api.ComputeApi(mock).regionCommitments;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -50663,8 +50558,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionCommitmentsResourceApi res =
-          api.ComputeApi(mock).regionCommitments;
+      var res = api.ComputeApi(mock).regionCommitments;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_commitment = 'foo';
@@ -50709,8 +50603,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionCommitmentsResourceApi res =
-          api.ComputeApi(mock).regionCommitments;
+      var res = api.ComputeApi(mock).regionCommitments;
       var arg_request = buildCommitment();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50762,8 +50655,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionCommitmentsResourceApi res =
-          api.ComputeApi(mock).regionCommitments;
+      var res = api.ComputeApi(mock).regionCommitments;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -50829,7 +50721,7 @@ void main() {
   unittest.group('resource-RegionDiskTypesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionDiskTypesResourceApi res = api.ComputeApi(mock).regionDiskTypes;
+      var res = api.ComputeApi(mock).regionDiskTypes;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_diskType = 'foo';
@@ -50874,7 +50766,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionDiskTypesResourceApi res = api.ComputeApi(mock).regionDiskTypes;
+      var res = api.ComputeApi(mock).regionDiskTypes;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -50940,7 +50832,7 @@ void main() {
   unittest.group('resource-RegionDisksResourceApi', () {
     unittest.test('method--addResourcePolicies', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildRegionDisksAddResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -50993,7 +50885,7 @@ void main() {
 
     unittest.test('method--createSnapshot', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildSnapshot();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51046,7 +50938,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_disk = 'foo';
@@ -51095,7 +50987,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_disk = 'foo';
@@ -51140,7 +51032,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resource = 'foo';
@@ -51191,7 +51083,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildDisk();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51248,7 +51140,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -51312,7 +51204,7 @@ void main() {
 
     unittest.test('method--removeResourcePolicies', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildRegionDisksRemoveResourcePoliciesRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51366,7 +51258,7 @@ void main() {
 
     unittest.test('method--resize', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildRegionDisksResizeRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51419,7 +51311,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildRegionSetPolicyRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51469,7 +51361,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildRegionSetLabelsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51522,7 +51414,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.RegionDisksResourceApi res = api.ComputeApi(mock).regionDisks;
+      var res = api.ComputeApi(mock).regionDisks;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51575,8 +51467,7 @@ void main() {
   unittest.group('resource-RegionHealthCheckServicesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionHealthCheckServicesResourceApi res =
-          api.ComputeApi(mock).regionHealthCheckServices;
+      var res = api.ComputeApi(mock).regionHealthCheckServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_healthCheckService = 'foo';
@@ -51625,8 +51516,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionHealthCheckServicesResourceApi res =
-          api.ComputeApi(mock).regionHealthCheckServices;
+      var res = api.ComputeApi(mock).regionHealthCheckServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_healthCheckService = 'foo';
@@ -51672,8 +51562,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionHealthCheckServicesResourceApi res =
-          api.ComputeApi(mock).regionHealthCheckServices;
+      var res = api.ComputeApi(mock).regionHealthCheckServices;
       var arg_request = buildHealthCheckService();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51725,8 +51614,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionHealthCheckServicesResourceApi res =
-          api.ComputeApi(mock).regionHealthCheckServices;
+      var res = api.ComputeApi(mock).regionHealthCheckServices;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -51790,8 +51678,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionHealthCheckServicesResourceApi res =
-          api.ComputeApi(mock).regionHealthCheckServices;
+      var res = api.ComputeApi(mock).regionHealthCheckServices;
       var arg_request = buildHealthCheckService();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51846,8 +51733,7 @@ void main() {
   unittest.group('resource-RegionHealthChecksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_healthCheck = 'foo';
@@ -51896,8 +51782,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_healthCheck = 'foo';
@@ -51942,8 +51827,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -51995,8 +51879,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -52060,8 +51943,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52114,8 +51996,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RegionHealthChecksResourceApi res =
-          api.ComputeApi(mock).regionHealthChecks;
+      var res = api.ComputeApi(mock).regionHealthChecks;
       var arg_request = buildHealthCheck();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52170,8 +52051,7 @@ void main() {
   unittest.group('resource-RegionInstanceGroupManagersResourceApi', () {
     unittest.test('method--abandonInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request =
           buildRegionInstanceGroupManagersAbandonInstancesRequest();
       var arg_project = 'foo';
@@ -52228,8 +52108,7 @@ void main() {
 
     unittest.test('method--applyUpdatesToInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildRegionInstanceGroupManagersApplyUpdatesRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52281,8 +52160,7 @@ void main() {
 
     unittest.test('method--createInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request =
           buildRegionInstanceGroupManagersCreateInstancesRequest();
       var arg_project = 'foo';
@@ -52339,8 +52217,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -52389,8 +52266,7 @@ void main() {
 
     unittest.test('method--deleteInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request =
           buildRegionInstanceGroupManagersDeleteInstancesRequest();
       var arg_project = 'foo';
@@ -52447,8 +52323,7 @@ void main() {
 
     unittest.test('method--deletePerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request =
           buildRegionInstanceGroupManagerDeleteInstanceConfigReq();
       var arg_project = 'foo';
@@ -52502,8 +52377,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -52549,8 +52423,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildInstanceGroupManager();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52602,8 +52475,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -52667,8 +52539,7 @@ void main() {
 
     unittest.test('method--listErrors', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -52734,8 +52605,7 @@ void main() {
 
     unittest.test('method--listManagedInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -52802,8 +52672,7 @@ void main() {
 
     unittest.test('method--listPerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -52870,8 +52739,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildInstanceGroupManager();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52924,8 +52792,7 @@ void main() {
 
     unittest.test('method--patchPerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildRegionInstanceGroupManagerPatchInstanceConfigReq();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -52980,8 +52847,7 @@ void main() {
 
     unittest.test('method--recreateInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildRegionInstanceGroupManagersRecreateRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53035,8 +52901,7 @@ void main() {
 
     unittest.test('method--resize', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroupManager = 'foo';
@@ -53088,8 +52953,7 @@ void main() {
 
     unittest.test('method--setInstanceTemplate', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildRegionInstanceGroupManagersSetTemplateRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53144,8 +53008,7 @@ void main() {
 
     unittest.test('method--setTargetPools', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request = buildRegionInstanceGroupManagersSetTargetPoolsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53200,8 +53063,7 @@ void main() {
 
     unittest.test('method--updatePerInstanceConfigs', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupManagersResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroupManagers;
+      var res = api.ComputeApi(mock).regionInstanceGroupManagers;
       var arg_request =
           buildRegionInstanceGroupManagerUpdateInstanceConfigReq();
       var arg_project = 'foo';
@@ -53260,8 +53122,7 @@ void main() {
   unittest.group('resource-RegionInstanceGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupsResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroups;
+      var res = api.ComputeApi(mock).regionInstanceGroups;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_instanceGroup = 'foo';
@@ -53306,8 +53167,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupsResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroups;
+      var res = api.ComputeApi(mock).regionInstanceGroups;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -53371,8 +53231,7 @@ void main() {
 
     unittest.test('method--listInstances', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupsResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroups;
+      var res = api.ComputeApi(mock).regionInstanceGroups;
       var arg_request = buildRegionInstanceGroupsListInstancesRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53443,8 +53302,7 @@ void main() {
 
     unittest.test('method--setNamedPorts', () {
       var mock = HttpServerMock();
-      api.RegionInstanceGroupsResourceApi res =
-          api.ComputeApi(mock).regionInstanceGroups;
+      var res = api.ComputeApi(mock).regionInstanceGroups;
       var arg_request = buildRegionInstanceGroupsSetNamedPortsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53500,8 +53358,7 @@ void main() {
   unittest.group('resource-RegionNetworkEndpointGroupsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).regionNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).regionNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_networkEndpointGroup = 'foo';
@@ -53550,8 +53407,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).regionNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).regionNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_networkEndpointGroup = 'foo';
@@ -53597,8 +53453,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).regionNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).regionNetworkEndpointGroups;
       var arg_request = buildNetworkEndpointGroup();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53650,8 +53505,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionNetworkEndpointGroupsResourceApi res =
-          api.ComputeApi(mock).regionNetworkEndpointGroups;
+      var res = api.ComputeApi(mock).regionNetworkEndpointGroups;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -53717,8 +53571,7 @@ void main() {
   unittest.group('resource-RegionNotificationEndpointsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionNotificationEndpointsResourceApi res =
-          api.ComputeApi(mock).regionNotificationEndpoints;
+      var res = api.ComputeApi(mock).regionNotificationEndpoints;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_notificationEndpoint = 'foo';
@@ -53767,8 +53620,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionNotificationEndpointsResourceApi res =
-          api.ComputeApi(mock).regionNotificationEndpoints;
+      var res = api.ComputeApi(mock).regionNotificationEndpoints;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_notificationEndpoint = 'foo';
@@ -53814,8 +53666,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionNotificationEndpointsResourceApi res =
-          api.ComputeApi(mock).regionNotificationEndpoints;
+      var res = api.ComputeApi(mock).regionNotificationEndpoints;
       var arg_request = buildNotificationEndpoint();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -53867,8 +53718,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionNotificationEndpointsResourceApi res =
-          api.ComputeApi(mock).regionNotificationEndpoints;
+      var res = api.ComputeApi(mock).regionNotificationEndpoints;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -53934,8 +53784,7 @@ void main() {
   unittest.group('resource-RegionOperationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionOperationsResourceApi res =
-          api.ComputeApi(mock).regionOperations;
+      var res = api.ComputeApi(mock).regionOperations;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_operation = 'foo';
@@ -53978,8 +53827,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionOperationsResourceApi res =
-          api.ComputeApi(mock).regionOperations;
+      var res = api.ComputeApi(mock).regionOperations;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_operation = 'foo';
@@ -54024,8 +53872,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionOperationsResourceApi res =
-          api.ComputeApi(mock).regionOperations;
+      var res = api.ComputeApi(mock).regionOperations;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -54089,8 +53936,7 @@ void main() {
 
     unittest.test('method--wait', () {
       var mock = HttpServerMock();
-      api.RegionOperationsResourceApi res =
-          api.ComputeApi(mock).regionOperations;
+      var res = api.ComputeApi(mock).regionOperations;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_operation = 'foo';
@@ -54137,8 +53983,7 @@ void main() {
   unittest.group('resource-RegionSslCertificatesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionSslCertificatesResourceApi res =
-          api.ComputeApi(mock).regionSslCertificates;
+      var res = api.ComputeApi(mock).regionSslCertificates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_sslCertificate = 'foo';
@@ -54187,8 +54032,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionSslCertificatesResourceApi res =
-          api.ComputeApi(mock).regionSslCertificates;
+      var res = api.ComputeApi(mock).regionSslCertificates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_sslCertificate = 'foo';
@@ -54234,8 +54078,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionSslCertificatesResourceApi res =
-          api.ComputeApi(mock).regionSslCertificates;
+      var res = api.ComputeApi(mock).regionSslCertificates;
       var arg_request = buildSslCertificate();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -54287,8 +54130,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionSslCertificatesResourceApi res =
-          api.ComputeApi(mock).regionSslCertificates;
+      var res = api.ComputeApi(mock).regionSslCertificates;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -54354,8 +54196,7 @@ void main() {
   unittest.group('resource-RegionTargetHttpProxiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetHttpProxy = 'foo';
@@ -54404,8 +54245,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetHttpProxy = 'foo';
@@ -54451,8 +54291,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpProxies;
       var arg_request = buildTargetHttpProxy();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -54504,8 +54343,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -54569,8 +54407,7 @@ void main() {
 
     unittest.test('method--setUrlMap', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpProxies;
       var arg_request = buildUrlMapReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -54625,8 +54462,7 @@ void main() {
   unittest.group('resource-RegionTargetHttpsProxiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -54675,8 +54511,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -54722,8 +54557,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_request = buildTargetHttpsProxy();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -54775,8 +54609,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -54840,8 +54673,7 @@ void main() {
 
     unittest.test('method--setSslCertificates', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_request =
           buildRegionTargetHttpsProxiesSetSslCertificatesRequest();
       var arg_project = 'foo';
@@ -54898,8 +54730,7 @@ void main() {
 
     unittest.test('method--setUrlMap', () {
       var mock = HttpServerMock();
-      api.RegionTargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).regionTargetHttpsProxies;
+      var res = api.ComputeApi(mock).regionTargetHttpsProxies;
       var arg_request = buildUrlMapReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -54954,7 +54785,7 @@ void main() {
   unittest.group('resource-RegionUrlMapsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_urlMap = 'foo';
@@ -55003,7 +54834,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_urlMap = 'foo';
@@ -55048,7 +54879,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -55100,7 +54931,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -55164,7 +54995,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -55217,7 +55048,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -55270,7 +55101,7 @@ void main() {
 
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
-      api.RegionUrlMapsResourceApi res = api.ComputeApi(mock).regionUrlMaps;
+      var res = api.ComputeApi(mock).regionUrlMaps;
       var arg_request = buildRegionUrlMapsValidateRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -55322,7 +55153,7 @@ void main() {
   unittest.group('resource-RegionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RegionsResourceApi res = api.ComputeApi(mock).regions;
+      var res = api.ComputeApi(mock).regions;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_$fields = 'foo';
@@ -55366,7 +55197,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RegionsResourceApi res = api.ComputeApi(mock).regions;
+      var res = api.ComputeApi(mock).regions;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -55431,7 +55262,7 @@ void main() {
   unittest.group('resource-ReservationsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -55498,7 +55329,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_reservation = 'foo';
@@ -55547,7 +55378,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_reservation = 'foo';
@@ -55592,7 +55423,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_resource = 'foo';
@@ -55643,7 +55474,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_request = buildReservation();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -55695,7 +55526,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -55759,7 +55590,7 @@ void main() {
 
     unittest.test('method--resize', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_request = buildReservationsResizeRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -55812,7 +55643,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_request = buildZoneSetPolicyRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -55862,7 +55693,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ReservationsResourceApi res = api.ComputeApi(mock).reservations;
+      var res = api.ComputeApi(mock).reservations;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -55914,8 +55745,7 @@ void main() {
   unittest.group('resource-ResourcePoliciesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -55982,8 +55812,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resourcePolicy = 'foo';
@@ -56032,8 +55861,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resourcePolicy = 'foo';
@@ -56079,8 +55907,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resource = 'foo';
@@ -56131,8 +55958,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_request = buildResourcePolicy();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56184,8 +56010,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -56249,8 +56074,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_request = buildRegionSetPolicyRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56300,8 +56124,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ResourcePoliciesResourceApi res =
-          api.ComputeApi(mock).resourcePolicies;
+      var res = api.ComputeApi(mock).resourcePolicies;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56354,7 +56177,7 @@ void main() {
   unittest.group('resource-RoutersResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -56421,7 +56244,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_router = 'foo';
@@ -56470,7 +56293,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_router = 'foo';
@@ -56515,7 +56338,7 @@ void main() {
 
     unittest.test('method--getNatMappingInfo', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_router = 'foo';
@@ -56580,7 +56403,7 @@ void main() {
 
     unittest.test('method--getRouterStatus', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_router = 'foo';
@@ -56626,7 +56449,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_request = buildRouter();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56678,7 +56501,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -56742,7 +56565,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_request = buildRouter();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56795,7 +56618,7 @@ void main() {
 
     unittest.test('method--preview', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_request = buildRouter();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56845,7 +56668,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.RoutersResourceApi res = api.ComputeApi(mock).routers;
+      var res = api.ComputeApi(mock).routers;
       var arg_request = buildRouter();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -56900,7 +56723,7 @@ void main() {
   unittest.group('resource-RoutesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.RoutesResourceApi res = api.ComputeApi(mock).routes;
+      var res = api.ComputeApi(mock).routes;
       var arg_project = 'foo';
       var arg_route = 'foo';
       var arg_requestId = 'foo';
@@ -56948,7 +56771,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RoutesResourceApi res = api.ComputeApi(mock).routes;
+      var res = api.ComputeApi(mock).routes;
       var arg_project = 'foo';
       var arg_route = 'foo';
       var arg_$fields = 'foo';
@@ -56992,7 +56815,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.RoutesResourceApi res = api.ComputeApi(mock).routes;
+      var res = api.ComputeApi(mock).routes;
       var arg_request = buildRoute();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -57043,7 +56866,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RoutesResourceApi res = api.ComputeApi(mock).routes;
+      var res = api.ComputeApi(mock).routes;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -57108,8 +56931,7 @@ void main() {
   unittest.group('resource-SecurityPoliciesResourceApi', () {
     unittest.test('method--addRule', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_request = buildSecurityPolicyRule();
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
@@ -57158,8 +56980,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
       var arg_requestId = 'foo';
@@ -57207,8 +57028,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
       var arg_$fields = 'foo';
@@ -57252,8 +57072,7 @@ void main() {
 
     unittest.test('method--getRule', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
       var arg_priority = 42;
@@ -57301,8 +57120,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_request = buildSecurityPolicy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -57353,8 +57171,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -57417,8 +57234,7 @@ void main() {
 
     unittest.test('method--listPreconfiguredExpressionSets', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -57482,8 +57298,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_request = buildSecurityPolicy();
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
@@ -57535,8 +57350,7 @@ void main() {
 
     unittest.test('method--patchRule', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_request = buildSecurityPolicyRule();
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
@@ -57588,8 +57402,7 @@ void main() {
 
     unittest.test('method--removeRule', () {
       var mock = HttpServerMock();
-      api.SecurityPoliciesResourceApi res =
-          api.ComputeApi(mock).securityPolicies;
+      var res = api.ComputeApi(mock).securityPolicies;
       var arg_project = 'foo';
       var arg_securityPolicy = 'foo';
       var arg_priority = 42;
@@ -57639,7 +57452,7 @@ void main() {
   unittest.group('resource-SnapshotsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_project = 'foo';
       var arg_snapshot = 'foo';
       var arg_requestId = 'foo';
@@ -57687,7 +57500,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_project = 'foo';
       var arg_snapshot = 'foo';
       var arg_$fields = 'foo';
@@ -57731,7 +57544,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_project = 'foo';
       var arg_resource = 'foo';
       var arg_optionsRequestedPolicyVersion = 42;
@@ -57781,7 +57594,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -57844,7 +57657,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_request = buildGlobalSetPolicyRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -57893,7 +57706,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_request = buildGlobalSetLabelsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -57942,7 +57755,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.SnapshotsResourceApi res = api.ComputeApi(mock).snapshots;
+      var res = api.ComputeApi(mock).snapshots;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_resource = 'foo';
@@ -57993,7 +57806,7 @@ void main() {
   unittest.group('resource-SslCertificatesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.SslCertificatesResourceApi res = api.ComputeApi(mock).sslCertificates;
+      var res = api.ComputeApi(mock).sslCertificates;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -58060,7 +57873,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SslCertificatesResourceApi res = api.ComputeApi(mock).sslCertificates;
+      var res = api.ComputeApi(mock).sslCertificates;
       var arg_project = 'foo';
       var arg_sslCertificate = 'foo';
       var arg_requestId = 'foo';
@@ -58108,7 +57921,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SslCertificatesResourceApi res = api.ComputeApi(mock).sslCertificates;
+      var res = api.ComputeApi(mock).sslCertificates;
       var arg_project = 'foo';
       var arg_sslCertificate = 'foo';
       var arg_$fields = 'foo';
@@ -58152,7 +57965,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SslCertificatesResourceApi res = api.ComputeApi(mock).sslCertificates;
+      var res = api.ComputeApi(mock).sslCertificates;
       var arg_request = buildSslCertificate();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -58203,7 +58016,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SslCertificatesResourceApi res = api.ComputeApi(mock).sslCertificates;
+      var res = api.ComputeApi(mock).sslCertificates;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -58268,7 +58081,7 @@ void main() {
   unittest.group('resource-SslPoliciesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_project = 'foo';
       var arg_sslPolicy = 'foo';
       var arg_requestId = 'foo';
@@ -58316,7 +58129,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_project = 'foo';
       var arg_sslPolicy = 'foo';
       var arg_$fields = 'foo';
@@ -58360,7 +58173,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_request = buildSslPolicy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -58411,7 +58224,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -58474,7 +58287,7 @@ void main() {
 
     unittest.test('method--listAvailableFeatures', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -58538,7 +58351,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.SslPoliciesResourceApi res = api.ComputeApi(mock).sslPolicies;
+      var res = api.ComputeApi(mock).sslPolicies;
       var arg_request = buildSslPolicy();
       var arg_project = 'foo';
       var arg_sslPolicy = 'foo';
@@ -58592,7 +58405,7 @@ void main() {
   unittest.group('resource-SubnetworksResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -58659,7 +58472,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_subnetwork = 'foo';
@@ -58708,7 +58521,7 @@ void main() {
 
     unittest.test('method--expandIpCidrRange', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildSubnetworksExpandIpCidrRangeRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -58762,7 +58575,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_subnetwork = 'foo';
@@ -58807,7 +58620,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_resource = 'foo';
@@ -58858,7 +58671,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildSubnetwork();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -58910,7 +58723,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -58974,7 +58787,7 @@ void main() {
 
     unittest.test('method--listUsable', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -59037,7 +58850,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildSubnetwork();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -59095,7 +58908,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildRegionSetPolicyRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -59145,7 +58958,7 @@ void main() {
 
     unittest.test('method--setPrivateIpGoogleAccess', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildSubnetworksSetPrivateIpGoogleAccessRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -59199,7 +59012,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.SubnetworksResourceApi res = api.ComputeApi(mock).subnetworks;
+      var res = api.ComputeApi(mock).subnetworks;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -59252,8 +59065,7 @@ void main() {
   unittest.group('resource-TargetGrpcProxiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetGrpcProxiesResourceApi res =
-          api.ComputeApi(mock).targetGrpcProxies;
+      var res = api.ComputeApi(mock).targetGrpcProxies;
       var arg_project = 'foo';
       var arg_targetGrpcProxy = 'foo';
       var arg_requestId = 'foo';
@@ -59301,8 +59113,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetGrpcProxiesResourceApi res =
-          api.ComputeApi(mock).targetGrpcProxies;
+      var res = api.ComputeApi(mock).targetGrpcProxies;
       var arg_project = 'foo';
       var arg_targetGrpcProxy = 'foo';
       var arg_$fields = 'foo';
@@ -59346,8 +59157,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetGrpcProxiesResourceApi res =
-          api.ComputeApi(mock).targetGrpcProxies;
+      var res = api.ComputeApi(mock).targetGrpcProxies;
       var arg_request = buildTargetGrpcProxy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -59398,8 +59208,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetGrpcProxiesResourceApi res =
-          api.ComputeApi(mock).targetGrpcProxies;
+      var res = api.ComputeApi(mock).targetGrpcProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -59462,8 +59271,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.TargetGrpcProxiesResourceApi res =
-          api.ComputeApi(mock).targetGrpcProxies;
+      var res = api.ComputeApi(mock).targetGrpcProxies;
       var arg_request = buildTargetGrpcProxy();
       var arg_project = 'foo';
       var arg_targetGrpcProxy = 'foo';
@@ -59517,8 +59325,7 @@ void main() {
   unittest.group('resource-TargetHttpProxiesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -59585,8 +59392,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_project = 'foo';
       var arg_targetHttpProxy = 'foo';
       var arg_requestId = 'foo';
@@ -59634,8 +59440,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_project = 'foo';
       var arg_targetHttpProxy = 'foo';
       var arg_$fields = 'foo';
@@ -59679,8 +59484,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_request = buildTargetHttpProxy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -59731,8 +59535,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -59795,8 +59598,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_request = buildTargetHttpProxy();
       var arg_project = 'foo';
       var arg_targetHttpProxy = 'foo';
@@ -59848,8 +59650,7 @@ void main() {
 
     unittest.test('method--setUrlMap', () {
       var mock = HttpServerMock();
-      api.TargetHttpProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpProxies;
+      var res = api.ComputeApi(mock).targetHttpProxies;
       var arg_request = buildUrlMapReference();
       var arg_project = 'foo';
       var arg_targetHttpProxy = 'foo';
@@ -59903,8 +59704,7 @@ void main() {
   unittest.group('resource-TargetHttpsProxiesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -59971,8 +59771,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
       var arg_requestId = 'foo';
@@ -60020,8 +59819,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
       var arg_$fields = 'foo';
@@ -60065,8 +59863,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_request = buildTargetHttpsProxy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -60117,8 +59914,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -60181,8 +59977,7 @@ void main() {
 
     unittest.test('method--setQuicOverride', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_request = buildTargetHttpsProxiesSetQuicOverrideRequest();
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -60234,8 +60029,7 @@ void main() {
 
     unittest.test('method--setSslCertificates', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_request = buildTargetHttpsProxiesSetSslCertificatesRequest();
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -60288,8 +60082,7 @@ void main() {
 
     unittest.test('method--setSslPolicy', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_request = buildSslPolicyReference();
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -60341,8 +60134,7 @@ void main() {
 
     unittest.test('method--setUrlMap', () {
       var mock = HttpServerMock();
-      api.TargetHttpsProxiesResourceApi res =
-          api.ComputeApi(mock).targetHttpsProxies;
+      var res = api.ComputeApi(mock).targetHttpsProxies;
       var arg_request = buildUrlMapReference();
       var arg_project = 'foo';
       var arg_targetHttpsProxy = 'foo';
@@ -60396,7 +60188,7 @@ void main() {
   unittest.group('resource-TargetInstancesResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.TargetInstancesResourceApi res = api.ComputeApi(mock).targetInstances;
+      var res = api.ComputeApi(mock).targetInstances;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -60463,7 +60255,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetInstancesResourceApi res = api.ComputeApi(mock).targetInstances;
+      var res = api.ComputeApi(mock).targetInstances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_targetInstance = 'foo';
@@ -60512,7 +60304,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetInstancesResourceApi res = api.ComputeApi(mock).targetInstances;
+      var res = api.ComputeApi(mock).targetInstances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_targetInstance = 'foo';
@@ -60557,7 +60349,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetInstancesResourceApi res = api.ComputeApi(mock).targetInstances;
+      var res = api.ComputeApi(mock).targetInstances;
       var arg_request = buildTargetInstance();
       var arg_project = 'foo';
       var arg_zone = 'foo';
@@ -60609,7 +60401,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetInstancesResourceApi res = api.ComputeApi(mock).targetInstances;
+      var res = api.ComputeApi(mock).targetInstances;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -60675,7 +60467,7 @@ void main() {
   unittest.group('resource-TargetPoolsResourceApi', () {
     unittest.test('method--addHealthCheck', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetPoolsAddHealthCheckRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -60728,7 +60520,7 @@ void main() {
 
     unittest.test('method--addInstance', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetPoolsAddInstanceRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -60781,7 +60573,7 @@ void main() {
 
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -60848,7 +60640,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetPool = 'foo';
@@ -60897,7 +60689,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetPool = 'foo';
@@ -60942,7 +60734,7 @@ void main() {
 
     unittest.test('method--getHealth', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildInstanceReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -60992,7 +60784,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetPool();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -61044,7 +60836,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -61108,7 +60900,7 @@ void main() {
 
     unittest.test('method--removeHealthCheck', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetPoolsRemoveHealthCheckRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -61162,7 +60954,7 @@ void main() {
 
     unittest.test('method--removeInstance', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetPoolsRemoveInstanceRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -61215,7 +61007,7 @@ void main() {
 
     unittest.test('method--setBackup', () {
       var mock = HttpServerMock();
-      api.TargetPoolsResourceApi res = api.ComputeApi(mock).targetPools;
+      var res = api.ComputeApi(mock).targetPools;
       var arg_request = buildTargetReference();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -61275,8 +61067,7 @@ void main() {
   unittest.group('resource-TargetSslProxiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
       var arg_requestId = 'foo';
@@ -61324,8 +61115,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
       var arg_$fields = 'foo';
@@ -61369,8 +61159,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_request = buildTargetSslProxy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -61421,8 +61210,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -61485,8 +61273,7 @@ void main() {
 
     unittest.test('method--setBackendService', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_request = buildTargetSslProxiesSetBackendServiceRequest();
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
@@ -61538,8 +61325,7 @@ void main() {
 
     unittest.test('method--setProxyHeader', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_request = buildTargetSslProxiesSetProxyHeaderRequest();
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
@@ -61591,8 +61377,7 @@ void main() {
 
     unittest.test('method--setSslCertificates', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_request = buildTargetSslProxiesSetSslCertificatesRequest();
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
@@ -61644,8 +61429,7 @@ void main() {
 
     unittest.test('method--setSslPolicy', () {
       var mock = HttpServerMock();
-      api.TargetSslProxiesResourceApi res =
-          api.ComputeApi(mock).targetSslProxies;
+      var res = api.ComputeApi(mock).targetSslProxies;
       var arg_request = buildSslPolicyReference();
       var arg_project = 'foo';
       var arg_targetSslProxy = 'foo';
@@ -61699,8 +61483,7 @@ void main() {
   unittest.group('resource-TargetTcpProxiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_project = 'foo';
       var arg_targetTcpProxy = 'foo';
       var arg_requestId = 'foo';
@@ -61748,8 +61531,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_project = 'foo';
       var arg_targetTcpProxy = 'foo';
       var arg_$fields = 'foo';
@@ -61793,8 +61575,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_request = buildTargetTcpProxy();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -61845,8 +61626,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -61909,8 +61689,7 @@ void main() {
 
     unittest.test('method--setBackendService', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_request = buildTargetTcpProxiesSetBackendServiceRequest();
       var arg_project = 'foo';
       var arg_targetTcpProxy = 'foo';
@@ -61962,8 +61741,7 @@ void main() {
 
     unittest.test('method--setProxyHeader', () {
       var mock = HttpServerMock();
-      api.TargetTcpProxiesResourceApi res =
-          api.ComputeApi(mock).targetTcpProxies;
+      var res = api.ComputeApi(mock).targetTcpProxies;
       var arg_request = buildTargetTcpProxiesSetProxyHeaderRequest();
       var arg_project = 'foo';
       var arg_targetTcpProxy = 'foo';
@@ -62017,8 +61795,7 @@ void main() {
   unittest.group('resource-TargetVpnGatewaysResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.TargetVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).targetVpnGateways;
+      var res = api.ComputeApi(mock).targetVpnGateways;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -62085,8 +61862,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.TargetVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).targetVpnGateways;
+      var res = api.ComputeApi(mock).targetVpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetVpnGateway = 'foo';
@@ -62135,8 +61911,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.TargetVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).targetVpnGateways;
+      var res = api.ComputeApi(mock).targetVpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_targetVpnGateway = 'foo';
@@ -62182,8 +61957,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.TargetVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).targetVpnGateways;
+      var res = api.ComputeApi(mock).targetVpnGateways;
       var arg_request = buildTargetVpnGateway();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -62235,8 +62009,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.TargetVpnGatewaysResourceApi res =
-          api.ComputeApi(mock).targetVpnGateways;
+      var res = api.ComputeApi(mock).targetVpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -62302,7 +62075,7 @@ void main() {
   unittest.group('resource-UrlMapsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -62369,7 +62142,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
       var arg_requestId = 'foo';
@@ -62417,7 +62190,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
       var arg_$fields = 'foo';
@@ -62461,7 +62234,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_requestId = 'foo';
@@ -62512,7 +62285,7 @@ void main() {
 
     unittest.test('method--invalidateCache', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_request = buildCacheInvalidationRule();
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
@@ -62564,7 +62337,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -62627,7 +62400,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
@@ -62679,7 +62452,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_request = buildUrlMap();
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
@@ -62731,7 +62504,7 @@ void main() {
 
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
-      api.UrlMapsResourceApi res = api.ComputeApi(mock).urlMaps;
+      var res = api.ComputeApi(mock).urlMaps;
       var arg_request = buildUrlMapsValidateRequest();
       var arg_project = 'foo';
       var arg_urlMap = 'foo';
@@ -62781,7 +62554,7 @@ void main() {
   unittest.group('resource-VpnGatewaysResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -62848,7 +62621,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_vpnGateway = 'foo';
@@ -62897,7 +62670,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_vpnGateway = 'foo';
@@ -62942,7 +62715,7 @@ void main() {
 
     unittest.test('method--getStatus', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_vpnGateway = 'foo';
@@ -62988,7 +62761,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_request = buildVpnGateway();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -63040,7 +62813,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -63104,7 +62877,7 @@ void main() {
 
     unittest.test('method--setLabels', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_request = buildRegionSetLabelsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -63157,7 +62930,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.VpnGatewaysResourceApi res = api.ComputeApi(mock).vpnGateways;
+      var res = api.ComputeApi(mock).vpnGateways;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -63210,7 +62983,7 @@ void main() {
   unittest.group('resource-VpnTunnelsResourceApi', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
-      api.VpnTunnelsResourceApi res = api.ComputeApi(mock).vpnTunnels;
+      var res = api.ComputeApi(mock).vpnTunnels;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_includeAllScopes = true;
@@ -63277,7 +63050,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.VpnTunnelsResourceApi res = api.ComputeApi(mock).vpnTunnels;
+      var res = api.ComputeApi(mock).vpnTunnels;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_vpnTunnel = 'foo';
@@ -63326,7 +63099,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.VpnTunnelsResourceApi res = api.ComputeApi(mock).vpnTunnels;
+      var res = api.ComputeApi(mock).vpnTunnels;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_vpnTunnel = 'foo';
@@ -63371,7 +63144,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.VpnTunnelsResourceApi res = api.ComputeApi(mock).vpnTunnels;
+      var res = api.ComputeApi(mock).vpnTunnels;
       var arg_request = buildVpnTunnel();
       var arg_project = 'foo';
       var arg_region = 'foo';
@@ -63423,7 +63196,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.VpnTunnelsResourceApi res = api.ComputeApi(mock).vpnTunnels;
+      var res = api.ComputeApi(mock).vpnTunnels;
       var arg_project = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -63489,7 +63262,7 @@ void main() {
   unittest.group('resource-ZoneOperationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ZoneOperationsResourceApi res = api.ComputeApi(mock).zoneOperations;
+      var res = api.ComputeApi(mock).zoneOperations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_operation = 'foo';
@@ -63532,7 +63305,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ZoneOperationsResourceApi res = api.ComputeApi(mock).zoneOperations;
+      var res = api.ComputeApi(mock).zoneOperations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_operation = 'foo';
@@ -63577,7 +63350,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ZoneOperationsResourceApi res = api.ComputeApi(mock).zoneOperations;
+      var res = api.ComputeApi(mock).zoneOperations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_filter = 'foo';
@@ -63641,7 +63414,7 @@ void main() {
 
     unittest.test('method--wait', () {
       var mock = HttpServerMock();
-      api.ZoneOperationsResourceApi res = api.ComputeApi(mock).zoneOperations;
+      var res = api.ComputeApi(mock).zoneOperations;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_operation = 'foo';
@@ -63688,7 +63461,7 @@ void main() {
   unittest.group('resource-ZonesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ZonesResourceApi res = api.ComputeApi(mock).zones;
+      var res = api.ComputeApi(mock).zones;
       var arg_project = 'foo';
       var arg_zone = 'foo';
       var arg_$fields = 'foo';
@@ -63732,7 +63505,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ZonesResourceApi res = api.ComputeApi(mock).zones;
+      var res = api.ComputeApi(mock).zones;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;

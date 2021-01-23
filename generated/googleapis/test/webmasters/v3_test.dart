@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -499,8 +498,7 @@ void main() {
   unittest.group('resource-SearchanalyticsResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.SearchanalyticsResourceApi res =
-          api.WebmastersApi(mock).searchanalytics;
+      var res = api.WebmastersApi(mock).searchanalytics;
       var arg_request = buildSearchAnalyticsQueryRequest();
       var arg_siteUrl = 'foo';
       var arg_$fields = 'foo';
@@ -564,7 +562,7 @@ void main() {
   unittest.group('resource-SitemapsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SitemapsResourceApi res = api.WebmastersApi(mock).sitemaps;
+      var res = api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
       var arg_feedpath = 'foo';
       var arg_$fields = 'foo';
@@ -624,7 +622,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SitemapsResourceApi res = api.WebmastersApi(mock).sitemaps;
+      var res = api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
       var arg_feedpath = 'foo';
       var arg_$fields = 'foo';
@@ -686,7 +684,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SitemapsResourceApi res = api.WebmastersApi(mock).sitemaps;
+      var res = api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
       var arg_sitemapIndex = 'foo';
       var arg_$fields = 'foo';
@@ -748,7 +746,7 @@ void main() {
 
     unittest.test('method--submit', () {
       var mock = HttpServerMock();
-      api.SitemapsResourceApi res = api.WebmastersApi(mock).sitemaps;
+      var res = api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
       var arg_feedpath = 'foo';
       var arg_$fields = 'foo';
@@ -810,7 +808,7 @@ void main() {
   unittest.group('resource-SitesResourceApi', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.WebmastersApi(mock).sites;
+      var res = api.WebmastersApi(mock).sites;
       var arg_siteUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -860,7 +858,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.WebmastersApi(mock).sites;
+      var res = api.WebmastersApi(mock).sites;
       var arg_siteUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -910,7 +908,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.WebmastersApi(mock).sites;
+      var res = api.WebmastersApi(mock).sites;
       var arg_siteUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -962,7 +960,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.WebmastersApi(mock).sites;
+      var res = api.WebmastersApi(mock).sites;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

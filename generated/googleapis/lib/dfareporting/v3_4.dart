@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -15120,8 +15119,7 @@ class Account {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountPermissionIds != null) {
       _json['accountPermissionIds'] = accountPermissionIds;
     }
@@ -15231,8 +15229,7 @@ class AccountActiveAdSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -15304,8 +15301,7 @@ class AccountPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountProfiles != null) {
       _json['accountProfiles'] = accountProfiles;
     }
@@ -15356,8 +15352,7 @@ class AccountPermissionGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -15395,8 +15390,7 @@ class AccountPermissionGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountPermissionGroups != null) {
       _json['accountPermissionGroups'] =
           accountPermissionGroups.map((value) => value.toJson()).toList();
@@ -15431,8 +15425,7 @@ class AccountPermissionsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountPermissions != null) {
       _json['accountPermissions'] =
           accountPermissions.map((value) => value.toJson()).toList();
@@ -15573,8 +15566,7 @@ class AccountUserProfile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -15657,8 +15649,7 @@ class AccountUserProfilesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountUserProfiles != null) {
       _json['accountUserProfiles'] =
           accountUserProfiles.map((value) => value.toJson()).toList();
@@ -15702,8 +15693,7 @@ class AccountsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accounts != null) {
       _json['accounts'] = accounts.map((value) => value.toJson()).toList();
     }
@@ -15746,8 +15736,7 @@ class Activities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filters != null) {
       _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
@@ -16077,8 +16066,7 @@ class Ad {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -16246,8 +16234,7 @@ class AdBlockingConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThroughUrl != null) {
       _json['clickThroughUrl'] = clickThroughUrl;
     }
@@ -16335,8 +16322,7 @@ class AdSlot {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (comment != null) {
       _json['comment'] = comment;
     }
@@ -16394,8 +16380,7 @@ class AdsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ads != null) {
       _json['ads'] = ads.map((value) => value.toJson()).toList();
     }
@@ -16535,8 +16520,7 @@ class Advertiser {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -16625,8 +16609,7 @@ class AdvertiserGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -16672,8 +16655,7 @@ class AdvertiserGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (advertiserGroups != null) {
       _json['advertiserGroups'] =
           advertiserGroups.map((value) => value.toJson()).toList();
@@ -16717,8 +16699,7 @@ class AdvertiserLandingPagesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -16762,8 +16743,7 @@ class AdvertisersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (advertisers != null) {
       _json['advertisers'] =
           advertisers.map((value) => value.toJson()).toList();
@@ -16807,8 +16787,7 @@ class AudienceSegment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allocation != null) {
       _json['allocation'] = allocation;
     }
@@ -16853,8 +16832,7 @@ class AudienceSegmentGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audienceSegments != null) {
       _json['audienceSegments'] =
           audienceSegments.map((value) => value.toJson()).toList();
@@ -16929,8 +16907,7 @@ class Browser {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (browserVersionId != null) {
       _json['browserVersionId'] = browserVersionId;
     }
@@ -16976,8 +16953,7 @@ class BrowsersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (browsers != null) {
       _json['browsers'] = browsers.map((value) => value.toJson()).toList();
     }
@@ -17192,8 +17168,7 @@ class Campaign {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -17313,8 +17288,7 @@ class CampaignCreativeAssociation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeId != null) {
       _json['creativeId'] = creativeId;
     }
@@ -17356,8 +17330,7 @@ class CampaignCreativeAssociationsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (campaignCreativeAssociations != null) {
       _json['campaignCreativeAssociations'] =
           campaignCreativeAssociations.map((value) => value.toJson()).toList();
@@ -17417,8 +17390,7 @@ class CampaignManagerIds {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adId != null) {
       _json['adId'] = adId;
     }
@@ -17470,8 +17442,7 @@ class CampaignsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (campaigns != null) {
       _json['campaigns'] = campaigns.map((value) => value.toJson()).toList();
     }
@@ -17579,8 +17550,7 @@ class ChangeLog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -17656,8 +17626,7 @@ class ChangeLogsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changeLogs != null) {
       _json['changeLogs'] = changeLogs.map((value) => value.toJson()).toList();
     }
@@ -17706,8 +17675,7 @@ class ChannelGrouping {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fallbackName != null) {
       _json['fallbackName'] = fallbackName;
     }
@@ -17755,8 +17723,7 @@ class ChannelGroupingRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disjunctiveMatchStatements != null) {
       _json['disjunctiveMatchStatements'] =
           disjunctiveMatchStatements.map((value) => value.toJson()).toList();
@@ -17794,8 +17761,7 @@ class CitiesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cities != null) {
       _json['cities'] = cities.map((value) => value.toJson()).toList();
     }
@@ -17870,8 +17836,7 @@ class City {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countryCode != null) {
       _json['countryCode'] = countryCode;
     }
@@ -17935,8 +17900,7 @@ class ClickTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThroughUrl != null) {
       _json['clickThroughUrl'] = clickThroughUrl.toJson();
     }
@@ -17990,8 +17954,7 @@ class ClickThroughUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (computedClickThroughUrl != null) {
       _json['computedClickThroughUrl'] = computedClickThroughUrl;
     }
@@ -18030,8 +17993,7 @@ class ClickThroughUrlSuffixProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThroughUrlSuffix != null) {
       _json['clickThroughUrlSuffix'] = clickThroughUrlSuffix;
     }
@@ -18062,8 +18024,7 @@ class CompanionClickThroughOverride {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThroughUrl != null) {
       _json['clickThroughUrl'] = clickThroughUrl.toJson();
     }
@@ -18110,8 +18071,7 @@ class CompanionSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companionsDisabled != null) {
       _json['companionsDisabled'] = companionsDisabled;
     }
@@ -18204,8 +18164,7 @@ class CompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (crossDimensionReachReportCompatibleFields != null) {
       _json['crossDimensionReachReportCompatibleFields'] =
           crossDimensionReachReportCompatibleFields.toJson();
@@ -18268,8 +18227,7 @@ class ConnectionType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -18306,8 +18264,7 @@ class ConnectionTypesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (connectionTypes != null) {
       _json['connectionTypes'] =
           connectionTypes.map((value) => value.toJson()).toList();
@@ -18348,8 +18305,7 @@ class ContentCategoriesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contentCategories != null) {
       _json['contentCategories'] =
           contentCategories.map((value) => value.toJson()).toList();
@@ -18400,8 +18356,7 @@ class ContentCategory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -18572,8 +18527,7 @@ class Conversion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (childDirectedTreatment != null) {
       _json['childDirectedTreatment'] = childDirectedTreatment;
     }
@@ -18666,8 +18620,7 @@ class ConversionError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -18711,8 +18664,7 @@ class ConversionStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conversion != null) {
       _json['conversion'] = conversion.toJson();
     }
@@ -18757,8 +18709,7 @@ class ConversionsBatchInsertRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conversions != null) {
       _json['conversions'] =
           conversions.map((value) => value.toJson()).toList();
@@ -18803,8 +18754,7 @@ class ConversionsBatchInsertResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hasFailures != null) {
       _json['hasFailures'] = hasFailures;
     }
@@ -18848,8 +18798,7 @@ class ConversionsBatchUpdateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conversions != null) {
       _json['conversions'] =
           conversions.map((value) => value.toJson()).toList();
@@ -18894,8 +18843,7 @@ class ConversionsBatchUpdateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hasFailures != null) {
       _json['hasFailures'] = hasFailures;
     }
@@ -18932,8 +18880,7 @@ class CountriesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countries != null) {
       _json['countries'] = countries.map((value) => value.toJson()).toList();
     }
@@ -18984,8 +18931,7 @@ class Country {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countryCode != null) {
       _json['countryCode'] = countryCode;
     }
@@ -19626,8 +19572,7 @@ class Creative {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -20320,8 +20265,7 @@ class CreativeAsset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionScript3 != null) {
       _json['actionScript3'] = actionScript3;
     }
@@ -20508,8 +20452,7 @@ class CreativeAssetId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -20629,8 +20572,7 @@ class CreativeAssetMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assetIdentifier != null) {
       _json['assetIdentifier'] = assetIdentifier.toJson();
     }
@@ -20698,8 +20640,7 @@ class CreativeAssetSelection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultAssetId != null) {
       _json['defaultAssetId'] = defaultAssetId;
     }
@@ -20821,8 +20762,7 @@ class CreativeAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (active != null) {
       _json['active'] = active;
     }
@@ -20899,8 +20839,7 @@ class CreativeClickThroughUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (computedClickThroughUrl != null) {
       _json['computedClickThroughUrl'] = computedClickThroughUrl;
     }
@@ -21006,8 +20945,7 @@ class CreativeCustomEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (advertiserCustomEventId != null) {
       _json['advertiserCustomEventId'] = advertiserCustomEventId;
     }
@@ -21100,8 +21038,7 @@ class CreativeField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -21147,8 +21084,7 @@ class CreativeFieldAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeFieldId != null) {
       _json['creativeFieldId'] = creativeFieldId;
     }
@@ -21188,8 +21124,7 @@ class CreativeFieldValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -21233,8 +21168,7 @@ class CreativeFieldValuesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeFieldValues != null) {
       _json['creativeFieldValues'] =
           creativeFieldValues.map((value) => value.toJson()).toList();
@@ -21278,8 +21212,7 @@ class CreativeFieldsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeFields != null) {
       _json['creativeFields'] =
           creativeFields.map((value) => value.toJson()).toList();
@@ -21361,8 +21294,7 @@ class CreativeGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -21414,8 +21346,7 @@ class CreativeGroupAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeGroupId != null) {
       _json['creativeGroupId'] = creativeGroupId;
     }
@@ -21455,8 +21386,7 @@ class CreativeGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeGroups != null) {
       _json['creativeGroups'] =
           creativeGroups.map((value) => value.toJson()).toList();
@@ -21515,8 +21445,7 @@ class CreativeOptimizationConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -21582,8 +21511,7 @@ class CreativeRotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creativeAssignments != null) {
       _json['creativeAssignments'] =
           creativeAssignments.map((value) => value.toJson()).toList();
@@ -21631,8 +21559,7 @@ class CreativesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creatives != null) {
       _json['creatives'] = creatives.map((value) => value.toJson()).toList();
     }
@@ -21698,8 +21625,7 @@ class CrossDimensionReachReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakdown != null) {
       _json['breakdown'] = breakdown.map((value) => value.toJson()).toList();
     }
@@ -21804,8 +21730,7 @@ class CustomEvent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (annotateClickEvent != null) {
       _json['annotateClickEvent'] = annotateClickEvent.toJson();
     }
@@ -21860,8 +21785,7 @@ class CustomEventClickAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gclid != null) {
       _json['gclid'] = gclid;
     }
@@ -21905,8 +21829,7 @@ class CustomEventError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -21942,8 +21865,7 @@ class CustomEventImpressionAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -22007,8 +21929,7 @@ class CustomEventInsert {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cmDimensions != null) {
       _json['cmDimensions'] = cmDimensions.toJson();
     }
@@ -22061,8 +21982,7 @@ class CustomEventStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customEvent != null) {
       _json['customEvent'] = customEvent.toJson();
     }
@@ -22099,8 +22019,7 @@ class CustomEventsBatchInsertRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customEvents != null) {
       _json['customEvents'] =
           customEvents.map((value) => value.toJson()).toList();
@@ -22142,8 +22061,7 @@ class CustomEventsBatchInsertResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hasFailures != null) {
       _json['hasFailures'] = hasFailures;
     }
@@ -22287,8 +22205,7 @@ class CustomFloodlightVariable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -22326,8 +22243,7 @@ class CustomRichMediaEvents {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filteredEventIds != null) {
       _json['filteredEventIds'] =
           filteredEventIds.map((value) => value.toJson()).toList();
@@ -22367,8 +22283,7 @@ class CustomVariable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -22409,8 +22324,7 @@ class CustomViewabilityMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configuration != null) {
       _json['configuration'] = configuration.toJson();
     }
@@ -22462,8 +22376,7 @@ class CustomViewabilityMetricConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audible != null) {
       _json['audible'] = audible;
     }
@@ -22525,8 +22438,7 @@ class DV3Ids {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dvCampaignId != null) {
       _json['dvCampaignId'] = dvCampaignId;
     }
@@ -22596,8 +22508,7 @@ class DateRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endDate != null) {
       _json['endDate'] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -22650,8 +22561,7 @@ class DayPartTargeting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (daysOfWeek != null) {
       _json['daysOfWeek'] = daysOfWeek;
     }
@@ -22707,8 +22617,7 @@ class DeepLink {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appUrl != null) {
       _json['appUrl'] = appUrl;
     }
@@ -22752,8 +22661,7 @@ class DefaultClickThroughEventTagProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultClickThroughEventTagId != null) {
       _json['defaultClickThroughEventTagId'] = defaultClickThroughEventTagId;
     }
@@ -22821,8 +22729,7 @@ class DeliverySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (frequencyCap != null) {
       _json['frequencyCap'] = frequencyCap.toJson();
     }
@@ -22877,8 +22784,7 @@ class DfpSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dfpNetworkCode != null) {
       _json['dfpNetworkCode'] = dfpNetworkCode;
     }
@@ -22918,8 +22824,7 @@ class Dimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -22956,8 +22861,7 @@ class DimensionFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionName != null) {
       _json['dimensionName'] = dimensionName;
     }
@@ -23024,8 +22928,7 @@ class DimensionValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionName != null) {
       _json['dimensionName'] = dimensionName;
     }
@@ -23085,8 +22988,7 @@ class DimensionValueList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -23140,8 +23042,7 @@ class DimensionValueRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionName != null) {
       _json['dimensionName'] = dimensionName;
     }
@@ -23229,8 +23130,7 @@ class DirectorySite {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -23291,8 +23191,7 @@ class DirectorySiteSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeViewOptOut != null) {
       _json['activeViewOptOut'] = activeViewOptOut;
     }
@@ -23338,8 +23237,7 @@ class DirectorySitesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (directorySites != null) {
       _json['directorySites'] =
           directorySites.map((value) => value.toJson()).toList();
@@ -23378,8 +23276,7 @@ class DisjunctiveMatchStatement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventFilters != null) {
       _json['eventFilters'] =
           eventFilters.map((value) => value.toJson()).toList();
@@ -23437,8 +23334,7 @@ class DynamicTargetingKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -23479,8 +23375,7 @@ class DynamicTargetingKeysListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dynamicTargetingKeys != null) {
       _json['dynamicTargetingKeys'] =
           dynamicTargetingKeys.map((value) => value.toJson()).toList();
@@ -23540,8 +23435,7 @@ class EncryptionInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encryptionEntityId != null) {
       _json['encryptionEntityId'] = encryptionEntityId;
     }
@@ -23579,8 +23473,7 @@ class EventFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionFilter != null) {
       _json['dimensionFilter'] = dimensionFilter.toJson();
     }
@@ -23740,8 +23633,7 @@ class EventTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -23820,8 +23712,7 @@ class EventTagOverride {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -23855,8 +23746,7 @@ class EventTagsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventTags != null) {
       _json['eventTags'] = eventTags.map((value) => value.toJson()).toList();
     }
@@ -23887,8 +23777,7 @@ class FileUrls {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiUrl != null) {
       _json['apiUrl'] = apiUrl;
     }
@@ -23981,8 +23870,7 @@ class File {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateRange != null) {
       _json['dateRange'] = dateRange.toJson();
     }
@@ -24055,8 +23943,7 @@ class FileList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -24102,8 +23989,7 @@ class Flight {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endDate != null) {
       _json['endDate'] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -24152,8 +24038,7 @@ class FloodlightActivitiesGenerateTagResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightActivityTag != null) {
       _json['floodlightActivityTag'] = floodlightActivityTag;
     }
@@ -24197,8 +24082,7 @@ class FloodlightActivitiesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightActivities != null) {
       _json['floodlightActivities'] =
           floodlightActivities.map((value) => value.toJson()).toList();
@@ -24466,8 +24350,7 @@ class FloodlightActivity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -24589,8 +24472,7 @@ class FloodlightActivityDynamicTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -24707,8 +24589,7 @@ class FloodlightActivityGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -24781,8 +24662,7 @@ class FloodlightActivityGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightActivityGroups != null) {
       _json['floodlightActivityGroups'] =
           floodlightActivityGroups.map((value) => value.toJson()).toList();
@@ -24845,8 +24725,7 @@ class FloodlightActivityPublisherDynamicTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThrough != null) {
       _json['clickThrough'] = clickThrough;
     }
@@ -25014,8 +24893,7 @@ class FloodlightConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -25106,8 +24984,7 @@ class FloodlightConfigurationsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightConfigurations != null) {
       _json['floodlightConfigurations'] =
           floodlightConfigurations.map((value) => value.toJson()).toList();
@@ -25162,8 +25039,7 @@ class FloodlightReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json['dimensionFilters'] =
           dimensionFilters.map((value) => value.toJson()).toList();
@@ -25203,8 +25079,7 @@ class FrequencyCap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (duration != null) {
       _json['duration'] = duration;
     }
@@ -25258,8 +25133,7 @@ class FsCommand {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (left != null) {
       _json['left'] = left;
     }
@@ -25349,8 +25223,7 @@ class GeoTargeting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cities != null) {
       _json['cities'] = cities.map((value) => value.toJson()).toList();
     }
@@ -25513,8 +25386,7 @@ class InventoryItem {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -25608,8 +25480,7 @@ class InventoryItemsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inventoryItems != null) {
       _json['inventoryItems'] =
           inventoryItems.map((value) => value.toJson()).toList();
@@ -25638,8 +25509,7 @@ class KeyValueTargetingExpression {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expression != null) {
       _json['expression'] = expression;
     }
@@ -25702,8 +25572,7 @@ class LandingPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (advertiserId != null) {
       _json['advertiserId'] = advertiserId;
     }
@@ -25765,8 +25634,7 @@ class Language {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -25801,8 +25669,7 @@ class LanguageTargeting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languages != null) {
       _json['languages'] = languages.map((value) => value.toJson()).toList();
     }
@@ -25833,8 +25700,7 @@ class LanguagesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -25859,8 +25725,7 @@ class LastModifiedInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (time != null) {
       _json['time'] = time;
     }
@@ -25887,8 +25752,7 @@ class ListPopulationClause {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (terms != null) {
       _json['terms'] = terms.map((value) => value.toJson()).toList();
     }
@@ -25929,8 +25793,7 @@ class ListPopulationRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightActivityId != null) {
       _json['floodlightActivityId'] = floodlightActivityId;
     }
@@ -26029,8 +25892,7 @@ class ListPopulationTerm {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contains != null) {
       _json['contains'] = contains;
     }
@@ -26073,8 +25935,7 @@ class ListTargetingExpression {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expression != null) {
       _json['expression'] = expression;
     }
@@ -26111,8 +25972,7 @@ class LookbackConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickDuration != null) {
       _json['clickDuration'] = clickDuration;
     }
@@ -26144,8 +26004,7 @@ class Metric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26208,8 +26067,7 @@ class Metro {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countryCode != null) {
       _json['countryCode'] = countryCode;
     }
@@ -26258,8 +26116,7 @@ class MetrosListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26313,8 +26170,7 @@ class MobileApp {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (directory != null) {
       _json['directory'] = directory;
     }
@@ -26363,8 +26219,7 @@ class MobileAppsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26417,8 +26272,7 @@ class MobileCarrier {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countryCode != null) {
       _json['countryCode'] = countryCode;
     }
@@ -26461,8 +26315,7 @@ class MobileCarriersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26532,8 +26385,7 @@ class ObaIcon {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iconClickThroughUrl != null) {
       _json['iconClickThroughUrl'] = iconClickThroughUrl;
     }
@@ -26596,8 +26448,7 @@ class ObjectFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26631,8 +26482,7 @@ class OffsetPosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (left != null) {
       _json['left'] = left;
     }
@@ -26665,8 +26515,7 @@ class OmnitureSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (omnitureCostDataEnabled != null) {
       _json['omnitureCostDataEnabled'] = omnitureCostDataEnabled;
     }
@@ -26716,8 +26565,7 @@ class OperatingSystem {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dartId != null) {
       _json['dartId'] = dartId;
     }
@@ -26784,8 +26632,7 @@ class OperatingSystemVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -26832,8 +26679,7 @@ class OperatingSystemVersionsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26868,8 +26714,7 @@ class OperatingSystemsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -26912,8 +26757,7 @@ class OptimizationActivity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floodlightActivityId != null) {
       _json['floodlightActivityId'] = floodlightActivityId;
     }
@@ -27060,8 +26904,7 @@ class Order {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -27171,8 +27014,7 @@ class OrderContact {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contactInfo != null) {
       _json['contactInfo'] = contactInfo;
     }
@@ -27306,8 +27148,7 @@ class OrderDocument {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -27393,8 +27234,7 @@ class OrderDocumentsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -27438,8 +27278,7 @@ class OrdersListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -27490,8 +27329,7 @@ class PathFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventFilters != null) {
       _json['eventFilters'] =
           eventFilters.map((value) => value.toJson()).toList();
@@ -27558,8 +27396,7 @@ class PathReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (channelGroupings != null) {
       _json['channelGroupings'] =
           channelGroupings.map((value) => value.toJson()).toList();
@@ -27629,8 +27466,7 @@ class PathReportDimensionValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionName != null) {
       _json['dimensionName'] = dimensionName;
     }
@@ -27704,8 +27540,7 @@ class PathToConversionReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conversionDimensions != null) {
       _json['conversionDimensions'] =
           conversionDimensions.map((value) => value.toJson()).toList();
@@ -28068,8 +27903,7 @@ class Placement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -28236,8 +28070,7 @@ class PlacementAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (active != null) {
       _json['active'] = active;
     }
@@ -28455,8 +28288,7 @@ class PlacementGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -28570,8 +28402,7 @@ class PlacementGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -28615,8 +28446,7 @@ class PlacementStrategiesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -28667,8 +28497,7 @@ class PlacementStrategy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -28707,8 +28536,7 @@ class PlacementTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (placementId != null) {
       _json['placementId'] = placementId;
     }
@@ -28742,8 +28570,7 @@ class PlacementsGenerateTagsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -28784,8 +28611,7 @@ class PlacementsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -28826,8 +28652,7 @@ class PlatformType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -28864,8 +28689,7 @@ class PlatformTypesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -28944,8 +28768,7 @@ class PopupWindowProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension.toJson();
     }
@@ -29016,8 +28839,7 @@ class PostalCode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -29060,8 +28882,7 @@ class PostalCodesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -29140,8 +28961,7 @@ class Pricing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (capCostType != null) {
       _json['capCostType'] = capCostType;
     }
@@ -29232,8 +29052,7 @@ class PricingSchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (capCostOption != null) {
       _json['capCostOption'] = capCostOption;
     }
@@ -29303,8 +29122,7 @@ class PricingSchedulePricingPeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endDate != null) {
       _json['endDate'] =
           "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}";
@@ -29477,8 +29295,7 @@ class Project {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -29580,8 +29397,7 @@ class ProjectsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -29656,8 +29472,7 @@ class ReachReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json['dimensionFilters'] =
           dimensionFilters.map((value) => value.toJson()).toList();
@@ -29712,8 +29527,7 @@ class Recipient {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deliveryType != null) {
       _json['deliveryType'] = deliveryType;
     }
@@ -29772,8 +29586,7 @@ class Region {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (countryCode != null) {
       _json['countryCode'] = countryCode;
     }
@@ -29819,8 +29632,7 @@ class RegionsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -29943,8 +29755,7 @@ class RemarketingList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -30026,8 +29837,7 @@ class RemarketingListShare {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -30073,8 +29883,7 @@ class RemarketingListsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -30140,8 +29949,7 @@ class ReportCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activities != null) {
       _json['activities'] = activities.toJson();
     }
@@ -30225,8 +30033,7 @@ class ReportCrossDimensionReachCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakdown != null) {
       _json['breakdown'] = breakdown.map((value) => value.toJson()).toList();
     }
@@ -30290,8 +30097,7 @@ class ReportDelivery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emailOwner != null) {
       _json['emailOwner'] = emailOwner;
     }
@@ -30341,8 +30147,7 @@ class ReportFloodlightCriteriaReportProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeAttributedIPConversions != null) {
       _json['includeAttributedIPConversions'] = includeAttributedIPConversions;
     }
@@ -30419,8 +30224,7 @@ class ReportFloodlightCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customRichMediaEvents != null) {
       _json['customRichMediaEvents'] =
           customRichMediaEvents.map((value) => value.toJson()).toList();
@@ -30507,8 +30311,7 @@ class ReportPathAttributionCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activityFilters != null) {
       _json['activityFilters'] =
           activityFilters.map((value) => value.toJson()).toList();
@@ -30595,8 +30398,7 @@ class ReportPathCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activityFilters != null) {
       _json['activityFilters'] =
           activityFilters.map((value) => value.toJson()).toList();
@@ -30705,8 +30507,7 @@ class ReportPathToConversionCriteriaReportProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clicksLookbackWindow != null) {
       _json['clicksLookbackWindow'] = clicksLookbackWindow;
     }
@@ -30818,8 +30619,7 @@ class ReportPathToConversionCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activityFilters != null) {
       _json['activityFilters'] =
           activityFilters.map((value) => value.toJson()).toList();
@@ -30923,8 +30723,7 @@ class ReportReachCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activities != null) {
       _json['activities'] = activities.toJson();
     }
@@ -31015,8 +30814,7 @@ class ReportSchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (active != null) {
       _json['active'] = active;
     }
@@ -31192,8 +30990,7 @@ class Report {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -31311,8 +31108,7 @@ class ReportCompatibleFields {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionFilters != null) {
       _json['dimensionFilters'] =
           dimensionFilters.map((value) => value.toJson()).toList();
@@ -31371,8 +31167,7 @@ class ReportList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -31433,8 +31228,7 @@ class ReportsConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exposureToConversionEnabled != null) {
       _json['exposureToConversionEnabled'] = exposureToConversionEnabled;
     }
@@ -31476,8 +31270,7 @@ class RichMediaExitOverride {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clickThroughUrl != null) {
       _json['clickThroughUrl'] = clickThroughUrl.toJson();
     }
@@ -31521,8 +31314,7 @@ class Rule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assetId != null) {
       _json['assetId'] = assetId;
     }
@@ -31636,8 +31428,7 @@ class Site {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -31719,8 +31510,7 @@ class SiteCompanionSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companionsDisabled != null) {
       _json['companionsDisabled'] = companionsDisabled;
     }
@@ -31797,8 +31587,7 @@ class SiteContact {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address;
     }
@@ -31890,8 +31679,7 @@ class SiteSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activeViewOptOut != null) {
       _json['activeViewOptOut'] = activeViewOptOut;
     }
@@ -31950,8 +31738,7 @@ class SiteSkippableSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -31991,8 +31778,7 @@ class SiteTranscodeSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabledVideoFormats != null) {
       _json['enabledVideoFormats'] = enabledVideoFormats;
     }
@@ -32066,8 +31852,7 @@ class SiteVideoSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companionSettings != null) {
       _json['companionSettings'] = companionSettings.toJson();
     }
@@ -32122,8 +31907,7 @@ class SitesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32176,8 +31960,7 @@ class Size {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (height != null) {
       _json['height'] = height;
     }
@@ -32220,8 +32003,7 @@ class SizesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32267,8 +32049,7 @@ class SkippableSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32314,8 +32095,7 @@ class SortedDimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32371,8 +32151,7 @@ class Subaccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -32421,8 +32200,7 @@ class SubaccountsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32497,8 +32275,7 @@ class TagData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adId != null) {
       _json['adId'] = adId;
     }
@@ -32561,8 +32338,7 @@ class TagSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additionalKeyValues != null) {
       _json['additionalKeyValues'] = additionalKeyValues;
     }
@@ -32599,8 +32375,7 @@ class TagSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dynamicTagEnabled != null) {
       _json['dynamicTagEnabled'] = dynamicTagEnabled;
     }
@@ -32636,8 +32411,7 @@ class TargetWindow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customHtml != null) {
       _json['customHtml'] = customHtml;
     }
@@ -32754,8 +32528,7 @@ class TargetableRemarketingList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -32827,8 +32600,7 @@ class TargetableRemarketingListsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -32941,8 +32713,7 @@ class TargetingTemplate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -33016,8 +32787,7 @@ class TargetingTemplatesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -33107,8 +32877,7 @@ class TechnologyTargeting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (browsers != null) {
       _json['browsers'] = browsers.map((value) => value.toJson()).toList();
     }
@@ -33157,8 +32926,7 @@ class ThirdPartyAuthenticationToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -33209,8 +32977,7 @@ class ThirdPartyTrackingUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (thirdPartyUrlType != null) {
       _json['thirdPartyUrlType'] = thirdPartyUrlType;
     }
@@ -33244,8 +33011,7 @@ class TranscodeSetting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabledVideoFormats != null) {
       _json['enabledVideoFormats'] = enabledVideoFormats;
     }
@@ -33284,8 +33050,7 @@ class UniversalAdId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (registry != null) {
       _json['registry'] = registry;
     }
@@ -33428,8 +33193,7 @@ class UserDefinedVariableConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataType != null) {
       _json['dataType'] = dataType;
     }
@@ -33502,8 +33266,7 @@ class UserProfile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -33561,8 +33324,7 @@ class UserProfileList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -33645,8 +33407,7 @@ class UserRole {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accountId != null) {
       _json['accountId'] = accountId;
     }
@@ -33721,8 +33482,7 @@ class UserRolePermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (availability != null) {
       _json['availability'] = availability;
     }
@@ -33769,8 +33529,7 @@ class UserRolePermissionGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -33809,8 +33568,7 @@ class UserRolePermissionGroupsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -33846,8 +33604,7 @@ class UserRolePermissionsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -33888,8 +33645,7 @@ class UserRolesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -33948,8 +33704,7 @@ class VideoFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileType != null) {
       _json['fileType'] = fileType;
     }
@@ -33992,8 +33747,7 @@ class VideoFormatsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -34027,8 +33781,7 @@ class VideoOffset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (offsetPercentage != null) {
       _json['offsetPercentage'] = offsetPercentage;
     }
@@ -34102,8 +33855,7 @@ class VideoSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companionSettings != null) {
       _json['companionSettings'] = companionSettings.toJson();
     }

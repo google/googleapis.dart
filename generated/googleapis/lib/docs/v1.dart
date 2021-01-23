@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -312,8 +311,7 @@ class AutoText {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (suggestedDeletionIds != null) {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
@@ -350,8 +348,7 @@ class Background {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -376,8 +373,7 @@ class BackgroundSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColorSuggested != null) {
       _json['backgroundColorSuggested'] = backgroundColorSuggested;
     }
@@ -407,8 +403,7 @@ class BatchUpdateDocumentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requests != null) {
       _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
@@ -448,8 +443,7 @@ class BatchUpdateDocumentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentId != null) {
       _json['documentId'] = documentId;
     }
@@ -481,8 +475,7 @@ class Body {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -516,8 +509,7 @@ class Bullet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listId != null) {
       _json['listId'] = listId;
     }
@@ -561,8 +553,7 @@ class BulletSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listIdSuggested != null) {
       _json['listIdSuggested'] = listIdSuggested;
     }
@@ -590,8 +581,7 @@ class Color {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rgbColor != null) {
       _json['rgbColor'] = rgbColor.toJson();
     }
@@ -642,8 +632,7 @@ class ColumnBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (suggestedDeletionIds != null) {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
@@ -693,8 +682,7 @@ class CreateFooterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sectionBreakLocation != null) {
       _json['sectionBreakLocation'] = sectionBreakLocation.toJson();
     }
@@ -719,8 +707,7 @@ class CreateFooterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footerId != null) {
       _json['footerId'] = footerId;
     }
@@ -760,8 +747,7 @@ class CreateFootnoteRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endOfSegmentLocation != null) {
       _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
     }
@@ -786,8 +772,7 @@ class CreateFootnoteResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footnoteId != null) {
       _json['footnoteId'] = footnoteId;
     }
@@ -825,8 +810,7 @@ class CreateHeaderRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sectionBreakLocation != null) {
       _json['sectionBreakLocation'] = sectionBreakLocation.toJson();
     }
@@ -851,8 +835,7 @@ class CreateHeaderResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (headerId != null) {
       _json['headerId'] = headerId;
     }
@@ -882,8 +865,7 @@ class CreateNamedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -908,8 +890,7 @@ class CreateNamedRangeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedRangeId != null) {
       _json['namedRangeId'] = namedRangeId;
     }
@@ -985,8 +966,7 @@ class CreateParagraphBulletsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bulletPreset != null) {
       _json['bulletPreset'] = bulletPreset;
     }
@@ -1050,8 +1030,7 @@ class CropProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angle != null) {
       _json['angle'] = angle;
     }
@@ -1111,8 +1090,7 @@ class CropPropertiesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angleSuggested != null) {
       _json['angleSuggested'] = angleSuggested;
     }
@@ -1157,8 +1135,7 @@ class DeleteContentRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -1184,8 +1161,7 @@ class DeleteFooterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footerId != null) {
       _json['footerId'] = footerId;
     }
@@ -1211,8 +1187,7 @@ class DeleteHeaderRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (headerId != null) {
       _json['headerId'] = headerId;
     }
@@ -1241,8 +1216,7 @@ class DeleteNamedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1269,8 +1243,7 @@ class DeleteParagraphBulletsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -1292,8 +1265,7 @@ class DeletePositionedObjectRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -1320,8 +1292,7 @@ class DeleteTableColumnRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableCellLocation != null) {
       _json['tableCellLocation'] = tableCellLocation.toJson();
     }
@@ -1347,8 +1318,7 @@ class DeleteTableRowRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableCellLocation != null) {
       _json['tableCellLocation'] = tableCellLocation.toJson();
     }
@@ -1379,8 +1349,7 @@ class Dimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (magnitude != null) {
       _json['magnitude'] = magnitude;
     }
@@ -1547,8 +1516,7 @@ class Document {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (body != null) {
       _json['body'] = body.toJson();
     }
@@ -1766,8 +1734,7 @@ class DocumentStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (background != null) {
       _json['background'] = background.toJson();
     }
@@ -1952,8 +1919,7 @@ class DocumentStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundSuggestionState != null) {
       _json['backgroundSuggestionState'] = backgroundSuggestionState.toJson();
     }
@@ -2024,8 +1990,7 @@ class EmbeddedDrawingProperties {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2041,8 +2006,7 @@ class EmbeddedDrawingPropertiesSuggestionState {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2128,8 +2092,7 @@ class EmbeddedObject {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -2213,8 +2176,7 @@ class EmbeddedObjectBorder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -2265,8 +2227,7 @@ class EmbeddedObjectBorderSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colorSuggested != null) {
       _json['colorSuggested'] = colorSuggested;
     }
@@ -2373,8 +2334,7 @@ class EmbeddedObjectSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (descriptionSuggested != null) {
       _json['descriptionSuggested'] = descriptionSuggested;
     }
@@ -2432,8 +2392,7 @@ class EndOfSegmentLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (segmentId != null) {
       _json['segmentId'] = segmentId;
     }
@@ -2466,8 +2425,7 @@ class Equation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (suggestedDeletionIds != null) {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
@@ -2501,8 +2459,7 @@ class Footer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -2536,8 +2493,7 @@ class Footnote {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -2603,8 +2559,7 @@ class FootnoteReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (footnoteId != null) {
       _json['footnoteId'] = footnoteId;
     }
@@ -2653,8 +2608,7 @@ class Header {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -2708,8 +2662,7 @@ class HorizontalRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (suggestedDeletionIds != null) {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
@@ -2786,8 +2739,7 @@ class ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angle != null) {
       _json['angle'] = angle;
     }
@@ -2867,8 +2819,7 @@ class ImagePropertiesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angleSuggested != null) {
       _json['angleSuggested'] = angleSuggested;
     }
@@ -2945,8 +2896,7 @@ class InlineObject {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inlineObjectProperties != null) {
       _json['inlineObjectProperties'] = inlineObjectProperties.toJson();
     }
@@ -3019,8 +2969,7 @@ class InlineObjectElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inlineObjectId != null) {
       _json['inlineObjectId'] = inlineObjectId;
     }
@@ -3057,8 +3006,7 @@ class InlineObjectProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (embeddedObject != null) {
       _json['embeddedObject'] = embeddedObject.toJson();
     }
@@ -3084,8 +3032,7 @@ class InlineObjectPropertiesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (embeddedObjectSuggestionState != null) {
       _json['embeddedObjectSuggestionState'] =
           embeddedObjectSuggestionState.toJson();
@@ -3144,8 +3091,7 @@ class InsertInlineImageRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endOfSegmentLocation != null) {
       _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
     }
@@ -3176,8 +3122,7 @@ class InsertInlineImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -3199,8 +3144,7 @@ class InsertInlineSheetsChartResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -3236,8 +3180,7 @@ class InsertPageBreakRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endOfSegmentLocation != null) {
       _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
     }
@@ -3290,8 +3233,7 @@ class InsertSectionBreakRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endOfSegmentLocation != null) {
       _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
     }
@@ -3330,8 +3272,7 @@ class InsertTableColumnRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (insertRight != null) {
       _json['insertRight'] = insertRight;
     }
@@ -3383,8 +3324,7 @@ class InsertTableRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns;
     }
@@ -3426,8 +3366,7 @@ class InsertTableRowRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (insertBelow != null) {
       _json['insertBelow'] = insertBelow;
     }
@@ -3479,8 +3418,7 @@ class InsertTextRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endOfSegmentLocation != null) {
       _json['endOfSegmentLocation'] = endOfSegmentLocation.toJson();
     }
@@ -3520,8 +3458,7 @@ class Link {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bookmarkId != null) {
       _json['bookmarkId'] = bookmarkId;
     }
@@ -3550,8 +3487,7 @@ class LinkedContentReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sheetsChartReference != null) {
       _json['sheetsChartReference'] = sheetsChartReference.toJson();
     }
@@ -3578,8 +3514,7 @@ class LinkedContentReferenceSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sheetsChartReferenceSuggestionState != null) {
       _json['sheetsChartReferenceSuggestionState'] =
           sheetsChartReferenceSuggestionState.toJson();
@@ -3629,8 +3564,7 @@ class List {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listProperties != null) {
       _json['listProperties'] = listProperties.toJson();
     }
@@ -3671,8 +3605,7 @@ class ListProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nestingLevels != null) {
       _json['nestingLevels'] =
           nestingLevels.map((value) => value.toJson()).toList();
@@ -3704,8 +3637,7 @@ class ListPropertiesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nestingLevelsSuggestionStates != null) {
       _json['nestingLevelsSuggestionStates'] =
           nestingLevelsSuggestionStates.map((value) => value.toJson()).toList();
@@ -3736,8 +3668,7 @@ class Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -3768,8 +3699,7 @@ class MergeTableCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableRange != null) {
       _json['tableRange'] = tableRange.toJson();
     }
@@ -3813,8 +3743,7 @@ class NamedRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3850,8 +3779,7 @@ class NamedRanges {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3902,8 +3830,7 @@ class NamedStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedStyleType != null) {
       _json['namedStyleType'] = namedStyleType;
     }
@@ -3960,8 +3887,7 @@ class NamedStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedStyleType != null) {
       _json['namedStyleType'] = namedStyleType;
     }
@@ -3994,8 +3920,7 @@ class NamedStyles {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (styles != null) {
       _json['styles'] = styles.map((value) => value.toJson()).toList();
     }
@@ -4023,8 +3948,7 @@ class NamedStylesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stylesSuggestionStates != null) {
       _json['stylesSuggestionStates'] =
           stylesSuggestionStates.map((value) => value.toJson()).toList();
@@ -4145,8 +4069,7 @@ class NestingLevel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bulletAlignment != null) {
       _json['bulletAlignment'] = bulletAlignment;
     }
@@ -4235,8 +4158,7 @@ class NestingLevelSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bulletAlignmentSuggested != null) {
       _json['bulletAlignmentSuggested'] = bulletAlignmentSuggested;
     }
@@ -4279,8 +4201,7 @@ class ObjectReferences {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectIds != null) {
       _json['objectIds'] = objectIds;
     }
@@ -4303,8 +4224,7 @@ class OptionalColor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -4355,8 +4275,7 @@ class PageBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (suggestedDeletionIds != null) {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
@@ -4441,8 +4360,7 @@ class Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bullet != null) {
       _json['bullet'] = bullet.toJson();
     }
@@ -4516,8 +4434,7 @@ class ParagraphBorder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -4606,8 +4523,7 @@ class ParagraphElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoText != null) {
       _json['autoText'] = autoText.toJson();
     }
@@ -4854,8 +4770,7 @@ class ParagraphStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alignment != null) {
       _json['alignment'] = alignment;
     }
@@ -5055,8 +4970,7 @@ class ParagraphStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alignmentSuggested != null) {
       _json['alignmentSuggested'] = alignmentSuggested;
     }
@@ -5172,8 +5086,7 @@ class PositionedObject {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -5240,8 +5153,7 @@ class PositionedObjectPositioning {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (layout != null) {
       _json['layout'] = layout;
     }
@@ -5283,8 +5195,7 @@ class PositionedObjectPositioningSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (layoutSuggested != null) {
       _json['layoutSuggested'] = layoutSuggested;
     }
@@ -5319,8 +5230,7 @@ class PositionedObjectProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (embeddedObject != null) {
       _json['embeddedObject'] = embeddedObject.toJson();
     }
@@ -5358,8 +5268,7 @@ class PositionedObjectPropertiesSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (embeddedObjectSuggestionState != null) {
       _json['embeddedObjectSuggestionState'] =
           embeddedObjectSuggestionState.toJson();
@@ -5403,8 +5312,7 @@ class Range {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endIndex != null) {
       _json['endIndex'] = endIndex;
     }
@@ -5438,8 +5346,7 @@ class ReplaceAllTextRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (containsText != null) {
       _json['containsText'] = containsText.toJson();
     }
@@ -5464,8 +5371,7 @@ class ReplaceAllTextResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (occurrencesChanged != null) {
       _json['occurrencesChanged'] = occurrencesChanged;
     }
@@ -5513,8 +5419,7 @@ class ReplaceImageRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageObjectId != null) {
       _json['imageObjectId'] = imageObjectId;
     }
@@ -5563,8 +5468,7 @@ class ReplaceNamedRangeContentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedRangeId != null) {
       _json['namedRangeId'] = namedRangeId;
     }
@@ -5799,8 +5703,7 @@ class Request {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createFooter != null) {
       _json['createFooter'] = createFooter.toJson();
     }
@@ -5955,8 +5858,7 @@ class Response {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createFooter != null) {
       _json['createFooter'] = createFooter.toJson();
     }
@@ -6008,8 +5910,7 @@ class RgbColor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blue != null) {
       _json['blue'] = blue;
     }
@@ -6057,8 +5958,7 @@ class SectionBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sectionStyle != null) {
       _json['sectionStyle'] = sectionStyle.toJson();
     }
@@ -6092,8 +5992,7 @@ class SectionColumnProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (paddingEnd != null) {
       _json['paddingEnd'] = paddingEnd.toJson();
     }
@@ -6308,8 +6207,7 @@ class SectionStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnProperties != null) {
       _json['columnProperties'] =
           columnProperties.map((value) => value.toJson()).toList();
@@ -6383,8 +6281,7 @@ class Shading {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -6408,8 +6305,7 @@ class ShadingSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColorSuggested != null) {
       _json['backgroundColorSuggested'] = backgroundColorSuggested;
     }
@@ -6438,8 +6334,7 @@ class SheetsChartReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartId != null) {
       _json['chartId'] = chartId;
     }
@@ -6472,8 +6367,7 @@ class SheetsChartReferenceSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartIdSuggested != null) {
       _json['chartIdSuggested'] = chartIdSuggested;
     }
@@ -6504,8 +6398,7 @@ class Size {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (height != null) {
       _json['height'] = height.toJson();
     }
@@ -6538,8 +6431,7 @@ class SizeSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (heightSuggested != null) {
       _json['heightSuggested'] = heightSuggested;
     }
@@ -6597,8 +6489,7 @@ class StructuralElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endIndex != null) {
       _json['endIndex'] = endIndex;
     }
@@ -6642,8 +6533,7 @@ class SubstringMatchCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matchCase != null) {
       _json['matchCase'] = matchCase;
     }
@@ -6678,8 +6568,7 @@ class SuggestedBullet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bullet != null) {
       _json['bullet'] = bullet.toJson();
     }
@@ -6714,8 +6603,7 @@ class SuggestedDocumentStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentStyle != null) {
       _json['documentStyle'] = documentStyle.toJson();
     }
@@ -6754,8 +6642,7 @@ class SuggestedInlineObjectProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inlineObjectProperties != null) {
       _json['inlineObjectProperties'] = inlineObjectProperties.toJson();
     }
@@ -6791,8 +6678,7 @@ class SuggestedListProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listProperties != null) {
       _json['listProperties'] = listProperties.toJson();
     }
@@ -6828,8 +6714,7 @@ class SuggestedNamedStyles {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedStyles != null) {
       _json['namedStyles'] = namedStyles.toJson();
     }
@@ -6864,8 +6749,7 @@ class SuggestedParagraphStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (paragraphStyle != null) {
       _json['paragraphStyle'] = paragraphStyle.toJson();
     }
@@ -6905,8 +6789,7 @@ class SuggestedPositionedObjectProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (positionedObjectProperties != null) {
       _json['positionedObjectProperties'] = positionedObjectProperties.toJson();
     }
@@ -6942,8 +6825,7 @@ class SuggestedTableCellStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableCellStyle != null) {
       _json['tableCellStyle'] = tableCellStyle.toJson();
     }
@@ -6979,8 +6861,7 @@ class SuggestedTableRowStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableRowStyle != null) {
       _json['tableRowStyle'] = tableRowStyle.toJson();
     }
@@ -7016,8 +6897,7 @@ class SuggestedTextStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
     }
@@ -7055,8 +6935,7 @@ class TabStop {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alignment != null) {
       _json['alignment'] = alignment;
     }
@@ -7119,8 +6998,7 @@ class Table {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns;
     }
@@ -7204,8 +7082,7 @@ class TableCell {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -7269,8 +7146,7 @@ class TableCellBorder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -7312,8 +7188,7 @@ class TableCellLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnIndex != null) {
       _json['columnIndex'] = columnIndex;
     }
@@ -7420,8 +7295,7 @@ class TableCellStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -7544,8 +7418,7 @@ class TableCellStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColorSuggested != null) {
       _json['backgroundColorSuggested'] = backgroundColorSuggested;
     }
@@ -7615,8 +7488,7 @@ class TableColumnProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (width != null) {
       _json['width'] = width.toJson();
     }
@@ -7660,8 +7532,7 @@ class TableOfContents {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.map((value) => value.toJson()).toList();
     }
@@ -7708,8 +7579,7 @@ class TableRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnSpan != null) {
       _json['columnSpan'] = columnSpan;
     }
@@ -7786,8 +7656,7 @@ class TableRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endIndex != null) {
       _json['endIndex'] = endIndex;
     }
@@ -7832,8 +7701,7 @@ class TableRowStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minRowHeight != null) {
       _json['minRowHeight'] = minRowHeight.toJson();
     }
@@ -7857,8 +7725,7 @@ class TableRowStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minRowHeightSuggested != null) {
       _json['minRowHeightSuggested'] = minRowHeightSuggested;
     }
@@ -7885,8 +7752,7 @@ class TableStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableColumnProperties != null) {
       _json['tableColumnProperties'] =
           tableColumnProperties.map((value) => value.toJson()).toList();
@@ -7942,8 +7808,7 @@ class TextRun {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -8081,8 +7946,7 @@ class TextStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -8196,8 +8060,7 @@ class TextStyleSuggestionState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColorSuggested != null) {
       _json['backgroundColorSuggested'] = backgroundColorSuggested;
     }
@@ -8255,8 +8118,7 @@ class UnmergeTableCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableRange != null) {
       _json['tableRange'] = tableRange.toJson();
     }
@@ -8289,8 +8151,7 @@ class UpdateDocumentStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentStyle != null) {
       _json['documentStyle'] = documentStyle.toJson();
     }
@@ -8333,8 +8194,7 @@ class UpdateParagraphStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -8380,8 +8240,7 @@ class UpdateSectionStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -8440,8 +8299,7 @@ class UpdateTableCellStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -8497,8 +8355,7 @@ class UpdateTableColumnPropertiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnIndices != null) {
       _json['columnIndices'] = columnIndices;
     }
@@ -8551,8 +8408,7 @@ class UpdateTableRowStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -8606,8 +8462,7 @@ class UpdateTextStyleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -8656,8 +8511,7 @@ class WeightedFontFamily {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fontFamily != null) {
       _json['fontFamily'] = fontFamily;
     }
@@ -8706,8 +8560,7 @@ class WriteControl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requiredRevisionId != null) {
       _json['requiredRevisionId'] = requiredRevisionId;
     }

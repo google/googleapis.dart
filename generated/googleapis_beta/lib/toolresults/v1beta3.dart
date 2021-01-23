@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2485,8 +2484,7 @@ class ANR {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stackTrace != null) {
       _json['stackTrace'] = stackTrace.toJson();
     }
@@ -2526,8 +2524,7 @@ class AndroidAppInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -2582,8 +2579,7 @@ class AndroidInstrumentationTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testPackageId != null) {
       _json['testPackageId'] = testPackageId;
     }
@@ -2640,8 +2636,7 @@ class AndroidRoboTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appInitialActivity != null) {
       _json['appInitialActivity'] = appInitialActivity;
     }
@@ -2700,8 +2695,7 @@ class AndroidTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidAppInfo != null) {
       _json['androidAppInfo'] = androidAppInfo.toJson();
     }
@@ -2731,8 +2725,7 @@ class AndroidTestLoop {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2806,8 +2799,7 @@ class Any {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (typeUrl != null) {
       _json['typeUrl'] = typeUrl;
     }
@@ -2842,8 +2834,7 @@ class AppStartTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullyDrawnTime != null) {
       _json['fullyDrawnTime'] = fullyDrawnTime.toJson();
     }
@@ -2863,8 +2854,7 @@ class AvailableDeepLinks {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2923,8 +2913,7 @@ class BasicPerfSampleSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (perfMetricType != null) {
       _json['perfMetricType'] = perfMetricType;
     }
@@ -2955,8 +2944,7 @@ class BatchCreatePerfSamplesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (perfSamples != null) {
       _json['perfSamples'] =
           perfSamples.map((value) => value.toJson()).toList();
@@ -2979,8 +2967,7 @@ class BatchCreatePerfSamplesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (perfSamples != null) {
       _json['perfSamples'] =
           perfSamples.map((value) => value.toJson()).toList();
@@ -3004,8 +2991,7 @@ class BlankScreen {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (screenId != null) {
       _json['screenId'] = screenId;
     }
@@ -3038,8 +3024,7 @@ class CPUInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cpuProcessor != null) {
       _json['cpuProcessor'] = cpuProcessor;
     }
@@ -3067,8 +3052,7 @@ class CrashDialogError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (crashPackage != null) {
       _json['crashPackage'] = crashPackage;
     }
@@ -3107,8 +3091,7 @@ class Duration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nanos != null) {
       _json['nanos'] = nanos;
     }
@@ -3139,8 +3122,7 @@ class EncounteredLoginScreen {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (distinctScreens != null) {
       _json['distinctScreens'] = distinctScreens;
     }
@@ -3172,8 +3154,7 @@ class EncounteredNonAndroidUiWidgetScreen {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (distinctScreens != null) {
       _json['distinctScreens'] = distinctScreens;
     }
@@ -3273,8 +3254,7 @@ class Environment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionTime != null) {
       _json['completionTime'] = completionTime.toJson();
     }
@@ -3330,8 +3310,7 @@ class EnvironmentDimensionValueEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -3438,8 +3417,7 @@ class Execution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionTime != null) {
       _json['completionTime'] = completionTime.toJson();
     }
@@ -3478,8 +3456,7 @@ class FailedToInstall {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3538,8 +3515,7 @@ class FailureDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (crashed != null) {
       _json['crashed'] = crashed;
     }
@@ -3579,8 +3555,7 @@ class FatalException {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stackTrace != null) {
       _json['stackTrace'] = stackTrace.toJson();
     }
@@ -3607,8 +3582,7 @@ class FileReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileUri != null) {
       _json['fileUri'] = fileUri;
     }
@@ -3703,8 +3677,7 @@ class GraphicsStats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (buckets != null) {
       _json['buckets'] = buckets.map((value) => value.toJson()).toList();
     }
@@ -3764,8 +3737,7 @@ class GraphicsStatsBucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (frameCount != null) {
       _json['frameCount'] = frameCount;
     }
@@ -3822,8 +3794,7 @@ class History {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -3873,8 +3844,7 @@ class Image {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -3912,8 +3882,7 @@ class InAppPurchasesFound {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inAppPurchasesFlowsExplored != null) {
       _json['inAppPurchasesFlowsExplored'] = inAppPurchasesFlowsExplored;
     }
@@ -3956,8 +3925,7 @@ class InconclusiveDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (abortedByUser != null) {
       _json['abortedByUser'] = abortedByUser;
     }
@@ -4017,8 +3985,7 @@ class IndividualOutcome {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (multistepNumber != null) {
       _json['multistepNumber'] = multistepNumber;
     }
@@ -4044,8 +4011,7 @@ class InsufficientCoverage {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4064,8 +4030,7 @@ class IosAppCrashed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stackTrace != null) {
       _json['stackTrace'] = stackTrace.toJson();
     }
@@ -4087,8 +4052,7 @@ class IosAppInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -4105,8 +4069,7 @@ class IosRoboTest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4149,8 +4112,7 @@ class IosTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iosAppInfo != null) {
       _json['iosAppInfo'] = iosAppInfo.toJson();
     }
@@ -4184,8 +4146,7 @@ class IosTestLoop {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bundleId != null) {
       _json['bundleId'] = bundleId;
     }
@@ -4213,8 +4174,7 @@ class IosXcTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bundleId != null) {
       _json['bundleId'] = bundleId;
     }
@@ -4234,8 +4194,7 @@ class LauncherActivityNotFound {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4281,8 +4240,7 @@ class ListEnvironmentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environments != null) {
       _json['environments'] =
           environments.map((value) => value.toJson()).toList();
@@ -4325,8 +4283,7 @@ class ListExecutionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (executions != null) {
       _json['executions'] = executions.map((value) => value.toJson()).toList();
     }
@@ -4364,8 +4321,7 @@ class ListHistoriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (histories != null) {
       _json['histories'] = histories.map((value) => value.toJson()).toList();
     }
@@ -4391,8 +4347,7 @@ class ListPerfSampleSeriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (perfSampleSeries != null) {
       _json['perfSampleSeries'] =
           perfSampleSeries.map((value) => value.toJson()).toList();
@@ -4422,8 +4377,7 @@ class ListPerfSamplesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4450,8 +4404,7 @@ class ListScreenshotClustersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusters != null) {
       _json['clusters'] = clusters.map((value) => value.toJson()).toList();
     }
@@ -4488,8 +4441,7 @@ class ListStepAccessibilityClustersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clusters != null) {
       _json['clusters'] = clusters.map((value) => value.toJson()).toList();
     }
@@ -4529,8 +4481,7 @@ class ListStepThumbnailsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4565,8 +4516,7 @@ class ListStepsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4598,8 +4548,7 @@ class ListTestCasesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4619,8 +4568,7 @@ class MatrixDimensionDefinition {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -4644,8 +4592,7 @@ class MemoryInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (memoryCapInKibibyte != null) {
       _json['memoryCapInKibibyte'] = memoryCapInKibibyte;
     }
@@ -4705,8 +4652,7 @@ class MergedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outcome != null) {
       _json['outcome'] = outcome.toJson();
     }
@@ -4748,8 +4694,7 @@ class MultiStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (multistepNumber != null) {
       _json['multistepNumber'] = multistepNumber;
     }
@@ -4777,8 +4722,7 @@ class NativeCrash {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (stackTrace != null) {
       _json['stackTrace'] = stackTrace.toJson();
     }
@@ -4837,8 +4781,7 @@ class NonSdkApi {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiSignature != null) {
       _json['apiSignature'] = apiSignature;
     }
@@ -4896,8 +4839,7 @@ class NonSdkApiInsight {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exampleTraceMessages != null) {
       _json['exampleTraceMessages'] = exampleTraceMessages;
     }
@@ -4934,8 +4876,7 @@ class NonSdkApiUsageViolation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiSignatures != null) {
       _json['apiSignatures'] = apiSignatures;
     }
@@ -4980,8 +4921,7 @@ class NonSdkApiUsageViolationReport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exampleApis != null) {
       _json['exampleApis'] =
           exampleApis.map((value) => value.toJson()).toList();
@@ -5056,8 +4996,7 @@ class Outcome {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (failureDetail != null) {
       _json['failureDetail'] = failureDetail.toJson();
     }
@@ -5098,8 +5037,7 @@ class OverlappingUIElements {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceName != null) {
       _json['resourceName'] = resourceName;
     }
@@ -5125,8 +5063,7 @@ class PendingGoogleUpdateInsight {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nameOfGoogleLibrary != null) {
       _json['nameOfGoogleLibrary'] = nameOfGoogleLibrary;
     }
@@ -5154,8 +5091,7 @@ class PerfEnvironment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cpuInfo != null) {
       _json['cpuInfo'] = cpuInfo.toJson();
     }
@@ -5222,8 +5158,7 @@ class PerfMetricsSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appStartTime != null) {
       _json['appStartTime'] = appStartTime.toJson();
     }
@@ -5272,8 +5207,7 @@ class PerfSample {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sampleTime != null) {
       _json['sampleTime'] = sampleTime.toJson();
     }
@@ -5329,8 +5263,7 @@ class PerfSampleSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basicPerfSampleSeries != null) {
       _json['basicPerfSampleSeries'] = basicPerfSampleSeries.toJson();
     }
@@ -5362,8 +5295,7 @@ class PerformedGoogleLogin {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5382,8 +5314,7 @@ class PerformedMonkeyActions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (totalActions != null) {
       _json['totalActions'] = totalActions;
     }
@@ -5429,8 +5360,7 @@ class PrimaryStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (individualOutcome != null) {
       _json['individualOutcome'] =
           individualOutcome.map((value) => value.toJson()).toList();
@@ -5466,8 +5396,7 @@ class ProjectSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultBucket != null) {
       _json['defaultBucket'] = defaultBucket;
     }
@@ -5495,8 +5424,7 @@ class PublishXunitXmlFilesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (xunitXmlFiles != null) {
       _json['xunitXmlFiles'] =
           xunitXmlFiles.map((value) => value.toJson()).toList();
@@ -5537,8 +5465,7 @@ class RegionProto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (heightPx != null) {
       _json['heightPx'] = heightPx;
     }
@@ -5575,8 +5502,7 @@ class ResultsStorage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resultsStoragePath != null) {
       _json['resultsStoragePath'] = resultsStoragePath.toJson();
     }
@@ -5607,8 +5533,7 @@ class RoboScriptExecution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (successfulActions != null) {
       _json['successfulActions'] = successfulActions;
     }
@@ -5641,8 +5566,7 @@ class SafeHtmlProto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null) {
       _json['privateDoNotAccessOrElseSafeHtmlWrappedValue'] =
           privateDoNotAccessOrElseSafeHtmlWrappedValue;
@@ -5682,8 +5606,7 @@ class Screen {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileReference != null) {
       _json['fileReference'] = fileReference;
     }
@@ -5736,8 +5659,7 @@ class ScreenshotCluster {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activity != null) {
       _json['activity'] = activity;
     }
@@ -5778,8 +5700,7 @@ class ShardSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (runs != null) {
       _json['runs'] = runs.map((value) => value.toJson()).toList();
     }
@@ -5816,8 +5737,7 @@ class SkippedDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (incompatibleAppVersion != null) {
       _json['incompatibleAppVersion'] = incompatibleAppVersion;
     }
@@ -5851,8 +5771,7 @@ class Specification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidTest != null) {
       _json['androidTest'] = androidTest.toJson();
     }
@@ -5877,8 +5796,7 @@ class StackTrace {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exception != null) {
       _json['exception'] = exception;
     }
@@ -5903,8 +5821,7 @@ class StartActivityNotFound {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (action != null) {
       _json['action'] = action;
     }
@@ -5955,8 +5872,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -6166,8 +6082,7 @@ class Step {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionTime != null) {
       _json['completionTime'] = completionTime.toJson();
     }
@@ -6234,8 +6149,7 @@ class StepDimensionValueEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -6262,8 +6176,7 @@ class StepLabelsEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -6283,8 +6196,7 @@ class StepSummary {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6303,8 +6215,7 @@ class SuccessDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (otherNativeCrash != null) {
       _json['otherNativeCrash'] = otherNativeCrash;
     }
@@ -6346,8 +6257,7 @@ class SuggestionClusterProto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (category != null) {
       _json['category'] = category;
     }
@@ -6445,8 +6355,7 @@ class SuggestionProto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (helpUrl != null) {
       _json['helpUrl'] = helpUrl;
     }
@@ -6559,8 +6468,7 @@ class TestCase {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (elapsedTime != null) {
       _json['elapsedTime'] = elapsedTime.toJson();
     }
@@ -6622,8 +6530,7 @@ class TestCaseReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (className != null) {
       _json['className'] = className;
     }
@@ -6687,8 +6594,7 @@ class TestExecutionStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testIssues != null) {
       _json['testIssues'] = testIssues.map((value) => value.toJson()).toList();
     }
@@ -6809,8 +6715,7 @@ class TestIssue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (category != null) {
       _json['category'] = category;
     }
@@ -6903,8 +6808,7 @@ class TestSuiteOverview {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (elapsedTime != null) {
       _json['elapsedTime'] = elapsedTime.toJson();
     }
@@ -6948,8 +6852,7 @@ class TestTiming {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testProcessDuration != null) {
       _json['testProcessDuration'] = testProcessDuration.toJson();
     }
@@ -6997,8 +6900,7 @@ class Thumbnail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contentType != null) {
       _json['contentType'] = contentType;
     }
@@ -7048,8 +6950,7 @@ class Timestamp {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nanos != null) {
       _json['nanos'] = nanos;
     }
@@ -7113,8 +7014,7 @@ class ToolExecution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (commandLineArguments != null) {
       _json['commandLineArguments'] = commandLineArguments;
     }
@@ -7148,8 +7048,7 @@ class ToolExecutionStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (toolExecution != null) {
       _json['toolExecution'] = toolExecution.toJson();
     }
@@ -7173,8 +7072,7 @@ class ToolExitCode {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (number != null) {
       _json['number'] = number;
     }
@@ -7211,8 +7109,7 @@ class ToolOutputReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (creationTime != null) {
       _json['creationTime'] = creationTime.toJson();
     }
@@ -7253,8 +7150,7 @@ class UIElementTooDeep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (depth != null) {
       _json['depth'] = depth;
     }
@@ -7277,8 +7173,7 @@ class UnspecifiedWarning {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7297,8 +7192,7 @@ class UnusedRoboDirective {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceName != null) {
       _json['resourceName'] = resourceName;
     }
@@ -7328,8 +7222,7 @@ class UpgradeInsight {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (packageName != null) {
       _json['packageName'] = packageName;
     }
@@ -7354,8 +7247,7 @@ class UsedRoboDirective {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceName != null) {
       _json['resourceName'] = resourceName;
     }
@@ -7378,8 +7270,7 @@ class UsedRoboIgnoreDirective {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceName != null) {
       _json['resourceName'] = resourceName;
     }

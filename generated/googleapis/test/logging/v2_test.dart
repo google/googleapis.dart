@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1709,8 +1708,7 @@ void main() {
   unittest.group('resource-BillingAccountsBucketsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BillingAccountsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1759,8 +1757,7 @@ void main() {
   unittest.group('resource-BillingAccountsExclusionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.BillingAccountsExclusionsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.exclusions;
+      var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_request = buildLogExclusion();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1811,8 +1808,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BillingAccountsExclusionsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.exclusions;
+      var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1859,8 +1855,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BillingAccountsExclusionsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.exclusions;
+      var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1907,8 +1902,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsExclusionsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.exclusions;
+      var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1964,8 +1958,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BillingAccountsExclusionsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.exclusions;
+      var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_request = buildLogExclusion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2022,8 +2015,7 @@ void main() {
   unittest.group('resource-BillingAccountsLocationsBucketsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_parent = 'foo';
       var arg_bucketId = 'foo';
@@ -2078,8 +2070,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2126,8 +2117,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2183,8 +2173,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2239,8 +2228,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.locations.buckets;
+      var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2293,8 +2281,7 @@ void main() {
   unittest.group('resource-BillingAccountsLogsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLogsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.logs;
+      var res = api.LoggingApi(mock).billingAccounts.logs;
       var arg_logName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2341,8 +2328,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsLogsResourceApi res =
-          api.LoggingApi(mock).billingAccounts.logs;
+      var res = api.LoggingApi(mock).billingAccounts.logs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2400,8 +2386,7 @@ void main() {
   unittest.group('resource-BillingAccountsSinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
       var arg_parent = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -2457,8 +2442,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2505,8 +2489,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2553,8 +2536,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2610,8 +2592,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -2671,8 +2652,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.BillingAccountsSinksResourceApi res =
-          api.LoggingApi(mock).billingAccounts.sinks;
+      var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -2734,7 +2714,7 @@ void main() {
   unittest.group('resource-EntriesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.EntriesResourceApi res = api.LoggingApi(mock).entries;
+      var res = api.LoggingApi(mock).entries;
       var arg_request = buildListLogEntriesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2783,7 +2763,7 @@ void main() {
 
     unittest.test('method--write', () {
       var mock = HttpServerMock();
-      api.EntriesResourceApi res = api.LoggingApi(mock).entries;
+      var res = api.LoggingApi(mock).entries;
       var arg_request = buildWriteLogEntriesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2834,7 +2814,7 @@ void main() {
   unittest.group('resource-ExclusionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
+      var res = api.LoggingApi(mock).exclusions;
       var arg_request = buildLogExclusion();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2885,7 +2865,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
+      var res = api.LoggingApi(mock).exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2932,7 +2912,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
+      var res = api.LoggingApi(mock).exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2979,7 +2959,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
+      var res = api.LoggingApi(mock).exclusions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3035,7 +3015,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ExclusionsResourceApi res = api.LoggingApi(mock).exclusions;
+      var res = api.LoggingApi(mock).exclusions;
       var arg_request = buildLogExclusion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3092,8 +3072,7 @@ void main() {
   unittest.group('resource-FoldersExclusionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.FoldersExclusionsResourceApi res =
-          api.LoggingApi(mock).folders.exclusions;
+      var res = api.LoggingApi(mock).folders.exclusions;
       var arg_request = buildLogExclusion();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3144,8 +3123,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FoldersExclusionsResourceApi res =
-          api.LoggingApi(mock).folders.exclusions;
+      var res = api.LoggingApi(mock).folders.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3192,8 +3170,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FoldersExclusionsResourceApi res =
-          api.LoggingApi(mock).folders.exclusions;
+      var res = api.LoggingApi(mock).folders.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3240,8 +3217,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FoldersExclusionsResourceApi res =
-          api.LoggingApi(mock).folders.exclusions;
+      var res = api.LoggingApi(mock).folders.exclusions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3297,8 +3273,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FoldersExclusionsResourceApi res =
-          api.LoggingApi(mock).folders.exclusions;
+      var res = api.LoggingApi(mock).folders.exclusions;
       var arg_request = buildLogExclusion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3355,8 +3330,7 @@ void main() {
   unittest.group('resource-FoldersLocationsBucketsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_parent = 'foo';
       var arg_bucketId = 'foo';
@@ -3411,8 +3385,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3459,8 +3432,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3507,8 +3479,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3564,8 +3535,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3620,8 +3590,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.FoldersLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).folders.locations.buckets;
+      var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3674,7 +3643,7 @@ void main() {
   unittest.group('resource-FoldersLogsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FoldersLogsResourceApi res = api.LoggingApi(mock).folders.logs;
+      var res = api.LoggingApi(mock).folders.logs;
       var arg_logName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3721,7 +3690,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FoldersLogsResourceApi res = api.LoggingApi(mock).folders.logs;
+      var res = api.LoggingApi(mock).folders.logs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3779,7 +3748,7 @@ void main() {
   unittest.group('resource-FoldersSinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
       var arg_parent = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -3835,7 +3804,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3882,7 +3851,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3929,7 +3898,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3985,7 +3954,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -4045,7 +4014,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.FoldersSinksResourceApi res = api.LoggingApi(mock).folders.sinks;
+      var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -4107,8 +4076,7 @@ void main() {
   unittest.group('resource-LocationsBucketsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildLogBucket();
       var arg_parent = 'foo';
       var arg_bucketId = 'foo';
@@ -4163,8 +4131,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4211,8 +4178,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4259,8 +4225,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4316,8 +4281,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildLogBucket();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4372,8 +4336,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.LocationsBucketsResourceApi res =
-          api.LoggingApi(mock).locations.buckets;
+      var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4426,7 +4389,7 @@ void main() {
   unittest.group('resource-LogsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LogsResourceApi res = api.LoggingApi(mock).logs;
+      var res = api.LoggingApi(mock).logs;
       var arg_logName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4473,7 +4436,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.LogsResourceApi res = api.LoggingApi(mock).logs;
+      var res = api.LoggingApi(mock).logs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4531,8 +4494,7 @@ void main() {
   unittest.group('resource-MonitoredResourceDescriptorsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MonitoredResourceDescriptorsResourceApi res =
-          api.LoggingApi(mock).monitoredResourceDescriptors;
+      var res = api.LoggingApi(mock).monitoredResourceDescriptors;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4589,7 +4551,7 @@ void main() {
   unittest.group('resource-OrganizationsResourceApi', () {
     unittest.test('method--getCmekSettings', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.LoggingApi(mock).organizations;
+      var res = api.LoggingApi(mock).organizations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4636,7 +4598,7 @@ void main() {
 
     unittest.test('method--updateCmekSettings', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.LoggingApi(mock).organizations;
+      var res = api.LoggingApi(mock).organizations;
       var arg_request = buildCmekSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4693,8 +4655,7 @@ void main() {
   unittest.group('resource-OrganizationsExclusionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsExclusionsResourceApi res =
-          api.LoggingApi(mock).organizations.exclusions;
+      var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_request = buildLogExclusion();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4745,8 +4706,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsExclusionsResourceApi res =
-          api.LoggingApi(mock).organizations.exclusions;
+      var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4793,8 +4753,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsExclusionsResourceApi res =
-          api.LoggingApi(mock).organizations.exclusions;
+      var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4841,8 +4800,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsExclusionsResourceApi res =
-          api.LoggingApi(mock).organizations.exclusions;
+      var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4898,8 +4856,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsExclusionsResourceApi res =
-          api.LoggingApi(mock).organizations.exclusions;
+      var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_request = buildLogExclusion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4956,8 +4913,7 @@ void main() {
   unittest.group('resource-OrganizationsLocationsBucketsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_parent = 'foo';
       var arg_bucketId = 'foo';
@@ -5012,8 +4968,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5060,8 +5015,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5108,8 +5062,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5165,8 +5118,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5221,8 +5173,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).organizations.locations.buckets;
+      var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5275,8 +5226,7 @@ void main() {
   unittest.group('resource-OrganizationsLogsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsLogsResourceApi res =
-          api.LoggingApi(mock).organizations.logs;
+      var res = api.LoggingApi(mock).organizations.logs;
       var arg_logName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5323,8 +5273,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsLogsResourceApi res =
-          api.LoggingApi(mock).organizations.logs;
+      var res = api.LoggingApi(mock).organizations.logs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5382,8 +5331,7 @@ void main() {
   unittest.group('resource-OrganizationsSinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
       var arg_parent = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -5439,8 +5387,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5487,8 +5434,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5535,8 +5481,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5592,8 +5537,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -5653,8 +5597,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsSinksResourceApi res =
-          api.LoggingApi(mock).organizations.sinks;
+      var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -5716,8 +5659,7 @@ void main() {
   unittest.group('resource-ProjectsExclusionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsExclusionsResourceApi res =
-          api.LoggingApi(mock).projects.exclusions;
+      var res = api.LoggingApi(mock).projects.exclusions;
       var arg_request = buildLogExclusion();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5768,8 +5710,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsExclusionsResourceApi res =
-          api.LoggingApi(mock).projects.exclusions;
+      var res = api.LoggingApi(mock).projects.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5816,8 +5757,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsExclusionsResourceApi res =
-          api.LoggingApi(mock).projects.exclusions;
+      var res = api.LoggingApi(mock).projects.exclusions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5864,8 +5804,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsExclusionsResourceApi res =
-          api.LoggingApi(mock).projects.exclusions;
+      var res = api.LoggingApi(mock).projects.exclusions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5921,8 +5860,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsExclusionsResourceApi res =
-          api.LoggingApi(mock).projects.exclusions;
+      var res = api.LoggingApi(mock).projects.exclusions;
       var arg_request = buildLogExclusion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5979,8 +5917,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsBucketsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_parent = 'foo';
       var arg_bucketId = 'foo';
@@ -6035,8 +5972,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6083,8 +6019,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6131,8 +6066,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6188,8 +6122,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildLogBucket();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -6244,8 +6177,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsBucketsResourceApi res =
-          api.LoggingApi(mock).projects.locations.buckets;
+      var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6298,7 +6230,7 @@ void main() {
   unittest.group('resource-ProjectsLogsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLogsResourceApi res = api.LoggingApi(mock).projects.logs;
+      var res = api.LoggingApi(mock).projects.logs;
       var arg_logName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6345,7 +6277,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLogsResourceApi res = api.LoggingApi(mock).projects.logs;
+      var res = api.LoggingApi(mock).projects.logs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6403,8 +6335,7 @@ void main() {
   unittest.group('resource-ProjectsMetricsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricsResourceApi res =
-          api.LoggingApi(mock).projects.metrics;
+      var res = api.LoggingApi(mock).projects.metrics;
       var arg_request = buildLogMetric();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6455,8 +6386,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricsResourceApi res =
-          api.LoggingApi(mock).projects.metrics;
+      var res = api.LoggingApi(mock).projects.metrics;
       var arg_metricName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6503,8 +6433,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricsResourceApi res =
-          api.LoggingApi(mock).projects.metrics;
+      var res = api.LoggingApi(mock).projects.metrics;
       var arg_metricName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6551,8 +6480,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricsResourceApi res =
-          api.LoggingApi(mock).projects.metrics;
+      var res = api.LoggingApi(mock).projects.metrics;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6608,8 +6536,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsMetricsResourceApi res =
-          api.LoggingApi(mock).projects.metrics;
+      var res = api.LoggingApi(mock).projects.metrics;
       var arg_request = buildLogMetric();
       var arg_metricName = 'foo';
       var arg_$fields = 'foo';
@@ -6662,7 +6589,7 @@ void main() {
   unittest.group('resource-ProjectsSinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
       var arg_parent = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -6718,7 +6645,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6765,7 +6692,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6812,7 +6739,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6868,7 +6795,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -6928,7 +6855,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsSinksResourceApi res = api.LoggingApi(mock).projects.sinks;
+      var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -6990,7 +6917,7 @@ void main() {
   unittest.group('resource-SinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.SinksResourceApi res = api.LoggingApi(mock).sinks;
+      var res = api.LoggingApi(mock).sinks;
       var arg_request = buildLogSink();
       var arg_parent = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -7046,7 +6973,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.SinksResourceApi res = api.LoggingApi(mock).sinks;
+      var res = api.LoggingApi(mock).sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7093,7 +7020,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SinksResourceApi res = api.LoggingApi(mock).sinks;
+      var res = api.LoggingApi(mock).sinks;
       var arg_sinkName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7140,7 +7067,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.SinksResourceApi res = api.LoggingApi(mock).sinks;
+      var res = api.LoggingApi(mock).sinks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7196,7 +7123,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.SinksResourceApi res = api.LoggingApi(mock).sinks;
+      var res = api.LoggingApi(mock).sinks;
       var arg_request = buildLogSink();
       var arg_sinkName = 'foo';
       var arg_uniqueWriterIdentity = true;
@@ -7258,7 +7185,7 @@ void main() {
   unittest.group('resource-V2ResourceApi', () {
     unittest.test('method--getCmekSettings', () {
       var mock = HttpServerMock();
-      api.V2ResourceApi res = api.LoggingApi(mock).v2;
+      var res = api.LoggingApi(mock).v2;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7305,7 +7232,7 @@ void main() {
 
     unittest.test('method--updateCmekSettings', () {
       var mock = HttpServerMock();
-      api.V2ResourceApi res = api.LoggingApi(mock).v2;
+      var res = api.LoggingApi(mock).v2;
       var arg_request = buildCmekSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

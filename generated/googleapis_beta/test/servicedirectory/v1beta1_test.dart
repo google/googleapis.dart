@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -824,8 +823,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations;
+      var res = api.ServicedirectoryApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -872,8 +870,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations;
+      var res = api.ServicedirectoryApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -934,8 +931,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsNamespacesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_request = buildNamespace();
       var arg_parent = 'foo';
       var arg_namespaceId = 'foo';
@@ -990,8 +986,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1038,8 +1033,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1086,8 +1080,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1138,8 +1131,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -1202,8 +1194,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_request = buildNamespace();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1258,8 +1249,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1310,8 +1300,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesResourceApi res =
-          api.ServicedirectoryApi(mock).projects.locations.namespaces;
+      var res = api.ServicedirectoryApi(mock).projects.locations.namespaces;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1364,7 +1353,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsNamespacesServicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildService();
       var arg_parent = 'foo';
@@ -1420,7 +1409,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1468,7 +1457,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1516,7 +1505,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
@@ -1568,7 +1557,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
@@ -1632,7 +1621,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildService();
       var arg_name = 'foo';
@@ -1688,7 +1677,7 @@ void main() {
 
     unittest.test('method--resolve', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildResolveServiceRequest();
       var arg_name = 'foo';
@@ -1740,7 +1729,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
@@ -1792,7 +1781,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesResourceApi res =
+      var res =
           api.ServicedirectoryApi(mock).projects.locations.namespaces.services;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
@@ -1847,13 +1836,12 @@ void main() {
       'resource-ProjectsLocationsNamespacesServicesEndpointsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesEndpointsResourceApi res =
-          api.ServicedirectoryApi(mock)
-              .projects
-              .locations
-              .namespaces
-              .services
-              .endpoints;
+      var res = api.ServicedirectoryApi(mock)
+          .projects
+          .locations
+          .namespaces
+          .services
+          .endpoints;
       var arg_request = buildEndpoint();
       var arg_parent = 'foo';
       var arg_endpointId = 'foo';
@@ -1908,13 +1896,12 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesEndpointsResourceApi res =
-          api.ServicedirectoryApi(mock)
-              .projects
-              .locations
-              .namespaces
-              .services
-              .endpoints;
+      var res = api.ServicedirectoryApi(mock)
+          .projects
+          .locations
+          .namespaces
+          .services
+          .endpoints;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1961,13 +1948,12 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesEndpointsResourceApi res =
-          api.ServicedirectoryApi(mock)
-              .projects
-              .locations
-              .namespaces
-              .services
-              .endpoints;
+      var res = api.ServicedirectoryApi(mock)
+          .projects
+          .locations
+          .namespaces
+          .services
+          .endpoints;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2014,13 +2000,12 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesEndpointsResourceApi res =
-          api.ServicedirectoryApi(mock)
-              .projects
-              .locations
-              .namespaces
-              .services
-              .endpoints;
+      var res = api.ServicedirectoryApi(mock)
+          .projects
+          .locations
+          .namespaces
+          .services
+          .endpoints;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -2083,13 +2068,12 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsNamespacesServicesEndpointsResourceApi res =
-          api.ServicedirectoryApi(mock)
-              .projects
-              .locations
-              .namespaces
-              .services
-              .endpoints;
+      var res = api.ServicedirectoryApi(mock)
+          .projects
+          .locations
+          .namespaces
+          .services
+          .endpoints;
       var arg_request = buildEndpoint();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

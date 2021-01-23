@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -717,8 +716,7 @@ class AliasContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -907,8 +905,7 @@ class Breakpoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (action != null) {
       _json['action'] = action;
     }
@@ -1003,8 +1000,7 @@ class CloudRepoSourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliasContext != null) {
       _json['aliasContext'] = aliasContext.toJson();
     }
@@ -1044,8 +1040,7 @@ class CloudWorkspaceId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1077,8 +1072,7 @@ class CloudWorkspaceSourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (snapshotId != null) {
       _json['snapshotId'] = snapshotId;
     }
@@ -1207,8 +1201,7 @@ class Debuggee {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentVersion != null) {
       _json['agentVersion'] = agentVersion;
     }
@@ -1264,8 +1257,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1291,8 +1283,7 @@ class ExtendedSourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -1327,8 +1318,7 @@ class FormatMessage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (format != null) {
       _json['format'] = format;
     }
@@ -1379,8 +1369,7 @@ class GerritSourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliasContext != null) {
       _json['aliasContext'] = aliasContext.toJson();
     }
@@ -1415,8 +1404,7 @@ class GetBreakpointResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakpoint != null) {
       _json['breakpoint'] = breakpoint.toJson();
     }
@@ -1445,8 +1433,7 @@ class GitSourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (revisionId != null) {
       _json['revisionId'] = revisionId;
     }
@@ -1489,8 +1476,7 @@ class ListActiveBreakpointsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakpoints != null) {
       _json['breakpoints'] =
           breakpoints.map((value) => value.toJson()).toList();
@@ -1532,8 +1518,7 @@ class ListBreakpointsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakpoints != null) {
       _json['breakpoints'] =
           breakpoints.map((value) => value.toJson()).toList();
@@ -1563,8 +1548,7 @@ class ListDebuggeesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (debuggees != null) {
       _json['debuggees'] = debuggees.map((value) => value.toJson()).toList();
     }
@@ -1593,8 +1577,7 @@ class ProjectRepoId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectId != null) {
       _json['projectId'] = projectId;
     }
@@ -1621,8 +1604,7 @@ class RegisterDebuggeeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (debuggee != null) {
       _json['debuggee'] = debuggee.toJson();
     }
@@ -1655,8 +1637,7 @@ class RegisterDebuggeeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agentId != null) {
       _json['agentId'] = agentId;
     }
@@ -1687,8 +1668,7 @@ class RepoId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectRepoId != null) {
       _json['projectRepoId'] = projectRepoId.toJson();
     }
@@ -1714,8 +1694,7 @@ class SetBreakpointResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakpoint != null) {
       _json['breakpoint'] = breakpoint.toJson();
     }
@@ -1757,8 +1736,7 @@ class SourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cloudRepo != null) {
       _json['cloudRepo'] = cloudRepo.toJson();
     }
@@ -1803,8 +1781,7 @@ class SourceLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (column != null) {
       _json['column'] = column;
     }
@@ -1856,8 +1833,7 @@ class StackFrame {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arguments != null) {
       _json['arguments'] = arguments.map((value) => value.toJson()).toList();
     }
@@ -1918,8 +1894,7 @@ class StatusMessage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description.toJson();
     }
@@ -1948,8 +1923,7 @@ class UpdateActiveBreakpointRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (breakpoint != null) {
       _json['breakpoint'] = breakpoint.toJson();
     }
@@ -1967,8 +1941,7 @@ class UpdateActiveBreakpointResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2067,8 +2040,7 @@ class Variable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (members != null) {
       _json['members'] = members.map((value) => value.toJson()).toList();
     }

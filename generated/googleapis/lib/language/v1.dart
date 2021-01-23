@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -387,8 +386,7 @@ class AnalyzeEntitiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -423,8 +421,7 @@ class AnalyzeEntitiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entities != null) {
       _json['entities'] = entities.map((value) => value.toJson()).toList();
     }
@@ -467,8 +464,7 @@ class AnalyzeEntitySentimentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -503,8 +499,7 @@ class AnalyzeEntitySentimentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entities != null) {
       _json['entities'] = entities.map((value) => value.toJson()).toList();
     }
@@ -547,8 +542,7 @@ class AnalyzeSentimentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -589,8 +583,7 @@ class AnalyzeSentimentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentSentiment != null) {
       _json['documentSentiment'] = documentSentiment.toJson();
     }
@@ -636,8 +629,7 @@ class AnalyzeSyntaxRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -680,8 +672,7 @@ class AnalyzeSyntaxResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (language != null) {
       _json['language'] = language;
     }
@@ -734,8 +725,7 @@ class AnnotateTextRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -809,8 +799,7 @@ class AnnotateTextResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categories != null) {
       _json['categories'] = categories.map((value) => value.toJson()).toList();
     }
@@ -855,8 +844,7 @@ class ClassificationCategory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -881,8 +869,7 @@ class ClassifyTextRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (document != null) {
       _json['document'] = document.toJson();
     }
@@ -907,8 +894,7 @@ class ClassifyTextResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categories != null) {
       _json['categories'] = categories.map((value) => value.toJson()).toList();
     }
@@ -1027,8 +1013,7 @@ class DependencyEdge {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (headTokenIndex != null) {
       _json['headTokenIndex'] = headTokenIndex;
     }
@@ -1087,8 +1072,7 @@ class Document {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -1192,8 +1176,7 @@ class Entity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mentions != null) {
       _json['mentions'] = mentions.map((value) => value.toJson()).toList();
     }
@@ -1250,8 +1233,7 @@ class EntityMention {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sentiment != null) {
       _json['sentiment'] = sentiment.toJson();
     }
@@ -1304,8 +1286,7 @@ class Features {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (classifyText != null) {
       _json['classifyText'] = classifyText;
     }
@@ -1511,8 +1492,7 @@ class PartOfSpeech {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aspect != null) {
       _json['aspect'] = aspect;
     }
@@ -1575,8 +1555,7 @@ class Sentence {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sentiment != null) {
       _json['sentiment'] = sentiment.toJson();
     }
@@ -1611,8 +1590,7 @@ class Sentiment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (magnitude != null) {
       _json['magnitude'] = magnitude;
     }
@@ -1663,8 +1641,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1699,8 +1676,7 @@ class TextSpan {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (beginOffset != null) {
       _json['beginOffset'] = beginOffset;
     }
@@ -1744,8 +1720,7 @@ class Token {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dependencyEdge != null) {
       _json['dependencyEdge'] = dependencyEdge.toJson();
     }

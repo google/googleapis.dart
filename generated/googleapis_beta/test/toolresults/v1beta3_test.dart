@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3950,7 +3949,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--getSettings', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ToolresultsApi(mock).projects;
+      var res = api.ToolresultsApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4005,7 +4004,7 @@ void main() {
 
     unittest.test('method--initializeSettings', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ToolresultsApi(mock).projects;
+      var res = api.ToolresultsApi(mock).projects;
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4062,8 +4061,7 @@ void main() {
   unittest.group('resource-ProjectsHistoriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesResourceApi res =
-          api.ToolresultsApi(mock).projects.histories;
+      var res = api.ToolresultsApi(mock).projects.histories;
       var arg_request = buildHistory();
       var arg_projectId = 'foo';
       var arg_requestId = 'foo';
@@ -4126,8 +4124,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesResourceApi res =
-          api.ToolresultsApi(mock).projects.histories;
+      var res = api.ToolresultsApi(mock).projects.histories;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_$fields = 'foo';
@@ -4186,8 +4183,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesResourceApi res =
-          api.ToolresultsApi(mock).projects.histories;
+      var res = api.ToolresultsApi(mock).projects.histories;
       var arg_projectId = 'foo';
       var arg_filterByName = 'foo';
       var arg_pageSize = 42;
@@ -4257,8 +4253,7 @@ void main() {
   unittest.group('resource-ProjectsHistoriesExecutionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions;
+      var res = api.ToolresultsApi(mock).projects.histories.executions;
       var arg_request = buildExecution();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -4331,8 +4326,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions;
+      var res = api.ToolresultsApi(mock).projects.histories.executions;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -4402,8 +4396,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions;
+      var res = api.ToolresultsApi(mock).projects.histories.executions;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_pageSize = 42;
@@ -4477,8 +4470,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions;
+      var res = api.ToolresultsApi(mock).projects.histories.executions;
       var arg_request = buildExecution();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -4557,8 +4549,7 @@ void main() {
   unittest.group('resource-ProjectsHistoriesExecutionsClustersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsClustersResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.clusters;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.clusters;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -4638,8 +4629,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsClustersResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.clusters;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.clusters;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -4718,7 +4708,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsEnvironmentsResourceApi res =
+      var res =
           api.ToolresultsApi(mock).projects.histories.executions.environments;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -4799,7 +4789,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsEnvironmentsResourceApi res =
+      var res =
           api.ToolresultsApi(mock).projects.histories.executions.environments;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -4886,8 +4876,7 @@ void main() {
   unittest.group('resource-ProjectsHistoriesExecutionsStepsResourceApi', () {
     unittest.test('method--accessibilityClusters', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_name = 'foo';
       var arg_locale = 'foo';
       var arg_$fields = 'foo';
@@ -4938,8 +4927,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildStep();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5022,8 +5010,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -5103,8 +5090,7 @@ void main() {
 
     unittest.test('method--getPerfMetricsSummary', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -5191,8 +5177,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -5276,8 +5261,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildStep();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5365,8 +5349,7 @@ void main() {
 
     unittest.test('method--publishXunitXmlFiles', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsResourceApi res =
-          api.ToolresultsApi(mock).projects.histories.executions.steps;
+      var res = api.ToolresultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildPublishXunitXmlFilesRequest();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5461,13 +5444,12 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfMetricsSummary;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfMetricsSummary;
       var arg_request = buildPerfMetricsSummary();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5562,13 +5544,12 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfSampleSeries;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfSampleSeries;
       var arg_request = buildPerfSampleSeries();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5659,13 +5640,12 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfSampleSeries;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfSampleSeries;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -5756,13 +5736,12 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfSampleSeries;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfSampleSeries;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -5854,14 +5833,13 @@ void main() {
       () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi
-          res = api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfSampleSeries
-              .samples;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfSampleSeries
+          .samples;
       var arg_request = buildBatchCreatePerfSamplesRequest();
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
@@ -5962,14 +5940,13 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi
-          res = api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .perfSampleSeries
-              .samples;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .perfSampleSeries
+          .samples;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -6077,13 +6054,12 @@ void main() {
       'resource-ProjectsHistoriesExecutionsStepsTestCasesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsTestCasesResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .testCases;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .testCases;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -6174,13 +6150,12 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsTestCasesResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .testCases;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .testCases;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';
@@ -6277,13 +6252,12 @@ void main() {
       'resource-ProjectsHistoriesExecutionsStepsThumbnailsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsHistoriesExecutionsStepsThumbnailsResourceApi res =
-          api.ToolresultsApi(mock)
-              .projects
-              .histories
-              .executions
-              .steps
-              .thumbnails;
+      var res = api.ToolresultsApi(mock)
+          .projects
+          .histories
+          .executions
+          .steps
+          .thumbnails;
       var arg_projectId = 'foo';
       var arg_historyId = 'foo';
       var arg_executionId = 'foo';

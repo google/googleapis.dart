@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2194,8 +2193,7 @@ class EntityKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2249,8 +2247,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabledUnknownSources != null) {
       _json['enabledUnknownSources'] = enabledUnknownSources;
     }
@@ -2287,8 +2284,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -2312,8 +2308,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceUser != null) {
       _json['deviceUser'] = deviceUser.toJson();
     }
@@ -2341,8 +2336,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -2366,8 +2360,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceUser != null) {
       _json['deviceUser'] = deviceUser.toJson();
     }
@@ -2395,8 +2388,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -2420,8 +2412,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.toJson();
     }
@@ -2449,8 +2440,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -2474,8 +2464,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceUser != null) {
       _json['deviceUser'] = deviceUser.toJson();
     }
@@ -2616,8 +2605,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assetTags != null) {
       _json['assetTags'] = assetTags;
     }
@@ -2690,8 +2678,7 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -2928,8 +2915,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidSpecificAttributes != null) {
       _json['androidSpecificAttributes'] = androidSpecificAttributes.toJson();
     }
@@ -3109,8 +3095,7 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compromisedState != null) {
       _json['compromisedState'] = compromisedState;
     }
@@ -3170,8 +3155,7 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientStates != null) {
       _json['clientStates'] =
           clientStates.map((value) => value.toJson()).toList();
@@ -3208,8 +3192,7 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceUsers != null) {
       _json['deviceUsers'] =
           deviceUsers.map((value) => value.toJson()).toList();
@@ -3245,8 +3228,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devices != null) {
       _json['devices'] = devices.map((value) => value.toJson()).toList();
     }
@@ -3291,8 +3273,7 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -3325,8 +3306,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -3349,8 +3329,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (device != null) {
       _json['device'] = device.toJson();
     }
@@ -3378,8 +3357,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customer != null) {
       _json['customer'] = customer;
     }
@@ -3403,8 +3381,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceUser != null) {
       _json['deviceUser'] = deviceUser.toJson();
     }
@@ -3479,8 +3456,7 @@ class Group {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3532,8 +3508,7 @@ class ListGroupsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groups != null) {
       _json['groups'] = groups.map((value) => value.toJson()).toList();
     }
@@ -3566,8 +3541,7 @@ class ListMembershipsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (memberships != null) {
       _json['memberships'] =
           memberships.map((value) => value.toJson()).toList();
@@ -3594,8 +3568,7 @@ class LookupGroupNameResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3620,8 +3593,7 @@ class LookupMembershipNameResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3689,8 +3661,7 @@ class Membership {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3728,8 +3699,7 @@ class MembershipRole {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3765,8 +3735,7 @@ class ModifyMembershipRolesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addRoles != null) {
       _json['addRoles'] = addRoles.map((value) => value.toJson()).toList();
     }
@@ -3791,8 +3760,7 @@ class ModifyMembershipRolesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (membership != null) {
       _json['membership'] = membership.toJson();
     }
@@ -3860,8 +3828,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -3903,8 +3870,7 @@ class SearchGroupsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groups != null) {
       _json['groups'] = groups.map((value) => value.toJson()).toList();
     }
@@ -3955,8 +3921,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }

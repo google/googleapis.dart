@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3164,8 +3163,7 @@ class Acl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -3212,8 +3210,7 @@ class AclRuleScope {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -3271,8 +3268,7 @@ class AclRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -3351,8 +3347,7 @@ class Calendar {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conferenceProperties != null) {
       _json['conferenceProperties'] = conferenceProperties.toJson();
     }
@@ -3423,8 +3418,7 @@ class CalendarList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -3462,8 +3456,7 @@ class CalendarListEntryNotificationSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (notifications != null) {
       _json['notifications'] =
           notifications.map((value) => value.toJson()).toList();
@@ -3625,8 +3618,7 @@ class CalendarListEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessRole != null) {
       _json['accessRole'] = accessRole;
     }
@@ -3719,8 +3711,7 @@ class CalendarNotification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (method != null) {
       _json['method'] = method;
     }
@@ -3802,8 +3793,7 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address;
     }
@@ -3858,8 +3848,7 @@ class ColorDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (background != null) {
       _json['background'] = background;
     }
@@ -3910,8 +3899,7 @@ class Colors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calendar != null) {
       _json['calendar'] =
           commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
@@ -4009,8 +3997,7 @@ class ConferenceData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conferenceId != null) {
       _json['conferenceId'] = conferenceId;
     }
@@ -4051,8 +4038,7 @@ class ConferenceParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addOnParameters != null) {
       _json['addOnParameters'] = addOnParameters.toJson();
     }
@@ -4073,8 +4059,7 @@ class ConferenceParametersAddOnParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameters != null) {
       _json['parameters'] = parameters;
     }
@@ -4101,8 +4086,7 @@ class ConferenceProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowedConferenceSolutionTypes != null) {
       _json['allowedConferenceSolutionTypes'] = allowedConferenceSolutionTypes;
     }
@@ -4129,8 +4113,7 @@ class ConferenceRequestStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (statusCode != null) {
       _json['statusCode'] = statusCode;
     }
@@ -4164,8 +4147,7 @@ class ConferenceSolution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iconUri != null) {
       _json['iconUri'] = iconUri;
     }
@@ -4201,8 +4183,7 @@ class ConferenceSolutionKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -4238,8 +4219,7 @@ class CreateConferenceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conferenceSolutionKey != null) {
       _json['conferenceSolutionKey'] = conferenceSolutionKey.toJson();
     }
@@ -4376,8 +4356,7 @@ class EntryPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessCode != null) {
       _json['accessCode'] = accessCode;
     }
@@ -4439,8 +4418,7 @@ class Error {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domain != null) {
       _json['domain'] = domain;
     }
@@ -4485,8 +4463,7 @@ class EventCreator {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4525,8 +4502,7 @@ class EventExtendedProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (private != null) {
       _json['private'] = private;
     }
@@ -4600,8 +4576,7 @@ class EventGadget {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (display != null) {
       _json['display'] = display;
     }
@@ -4668,8 +4643,7 @@ class EventOrganizer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4710,8 +4684,7 @@ class EventReminders {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (overrides != null) {
       _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
@@ -4746,8 +4719,7 @@ class EventSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (title != null) {
       _json['title'] = title;
     }
@@ -5100,8 +5072,7 @@ class Event {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (anyoneCanAddSelf != null) {
       _json['anyoneCanAddSelf'] = anyoneCanAddSelf;
     }
@@ -5263,8 +5234,7 @@ class EventAttachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileId != null) {
       _json['fileId'] = fileId;
     }
@@ -5362,8 +5332,7 @@ class EventAttendee {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additionalGuests != null) {
       _json['additionalGuests'] = additionalGuests;
     }
@@ -5429,8 +5398,7 @@ class EventDateTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (date != null) {
       _json['date'] =
           "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
@@ -5469,8 +5437,7 @@ class EventReminder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (method != null) {
       _json['method'] = method;
     }
@@ -5574,8 +5541,7 @@ class Events {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessRole != null) {
       _json['accessRole'] = accessRole;
     }
@@ -5637,8 +5603,7 @@ class FreeBusyCalendar {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (busy != null) {
       _json['busy'] = busy.map((value) => value.toJson()).toList();
     }
@@ -5670,8 +5635,7 @@ class FreeBusyGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calendars != null) {
       _json['calendars'] = calendars;
     }
@@ -5731,8 +5695,7 @@ class FreeBusyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calendarExpansionMax != null) {
       _json['calendarExpansionMax'] = calendarExpansionMax;
     }
@@ -5768,8 +5731,7 @@ class FreeBusyRequestItem {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -5818,8 +5780,7 @@ class FreeBusyResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calendars != null) {
       _json['calendars'] =
           commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(
@@ -5876,8 +5837,7 @@ class Setting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -5936,8 +5896,7 @@ class Settings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -5976,8 +5935,7 @@ class TimePeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (end != null) {
       _json['end'] = (end).toIso8601String();
     }

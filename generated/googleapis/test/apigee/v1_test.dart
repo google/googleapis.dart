@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -7594,7 +7593,7 @@ void main() {
   unittest.group('resource-HybridIssuersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.HybridIssuersResourceApi res = api.ApigeeApi(mock).hybrid.issuers;
+      var res = api.ApigeeApi(mock).hybrid.issuers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7644,7 +7643,7 @@ void main() {
   unittest.group('resource-OrganizationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -7695,7 +7694,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7742,7 +7741,7 @@ void main() {
 
     unittest.test('method--getDeployedIngressConfig', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_name = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -7792,7 +7791,7 @@ void main() {
 
     unittest.test('method--getSyncAuthorization', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7845,7 +7844,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7893,7 +7892,7 @@ void main() {
 
     unittest.test('method--setSyncAuthorization', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1SyncAuthorization();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7945,7 +7944,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res = api.ApigeeApi(mock).organizations;
+      var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7998,8 +7997,7 @@ void main() {
   unittest.group('resource-OrganizationsAnalyticsDatastoresResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8050,8 +8048,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8098,8 +8095,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8146,8 +8142,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_parent = 'foo';
       var arg_targetType = 'foo';
       var arg_$fields = 'foo';
@@ -8198,8 +8193,7 @@ void main() {
 
     unittest.test('method--test', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8251,8 +8245,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsAnalyticsDatastoresResourceApi res =
-          api.ApigeeApi(mock).organizations.analytics.datastores;
+      var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8305,8 +8298,7 @@ void main() {
   unittest.group('resource-OrganizationsApiproductsResourceApi', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8357,8 +8349,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -8409,8 +8400,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8457,8 +8447,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8505,8 +8494,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_parent = 'foo';
       var arg_attributename = 'foo';
       var arg_attributevalue = 'foo';
@@ -8574,8 +8562,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts;
+      var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8628,8 +8615,7 @@ void main() {
   unittest.group('resource-OrganizationsApiproductsAttributesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8676,8 +8662,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8724,8 +8709,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8772,8 +8756,7 @@ void main() {
 
     unittest.test('method--updateApiProductAttribute', () {
       var mock = HttpServerMock();
-      api.OrganizationsApiproductsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -8827,8 +8810,7 @@ void main() {
   unittest.group('resource-OrganizationsApisResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisResourceApi res =
-          api.ApigeeApi(mock).organizations.apis;
+      var res = api.ApigeeApi(mock).organizations.apis;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
       var arg_action = 'foo';
@@ -8891,8 +8873,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisResourceApi res =
-          api.ApigeeApi(mock).organizations.apis;
+      var res = api.ApigeeApi(mock).organizations.apis;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8939,8 +8920,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisResourceApi res =
-          api.ApigeeApi(mock).organizations.apis;
+      var res = api.ApigeeApi(mock).organizations.apis;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8987,8 +8967,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisResourceApi res =
-          api.ApigeeApi(mock).organizations.apis;
+      var res = api.ApigeeApi(mock).organizations.apis;
       var arg_parent = 'foo';
       var arg_includeMetaData = true;
       var arg_includeRevisions = true;
@@ -9047,8 +9026,7 @@ void main() {
   unittest.group('resource-OrganizationsApisDeploymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.deployments;
+      var res = api.ApigeeApi(mock).organizations.apis.deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9098,8 +9076,7 @@ void main() {
   unittest.group('resource-OrganizationsApisKeyvaluemapsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9150,8 +9127,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9200,8 +9176,7 @@ void main() {
   unittest.group('resource-OrganizationsApisRevisionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9249,8 +9224,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_name = 'foo';
       var arg_format = 'foo';
       var arg_$fields = 'foo';
@@ -9299,8 +9273,7 @@ void main() {
 
     unittest.test('method--updateApiProxyRevision', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_request = buildGoogleApiHttpBody();
       var arg_name = 'foo';
       var arg_validate = true;
@@ -9359,8 +9332,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsApisRevisionsDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.apis.revisions.deployments;
+      var res = api.ApigeeApi(mock).organizations.apis.revisions.deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9410,8 +9382,7 @@ void main() {
   unittest.group('resource-OrganizationsAppsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.apps;
+      var res = api.ApigeeApi(mock).organizations.apps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9458,8 +9429,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.apps;
+      var res = api.ApigeeApi(mock).organizations.apps;
       var arg_parent = 'foo';
       var arg_apiProduct = 'foo';
       var arg_apptype = 'foo';
@@ -9543,8 +9513,7 @@ void main() {
   unittest.group('resource-OrganizationsDeploymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.deployments;
+      var res = api.ApigeeApi(mock).organizations.deployments;
       var arg_parent = 'foo';
       var arg_sharedFlows = true;
       var arg_$fields = 'foo';
@@ -9597,8 +9566,7 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersResourceApi', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9649,8 +9617,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -9701,8 +9668,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9749,8 +9715,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
       var arg_action = 'foo';
       var arg_$fields = 'foo';
@@ -9799,8 +9764,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_parent = 'foo';
       var arg_count = 'foo';
       var arg_expand = true;
@@ -9867,8 +9831,7 @@ void main() {
 
     unittest.test('method--setDeveloperStatus', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
       var arg_action = 'foo';
       var arg_$fields = 'foo';
@@ -9918,8 +9881,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersResourceApi res =
-          api.ApigeeApi(mock).organizations.developers;
+      var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -9972,8 +9934,7 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsResourceApi', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10024,8 +9985,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10076,8 +10036,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10124,8 +10083,7 @@ void main() {
 
     unittest.test('method--generateKeyPairOrUpdateDeveloperAppStatus', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
       var arg_name = 'foo';
       var arg_action = 'foo';
@@ -10179,8 +10137,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_name = 'foo';
       var arg_entity = 'foo';
       var arg_query = 'foo';
@@ -10232,8 +10189,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_parent = 'foo';
       var arg_count = 'foo';
       var arg_expand = true;
@@ -10297,8 +10253,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps;
+      var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10352,8 +10307,7 @@ void main() {
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10400,8 +10354,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10448,8 +10401,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10496,8 +10448,7 @@ void main() {
 
     unittest.test('method--updateDeveloperAppAttribute', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10551,8 +10502,7 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAppsKeysResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10604,8 +10554,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10653,8 +10602,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10702,8 +10650,7 @@ void main() {
 
     unittest.test('method--replaceDeveloperAppKey', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10755,8 +10702,7 @@ void main() {
 
     unittest.test('method--updateDeveloperAppKey', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
       var arg_name = 'foo';
       var arg_action = 'foo';
@@ -10814,7 +10760,7 @@ void main() {
       'resource-OrganizationsDevelopersAppsKeysApiproductsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysApiproductsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -10863,7 +10809,7 @@ void main() {
 
     unittest.test('method--updateDeveloperAppKeyApiProduct', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysApiproductsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
       var arg_name = 'foo';
       var arg_action = 'foo';
@@ -10917,8 +10863,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAppsKeysCreateResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
+      var res = api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -10972,8 +10917,7 @@ void main() {
   unittest.group('resource-OrganizationsDevelopersAttributesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11020,8 +10964,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11068,8 +11011,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11116,8 +11058,7 @@ void main() {
 
     unittest.test('method--updateDeveloperAttribute', () {
       var mock = HttpServerMock();
-      api.OrganizationsDevelopersAttributesResourceApi res =
-          api.ApigeeApi(mock).organizations.developers.attributes_1;
+      var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -11170,8 +11111,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvgroupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups;
+      var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
       var arg_parent = 'foo';
       var arg_name = 'foo';
@@ -11224,8 +11164,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups;
+      var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11272,8 +11211,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups;
+      var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11321,8 +11259,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups;
+      var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11379,8 +11316,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups;
+      var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -11437,8 +11373,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvgroupsAttachmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups.attachments;
+      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -11490,8 +11425,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups.attachments;
+      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11538,8 +11472,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups.attachments;
+      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11587,8 +11520,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvgroupsAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.envgroups.attachments;
+      var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -11648,8 +11580,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
       var arg_parent = 'foo';
       var arg_name = 'foo';
@@ -11702,8 +11633,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11750,8 +11680,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11798,8 +11727,7 @@ void main() {
 
     unittest.test('method--getDebugmask', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11846,8 +11774,7 @@ void main() {
 
     unittest.test('method--getDeployedConfig', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11895,8 +11822,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -11950,8 +11876,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -12002,8 +11927,7 @@ void main() {
 
     unittest.test('method--subscribe', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12050,8 +11974,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -12103,8 +12026,7 @@ void main() {
 
     unittest.test('method--unsubscribe', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Subscription();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12155,8 +12077,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12207,8 +12128,7 @@ void main() {
 
     unittest.test('method--updateDebugmask', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1DebugMask();
       var arg_name = 'foo';
       var arg_replaceRepeatedFields = true;
@@ -12268,8 +12188,7 @@ void main() {
 
     unittest.test('method--updateEnvironment', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments;
+      var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12323,8 +12242,7 @@ void main() {
       () {
     unittest.test('method--getSchemav2', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsAnalyticsAdminResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.analytics.admin;
+      var res = api.ApigeeApi(mock).organizations.environments.analytics.admin;
       var arg_name = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
@@ -12376,7 +12294,7 @@ void main() {
       'resource-OrganizationsEnvironmentsAnalyticsExportsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
       var arg_request = buildGoogleCloudApigeeV1ExportRequest();
       var arg_parent = 'foo';
@@ -12428,7 +12346,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12476,7 +12394,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsAnalyticsExportsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12528,8 +12446,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.apis.deployments;
+      var res = api.ApigeeApi(mock).organizations.environments.apis.deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12580,8 +12497,7 @@ void main() {
       () {
     unittest.test('method--deploy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
       var arg_override = true;
       var arg_sequencedRollout = true;
@@ -12637,8 +12553,7 @@ void main() {
 
     unittest.test('method--getDeployments', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12685,8 +12600,7 @@ void main() {
 
     unittest.test('method--undeploy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.apis.revisions;
+      var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
       var arg_sequencedRollout = true;
       var arg_$fields = 'foo';
@@ -12741,13 +12655,12 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .debugsessions;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .debugsessions;
       var arg_request = buildGoogleCloudApigeeV1DebugSession();
       var arg_parent = 'foo';
       var arg_timeout = 'foo';
@@ -12802,13 +12715,12 @@ void main() {
 
     unittest.test('method--deleteData', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .debugsessions;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .debugsessions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12855,13 +12767,12 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .debugsessions;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .debugsessions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12908,13 +12819,12 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .debugsessions;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .debugsessions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -12975,14 +12885,13 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi
-          res = api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .debugsessions
-              .data;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .debugsessions
+          .data;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13034,13 +12943,12 @@ void main() {
       () {
     unittest.test('method--generateDeployChangeReport', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .deployments;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .deployments;
       var arg_name = 'foo';
       var arg_override = true;
       var arg_$fields = 'foo';
@@ -13092,13 +13000,12 @@ void main() {
 
     unittest.test('method--generateUndeployChangeReport', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .apis
-              .revisions
-              .deployments;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .apis
+          .revisions
+          .deployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13148,8 +13055,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsCachesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsCachesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.caches;
+      var res = api.ApigeeApi(mock).organizations.environments.caches;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13199,8 +13105,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.deployments;
+      var res = api.ApigeeApi(mock).organizations.environments.deployments;
       var arg_parent = 'foo';
       var arg_sharedFlows = true;
       var arg_$fields = 'foo';
@@ -13253,8 +13158,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsFlowhooksResourceApi', () {
     unittest.test('method--attachSharedFlowToFlowHook', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsFlowhooksResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.flowhooks;
+      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_request = buildGoogleCloudApigeeV1FlowHook();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13306,8 +13210,7 @@ void main() {
 
     unittest.test('method--detachSharedFlowFromFlowHook', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsFlowhooksResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.flowhooks;
+      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13354,8 +13257,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsFlowhooksResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.flowhooks;
+      var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13404,8 +13306,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsKeystoresResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.keystores;
+      var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_request = buildGoogleCloudApigeeV1Keystore();
       var arg_parent = 'foo';
       var arg_name = 'foo';
@@ -13458,8 +13359,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.keystores;
+      var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13506,8 +13406,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.keystores;
+      var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13557,7 +13456,7 @@ void main() {
       'resource-OrganizationsEnvironmentsKeystoresAliasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
@@ -13628,7 +13527,7 @@ void main() {
 
     unittest.test('method--csr', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13676,7 +13575,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13724,7 +13623,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13772,7 +13671,7 @@ void main() {
 
     unittest.test('method--getCertificate', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13820,7 +13719,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeystoresAliasesResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
       var arg_request = buildGoogleApiHttpBody();
       var arg_name = 'foo';
@@ -13884,8 +13783,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13936,8 +13834,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13987,8 +13884,7 @@ void main() {
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsOptimizedStatsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.optimizedStats;
+      var res = api.ApigeeApi(mock).organizations.environments.optimizedStats;
       var arg_name = 'foo';
       var arg_accuracy = 'foo';
       var arg_aggTable = 'foo';
@@ -14090,8 +13986,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsQueriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsQueriesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.queries;
+      var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_request = buildGoogleCloudApigeeV1Query();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14142,8 +14037,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsQueriesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.queries;
+      var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14190,8 +14084,7 @@ void main() {
 
     unittest.test('method--getResult', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsQueriesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.queries;
+      var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14238,8 +14131,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsQueriesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.queries;
+      var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_parent = 'foo';
       var arg_dataset = 'foo';
       var arg_from = 'foo';
@@ -14311,8 +14203,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsReferencesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsReferencesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.references;
+      var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14363,8 +14254,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsReferencesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.references;
+      var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14411,8 +14301,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsReferencesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.references;
+      var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14459,8 +14348,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsReferencesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.references;
+      var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -14514,8 +14402,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
       var arg_name = 'foo';
@@ -14571,8 +14458,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
       var arg_type = 'foo';
       var arg_name = 'foo';
@@ -14621,8 +14507,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
       var arg_type = 'foo';
       var arg_name = 'foo';
@@ -14671,8 +14556,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
@@ -14722,8 +14606,7 @@ void main() {
 
     unittest.test('method--listEnvironmentResources', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
@@ -14772,8 +14655,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsResourcefilesResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.resourcefiles;
+      var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
       var arg_type = 'foo';
@@ -14831,12 +14713,11 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi res =
-          api.ApigeeApi(mock)
-              .organizations
-              .environments
-              .sharedflows
-              .deployments;
+      var res = api.ApigeeApi(mock)
+          .organizations
+          .environments
+          .sharedflows
+          .deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14887,7 +14768,7 @@ void main() {
       'resource-OrganizationsEnvironmentsSharedflowsRevisionsResourceApi', () {
     unittest.test('method--deploy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
       var arg_name = 'foo';
       var arg_override = true;
@@ -14938,7 +14819,7 @@ void main() {
 
     unittest.test('method--getDeployments', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -14986,7 +14867,7 @@ void main() {
 
     unittest.test('method--undeploy', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsSharedflowsRevisionsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -15036,8 +14917,7 @@ void main() {
   unittest.group('resource-OrganizationsEnvironmentsStatsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsStatsResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.stats;
+      var res = api.ApigeeApi(mock).organizations.environments.stats;
       var arg_name = 'foo';
       var arg_accuracy = 'foo';
       var arg_aggTable = 'foo';
@@ -15139,8 +15019,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsTargetserversResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.targetservers;
+      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
       var arg_parent = 'foo';
       var arg_name = 'foo';
@@ -15193,8 +15072,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsTargetserversResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.targetservers;
+      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15241,8 +15119,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsTargetserversResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.targetservers;
+      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15289,8 +15166,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsEnvironmentsTargetserversResourceApi res =
-          api.ApigeeApi(mock).organizations.environments.targetservers;
+      var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -15343,8 +15219,7 @@ void main() {
   unittest.group('resource-OrganizationsInstancesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesResourceApi res =
-          api.ApigeeApi(mock).organizations.instances;
+      var res = api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1Instance();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -15395,8 +15270,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesResourceApi res =
-          api.ApigeeApi(mock).organizations.instances;
+      var res = api.ApigeeApi(mock).organizations.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15443,8 +15317,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesResourceApi res =
-          api.ApigeeApi(mock).organizations.instances;
+      var res = api.ApigeeApi(mock).organizations.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15491,8 +15364,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesResourceApi res =
-          api.ApigeeApi(mock).organizations.instances;
+      var res = api.ApigeeApi(mock).organizations.instances;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -15549,8 +15421,7 @@ void main() {
 
     unittest.test('method--reportStatus', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesResourceApi res =
-          api.ApigeeApi(mock).organizations.instances;
+      var res = api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -15605,8 +15476,7 @@ void main() {
   unittest.group('resource-OrganizationsInstancesAttachmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.instances.attachments;
+      var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_request = buildGoogleCloudApigeeV1InstanceAttachment();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -15657,8 +15527,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.instances.attachments;
+      var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15705,8 +15574,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.instances.attachments;
+      var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15754,8 +15622,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsInstancesAttachmentsResourceApi res =
-          api.ApigeeApi(mock).organizations.instances.attachments;
+      var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -15814,8 +15681,7 @@ void main() {
   unittest.group('resource-OrganizationsKeyvaluemapsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -15866,8 +15732,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsKeyvaluemapsResourceApi res =
-          api.ApigeeApi(mock).organizations.keyvaluemaps;
+      var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15916,8 +15781,7 @@ void main() {
   unittest.group('resource-OrganizationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.ApigeeApi(mock).organizations.operations;
+      var res = api.ApigeeApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -15964,8 +15828,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.ApigeeApi(mock).organizations.operations;
+      var res = api.ApigeeApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -16027,8 +15890,7 @@ void main() {
   unittest.group('resource-OrganizationsReportsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsReportsResourceApi res =
-          api.ApigeeApi(mock).organizations.reports;
+      var res = api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -16079,8 +15941,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsReportsResourceApi res =
-          api.ApigeeApi(mock).organizations.reports;
+      var res = api.ApigeeApi(mock).organizations.reports;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16128,8 +15989,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsReportsResourceApi res =
-          api.ApigeeApi(mock).organizations.reports;
+      var res = api.ApigeeApi(mock).organizations.reports;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16176,8 +16036,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsReportsResourceApi res =
-          api.ApigeeApi(mock).organizations.reports;
+      var res = api.ApigeeApi(mock).organizations.reports;
       var arg_parent = 'foo';
       var arg_expand = true;
       var arg_$fields = 'foo';
@@ -16228,8 +16087,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.OrganizationsReportsResourceApi res =
-          api.ApigeeApi(mock).organizations.reports;
+      var res = api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -16282,8 +16140,7 @@ void main() {
   unittest.group('resource-OrganizationsSharedflowsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows;
+      var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_request = buildGoogleApiHttpBody();
       var arg_parent = 'foo';
       var arg_action = 'foo';
@@ -16340,8 +16197,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows;
+      var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16388,8 +16244,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows;
+      var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16436,8 +16291,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows;
+      var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_parent = 'foo';
       var arg_includeMetaData = true;
       var arg_includeRevisions = true;
@@ -16496,8 +16350,7 @@ void main() {
   unittest.group('resource-OrganizationsSharedflowsDeploymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsDeploymentsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows.deployments;
+      var res = api.ApigeeApi(mock).organizations.sharedflows.deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16547,8 +16400,7 @@ void main() {
   unittest.group('resource-OrganizationsSharedflowsRevisionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16596,8 +16448,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_name = 'foo';
       var arg_format = 'foo';
       var arg_$fields = 'foo';
@@ -16646,8 +16497,7 @@ void main() {
 
     unittest.test('method--updateSharedFlowRevision', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsRevisionsResourceApi res =
-          api.ApigeeApi(mock).organizations.sharedflows.revisions;
+      var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_request = buildGoogleApiHttpBody();
       var arg_name = 'foo';
       var arg_validate = true;
@@ -16706,7 +16556,7 @@ void main() {
       'resource-OrganizationsSharedflowsRevisionsDeploymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSharedflowsRevisionsDeploymentsResourceApi res =
+      var res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions.deployments;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -16757,8 +16607,7 @@ void main() {
   unittest.group('resource-OrganizationsSitesApicategoriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsSitesApicategoriesResourceApi res =
-          api.ApigeeApi(mock).organizations.sites.apicategories;
+      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -16809,8 +16658,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsSitesApicategoriesResourceApi res =
-          api.ApigeeApi(mock).organizations.sites.apicategories;
+      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16858,8 +16706,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsSitesApicategoriesResourceApi res =
-          api.ApigeeApi(mock).organizations.sites.apicategories;
+      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16906,8 +16753,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSitesApicategoriesResourceApi res =
-          api.ApigeeApi(mock).organizations.sites.apicategories;
+      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16955,8 +16801,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsSitesApicategoriesResourceApi res =
-          api.ApigeeApi(mock).organizations.sites.apicategories;
+      var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -17009,7 +16854,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--provisionOrganization', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ApigeeApi(mock).projects;
+      var res = api.ApigeeApi(mock).projects;
       var arg_request = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
       var arg_project = 'foo';
       var arg_$fields = 'foo';

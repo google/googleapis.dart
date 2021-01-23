@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -12449,7 +12448,7 @@ void main() {
   unittest.group('resource-FilesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.VisionApi(mock).files;
+      var res = api.VisionApi(mock).files;
       var arg_request = buildBatchAnnotateFilesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12498,7 +12497,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.FilesResourceApi res = api.VisionApi(mock).files;
+      var res = api.VisionApi(mock).files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12549,7 +12548,7 @@ void main() {
   unittest.group('resource-ImagesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.VisionApi(mock).images;
+      var res = api.VisionApi(mock).images;
       var arg_request = buildBatchAnnotateImagesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12598,7 +12597,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.ImagesResourceApi res = api.VisionApi(mock).images;
+      var res = api.VisionApi(mock).images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12649,8 +12648,7 @@ void main() {
   unittest.group('resource-LocationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LocationsOperationsResourceApi res =
-          api.VisionApi(mock).locations.operations;
+      var res = api.VisionApi(mock).locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12699,7 +12697,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.VisionApi(mock).operations;
+      var res = api.VisionApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -12750,7 +12748,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.VisionApi(mock).operations;
+      var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12797,7 +12795,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.VisionApi(mock).operations;
+      var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -12844,7 +12842,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OperationsResourceApi res = api.VisionApi(mock).operations;
+      var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -12905,7 +12903,7 @@ void main() {
   unittest.group('resource-ProjectsFilesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.ProjectsFilesResourceApi res = api.VisionApi(mock).projects.files;
+      var res = api.VisionApi(mock).projects.files;
       var arg_request = buildBatchAnnotateFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -12956,7 +12954,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.ProjectsFilesResourceApi res = api.VisionApi(mock).projects.files;
+      var res = api.VisionApi(mock).projects.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13009,7 +13007,7 @@ void main() {
   unittest.group('resource-ProjectsImagesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.ProjectsImagesResourceApi res = api.VisionApi(mock).projects.images;
+      var res = api.VisionApi(mock).projects.images;
       var arg_request = buildBatchAnnotateImagesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13060,7 +13058,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.ProjectsImagesResourceApi res = api.VisionApi(mock).projects.images;
+      var res = api.VisionApi(mock).projects.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13113,8 +13111,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsFilesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFilesResourceApi res =
-          api.VisionApi(mock).projects.locations.files;
+      var res = api.VisionApi(mock).projects.locations.files;
       var arg_request = buildBatchAnnotateFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13165,8 +13162,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsFilesResourceApi res =
-          api.VisionApi(mock).projects.locations.files;
+      var res = api.VisionApi(mock).projects.locations.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13219,8 +13215,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsImagesResourceApi', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.images;
+      var res = api.VisionApi(mock).projects.locations.images;
       var arg_request = buildBatchAnnotateImagesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13271,8 +13266,7 @@ void main() {
 
     unittest.test('method--asyncBatchAnnotate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.images;
+      var res = api.VisionApi(mock).projects.locations.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13325,8 +13319,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.VisionApi(mock).projects.locations.operations;
+      var res = api.VisionApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13375,8 +13368,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductSetsResourceApi', () {
     unittest.test('method--addProduct', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildAddProductToProductSetRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13427,8 +13419,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
       var arg_parent = 'foo';
       var arg_productSetId = 'foo';
@@ -13483,8 +13474,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13531,8 +13521,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13579,8 +13568,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildImportProductSetsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -13631,8 +13619,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -13688,8 +13675,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -13744,8 +13730,7 @@ void main() {
 
     unittest.test('method--removeProduct', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets;
+      var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildRemoveProductFromProductSetRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -13799,8 +13784,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductSetsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.productSets.products;
+      var res = api.VisionApi(mock).projects.locations.productSets.products;
       var arg_name = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -13858,8 +13842,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsProductsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
       var arg_parent = 'foo';
       var arg_productId = 'foo';
@@ -13914,8 +13897,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13962,8 +13944,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14010,8 +13991,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -14067,8 +14047,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -14123,8 +14102,7 @@ void main() {
 
     unittest.test('method--purge', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsResourceApi res =
-          api.VisionApi(mock).projects.locations.products;
+      var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildPurgeProductsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -14178,8 +14156,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsReferenceImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.products.referenceImages;
+      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_request = buildReferenceImage();
       var arg_parent = 'foo';
       var arg_referenceImageId = 'foo';
@@ -14234,8 +14211,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsReferenceImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.products.referenceImages;
+      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14282,8 +14258,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsReferenceImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.products.referenceImages;
+      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14330,8 +14305,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsProductsReferenceImagesResourceApi res =
-          api.VisionApi(mock).projects.locations.products.referenceImages;
+      var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -14389,8 +14363,7 @@ void main() {
   unittest.group('resource-ProjectsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsOperationsResourceApi res =
-          api.VisionApi(mock).projects.operations;
+      var res = api.VisionApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

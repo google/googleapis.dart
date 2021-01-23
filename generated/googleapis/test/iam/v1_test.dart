@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1651,7 +1650,7 @@ void main() {
   unittest.group('resource-IamPoliciesResourceApi', () {
     unittest.test('method--lintPolicy', () {
       var mock = HttpServerMock();
-      api.IamPoliciesResourceApi res = api.IamApi(mock).iamPolicies;
+      var res = api.IamApi(mock).iamPolicies;
       var arg_request = buildLintPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1700,7 +1699,7 @@ void main() {
 
     unittest.test('method--queryAuditableServices', () {
       var mock = HttpServerMock();
-      api.IamPoliciesResourceApi res = api.IamApi(mock).iamPolicies;
+      var res = api.IamApi(mock).iamPolicies;
       var arg_request = buildQueryAuditableServicesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1751,8 +1750,7 @@ void main() {
   unittest.group('resource-OrganizationsRolesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildCreateRoleRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1803,8 +1801,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_name = 'foo';
       var arg_etag = 'foo';
       var arg_$fields = 'foo';
@@ -1853,8 +1850,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1901,8 +1897,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1965,8 +1960,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildRole();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2021,8 +2015,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.OrganizationsRolesResourceApi res =
-          api.IamApi(mock).organizations.roles;
+      var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildUndeleteRoleRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2075,7 +2068,7 @@ void main() {
   unittest.group('resource-PermissionsResourceApi', () {
     unittest.test('method--queryTestablePermissions', () {
       var mock = HttpServerMock();
-      api.PermissionsResourceApi res = api.IamApi(mock).permissions;
+      var res = api.IamApi(mock).permissions;
       var arg_request = buildQueryTestablePermissionsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2126,7 +2119,7 @@ void main() {
   unittest.group('resource-ProjectsRolesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_request = buildCreateRoleRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2177,7 +2170,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_name = 'foo';
       var arg_etag = 'foo';
       var arg_$fields = 'foo';
@@ -2226,7 +2219,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2273,7 +2266,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2336,7 +2329,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_request = buildRole();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2391,7 +2384,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.ProjectsRolesResourceApi res = api.IamApi(mock).projects.roles;
+      var res = api.IamApi(mock).projects.roles;
       var arg_request = buildUndeleteRoleRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2444,8 +2437,7 @@ void main() {
   unittest.group('resource-ProjectsServiceAccountsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildCreateServiceAccountRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2496,8 +2488,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2544,8 +2535,7 @@ void main() {
 
     unittest.test('method--disable', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildDisableServiceAccountRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2596,8 +2586,7 @@ void main() {
 
     unittest.test('method--enable', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildEnableServiceAccountRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2648,8 +2637,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2696,8 +2684,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2751,8 +2738,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2808,8 +2794,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildPatchServiceAccountRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2860,8 +2845,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2912,8 +2896,7 @@ void main() {
 
     unittest.test('method--signBlob', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSignBlobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2964,8 +2947,7 @@ void main() {
 
     unittest.test('method--signJwt', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSignJwtRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3016,8 +2998,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3068,8 +3049,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildUndeleteServiceAccountRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3120,8 +3100,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts;
+      var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildServiceAccount();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3174,8 +3153,7 @@ void main() {
   unittest.group('resource-ProjectsServiceAccountsKeysResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsKeysResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts.keys;
+      var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_request = buildCreateServiceAccountKeyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3226,8 +3204,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsKeysResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts.keys;
+      var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3274,8 +3251,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsKeysResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts.keys;
+      var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
       var arg_publicKeyType = 'foo';
       var arg_$fields = 'foo';
@@ -3325,8 +3301,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsKeysResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts.keys;
+      var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
       var arg_keyTypes = buildUnnamed5705();
       var arg_$fields = 'foo';
@@ -3375,8 +3350,7 @@ void main() {
 
     unittest.test('method--upload', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsKeysResourceApi res =
-          api.IamApi(mock).projects.serviceAccounts.keys;
+      var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_request = buildUploadServiceAccountKeyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3429,7 +3403,7 @@ void main() {
   unittest.group('resource-RolesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.RolesResourceApi res = api.IamApi(mock).roles;
+      var res = api.IamApi(mock).roles;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3476,7 +3450,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.RolesResourceApi res = api.IamApi(mock).roles;
+      var res = api.IamApi(mock).roles;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_parent = 'foo';
@@ -3540,7 +3514,7 @@ void main() {
 
     unittest.test('method--queryGrantableRoles', () {
       var mock = HttpServerMock();
-      api.RolesResourceApi res = api.IamApi(mock).roles;
+      var res = api.IamApi(mock).roles;
       var arg_request = buildQueryGrantableRolesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

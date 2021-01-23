@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -568,7 +567,7 @@ void main() {
   unittest.group('resource-GroupItemsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -621,7 +620,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -675,7 +674,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GroupItemsResourceApi res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_groupId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -731,7 +730,7 @@ void main() {
   unittest.group('resource-GroupsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -784,7 +783,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -838,7 +837,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
       var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
@@ -898,7 +897,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.GroupsResourceApi res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -954,7 +953,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      api.ReportsResourceApi res = api.YoutubeAnalyticsApi(mock).reports;
+      var res = api.YoutubeAnalyticsApi(mock).reports;
       var arg_currency = 'foo';
       var arg_dimensions = 'foo';
       var arg_endDate = 'foo';

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3805,8 +3804,7 @@ void main() {
   unittest.group('resource-ProjectsAggregatedUsableSubnetworksResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsAggregatedUsableSubnetworksResourceApi res =
-          api.ContainerApi(mock).projects.aggregated.usableSubnetworks;
+      var res = api.ContainerApi(mock).projects.aggregated.usableSubnetworks;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3867,8 +3865,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--getServerConfig', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.ContainerApi(mock).projects.locations;
+      var res = api.ContainerApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -3923,8 +3920,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersResourceApi', () {
     unittest.test('method--completeIpRotation', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildCompleteIPRotationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3975,8 +3971,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildCreateClusterRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4027,8 +4022,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
       var arg_projectId = 'foo';
@@ -4087,8 +4081,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
       var arg_projectId = 'foo';
@@ -4147,8 +4140,7 @@ void main() {
 
     unittest.test('method--getJwks', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4195,8 +4187,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_parent = 'foo';
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -4249,8 +4240,7 @@ void main() {
 
     unittest.test('method--setAddons', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetAddonsConfigRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4301,8 +4291,7 @@ void main() {
 
     unittest.test('method--setLegacyAbac', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLegacyAbacRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4353,8 +4342,7 @@ void main() {
 
     unittest.test('method--setLocations', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLocationsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4405,8 +4393,7 @@ void main() {
 
     unittest.test('method--setLogging', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLoggingServiceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4457,8 +4444,7 @@ void main() {
 
     unittest.test('method--setMaintenancePolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMaintenancePolicyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4509,8 +4495,7 @@ void main() {
 
     unittest.test('method--setMasterAuth', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMasterAuthRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4561,8 +4546,7 @@ void main() {
 
     unittest.test('method--setMonitoring', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMonitoringServiceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4613,8 +4597,7 @@ void main() {
 
     unittest.test('method--setNetworkPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetNetworkPolicyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4665,8 +4648,7 @@ void main() {
 
     unittest.test('method--setResourceLabels', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLabelsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4717,8 +4699,7 @@ void main() {
 
     unittest.test('method--startIpRotation', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildStartIPRotationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4769,8 +4750,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildUpdateClusterRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4821,8 +4801,7 @@ void main() {
 
     unittest.test('method--updateMaster', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters;
+      var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildUpdateMasterRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4875,8 +4854,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersNodePoolsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildCreateNodePoolRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4927,8 +4905,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
       var arg_nodePoolId = 'foo';
@@ -4991,8 +4968,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
       var arg_clusterId = 'foo';
       var arg_nodePoolId = 'foo';
@@ -5055,8 +5031,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_parent = 'foo';
       var arg_clusterId = 'foo';
       var arg_projectId = 'foo';
@@ -5115,8 +5090,7 @@ void main() {
 
     unittest.test('method--rollback', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildRollbackNodePoolUpgradeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5167,8 +5141,7 @@ void main() {
 
     unittest.test('method--setAutoscaling', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolAutoscalingRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5219,8 +5192,7 @@ void main() {
 
     unittest.test('method--setManagement', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolManagementRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5271,8 +5243,7 @@ void main() {
 
     unittest.test('method--setSize', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolSizeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5323,8 +5294,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildUpdateNodePoolRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5377,8 +5347,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsClustersWell_knownResourceApi', () {
     unittest.test('method--getOpenid_configuration', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsClustersWell_knownResourceApi res =
-          api.ContainerApi(mock).projects.locations.clusters.well_known;
+      var res = api.ContainerApi(mock).projects.locations.clusters.well_known;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5427,8 +5396,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.ContainerApi(mock).projects.locations.operations;
+      var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5479,8 +5447,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.ContainerApi(mock).projects.locations.operations;
+      var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_operationId = 'foo';
       var arg_projectId = 'foo';
@@ -5539,8 +5506,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsOperationsResourceApi res =
-          api.ContainerApi(mock).projects.locations.operations;
+      var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_parent = 'foo';
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -5595,7 +5561,7 @@ void main() {
   unittest.group('resource-ProjectsZonesResourceApi', () {
     unittest.test('method--getServerconfig', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesResourceApi res = api.ContainerApi(mock).projects.zones;
+      var res = api.ContainerApi(mock).projects.zones;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_name = 'foo';
@@ -5665,8 +5631,7 @@ void main() {
   unittest.group('resource-ProjectsZonesClustersResourceApi', () {
     unittest.test('method--addons', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetAddonsConfigRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -5746,8 +5711,7 @@ void main() {
 
     unittest.test('method--completeIpRotation', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildCompleteIPRotationRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -5828,8 +5792,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildCreateClusterRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -5898,8 +5861,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_clusterId = 'foo';
@@ -5971,8 +5933,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_clusterId = 'foo';
@@ -6044,8 +6005,7 @@ void main() {
 
     unittest.test('method--legacyAbac', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLegacyAbacRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6125,8 +6085,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_parent = 'foo';
@@ -6194,8 +6153,7 @@ void main() {
 
     unittest.test('method--locations', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLocationsRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6275,8 +6233,7 @@ void main() {
 
     unittest.test('method--logging', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLoggingServiceRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6356,8 +6313,7 @@ void main() {
 
     unittest.test('method--master', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildUpdateMasterRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6437,8 +6393,7 @@ void main() {
 
     unittest.test('method--monitoring', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMonitoringServiceRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6518,8 +6473,7 @@ void main() {
 
     unittest.test('method--resourceLabels', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLabelsRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6599,8 +6553,7 @@ void main() {
 
     unittest.test('method--setMaintenancePolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMaintenancePolicyRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6681,8 +6634,7 @@ void main() {
 
     unittest.test('method--setMasterAuth', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMasterAuthRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6762,8 +6714,7 @@ void main() {
 
     unittest.test('method--setNetworkPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetNetworkPolicyRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6843,8 +6794,7 @@ void main() {
 
     unittest.test('method--startIpRotation', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildStartIPRotationRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -6924,8 +6874,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters;
+      var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildUpdateClusterRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7001,8 +6950,7 @@ void main() {
   unittest.group('resource-ProjectsZonesClustersNodePoolsResourceApi', () {
     unittest.test('method--autoscaling', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolAutoscalingRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7093,8 +7041,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildCreateNodePoolRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7174,8 +7121,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_clusterId = 'foo';
@@ -7257,8 +7203,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_clusterId = 'foo';
@@ -7340,8 +7285,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_clusterId = 'foo';
@@ -7419,8 +7363,7 @@ void main() {
 
     unittest.test('method--rollback', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildRollbackNodePoolUpgradeRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7511,8 +7454,7 @@ void main() {
 
     unittest.test('method--setManagement', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolManagementRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7603,8 +7545,7 @@ void main() {
 
     unittest.test('method--setSize', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolSizeRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7695,8 +7636,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesClustersNodePoolsResourceApi res =
-          api.ContainerApi(mock).projects.zones.clusters.nodePools;
+      var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildUpdateNodePoolRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7789,8 +7729,7 @@ void main() {
   unittest.group('resource-ProjectsZonesOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesOperationsResourceApi res =
-          api.ContainerApi(mock).projects.zones.operations;
+      var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
@@ -7870,8 +7809,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesOperationsResourceApi res =
-          api.ContainerApi(mock).projects.zones.operations;
+      var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_operationId = 'foo';
@@ -7943,8 +7881,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsZonesOperationsResourceApi res =
-          api.ContainerApi(mock).projects.zones.operations;
+      var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = 'foo';
       var arg_zone = 'foo';
       var arg_parent = 'foo';

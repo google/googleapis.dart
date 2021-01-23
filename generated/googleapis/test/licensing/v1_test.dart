@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -185,8 +184,7 @@ void main() {
   unittest.group('resource-LicenseAssignmentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
       var arg_skuId = 'foo';
       var arg_userId = 'foo';
@@ -253,8 +251,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
       var arg_skuId = 'foo';
       var arg_userId = 'foo';
@@ -323,8 +320,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignmentInsert();
       var arg_productId = 'foo';
       var arg_skuId = 'foo';
@@ -393,8 +389,7 @@ void main() {
 
     unittest.test('method--listForProduct', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
@@ -461,8 +456,7 @@ void main() {
 
     unittest.test('method--listForProductAndSku', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
       var arg_skuId = 'foo';
       var arg_customerId = 'foo';
@@ -539,8 +533,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = 'foo';
       var arg_skuId = 'foo';
@@ -614,8 +607,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.LicenseAssignmentsResourceApi res =
-          api.LicensingApi(mock).licenseAssignments;
+      var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = 'foo';
       var arg_skuId = 'foo';

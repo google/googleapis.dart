@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2857,8 +2856,7 @@ class GoogleApiHttpBody {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contentType != null) {
       _json['contentType'] = contentType;
     }
@@ -2887,8 +2885,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (useElapsedTime != null) {
       _json['useElapsedTime'] = useElapsedTime;
     }
@@ -2918,8 +2915,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (useElapsedTime != null) {
       _json['useElapsedTime'] = useElapsedTime;
     }
@@ -2948,8 +2944,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectiveValue != null) {
       _json['objectiveValue'] = objectiveValue;
     }
@@ -2980,8 +2975,7 @@ class GoogleCloudMlV1MeasurementMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metric != null) {
       _json['metric'] = metric;
     }
@@ -3007,8 +3001,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -3035,8 +3028,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -3064,8 +3056,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxValue != null) {
       _json['maxValue'] = maxValue;
     }
@@ -3096,8 +3087,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxValue != null) {
       _json['maxValue'] = maxValue;
     }
@@ -3124,8 +3114,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -3151,8 +3140,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -3176,8 +3164,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -3209,8 +3196,7 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (goal != null) {
       _json['goal'] = goal;
     }
@@ -3332,8 +3318,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categoricalValueSpec != null) {
       _json['categoricalValueSpec'] = categoricalValueSpec.toJson();
     }
@@ -3405,8 +3390,7 @@ class GoogleCloudMlV1TrialParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (floatValue != null) {
       _json['floatValue'] = floatValue;
     }
@@ -3457,8 +3441,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -3483,8 +3466,7 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (measurement != null) {
       _json['measurement'] = measurement.toJson();
     }
@@ -3531,8 +3513,7 @@ class GoogleCloudMlV1AutoScaling {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minNodes != null) {
       _json['minNodes'] = minNodes;
     }
@@ -3564,8 +3545,7 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (decayCurveStoppingConfig != null) {
       _json['decayCurveStoppingConfig'] = decayCurveStoppingConfig.toJson();
     }
@@ -3611,8 +3591,7 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (framework != null) {
       _json['framework'] = framework;
     }
@@ -3638,8 +3617,7 @@ class GoogleCloudMlV1CancelJobRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3669,8 +3647,7 @@ class GoogleCloudMlV1Capability {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (availableAccelerators != null) {
       _json['availableAccelerators'] = availableAccelerators;
     }
@@ -3710,8 +3687,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3734,8 +3710,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3768,8 +3743,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -3814,8 +3788,7 @@ class GoogleCloudMlV1CompleteTrialRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (finalMeasurement != null) {
       _json['finalMeasurement'] = finalMeasurement.toJson();
     }
@@ -3842,8 +3815,7 @@ class GoogleCloudMlV1Config {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tpuServiceAccount != null) {
       _json['tpuServiceAccount'] = tpuServiceAccount;
     }
@@ -3866,8 +3838,7 @@ class GoogleCloudMlV1ContainerPort {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (containerPort != null) {
       _json['containerPort'] = containerPort;
     }
@@ -3941,8 +3912,7 @@ class GoogleCloudMlV1ContainerSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (args != null) {
       _json['args'] = args;
     }
@@ -3980,8 +3950,7 @@ class GoogleCloudMlV1EncryptionConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kmsKeyName != null) {
       _json['kmsKeyName'] = kmsKeyName;
     }
@@ -4014,8 +3983,7 @@ class GoogleCloudMlV1EnvVar {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -4040,8 +4008,7 @@ class GoogleCloudMlV1ExplainRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (httpBody != null) {
       _json['httpBody'] = httpBody.toJson();
     }
@@ -4090,8 +4057,7 @@ class GoogleCloudMlV1ExplanationConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (integratedGradientsAttribution != null) {
       _json['integratedGradientsAttribution'] =
           integratedGradientsAttribution.toJson();
@@ -4131,8 +4097,7 @@ class GoogleCloudMlV1GetConfigResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (config != null) {
       _json['config'] = config.toJson();
     }
@@ -4234,8 +4199,7 @@ class GoogleCloudMlV1HyperparameterOutput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allMetrics != null) {
       _json['allMetrics'] = allMetrics.map((value) => value.toJson()).toList();
     }
@@ -4364,8 +4328,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (algorithm != null) {
       _json['algorithm'] = algorithm;
     }
@@ -4415,8 +4378,7 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numIntegralSteps != null) {
       _json['numIntegralSteps'] = numIntegralSteps;
     }
@@ -4536,8 +4498,7 @@ class GoogleCloudMlV1Job {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -4602,8 +4563,7 @@ class GoogleCloudMlV1ListJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobs != null) {
       _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
@@ -4637,8 +4597,7 @@ class GoogleCloudMlV1ListLocationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locations != null) {
       _json['locations'] = locations.map((value) => value.toJson()).toList();
     }
@@ -4673,8 +4632,7 @@ class GoogleCloudMlV1ListModelsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (models != null) {
       _json['models'] = models.map((value) => value.toJson()).toList();
     }
@@ -4701,8 +4659,7 @@ class GoogleCloudMlV1ListStudiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (studies != null) {
       _json['studies'] = studies.map((value) => value.toJson()).toList();
     }
@@ -4727,8 +4684,7 @@ class GoogleCloudMlV1ListTrialsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (trials != null) {
       _json['trials'] = trials.map((value) => value.toJson()).toList();
     }
@@ -4760,8 +4716,7 @@ class GoogleCloudMlV1ListVersionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4792,8 +4747,7 @@ class GoogleCloudMlV1Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (capabilities != null) {
       _json['capabilities'] =
           capabilities.map((value) => value.toJson()).toList();
@@ -4822,8 +4776,7 @@ class GoogleCloudMlV1ManualScaling {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nodes != null) {
       _json['nodes'] = nodes;
     }
@@ -4862,8 +4815,7 @@ class GoogleCloudMlV1Measurement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (elapsedTime != null) {
       _json['elapsedTime'] = elapsedTime;
     }
@@ -4971,8 +4923,7 @@ class GoogleCloudMlV1Model {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultVersion != null) {
       _json['defaultVersion'] = defaultVersion.toJson();
     }
@@ -5072,8 +5023,7 @@ class GoogleCloudMlV1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -5185,8 +5135,7 @@ class GoogleCloudMlV1ParameterSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categoricalValues != null) {
       _json['categoricalValues'] = categoricalValues;
     }
@@ -5228,8 +5177,7 @@ class GoogleCloudMlV1PredictRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (httpBody != null) {
       _json['httpBody'] = httpBody.toJson();
     }
@@ -5360,8 +5308,7 @@ class GoogleCloudMlV1PredictionInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -5435,8 +5382,7 @@ class GoogleCloudMlV1PredictionOutput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCount != null) {
       _json['errorCount'] = errorCount;
     }
@@ -5525,8 +5471,7 @@ class GoogleCloudMlV1ReplicaConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (acceleratorConfig != null) {
       _json['acceleratorConfig'] = acceleratorConfig.toJson();
     }
@@ -5583,8 +5528,7 @@ class GoogleCloudMlV1RequestLoggingConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bigqueryTableName != null) {
       _json['bigqueryTableName'] = bigqueryTableName;
     }
@@ -5617,8 +5561,7 @@ class GoogleCloudMlV1RouteMap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (health != null) {
       _json['health'] = health;
     }
@@ -5646,8 +5589,7 @@ class GoogleCloudMlV1SampledShapleyAttribution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numPaths != null) {
       _json['numPaths'] = numPaths;
     }
@@ -5706,8 +5648,7 @@ class GoogleCloudMlV1Scheduling {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxRunningTime != null) {
       _json['maxRunningTime'] = maxRunningTime;
     }
@@ -5727,8 +5668,7 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5741,8 +5681,7 @@ class GoogleCloudMlV1StopTrialRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5792,8 +5731,7 @@ class GoogleCloudMlV1Study {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -5860,8 +5798,7 @@ class GoogleCloudMlV1StudyConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (algorithm != null) {
       _json['algorithm'] = algorithm;
     }
@@ -5911,8 +5848,7 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientId != null) {
       _json['clientId'] = clientId;
     }
@@ -5952,8 +5888,7 @@ class GoogleCloudMlV1SuggestTrialsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientId != null) {
       _json['clientId'] = clientId;
     }
@@ -6006,8 +5941,7 @@ class GoogleCloudMlV1SuggestTrialsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -6350,8 +6284,7 @@ class GoogleCloudMlV1TrainingInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (args != null) {
       _json['args'] = args;
     }
@@ -6491,8 +6424,7 @@ class GoogleCloudMlV1TrainingOutput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (builtInAlgorithmOutput != null) {
       _json['builtInAlgorithmOutput'] = builtInAlgorithmOutput.toJson();
     }
@@ -6607,8 +6539,7 @@ class GoogleCloudMlV1Trial {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientId != null) {
       _json['clientId'] = clientId;
     }
@@ -6925,8 +6856,7 @@ class GoogleCloudMlV1Version {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (acceleratorConfig != null) {
       _json['acceleratorConfig'] = acceleratorConfig.toJson();
     }
@@ -7022,8 +6952,7 @@ class GoogleCloudMlV1XraiAttribution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numIntegralSteps != null) {
       _json['numIntegralSteps'] = numIntegralSteps;
     }
@@ -7071,8 +7000,7 @@ class GoogleIamV1AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -7115,8 +7043,7 @@ class GoogleIamV1AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -7195,8 +7122,7 @@ class GoogleIamV1Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindingId != null) {
       _json['bindingId'] = bindingId;
     }
@@ -7311,8 +7237,7 @@ class GoogleIamV1Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -7355,8 +7280,7 @@ class GoogleIamV1SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -7384,8 +7308,7 @@ class GoogleIamV1TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -7408,8 +7331,7 @@ class GoogleIamV1TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -7440,8 +7362,7 @@ class GoogleLongrunningListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -7512,8 +7433,7 @@ class GoogleLongrunningOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -7546,8 +7466,7 @@ class GoogleProtobufEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7592,8 +7511,7 @@ class GoogleRpcStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -7658,8 +7576,7 @@ class GoogleTypeExpr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }

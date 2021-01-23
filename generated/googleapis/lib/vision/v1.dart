@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2547,8 +2546,7 @@ class AddProductToProductSetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (product != null) {
       _json['product'] = product;
     }
@@ -2596,8 +2594,7 @@ class AnnotateFileRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (features != null) {
       _json['features'] = features.map((value) => value.toJson()).toList();
     }
@@ -2652,8 +2649,7 @@ class AnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -2699,8 +2695,7 @@ class AnnotateImageRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (features != null) {
       _json['features'] = features.map((value) => value.toJson()).toList();
     }
@@ -2830,8 +2825,7 @@ class AnnotateImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -2918,8 +2912,7 @@ class AsyncAnnotateFileRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (features != null) {
       _json['features'] = features.map((value) => value.toJson()).toList();
     }
@@ -2950,8 +2943,7 @@ class AsyncAnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -2987,8 +2979,7 @@ class AsyncBatchAnnotateFilesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parent != null) {
       _json['parent'] = parent;
     }
@@ -3017,8 +3008,7 @@ class AsyncBatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3059,8 +3049,7 @@ class AsyncBatchAnnotateImagesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -3088,8 +3077,7 @@ class AsyncBatchAnnotateImagesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -3125,8 +3113,7 @@ class BatchAnnotateFilesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parent != null) {
       _json['parent'] = parent;
     }
@@ -3155,8 +3142,7 @@ class BatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3191,8 +3177,7 @@ class BatchAnnotateImagesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parent != null) {
       _json['parent'] = parent;
     }
@@ -3220,8 +3205,7 @@ class BatchAnnotateImagesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3269,8 +3253,7 @@ class BatchOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -3337,8 +3320,7 @@ class Block {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockType != null) {
       _json['blockType'] = blockType;
     }
@@ -3382,8 +3364,7 @@ class BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -3404,8 +3385,7 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3497,8 +3477,7 @@ class Color {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alpha != null) {
       _json['alpha'] = alpha;
     }
@@ -3543,8 +3522,7 @@ class ColorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -3586,8 +3564,7 @@ class CropHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -3617,8 +3594,7 @@ class CropHintsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHints != null) {
       _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
@@ -3646,8 +3622,7 @@ class CropHintsParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aspectRatios != null) {
       _json['aspectRatios'] = aspectRatios;
     }
@@ -3683,8 +3658,7 @@ class DetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isPrefix != null) {
       _json['isPrefix'] = isPrefix;
     }
@@ -3717,8 +3691,7 @@ class DetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -3745,8 +3718,7 @@ class DominantColorsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
@@ -3767,8 +3739,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3854,8 +3825,7 @@ class EntityAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -4051,8 +4021,7 @@ class FaceAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json['angerLikelihood'] = angerLikelihood;
     }
@@ -4152,8 +4121,7 @@ class Feature {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxResults != null) {
       _json['maxResults'] = maxResults;
     }
@@ -4195,8 +4163,7 @@ class GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -4219,8 +4186,7 @@ class GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -4267,8 +4233,7 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -4415,8 +4380,7 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -4484,8 +4448,7 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -4513,8 +4476,7 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -4578,8 +4540,7 @@ class GoogleCloudVisionV1p1beta1Block {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockType != null) {
       _json['blockType'] = blockType;
     }
@@ -4625,8 +4586,7 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -4666,8 +4626,7 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -4710,8 +4669,7 @@ class GoogleCloudVisionV1p1beta1CropHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -4742,8 +4700,7 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHints != null) {
       _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
@@ -4768,8 +4725,7 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
@@ -4861,8 +4817,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -5061,8 +5016,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json['angerLikelihood'] = angerLikelihood;
     }
@@ -5171,8 +5125,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -5211,8 +5164,7 @@ class GoogleCloudVisionV1p1beta1GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -5235,8 +5187,7 @@ class GoogleCloudVisionV1p1beta1GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -5266,8 +5217,7 @@ class GoogleCloudVisionV1p1beta1ImageAnnotationContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageNumber != null) {
       _json['pageNumber'] = pageNumber;
     }
@@ -5294,8 +5244,7 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dominantColors != null) {
       _json['dominantColors'] = dominantColors.toJson();
     }
@@ -5341,8 +5290,7 @@ class GoogleCloudVisionV1p1beta1InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -5397,8 +5345,7 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -5432,8 +5379,7 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -5462,8 +5408,7 @@ class GoogleCloudVisionV1p1beta1NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -5506,8 +5451,7 @@ class GoogleCloudVisionV1p1beta1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -5549,8 +5493,7 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -5605,8 +5548,7 @@ class GoogleCloudVisionV1p1beta1Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -5670,8 +5612,7 @@ class GoogleCloudVisionV1p1beta1Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -5716,8 +5657,7 @@ class GoogleCloudVisionV1p1beta1Position {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -5788,8 +5728,7 @@ class GoogleCloudVisionV1p1beta1Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -5832,8 +5771,7 @@ class GoogleCloudVisionV1p1beta1ProductKeyValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -5885,8 +5823,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexTime != null) {
       _json['indexTime'] = indexTime;
     }
@@ -5939,8 +5876,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -5990,8 +5926,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -6037,8 +5972,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -6078,8 +6012,7 @@ class GoogleCloudVisionV1p1beta1Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -6173,8 +6106,7 @@ class GoogleCloudVisionV1p1beta1SafeSearchAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adult != null) {
       _json['adult'] = adult;
     }
@@ -6235,8 +6167,7 @@ class GoogleCloudVisionV1p1beta1Symbol {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -6282,8 +6213,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pages != null) {
       _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
@@ -6323,8 +6253,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isPrefix != null) {
       _json['isPrefix'] = isPrefix;
     }
@@ -6358,8 +6287,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -6399,8 +6327,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -6433,8 +6360,7 @@ class GoogleCloudVisionV1p1beta1Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -6514,8 +6440,7 @@ class GoogleCloudVisionV1p1beta1WebDetection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
@@ -6571,8 +6496,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -6606,8 +6530,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (score != null) {
       _json['score'] = score;
     }
@@ -6640,8 +6563,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (label != null) {
       _json['label'] = label;
     }
@@ -6700,8 +6622,7 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
@@ -6767,8 +6688,7 @@ class GoogleCloudVisionV1p1beta1Word {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -6824,8 +6744,7 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -6972,8 +6891,7 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -7041,8 +6959,7 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -7070,8 +6987,7 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -7135,8 +7051,7 @@ class GoogleCloudVisionV1p2beta1Block {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockType != null) {
       _json['blockType'] = blockType;
     }
@@ -7182,8 +7097,7 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -7223,8 +7137,7 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -7267,8 +7180,7 @@ class GoogleCloudVisionV1p2beta1CropHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -7299,8 +7211,7 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHints != null) {
       _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
@@ -7325,8 +7236,7 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
@@ -7418,8 +7328,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -7618,8 +7527,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json['angerLikelihood'] = angerLikelihood;
     }
@@ -7728,8 +7636,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -7768,8 +7675,7 @@ class GoogleCloudVisionV1p2beta1GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -7792,8 +7698,7 @@ class GoogleCloudVisionV1p2beta1GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -7823,8 +7728,7 @@ class GoogleCloudVisionV1p2beta1ImageAnnotationContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageNumber != null) {
       _json['pageNumber'] = pageNumber;
     }
@@ -7851,8 +7755,7 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dominantColors != null) {
       _json['dominantColors'] = dominantColors.toJson();
     }
@@ -7898,8 +7801,7 @@ class GoogleCloudVisionV1p2beta1InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -7954,8 +7856,7 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -7989,8 +7890,7 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -8019,8 +7919,7 @@ class GoogleCloudVisionV1p2beta1NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -8063,8 +7962,7 @@ class GoogleCloudVisionV1p2beta1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -8106,8 +8004,7 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -8162,8 +8059,7 @@ class GoogleCloudVisionV1p2beta1Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -8227,8 +8123,7 @@ class GoogleCloudVisionV1p2beta1Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -8273,8 +8168,7 @@ class GoogleCloudVisionV1p2beta1Position {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -8345,8 +8239,7 @@ class GoogleCloudVisionV1p2beta1Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -8389,8 +8282,7 @@ class GoogleCloudVisionV1p2beta1ProductKeyValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -8442,8 +8334,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexTime != null) {
       _json['indexTime'] = indexTime;
     }
@@ -8496,8 +8387,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -8547,8 +8437,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -8594,8 +8483,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -8635,8 +8523,7 @@ class GoogleCloudVisionV1p2beta1Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -8730,8 +8617,7 @@ class GoogleCloudVisionV1p2beta1SafeSearchAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adult != null) {
       _json['adult'] = adult;
     }
@@ -8792,8 +8678,7 @@ class GoogleCloudVisionV1p2beta1Symbol {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -8839,8 +8724,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pages != null) {
       _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
@@ -8880,8 +8764,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isPrefix != null) {
       _json['isPrefix'] = isPrefix;
     }
@@ -8915,8 +8798,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -8956,8 +8838,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -8990,8 +8871,7 @@ class GoogleCloudVisionV1p2beta1Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -9071,8 +8951,7 @@ class GoogleCloudVisionV1p2beta1WebDetection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
@@ -9128,8 +9007,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -9163,8 +9041,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (score != null) {
       _json['score'] = score;
     }
@@ -9197,8 +9074,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (label != null) {
       _json['label'] = label;
     }
@@ -9257,8 +9133,7 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
@@ -9324,8 +9199,7 @@ class GoogleCloudVisionV1p2beta1Word {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -9381,8 +9255,7 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -9529,8 +9402,7 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -9598,8 +9470,7 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -9627,8 +9498,7 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -9676,8 +9546,7 @@ class GoogleCloudVisionV1p3beta1BatchOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -9747,8 +9616,7 @@ class GoogleCloudVisionV1p3beta1Block {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockType != null) {
       _json['blockType'] = blockType;
     }
@@ -9794,8 +9662,7 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -9835,8 +9702,7 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -9879,8 +9745,7 @@ class GoogleCloudVisionV1p3beta1CropHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -9911,8 +9776,7 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHints != null) {
       _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
@@ -9937,8 +9801,7 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
@@ -10030,8 +9893,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -10230,8 +10092,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json['angerLikelihood'] = angerLikelihood;
     }
@@ -10340,8 +10201,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -10380,8 +10240,7 @@ class GoogleCloudVisionV1p3beta1GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -10404,8 +10263,7 @@ class GoogleCloudVisionV1p3beta1GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -10435,8 +10293,7 @@ class GoogleCloudVisionV1p3beta1ImageAnnotationContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageNumber != null) {
       _json['pageNumber'] = pageNumber;
     }
@@ -10463,8 +10320,7 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dominantColors != null) {
       _json['dominantColors'] = dominantColors.toJson();
     }
@@ -10502,8 +10358,7 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (referenceImages != null) {
       _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
@@ -10553,8 +10408,7 @@ class GoogleCloudVisionV1p3beta1InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -10609,8 +10463,7 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -10644,8 +10497,7 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -10674,8 +10526,7 @@ class GoogleCloudVisionV1p3beta1NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -10718,8 +10569,7 @@ class GoogleCloudVisionV1p3beta1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -10761,8 +10611,7 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -10817,8 +10666,7 @@ class GoogleCloudVisionV1p3beta1Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -10882,8 +10730,7 @@ class GoogleCloudVisionV1p3beta1Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -10928,8 +10775,7 @@ class GoogleCloudVisionV1p3beta1Position {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -11000,8 +10846,7 @@ class GoogleCloudVisionV1p3beta1Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -11044,8 +10889,7 @@ class GoogleCloudVisionV1p3beta1ProductKeyValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -11097,8 +10941,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexTime != null) {
       _json['indexTime'] = indexTime;
     }
@@ -11151,8 +10994,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -11202,8 +11044,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -11249,8 +11090,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -11290,8 +11130,7 @@ class GoogleCloudVisionV1p3beta1Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -11343,8 +11182,7 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
@@ -11439,8 +11277,7 @@ class GoogleCloudVisionV1p3beta1SafeSearchAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adult != null) {
       _json['adult'] = adult;
     }
@@ -11501,8 +11338,7 @@ class GoogleCloudVisionV1p3beta1Symbol {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -11548,8 +11384,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pages != null) {
       _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
@@ -11589,8 +11424,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isPrefix != null) {
       _json['isPrefix'] = isPrefix;
     }
@@ -11624,8 +11458,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -11665,8 +11498,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -11699,8 +11531,7 @@ class GoogleCloudVisionV1p3beta1Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -11780,8 +11611,7 @@ class GoogleCloudVisionV1p3beta1WebDetection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
@@ -11837,8 +11667,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -11872,8 +11701,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (score != null) {
       _json['score'] = score;
     }
@@ -11906,8 +11734,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (label != null) {
       _json['label'] = label;
     }
@@ -11966,8 +11793,7 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
@@ -12033,8 +11859,7 @@ class GoogleCloudVisionV1p3beta1Word {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -12090,8 +11915,7 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (error != null) {
       _json['error'] = error.toJson();
     }
@@ -12238,8 +12062,7 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (context != null) {
       _json['context'] = context.toJson();
     }
@@ -12307,8 +12130,7 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -12336,8 +12158,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -12361,8 +12182,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputConfig != null) {
       _json['outputConfig'] = outputConfig.toJson();
     }
@@ -12389,8 +12209,7 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -12438,8 +12257,7 @@ class GoogleCloudVisionV1p4beta1BatchOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -12509,8 +12327,7 @@ class GoogleCloudVisionV1p4beta1Block {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockType != null) {
       _json['blockType'] = blockType;
     }
@@ -12556,8 +12373,7 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -12596,8 +12412,7 @@ class GoogleCloudVisionV1p4beta1Celebrity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -12639,8 +12454,7 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -12683,8 +12497,7 @@ class GoogleCloudVisionV1p4beta1CropHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -12715,8 +12528,7 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHints != null) {
       _json['cropHints'] = cropHints.map((value) => value.toJson()).toList();
     }
@@ -12741,8 +12553,7 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colors != null) {
       _json['colors'] = colors.map((value) => value.toJson()).toList();
     }
@@ -12834,8 +12645,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -13046,8 +12856,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angerLikelihood != null) {
       _json['angerLikelihood'] = angerLikelihood;
     }
@@ -13160,8 +12969,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -13193,8 +13001,7 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (celebrity != null) {
       _json['celebrity'] = celebrity.toJson();
     }
@@ -13233,8 +13040,7 @@ class GoogleCloudVisionV1p4beta1GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -13257,8 +13063,7 @@ class GoogleCloudVisionV1p4beta1GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -13288,8 +13093,7 @@ class GoogleCloudVisionV1p4beta1ImageAnnotationContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageNumber != null) {
       _json['pageNumber'] = pageNumber;
     }
@@ -13316,8 +13120,7 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dominantColors != null) {
       _json['dominantColors'] = dominantColors.toJson();
     }
@@ -13355,8 +13158,7 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (referenceImages != null) {
       _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
@@ -13406,8 +13208,7 @@ class GoogleCloudVisionV1p4beta1InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -13462,8 +13263,7 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -13497,8 +13297,7 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -13527,8 +13326,7 @@ class GoogleCloudVisionV1p4beta1NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -13571,8 +13369,7 @@ class GoogleCloudVisionV1p4beta1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -13614,8 +13411,7 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -13670,8 +13466,7 @@ class GoogleCloudVisionV1p4beta1Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -13735,8 +13530,7 @@ class GoogleCloudVisionV1p4beta1Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -13781,8 +13575,7 @@ class GoogleCloudVisionV1p4beta1Position {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -13853,8 +13646,7 @@ class GoogleCloudVisionV1p4beta1Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -13897,8 +13689,7 @@ class GoogleCloudVisionV1p4beta1ProductKeyValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -13950,8 +13741,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexTime != null) {
       _json['indexTime'] = indexTime;
     }
@@ -14004,8 +13794,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -14055,8 +13844,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -14102,8 +13890,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -14143,8 +13930,7 @@ class GoogleCloudVisionV1p4beta1Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -14196,8 +13982,7 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
@@ -14292,8 +14077,7 @@ class GoogleCloudVisionV1p4beta1SafeSearchAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adult != null) {
       _json['adult'] = adult;
     }
@@ -14354,8 +14138,7 @@ class GoogleCloudVisionV1p4beta1Symbol {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -14401,8 +14184,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pages != null) {
       _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
@@ -14442,8 +14224,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isPrefix != null) {
       _json['isPrefix'] = isPrefix;
     }
@@ -14477,8 +14258,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -14518,8 +14298,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -14552,8 +14331,7 @@ class GoogleCloudVisionV1p4beta1Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -14633,8 +14411,7 @@ class GoogleCloudVisionV1p4beta1WebDetection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
@@ -14690,8 +14467,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -14725,8 +14501,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (score != null) {
       _json['score'] = score;
     }
@@ -14759,8 +14534,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (label != null) {
       _json['label'] = label;
     }
@@ -14819,8 +14593,7 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
@@ -14886,8 +14659,7 @@ class GoogleCloudVisionV1p4beta1Word {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -14934,8 +14706,7 @@ class GroupedResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -14982,8 +14753,7 @@ class Image {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -15016,8 +14786,7 @@ class ImageAnnotationContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageNumber != null) {
       _json['pageNumber'] = pageNumber;
     }
@@ -15075,8 +14844,7 @@ class ImageContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cropHintsParams != null) {
       _json['cropHintsParams'] = cropHintsParams.toJson();
     }
@@ -15111,8 +14879,7 @@ class ImageProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dominantColors != null) {
       _json['dominantColors'] = dominantColors.toJson();
     }
@@ -15154,8 +14921,7 @@ class ImageSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsImageUri != null) {
       _json['gcsImageUri'] = gcsImageUri;
     }
@@ -15213,8 +14979,7 @@ class ImportProductSetsGcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (csvFileUri != null) {
       _json['csvFileUri'] = csvFileUri;
     }
@@ -15237,8 +15002,7 @@ class ImportProductSetsInputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsSource != null) {
       _json['gcsSource'] = gcsSource.toJson();
     }
@@ -15260,8 +15024,7 @@ class ImportProductSetsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inputConfig != null) {
       _json['inputConfig'] = inputConfig.toJson();
     }
@@ -15298,8 +15061,7 @@ class ImportProductSetsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (referenceImages != null) {
       _json['referenceImages'] =
           referenceImages.map((value) => value.toJson()).toList();
@@ -15348,8 +15110,7 @@ class InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -15385,8 +15146,7 @@ class KeyValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -15456,8 +15216,7 @@ class Landmark {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -15491,8 +15250,7 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latitude != null) {
       _json['latitude'] = latitude;
     }
@@ -15523,8 +15281,7 @@ class LatLongRect {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxLatLng != null) {
       _json['maxLatLng'] = maxLatLng.toJson();
     }
@@ -15557,8 +15314,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -15592,8 +15348,7 @@ class ListProductSetsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -15628,8 +15383,7 @@ class ListProductsInProductSetResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -15663,8 +15417,7 @@ class ListProductsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -15703,8 +15456,7 @@ class ListReferenceImagesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -15759,8 +15511,7 @@ class LocalizedObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -15794,8 +15545,7 @@ class LocationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -15824,8 +15574,7 @@ class NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -15870,8 +15619,7 @@ class ObjectAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -15948,8 +15696,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -16001,8 +15748,7 @@ class OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -16043,8 +15789,7 @@ class OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batchSize != null) {
       _json['batchSize'] = batchSize;
     }
@@ -16097,8 +15842,7 @@ class Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -16159,8 +15903,7 @@ class Paragraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -16205,8 +15948,7 @@ class Position {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -16276,8 +16018,7 @@ class Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -16346,8 +16087,7 @@ class ProductSearchParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -16399,8 +16139,7 @@ class ProductSearchResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexTime != null) {
       _json['indexTime'] = indexTime;
     }
@@ -16456,8 +16195,7 @@ class ProductSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -16490,8 +16228,7 @@ class ProductSetPurgeConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (productSetId != null) {
       _json['productSetId'] = productSetId;
     }
@@ -16525,8 +16262,7 @@ class Property {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -16569,8 +16305,7 @@ class PurgeProductsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deleteOrphanProducts != null) {
       _json['deleteOrphanProducts'] = deleteOrphanProducts;
     }
@@ -16621,8 +16356,7 @@ class ReferenceImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPolys != null) {
       _json['boundingPolys'] =
           boundingPolys.map((value) => value.toJson()).toList();
@@ -16653,8 +16387,7 @@ class RemoveProductFromProductSetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (product != null) {
       _json['product'] = product;
     }
@@ -16690,8 +16423,7 @@ class Result {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (image != null) {
       _json['image'] = image;
     }
@@ -16785,8 +16517,7 @@ class SafeSearchAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adult != null) {
       _json['adult'] = adult;
     }
@@ -16846,8 +16577,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -16900,8 +16630,7 @@ class Symbol {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -16946,8 +16675,7 @@ class TextAnnotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pages != null) {
       _json['pages'] = pages.map((value) => value.toJson()).toList();
     }
@@ -16980,8 +16708,7 @@ class TextProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -17014,8 +16741,7 @@ class Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -17086,8 +16812,7 @@ class WebDetection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bestGuessLabels != null) {
       _json['bestGuessLabels'] =
           bestGuessLabels.map((value) => value.toJson()).toList();
@@ -17130,8 +16855,7 @@ class WebDetectionParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeGeoResults != null) {
       _json['includeGeoResults'] = includeGeoResults;
     }
@@ -17166,8 +16890,7 @@ class WebEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -17201,8 +16924,7 @@ class WebImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (score != null) {
       _json['score'] = score;
     }
@@ -17235,8 +16957,7 @@ class WebLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (label != null) {
       _json['label'] = label;
     }
@@ -17292,8 +17013,7 @@ class WebPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullMatchingImages != null) {
       _json['fullMatchingImages'] =
           fullMatchingImages.map((value) => value.toJson()).toList();
@@ -17356,8 +17076,7 @@ class Word {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }

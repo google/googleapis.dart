@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -754,8 +753,7 @@ class AdminQuotaPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (container != null) {
       _json['container'] = container;
     }
@@ -859,8 +857,7 @@ class Api {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (methods != null) {
       _json['methods'] = methods.map((value) => value.toJson()).toList();
     }
@@ -964,8 +961,7 @@ class AuthProvider {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audiences != null) {
       _json['audiences'] = audiences;
     }
@@ -1021,8 +1017,7 @@ class AuthRequirement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audiences != null) {
       _json['audiences'] = audiences;
     }
@@ -1064,8 +1059,7 @@ class Authentication {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (providers != null) {
       _json['providers'] = providers.map((value) => value.toJson()).toList();
     }
@@ -1115,8 +1109,7 @@ class AuthenticationRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowWithoutCredential != null) {
       _json['allowWithoutCredential'] = allowWithoutCredential;
     }
@@ -1151,8 +1144,7 @@ class Backend {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rules != null) {
       _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
@@ -1270,8 +1262,7 @@ class BackendRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address;
     }
@@ -1319,8 +1310,7 @@ class BatchCreateAdminOverridesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (overrides != null) {
       _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
@@ -1344,8 +1334,7 @@ class BatchCreateConsumerOverridesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (overrides != null) {
       _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
@@ -1372,8 +1361,7 @@ class BatchEnableServicesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (serviceIds != null) {
       _json['serviceIds'] = serviceIds;
     }
@@ -1409,8 +1397,7 @@ class BatchEnableServicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (failures != null) {
       _json['failures'] = failures.map((value) => value.toJson()).toList();
     }
@@ -1438,8 +1425,7 @@ class BatchGetServicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (services != null) {
       _json['services'] = services.map((value) => value.toJson()).toList();
     }
@@ -1482,8 +1468,7 @@ class Billing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (consumerDestinations != null) {
       _json['consumerDestinations'] =
           consumerDestinations.map((value) => value.toJson()).toList();
@@ -1515,8 +1500,7 @@ class BillingDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metrics != null) {
       _json['metrics'] = metrics;
     }
@@ -1536,8 +1520,7 @@ class CancelOperationRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1572,8 +1555,7 @@ class Context {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rules != null) {
       _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
@@ -1625,8 +1607,7 @@ class ContextRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowedRequestExtensions != null) {
       _json['allowedRequestExtensions'] = allowedRequestExtensions;
     }
@@ -1663,8 +1644,7 @@ class Control {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environment != null) {
       _json['environment'] = environment;
     }
@@ -1698,8 +1678,7 @@ class CustomError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rules != null) {
       _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
@@ -1732,8 +1711,7 @@ class CustomErrorRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isErrorType != null) {
       _json['isErrorType'] = isErrorType;
     }
@@ -1764,8 +1742,7 @@ class CustomHttpPattern {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1807,8 +1784,7 @@ class DisableServiceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (checkIfServiceHasUsage != null) {
       _json['checkIfServiceHasUsage'] = checkIfServiceHasUsage;
     }
@@ -1835,8 +1811,7 @@ class DisableServiceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (service != null) {
       _json['service'] = service.toJson();
     }
@@ -1928,8 +1903,7 @@ class Documentation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (documentationRootUrl != null) {
       _json['documentationRootUrl'] = documentationRootUrl;
     }
@@ -1984,8 +1958,7 @@ class DocumentationRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deprecationDescription != null) {
       _json['deprecationDescription'] = deprecationDescription;
     }
@@ -2012,8 +1985,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2038,8 +2010,7 @@ class EnableFailure {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorMessage != null) {
       _json['errorMessage'] = errorMessage;
     }
@@ -2059,8 +2030,7 @@ class EnableServiceRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2081,8 +2051,7 @@ class EnableServiceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (service != null) {
       _json['service'] = service.toJson();
     }
@@ -2141,8 +2110,7 @@ class Endpoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliases != null) {
       _json['aliases'] = aliases;
     }
@@ -2204,8 +2172,7 @@ class Enum {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enumvalue != null) {
       _json['enumvalue'] = enumvalue.map((value) => value.toJson()).toList();
     }
@@ -2253,8 +2220,7 @@ class EnumValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -2365,8 +2331,7 @@ class Field {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cardinality != null) {
       _json['cardinality'] = cardinality;
     }
@@ -2427,8 +2392,7 @@ class GetServiceIdentityResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (identity != null) {
       _json['identity'] = identity.toJson();
     }
@@ -2663,8 +2627,7 @@ class GoogleApiService {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apis != null) {
       _json['apis'] = apis.map((value) => value.toJson()).toList();
     }
@@ -2785,8 +2748,7 @@ class GoogleApiServiceIdentity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -2815,8 +2777,7 @@ class GoogleApiServiceusageV1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceNames != null) {
       _json['resourceNames'] = resourceNames;
     }
@@ -2869,8 +2830,7 @@ class GoogleApiServiceusageV1Service {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (config != null) {
       _json['config'] = config.toJson();
     }
@@ -2968,8 +2928,7 @@ class GoogleApiServiceusageV1ServiceConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apis != null) {
       _json['apis'] = apis.map((value) => value.toJson()).toList();
     }
@@ -3033,8 +2992,7 @@ class GoogleApiServiceusageV1beta1GetServiceIdentityResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (identity != null) {
       _json['identity'] = identity.toJson();
     }
@@ -3068,8 +3026,7 @@ class GoogleApiServiceusageV1beta1ServiceIdentity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -3108,8 +3065,7 @@ class Http {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fullyDecodeReservedExpansion != null) {
       _json['fullyDecodeReservedExpansion'] = fullyDecodeReservedExpansion;
     }
@@ -3346,8 +3302,7 @@ class HttpRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additionalBindings != null) {
       _json['additionalBindings'] =
           additionalBindings.map((value) => value.toJson()).toList();
@@ -3402,8 +3357,7 @@ class ImportAdminOverridesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (overrides != null) {
       _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
@@ -3427,8 +3381,7 @@ class ImportAdminQuotaPoliciesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policies != null) {
       _json['policies'] = policies.map((value) => value.toJson()).toList();
     }
@@ -3452,8 +3405,7 @@ class ImportConsumerOverridesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (overrides != null) {
       _json['overrides'] = overrides.map((value) => value.toJson()).toList();
     }
@@ -3492,8 +3444,7 @@ class JwtLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (header != null) {
       _json['header'] = header;
     }
@@ -3537,8 +3488,7 @@ class LabelDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -3574,8 +3524,7 @@ class ListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3609,8 +3558,7 @@ class ListServicesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3665,8 +3613,7 @@ class LogDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -3726,8 +3673,7 @@ class Logging {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (consumerDestinations != null) {
       _json['consumerDestinations'] =
           consumerDestinations.map((value) => value.toJson()).toList();
@@ -3765,8 +3711,7 @@ class LoggingDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (logs != null) {
       _json['logs'] = logs;
     }
@@ -3832,8 +3777,7 @@ class Method {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -4055,8 +3999,7 @@ class MetricDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -4157,8 +4100,7 @@ class MetricDescriptorMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ingestDelay != null) {
       _json['ingestDelay'] = ingestDelay;
     }
@@ -4198,8 +4140,7 @@ class MetricRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metricCosts != null) {
       _json['metricCosts'] = metricCosts;
     }
@@ -4259,8 +4200,7 @@ class Mixin {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -4367,8 +4307,7 @@ class MonitoredResourceDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -4450,8 +4389,7 @@ class Monitoring {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (consumerDestinations != null) {
       _json['consumerDestinations'] =
           consumerDestinations.map((value) => value.toJson()).toList();
@@ -4487,8 +4425,7 @@ class MonitoringDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metrics != null) {
       _json['metrics'] = metrics;
     }
@@ -4528,8 +4465,7 @@ class OAuthRequirements {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (canonicalScopes != null) {
       _json['canonicalScopes'] = canonicalScopes;
     }
@@ -4597,8 +4533,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -4633,8 +4568,7 @@ class OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (resourceNames != null) {
       _json['resourceNames'] = resourceNames;
     }
@@ -4672,8 +4606,7 @@ class Option {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -4722,8 +4655,7 @@ class Page {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -4783,8 +4715,7 @@ class Quota {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (limits != null) {
       _json['limits'] = limits.map((value) => value.toJson()).toList();
     }
@@ -4898,8 +4829,7 @@ class QuotaLimit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (defaultLimit != null) {
       _json['defaultLimit'] = defaultLimit;
     }
@@ -5005,8 +4935,7 @@ class QuotaOverride {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adminOverrideAncestor != null) {
       _json['adminOverrideAncestor'] = adminOverrideAncestor;
     }
@@ -5052,8 +4981,7 @@ class ServiceIdentity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (email != null) {
       _json['email'] = email;
     }
@@ -5080,8 +5008,7 @@ class SourceContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileName != null) {
       _json['fileName'] = fileName;
     }
@@ -5109,8 +5036,7 @@ class SourceInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sourceFiles != null) {
       _json['sourceFiles'] = sourceFiles;
     }
@@ -5158,8 +5084,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -5204,8 +5129,7 @@ class SystemParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (httpHeader != null) {
       _json['httpHeader'] = httpHeader;
     }
@@ -5246,8 +5170,7 @@ class SystemParameterRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (parameters != null) {
       _json['parameters'] = parameters.map((value) => value.toJson()).toList();
     }
@@ -5288,8 +5211,7 @@ class SystemParameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rules != null) {
       _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
@@ -5348,8 +5270,7 @@ class Type {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields.map((value) => value.toJson()).toList();
     }
@@ -5415,8 +5336,7 @@ class Usage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (producerNotificationChannel != null) {
       _json['producerNotificationChannel'] = producerNotificationChannel;
     }
@@ -5474,8 +5394,7 @@ class UsageRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowUnregisteredCalls != null) {
       _json['allowUnregisteredCalls'] = allowUnregisteredCalls;
     }

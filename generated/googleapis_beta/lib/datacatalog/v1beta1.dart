@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3766,8 +3765,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindingId != null) {
       _json['bindingId'] = bindingId;
     }
@@ -3797,8 +3795,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3854,8 +3851,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -3887,8 +3883,7 @@ class GetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (options != null) {
       _json['options'] = options.toJson();
     }
@@ -3916,8 +3911,7 @@ class GetPolicyOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestedPolicyVersion != null) {
       _json['requestedPolicyVersion'] = requestedPolicyVersion;
     }
@@ -3958,8 +3952,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataset != null) {
       _json['dataset'] = dataset;
     }
@@ -4008,8 +4001,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tableSourceType != null) {
       _json['tableSourceType'] = tableSourceType;
     }
@@ -4068,8 +4060,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (column != null) {
       _json['column'] = column;
     }
@@ -4237,8 +4228,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bigqueryDateShardedSpec != null) {
       _json['bigqueryDateShardedSpec'] = bigqueryDateShardedSpec.toJson();
     }
@@ -4324,8 +4314,7 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataCatalogTimestamps != null) {
       _json['dataCatalogTimestamps'] = dataCatalogTimestamps.toJson();
     }
@@ -4360,8 +4349,7 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (taxonomies != null) {
       _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
@@ -4396,8 +4384,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enumType != null) {
       _json['enumType'] = enumType.toJson();
     }
@@ -4435,8 +4422,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowedValues != null) {
       _json['allowedValues'] =
           allowedValues.map((value) => value.toJson()).toList();
@@ -4459,8 +4445,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -4495,8 +4480,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filePath != null) {
       _json['filePath'] = filePath;
     }
@@ -4551,8 +4535,7 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filePatterns != null) {
       _json['filePatterns'] = filePatterns;
     }
@@ -4580,8 +4563,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inlineSource != null) {
       _json['inlineSource'] = inlineSource.toJson();
     }
@@ -4607,8 +4589,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (taxonomies != null) {
       _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
@@ -4633,8 +4614,7 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (taxonomies != null) {
       _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
     }
@@ -4666,8 +4646,7 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entries != null) {
       _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
@@ -4703,8 +4682,7 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entryGroups != null) {
       _json['entryGroups'] =
           entryGroups.map((value) => value.toJson()).toList();
@@ -4740,8 +4718,7 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4776,8 +4753,7 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4812,8 +4788,7 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -4878,8 +4853,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (childPolicyTags != null) {
       _json['childPolicyTags'] = childPolicyTags;
     }
@@ -4915,8 +4889,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (newEnumValueDisplayName != null) {
       _json['newEnumValueDisplayName'] = newEnumValueDisplayName;
     }
@@ -4940,8 +4913,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (newTagTemplateFieldId != null) {
       _json['newTagTemplateFieldId'] = newTagTemplateFieldId;
     }
@@ -4967,8 +4939,7 @@ class GoogleCloudDatacatalogV1beta1Schema {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
@@ -5033,8 +5004,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (orderBy != null) {
       _json['orderBy'] = orderBy;
     }
@@ -5108,8 +5078,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeGcpPublicDatasets != null) {
       _json['includeGcpPublicDatasets'] = includeGcpPublicDatasets;
     }
@@ -5158,8 +5127,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -5220,8 +5188,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (linkedResource != null) {
       _json['linkedResource'] = linkedResource;
     }
@@ -5277,8 +5244,7 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (childPolicyTags != null) {
       _json['childPolicyTags'] =
           childPolicyTags.map((value) => value.toJson()).toList();
@@ -5329,8 +5295,7 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -5371,8 +5336,7 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -5404,8 +5368,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groupedEntry != null) {
       _json['groupedEntry'] = groupedEntry;
     }
@@ -5468,8 +5431,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (column != null) {
       _json['column'] = column;
     }
@@ -5546,8 +5508,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -5587,8 +5548,7 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -5642,8 +5602,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -5707,8 +5666,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -5772,8 +5730,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (activatedPolicyTypes != null) {
       _json['activatedPolicyTypes'] = activatedPolicyTypes;
     }
@@ -5804,8 +5761,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (viewQuery != null) {
       _json['viewQuery'] = viewQuery;
     }
@@ -5901,8 +5857,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bindings != null) {
       _json['bindings'] = bindings.map((value) => value.toJson()).toList();
     }
@@ -5933,8 +5888,7 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (policy != null) {
       _json['policy'] = policy.toJson();
     }
@@ -5959,8 +5913,7 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -5983,8 +5936,7 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }

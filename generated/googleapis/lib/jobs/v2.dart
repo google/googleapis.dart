@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1126,8 +1125,7 @@ class BatchDeleteJobsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter;
     }
@@ -1155,8 +1153,7 @@ class BucketRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (from != null) {
       _json['from'] = from;
     }
@@ -1188,8 +1185,7 @@ class BucketizedCount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (count != null) {
       _json['count'] = count;
     }
@@ -1223,8 +1219,7 @@ class CommuteInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobLocation != null) {
       _json['jobLocation'] = jobLocation.toJson();
     }
@@ -1300,8 +1295,7 @@ class CommutePreference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowNonStreetLevelAddress != null) {
       _json['allowNonStreetLevelAddress'] = allowNonStreetLevelAddress;
     }
@@ -1495,8 +1489,7 @@ class Company {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (careerPageLink != null) {
       _json['careerPageLink'] = careerPageLink;
     }
@@ -1593,8 +1586,7 @@ class CompanyInfoSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (freebaseMid != null) {
       _json['freebaseMid'] = freebaseMid;
     }
@@ -1688,8 +1680,7 @@ class CompensationEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (amount != null) {
       _json['amount'] = amount.toJson();
     }
@@ -1766,8 +1757,7 @@ class CompensationFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeJobsWithUnspecifiedCompensationRange != null) {
       _json['includeJobsWithUnspecifiedCompensationRange'] =
           includeJobsWithUnspecifiedCompensationRange;
@@ -1818,8 +1808,7 @@ class CompensationHistogramRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketingOption != null) {
       _json['bucketingOption'] = bucketingOption.toJson();
     }
@@ -1859,8 +1848,7 @@ class CompensationHistogramResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (result != null) {
       _json['result'] = result.toJson();
     }
@@ -1949,8 +1937,7 @@ class CompensationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (amount != null) {
       _json['amount'] = amount.toJson();
     }
@@ -2002,8 +1989,7 @@ class CompensationRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (max != null) {
       _json['max'] = max.toJson();
     }
@@ -2037,8 +2023,7 @@ class CompleteQueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (completionResults != null) {
       _json['completionResults'] =
           completionResults.map((value) => value.toJson()).toList();
@@ -2081,8 +2066,7 @@ class CompletionResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (imageUrl != null) {
       _json['imageUrl'] = imageUrl;
     }
@@ -2125,8 +2109,7 @@ class CreateJobRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableStreetAddressResolution != null) {
       _json['disableStreetAddressResolution'] = disableStreetAddressResolution;
     }
@@ -2176,8 +2159,7 @@ class CustomAttribute {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filterable != null) {
       _json['filterable'] = filterable;
     }
@@ -2225,8 +2207,7 @@ class CustomAttributeHistogramRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -2272,8 +2253,7 @@ class CustomAttributeHistogramResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -2302,8 +2282,7 @@ class CustomField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -2336,8 +2315,7 @@ class CustomFieldFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (queries != null) {
       _json['queries'] = queries;
     }
@@ -2385,8 +2363,7 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -2424,8 +2401,7 @@ class DeleteJobsByFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableFastProcess != null) {
       _json['disableFastProcess'] = disableFastProcess;
     }
@@ -2470,8 +2446,7 @@ class DeviceInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceType != null) {
       _json['deviceType'] = deviceType;
     }
@@ -2495,8 +2470,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2568,8 +2542,7 @@ class ExtendedCompensationFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compensationRange != null) {
       _json['compensationRange'] = compensationRange.toJson();
     }
@@ -2652,8 +2625,7 @@ class ExtendedCompensationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (annualizedBaseCompensationRange != null) {
       _json['annualizedBaseCompensationRange'] =
           annualizedBaseCompensationRange.toJson();
@@ -2765,8 +2737,7 @@ class ExtendedCompensationInfoCompensationEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (amount != null) {
       _json['amount'] = amount.toJson();
     }
@@ -2812,8 +2783,7 @@ class ExtendedCompensationInfoCompensationRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (max != null) {
       _json['max'] = max.toJson();
     }
@@ -2848,8 +2818,7 @@ class ExtendedCompensationInfoDecimal {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (micros != null) {
       _json['micros'] = micros;
     }
@@ -2878,8 +2847,7 @@ class Filter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requisitionId != null) {
       _json['requisitionId'] = requisitionId;
     }
@@ -2938,8 +2906,7 @@ class GetHistogramRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowBroadening != null) {
       _json['allowBroadening'] = allowBroadening;
     }
@@ -2984,8 +2951,7 @@ class GetHistogramResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (metadata != null) {
       _json['metadata'] = metadata.toJson();
     }
@@ -3015,8 +2981,7 @@ class GoogleCloudTalentV4BatchCreateJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobResults != null) {
       _json['jobResults'] = jobResults.map((value) => value.toJson()).toList();
     }
@@ -3043,8 +3008,7 @@ class GoogleCloudTalentV4BatchDeleteJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobResults != null) {
       _json['jobResults'] = jobResults.map((value) => value.toJson()).toList();
     }
@@ -3124,8 +3088,7 @@ class GoogleCloudTalentV4BatchOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3173,8 +3136,7 @@ class GoogleCloudTalentV4BatchUpdateJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobResults != null) {
       _json['jobResults'] = jobResults.map((value) => value.toJson()).toList();
     }
@@ -3226,8 +3188,7 @@ class GoogleCloudTalentV4CompensationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (annualizedBaseCompensationRange != null) {
       _json['annualizedBaseCompensationRange'] =
           annualizedBaseCompensationRange.toJson();
@@ -3321,8 +3282,7 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (amount != null) {
       _json['amount'] = amount.toJson();
     }
@@ -3370,8 +3330,7 @@ class GoogleCloudTalentV4CompensationInfoCompensationRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxCompensation != null) {
       _json['maxCompensation'] = maxCompensation.toJson();
     }
@@ -3427,8 +3386,7 @@ class GoogleCloudTalentV4CustomAttribute {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filterable != null) {
       _json['filterable'] = filterable;
     }
@@ -3780,8 +3738,7 @@ class GoogleCloudTalentV4Job {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addresses != null) {
       _json['addresses'] = addresses;
     }
@@ -3913,8 +3870,7 @@ class GoogleCloudTalentV4JobApplicationInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emails != null) {
       _json['emails'] = emails;
     }
@@ -3952,8 +3908,7 @@ class GoogleCloudTalentV4JobDerivedInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobCategories != null) {
       _json['jobCategories'] = jobCategories;
     }
@@ -3994,8 +3949,7 @@ class GoogleCloudTalentV4JobProcessingOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableStreetAddressResolution != null) {
       _json['disableStreetAddressResolution'] = disableStreetAddressResolution;
     }
@@ -4029,8 +3983,7 @@ class GoogleCloudTalentV4JobResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (job != null) {
       _json['job'] = job.toJson();
     }
@@ -4099,8 +4052,7 @@ class GoogleCloudTalentV4Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -4156,8 +4108,7 @@ class HistogramFacets {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compensationHistogramFacets != null) {
       _json['compensationHistogramFacets'] =
           compensationHistogramFacets.map((value) => value.toJson()).toList();
@@ -4257,8 +4208,7 @@ class HistogramResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (searchType != null) {
       _json['searchType'] = searchType;
     }
@@ -4309,8 +4259,7 @@ class HistogramResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compensationHistogramResults != null) {
       _json['compensationHistogramResults'] =
           compensationHistogramResults.map((value) => value.toJson()).toList();
@@ -4768,8 +4717,7 @@ class Job {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (applicationEmailList != null) {
       _json['applicationEmailList'] = applicationEmailList;
     }
@@ -5069,8 +5017,7 @@ class JobFilters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categories != null) {
       _json['categories'] = categories;
     }
@@ -5182,8 +5129,7 @@ class JobLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latLng != null) {
       _json['latLng'] = latLng.toJson();
     }
@@ -5230,8 +5176,7 @@ class JobProcessingOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableStreetAddressResolution != null) {
       _json['disableStreetAddressResolution'] = disableStreetAddressResolution;
     }
@@ -5384,8 +5329,7 @@ class JobQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (categories != null) {
       _json['categories'] = categories;
     }
@@ -5450,8 +5394,7 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latitude != null) {
       _json['latitude'] = latitude;
     }
@@ -5491,8 +5434,7 @@ class ListCompaniesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (companies != null) {
       _json['companies'] = companies.map((value) => value.toJson()).toList();
     }
@@ -5545,8 +5487,7 @@ class ListCompanyJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobs != null) {
       _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
@@ -5593,8 +5534,7 @@ class ListJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (jobs != null) {
       _json['jobs'] = jobs.map((value) => value.toJson()).toList();
     }
@@ -5664,8 +5604,7 @@ class LocationFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (distanceInMiles != null) {
       _json['distanceInMiles'] = distanceInMiles;
     }
@@ -5730,8 +5669,7 @@ class MatchingJob {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (commuteInfo != null) {
       _json['commuteInfo'] = commuteInfo.toJson();
     }
@@ -5775,8 +5713,7 @@ class MendelDebugInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namespacedDebugInput != null) {
       _json['namespacedDebugInput'] = commons
           .mapMap<NamespacedDebugInput, core.Map<core.String, core.Object>>(
@@ -5819,8 +5756,7 @@ class Money {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currencyCode != null) {
       _json['currencyCode'] = currencyCode;
     }
@@ -5976,8 +5912,7 @@ class NamespacedDebugInput {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (absolutelyForcedExpNames != null) {
       _json['absolutelyForcedExpNames'] = absolutelyForcedExpNames;
     }
@@ -6053,8 +5988,7 @@ class NumericBucketingOption {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketBounds != null) {
       _json['bucketBounds'] = bucketBounds;
     }
@@ -6096,8 +6030,7 @@ class NumericBucketingResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (counts != null) {
       _json['counts'] = counts.map((value) => value.toJson()).toList();
     }
@@ -6241,8 +6174,7 @@ class PostalAddress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addressLines != null) {
       _json['addressLines'] = addressLines;
     }
@@ -6335,8 +6267,7 @@ class RequestMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceInfo != null) {
       _json['deviceInfo'] = deviceInfo.toJson();
     }
@@ -6395,8 +6326,7 @@ class ResponseMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (experimentIdList != null) {
       _json['experimentIdList'] = experimentIdList;
     }
@@ -6601,8 +6531,7 @@ class SearchJobsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableRelevanceThresholding != null) {
       _json['disableRelevanceThresholding'] = disableRelevanceThresholding;
     }
@@ -6761,8 +6690,7 @@ class SearchJobsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appliedCommuteFilter != null) {
       _json['appliedCommuteFilter'] = appliedCommuteFilter.toJson();
     }
@@ -6822,8 +6750,7 @@ class SpellingCorrection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (corrected != null) {
       _json['corrected'] = corrected;
     }
@@ -6874,8 +6801,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -6903,8 +6829,7 @@ class StringValues {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values;
     }
@@ -6959,8 +6884,7 @@ class UpdateJobRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disableStreetAddressResolution != null) {
       _json['disableStreetAddressResolution'] = disableStreetAddressResolution;
     }

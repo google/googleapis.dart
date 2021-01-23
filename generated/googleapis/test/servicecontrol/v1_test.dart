@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2609,7 +2608,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--allocateQuota', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.ServicecontrolApi(mock).services;
+      var res = api.ServicecontrolApi(mock).services;
       var arg_request = buildAllocateQuotaRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -2668,7 +2667,7 @@ void main() {
 
     unittest.test('method--check', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.ServicecontrolApi(mock).services;
+      var res = api.ServicecontrolApi(mock).services;
       var arg_request = buildCheckRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -2727,7 +2726,7 @@ void main() {
 
     unittest.test('method--report', () {
       var mock = HttpServerMock();
-      api.ServicesResourceApi res = api.ServicecontrolApi(mock).services;
+      var res = api.ServicecontrolApi(mock).services;
       var arg_request = buildReportRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';

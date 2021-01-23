@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -481,8 +480,7 @@ class Checksum {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sha256 != null) {
       _json['sha256'] = sha256;
     }
@@ -511,8 +509,7 @@ class ClientInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientId != null) {
       _json['clientId'] = clientId;
     }
@@ -576,8 +573,7 @@ class Constraints {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceLocation != null) {
       _json['deviceLocation'] = deviceLocation;
     }
@@ -613,8 +609,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -643,8 +638,7 @@ class FetchThreatListUpdatesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (client != null) {
       _json['client'] = client.toJson();
     }
@@ -679,8 +673,7 @@ class FetchThreatListUpdatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (listUpdateResponses != null) {
       _json['listUpdateResponses'] =
           listUpdateResponses.map((value) => value.toJson()).toList();
@@ -725,8 +718,7 @@ class FindFullHashesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiClient != null) {
       _json['apiClient'] = apiClient.toJson();
     }
@@ -773,8 +765,7 @@ class FindFullHashesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matches != null) {
       _json['matches'] = matches.map((value) => value.toJson()).toList();
     }
@@ -808,8 +799,7 @@ class FindThreatMatchesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (client != null) {
       _json['client'] = client.toJson();
     }
@@ -835,8 +825,7 @@ class FindThreatMatchesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matches != null) {
       _json['matches'] = matches.map((value) => value.toJson()).toList();
     }
@@ -860,8 +849,7 @@ class ListThreatListsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (threatLists != null) {
       _json['threatLists'] =
           threatLists.map((value) => value.toJson()).toList();
@@ -959,8 +947,7 @@ class ListUpdateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (constraints != null) {
       _json['constraints'] = constraints.toJson();
     }
@@ -1105,8 +1092,7 @@ class ListUpdateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additions != null) {
       _json['additions'] = additions.map((value) => value.toJson()).toList();
     }
@@ -1167,8 +1153,7 @@ class MetadataEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -1213,8 +1198,7 @@ class RawHashes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (prefixSize != null) {
       _json['prefixSize'] = prefixSize;
     }
@@ -1239,8 +1223,7 @@ class RawIndices {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indices != null) {
       _json['indices'] = indices;
     }
@@ -1293,8 +1276,7 @@ class RiceDeltaEncoding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (encodedData != null) {
       _json['encodedData'] = encodedData;
     }
@@ -1353,8 +1335,7 @@ class ThreatEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (digest != null) {
       _json['digest'] = digest;
     }
@@ -1385,8 +1366,7 @@ class ThreatEntryMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entries != null) {
       _json['entries'] = entries.map((value) => value.toJson()).toList();
     }
@@ -1442,8 +1422,7 @@ class ThreatEntrySet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compressionType != null) {
       _json['compressionType'] = compressionType;
     }
@@ -1545,8 +1524,7 @@ class ThreatHit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientInfo != null) {
       _json['clientInfo'] = clientInfo.toJson();
     }
@@ -1605,8 +1583,7 @@ class ThreatInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (platformTypes != null) {
       _json['platformTypes'] = platformTypes;
     }
@@ -1696,8 +1673,7 @@ class ThreatListDescriptor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (platformType != null) {
       _json['platformType'] = platformType;
     }
@@ -1801,8 +1777,7 @@ class ThreatMatch {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cacheDuration != null) {
       _json['cacheDuration'] = cacheDuration;
     }
@@ -1866,8 +1841,7 @@ class ThreatSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (referrer != null) {
       _json['referrer'] = referrer;
     }
@@ -1910,8 +1884,7 @@ class UserInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (regionCode != null) {
       _json['regionCode'] = regionCode;
     }

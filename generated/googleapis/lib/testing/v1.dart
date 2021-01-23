@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -412,8 +411,7 @@ class Account {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (googleAuto != null) {
       _json['googleAuto'] = googleAuto.toJson();
     }
@@ -457,8 +455,7 @@ class AndroidDevice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidModelId != null) {
       _json['androidModelId'] = androidModelId;
     }
@@ -506,8 +503,7 @@ class AndroidDeviceCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (models != null) {
       _json['models'] = models.map((value) => value.toJson()).toList();
     }
@@ -537,8 +533,7 @@ class AndroidDeviceList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidDevices != null) {
       _json['androidDevices'] =
           androidDevices.map((value) => value.toJson()).toList();
@@ -635,8 +630,7 @@ class AndroidInstrumentationTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appApk != null) {
       _json['appApk'] = appApk.toJson();
     }
@@ -710,8 +704,7 @@ class AndroidMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidModelIds != null) {
       _json['androidModelIds'] = androidModelIds;
     }
@@ -851,8 +844,7 @@ class AndroidModel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (brand != null) {
       _json['brand'] = brand;
     }
@@ -980,8 +972,7 @@ class AndroidRoboTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appApk != null) {
       _json['appApk'] = appApk.toJson();
     }
@@ -1039,8 +1030,7 @@ class AndroidRuntimeConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locales != null) {
       _json['locales'] = locales.map((value) => value.toJson()).toList();
     }
@@ -1100,8 +1090,7 @@ class AndroidTestLoop {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appApk != null) {
       _json['appApk'] = appApk.toJson();
     }
@@ -1173,8 +1162,7 @@ class AndroidVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apiLevel != null) {
       _json['apiLevel'] = apiLevel;
     }
@@ -1221,8 +1209,7 @@ class Apk {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (location != null) {
       _json['location'] = location.toJson();
     }
@@ -1247,8 +1234,7 @@ class ApkDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apkManifest != null) {
       _json['apkManifest'] = apkManifest.toJson();
     }
@@ -1301,8 +1287,7 @@ class ApkManifest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (applicationLabel != null) {
       _json['applicationLabel'] = applicationLabel;
     }
@@ -1343,8 +1328,7 @@ class AppBundle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bundleLocation != null) {
       _json['bundleLocation'] = bundleLocation.toJson();
     }
@@ -1394,8 +1378,7 @@ class CancelTestMatrixResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testState != null) {
       _json['testState'] = testState;
     }
@@ -1425,8 +1408,7 @@ class ClientInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientInfoDetails != null) {
       _json['clientInfoDetails'] =
           clientInfoDetails.map((value) => value.toJson()).toList();
@@ -1459,8 +1441,7 @@ class ClientInfoDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -1508,8 +1489,7 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -1543,8 +1523,7 @@ class DeviceFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (obbFile != null) {
       _json['obbFile'] = obbFile.toJson();
     }
@@ -1588,8 +1567,7 @@ class DeviceIpBlock {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addedDate != null) {
       _json['addedDate'] = addedDate.toJson();
     }
@@ -1619,8 +1597,7 @@ class DeviceIpBlockCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ipBlocks != null) {
       _json['ipBlocks'] = ipBlocks.map((value) => value.toJson()).toList();
     }
@@ -1650,8 +1627,7 @@ class Distribution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (marketShare != null) {
       _json['marketShare'] = marketShare;
     }
@@ -1682,8 +1658,7 @@ class Environment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidDevice != null) {
       _json['androidDevice'] = androidDevice.toJson();
     }
@@ -1722,8 +1697,7 @@ class EnvironmentMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidDeviceList != null) {
       _json['androidDeviceList'] = androidDeviceList.toJson();
     }
@@ -1757,8 +1731,7 @@ class EnvironmentVariable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -1785,8 +1758,7 @@ class FileReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsPath != null) {
       _json['gcsPath'] = gcsPath;
     }
@@ -1808,8 +1780,7 @@ class GetApkDetailsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (apkDetail != null) {
       _json['apkDetail'] = apkDetail.toJson();
     }
@@ -1831,8 +1802,7 @@ class GoogleAuto {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1853,8 +1823,7 @@ class GoogleCloudStorage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsPath != null) {
       _json['gcsPath'] = gcsPath;
     }
@@ -1889,8 +1858,7 @@ class IntentFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionNames != null) {
       _json['actionNames'] = actionNames;
     }
@@ -1940,8 +1908,7 @@ class IosDevice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iosModelId != null) {
       _json['iosModelId'] = iosModelId;
     }
@@ -1997,8 +1964,7 @@ class IosDeviceCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (models != null) {
       _json['models'] = models.map((value) => value.toJson()).toList();
     }
@@ -2043,8 +2009,7 @@ class IosDeviceFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bundleId != null) {
       _json['bundleId'] = bundleId;
     }
@@ -2074,8 +2039,7 @@ class IosDeviceList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (iosDevices != null) {
       _json['iosDevices'] = iosDevices.map((value) => value.toJson()).toList();
     }
@@ -2156,8 +2120,7 @@ class IosModel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deviceCapabilities != null) {
       _json['deviceCapabilities'] = deviceCapabilities;
     }
@@ -2213,8 +2176,7 @@ class IosRuntimeConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locales != null) {
       _json['locales'] = locales.map((value) => value.toJson()).toList();
     }
@@ -2255,8 +2217,7 @@ class IosTestLoop {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appBundleId != null) {
       _json['appBundleId'] = appBundleId;
     }
@@ -2314,8 +2275,7 @@ class IosTestSetup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additionalIpas != null) {
       _json['additionalIpas'] =
           additionalIpas.map((value) => value.toJson()).toList();
@@ -2374,8 +2334,7 @@ class IosVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2448,8 +2407,7 @@ class IosXcTest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (appBundleId != null) {
       _json['appBundleId'] = appBundleId;
     }
@@ -2478,8 +2436,7 @@ class LauncherActivityIntent {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2517,8 +2474,7 @@ class Locale {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2557,8 +2513,7 @@ class ManualSharding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testTargetsForShard != null) {
       _json['testTargetsForShard'] =
           testTargetsForShard.map((value) => value.toJson()).toList();
@@ -2592,8 +2547,7 @@ class NetworkConfiguration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (downRule != null) {
       _json['downRule'] = downRule.toJson();
     }
@@ -2622,8 +2576,7 @@ class NetworkConfigurationCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (configurations != null) {
       _json['configurations'] =
           configurations.map((value) => value.toJson()).toList();
@@ -2654,8 +2607,7 @@ class ObbFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (obb != null) {
       _json['obb'] = obb.toJson();
     }
@@ -2692,8 +2644,7 @@ class Orientation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2722,8 +2673,7 @@ class ProvidedSoftwareCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (orchestratorVersion != null) {
       _json['orchestratorVersion'] = orchestratorVersion;
     }
@@ -2761,8 +2711,7 @@ class RegularFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content.toJson();
     }
@@ -2810,8 +2759,7 @@ class ResultStorage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (googleCloudStorage != null) {
       _json['googleCloudStorage'] = googleCloudStorage.toJson();
     }
@@ -2867,8 +2815,7 @@ class RoboDirective {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (actionType != null) {
       _json['actionType'] = actionType;
     }
@@ -2909,8 +2856,7 @@ class RoboStartingIntent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (launcherActivity != null) {
       _json['launcherActivity'] = launcherActivity.toJson();
     }
@@ -2951,8 +2897,7 @@ class Shard {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numShards != null) {
       _json['numShards'] = numShards;
     }
@@ -2987,8 +2932,7 @@ class ShardingOption {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (manualSharding != null) {
       _json['manualSharding'] = manualSharding.toJson();
     }
@@ -3025,8 +2969,7 @@ class StartActivityIntent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (action != null) {
       _json['action'] = action;
     }
@@ -3054,8 +2997,7 @@ class SystraceSetup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (durationSeconds != null) {
       _json['durationSeconds'] = durationSeconds;
     }
@@ -3087,8 +3029,7 @@ class TestDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorMessage != null) {
       _json['errorMessage'] = errorMessage;
     }
@@ -3141,8 +3082,7 @@ class TestEnvironmentCatalog {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidDeviceCatalog != null) {
       _json['androidDeviceCatalog'] = androidDeviceCatalog.toJson();
     }
@@ -3260,8 +3200,7 @@ class TestExecution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (environment != null) {
       _json['environment'] = environment.toJson();
     }
@@ -3498,8 +3437,7 @@ class TestMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clientInfo != null) {
       _json['clientInfo'] = clientInfo.toJson();
     }
@@ -3619,8 +3557,7 @@ class TestSetup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (account != null) {
       _json['account'] = account.toJson();
     }
@@ -3723,8 +3660,7 @@ class TestSpecification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (androidInstrumentationTest != null) {
       _json['androidInstrumentationTest'] = androidInstrumentationTest.toJson();
     }
@@ -3776,8 +3712,7 @@ class TestTargetsForShard {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (testTargets != null) {
       _json['testTargets'] = testTargets;
     }
@@ -3812,8 +3747,7 @@ class ToolResultsExecution {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (executionId != null) {
       _json['executionId'] = executionId;
     }
@@ -3847,8 +3781,7 @@ class ToolResultsHistory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (historyId != null) {
       _json['historyId'] = historyId;
     }
@@ -3892,8 +3825,7 @@ class ToolResultsStep {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (executionId != null) {
       _json['executionId'] = executionId;
     }
@@ -3948,8 +3880,7 @@ class TrafficRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandwidth != null) {
       _json['bandwidth'] = bandwidth;
     }
@@ -3988,8 +3919,7 @@ class UniformSharding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (numShards != null) {
       _json['numShards'] = numShards;
     }
@@ -4017,8 +3947,7 @@ class XcodeVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (tags != null) {
       _json['tags'] = tags;
     }

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1229,8 +1228,7 @@ class Address {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addressLine1 != null) {
       _json['addressLine1'] = addressLine1;
     }
@@ -1324,8 +1322,7 @@ class ChangePlanRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dealCode != null) {
       _json['dealCode'] = dealCode;
     }
@@ -1414,8 +1411,7 @@ class Customer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alternateEmail != null) {
       _json['alternateEmail'] = alternateEmail;
     }
@@ -1467,8 +1463,7 @@ class RenewalSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1501,8 +1496,7 @@ class ResellernotifyGetwatchdetailsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (serviceAccountEmailAddresses != null) {
       _json['serviceAccountEmailAddresses'] = serviceAccountEmailAddresses;
     }
@@ -1527,8 +1521,7 @@ class ResellernotifyResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (topicName != null) {
       _json['topicName'] = topicName;
     }
@@ -1583,8 +1576,7 @@ class Seats {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1625,8 +1617,7 @@ class SubscriptionPlanCommitmentInterval {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -1687,8 +1678,7 @@ class SubscriptionPlan {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (commitmentInterval != null) {
       _json['commitmentInterval'] = commitmentInterval.toJson();
     }
@@ -1727,8 +1717,7 @@ class SubscriptionTransferInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minimumTransferableSeats != null) {
       _json['minimumTransferableSeats'] = minimumTransferableSeats;
     }
@@ -1763,8 +1752,7 @@ class SubscriptionTrialSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (isInTrial != null) {
       _json['isInTrial'] = isInTrial;
     }
@@ -1935,8 +1923,7 @@ class Subscription {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (billingMethod != null) {
       _json['billingMethod'] = billingMethod;
     }
@@ -2025,8 +2012,7 @@ class Subscriptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }

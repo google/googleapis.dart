@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1179,8 +1178,7 @@ void main() {
   unittest.group('resource-ProjectsDataSourcesResourceApi', () {
     unittest.test('method--checkValidCreds', () {
       var mock = HttpServerMock();
-      api.ProjectsDataSourcesResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.dataSources;
+      var res = api.BigquerydatatransferApi(mock).projects.dataSources;
       var arg_request = buildCheckValidCredsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1231,8 +1229,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsDataSourcesResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.dataSources;
+      var res = api.BigquerydatatransferApi(mock).projects.dataSources;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1279,8 +1276,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsDataSourcesResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.dataSources;
+      var res = api.BigquerydatatransferApi(mock).projects.dataSources;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1338,8 +1334,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.locations;
+      var res = api.BigquerydatatransferApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1386,8 +1381,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.locations;
+      var res = api.BigquerydatatransferApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1448,7 +1442,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsDataSourcesResourceApi', () {
     unittest.test('method--checkValidCreds', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDataSourcesResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.dataSources;
       var arg_request = buildCheckValidCredsRequest();
       var arg_name = 'foo';
@@ -1500,7 +1494,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDataSourcesResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.dataSources;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1548,7 +1542,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsDataSourcesResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.dataSources;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
@@ -1607,7 +1601,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTransferConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_request = buildTransferConfig();
       var arg_parent = 'foo';
@@ -1672,7 +1666,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1720,7 +1714,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1768,7 +1762,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_parent = 'foo';
       var arg_dataSourceIds = buildUnnamed2282();
@@ -1829,7 +1823,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_request = buildTransferConfig();
       var arg_name = 'foo';
@@ -1898,7 +1892,7 @@ void main() {
 
     unittest.test('method--scheduleRuns', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_request = buildScheduleTransferRunsRequest();
       var arg_parent = 'foo';
@@ -1950,7 +1944,7 @@ void main() {
 
     unittest.test('method--startManualRuns', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsResourceApi res =
+      var res =
           api.BigquerydatatransferApi(mock).projects.locations.transferConfigs;
       var arg_request = buildStartManualTransferRunsRequest();
       var arg_parent = 'foo';
@@ -2005,12 +1999,11 @@ void main() {
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock)
-              .projects
-              .locations
-              .transferConfigs
-              .runs;
+      var res = api.BigquerydatatransferApi(mock)
+          .projects
+          .locations
+          .transferConfigs
+          .runs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2057,12 +2050,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock)
-              .projects
-              .locations
-              .transferConfigs
-              .runs;
+      var res = api.BigquerydatatransferApi(mock)
+          .projects
+          .locations
+          .transferConfigs
+          .runs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2109,12 +2101,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock)
-              .projects
-              .locations
-              .transferConfigs
-              .runs;
+      var res = api.BigquerydatatransferApi(mock)
+          .projects
+          .locations
+          .transferConfigs
+          .runs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2181,13 +2172,12 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi res =
-          api.BigquerydatatransferApi(mock)
-              .projects
-              .locations
-              .transferConfigs
-              .runs
-              .transferLogs;
+      var res = api.BigquerydatatransferApi(mock)
+          .projects
+          .locations
+          .transferConfigs
+          .runs
+          .transferLogs;
       var arg_parent = 'foo';
       var arg_messageTypes = buildUnnamed2284();
       var arg_pageSize = 42;
@@ -2249,8 +2239,7 @@ void main() {
   unittest.group('resource-ProjectsTransferConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_request = buildTransferConfig();
       var arg_parent = 'foo';
       var arg_authorizationCode = 'foo';
@@ -2314,8 +2303,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2362,8 +2350,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2410,8 +2397,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_parent = 'foo';
       var arg_dataSourceIds = buildUnnamed2285();
       var arg_pageSize = 42;
@@ -2471,8 +2457,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_request = buildTransferConfig();
       var arg_name = 'foo';
       var arg_authorizationCode = 'foo';
@@ -2540,8 +2525,7 @@ void main() {
 
     unittest.test('method--scheduleRuns', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_request = buildScheduleTransferRunsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2592,8 +2576,7 @@ void main() {
 
     unittest.test('method--startManualRuns', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_request = buildStartManualTransferRunsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2646,8 +2629,7 @@ void main() {
   unittest.group('resource-ProjectsTransferConfigsRunsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2694,8 +2676,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2742,8 +2723,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsRunsResourceApi res =
-          api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
+      var res = api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2809,12 +2789,11 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTransferConfigsRunsTransferLogsResourceApi res =
-          api.BigquerydatatransferApi(mock)
-              .projects
-              .transferConfigs
-              .runs
-              .transferLogs;
+      var res = api.BigquerydatatransferApi(mock)
+          .projects
+          .transferConfigs
+          .runs
+          .transferLogs;
       var arg_parent = 'foo';
       var arg_messageTypes = buildUnnamed2287();
       var arg_pageSize = 42;

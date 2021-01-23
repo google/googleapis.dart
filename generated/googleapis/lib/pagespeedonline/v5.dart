@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -176,8 +175,7 @@ class AuditRefs {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (group != null) {
       _json['group'] = group;
     }
@@ -219,8 +217,7 @@ class Bucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (max != null) {
       _json['max'] = max;
     }
@@ -273,8 +270,7 @@ class Categories {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessibility != null) {
       _json['accessibility'] = accessibility.toJson();
     }
@@ -314,8 +310,7 @@ class CategoryGroupV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -362,8 +357,7 @@ class ConfigSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (channel != null) {
       _json['channel'] = channel;
     }
@@ -406,8 +400,7 @@ class Environment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (benchmarkIndex != null) {
       _json['benchmarkIndex'] = benchmarkIndex;
     }
@@ -437,8 +430,7 @@ class I18n {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rendererFormattedStrings != null) {
       _json['rendererFormattedStrings'] = rendererFormattedStrings.toJson();
     }
@@ -531,8 +523,7 @@ class LighthouseAuditResultV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -620,8 +611,7 @@ class LighthouseCategoryV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditRefs != null) {
       _json['auditRefs'] = auditRefs.map((value) => value.toJson()).toList();
     }
@@ -752,8 +742,7 @@ class LighthouseResultV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (audits != null) {
       _json['audits'] = commons
           .mapMap<LighthouseAuditResultV5, core.Map<core.String, core.Object>>(
@@ -847,8 +836,7 @@ class PagespeedApiLoadingExperienceV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -929,8 +917,7 @@ class PagespeedApiPagespeedResponseV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (analysisUTCTimestamp != null) {
       _json['analysisUTCTimestamp'] = analysisUTCTimestamp;
     }
@@ -979,8 +966,7 @@ class PagespeedVersion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (major != null) {
       _json['major'] = major;
     }
@@ -1099,8 +1085,7 @@ class RendererFormattedStrings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditGroupExpandTooltip != null) {
       _json['auditGroupExpandTooltip'] = auditGroupExpandTooltip;
     }
@@ -1174,8 +1159,7 @@ class RuntimeError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -1219,8 +1203,7 @@ class StackPack {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (descriptions != null) {
       _json['descriptions'] = descriptions;
     }
@@ -1251,8 +1234,7 @@ class Timing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (total != null) {
       _json['total'] = total;
     }
@@ -1307,8 +1289,7 @@ class UserPageLoadMetricV5 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (category != null) {
       _json['category'] = category;
     }

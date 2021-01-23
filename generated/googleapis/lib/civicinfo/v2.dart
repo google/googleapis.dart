@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -431,8 +430,7 @@ class AdministrationRegion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (electionAdministrationBody != null) {
       _json['electionAdministrationBody'] = electionAdministrationBody.toJson();
     }
@@ -564,8 +562,7 @@ class AdministrativeBody {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (absenteeVotingInfoUrl != null) {
       _json['absenteeVotingInfoUrl'] = absenteeVotingInfoUrl;
     }
@@ -677,8 +674,7 @@ class Candidate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (candidateUrl != null) {
       _json['candidateUrl'] = candidateUrl;
     }
@@ -729,8 +725,7 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -941,8 +936,7 @@ class Contest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ballotPlacement != null) {
       _json['ballotPlacement'] = ballotPlacement;
     }
@@ -1047,8 +1041,7 @@ class DivisionSearchResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1090,8 +1083,7 @@ class DivisionSearchResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aliases != null) {
       _json['aliases'] = aliases;
     }
@@ -1141,8 +1133,7 @@ class Election {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (electionDay != null) {
       _json['electionDay'] = electionDay;
     }
@@ -1197,8 +1188,7 @@ class ElectionOfficial {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (emailAddress != null) {
       _json['emailAddress'] = emailAddress;
     }
@@ -1241,8 +1231,7 @@ class ElectionsQueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (elections != null) {
       _json['elections'] = elections.map((value) => value.toJson()).toList();
     }
@@ -1298,8 +1287,7 @@ class ElectoralDistrict {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -1349,8 +1337,7 @@ class GeographicDivision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alsoKnownAs != null) {
       _json['alsoKnownAs'] = alsoKnownAs;
     }
@@ -1420,8 +1407,7 @@ class Office {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (divisionId != null) {
       _json['divisionId'] = divisionId;
     }
@@ -1504,8 +1490,7 @@ class Official {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address.map((value) => value.toJson()).toList();
     }
@@ -1620,8 +1605,7 @@ class PollingLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (address != null) {
       _json['address'] = address.toJson();
     }
@@ -1693,8 +1677,7 @@ class RepresentativeInfoData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (divisions != null) {
       _json['divisions'] = commons
           .mapMap<GeographicDivision, core.Map<core.String, core.Object>>(
@@ -1758,8 +1741,7 @@ class RepresentativeInfoResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (divisions != null) {
       _json['divisions'] = commons
           .mapMap<GeographicDivision, core.Map<core.String, core.Object>>(
@@ -1831,8 +1813,7 @@ class SimpleAddressType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (city != null) {
       _json['city'] = city;
     }
@@ -1878,8 +1859,7 @@ class Source {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -1992,8 +1972,7 @@ class VoterInfoResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contests != null) {
       _json['contests'] = contests.map((value) => value.toJson()).toList();
     }

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1472,7 +1471,7 @@ void main() {
   unittest.group('resource-BlogUserInfosResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BlogUserInfosResourceApi res = api.BloggerApi(mock).blogUserInfos;
+      var res = api.BloggerApi(mock).blogUserInfos;
       var arg_userId = 'foo';
       var arg_blogId = 'foo';
       var arg_maxPosts = 42;
@@ -1537,7 +1536,7 @@ void main() {
   unittest.group('resource-BlogsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.BlogsResourceApi res = api.BloggerApi(mock).blogs;
+      var res = api.BloggerApi(mock).blogs;
       var arg_blogId = 'foo';
       var arg_maxPosts = 42;
       var arg_view = 'foo';
@@ -1592,7 +1591,7 @@ void main() {
 
     unittest.test('method--getByUrl', () {
       var mock = HttpServerMock();
-      api.BlogsResourceApi res = api.BloggerApi(mock).blogs;
+      var res = api.BloggerApi(mock).blogs;
       var arg_url = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -1641,7 +1640,7 @@ void main() {
 
     unittest.test('method--listByUser', () {
       var mock = HttpServerMock();
-      api.BlogsResourceApi res = api.BloggerApi(mock).blogs;
+      var res = api.BloggerApi(mock).blogs;
       var arg_userId = 'foo';
       var arg_fetchUserInfo = true;
       var arg_role = buildUnnamed159();
@@ -1712,7 +1711,7 @@ void main() {
   unittest.group('resource-CommentsResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_commentId = 'foo';
@@ -1787,7 +1786,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_commentId = 'foo';
@@ -1854,7 +1853,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_commentId = 'foo';
@@ -1926,7 +1925,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_endDate = 'foo';
@@ -2018,7 +2017,7 @@ void main() {
 
     unittest.test('method--listByBlog', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_endDate = 'foo';
       var arg_fetchBodies = true;
@@ -2097,7 +2096,7 @@ void main() {
 
     unittest.test('method--markAsSpam', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_commentId = 'foo';
@@ -2173,7 +2172,7 @@ void main() {
 
     unittest.test('method--removeContent', () {
       var mock = HttpServerMock();
-      api.CommentsResourceApi res = api.BloggerApi(mock).comments;
+      var res = api.BloggerApi(mock).comments;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_commentId = 'foo';
@@ -2251,7 +2250,7 @@ void main() {
   unittest.group('resource-PageViewsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PageViewsResourceApi res = api.BloggerApi(mock).pageViews;
+      var res = api.BloggerApi(mock).pageViews;
       var arg_blogId = 'foo';
       var arg_range = buildUnnamed162();
       var arg_$fields = 'foo';
@@ -2310,7 +2309,7 @@ void main() {
   unittest.group('resource-PagesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -2367,7 +2366,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
       var arg_view = 'foo';
@@ -2428,7 +2427,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = 'foo';
       var arg_isDraft = true;
@@ -2491,7 +2490,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
       var arg_fetchBodies = true;
       var arg_maxResults = 42;
@@ -2565,7 +2564,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
@@ -2637,7 +2636,7 @@ void main() {
 
     unittest.test('method--publish', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -2702,7 +2701,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
       var arg_$fields = 'foo';
@@ -2767,7 +2766,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PagesResourceApi res = api.BloggerApi(mock).pages;
+      var res = api.BloggerApi(mock).pages;
       var arg_request = buildPage();
       var arg_blogId = 'foo';
       var arg_pageId = 'foo';
@@ -2841,7 +2840,7 @@ void main() {
   unittest.group('resource-PostUserInfosResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PostUserInfosResourceApi res = api.BloggerApi(mock).postUserInfos;
+      var res = api.BloggerApi(mock).postUserInfos;
       var arg_userId = 'foo';
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
@@ -2914,7 +2913,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PostUserInfosResourceApi res = api.BloggerApi(mock).postUserInfos;
+      var res = api.BloggerApi(mock).postUserInfos;
       var arg_userId = 'foo';
       var arg_blogId = 'foo';
       var arg_endDate = 'foo';
@@ -3015,7 +3014,7 @@ void main() {
   unittest.group('resource-PostsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_$fields = 'foo';
@@ -3072,7 +3071,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_fetchBody = true;
@@ -3147,7 +3146,7 @@ void main() {
 
     unittest.test('method--getByPath', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_path = 'foo';
       var arg_maxComments = 42;
@@ -3212,7 +3211,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = 'foo';
       var arg_fetchBody = true;
@@ -3284,7 +3283,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_endDate = 'foo';
       var arg_fetchBodies = true;
@@ -3377,7 +3376,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
@@ -3461,7 +3460,7 @@ void main() {
 
     unittest.test('method--publish', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_publishDate = 'foo';
@@ -3530,7 +3529,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
       var arg_$fields = 'foo';
@@ -3595,7 +3594,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_blogId = 'foo';
       var arg_q = 'foo';
       var arg_fetchBodies = true;
@@ -3661,7 +3660,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.PostsResourceApi res = api.BloggerApi(mock).posts;
+      var res = api.BloggerApi(mock).posts;
       var arg_request = buildPost();
       var arg_blogId = 'foo';
       var arg_postId = 'foo';
@@ -3747,7 +3746,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UsersResourceApi res = api.BloggerApi(mock).users;
+      var res = api.BloggerApi(mock).users;
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

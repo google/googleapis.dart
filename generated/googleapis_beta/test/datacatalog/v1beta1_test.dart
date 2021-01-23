@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2050,7 +2049,7 @@ void main() {
   unittest.group('resource-CatalogResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.CatalogResourceApi res = api.DatacatalogApi(mock).catalog;
+      var res = api.DatacatalogApi(mock).catalog;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
       var arg_$fields = 'foo';
@@ -2105,7 +2104,7 @@ void main() {
   unittest.group('resource-EntriesResourceApi', () {
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
-      api.EntriesResourceApi res = api.DatacatalogApi(mock).entries;
+      var res = api.DatacatalogApi(mock).entries;
       var arg_linkedResource = 'foo';
       var arg_sqlResource = 'foo';
       var arg_$fields = 'foo';
@@ -2162,8 +2161,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
       var arg_parent = 'foo';
       var arg_entryGroupId = 'foo';
@@ -2219,8 +2217,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -2269,8 +2266,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_name = 'foo';
       var arg_readMask = 'foo';
       var arg_$fields = 'foo';
@@ -2321,8 +2317,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2373,8 +2368,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2431,8 +2425,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2488,8 +2481,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2540,8 +2532,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2594,8 +2585,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
       var arg_parent = 'foo';
       var arg_entryId = 'foo';
@@ -2651,8 +2641,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2699,8 +2688,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2748,8 +2736,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2800,8 +2787,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2862,8 +2848,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2919,8 +2904,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2974,7 +2958,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_parent = 'foo';
@@ -3026,7 +3010,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3074,7 +3058,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
@@ -3132,7 +3116,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsEntriesTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.entryGroups.entries.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_name = 'foo';
@@ -3190,8 +3174,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsEntryGroupsTagsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3242,8 +3225,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3290,8 +3272,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3348,8 +3329,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsEntryGroupsTagsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
+      var res = api.DatacatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3406,8 +3386,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTagTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var arg_parent = 'foo';
       var arg_tagTemplateId = 'foo';
@@ -3463,8 +3442,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -3513,8 +3491,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3562,8 +3539,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3614,8 +3590,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3671,8 +3646,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3723,8 +3697,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3777,8 +3750,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
       var arg_parent = 'foo';
       var arg_tagTemplateFieldId = 'foo';
@@ -3835,8 +3807,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_name = 'foo';
       var arg_force = true;
       var arg_$fields = 'foo';
@@ -3885,8 +3856,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3943,8 +3913,7 @@ void main() {
 
     unittest.test('method--rename', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesFieldsResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
+      var res = api.DatacatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
       var arg_name = 'foo';
@@ -4001,13 +3970,12 @@ void main() {
       'resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi', () {
     unittest.test('method--rename', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi res =
-          api.DatacatalogApi(mock)
-              .projects
-              .locations
-              .tagTemplates
-              .fields
-              .enumValues;
+      var res = api.DatacatalogApi(mock)
+          .projects
+          .locations
+          .tagTemplates
+          .fields
+          .enumValues;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
       var arg_name = 'foo';
@@ -4065,8 +4033,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTaxonomiesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4118,8 +4085,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4166,8 +4132,7 @@ void main() {
 
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
       var arg_serializedTaxonomies = true;
       var arg_taxonomies = buildUnnamed5871();
@@ -4224,8 +4189,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4273,8 +4237,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4325,8 +4288,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request =
           buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
       var arg_parent = 'foo';
@@ -4381,8 +4343,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4439,8 +4400,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4496,8 +4456,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4548,8 +4507,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesResourceApi res =
-          api.DatacatalogApi(mock).projects.locations.taxonomies;
+      var res = api.DatacatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4603,7 +4561,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
       var arg_parent = 'foo';
@@ -4656,7 +4614,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4704,7 +4662,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4753,7 +4711,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
@@ -4805,7 +4763,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
@@ -4863,7 +4821,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1PolicyTag();
       var arg_name = 'foo';
@@ -4920,7 +4878,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
@@ -4972,7 +4930,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsTaxonomiesPolicyTagsResourceApi res =
+      var res =
           api.DatacatalogApi(mock).projects.locations.taxonomies.policyTags;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';

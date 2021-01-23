@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1025,7 +1024,7 @@ void main() {
   unittest.group('resource-DocumentsResourceApi', () {
     unittest.test('method--analyzeEntities', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitiesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1074,7 +1073,7 @@ void main() {
 
     unittest.test('method--analyzeEntitySentiment', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitySentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1123,7 +1122,7 @@ void main() {
 
     unittest.test('method--analyzeSentiment', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeSentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1172,7 +1171,7 @@ void main() {
 
     unittest.test('method--analyzeSyntax', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeSyntaxRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1221,7 +1220,7 @@ void main() {
 
     unittest.test('method--annotateText', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildAnnotateTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1270,7 +1269,7 @@ void main() {
 
     unittest.test('method--classifyText', () {
       var mock = HttpServerMock();
-      api.DocumentsResourceApi res = api.LanguageApi(mock).documents;
+      var res = api.LanguageApi(mock).documents;
       var arg_request = buildClassifyTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

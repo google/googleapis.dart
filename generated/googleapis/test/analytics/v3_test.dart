@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4907,7 +4906,7 @@ void main() {
   unittest.group('resource-DataGaResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DataGaResourceApi res = api.AnalyticsApi(mock).data.ga;
+      var res = api.AnalyticsApi(mock).data.ga;
       var arg_ids = 'foo';
       var arg_start_date = 'foo';
       var arg_end_date = 'foo';
@@ -5003,7 +5002,7 @@ void main() {
   unittest.group('resource-DataMcfResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DataMcfResourceApi res = api.AnalyticsApi(mock).data.mcf;
+      var res = api.AnalyticsApi(mock).data.mcf;
       var arg_ids = 'foo';
       var arg_start_date = 'foo';
       var arg_end_date = 'foo';
@@ -5088,7 +5087,7 @@ void main() {
   unittest.group('resource-DataRealtimeResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.DataRealtimeResourceApi res = api.AnalyticsApi(mock).data.realtime;
+      var res = api.AnalyticsApi(mock).data.realtime;
       var arg_ids = 'foo';
       var arg_metrics = 'foo';
       var arg_dimensions = 'foo';
@@ -5159,8 +5158,7 @@ void main() {
   unittest.group('resource-ManagementAccountSummariesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementAccountSummariesResourceApi res =
-          api.AnalyticsApi(mock).management.accountSummaries;
+      var res = api.AnalyticsApi(mock).management.accountSummaries;
       var arg_max_results = 42;
       var arg_start_index = 42;
       var arg_$fields = 'foo';
@@ -5219,8 +5217,7 @@ void main() {
   unittest.group('resource-ManagementAccountUserLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementAccountUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.accountUserLinks;
+      var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_accountId = 'foo';
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
@@ -5280,8 +5277,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementAccountUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.accountUserLinks;
+      var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -5343,8 +5339,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementAccountUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.accountUserLinks;
+      var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_accountId = 'foo';
       var arg_max_results = 42;
       var arg_start_index = 42;
@@ -5411,8 +5406,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementAccountUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.accountUserLinks;
+      var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_linkId = 'foo';
@@ -5480,8 +5474,7 @@ void main() {
   unittest.group('resource-ManagementAccountsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementAccountsResourceApi res =
-          api.AnalyticsApi(mock).management.accounts;
+      var res = api.AnalyticsApi(mock).management.accounts;
       var arg_max_results = 42;
       var arg_start_index = 42;
       var arg_$fields = 'foo';
@@ -5540,8 +5533,7 @@ void main() {
   unittest.group('resource-ManagementClientIdResourceApi', () {
     unittest.test('method--hashClientId', () {
       var mock = HttpServerMock();
-      api.ManagementClientIdResourceApi res =
-          api.AnalyticsApi(mock).management.clientId;
+      var res = api.AnalyticsApi(mock).management.clientId;
       var arg_request = buildHashClientIdRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5595,8 +5587,7 @@ void main() {
   unittest.group('resource-ManagementCustomDataSourcesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDataSourcesResourceApi res =
-          api.AnalyticsApi(mock).management.customDataSources;
+      var res = api.AnalyticsApi(mock).management.customDataSources;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -5675,8 +5666,7 @@ void main() {
   unittest.group('resource-ManagementCustomDimensionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDimensionsResourceApi res =
-          api.AnalyticsApi(mock).management.customDimensions;
+      var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customDimensionId = 'foo';
@@ -5749,8 +5739,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDimensionsResourceApi res =
-          api.AnalyticsApi(mock).management.customDimensions;
+      var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -5823,8 +5812,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDimensionsResourceApi res =
-          api.AnalyticsApi(mock).management.customDimensions;
+      var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -5901,8 +5889,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDimensionsResourceApi res =
-          api.AnalyticsApi(mock).management.customDimensions;
+      var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -5984,8 +5971,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementCustomDimensionsResourceApi res =
-          api.AnalyticsApi(mock).management.customDimensions;
+      var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6069,8 +6055,7 @@ void main() {
   unittest.group('resource-ManagementCustomMetricsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementCustomMetricsResourceApi res =
-          api.AnalyticsApi(mock).management.customMetrics;
+      var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customMetricId = 'foo';
@@ -6143,8 +6128,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementCustomMetricsResourceApi res =
-          api.AnalyticsApi(mock).management.customMetrics;
+      var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6217,8 +6201,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementCustomMetricsResourceApi res =
-          api.AnalyticsApi(mock).management.customMetrics;
+      var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -6295,8 +6278,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementCustomMetricsResourceApi res =
-          api.AnalyticsApi(mock).management.customMetrics;
+      var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6378,8 +6360,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementCustomMetricsResourceApi res =
-          api.AnalyticsApi(mock).management.customMetrics;
+      var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6463,8 +6444,7 @@ void main() {
   unittest.group('resource-ManagementExperimentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -6546,8 +6526,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -6631,8 +6610,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6715,8 +6693,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -6803,8 +6780,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6892,8 +6868,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementExperimentsResourceApi res =
-          api.AnalyticsApi(mock).management.experiments;
+      var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -6983,8 +6958,7 @@ void main() {
   unittest.group('resource-ManagementFiltersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
       var arg_filterId = 'foo';
       var arg_$fields = 'foo';
@@ -7046,8 +7020,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
       var arg_filterId = 'foo';
       var arg_$fields = 'foo';
@@ -7109,8 +7082,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -7172,8 +7144,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
       var arg_max_results = 42;
       var arg_start_index = 42;
@@ -7240,8 +7211,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
       var arg_accountId = 'foo';
       var arg_filterId = 'foo';
@@ -7307,8 +7277,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementFiltersResourceApi res =
-          api.AnalyticsApi(mock).management.filters;
+      var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
       var arg_accountId = 'foo';
       var arg_filterId = 'foo';
@@ -7377,8 +7346,7 @@ void main() {
   unittest.group('resource-ManagementGoalsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementGoalsResourceApi res =
-          api.AnalyticsApi(mock).management.goals;
+      var res = api.AnalyticsApi(mock).management.goals;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -7461,8 +7429,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementGoalsResourceApi res =
-          api.AnalyticsApi(mock).management.goals;
+      var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -7545,8 +7512,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementGoalsResourceApi res =
-          api.AnalyticsApi(mock).management.goals;
+      var res = api.AnalyticsApi(mock).management.goals;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -7633,8 +7599,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementGoalsResourceApi res =
-          api.AnalyticsApi(mock).management.goals;
+      var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -7722,8 +7687,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementGoalsResourceApi res =
-          api.AnalyticsApi(mock).management.goals;
+      var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -7813,8 +7777,7 @@ void main() {
   unittest.group('resource-ManagementProfileFilterLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -7895,8 +7858,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -7979,8 +7941,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8063,8 +8024,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -8151,8 +8111,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8240,8 +8199,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementProfileFilterLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileFilterLinks;
+      var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8331,8 +8289,7 @@ void main() {
   unittest.group('resource-ManagementProfileUserLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementProfileUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileUserLinks;
+      var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -8413,8 +8370,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementProfileUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileUserLinks;
+      var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8497,8 +8453,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementProfileUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileUserLinks;
+      var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -8585,8 +8540,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementProfileUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.profileUserLinks;
+      var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8676,8 +8630,7 @@ void main() {
   unittest.group('resource-ManagementProfilesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -8748,8 +8701,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -8822,8 +8774,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -8896,8 +8847,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -8974,8 +8924,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9052,8 +9001,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementProfilesResourceApi res =
-          api.AnalyticsApi(mock).management.profiles;
+      var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9132,8 +9080,7 @@ void main() {
   unittest.group('resource-ManagementRemarketingAudienceResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_remarketingAudienceId = 'foo';
@@ -9204,8 +9151,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_remarketingAudienceId = 'foo';
@@ -9278,8 +9224,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9352,8 +9297,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -9433,8 +9377,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9512,8 +9455,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementRemarketingAudienceResourceApi res =
-          api.AnalyticsApi(mock).management.remarketingAudience;
+      var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9593,8 +9535,7 @@ void main() {
   unittest.group('resource-ManagementSegmentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementSegmentsResourceApi res =
-          api.AnalyticsApi(mock).management.segments;
+      var res = api.AnalyticsApi(mock).management.segments;
       var arg_max_results = 42;
       var arg_start_index = 42;
       var arg_$fields = 'foo';
@@ -9653,8 +9594,7 @@ void main() {
   unittest.group('resource-ManagementUnsampledReportsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementUnsampledReportsResourceApi res =
-          api.AnalyticsApi(mock).management.unsampledReports;
+      var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -9736,8 +9676,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementUnsampledReportsResourceApi res =
-          api.AnalyticsApi(mock).management.unsampledReports;
+      var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -9821,8 +9760,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementUnsampledReportsResourceApi res =
-          api.AnalyticsApi(mock).management.unsampledReports;
+      var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_request = buildUnsampledReport();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -9905,8 +9843,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementUnsampledReportsResourceApi res =
-          api.AnalyticsApi(mock).management.unsampledReports;
+      var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
@@ -9995,8 +9932,7 @@ void main() {
   unittest.group('resource-ManagementUploadsResourceApi', () {
     unittest.test('method--deleteUploadData', () {
       var mock = HttpServerMock();
-      api.ManagementUploadsResourceApi res =
-          api.AnalyticsApi(mock).management.uploads;
+      var res = api.AnalyticsApi(mock).management.uploads;
       var arg_request = buildAnalyticsDataimportDeleteUploadDataRequest();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -10078,8 +10014,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementUploadsResourceApi res =
-          api.AnalyticsApi(mock).management.uploads;
+      var res = api.AnalyticsApi(mock).management.uploads;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customDataSourceId = 'foo';
@@ -10163,8 +10098,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementUploadsResourceApi res =
-          api.AnalyticsApi(mock).management.uploads;
+      var res = api.AnalyticsApi(mock).management.uploads;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customDataSourceId = 'foo';
@@ -10254,8 +10188,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      api.ManagementUploadsResourceApi res =
-          api.AnalyticsApi(mock).management.uploads;
+      var res = api.AnalyticsApi(mock).management.uploads;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customDataSourceId = 'foo';
@@ -10336,8 +10269,7 @@ void main() {
   unittest.group('resource-ManagementWebPropertyAdWordsLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_webPropertyAdWordsLinkId = 'foo';
@@ -10410,8 +10342,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_webPropertyAdWordsLinkId = 'foo';
@@ -10485,8 +10416,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -10559,8 +10489,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -10637,8 +10566,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -10717,8 +10645,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementWebPropertyAdWordsLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
+      var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -10799,8 +10726,7 @@ void main() {
   unittest.group('resource-ManagementWebpropertiesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertiesResourceApi res =
-          api.AnalyticsApi(mock).management.webproperties;
+      var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
@@ -10862,8 +10788,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertiesResourceApi res =
-          api.AnalyticsApi(mock).management.webproperties;
+      var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -10925,8 +10850,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertiesResourceApi res =
-          api.AnalyticsApi(mock).management.webproperties;
+      var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_accountId = 'foo';
       var arg_max_results = 42;
       var arg_start_index = 42;
@@ -10993,8 +10917,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertiesResourceApi res =
-          api.AnalyticsApi(mock).management.webproperties;
+      var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -11061,8 +10984,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertiesResourceApi res =
-          api.AnalyticsApi(mock).management.webproperties;
+      var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -11131,8 +11053,7 @@ void main() {
   unittest.group('resource-ManagementWebpropertyUserLinksResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertyUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webpropertyUserLinks;
+      var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_linkId = 'foo';
@@ -11203,8 +11124,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertyUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webpropertyUserLinks;
+      var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -11277,8 +11197,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertyUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webpropertyUserLinks;
+      var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_max_results = 42;
@@ -11355,8 +11274,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ManagementWebpropertyUserLinksResourceApi res =
-          api.AnalyticsApi(mock).management.webpropertyUserLinks;
+      var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_request = buildEntityUserLink();
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
@@ -11435,8 +11353,7 @@ void main() {
   unittest.group('resource-MetadataColumnsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.MetadataColumnsResourceApi res =
-          api.AnalyticsApi(mock).metadata.columns;
+      var res = api.AnalyticsApi(mock).metadata.columns;
       var arg_reportType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11496,7 +11413,7 @@ void main() {
   unittest.group('resource-ProvisioningResourceApi', () {
     unittest.test('method--createAccountTicket', () {
       var mock = HttpServerMock();
-      api.ProvisioningResourceApi res = api.AnalyticsApi(mock).provisioning;
+      var res = api.AnalyticsApi(mock).provisioning;
       var arg_request = buildAccountTicket();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11548,7 +11465,7 @@ void main() {
 
     unittest.test('method--createAccountTree', () {
       var mock = HttpServerMock();
-      api.ProvisioningResourceApi res = api.AnalyticsApi(mock).provisioning;
+      var res = api.AnalyticsApi(mock).provisioning;
       var arg_request = buildAccountTreeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11602,8 +11519,7 @@ void main() {
   unittest.group('resource-UserDeletionUserDeletionRequestResourceApi', () {
     unittest.test('method--upsert', () {
       var mock = HttpServerMock();
-      api.UserDeletionUserDeletionRequestResourceApi res =
-          api.AnalyticsApi(mock).userDeletion.userDeletionRequest;
+      var res = api.AnalyticsApi(mock).userDeletion.userDeletionRequest;
       var arg_request = buildUserDeletionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

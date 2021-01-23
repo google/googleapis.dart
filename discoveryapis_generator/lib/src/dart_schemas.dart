@@ -846,8 +846,7 @@ class ObjectType extends ComplexDartSchemaType {
     final toJsonString = StringBuffer();
     toJsonString.writeln('  ${jsonType.declaration} toJson() {');
     toJsonString.writeln(
-      '    final ${jsonType.declaration} _json = '
-      '<${jsonType.keyJsonType.declaration}, '
+      'final _json = <${jsonType.keyJsonType.declaration}, '
       '${jsonType.valueJsonType.declaration}$orNull>{};',
     );
     for (var property in properties) {

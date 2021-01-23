@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -923,8 +922,7 @@ void main() {
   unittest.group('resource-ManagedShortLinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ManagedShortLinksResourceApi res =
-          api.FirebasedynamiclinksApi(mock).managedShortLinks;
+      var res = api.FirebasedynamiclinksApi(mock).managedShortLinks;
       var arg_request = buildCreateManagedShortLinkRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -975,8 +973,7 @@ void main() {
   unittest.group('resource-ShortLinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ShortLinksResourceApi res =
-          api.FirebasedynamiclinksApi(mock).shortLinks;
+      var res = api.FirebasedynamiclinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1027,7 +1024,7 @@ void main() {
   unittest.group('resource-V1ResourceApi', () {
     unittest.test('method--getLinkStats', () {
       var mock = HttpServerMock();
-      api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebasedynamiclinksApi(mock).v1;
       var arg_dynamicLink = 'foo';
       var arg_durationDays = 'foo';
       var arg_sdkVersion = 'foo';
@@ -1091,7 +1088,7 @@ void main() {
 
     unittest.test('method--installAttribution', () {
       var mock = HttpServerMock();
-      api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebasedynamiclinksApi(mock).v1;
       var arg_request = buildGetIosPostInstallAttributionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1141,7 +1138,7 @@ void main() {
 
     unittest.test('method--reopenAttribution', () {
       var mock = HttpServerMock();
-      api.V1ResourceApi res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebasedynamiclinksApi(mock).v1;
       var arg_request = buildGetIosReopenAttributionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

@@ -249,10 +249,9 @@ class ResourceTest extends TestHelper {
           sb.writeln();
 
           // Construct http request handler mock.
-          sb.writeln('      var mock = HttpServerMock();');
+          sb.writeln('var mock = HttpServerMock();');
           // Construct resource class
-          sb.writeln('      api.${resource.className} res = '
-              '${apiConstruction('mock')};');
+          sb.writeln('var res = ${apiConstruction('mock')};');
           // Build method arguments
           final paramValues = buildParameterValues();
           // Build the http request handler mock implementation

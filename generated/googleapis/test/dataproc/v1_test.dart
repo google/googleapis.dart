@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3713,8 +3712,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3765,8 +3763,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3813,8 +3810,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3861,8 +3857,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3913,8 +3908,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3970,8 +3964,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4022,8 +4015,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4074,8 +4066,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.locations.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4128,8 +4119,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsWorkflowTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4180,8 +4170,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_name = 'foo';
       var arg_version = 42;
       var arg_$fields = 'foo';
@@ -4231,8 +4220,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_name = 'foo';
       var arg_version = 42;
       var arg_$fields = 'foo';
@@ -4282,8 +4270,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4334,8 +4321,7 @@ void main() {
 
     unittest.test('method--instantiate', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildInstantiateWorkflowTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4386,8 +4372,7 @@ void main() {
 
     unittest.test('method--instantiateInline', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_parent = 'foo';
       var arg_requestId = 'foo';
@@ -4442,8 +4427,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4499,8 +4483,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4551,8 +4534,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4603,8 +4585,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsLocationsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.locations.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4657,8 +4638,7 @@ void main() {
   unittest.group('resource-ProjectsRegionsAutoscalingPoliciesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4709,8 +4689,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4757,8 +4736,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4805,8 +4783,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4857,8 +4834,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4914,8 +4890,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4966,8 +4941,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5018,8 +4992,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsAutoscalingPoliciesResourceApi res =
-          api.DataprocApi(mock).projects.regions.autoscalingPolicies;
+      var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5072,8 +5045,7 @@ void main() {
   unittest.group('resource-ProjectsRegionsClustersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildCluster();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -5146,8 +5118,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_clusterName = 'foo';
@@ -5225,8 +5196,7 @@ void main() {
 
     unittest.test('method--diagnose', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildDiagnoseClusterRequest();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -5306,8 +5276,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_clusterName = 'foo';
@@ -5376,8 +5345,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5428,8 +5396,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_filter = 'foo';
@@ -5506,8 +5473,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildCluster();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -5593,8 +5559,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5645,8 +5610,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsClustersResourceApi res =
-          api.DataprocApi(mock).projects.regions.clusters;
+      var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5699,8 +5663,7 @@ void main() {
   unittest.group('resource-ProjectsRegionsJobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildCancelJobRequest();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -5780,8 +5743,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_jobId = 'foo';
@@ -5850,8 +5812,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_jobId = 'foo';
@@ -5920,8 +5881,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5972,8 +5932,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
       var arg_region = 'foo';
       var arg_clusterName = 'foo';
@@ -6058,8 +6017,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildJob();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -6136,8 +6094,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6188,8 +6145,7 @@ void main() {
 
     unittest.test('method--submit', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSubmitJobRequest();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -6258,8 +6214,7 @@ void main() {
 
     unittest.test('method--submitAsOperation', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSubmitJobRequest();
       var arg_projectId = 'foo';
       var arg_region = 'foo';
@@ -6329,8 +6284,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsJobsResourceApi res =
-          api.DataprocApi(mock).projects.regions.jobs;
+      var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6383,8 +6337,7 @@ void main() {
   unittest.group('resource-ProjectsRegionsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6431,8 +6384,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6479,8 +6431,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6527,8 +6478,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6579,8 +6529,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6639,8 +6588,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6691,8 +6639,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsOperationsResourceApi res =
-          api.DataprocApi(mock).projects.regions.operations;
+      var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6745,8 +6692,7 @@ void main() {
   unittest.group('resource-ProjectsRegionsWorkflowTemplatesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6797,8 +6743,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_name = 'foo';
       var arg_version = 42;
       var arg_$fields = 'foo';
@@ -6848,8 +6793,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_name = 'foo';
       var arg_version = 42;
       var arg_$fields = 'foo';
@@ -6899,8 +6843,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6951,8 +6894,7 @@ void main() {
 
     unittest.test('method--instantiate', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildInstantiateWorkflowTemplateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7003,8 +6945,7 @@ void main() {
 
     unittest.test('method--instantiateInline', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_parent = 'foo';
       var arg_requestId = 'foo';
@@ -7059,8 +7000,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7116,8 +7056,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -7168,8 +7107,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -7220,8 +7158,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsRegionsWorkflowTemplatesResourceApi res =
-          api.DataprocApi(mock).projects.regions.workflowTemplates;
+      var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

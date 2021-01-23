@@ -18,7 +18,6 @@ const _ignoreForFileSet = {
   'library_names',
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
-  'omit_local_variable_types',
   'prefer_expression_function_bodies',
   'prefer_final_locals',
   'prefer_interpolation_to_compose_strings',

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1429,8 +1428,7 @@ void main() {
   unittest.group('resource-ProjectsSnapshotsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildCreateSnapshotRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1481,8 +1479,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_snapshot = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1529,8 +1526,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_snapshot = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1577,8 +1573,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1632,8 +1627,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_project = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1689,8 +1683,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildUpdateSnapshotRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1741,8 +1734,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1793,8 +1785,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.snapshots;
+      var res = api.PubsubApi(mock).projects.snapshots;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1847,8 +1838,7 @@ void main() {
   unittest.group('resource-ProjectsSubscriptionsResourceApi', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildAcknowledgeRequest();
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
@@ -1899,8 +1889,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSubscription();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1951,8 +1940,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1999,8 +1987,7 @@ void main() {
 
     unittest.test('method--detach', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2047,8 +2034,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2095,8 +2081,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2150,8 +2135,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_project = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2207,8 +2191,7 @@ void main() {
 
     unittest.test('method--modifyAckDeadline', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildModifyAckDeadlineRequest();
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
@@ -2260,8 +2243,7 @@ void main() {
 
     unittest.test('method--modifyPushConfig', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildModifyPushConfigRequest();
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
@@ -2312,8 +2294,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildUpdateSubscriptionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2364,8 +2345,7 @@ void main() {
 
     unittest.test('method--pull', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildPullRequest();
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
@@ -2416,8 +2396,7 @@ void main() {
 
     unittest.test('method--seek', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSeekRequest();
       var arg_subscription = 'foo';
       var arg_$fields = 'foo';
@@ -2468,8 +2447,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2520,8 +2498,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.subscriptions;
+      var res = api.PubsubApi(mock).projects.subscriptions;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2574,7 +2551,7 @@ void main() {
   unittest.group('resource-ProjectsTopicsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildTopic();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2625,7 +2602,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_topic = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2672,7 +2649,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_topic = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2719,7 +2696,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2773,7 +2750,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_project = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2829,7 +2806,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildUpdateTopicRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2880,7 +2857,7 @@ void main() {
 
     unittest.test('method--publish', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildPublishRequest();
       var arg_topic = 'foo';
       var arg_$fields = 'foo';
@@ -2931,7 +2908,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2982,7 +2959,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsResourceApi res = api.PubsubApi(mock).projects.topics;
+      var res = api.PubsubApi(mock).projects.topics;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3035,8 +3012,7 @@ void main() {
   unittest.group('resource-ProjectsTopicsSnapshotsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsSnapshotsResourceApi res =
-          api.PubsubApi(mock).projects.topics.snapshots;
+      var res = api.PubsubApi(mock).projects.topics.snapshots;
       var arg_topic = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3094,8 +3070,7 @@ void main() {
   unittest.group('resource-ProjectsTopicsSubscriptionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsTopicsSubscriptionsResourceApi res =
-          api.PubsubApi(mock).projects.topics.subscriptions;
+      var res = api.PubsubApi(mock).projects.topics.subscriptions;
       var arg_topic = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';

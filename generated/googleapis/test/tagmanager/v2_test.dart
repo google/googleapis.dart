@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2840,7 +2839,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagmanagerApi(mock).accounts;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2887,7 +2886,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagmanagerApi(mock).accounts;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2935,7 +2934,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsResourceApi res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagmanagerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -2992,8 +2991,7 @@ void main() {
   unittest.group('resource-AccountsContainersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3044,8 +3042,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagmanagerApi(mock).accounts.containers;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3090,8 +3087,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagmanagerApi(mock).accounts.containers;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3138,8 +3134,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagmanagerApi(mock).accounts.containers;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -3189,8 +3184,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagmanagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -3247,8 +3241,7 @@ void main() {
   unittest.group('resource-AccountsContainersEnvironmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3299,8 +3292,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3345,8 +3337,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3393,8 +3384,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -3444,8 +3434,7 @@ void main() {
 
     unittest.test('method--reauthorize', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -3496,8 +3485,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersEnvironmentsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagmanagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -3554,8 +3542,7 @@ void main() {
   unittest.group('resource-AccountsContainersVersionHeadersResourceApi', () {
     unittest.test('method--latest', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionHeadersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versionHeaders;
+      var res = api.TagmanagerApi(mock).accounts.containers.versionHeaders;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3602,8 +3589,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionHeadersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versionHeaders;
+      var res = api.TagmanagerApi(mock).accounts.containers.versionHeaders;
       var arg_parent = 'foo';
       var arg_includeDeleted = true;
       var arg_pageToken = 'foo';
@@ -3661,8 +3647,7 @@ void main() {
   unittest.group('resource-AccountsContainersVersionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3707,8 +3692,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
       var arg_containerVersionId = 'foo';
       var arg_$fields = 'foo';
@@ -3759,8 +3743,7 @@ void main() {
 
     unittest.test('method--live', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3807,8 +3790,7 @@ void main() {
 
     unittest.test('method--publish', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
@@ -3858,8 +3840,7 @@ void main() {
 
     unittest.test('method--setLatest', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3906,8 +3887,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3954,8 +3934,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersVersionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagmanagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -4012,8 +3991,7 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4064,8 +4042,7 @@ void main() {
 
     unittest.test('method--createVersion', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -4117,8 +4094,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4163,8 +4139,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4211,8 +4186,7 @@ void main() {
 
     unittest.test('method--getStatus', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4259,8 +4233,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4310,8 +4283,7 @@ void main() {
 
     unittest.test('method--quickPreview', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4358,8 +4330,7 @@ void main() {
 
     unittest.test('method--resolveConflict', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildEntity();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -4412,8 +4383,7 @@ void main() {
 
     unittest.test('method--sync', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4460,8 +4430,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -4519,12 +4488,11 @@ void main() {
       'resource-AccountsContainersWorkspacesBuiltInVariablesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
-          api.TagmanagerApi(mock)
-              .accounts
-              .containers
-              .workspaces
-              .builtInVariables;
+      var res = api.TagmanagerApi(mock)
+          .accounts
+          .containers
+          .workspaces
+          .builtInVariables;
       var arg_parent = 'foo';
       var arg_type = buildUnnamed4477();
       var arg_$fields = 'foo';
@@ -4573,12 +4541,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
-          api.TagmanagerApi(mock)
-              .accounts
-              .containers
-              .workspaces
-              .builtInVariables;
+      var res = api.TagmanagerApi(mock)
+          .accounts
+          .containers
+          .workspaces
+          .builtInVariables;
       var arg_path = 'foo';
       var arg_type = buildUnnamed4478();
       var arg_$fields = 'foo';
@@ -4625,12 +4592,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
-          api.TagmanagerApi(mock)
-              .accounts
-              .containers
-              .workspaces
-              .builtInVariables;
+      var res = api.TagmanagerApi(mock)
+          .accounts
+          .containers
+          .workspaces
+          .builtInVariables;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4681,12 +4647,11 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesBuiltInVariablesResourceApi res =
-          api.TagmanagerApi(mock)
-              .accounts
-              .containers
-              .workspaces
-              .builtInVariables;
+      var res = api.TagmanagerApi(mock)
+          .accounts
+          .containers
+          .workspaces
+          .builtInVariables;
       var arg_path = 'foo';
       var arg_type = 'foo';
       var arg_$fields = 'foo';
@@ -4737,8 +4702,7 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesFoldersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4789,8 +4753,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4835,8 +4798,7 @@ void main() {
 
     unittest.test('method--entities', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4886,8 +4848,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4934,8 +4895,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4985,8 +4945,7 @@ void main() {
 
     unittest.test('method--moveEntitiesToFolder', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
       var arg_path = 'foo';
       var arg_tagId = buildUnnamed4479();
@@ -5046,8 +5005,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
@@ -5097,8 +5055,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesFoldersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -5155,8 +5112,7 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesTagsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5207,8 +5163,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5253,8 +5208,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5301,8 +5255,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -5352,8 +5305,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
@@ -5403,8 +5355,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTagsResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -5462,7 +5413,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_request = buildCustomTemplate();
       var arg_parent = 'foo';
@@ -5514,7 +5465,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -5560,7 +5511,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -5608,7 +5559,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
@@ -5659,7 +5610,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -5710,7 +5661,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTemplatesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.templates;
       var arg_request = buildCustomTemplate();
       var arg_path = 'foo';
@@ -5769,8 +5720,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5821,8 +5771,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5867,8 +5816,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5915,8 +5863,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -5966,8 +5913,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
@@ -6017,8 +5963,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesTriggersResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -6076,7 +6021,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_request = buildVariable();
       var arg_parent = 'foo';
@@ -6128,7 +6073,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -6174,7 +6119,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
@@ -6222,7 +6167,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
@@ -6273,7 +6218,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -6324,7 +6269,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesVariablesResourceApi res =
+      var res =
           api.TagmanagerApi(mock).accounts.containers.workspaces.variables;
       var arg_request = buildVariable();
       var arg_path = 'foo';
@@ -6382,8 +6327,7 @@ void main() {
   unittest.group('resource-AccountsContainersWorkspacesZonesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6434,8 +6378,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6480,8 +6423,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6528,8 +6470,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -6579,8 +6520,7 @@ void main() {
 
     unittest.test('method--revert', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
@@ -6630,8 +6570,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsContainersWorkspacesZonesResourceApi res =
-          api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
+      var res = api.TagmanagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
       var arg_path = 'foo';
       var arg_fingerprint = 'foo';
@@ -6688,8 +6627,7 @@ void main() {
   unittest.group('resource-AccountsUserPermissionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AccountsUserPermissionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.userPermissions;
+      var res = api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6740,8 +6678,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AccountsUserPermissionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.userPermissions;
+      var res = api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6786,8 +6723,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AccountsUserPermissionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.userPermissions;
+      var res = api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_path = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6834,8 +6770,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AccountsUserPermissionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.userPermissions;
+      var res = api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -6885,8 +6820,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.AccountsUserPermissionsResourceApi res =
-          api.TagmanagerApi(mock).accounts.userPermissions;
+      var res = api.TagmanagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
       var arg_path = 'foo';
       var arg_$fields = 'foo';

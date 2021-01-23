@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -631,7 +630,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--deleteEvents', () {
       var mock = HttpServerMock();
-      api.ProjectsResourceApi res = api.ClouderrorreportingApi(mock).projects;
+      var res = api.ClouderrorreportingApi(mock).projects;
       var arg_projectName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -680,8 +679,7 @@ void main() {
   unittest.group('resource-ProjectsEventsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsEventsResourceApi res =
-          api.ClouderrorreportingApi(mock).projects.events;
+      var res = api.ClouderrorreportingApi(mock).projects.events;
       var arg_projectName = 'foo';
       var arg_groupId = 'foo';
       var arg_pageSize = 42;
@@ -757,8 +755,7 @@ void main() {
 
     unittest.test('method--report', () {
       var mock = HttpServerMock();
-      api.ProjectsEventsResourceApi res =
-          api.ClouderrorreportingApi(mock).projects.events;
+      var res = api.ClouderrorreportingApi(mock).projects.events;
       var arg_request = buildReportedErrorEvent();
       var arg_projectName = 'foo';
       var arg_$fields = 'foo';
@@ -811,8 +808,7 @@ void main() {
   unittest.group('resource-ProjectsGroupStatsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupStatsResourceApi res =
-          api.ClouderrorreportingApi(mock).projects.groupStats;
+      var res = api.ClouderrorreportingApi(mock).projects.groupStats;
       var arg_projectName = 'foo';
       var arg_alignment = 'foo';
       var arg_alignmentTime = 'foo';
@@ -904,8 +900,7 @@ void main() {
   unittest.group('resource-ProjectsGroupsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.ClouderrorreportingApi(mock).projects.groups;
+      var res = api.ClouderrorreportingApi(mock).projects.groups;
       var arg_groupName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -952,8 +947,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      api.ProjectsGroupsResourceApi res =
-          api.ClouderrorreportingApi(mock).projects.groups;
+      var res = api.ClouderrorreportingApi(mock).projects.groups;
       var arg_request = buildErrorGroup();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

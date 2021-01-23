@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -150,7 +149,7 @@ void main() {
   unittest.group('resource-SitesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.SitesResourceApi res = api.AbusiveexperiencereportApi(mock).sites;
+      var res = api.AbusiveexperiencereportApi(mock).sites;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -199,8 +198,7 @@ void main() {
   unittest.group('resource-ViolatingSitesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ViolatingSitesResourceApi res =
-          api.AbusiveexperiencereportApi(mock).violatingSites;
+      var res = api.AbusiveexperiencereportApi(mock).violatingSites;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3584,8 +3583,7 @@ void main() {
   unittest.group('resource-ProjectsInstanceConfigsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstanceConfigsResourceApi res =
-          api.SpannerApi(mock).projects.instanceConfigs;
+      var res = api.SpannerApi(mock).projects.instanceConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3632,8 +3630,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstanceConfigsResourceApi res =
-          api.SpannerApi(mock).projects.instanceConfigs;
+      var res = api.SpannerApi(mock).projects.instanceConfigs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3691,8 +3688,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_request = buildCreateInstanceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3743,8 +3739,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3791,8 +3786,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_name = 'foo';
       var arg_fieldMask = 'foo';
       var arg_$fields = 'foo';
@@ -3842,8 +3836,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3894,8 +3887,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3954,8 +3946,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_request = buildUpdateInstanceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4006,8 +3997,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4058,8 +4048,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesResourceApi res =
-          api.SpannerApi(mock).projects.instances;
+      var res = api.SpannerApi(mock).projects.instances;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4112,8 +4101,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesBackupOperationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backupOperations;
+      var res = api.SpannerApi(mock).projects.instances.backupOperations;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4174,8 +4162,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesBackupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_request = buildBackup();
       var arg_parent = 'foo';
       var arg_backupId = 'foo';
@@ -4230,8 +4217,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4278,8 +4264,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4326,8 +4311,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4378,8 +4362,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4438,8 +4421,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_request = buildBackup();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4494,8 +4476,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4546,8 +4527,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups;
+      var res = api.SpannerApi(mock).projects.instances.backups;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4600,8 +4580,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesBackupsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups.operations;
+      var res = api.SpannerApi(mock).projects.instances.backups.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4648,8 +4627,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups.operations;
+      var res = api.SpannerApi(mock).projects.instances.backups.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4696,8 +4674,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups.operations;
+      var res = api.SpannerApi(mock).projects.instances.backups.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4744,8 +4721,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesBackupsOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.backups.operations;
+      var res = api.SpannerApi(mock).projects.instances.backups.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4806,8 +4782,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesDatabaseOperationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabaseOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databaseOperations;
+      var res = api.SpannerApi(mock).projects.instances.databaseOperations;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4868,8 +4843,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesDatabasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildCreateDatabaseRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4920,8 +4894,7 @@ void main() {
 
     unittest.test('method--dropDatabase', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4968,8 +4941,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5016,8 +4988,7 @@ void main() {
 
     unittest.test('method--getDdl', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5064,8 +5035,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5116,8 +5086,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5173,8 +5142,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildRestoreDatabaseRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5225,8 +5193,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5277,8 +5244,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5329,8 +5295,7 @@ void main() {
 
     unittest.test('method--updateDdl', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases;
+      var res = api.SpannerApi(mock).projects.instances.databases;
       var arg_request = buildUpdateDatabaseDdlRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -5384,8 +5349,7 @@ void main() {
       () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.operations;
+      var res = api.SpannerApi(mock).projects.instances.databases.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5432,8 +5396,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.operations;
+      var res = api.SpannerApi(mock).projects.instances.databases.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5480,8 +5443,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.operations;
+      var res = api.SpannerApi(mock).projects.instances.databases.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5528,8 +5490,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.operations;
+      var res = api.SpannerApi(mock).projects.instances.databases.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -5590,8 +5551,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesDatabasesSessionsResourceApi', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildBatchCreateSessionsRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -5642,8 +5602,7 @@ void main() {
 
     unittest.test('method--beginTransaction', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildBeginTransactionRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -5694,8 +5653,7 @@ void main() {
 
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildCommitRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -5746,8 +5704,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildCreateSessionRequest();
       var arg_database = 'foo';
       var arg_$fields = 'foo';
@@ -5798,8 +5755,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5846,8 +5802,7 @@ void main() {
 
     unittest.test('method--executeBatchDml', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildExecuteBatchDmlRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -5898,8 +5853,7 @@ void main() {
 
     unittest.test('method--executeSql', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildExecuteSqlRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -5950,8 +5904,7 @@ void main() {
 
     unittest.test('method--executeStreamingSql', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildExecuteSqlRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6002,8 +5955,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6050,8 +6002,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_database = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6110,8 +6061,7 @@ void main() {
 
     unittest.test('method--partitionQuery', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildPartitionQueryRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6162,8 +6112,7 @@ void main() {
 
     unittest.test('method--partitionRead', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildPartitionReadRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6214,8 +6163,7 @@ void main() {
 
     unittest.test('method--read', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildReadRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6266,8 +6214,7 @@ void main() {
 
     unittest.test('method--rollback', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildRollbackRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6318,8 +6265,7 @@ void main() {
 
     unittest.test('method--streamingRead', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesDatabasesSessionsResourceApi res =
-          api.SpannerApi(mock).projects.instances.databases.sessions;
+      var res = api.SpannerApi(mock).projects.instances.databases.sessions;
       var arg_request = buildReadRequest();
       var arg_session = 'foo';
       var arg_$fields = 'foo';
@@ -6372,8 +6318,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.operations;
+      var res = api.SpannerApi(mock).projects.instances.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6420,8 +6365,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.operations;
+      var res = api.SpannerApi(mock).projects.instances.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6468,8 +6412,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.operations;
+      var res = api.SpannerApi(mock).projects.instances.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6516,8 +6459,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.ProjectsInstancesOperationsResourceApi res =
-          api.SpannerApi(mock).projects.instances.operations;
+      var res = api.SpannerApi(mock).projects.instances.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

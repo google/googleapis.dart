@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -319,7 +318,7 @@ void main() {
   unittest.group('resource-AssetlinksResourceApi', () {
     unittest.test('method--check', () {
       var mock = HttpServerMock();
-      api.AssetlinksResourceApi res = api.DigitalassetlinksApi(mock).assetlinks;
+      var res = api.DigitalassetlinksApi(mock).assetlinks;
       var arg_relation = 'foo';
       var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       var arg_source_androidApp_packageName = 'foo';
@@ -401,7 +400,7 @@ void main() {
   unittest.group('resource-StatementsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.StatementsResourceApi res = api.DigitalassetlinksApi(mock).statements;
+      var res = api.DigitalassetlinksApi(mock).statements;
       var arg_relation = 'foo';
       var arg_source_androidApp_certificate_sha256Fingerprint = 'foo';
       var arg_source_androidApp_packageName = 'foo';

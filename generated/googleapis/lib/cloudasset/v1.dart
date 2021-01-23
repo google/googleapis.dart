@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -909,8 +908,7 @@ class Asset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessLevel != null) {
       _json['accessLevel'] = accessLevel.toJson();
     }
@@ -984,8 +982,7 @@ class AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditLogConfigs != null) {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
@@ -1028,8 +1025,7 @@ class AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
@@ -1056,8 +1052,7 @@ class BatchGetAssetsHistoryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assets != null) {
       _json['assets'] = assets.map((value) => value.toJson()).toList();
     }
@@ -1146,8 +1141,7 @@ class BigQueryDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataset != null) {
       _json['dataset'] = dataset;
     }
@@ -1228,8 +1222,7 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -1267,8 +1260,7 @@ class CreateFeedRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (feed != null) {
       _json['feed'] = feed.toJson();
     }
@@ -1292,8 +1284,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1320,8 +1311,7 @@ class Explanation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matchedPermissions != null) {
       _json['matchedPermissions'] =
           commons.mapMap<Permissions, core.Map<core.String, core.Object>>(
@@ -1388,8 +1378,7 @@ class ExportAssetsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assetTypes != null) {
       _json['assetTypes'] = assetTypes;
     }
@@ -1457,8 +1446,7 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -1556,8 +1544,7 @@ class Feed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (assetNames != null) {
       _json['assetNames'] = assetNames;
     }
@@ -1595,8 +1582,7 @@ class FeedOutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pubsubDestination != null) {
       _json['pubsubDestination'] = pubsubDestination.toJson();
     }
@@ -1635,8 +1621,7 @@ class GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -1686,8 +1671,7 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enforced != null) {
       _json['enforced'] = enforced;
     }
@@ -1818,8 +1802,7 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allValues != null) {
       _json['allValues'] = allValues;
     }
@@ -1915,8 +1898,7 @@ class GoogleCloudOrgpolicyV1Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (booleanPolicy != null) {
       _json['booleanPolicy'] = booleanPolicy.toJson();
     }
@@ -1960,8 +1942,7 @@ class GoogleCloudOrgpolicyV1RestoreDefault {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -2011,8 +1992,7 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (basic != null) {
       _json['basic'] = basic.toJson();
     }
@@ -2074,8 +2054,7 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -2123,8 +2102,7 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (combiningFunction != null) {
       _json['combiningFunction'] = combiningFunction;
     }
@@ -2202,8 +2180,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (devicePolicy != null) {
       _json['devicePolicy'] = devicePolicy.toJson();
     }
@@ -2242,8 +2219,7 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (expr != null) {
       _json['expr'] = expr.toJson();
     }
@@ -2311,8 +2287,7 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowedDeviceManagementLevels != null) {
       _json['allowedDeviceManagementLevels'] = allowedDeviceManagementLevels;
     }
@@ -2376,8 +2351,7 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (minimumVersion != null) {
       _json['minimumVersion'] = minimumVersion;
     }
@@ -2479,8 +2453,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -2555,8 +2528,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (accessLevels != null) {
       _json['accessLevels'] = accessLevels;
     }
@@ -2599,8 +2571,7 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowedServices != null) {
       _json['allowedServices'] = allowedServices;
     }
@@ -2664,8 +2635,7 @@ class IamPolicySearchResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (explanation != null) {
       _json['explanation'] = explanation.toJson();
     }
@@ -2697,8 +2667,7 @@ class ListFeedsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (feeds != null) {
       _json['feeds'] = feeds.map((value) => value.toJson()).toList();
     }
@@ -2766,8 +2735,7 @@ class Operation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -2809,8 +2777,7 @@ class OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bigqueryDestination != null) {
       _json['bigqueryDestination'] = bigqueryDestination.toJson();
     }
@@ -2847,8 +2814,7 @@ class PartitionSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (partitionKey != null) {
       _json['partitionKey'] = partitionKey;
     }
@@ -2870,8 +2836,7 @@ class Permissions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissions != null) {
       _json['permissions'] = permissions;
     }
@@ -2975,8 +2940,7 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (auditConfigs != null) {
       _json['auditConfigs'] =
           auditConfigs.map((value) => value.toJson()).toList();
@@ -3009,8 +2973,7 @@ class PubsubDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (topic != null) {
       _json['topic'] = topic;
     }
@@ -3087,8 +3050,7 @@ class Resource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -3220,8 +3182,7 @@ class ResourceSearchResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (additionalAttributes != null) {
       _json['additionalAttributes'] = additionalAttributes;
     }
@@ -3279,8 +3240,7 @@ class SearchAllIamPoliciesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3317,8 +3277,7 @@ class SearchAllResourcesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -3369,8 +3328,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -3431,8 +3389,7 @@ class TemporalAsset {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (asset != null) {
       _json['asset'] = asset.toJson();
     }
@@ -3473,8 +3430,7 @@ class TimeWindow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -3511,8 +3467,7 @@ class UpdateFeedRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (feed != null) {
       _json['feed'] = feed.toJson();
     }

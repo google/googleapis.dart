@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -370,8 +369,7 @@ void main() {
   unittest.group('resource-ProjectsServiceAccountsResourceApi', () {
     unittest.test('method--generateAccessToken', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateAccessTokenRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -422,8 +420,7 @@ void main() {
 
     unittest.test('method--generateIdToken', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateIdTokenRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -474,8 +471,7 @@ void main() {
 
     unittest.test('method--signBlob', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignBlobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -526,8 +522,7 @@ void main() {
 
     unittest.test('method--signJwt', () {
       var mock = HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignJwtRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1421,8 +1420,7 @@ class AddBandingRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRange != null) {
       _json['bandedRange'] = bandedRange.toJson();
     }
@@ -1444,8 +1442,7 @@ class AddBandingResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRange != null) {
       _json['bandedRange'] = bandedRange.toJson();
     }
@@ -1470,8 +1467,7 @@ class AddChartRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chart != null) {
       _json['chart'] = chart.toJson();
     }
@@ -1493,8 +1489,7 @@ class AddChartResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chart != null) {
       _json['chart'] = chart.toJson();
     }
@@ -1523,8 +1518,7 @@ class AddConditionalFormatRuleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -1552,8 +1546,7 @@ class AddDataSourceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSource != null) {
       _json['dataSource'] = dataSource.toJson();
     }
@@ -1582,8 +1575,7 @@ class AddDataSourceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
     }
@@ -1620,8 +1612,7 @@ class AddDimensionGroupRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -1645,8 +1636,7 @@ class AddDimensionGroupResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionGroups != null) {
       _json['dimensionGroups'] =
           dimensionGroups.map((value) => value.toJson()).toList();
@@ -1671,8 +1661,7 @@ class AddFilterViewRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter.toJson();
     }
@@ -1694,8 +1683,7 @@ class AddFilterViewResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter.toJson();
     }
@@ -1719,8 +1707,7 @@ class AddNamedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedRange != null) {
       _json['namedRange'] = namedRange.toJson();
     }
@@ -1742,8 +1729,7 @@ class AddNamedRangeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedRange != null) {
       _json['namedRange'] = namedRange.toJson();
     }
@@ -1767,8 +1753,7 @@ class AddProtectedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (protectedRange != null) {
       _json['protectedRange'] = protectedRange.toJson();
     }
@@ -1790,8 +1775,7 @@ class AddProtectedRangeResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (protectedRange != null) {
       _json['protectedRange'] = protectedRange.toJson();
     }
@@ -1819,8 +1803,7 @@ class AddSheetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (properties != null) {
       _json['properties'] = properties.toJson();
     }
@@ -1842,8 +1825,7 @@ class AddSheetResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (properties != null) {
       _json['properties'] = properties.toJson();
     }
@@ -1868,8 +1850,7 @@ class AddSlicerRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (slicer != null) {
       _json['slicer'] = slicer.toJson();
     }
@@ -1891,8 +1872,7 @@ class AddSlicerResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (slicer != null) {
       _json['slicer'] = slicer.toJson();
     }
@@ -1932,8 +1912,7 @@ class AppendCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -1977,8 +1956,7 @@ class AppendDimensionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -2019,8 +1997,7 @@ class AppendValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (spreadsheetId != null) {
       _json['spreadsheetId'] = spreadsheetId;
     }
@@ -2065,8 +2042,7 @@ class AutoFillRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -2102,8 +2078,7 @@ class AutoResizeDimensionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceSheetDimensions != null) {
       _json['dataSourceSheetDimensions'] = dataSourceSheetDimensions.toJson();
     }
@@ -2150,8 +2125,7 @@ class BandedRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRangeId != null) {
       _json['bandedRangeId'] = bandedRangeId;
     }
@@ -2249,8 +2223,7 @@ class BandingProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (firstBandColor != null) {
       _json['firstBandColor'] = firstBandColor.toJson();
     }
@@ -2349,8 +2322,7 @@ class BaselineValueFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (comparisonType != null) {
       _json['comparisonType'] = comparisonType;
     }
@@ -2431,8 +2403,7 @@ class BasicChartAxis {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (format != null) {
       _json['format'] = format.toJson();
     }
@@ -2474,8 +2445,7 @@ class BasicChartDomain {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domain != null) {
       _json['domain'] = domain.toJson();
     }
@@ -2562,8 +2532,7 @@ class BasicChartSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -2704,8 +2673,7 @@ class BasicChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (axis != null) {
       _json['axis'] = axis.map((value) => value.toJson()).toList();
     }
@@ -2786,8 +2754,7 @@ class BasicFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (criteria != null) {
       _json['criteria'] =
           commons.mapMap<FilterCriteria, core.Map<core.String, core.Object>>(
@@ -2824,8 +2791,7 @@ class BatchClearValuesByDataFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -2857,8 +2823,7 @@ class BatchClearValuesByDataFilterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clearedRanges != null) {
       _json['clearedRanges'] = clearedRanges;
     }
@@ -2883,8 +2848,7 @@ class BatchClearValuesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ranges != null) {
       _json['ranges'] = ranges;
     }
@@ -2914,8 +2878,7 @@ class BatchClearValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clearedRanges != null) {
       _json['clearedRanges'] = clearedRanges;
     }
@@ -2996,8 +2959,7 @@ class BatchGetValuesByDataFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -3038,8 +3000,7 @@ class BatchGetValuesByDataFilterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (spreadsheetId != null) {
       _json['spreadsheetId'] = spreadsheetId;
     }
@@ -3074,8 +3035,7 @@ class BatchGetValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (spreadsheetId != null) {
       _json['spreadsheetId'] = spreadsheetId;
     }
@@ -3127,8 +3087,7 @@ class BatchUpdateSpreadsheetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeSpreadsheetInResponse != null) {
       _json['includeSpreadsheetInResponse'] = includeSpreadsheetInResponse;
     }
@@ -3175,8 +3134,7 @@ class BatchUpdateSpreadsheetResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (replies != null) {
       _json['replies'] = replies.map((value) => value.toJson()).toList();
     }
@@ -3276,8 +3234,7 @@ class BatchUpdateValuesByDataFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.map((value) => value.toJson()).toList();
     }
@@ -3346,8 +3303,7 @@ class BatchUpdateValuesByDataFilterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3453,8 +3409,7 @@ class BatchUpdateValuesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.map((value) => value.toJson()).toList();
     }
@@ -3524,8 +3479,7 @@ class BatchUpdateValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3575,8 +3529,7 @@ class BigQueryDataSourceSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (projectId != null) {
       _json['projectId'] = projectId;
     }
@@ -3604,8 +3557,7 @@ class BigQueryQuerySpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rawQuery != null) {
       _json['rawQuery'] = rawQuery;
     }
@@ -3641,8 +3593,7 @@ class BigQueryTableSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (datasetId != null) {
       _json['datasetId'] = datasetId;
     }
@@ -3787,8 +3738,7 @@ class BooleanCondition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -3822,8 +3772,7 @@ class BooleanRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -3878,8 +3827,7 @@ class Border {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -3928,8 +3876,7 @@ class Borders {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bottom != null) {
       _json['bottom'] = bottom.toJson();
     }
@@ -4047,8 +3994,7 @@ class BubbleChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bubbleBorderColor != null) {
       _json['bubbleBorderColor'] = bubbleBorderColor.toJson();
     }
@@ -4113,8 +4059,7 @@ class CandlestickChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.map((value) => value.toJson()).toList();
     }
@@ -4164,8 +4109,7 @@ class CandlestickData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (closeSeries != null) {
       _json['closeSeries'] = closeSeries.toJson();
     }
@@ -4202,8 +4146,7 @@ class CandlestickDomain {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.toJson();
     }
@@ -4228,8 +4171,7 @@ class CandlestickSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.toJson();
     }
@@ -4349,8 +4291,7 @@ class CellData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceFormula != null) {
       _json['dataSourceFormula'] = dataSourceFormula.toJson();
     }
@@ -4517,8 +4458,7 @@ class CellFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -4598,8 +4538,7 @@ class ChartAxisViewWindowOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (viewWindowMax != null) {
       _json['viewWindowMax'] = viewWindowMax;
     }
@@ -4635,8 +4574,7 @@ class ChartCustomNumberFormatOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (prefix != null) {
       _json['prefix'] = prefix;
     }
@@ -4690,8 +4628,7 @@ class ChartData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregateType != null) {
       _json['aggregateType'] = aggregateType;
     }
@@ -4751,8 +4688,7 @@ class ChartDateTimeRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -4785,8 +4721,7 @@ class ChartGroupRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateTimeRule != null) {
       _json['dateTimeRule'] = dateTimeRule.toJson();
     }
@@ -4828,8 +4763,7 @@ class ChartHistogramRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (intervalSize != null) {
       _json['intervalSize'] = intervalSize;
     }
@@ -4867,8 +4801,7 @@ class ChartSourceRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sources != null) {
       _json['sources'] = sources.map((value) => value.toJson()).toList();
     }
@@ -5052,8 +4985,7 @@ class ChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (altText != null) {
       _json['altText'] = altText;
     }
@@ -5145,8 +5077,7 @@ class ClearBasicFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sheetId != null) {
       _json['sheetId'] = sheetId;
     }
@@ -5163,8 +5094,7 @@ class ClearValuesRequest {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -5191,8 +5121,7 @@ class ClearValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clearedRange != null) {
       _json['clearedRange'] = clearedRange;
     }
@@ -5290,8 +5219,7 @@ class Color {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alpha != null) {
       _json['alpha'] = alpha;
     }
@@ -5339,8 +5267,7 @@ class ColorStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rgbColor != null) {
       _json['rgbColor'] = rgbColor.toJson();
     }
@@ -5384,8 +5311,7 @@ class ConditionValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (relativeDate != null) {
       _json['relativeDate'] = relativeDate;
     }
@@ -5425,8 +5351,7 @@ class ConditionalFormatRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (booleanRule != null) {
       _json['booleanRule'] = booleanRule.toJson();
     }
@@ -5490,8 +5415,7 @@ class CopyPasteRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destination != null) {
       _json['destination'] = destination.toJson();
     }
@@ -5522,8 +5446,7 @@ class CopySheetToAnotherSpreadsheetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destinationSpreadsheetId != null) {
       _json['destinationSpreadsheetId'] = destinationSpreadsheetId;
     }
@@ -5546,8 +5469,7 @@ class CreateDeveloperMetadataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (developerMetadata != null) {
       _json['developerMetadata'] = developerMetadata.toJson();
     }
@@ -5570,8 +5492,7 @@ class CreateDeveloperMetadataResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (developerMetadata != null) {
       _json['developerMetadata'] = developerMetadata.toJson();
     }
@@ -5616,8 +5537,7 @@ class CutPasteRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destination != null) {
       _json['destination'] = destination.toJson();
     }
@@ -5706,8 +5626,7 @@ class DataExecutionStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCode != null) {
       _json['errorCode'] = errorCode;
     }
@@ -5753,8 +5672,7 @@ class DataFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (a1Range != null) {
       _json['a1Range'] = a1Range;
     }
@@ -5807,8 +5725,7 @@ class DataFilterValueRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilter != null) {
       _json['dataFilter'] = dataFilter.toJson();
     }
@@ -5860,8 +5777,7 @@ class DataSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calculatedColumns != null) {
       _json['calculatedColumns'] =
           calculatedColumns.map((value) => value.toJson()).toList();
@@ -5900,8 +5816,7 @@ class DataSourceChartProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
     }
@@ -5932,8 +5847,7 @@ class DataSourceColumn {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (formula != null) {
       _json['formula'] = formula;
     }
@@ -5958,8 +5872,7 @@ class DataSourceColumnReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -5988,8 +5901,7 @@ class DataSourceFormula {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
     }
@@ -6041,8 +5953,7 @@ class DataSourceObjectReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartId != null) {
       _json['chartId'] = chartId;
     }
@@ -6080,8 +5991,7 @@ class DataSourceObjectReferences {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (references != null) {
       _json['references'] = references.map((value) => value.toJson()).toList();
     }
@@ -6118,8 +6028,7 @@ class DataSourceParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -6149,8 +6058,7 @@ class DataSourceRefreshDailySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (startTime != null) {
       _json['startTime'] = startTime.toJson();
     }
@@ -6182,8 +6090,7 @@ class DataSourceRefreshMonthlySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (daysOfMonth != null) {
       _json['daysOfMonth'] = daysOfMonth;
     }
@@ -6249,8 +6156,7 @@ class DataSourceRefreshSchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dailySchedule != null) {
       _json['dailySchedule'] = dailySchedule.toJson();
     }
@@ -6296,8 +6202,7 @@ class DataSourceRefreshWeeklySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (daysOfWeek != null) {
       _json['daysOfWeek'] = daysOfWeek;
     }
@@ -6331,8 +6236,7 @@ class DataSourceSheetDimensionRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnReferences != null) {
       _json['columnReferences'] =
           columnReferences.map((value) => value.toJson()).toList();
@@ -6374,8 +6278,7 @@ class DataSourceSheetProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
@@ -6413,8 +6316,7 @@ class DataSourceSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bigQuery != null) {
       _json['bigQuery'] = bigQuery.toJson();
     }
@@ -6496,8 +6398,7 @@ class DataSourceTable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnSelectionType != null) {
       _json['columnSelectionType'] = columnSelectionType;
     }
@@ -6557,8 +6458,7 @@ class DataValidationRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -6626,8 +6526,7 @@ class DateTimeRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -6649,8 +6548,7 @@ class DeleteBandingRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRangeId != null) {
       _json['bandedRangeId'] = bandedRangeId;
     }
@@ -6679,8 +6577,7 @@ class DeleteConditionalFormatRuleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -6705,8 +6602,7 @@ class DeleteConditionalFormatRuleResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rule != null) {
       _json['rule'] = rule.toJson();
     }
@@ -6729,8 +6625,7 @@ class DeleteDataSourceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json['dataSourceId'] = dataSourceId;
     }
@@ -6753,8 +6648,7 @@ class DeleteDeveloperMetadataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilter != null) {
       _json['dataFilter'] = dataFilter.toJson();
     }
@@ -6779,8 +6673,7 @@ class DeleteDeveloperMetadataResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deletedDeveloperMetadata != null) {
       _json['deletedDeveloperMetadata'] =
           deletedDeveloperMetadata.map((value) => value.toJson()).toList();
@@ -6806,8 +6699,7 @@ class DeleteDimensionGroupRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -6831,8 +6723,7 @@ class DeleteDimensionGroupResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionGroups != null) {
       _json['dimensionGroups'] =
           dimensionGroups.map((value) => value.toJson()).toList();
@@ -6855,8 +6746,7 @@ class DeleteDimensionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -6895,8 +6785,7 @@ class DeleteDuplicatesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (comparisonColumns != null) {
       _json['comparisonColumns'] =
           comparisonColumns.map((value) => value.toJson()).toList();
@@ -6922,8 +6811,7 @@ class DeleteDuplicatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (duplicatesRemovedCount != null) {
       _json['duplicatesRemovedCount'] = duplicatesRemovedCount;
     }
@@ -6945,8 +6833,7 @@ class DeleteEmbeddedObjectRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -6968,8 +6855,7 @@ class DeleteFilterViewRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filterId != null) {
       _json['filterId'] = filterId;
     }
@@ -6991,8 +6877,7 @@ class DeleteNamedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namedRangeId != null) {
       _json['namedRangeId'] = namedRangeId;
     }
@@ -7014,8 +6899,7 @@ class DeleteProtectedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (protectedRangeId != null) {
       _json['protectedRangeId'] = protectedRangeId;
     }
@@ -7049,8 +6933,7 @@ class DeleteRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -7076,8 +6959,7 @@ class DeleteSheetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sheetId != null) {
       _json['sheetId'] = sheetId;
     }
@@ -7140,8 +7022,7 @@ class DeveloperMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (location != null) {
       _json['location'] = location.toJson();
     }
@@ -7201,8 +7082,7 @@ class DeveloperMetadataLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionRange != null) {
       _json['dimensionRange'] = dimensionRange.toJson();
     }
@@ -7325,8 +7205,7 @@ class DeveloperMetadataLookup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (locationMatchingStrategy != null) {
       _json['locationMatchingStrategy'] = locationMatchingStrategy;
     }
@@ -7387,8 +7266,7 @@ class DimensionGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (collapsed != null) {
       _json['collapsed'] = collapsed;
     }
@@ -7443,8 +7321,7 @@ class DimensionProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceColumnReference != null) {
       _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
     }
@@ -7503,8 +7380,7 @@ class DimensionRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -7535,8 +7411,7 @@ class DuplicateFilterViewRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filterId != null) {
       _json['filterId'] = filterId;
     }
@@ -7558,8 +7433,7 @@ class DuplicateFilterViewResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter.toJson();
     }
@@ -7605,8 +7479,7 @@ class DuplicateSheetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (insertSheetIndex != null) {
       _json['insertSheetIndex'] = insertSheetIndex;
     }
@@ -7637,8 +7510,7 @@ class DuplicateSheetResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (properties != null) {
       _json['properties'] = properties.toJson();
     }
@@ -7673,8 +7545,7 @@ class Editors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domainUsersCanEdit != null) {
       _json['domainUsersCanEdit'] = domainUsersCanEdit;
     }
@@ -7714,8 +7585,7 @@ class EmbeddedChart {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartId != null) {
       _json['chartId'] = chartId;
     }
@@ -7757,8 +7627,7 @@ class EmbeddedObjectPosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (newSheet != null) {
       _json['newSheet'] = newSheet;
     }
@@ -7804,8 +7673,7 @@ class ErrorValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (message != null) {
       _json['message'] = message;
     }
@@ -7857,8 +7725,7 @@ class ExtendedValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boolValue != null) {
       _json['boolValue'] = boolValue;
     }
@@ -7934,8 +7801,7 @@ class FilterCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -7987,8 +7853,7 @@ class FilterSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnIndex != null) {
       _json['columnIndex'] = columnIndex;
     }
@@ -8065,8 +7930,7 @@ class FilterView {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (criteria != null) {
       _json['criteria'] =
           commons.mapMap<FilterCriteria, core.Map<core.String, core.Object>>(
@@ -8165,8 +8029,7 @@ class FindReplaceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allSheets != null) {
       _json['allSheets'] = allSheets;
     }
@@ -8238,8 +8101,7 @@ class FindReplaceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (formulasChanged != null) {
       _json['formulasChanged'] = formulasChanged;
     }
@@ -8283,8 +8145,7 @@ class GetSpreadsheetByDataFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -8324,8 +8185,7 @@ class GradientRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxpoint != null) {
       _json['maxpoint'] = maxpoint.toJson();
     }
@@ -8365,8 +8225,7 @@ class GridCoordinate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnIndex != null) {
       _json['columnIndex'] = columnIndex;
     }
@@ -8430,8 +8289,7 @@ class GridData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnMetadata != null) {
       _json['columnMetadata'] =
           columnMetadata.map((value) => value.toJson()).toList();
@@ -8503,8 +8361,7 @@ class GridProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnCount != null) {
       _json['columnCount'] = columnCount;
     }
@@ -8580,8 +8437,7 @@ class GridRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endColumnIndex != null) {
       _json['endColumnIndex'] = endColumnIndex;
     }
@@ -8665,8 +8521,7 @@ class HistogramChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bucketSize != null) {
       _json['bucketSize'] = bucketSize;
     }
@@ -8732,8 +8587,7 @@ class HistogramRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (end != null) {
       _json['end'] = end;
     }
@@ -8775,8 +8629,7 @@ class HistogramSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (barColor != null) {
       _json['barColor'] = barColor.toJson();
     }
@@ -8819,8 +8672,7 @@ class InsertDimensionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inheritFromBefore != null) {
       _json['inheritFromBefore'] = inheritFromBefore;
     }
@@ -8857,8 +8709,7 @@ class InsertRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -8921,8 +8772,7 @@ class InterpolationPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -8964,8 +8814,7 @@ class Interval {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -8999,8 +8848,7 @@ class IterativeCalculationSettings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (convergenceThreshold != null) {
       _json['convergenceThreshold'] = convergenceThreshold;
     }
@@ -9032,8 +8880,7 @@ class KeyValueFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -9077,8 +8924,7 @@ class LineStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -9117,8 +8963,7 @@ class ManualRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groups != null) {
       _json['groups'] = groups.map((value) => value.toJson()).toList();
     }
@@ -9153,8 +8998,7 @@ class ManualRuleGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (groupName != null) {
       _json['groupName'] = groupName.toJson();
     }
@@ -9189,8 +9033,7 @@ class MatchedDeveloperMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -9224,8 +9067,7 @@ class MatchedValueRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -9261,8 +9103,7 @@ class MergeCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mergeType != null) {
       _json['mergeType'] = mergeType;
     }
@@ -9301,8 +9142,7 @@ class MoveDimensionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (destinationIndex != null) {
       _json['destinationIndex'] = destinationIndex;
     }
@@ -9339,8 +9179,7 @@ class NamedRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -9388,8 +9227,7 @@ class NumberFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pattern != null) {
       _json['pattern'] = pattern;
     }
@@ -9476,8 +9314,7 @@ class OrgChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (labels != null) {
       _json['labels'] = labels.toJson();
     }
@@ -9546,8 +9383,7 @@ class OverlayPosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (anchorCell != null) {
       _json['anchorCell'] = anchorCell.toJson();
     }
@@ -9600,8 +9436,7 @@ class Padding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bottom != null) {
       _json['bottom'] = bottom;
     }
@@ -9666,8 +9501,7 @@ class PasteDataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (coordinate != null) {
       _json['coordinate'] = coordinate.toJson();
     }
@@ -9733,8 +9567,7 @@ class PieChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (domain != null) {
       _json['domain'] = domain.toJson();
     }
@@ -9768,8 +9601,7 @@ class PivotFilterCriteria {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (visibleValues != null) {
       _json['visibleValues'] = visibleValues;
     }
@@ -9805,8 +9637,7 @@ class PivotFilterSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columnOffsetIndex != null) {
       _json['columnOffsetIndex'] = columnOffsetIndex;
     }
@@ -9917,8 +9748,7 @@ class PivotGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceColumnReference != null) {
       _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
     }
@@ -9979,8 +9809,7 @@ class PivotGroupLimit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (applyOrder != null) {
       _json['applyOrder'] = applyOrder;
     }
@@ -10021,8 +9850,7 @@ class PivotGroupRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dateTimeRule != null) {
       _json['dateTimeRule'] = dateTimeRule.toJson();
     }
@@ -10066,8 +9894,7 @@ class PivotGroupSortValueBucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (buckets != null) {
       _json['buckets'] = buckets.map((value) => value.toJson()).toList();
     }
@@ -10099,8 +9926,7 @@ class PivotGroupValueMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (collapsed != null) {
       _json['collapsed'] = collapsed;
     }
@@ -10196,8 +10022,7 @@ class PivotTable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (columns != null) {
       _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
@@ -10314,8 +10139,7 @@ class PivotValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (calculatedDisplayType != null) {
       _json['calculatedDisplayType'] = calculatedDisplayType;
     }
@@ -10409,8 +10233,7 @@ class ProtectedRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (description != null) {
       _json['description'] = description;
     }
@@ -10454,8 +10277,7 @@ class RandomizeRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -10484,8 +10306,7 @@ class RefreshDataSourceObjectExecutionStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
     }
@@ -10535,8 +10356,7 @@ class RefreshDataSourceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceId != null) {
       _json['dataSourceId'] = dataSourceId;
     }
@@ -10572,8 +10392,7 @@ class RefreshDataSourceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (statuses != null) {
       _json['statuses'] = statuses.map((value) => value.toJson()).toList();
     }
@@ -10617,8 +10436,7 @@ class RepeatCellRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cell != null) {
       _json['cell'] = cell.toJson();
     }
@@ -11061,8 +10879,7 @@ class Request {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addBanding != null) {
       _json['addBanding'] = addBanding.toJson();
     }
@@ -11425,8 +11242,7 @@ class Response {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addBanding != null) {
       _json['addBanding'] = addBanding.toJson();
     }
@@ -11519,8 +11335,7 @@ class RowData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values.map((value) => value.toJson()).toList();
     }
@@ -11613,8 +11428,7 @@ class ScorecardChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregateType != null) {
       _json['aggregateType'] = aggregateType;
     }
@@ -11662,8 +11476,7 @@ class SearchDeveloperMetadataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -11690,8 +11503,7 @@ class SearchDeveloperMetadataResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (matchedDeveloperMetadata != null) {
       _json['matchedDeveloperMetadata'] =
           matchedDeveloperMetadata.map((value) => value.toJson()).toList();
@@ -11714,8 +11526,7 @@ class SetBasicFilterRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter.toJson();
     }
@@ -11745,8 +11556,7 @@ class SetDataValidationRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -11875,8 +11685,7 @@ class Sheet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRanges != null) {
       _json['bandedRanges'] =
           bandedRanges.map((value) => value.toJson()).toList();
@@ -12018,8 +11827,7 @@ class SheetProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceSheetProperties != null) {
       _json['dataSourceSheetProperties'] = dataSourceSheetProperties.toJson();
     }
@@ -12082,8 +11890,7 @@ class Slicer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -12168,8 +11975,7 @@ class SlicerSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (applyToPivotTables != null) {
       _json['applyToPivotTables'] = applyToPivotTables;
     }
@@ -12224,8 +12030,7 @@ class SortRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -12299,8 +12104,7 @@ class SortSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -12358,8 +12162,7 @@ class SourceAndDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -12440,8 +12243,7 @@ class Spreadsheet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceSchedules != null) {
       _json['dataSourceSchedules'] =
           dataSourceSchedules.map((value) => value.toJson()).toList();
@@ -12542,8 +12344,7 @@ class SpreadsheetProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (autoRecalc != null) {
       _json['autoRecalc'] = autoRecalc;
     }
@@ -12593,8 +12394,7 @@ class SpreadsheetTheme {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (primaryFontFamily != null) {
       _json['primaryFontFamily'] = primaryFontFamily;
     }
@@ -12664,8 +12464,7 @@ class TextFormat {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bold != null) {
       _json['bold'] = bold;
     }
@@ -12715,8 +12514,7 @@ class TextFormatRun {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (format != null) {
       _json['format'] = format.toJson();
     }
@@ -12747,8 +12545,7 @@ class TextPosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (horizontalAlignment != null) {
       _json['horizontalAlignment'] = horizontalAlignment;
     }
@@ -12782,8 +12579,7 @@ class TextRotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (angle != null) {
       _json['angle'] = angle;
     }
@@ -12830,8 +12626,7 @@ class TextToColumnsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (delimiter != null) {
       _json['delimiter'] = delimiter;
     }
@@ -12877,8 +12672,7 @@ class ThemeColorPair {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -12925,8 +12719,7 @@ class TimeOfDay {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (hours != null) {
       _json['hours'] = hours;
     }
@@ -13011,8 +12804,7 @@ class TreemapChartColorScale {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (maxValueColor != null) {
       _json['maxValueColor'] = maxValueColor.toJson();
     }
@@ -13154,8 +12946,7 @@ class TreemapChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colorData != null) {
       _json['colorData'] = colorData.toJson();
     }
@@ -13218,8 +13009,7 @@ class TrimWhitespaceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -13241,8 +13031,7 @@ class TrimWhitespaceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cellsChangedCount != null) {
       _json['cellsChangedCount'] = cellsChangedCount;
     }
@@ -13266,8 +13055,7 @@ class UnmergeCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (range != null) {
       _json['range'] = range.toJson();
     }
@@ -13297,8 +13085,7 @@ class UpdateBandingRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bandedRange != null) {
       _json['bandedRange'] = bandedRange.toJson();
     }
@@ -13364,8 +13151,7 @@ class UpdateBordersRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bottom != null) {
       _json['bottom'] = bottom.toJson();
     }
@@ -13430,8 +13216,7 @@ class UpdateCellsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -13469,8 +13254,7 @@ class UpdateChartSpecRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (chartId != null) {
       _json['chartId'] = chartId;
     }
@@ -13515,8 +13299,7 @@ class UpdateConditionalFormatRuleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (index != null) {
       _json['index'] = index;
     }
@@ -13568,8 +13351,7 @@ class UpdateConditionalFormatRuleResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (newIndex != null) {
       _json['newIndex'] = newIndex;
     }
@@ -13611,8 +13393,7 @@ class UpdateDataSourceRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSource != null) {
       _json['dataSource'] = dataSource.toJson();
     }
@@ -13644,8 +13425,7 @@ class UpdateDataSourceResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
     }
@@ -13692,8 +13472,7 @@ class UpdateDeveloperMetadataRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilters != null) {
       _json['dataFilters'] =
           dataFilters.map((value) => value.toJson()).toList();
@@ -13724,8 +13503,7 @@ class UpdateDeveloperMetadataResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (developerMetadata != null) {
       _json['developerMetadata'] =
           developerMetadata.map((value) => value.toJson()).toList();
@@ -13757,8 +13535,7 @@ class UpdateDimensionGroupRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionGroup != null) {
       _json['dimensionGroup'] = dimensionGroup.toJson();
     }
@@ -13804,8 +13581,7 @@ class UpdateDimensionPropertiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataSourceSheetRange != null) {
       _json['dataSourceSheetRange'] = dataSourceSheetRange.toJson();
     }
@@ -13856,8 +13632,7 @@ class UpdateEmbeddedObjectPositionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -13885,8 +13660,7 @@ class UpdateEmbeddedObjectPositionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (position != null) {
       _json['position'] = position.toJson();
     }
@@ -13916,8 +13690,7 @@ class UpdateFilterViewRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -13950,8 +13723,7 @@ class UpdateNamedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -13984,8 +13756,7 @@ class UpdateProtectedRangeRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -14018,8 +13789,7 @@ class UpdateSheetPropertiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -14059,8 +13829,7 @@ class UpdateSlicerSpecRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -14096,8 +13865,7 @@ class UpdateSpreadsheetPropertiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] = fields;
     }
@@ -14155,8 +13923,7 @@ class UpdateValuesByDataFilterResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataFilter != null) {
       _json['dataFilter'] = dataFilter.toJson();
     }
@@ -14224,8 +13991,7 @@ class UpdateValuesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (spreadsheetId != null) {
       _json['spreadsheetId'] = spreadsheetId;
     }
@@ -14300,8 +14066,7 @@ class ValueRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (majorDimension != null) {
       _json['majorDimension'] = majorDimension;
     }
@@ -14342,8 +14107,7 @@ class WaterfallChartColumnStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (color != null) {
       _json['color'] = color.toJson();
     }
@@ -14391,8 +14155,7 @@ class WaterfallChartCustomSubtotal {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataIsSubtotal != null) {
       _json['dataIsSubtotal'] = dataIsSubtotal;
     }
@@ -14426,8 +14189,7 @@ class WaterfallChartDomain {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data.toJson();
     }
@@ -14492,8 +14254,7 @@ class WaterfallChartSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (customSubtotals != null) {
       _json['customSubtotals'] =
           customSubtotals.map((value) => value.toJson()).toList();
@@ -14569,8 +14330,7 @@ class WaterfallChartSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (connectorLineStyle != null) {
       _json['connectorLineStyle'] = connectorLineStyle.toJson();
     }

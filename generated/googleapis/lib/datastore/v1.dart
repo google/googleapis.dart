@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1111,8 +1110,7 @@ class AllocateIdsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (keys != null) {
       _json['keys'] = keys.map((value) => value.toJson()).toList();
     }
@@ -1137,8 +1135,7 @@ class AllocateIdsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (keys != null) {
       _json['keys'] = keys.map((value) => value.toJson()).toList();
     }
@@ -1163,8 +1160,7 @@ class ArrayValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (values != null) {
       _json['values'] = values.map((value) => value.toJson()).toList();
     }
@@ -1187,8 +1183,7 @@ class BeginTransactionRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (transactionOptions != null) {
       _json['transactionOptions'] = transactionOptions.toJson();
     }
@@ -1217,8 +1212,7 @@ class BeginTransactionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (transaction != null) {
       _json['transaction'] = transaction;
     }
@@ -1275,8 +1269,7 @@ class CommitRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mode != null) {
       _json['mode'] = mode;
     }
@@ -1314,8 +1307,7 @@ class CommitResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexUpdates != null) {
       _json['indexUpdates'] = indexUpdates;
     }
@@ -1353,8 +1345,7 @@ class CompositeFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filters != null) {
       _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
@@ -1378,8 +1369,7 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -1414,8 +1404,7 @@ class Entity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key.toJson();
     }
@@ -1465,8 +1454,7 @@ class EntityResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cursor != null) {
       _json['cursor'] = cursor;
     }
@@ -1500,8 +1488,7 @@ class Filter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (compositeFilter != null) {
       _json['compositeFilter'] = compositeFilter.toJson();
     }
@@ -1571,8 +1558,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -1624,8 +1610,7 @@ class GoogleDatastoreAdminV1EntityFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kinds != null) {
       _json['kinds'] = kinds;
     }
@@ -1681,8 +1666,7 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (common != null) {
       _json['common'] = common.toJson();
     }
@@ -1742,8 +1726,7 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entityFilter != null) {
       _json['entityFilter'] = entityFilter.toJson();
     }
@@ -1774,8 +1757,7 @@ class GoogleDatastoreAdminV1ExportEntitiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputUrl != null) {
       _json['outputUrl'] = outputUrl;
     }
@@ -1825,8 +1807,7 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (common != null) {
       _json['common'] = common.toJson();
     }
@@ -1887,8 +1868,7 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (entityFilter != null) {
       _json['entityFilter'] = entityFilter.toJson();
     }
@@ -1971,8 +1951,7 @@ class GoogleDatastoreAdminV1Index {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (ancestor != null) {
       _json['ancestor'] = ancestor;
     }
@@ -2022,8 +2001,7 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (common != null) {
       _json['common'] = common.toJson();
     }
@@ -2064,8 +2042,7 @@ class GoogleDatastoreAdminV1IndexedProperty {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (direction != null) {
       _json['direction'] = direction;
     }
@@ -2099,8 +2076,7 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexes != null) {
       _json['indexes'] = indexes.map((value) => value.toJson()).toList();
     }
@@ -2133,8 +2109,7 @@ class GoogleDatastoreAdminV1Progress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (workCompleted != null) {
       _json['workCompleted'] = workCompleted;
     }
@@ -2202,8 +2177,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTime != null) {
       _json['endTime'] = endTime;
     }
@@ -2255,8 +2229,7 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kinds != null) {
       _json['kinds'] = kinds;
     }
@@ -2313,8 +2286,7 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (common != null) {
       _json['common'] = common.toJson();
     }
@@ -2352,8 +2324,7 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (outputUrl != null) {
       _json['outputUrl'] = outputUrl;
     }
@@ -2405,8 +2376,7 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (common != null) {
       _json['common'] = common.toJson();
     }
@@ -2448,8 +2418,7 @@ class GoogleDatastoreAdminV1beta1Progress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (workCompleted != null) {
       _json['workCompleted'] = workCompleted;
     }
@@ -2483,8 +2452,7 @@ class GoogleLongrunningListOperationsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
     }
@@ -2555,8 +2523,7 @@ class GoogleLongrunningOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -2622,8 +2589,7 @@ class GqlQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (allowLiterals != null) {
       _json['allowLiterals'] = allowLiterals;
     }
@@ -2669,8 +2635,7 @@ class GqlQueryParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cursor != null) {
       _json['cursor'] = cursor;
     }
@@ -2717,8 +2682,7 @@ class Key {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (partitionId != null) {
       _json['partitionId'] = partitionId.toJson();
     }
@@ -2743,8 +2707,7 @@ class KindExpression {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -2775,8 +2738,7 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (latitude != null) {
       _json['latitude'] = latitude;
     }
@@ -2809,8 +2771,7 @@ class LookupRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (keys != null) {
       _json['keys'] = keys.map((value) => value.toJson()).toList();
     }
@@ -2859,8 +2820,7 @@ class LookupResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (deferred != null) {
       _json['deferred'] = deferred.map((value) => value.toJson()).toList();
     }
@@ -2917,8 +2877,7 @@ class Mutation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (baseVersion != null) {
       _json['baseVersion'] = baseVersion;
     }
@@ -2970,8 +2929,7 @@ class MutationResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (conflictDetected != null) {
       _json['conflictDetected'] = conflictDetected;
     }
@@ -3014,8 +2972,7 @@ class PartitionId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (namespaceId != null) {
       _json['namespaceId'] = namespaceId;
     }
@@ -3058,8 +3015,7 @@ class PathElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -3087,8 +3043,7 @@ class Projection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (property != null) {
       _json['property'] = property.toJson();
     }
@@ -3130,8 +3085,7 @@ class PropertyFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (op != null) {
       _json['op'] = op;
     }
@@ -3169,8 +3123,7 @@ class PropertyOrder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (direction != null) {
       _json['direction'] = direction;
     }
@@ -3196,8 +3149,7 @@ class PropertyReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
     }
@@ -3298,8 +3250,7 @@ class Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (distinctOn != null) {
       _json['distinctOn'] = distinctOn.map((value) => value.toJson()).toList();
     }
@@ -3420,8 +3371,7 @@ class QueryResultBatch {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endCursor != null) {
       _json['endCursor'] = endCursor;
     }
@@ -3457,8 +3407,7 @@ class ReadOnly {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3497,8 +3446,7 @@ class ReadOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (readConsistency != null) {
       _json['readConsistency'] = readConsistency;
     }
@@ -3530,8 +3478,7 @@ class ReadWrite {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (previousTransaction != null) {
       _json['previousTransaction'] = previousTransaction;
     }
@@ -3562,8 +3509,7 @@ class ReserveIdsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (databaseId != null) {
       _json['databaseId'] = databaseId;
     }
@@ -3583,8 +3529,7 @@ class ReserveIdsResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3611,8 +3556,7 @@ class RollbackRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (transaction != null) {
       _json['transaction'] = transaction;
     }
@@ -3629,8 +3573,7 @@ class RollbackResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -3669,8 +3612,7 @@ class RunQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gqlQuery != null) {
       _json['gqlQuery'] = gqlQuery.toJson();
     }
@@ -3707,8 +3649,7 @@ class RunQueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (batch != null) {
       _json['batch'] = batch.toJson();
     }
@@ -3759,8 +3700,7 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -3796,8 +3736,7 @@ class TransactionOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (readOnly != null) {
       _json['readOnly'] = readOnly.toJson();
     }
@@ -3912,8 +3851,7 @@ class Value {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (arrayValue != null) {
       _json['arrayValue'] = arrayValue.toJson();
     }

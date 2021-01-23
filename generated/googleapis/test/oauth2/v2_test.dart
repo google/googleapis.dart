@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -157,7 +156,7 @@ void main() {
   unittest.group('resource-Oauth2Api', () {
     unittest.test('method--tokeninfo', () {
       var mock = HttpServerMock();
-      api.Oauth2Api res = api.Oauth2Api(mock);
+      var res = api.Oauth2Api(mock);
       var arg_accessToken = 'foo';
       var arg_idToken = 'foo';
       var arg_$fields = 'foo';
@@ -213,7 +212,7 @@ void main() {
   unittest.group('resource-UserinfoResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserinfoResourceApi res = api.Oauth2Api(mock).userinfo;
+      var res = api.Oauth2Api(mock).userinfo;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -258,7 +257,7 @@ void main() {
   unittest.group('resource-UserinfoV2MeResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.UserinfoV2MeResourceApi res = api.Oauth2Api(mock).userinfo.v2.me;
+      var res = api.Oauth2Api(mock).userinfo.v2.me;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

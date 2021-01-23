@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -4668,7 +4667,7 @@ void main() {
   unittest.group('resource-PresentationsResourceApi', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      api.PresentationsResourceApi res = api.SlidesApi(mock).presentations;
+      var res = api.SlidesApi(mock).presentations;
       var arg_request = buildBatchUpdatePresentationRequest();
       var arg_presentationId = 'foo';
       var arg_$fields = 'foo';
@@ -4727,7 +4726,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.PresentationsResourceApi res = api.SlidesApi(mock).presentations;
+      var res = api.SlidesApi(mock).presentations;
       var arg_request = buildPresentation();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4776,7 +4775,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PresentationsResourceApi res = api.SlidesApi(mock).presentations;
+      var res = api.SlidesApi(mock).presentations;
       var arg_presentationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4825,8 +4824,7 @@ void main() {
   unittest.group('resource-PresentationsPagesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.PresentationsPagesResourceApi res =
-          api.SlidesApi(mock).presentations.pages;
+      var res = api.SlidesApi(mock).presentations.pages;
       var arg_presentationId = 'foo';
       var arg_pageObjectId = 'foo';
       var arg_$fields = 'foo';
@@ -4885,8 +4883,7 @@ void main() {
 
     unittest.test('method--getThumbnail', () {
       var mock = HttpServerMock();
-      api.PresentationsPagesResourceApi res =
-          api.SlidesApi(mock).presentations.pages;
+      var res = api.SlidesApi(mock).presentations.pages;
       var arg_presentationId = 'foo';
       var arg_pageObjectId = 'foo';
       var arg_thumbnailProperties_mimeType = 'foo';

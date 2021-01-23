@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -580,8 +579,7 @@ class ChannelGrouping {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fallbackName != null) {
       _json['fallbackName'] = fallbackName;
     }
@@ -612,8 +610,7 @@ class DisjunctiveMatchStatement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventFilters != null) {
       _json['eventFilters'] =
           eventFilters.map((value) => value.toJson()).toList();
@@ -664,8 +661,7 @@ class DownloadLineItemsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileSpec != null) {
       _json['fileSpec'] = fileSpec;
     }
@@ -697,8 +693,7 @@ class DownloadLineItemsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (lineItems != null) {
       _json['lineItems'] = lineItems;
     }
@@ -752,8 +747,7 @@ class DownloadRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fileTypes != null) {
       _json['fileTypes'] = fileTypes;
     }
@@ -812,8 +806,7 @@ class DownloadResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (adGroups != null) {
       _json['adGroups'] = adGroups;
     }
@@ -852,8 +845,7 @@ class EventFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimensionFilter != null) {
       _json['dimensionFilter'] = dimensionFilter.toJson();
     }
@@ -1143,8 +1135,7 @@ class FilterPair {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -1184,8 +1175,7 @@ class ListQueriesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1228,8 +1218,7 @@ class ListReportsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1265,8 +1254,7 @@ class Options {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (includeOnlyTargetedUserLists != null) {
       _json['includeOnlyTargetedUserLists'] = includeOnlyTargetedUserLists;
     }
@@ -1358,8 +1346,7 @@ class Parameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filters != null) {
       _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
@@ -1413,8 +1400,7 @@ class PathFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (eventFilters != null) {
       _json['eventFilters'] =
           eventFilters.map((value) => value.toJson()).toList();
@@ -1449,8 +1435,7 @@ class PathQueryOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (channelGrouping != null) {
       _json['channelGrouping'] = channelGrouping.toJson();
     }
@@ -1756,8 +1741,7 @@ class PathQueryOptionsFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filter != null) {
       _json['filter'] = filter;
     }
@@ -1833,8 +1817,7 @@ class Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (kind != null) {
       _json['kind'] = kind;
     }
@@ -1971,8 +1954,7 @@ class QueryMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataRange != null) {
       _json['dataRange'] = dataRange;
     }
@@ -2057,8 +2039,7 @@ class QuerySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endTimeMs != null) {
       _json['endTimeMs'] = endTimeMs;
     }
@@ -2104,8 +2085,7 @@ class Report {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key.toJson();
     }
@@ -2152,8 +2132,7 @@ class ReportFailure {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errorCode != null) {
       _json['errorCode'] = errorCode;
     }
@@ -2181,8 +2160,7 @@ class ReportKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (queryId != null) {
       _json['queryId'] = queryId;
     }
@@ -2226,8 +2204,7 @@ class ReportMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (googleCloudStoragePath != null) {
       _json['googleCloudStoragePath'] = googleCloudStoragePath;
     }
@@ -2284,8 +2261,7 @@ class ReportStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (failure != null) {
       _json['failure'] = failure.toJson();
     }
@@ -2346,8 +2322,7 @@ class RowStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changed != null) {
       _json['changed'] = changed;
     }
@@ -2396,8 +2371,7 @@ class Rule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (disjunctiveMatchStatements != null) {
       _json['disjunctiveMatchStatements'] =
           disjunctiveMatchStatements.map((value) => value.toJson()).toList();
@@ -2467,8 +2441,7 @@ class RunQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dataRange != null) {
       _json['dataRange'] = dataRange;
     }
@@ -2515,8 +2488,7 @@ class UploadLineItemsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dryRun != null) {
       _json['dryRun'] = dryRun;
     }
@@ -2544,8 +2516,7 @@ class UploadLineItemsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uploadStatus != null) {
       _json['uploadStatus'] = uploadStatus.toJson();
     }
@@ -2575,8 +2546,7 @@ class UploadStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (errors != null) {
       _json['errors'] = errors;
     }

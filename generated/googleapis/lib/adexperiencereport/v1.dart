@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -222,8 +221,7 @@ class PlatformSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (betterAdsStatus != null) {
       _json['betterAdsStatus'] = betterAdsStatus;
     }
@@ -275,8 +273,7 @@ class SiteSummaryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (desktopSummary != null) {
       _json['desktopSummary'] = desktopSummary.toJson();
     }
@@ -307,8 +304,7 @@ class ViolatingSitesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (violatingSites != null) {
       _json['violatingSites'] =
           violatingSites.map((value) => value.toJson()).toList();

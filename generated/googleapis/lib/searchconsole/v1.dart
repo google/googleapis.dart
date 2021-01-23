@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -656,8 +655,7 @@ class ApiDataRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (clicks != null) {
       _json['clicks'] = clicks;
     }
@@ -716,8 +714,7 @@ class ApiDimensionFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (dimension != null) {
       _json['dimension'] = dimension;
     }
@@ -758,8 +755,7 @@ class ApiDimensionFilterGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (filters != null) {
       _json['filters'] = filters.map((value) => value.toJson()).toList();
     }
@@ -784,8 +780,7 @@ class BlockedResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (url != null) {
       _json['url'] = url;
     }
@@ -820,8 +815,7 @@ class Image {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (data != null) {
       _json['data'] = data;
     }
@@ -865,8 +859,7 @@ class MobileFriendlyIssue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (rule != null) {
       _json['rule'] = rule;
     }
@@ -888,8 +881,7 @@ class ResourceIssue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blockedResource != null) {
       _json['blockedResource'] = blockedResource.toJson();
     }
@@ -917,8 +909,7 @@ class RunMobileFriendlyTestRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requestScreenshot != null) {
       _json['requestScreenshot'] = requestScreenshot;
     }
@@ -978,8 +969,7 @@ class RunMobileFriendlyTestResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (mobileFriendliness != null) {
       _json['mobileFriendliness'] = mobileFriendliness;
     }
@@ -1089,8 +1079,7 @@ class SearchAnalyticsQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (aggregationType != null) {
       _json['aggregationType'] = aggregationType;
     }
@@ -1148,8 +1137,7 @@ class SearchAnalyticsQueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responseAggregationType != null) {
       _json['responseAggregationType'] = responseAggregationType;
     }
@@ -1177,8 +1165,7 @@ class SitemapsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (sitemap != null) {
       _json['sitemap'] = sitemap.map((value) => value.toJson()).toList();
     }
@@ -1204,8 +1191,7 @@ class SitesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (siteEntry != null) {
       _json['siteEntry'] = siteEntry.map((value) => value.toJson()).toList();
     }
@@ -1244,8 +1230,7 @@ class TestStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (details != null) {
       _json['details'] = details;
     }
@@ -1286,8 +1271,7 @@ class WmxSite {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (permissionLevel != null) {
       _json['permissionLevel'] = permissionLevel;
     }
@@ -1375,8 +1359,7 @@ class WmxSitemap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contents != null) {
       _json['contents'] = contents.map((value) => value.toJson()).toList();
     }
@@ -1445,8 +1428,7 @@ class WmxSitemapContent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (indexed != null) {
       _json['indexed'] = indexed;
     }

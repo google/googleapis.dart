@@ -7,7 +7,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -489,8 +488,7 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -547,8 +545,7 @@ class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -603,8 +600,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -662,8 +658,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -723,8 +718,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -751,8 +745,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -800,8 +793,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -828,8 +820,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -875,8 +866,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -913,8 +903,7 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -948,8 +937,7 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -1092,8 +1080,7 @@ class GoogleCloudDocumentaiV1beta1Document {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -1230,8 +1217,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -1318,8 +1304,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addressValue != null) {
       _json['addressValue'] = addressValue.toJson();
     }
@@ -1365,8 +1350,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -1510,8 +1494,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -1577,8 +1560,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageRefs != null) {
       _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
     }
@@ -1629,8 +1611,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -1682,8 +1663,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -1721,8 +1701,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -1759,8 +1738,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (height != null) {
       _json['height'] = height;
     }
@@ -1829,8 +1807,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fieldName != null) {
       _json['fieldName'] = fieldName.toJson();
     }
@@ -1890,8 +1867,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -1953,8 +1929,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -2006,8 +1981,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -2064,8 +2038,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cols != null) {
       _json['cols'] = cols;
     }
@@ -2116,8 +2089,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -2179,8 +2151,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bodyRows != null) {
       _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
     }
@@ -2238,8 +2209,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colSpan != null) {
       _json['colSpan'] = colSpan;
     }
@@ -2276,8 +2246,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cells != null) {
       _json['cells'] = cells.map((value) => value.toJson()).toList();
     }
@@ -2327,8 +2296,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -2367,8 +2335,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -2410,8 +2377,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -2473,8 +2439,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2514,8 +2479,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -2575,8 +2539,7 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agent != null) {
       _json['agent'] = agent;
     }
@@ -2621,8 +2584,7 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (state != null) {
       _json['state'] = state;
     }
@@ -2661,8 +2623,7 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (shardCount != null) {
       _json['shardCount'] = shardCount;
     }
@@ -2732,8 +2693,7 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -2779,8 +2739,7 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (size != null) {
       _json['size'] = size;
     }
@@ -2818,8 +2777,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -2854,8 +2812,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endIndex != null) {
       _json['endIndex'] = endIndex;
     }
@@ -2899,8 +2856,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changedText != null) {
       _json['changedText'] = changedText;
     }
@@ -2955,8 +2911,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -2986,8 +2941,7 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -3008,8 +2962,7 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -3042,8 +2995,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsSource != null) {
       _json['gcsSource'] = gcsSource.toJson();
     }
@@ -3075,8 +3027,7 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -3128,8 +3079,7 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -3175,8 +3125,7 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsDestination != null) {
       _json['gcsDestination'] = gcsDestination.toJson();
     }
@@ -3211,8 +3160,7 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inputConfig != null) {
       _json['inputConfig'] = inputConfig.toJson();
     }
@@ -3244,8 +3192,7 @@ class GoogleCloudDocumentaiV1beta1Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -3271,8 +3218,7 @@ class GoogleCloudDocumentaiV1beta2AutoMlParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (model != null) {
       _json['model'] = model;
     }
@@ -3300,8 +3246,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (requests != null) {
       _json['requests'] = requests.map((value) => value.toJson()).toList();
     }
@@ -3329,8 +3274,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
     }
@@ -3364,8 +3308,7 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (normalizedVertices != null) {
       _json['normalizedVertices'] =
           normalizedVertices.map((value) => value.toJson()).toList();
@@ -3517,8 +3460,7 @@ class GoogleCloudDocumentaiV1beta2Document {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -3658,8 +3600,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -3746,8 +3687,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addressValue != null) {
       _json['addressValue'] = addressValue.toJson();
     }
@@ -3793,8 +3733,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (objectId != null) {
       _json['objectId'] = objectId;
     }
@@ -3840,8 +3779,7 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (automlModel != null) {
       _json['automlModel'] = automlModel;
     }
@@ -3985,8 +3923,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (blocks != null) {
       _json['blocks'] = blocks.map((value) => value.toJson()).toList();
     }
@@ -4052,8 +3989,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (pageRefs != null) {
       _json['pageRefs'] = pageRefs.map((value) => value.toJson()).toList();
     }
@@ -4104,8 +4040,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -4157,8 +4092,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -4196,8 +4130,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (confidence != null) {
       _json['confidence'] = confidence;
     }
@@ -4234,8 +4167,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (height != null) {
       _json['height'] = height;
     }
@@ -4304,8 +4236,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (fieldName != null) {
       _json['fieldName'] = fieldName.toJson();
     }
@@ -4365,8 +4296,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -4428,8 +4358,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingPoly != null) {
       _json['boundingPoly'] = boundingPoly.toJson();
     }
@@ -4481,8 +4410,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -4539,8 +4467,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cols != null) {
       _json['cols'] = cols;
     }
@@ -4591,8 +4518,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -4654,8 +4580,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (bodyRows != null) {
       _json['bodyRows'] = bodyRows.map((value) => value.toJson()).toList();
     }
@@ -4713,8 +4638,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (colSpan != null) {
       _json['colSpan'] = colSpan;
     }
@@ -4751,8 +4675,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (cells != null) {
       _json['cells'] = cells.map((value) => value.toJson()).toList();
     }
@@ -4802,8 +4725,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedBreak != null) {
       _json['detectedBreak'] = detectedBreak.toJson();
     }
@@ -4842,8 +4764,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (type != null) {
       _json['type'] = type;
     }
@@ -4885,8 +4806,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (detectedLanguages != null) {
       _json['detectedLanguages'] =
           detectedLanguages.map((value) => value.toJson()).toList();
@@ -4948,8 +4868,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -4989,8 +4908,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }
@@ -5050,8 +4968,7 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (agent != null) {
       _json['agent'] = agent;
     }
@@ -5096,8 +5013,7 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (state != null) {
       _json['state'] = state;
     }
@@ -5136,8 +5052,7 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (shardCount != null) {
       _json['shardCount'] = shardCount;
     }
@@ -5207,8 +5122,7 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (backgroundColor != null) {
       _json['backgroundColor'] = backgroundColor.toJson();
     }
@@ -5254,8 +5168,7 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (size != null) {
       _json['size'] = size;
     }
@@ -5293,8 +5206,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (content != null) {
       _json['content'] = content;
     }
@@ -5329,8 +5241,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (endIndex != null) {
       _json['endIndex'] = endIndex;
     }
@@ -5374,8 +5285,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (changedText != null) {
       _json['changedText'] = changedText;
     }
@@ -5430,8 +5340,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageCode != null) {
       _json['languageCode'] = languageCode;
     }
@@ -5469,8 +5378,7 @@ class GoogleCloudDocumentaiV1beta2EntityExtractionParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5514,8 +5422,7 @@ class GoogleCloudDocumentaiV1beta2FormExtractionParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -5543,8 +5450,7 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -5565,8 +5471,7 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (uri != null) {
       _json['uri'] = uri;
     }
@@ -5614,8 +5519,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (contents != null) {
       _json['contents'] = contents;
     }
@@ -5651,8 +5555,7 @@ class GoogleCloudDocumentaiV1beta2KeyValuePairHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (key != null) {
       _json['key'] = key;
     }
@@ -5684,8 +5587,7 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -5717,8 +5619,7 @@ class GoogleCloudDocumentaiV1beta2OcrParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (languageHints != null) {
       _json['languageHints'] = languageHints;
     }
@@ -5767,8 +5668,7 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -5814,8 +5714,7 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsDestination != null) {
       _json['gcsDestination'] = gcsDestination.toJson();
     }
@@ -5909,8 +5808,7 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (automlParams != null) {
       _json['automlParams'] = automlParams.toJson();
     }
@@ -5966,8 +5864,7 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (inputConfig != null) {
       _json['inputConfig'] = inputConfig.toJson();
     }
@@ -6003,8 +5900,7 @@ class GoogleCloudDocumentaiV1beta2TableBoundHint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (boundingBox != null) {
       _json['boundingBox'] = boundingBox.toJson();
     }
@@ -6052,8 +5948,7 @@ class GoogleCloudDocumentaiV1beta2TableExtractionParams {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
     }
@@ -6092,8 +5987,7 @@ class GoogleCloudDocumentaiV1beta2Vertex {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (x != null) {
       _json['x'] = x;
     }
@@ -6160,8 +6054,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -6222,8 +6115,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (humanReviewOperation != null) {
       _json['humanReviewOperation'] = humanReviewOperation;
     }
@@ -6249,8 +6141,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessResponse {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6296,8 +6187,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
     }
@@ -6328,8 +6218,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (gcsDestination != null) {
       _json['gcsDestination'] = gcsDestination;
     }
@@ -6397,8 +6286,7 @@ class GoogleLongrunningOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (done != null) {
       _json['done'] = done;
     }
@@ -6431,8 +6319,7 @@ class GoogleProtobufEmpty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -6477,8 +6364,7 @@ class GoogleRpcStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (code != null) {
       _json['code'] = code;
     }
@@ -6579,8 +6465,7 @@ class GoogleTypeColor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (alpha != null) {
       _json['alpha'] = alpha;
     }
@@ -6634,8 +6519,7 @@ class GoogleTypeDate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -6727,8 +6611,7 @@ class GoogleTypeDateTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (day != null) {
       _json['day'] = day;
     }
@@ -6792,8 +6675,7 @@ class GoogleTypeMoney {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (currencyCode != null) {
       _json['currencyCode'] = currencyCode;
     }
@@ -6937,8 +6819,7 @@ class GoogleTypePostalAddress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (addressLines != null) {
       _json['addressLines'] = addressLines;
     }
@@ -6997,8 +6878,7 @@ class GoogleTypeTimeZone {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        <core.String, core.Object>{};
+    final _json = <core.String, core.Object>{};
     if (id != null) {
       _json['id'] = id;
     }

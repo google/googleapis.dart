@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -3815,7 +3814,7 @@ void main() {
   unittest.group('resource-CompaniesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.CompaniesResourceApi res = api.JobsApi(mock).companies;
+      var res = api.JobsApi(mock).companies;
       var arg_request = buildCompany();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3864,7 +3863,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.CompaniesResourceApi res = api.JobsApi(mock).companies;
+      var res = api.JobsApi(mock).companies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3911,7 +3910,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.CompaniesResourceApi res = api.JobsApi(mock).companies;
+      var res = api.JobsApi(mock).companies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3958,7 +3957,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CompaniesResourceApi res = api.JobsApi(mock).companies;
+      var res = api.JobsApi(mock).companies;
       var arg_mustHaveOpenJobs = true;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4016,7 +4015,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.CompaniesResourceApi res = api.JobsApi(mock).companies;
+      var res = api.JobsApi(mock).companies;
       var arg_request = buildCompany();
       var arg_name = 'foo';
       var arg_updateCompanyFields = 'foo';
@@ -4074,7 +4073,7 @@ void main() {
   unittest.group('resource-CompaniesJobsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.CompaniesJobsResourceApi res = api.JobsApi(mock).companies.jobs;
+      var res = api.JobsApi(mock).companies.jobs;
       var arg_companyName = 'foo';
       var arg_idsOnly = true;
       var arg_includeJobsCount = true;
@@ -4144,7 +4143,7 @@ void main() {
   unittest.group('resource-JobsResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildBatchDeleteJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4193,7 +4192,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildCreateJobRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4242,7 +4241,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_name = 'foo';
       var arg_disableFastProcess = true;
       var arg_$fields = 'foo';
@@ -4293,7 +4292,7 @@ void main() {
 
     unittest.test('method--deleteByFilter', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildDeleteJobsByFilterRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4342,7 +4341,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4389,7 +4388,7 @@ void main() {
 
     unittest.test('method--histogram', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildGetHistogramRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4438,7 +4437,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_filter = 'foo';
       var arg_idsOnly = true;
       var arg_pageSize = 42;
@@ -4499,7 +4498,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildUpdateJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4550,7 +4549,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildSearchJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4599,7 +4598,7 @@ void main() {
 
     unittest.test('method--searchForAlert', () {
       var mock = HttpServerMock();
-      api.JobsResourceApi res = api.JobsApi(mock).jobs;
+      var res = api.JobsApi(mock).jobs;
       var arg_request = buildSearchJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4650,7 +4649,7 @@ void main() {
   unittest.group('resource-V2ResourceApi', () {
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
-      api.V2ResourceApi res = api.JobsApi(mock).v2;
+      var res = api.JobsApi(mock).v2;
       var arg_companyName = 'foo';
       var arg_languageCode = 'foo';
       var arg_pageSize = 42;

@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -2044,8 +2043,7 @@ void main() {
   unittest.group('resource-OrganizationsResourceApi', () {
     unittest.test('method--getOrganizationSettings', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations;
+      var res = api.SecuritycenterApi(mock).organizations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2092,8 +2090,7 @@ void main() {
 
     unittest.test('method--updateOrganizationSettings', () {
       var mock = HttpServerMock();
-      api.OrganizationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations;
+      var res = api.SecuritycenterApi(mock).organizations;
       var arg_request = buildOrganizationSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2150,8 +2147,7 @@ void main() {
   unittest.group('resource-OrganizationsAssetsResourceApi', () {
     unittest.test('method--group', () {
       var mock = HttpServerMock();
-      api.OrganizationsAssetsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.assets;
+      var res = api.SecuritycenterApi(mock).organizations.assets;
       var arg_request = buildGroupAssetsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2202,8 +2198,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsAssetsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.assets;
+      var res = api.SecuritycenterApi(mock).organizations.assets;
       var arg_parent = 'foo';
       var arg_compareDuration = 'foo';
       var arg_fieldMask = 'foo';
@@ -2278,8 +2273,7 @@ void main() {
 
     unittest.test('method--runDiscovery', () {
       var mock = HttpServerMock();
-      api.OrganizationsAssetsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.assets;
+      var res = api.SecuritycenterApi(mock).organizations.assets;
       var arg_request = buildRunAssetDiscoveryRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2330,8 +2324,7 @@ void main() {
 
     unittest.test('method--updateSecurityMarks', () {
       var mock = HttpServerMock();
-      api.OrganizationsAssetsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.assets;
+      var res = api.SecuritycenterApi(mock).organizations.assets;
       var arg_request = buildSecurityMarks();
       var arg_name = 'foo';
       var arg_startTime = 'foo';
@@ -2393,8 +2386,7 @@ void main() {
   unittest.group('resource-OrganizationsNotificationConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsNotificationConfigsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.notificationConfigs;
+      var res = api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_request = buildNotificationConfig();
       var arg_parent = 'foo';
       var arg_configId = 'foo';
@@ -2449,8 +2441,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsNotificationConfigsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.notificationConfigs;
+      var res = api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2497,8 +2488,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsNotificationConfigsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.notificationConfigs;
+      var res = api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2545,8 +2535,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsNotificationConfigsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.notificationConfigs;
+      var res = api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2602,8 +2591,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsNotificationConfigsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.notificationConfigs;
+      var res = api.SecuritycenterApi(mock).organizations.notificationConfigs;
       var arg_request = buildNotificationConfig();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2660,8 +2648,7 @@ void main() {
   unittest.group('resource-OrganizationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.operations;
+      var res = api.SecuritycenterApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2708,8 +2695,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.operations;
+      var res = api.SecuritycenterApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2756,8 +2742,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.operations;
+      var res = api.SecuritycenterApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2804,8 +2789,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsOperationsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.operations;
+      var res = api.SecuritycenterApi(mock).organizations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2866,8 +2850,7 @@ void main() {
   unittest.group('resource-OrganizationsSourcesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_request = buildSource();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2918,8 +2901,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2966,8 +2948,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3018,8 +2999,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3075,8 +3055,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_request = buildSource();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3131,8 +3110,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3183,8 +3161,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources;
+      var res = api.SecuritycenterApi(mock).organizations.sources;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3237,8 +3214,7 @@ void main() {
   unittest.group('resource-OrganizationsSourcesFindingsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildFinding();
       var arg_parent = 'foo';
       var arg_findingId = 'foo';
@@ -3293,8 +3269,7 @@ void main() {
 
     unittest.test('method--group', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildGroupFindingsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3345,8 +3320,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_parent = 'foo';
       var arg_compareDuration = 'foo';
       var arg_fieldMask = 'foo';
@@ -3421,8 +3395,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildFinding();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3477,8 +3450,7 @@ void main() {
 
     unittest.test('method--setState', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildSetFindingStateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3529,8 +3501,7 @@ void main() {
 
     unittest.test('method--updateSecurityMarks', () {
       var mock = HttpServerMock();
-      api.OrganizationsSourcesFindingsResourceApi res =
-          api.SecuritycenterApi(mock).organizations.sources.findings;
+      var res = api.SecuritycenterApi(mock).organizations.sources.findings;
       var arg_request = buildSecurityMarks();
       var arg_name = 'foo';
       var arg_startTime = 'foo';

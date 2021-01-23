@@ -5,7 +5,6 @@
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1877,7 +1876,7 @@ void main() {
   unittest.group('resource-AlertsResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_request = buildBatchDeleteAlertsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1926,7 +1925,7 @@ void main() {
 
     unittest.test('method--batchUndelete', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_request = buildBatchUndeleteAlertsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1975,7 +1974,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_alertId = 'foo';
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -2027,7 +2026,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_alertId = 'foo';
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -2079,7 +2078,7 @@ void main() {
 
     unittest.test('method--getMetadata', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_alertId = 'foo';
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -2138,7 +2137,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_customerId = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -2203,7 +2202,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      api.AlertsResourceApi res = api.AlertcenterApi(mock).alerts;
+      var res = api.AlertcenterApi(mock).alerts;
       var arg_request = buildUndeleteAlertRequest();
       var arg_alertId = 'foo';
       var arg_$fields = 'foo';
@@ -2264,8 +2263,7 @@ void main() {
   unittest.group('resource-AlertsFeedbackResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      api.AlertsFeedbackResourceApi res =
-          api.AlertcenterApi(mock).alerts.feedback;
+      var res = api.AlertcenterApi(mock).alerts.feedback;
       var arg_request = buildAlertFeedback();
       var arg_alertId = 'foo';
       var arg_customerId = 'foo';
@@ -2328,8 +2326,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      api.AlertsFeedbackResourceApi res =
-          api.AlertcenterApi(mock).alerts.feedback;
+      var res = api.AlertcenterApi(mock).alerts.feedback;
       var arg_alertId = 'foo';
       var arg_customerId = 'foo';
       var arg_filter = 'foo';
@@ -2394,7 +2391,7 @@ void main() {
   unittest.group('resource-V1beta1ResourceApi', () {
     unittest.test('method--getSettings', () {
       var mock = HttpServerMock();
-      api.V1beta1ResourceApi res = api.AlertcenterApi(mock).v1beta1;
+      var res = api.AlertcenterApi(mock).v1beta1;
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2442,7 +2439,7 @@ void main() {
 
     unittest.test('method--updateSettings', () {
       var mock = HttpServerMock();
-      api.V1beta1ResourceApi res = api.AlertcenterApi(mock).v1beta1;
+      var res = api.AlertcenterApi(mock).v1beta1;
       var arg_request = buildSettings();
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
