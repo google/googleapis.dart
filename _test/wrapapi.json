@@ -1,0 +1,64 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "7da790c9e246ebb6b06190e74422d829bb5f6697",
+ "discoveryVersion": "v1",
+ "id": "wrapApi:0.1",
+ "name": "wrapApi",
+ "version": "0.1",
+ "revision": "0",
+ "protocol": "rest",
+ "baseUrl": "http://localhost:9090/api/wrapApi/0.1/",
+ "basePath": "/api/wrapApi/0.1/",
+ "rootUrl": "http://localhost:9090/",
+ "servicePath": "api/wrapApi/0.1/",
+ "features": [
+   "dataWrapper"
+ ],
+ "schemas": {
+  "Empty": {
+   "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+   "id": "Empty",
+   "properties": {},
+   "type": "object"
+  },
+  "WrapResponse": {
+   "id": "WrapResponse",
+   "type": "object",
+   "properties": {
+    "result": {
+     "type": "string"
+    }
+   }
+  },
+  "WrapRequest": {
+   "id": "WrapRequest",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string",
+     "required": true
+    },
+    "age": {
+     "type": "integer",
+     "default": "1000",
+     "format": "int32"
+    }
+   }
+  }
+ },
+ "methods": {
+  "helloPost": {
+   "id": "WrapApi.helloPost",
+   "path": "helloPost",
+   "httpMethod": "POST",
+   "parameters": {},
+   "parameterOrder": [],
+   "request": {
+    "$ref": "WrapRequest"
+   },
+   "response": {
+    "$ref": "WrapResponse"
+   }
+  }
+ }
+}
