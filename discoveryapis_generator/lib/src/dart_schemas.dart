@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// ignore_for_file: missing_whitespace_between_adjacent_strings
+
 library discoveryapis_generator.dart_schemas;
 
 import 'dart_api_library.dart';
@@ -121,10 +123,8 @@ class MapJsonType extends JsonType {
       : super(imports);
 
   @override
-  String get declaration {
-    return '${imports.core.ref()}Map'
-        '<${keyJsonType.declaration}, ${valueJsonType.declaration}$orNull>';
-  }
+  String get declaration => '${imports.core.ref()}Map'
+      '<${keyJsonType.declaration}, ${valueJsonType.declaration}$orNull>';
 
   @override
   String get baseDeclaration => '${imports.core.ref()}Map';
@@ -186,7 +186,7 @@ abstract class DartSchemaType {
 
   JsonType get jsonType;
 
-  /// [value] is the string expression of this [DartSchemType] that needs to be
+  /// [value] is the string expression of this [DartSchemaType] that needs to be
   /// encoded.
   ///
   /// This method is used for encoding parameter types for the URI query part.
@@ -413,8 +413,8 @@ class DateTimeType extends StringType {
 
 /// Class representing "any" schema type.
 ///
-/// A decodeded any type object is the JSON the server sent. The any type object
-/// a user supplies is expected to be JSON and transferred to the server "as is".
+/// A decoded any type object is the JSON the server sent. The any type object
+/// a user supplies is expected to be JSON and transferred to the server "as is"
 class AnyType extends PrimitiveDartSchemaType {
   @override
   final JsonType jsonType;
@@ -487,12 +487,14 @@ class UnnamedArrayType extends ComplexDartSchemaType {
   @override
   String jsonDecode(String json) {
     if (innerType.needsJsonDecoding) {
-      return '($json as ${imports.core.ref()}List).map<${innerType.declaration}>((value) => ${innerType.jsonDecode('value')})'
-          '.toList()';
+      return '($json as ${imports.core.ref()}List)'
+          '.map<${innerType.declaration}>'
+          '((value) => ${innerType.jsonDecode('value')}).toList()';
     } else {
       // NOTE: The List returned from JSON.decode() transfers ownership to the
       // user (i.e. we don't need to make a copy of it).
-      return '($json as ${imports.core.ref()}List).cast<${innerType.declaration}>()';
+      return '($json as ${imports.core.ref()}List)'
+          '.cast<${innerType.declaration}>()';
     }
   }
 }
@@ -630,14 +632,15 @@ class UnnamedMapType extends ComplexDartSchemaType {
   @override
   String jsonDecode(String json) {
     if (fromType.needsJsonDecoding || toType.needsJsonDecoding) {
-      // Null safe code is strict about types, so be more precise about generics.
-      // This should also work in legacy mode, but keep as before to avoid churn.
+      // Null safe code is strict about types, so be more precise about generics
+      // This should also work in legacy mode, but keep as before to avoid churn
       final toTypeJsonDeclaration = generateNullSafeCode
           ? toType.jsonType.declaration
           : toType.jsonType.baseDeclaration;
       return '${imports.commons}.mapMap'
           '<$toTypeJsonDeclaration, ${toType.declaration}>'
-          '($json.cast<${fromType.jsonType.baseDeclaration}, $toTypeJsonDeclaration>(), '
+          '($json.cast<${fromType.jsonType.baseDeclaration}, '
+          '$toTypeJsonDeclaration>(), '
           // More precise about generics in null safe mode, so just infer the
           // type.
           '(${generateNullSafeCode ? '' : toTypeJsonDeclaration} item) '
@@ -645,7 +648,8 @@ class UnnamedMapType extends ComplexDartSchemaType {
     } else {
       // NOTE: The Map returned from JSON.decode() transfers ownership to the
       // user (i.e. we don't need to make a copy of it).
-      return '($json as ${imports.core.ref()}Map).cast<${fromType.declaration}, ${toType.declaration}>()';
+      return '($json as ${imports.core.ref()}Map)'
+          '.cast<${fromType.declaration}, ${toType.declaration}>()';
     }
   }
 }
@@ -789,8 +793,9 @@ class ObjectType extends ComplexDartSchemaType {
         postfix = ' = "${escapeString(discriminatorValue())}"';
       }
       propertyString.writeln(
-          '$comment  $prefix${property.type.declaration}$orNull ${property.name}'
-          '$postfix;');
+        '$comment  $prefix${property.type.declaration}$orNull ${property.name}'
+        '$postfix;',
+      );
 
       if (property.byteArrayAccessor != null) {
         propertyString.writeln(
@@ -816,7 +821,9 @@ class ObjectType extends ComplexDartSchemaType {
         ? '  // ignore: avoid_unused_constructor_parameters\n'
         : '';
     fromJsonString.writeln(
-        '  $className.fromJson($emptyPropertiesComment ${imports.core.ref()}Map _json)');
+      '  $className.fromJson'
+      '($emptyPropertiesComment ${imports.core.ref()}Map _json)',
+    );
     if (properties.isEmpty) {
       fromJsonString.writeln(';');
     } else {

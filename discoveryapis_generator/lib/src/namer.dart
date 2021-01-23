@@ -40,8 +40,8 @@ class Identifier {
     _sealed = true;
   }
 
-  /// Return the reference name with a `.` appended (e.g., `core.`). Calling this
-  /// method will increment the call count; it is not idempotent.
+  /// Return the reference name with a `.` appended (e.g., `core.`). Calling
+  /// this method will increment the call count; it is not idempotent.
   String ref() {
     _callCount++;
     return name == null ? '' : '$name.';
@@ -187,9 +187,9 @@ class Scope {
 /// When allocating a new name, a name collides if either the name collides
 /// with the [parentNamer] or if the name ia already in [allocatedNames].
 ///
-/// When allocating a new name, the namer starts with the [Identifier]s preferred
-/// name, and keeps appending _N where N is an integer until a name does not
-/// collide.
+/// When allocating a new name, the namer starts with the [Identifier]s
+/// preferred name, and keeps appending _N where N is an integer until a name
+/// does not collide.
 class IdentifierNamer {
   final IdentifierNamer parentNamer;
   final Set<String> allocatedNames;

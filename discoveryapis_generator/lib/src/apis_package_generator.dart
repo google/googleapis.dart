@@ -23,8 +23,6 @@ import 'utils.dart';
 ///   |- VERSION
 ///   |- lib/$API/... (for all APIs to generate)
 ///   |- test/$API/... (for all APIs to generate)
-///
-/// It will use [ApiLibraryGenerator] to generate the APIs themselves.
 class ApisPackageGenerator {
   final List<RestDescription> descriptions;
   final String packageFolderPath;

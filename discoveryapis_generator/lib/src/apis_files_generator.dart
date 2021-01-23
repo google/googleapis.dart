@@ -70,7 +70,7 @@ class ApisFilesGenerator {
       final version = description.version.toLowerCase();
       final apiFile = path.join(clientFolderPath, '$name.dart');
       try {
-        var lib;
+        BaseApiLibrary lib;
         if (diPair.importMap == null) {
           // Build a normal client stub file without using the same message
           // classes.
@@ -150,7 +150,7 @@ class ApisFilesGenerator {
     if (updatePubspec) {
       final sink = StringBuffer();
       for (var key in pubspecKeys) {
-        var value;
+        Map value;
         if (key == 'dependencies') {
           // patch up dependencies.
           value = pubspec[key];

@@ -10,6 +10,7 @@ import '../dart_api_library.dart';
 import '../dart_resources.dart';
 import '../dart_schemas.dart';
 import '../generated_googleapis/discovery/v1.dart';
+import '../namer.dart';
 import '../utils.dart';
 import 'client_schemas.dart' as client;
 
@@ -58,7 +59,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     final parsedImports = <String>[];
     for (var importPath in imports) {
       if (!importPath.startsWith('package:$packageName')) {
-        final pathPrefix = path.toUri(packageRoot).toString() + '/lib';
+        final pathPrefix = '${path.toUri(packageRoot)}/lib';
         if (!importPath.startsWith(pathPrefix)) {
           throw GeneratorError(
               description.name,
@@ -74,6 +75,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     return parsedImports;
   }
 
+  @override
   String get librarySource {
     final sink = StringBuffer();
     final schemas = generateSchemas(schemaDB);
@@ -130,8 +132,7 @@ library $libraryName;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};
 """;
 
-    return result +
-        """
+    return """$result${"""
 import 'package:http/http.dart' as ${imports.http};
 $schemaImports
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -139,6 +140,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const ${imports.core.ref()}String USER_AGENT = 'dart-api-client ${description.name}/${description.version}';
 
-""";
+"""}""";
   }
 }

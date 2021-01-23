@@ -28,7 +28,11 @@ const List keywords = [
 final _cleanRegEx = RegExp(r'[^\w$]');
 
 String fileDate(DateTime date) =>
-    "${date.year}${(date.month < 10) ? 0 : ""}${date.month}${(date.day < 10) ? 0 : ""}${date.day}_${(date.hour < 10) ? 0 : ""}${date.hour}${(date.minute < 10) ? 0 : ""}${date.minute}${(date.second < 10) ? 0 : ""}${date.second}";
+    "${date.year}${(date.month < 10) ? 0 : ""}${date.month}"
+    "${(date.day < 10) ? 0 : ""}${date.day}_"
+    "${(date.hour < 10) ? 0 : ""}${date.hour}"
+    "${(date.minute < 10) ? 0 : ""}${date.minute}"
+    "${(date.second < 10) ? 0 : ""}${date.second}";
 
 String cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 

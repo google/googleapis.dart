@@ -15,7 +15,7 @@ abstract class Part {
 
   Part(this.imports, this.templateVar);
 
-  /// Generates a dart expression by expanding this part using [codeVariable] as
+  /// Generates a dart expression by expanding this part using [variable] as
   /// the contests of a template variable.
   String stringExpression(Identifier variable);
 }

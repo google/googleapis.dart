@@ -1,4 +1,5 @@
 .dart_tool/
-packages
-.pub
 .packages
+pubspec.lock
+
+!/generator/pubspec.lock

@@ -15,7 +15,7 @@ import 'package:test/test.dart';
 typedef ServerMockCallback<T> = Future<http.StreamedResponse> Function(
     http.BaseRequest request, dynamic json);
 
-const String USER_AGENT = 'google-api-dart-client test.client/0.1.0-dev';
+const String _userAgent = 'google-api-dart-client test.client/0.1.0-dev';
 
 class HttpServerMock extends http.BaseClient {
   late ServerMockCallback _callback;
@@ -26,12 +26,13 @@ class HttpServerMock extends http.BaseClient {
     _expectJson = expectJson;
   }
 
+  @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
       return request
           .finalize()
           .transform(utf8.decoder)
-          .join('')
+          .join()
           .then((String jsonString) {
         if (jsonString.isEmpty) {
           return _callback(request, null);
@@ -40,29 +41,30 @@ class HttpServerMock extends http.BaseClient {
         }
       });
     } else {
-      return request.finalize().toBytes().then((data) {
-        return _callback(request, data);
-      });
+      return request
+          .finalize()
+          .toBytes()
+          .then((data) => _callback(request, data));
     }
   }
 }
 
 http.StreamedResponse stringResponse(
     int status, Map<String, String> headers, String body) {
-  var stream = Stream<List<int>>.fromIterable([utf8.encode(body)]);
+  final stream = Stream<List<int>>.fromIterable([utf8.encode(body)]);
   return http.StreamedResponse(stream, status, headers: headers);
 }
 
 http.StreamedResponse binaryResponse(
     int status, Map<String, String> headers, List<int> bytes) {
-  var stream = Stream<List<int>>.fromIterable([bytes]);
+  final stream = Stream<List<int>>.fromIterable([bytes]);
   return http.StreamedResponse(stream, status, headers: headers);
 }
 
 Stream<List<int>> byteStream(String s) {
-  var bodyController = StreamController<List<int>>();
-  bodyController.add(utf8.encode(s));
-  bodyController.close();
+  final bodyController = StreamController<List<int>>()
+    ..add(utf8.encode(s))
+    ..close();
   return bodyController.stream;
 }
 
@@ -95,13 +97,13 @@ void main() {
     });
 
     test('base64-encoder', () {
-      var base64encoder = Base64Encoder();
+      final base64encoder = Base64Encoder();
 
       void testString(String msg, String expectedBase64) {
-        var msgBytes = utf8.encode(msg);
+        final msgBytes = utf8.encode(msg);
 
         Stream<List<int>> singleByteStream(List<int> msgBytes) {
-          var controller = StreamController<List<int>>();
+          final controller = StreamController<List<int>>();
           for (var byte in msgBytes) {
             controller.add([byte]);
           }
@@ -110,22 +112,22 @@ void main() {
         }
 
         Stream<List<int>> allByteStream(List<int> msgBytes) {
-          var controller = StreamController<List<int>>();
-          controller.add(msgBytes);
-          controller.close();
+          final controller = StreamController<List<int>>()
+            ..add(msgBytes)
+            ..close();
           return controller.stream;
         }
 
         singleByteStream(msgBytes)
             .transform(base64encoder)
-            .join('')
+            .join()
             .then(expectAsync1((String result) {
           expect(result, equals(expectedBase64));
         }));
 
         allByteStream(msgBytes)
             .transform(base64encoder)
-            .join('')
+            .join()
             .then(expectAsync1((String result) {
           expect(result, equals(expectedBase64));
         }));
@@ -143,36 +145,34 @@ void main() {
     });
 
     group('chunk-stack', () {
-      var chunkSize = 9;
+      const chunkSize = 9;
 
       List folded(List<List<int>> byteArrays) =>
           byteArrays.fold([], (buf, e) => buf..addAll(e));
 
       test('finalize', () {
-        var chunkStack = ChunkStack(9);
-        chunkStack.finalize();
+        final chunkStack = ChunkStack(9)..finalize();
         expect(() => chunkStack.addBytes([1]), throwsA(isStateError));
-        expect(() => chunkStack.finalize(), throwsA(isStateError));
+        expect(chunkStack.finalize, throwsA(isStateError));
       });
 
       test('empty', () {
-        var chunkStack = ChunkStack(9);
+        final chunkStack = ChunkStack(9);
         expect(chunkStack.length, equals(0));
         chunkStack.finalize();
         expect(chunkStack.length, equals(0));
       });
 
       test('sub-chunk-size', () {
-        var bytes = [1, 2, 3];
+        final bytes = [1, 2, 3];
 
-        var chunkStack = ChunkStack(9);
-        chunkStack.addBytes(bytes);
+        final chunkStack = ChunkStack(9)..addBytes(bytes);
         expect(chunkStack.length, equals(0));
         chunkStack.finalize();
         expect(chunkStack.length, equals(1));
         expect(chunkStack.totalByteLength, equals(bytes.length));
 
-        var chunks = chunkStack.removeSublist(0, chunkStack.length);
+        final chunks = chunkStack.removeSublist(0, chunkStack.length);
         expect(chunkStack.length, equals(0));
         expect(chunks, hasLength(1));
 
@@ -183,16 +183,15 @@ void main() {
       });
 
       test('exact-chunk-size', () {
-        var bytes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        final bytes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-        var chunkStack = ChunkStack(9);
-        chunkStack.addBytes(bytes);
+        final chunkStack = ChunkStack(9)..addBytes(bytes);
         expect(chunkStack.length, equals(1));
         chunkStack.finalize();
         expect(chunkStack.length, equals(1));
         expect(chunkStack.totalByteLength, equals(bytes.length));
 
-        var chunks = chunkStack.removeSublist(0, chunkStack.length);
+        final chunks = chunkStack.removeSublist(0, chunkStack.length);
         expect(chunkStack.length, equals(0));
         expect(chunks, hasLength(1));
 
@@ -203,21 +202,21 @@ void main() {
       });
 
       test('super-chunk-size', () {
-        var bytes0 = [1, 2, 3, 4];
-        var bytes1 = [1, 2, 3, 4];
-        var bytes2 = [5, 6, 7, 8, 9, 10, 11];
-        var bytes = folded([bytes0, bytes1, bytes2]);
+        final bytes0 = [1, 2, 3, 4];
+        final bytes1 = [1, 2, 3, 4];
+        final bytes2 = [5, 6, 7, 8, 9, 10, 11];
+        final bytes = folded([bytes0, bytes1, bytes2]);
 
-        var chunkStack = ChunkStack(9);
-        chunkStack.addBytes(bytes0);
-        chunkStack.addBytes(bytes1);
-        chunkStack.addBytes(bytes2);
+        final chunkStack = ChunkStack(9)
+          ..addBytes(bytes0)
+          ..addBytes(bytes1)
+          ..addBytes(bytes2);
         expect(chunkStack.length, equals(1));
         chunkStack.finalize();
         expect(chunkStack.length, equals(2));
         expect(chunkStack.totalByteLength, equals(bytes.length));
 
-        var chunks = chunkStack.removeSublist(0, chunkStack.length);
+        final chunks = chunkStack.removeSublist(0, chunkStack.length);
         expect(chunkStack.length, equals(0));
         expect(chunks, hasLength(2));
 
@@ -237,15 +236,15 @@ void main() {
 
     test('media', () {
       // Tests for [MediaRange]
-      var partialRange = ByteRange(1, 100);
+      final partialRange = ByteRange(1, 100);
       expect(partialRange.start, equals(1));
       expect(partialRange.end, equals(100));
 
-      var fullRange = ByteRange(0, -1);
+      final fullRange = ByteRange(0, -1);
       expect(fullRange.start, equals(0));
       expect(fullRange.end, equals(-1));
 
-      var singleByte = ByteRange(0, 0);
+      final singleByte = ByteRange(0, 0);
       expect(singleByte.length, equals(1));
 
       expect(() => ByteRange(-1, 0), throwsA(anything));
@@ -258,15 +257,15 @@ void main() {
       expect(DownloadOptions.FullMedia.isMetadataDownload, isFalse);
 
       // Tests for [Media]
-      var stream = StreamController<List<int>>().stream;
+      final stream = StreamController<List<int>>().stream;
       expect(() => Media(stream, -1, contentType: 'foobar'),
           throwsA(isArgumentError));
 
-      var lengthUnknownMedia = Media(stream, null);
+      final lengthUnknownMedia = Media(stream, null);
       expect(lengthUnknownMedia.stream, equals(stream));
       expect(lengthUnknownMedia.length, equals(null));
 
-      var media = Media(stream, 10, contentType: 'foobar');
+      final media = Media(stream, 10, contentType: 'foobar');
       expect(media.stream, equals(stream));
       expect(media.length, equals(10));
       expect(media.contentType, equals('foobar'));
@@ -283,7 +282,7 @@ void main() {
       String rootUrl, basePath;
       late ApiRequester requester;
 
-      var responseHeaders = {
+      final responseHeaders = {
         'content-type': 'application/json; charset=utf-8',
       };
 
@@ -291,7 +290,7 @@ void main() {
         httpMock = HttpServerMock();
         rootUrl = 'http://example.com/';
         basePath = 'base/';
-        requester = ApiRequester(httpMock, rootUrl, basePath, USER_AGENT);
+        requester = ApiRequester(httpMock, rootUrl, basePath, _userAgent);
       });
 
       // Tests for Request, Response
@@ -354,14 +353,14 @@ void main() {
 
       group('media-download', () {
         test('media-download', () {
-          var data256 = List.generate(256, (i) => i);
+          final data256 = List.generate(256, (i) => i);
           httpMock.register(
               expectAsync2((http.BaseRequest request, data) async {
             expect(request.method, equals('GET'));
             expect('${request.url}',
                 equals('http://example.com/base/abc?alt=media'));
             expect(data, isEmpty);
-            var headers = {
+            final headers = {
               'content-length': '${data256.length}',
               'content-type': 'foobar',
             };
@@ -371,7 +370,7 @@ void main() {
               .request('abc', 'GET',
                   body: '', downloadOptions: DownloadOptions.FullMedia)
               .then(expectAsync1((result) {
-            var media = result as Media;
+            final media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
             media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
@@ -382,8 +381,8 @@ void main() {
         });
 
         test('media-download-partial', () {
-          var data256 = List.generate(256, (i) => i);
-          var data64 = data256.sublist(128, 128 + 64);
+          final data256 = List.generate(256, (i) => i);
+          final data64 = data256.sublist(128, 128 + 64);
 
           httpMock.register(
               expectAsync2((http.BaseRequest request, data) async {
@@ -392,19 +391,19 @@ void main() {
                 equals('http://example.com/base/abc?alt=media'));
             expect(data, isEmpty);
             expect(request.headers['range'], equals('bytes=128-191'));
-            var headers = {
+            final headers = {
               'content-length': '${data64.length}',
               'content-type': 'foobar',
               'content-range': 'bytes 128-191/256',
             };
             return binaryResponse(200, headers, data64);
           }), false);
-          var range = ByteRange(128, 128 + 64 - 1);
-          var options = PartialDownloadOptions(range);
+          final range = ByteRange(128, 128 + 64 - 1);
+          final options = PartialDownloadOptions(range);
           requester
               .request('abc', 'GET', body: '', downloadOptions: options)
               .then(expectAsync1((result) {
-            var media = result as Media;
+            final media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data64.length));
             media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
@@ -415,7 +414,7 @@ void main() {
         });
 
         test('json-upload-media-download', () {
-          var data256 = List.generate(256, (i) => i);
+          final data256 = List.generate(256, (i) => i);
           httpMock.register(
               expectAsync2((http.BaseRequest request, json) async {
             expect(request.method, equals('GET'));
@@ -426,7 +425,7 @@ void main() {
             expect(json[0], equals('a'));
             expect(json[1], equals(1));
 
-            var headers = {
+            final headers = {
               'content-length': '${data256.length}',
               'content-type': 'foobar',
             };
@@ -437,7 +436,7 @@ void main() {
                   body: json.encode(['a', 1]),
                   downloadOptions: DownloadOptions.FullMedia)
               .then(expectAsync1((result) {
-            var media = result as Media;
+            final media = result as Media;
             expect(media.contentType, equals('foobar'));
             expect(media.length, equals(data256.length));
             media.stream.fold([], (dynamic b, d) => b..addAll(d)).then(
@@ -452,7 +451,7 @@ void main() {
 
       group('media-upload', () {
         Stream<List<int>> streamFromByteArrays(List<List<int>> byteArrays) {
-          var controller = StreamController<List<int>>();
+          final controller = StreamController<List<int>>();
           for (var array in byteArrays) {
             controller.add(array);
           }
@@ -462,41 +461,38 @@ void main() {
 
         Media mediaFromByteArrays(List<List<int>> byteArrays,
             {bool withLen = true}) {
-          var len = withLen
-              ? byteArrays.fold<int>(0, ((int v, array) => v + array.length))
+          final len = withLen
+              ? byteArrays.fold<int>(0, (int v, array) => v + array.length)
               : null;
           return Media(streamFromByteArrays(byteArrays), len,
               contentType: 'foobar');
         }
 
         Future<http.StreamedResponse> validateServerRequest(
-            e, http.BaseRequest request, List<int>? data) {
-          return Future.sync(() {
-            var h = e['headers'];
-            var r = e['response'] as http.StreamedResponse;
+                e, http.BaseRequest request, List<int>? data) =>
+            Future.sync(() {
+              final h = e['headers'];
+              final r = e['response'] as http.StreamedResponse;
 
-            expect(request.url.toString(), equals(e['url']));
-            expect(request.method, equals(e['method']));
-            h.forEach((k, v) {
-              expect(request.headers[k], equals(v));
+              expect(request.url.toString(), equals(e['url']));
+              expect(request.method, equals(e['method']));
+              h.forEach((k, v) {
+                expect(request.headers[k], equals(v));
+              });
+
+              expect(data, equals(e['data']));
+              return r;
             });
-
-            expect(data, equals(e['data']));
-            return r;
-          });
-        }
 
         ServerMockCallback serverRequestValidator(List expectations) {
           var i = 0;
-          return (http.BaseRequest request, data) {
-            return validateServerRequest(
-                expectations[i++], request, data as List<int>?);
-          };
+          return (http.BaseRequest request, data) => validateServerRequest(
+              expectations[i++], request, data as List<int>?);
         }
 
         test('simple', () {
-          var bytes = List.generate(10 * 256 * 1024 + 1, (i) => i % 256);
-          var expectations = [
+          final bytes = List.generate(10 * 256 * 1024 + 1, (i) => i % 256);
+          final expectations = [
             {
               'url': 'http://example.com/xyz?uploadType=media&alt=json',
               'method': 'POST',
@@ -511,16 +507,16 @@ void main() {
 
           httpMock.register(
               expectAsync2(serverRequestValidator(expectations)), false);
-          var media = mediaFromByteArrays([bytes]);
+          final media = mediaFromByteArrays([bytes]);
           requester
               .request('/xyz', 'POST', uploadMedia: media)
               .then(expectAsync1((response) {}));
         });
 
         test('multipart-upload', () {
-          var bytes = List.generate(10 * 256 * 1024 + 1, (i) => i % 256);
-          var contentBytes = '--314159265358979323846\r\n'
-              'Content-Type: $CONTENT_TYPE_JSON_UTF8\r\n\r\n'
+          final bytes = List.generate(10 * 256 * 1024 + 1, (i) => i % 256);
+          final contentBytes = '--314159265358979323846\r\n'
+              'Content-Type: $contentTypeJsonUtf8\r\n\r\n'
               'BODY'
               '\r\n--314159265358979323846\r\n'
               'Content-Type: foobar\r\n'
@@ -528,11 +524,11 @@ void main() {
               '${base64.encode(bytes)}'
               '\r\n--314159265358979323846--';
 
-          var expectations = [
+          final expectations = [
             {
               'url': 'http://example.com/xyz?uploadType=multipart&alt=json',
               'method': 'POST',
-              'data': utf8.encode('$contentBytes'),
+              'data': utf8.encode(contentBytes),
               'headers': {
                 'content-length': '${contentBytes.length}',
                 'content-type':
@@ -544,7 +540,7 @@ void main() {
 
           httpMock.register(
               expectAsync2(serverRequestValidator(expectations)), false);
-          var media = mediaFromByteArrays([bytes]);
+          final media = mediaFromByteArrays([bytes]);
           requester
               .request('/xyz', 'POST', body: 'BODY', uploadMedia: media)
               .then(expectAsync1((response) {}));
@@ -554,7 +550,7 @@ void main() {
           // TODO: respect [stream]
           List buildExpectations(List<int> bytes, int chunkSize, bool stream,
               {int numberOfServerErrors = 0}) {
-            var totalLength = bytes.length;
+            final totalLength = bytes.length;
             var numberOfChunks = totalLength ~/ chunkSize;
             var numberOfBytesInLastChunk = totalLength % chunkSize;
 
@@ -564,46 +560,46 @@ void main() {
               numberOfBytesInLastChunk = chunkSize;
             }
 
-            var expectations = [];
-
-            // First request is making a POST and gets the upload URL.
-            expectations.add({
-              'url': 'http://example.com/xyz?uploadType=resumable&alt=json',
-              'method': 'POST',
-              'data': [],
-              'headers': {
-                'content-length': '0',
-                'content-type': 'application/json; charset=utf-8',
-                'x-upload-content-type': 'foobar',
-              }..addAll(stream
-                  ? {}
-                  : {
-                      'x-upload-content-length': '$totalLength',
-                    }),
-              'response':
-                  stringResponse(200, {'location': 'http://upload.com/'}, '')
-            });
+            final expectations = [
+              // First request is making a POST and gets the upload URL.
+              {
+                'url': 'http://example.com/xyz?uploadType=resumable&alt=json',
+                'method': 'POST',
+                'data': [],
+                'headers': {
+                  'content-length': '0',
+                  'content-type': 'application/json; charset=utf-8',
+                  'x-upload-content-type': 'foobar',
+                }..addAll(stream
+                    ? {}
+                    : {
+                        'x-upload-content-length': '$totalLength',
+                      }),
+                'response':
+                    stringResponse(200, {'location': 'http://upload.com/'}, '')
+              }
+            ];
 
             for (var i = 0; i < numberOfChunks; i++) {
-              var isLast = i == (numberOfChunks - 1);
-              var lengthMarker = stream && !isLast ? '*' : '$totalLength';
+              final isLast = i == (numberOfChunks - 1);
+              final lengthMarker = stream && !isLast ? '*' : '$totalLength';
 
               var bytesToExpect = chunkSize;
               if (isLast) {
                 bytesToExpect = numberOfBytesInLastChunk;
               }
 
-              var start = i * chunkSize;
-              var end = start + bytesToExpect;
-              var sublist = bytes.sublist(start, end);
+              final start = i * chunkSize;
+              final end = start + bytesToExpect;
+              final sublist = bytes.sublist(start, end);
 
-              var firstContentRange = 'bytes $start-${end - 1}/$lengthMarker';
-              var firstRange = 'bytes=0-${end - 1}';
+              final firstContentRange = 'bytes $start-${end - 1}/$lengthMarker';
+              final firstRange = 'bytes=0-${end - 1}';
 
               // We issue [numberOfServerErrors] 503 errors first, and then a
               // successful response.
               for (var j = 0; j < (numberOfServerErrors + 1); j++) {
-                var successfulResponse = j == numberOfServerErrors;
+                final successfulResponse = j == numberOfServerErrors;
 
                 http.StreamedResponse response;
                 if (successfulResponse) {
@@ -633,7 +629,7 @@ void main() {
           }
 
           List<List<int>> makeParts(List<int> bytes, List<int> splits) {
-            var parts = <List<int>>[];
+            final parts = <List<int>>[];
             var lastEnd = 0;
             for (var i = 0; i < splits.length; i++) {
               parts.add(bytes.sublist(lastEnd, splits[i]));
@@ -648,10 +644,10 @@ void main() {
               ResumableUploadOptions? resumableOptions,
               int? expectedErrorStatus,
               int? messagesNrOfFailure}) {
-            var chunkSize = chunkSizeInBlocks * 256 * 1024;
+            final chunkSize = chunkSizeInBlocks * 256 * 1024;
 
-            var bytes = List<int>.generate(length, (i) => i % 256);
-            var parts = makeParts(bytes, splits);
+            final bytes = List<int>.generate(length, (i) => i % 256);
+            final parts = makeParts(bytes, splits);
 
             // Simulation of our server
             var expectations = buildExpectations(bytes, chunkSize, false,
@@ -670,10 +666,10 @@ void main() {
                 false);
 
             // Our client
-            var media = mediaFromByteArrays(parts);
+            final media = mediaFromByteArrays(parts);
 
             resumableOptions ??= ResumableUploadOptions(chunkSize: chunkSize);
-            var result = requester.request('/xyz', 'POST',
+            final result = requester.request('/xyz', 'POST',
                 uploadMedia: media, uploadOptions: resumableOptions);
             if (expectedErrorStatus != null) {
               result.catchError(expectAsync1((dynamic error) {
@@ -685,14 +681,14 @@ void main() {
             }
           }
 
-          Function backoffWrapper(int callCount) {
-            return expectAsync1((int failedAttempts) {
-              var exp = ResumableUploadOptions.ExponentialBackoff;
-              var duration = exp(failedAttempts) as Duration;
-              expect(duration.inSeconds, equals(1 << (failedAttempts - 1)));
-              return const Duration(milliseconds: 1);
-            }, count: callCount);
-          }
+          Function backoffWrapper(int callCount) =>
+              expectAsync1((int failedAttempts) {
+                final duration =
+                    ResumableUploadOptions.exponentialBackoff(failedAttempts)
+                        as Duration;
+                expect(duration.inSeconds, equals(1 << (failedAttempts - 1)));
+                return const Duration(milliseconds: 1);
+              }, count: callCount);
 
           test('length-small-block', () {
             runTest(1, 10, [10], false);
@@ -765,8 +761,8 @@ void main() {
           });
 
           test('stream-big-block-parts--with-server-error-recovery', () {
-            var numFailedAttempts = 4 * 3;
-            var options = ResumableUploadOptions(
+            const numFailedAttempts = 4 * 3;
+            final options = ResumableUploadOptions(
                 chunkSize: 256 * 1024,
                 numberOfAttempts: 4,
                 backoffFunction: backoffWrapper(numFailedAttempts));
@@ -787,10 +783,9 @@ void main() {
           });
 
           test('stream-big-block-parts--server-error', () {
-            var numFailedAttempts = 2;
-            var options = ResumableUploadOptions(
+            const numFailedAttempts = 2;
+            final options = ResumableUploadOptions(
                 chunkSize: 256 * 1024,
-                numberOfAttempts: 3,
                 backoffFunction: backoffWrapper(numFailedAttempts));
             runTest(
                 1,
@@ -817,21 +812,22 @@ void main() {
         void makeTestError() {
           // All errors from the [http.Client] propagate through.
           // We use [TestError] to simulate it.
-          httpMock.register(expectAsync2((http.BaseRequest request, string) {
-            return Future<http.StreamedResponse>.error(TestError());
-          }), false);
+          httpMock.register(
+              expectAsync2((http.BaseRequest request, string) =>
+                  Future<http.StreamedResponse>.error(TestError())),
+              false);
         }
 
         void makeDetailed400Error() {
           httpMock.register(
-              expectAsync2((http.BaseRequest request, string) async {
-            return stringResponse(400, responseHeaders,
-                '{"error" : {"code" : 42, "message": "foo"}}');
-          }), false);
+              expectAsync2((http.BaseRequest request, string) async =>
+                  stringResponse(400, responseHeaders,
+                      '{"error" : {"code" : 42, "message": "foo"}}')),
+              false);
         }
 
         void makeErrorsError() {
-          var errorJson = '''
+          const errorJson = '''
           { "error" :
             { "code" : 42,
               "message" : "foo",
@@ -843,22 +839,22 @@ void main() {
           }
           ''';
           httpMock.register(
-              expectAsync2((http.BaseRequest request, string) async {
-            return stringResponse(400, responseHeaders, errorJson);
-          }), false);
+              expectAsync2((http.BaseRequest request, string) async =>
+                  stringResponse(400, responseHeaders, errorJson)),
+              false);
         }
 
         void makeNormal199Error() {
           httpMock.register(
-              expectAsync2((http.BaseRequest request, string) async {
-            return stringResponse(199, {}, '');
-          }), false);
+              expectAsync2((http.BaseRequest request, string) async =>
+                  stringResponse(199, {}, '')),
+              false);
         }
 
         void makeInvalidContentTypeError() {
           httpMock.register(
               expectAsync2((http.BaseRequest request, string) async {
-            var responseHeaders = {'content-type': 'image/png'};
+            final responseHeaders = {'content-type': 'image/png'};
             return stringResponse(200, responseHeaders, '');
           }), false);
         }
@@ -874,7 +870,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
-            var e = error as DetailedApiRequestError;
+            final e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
           }));
@@ -886,7 +882,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
-            var e = error as DetailedApiRequestError;
+            final e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
             expect(e.errors.length, equals(2));
@@ -906,7 +902,7 @@ void main() {
           expect(requester.request('abc', 'GET'), throwsA(isApiRequestError));
         });
 
-        var options = DownloadOptions.FullMedia;
+        final options = DownloadOptions.FullMedia;
         test('media-http-client', () {
           makeTestError();
           expect(requester.request('abc', 'GET', downloadOptions: options),
@@ -919,7 +915,7 @@ void main() {
               .request('abc', 'GET')
               .catchError(expectAsync2((dynamic error, dynamic stack) {
             expect(error, isDetailedApiRequestError);
-            var e = error as DetailedApiRequestError;
+            final e = error as DetailedApiRequestError;
             expect(e.status, equals(42));
             expect(e.message, equals('foo'));
           }));
@@ -935,7 +931,7 @@ void main() {
       // Tests for path/query parameters
 
       test('request-parameters-query', () {
-        var queryParams = {
+        final queryParams = {
           'a': ['a1', 'a2'],
           's': ['s1']
         };
@@ -977,7 +973,7 @@ void main() {
         expect(detail.extendedHelp, isNull);
         expect(detail.sendReport, isNull);
 
-        var json = {
+        final json = {
           'domain': 'value-domain',
           'reason': 'value-reason',
           'message': 'value-message',

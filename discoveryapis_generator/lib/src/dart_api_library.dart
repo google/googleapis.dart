@@ -15,14 +15,17 @@ const _ignoreForFileSet = {
   'comment_references',
   'constant_identifier_names',
   'directives_ordering',
+  'file_names',
   'library_names',
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
   'omit_local_variable_types',
+  'prefer_expression_function_bodies',
   'prefer_final_locals',
   'prefer_interpolation_to_compose_strings',
   'unnecessary_brace_in_string_interps',
   'unnecessary_cast',
+  'unnecessary_lambdas',
   'unnecessary_parenthesis',
   'unnecessary_string_interpolations',
 };
@@ -54,9 +57,12 @@ class DartApiImports {
 }
 
 abstract class BaseApiLibrary {
+  String get librarySource;
+
   final ApiLibraryNamer namer;
   final RestDescription description;
 
+  /* late final */
   DartApiImports imports;
 
   BaseApiLibrary(this.description, String apiClassSuffix,
@@ -87,6 +93,7 @@ class DartApiLibrary extends BaseApiLibrary {
     namer.nameAllIdentifiers();
   }
 
+  @override
   String get librarySource {
     final sink = StringBuffer();
     final schemas = generateSchemas(schemaDB);
@@ -144,8 +151,7 @@ library $libraryName;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};
 """;
 
-    return result +
-        """
+    return """$result${"""
 import 'package:http/http.dart' as ${imports.http};
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
@@ -153,6 +159,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
 
 const ${imports.core.ref()}String USER_AGENT = 'dart-api-client ${description.name}/${description.version}';
 
-""";
+"""}""";
   }
 }

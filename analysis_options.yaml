@@ -31,7 +31,7 @@ linter:
     - camel_case_extensions
     - camel_case_types
     - cancel_subscriptions
-    - cascade_invocations
+    #- cascade_invocations
     - comment_references
     - constant_identifier_names
     - control_flow_in_finally

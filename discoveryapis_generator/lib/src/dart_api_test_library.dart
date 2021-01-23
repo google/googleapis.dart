@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// ignore_for_file: missing_whitespace_between_adjacent_strings
+
 library discoveryapis_generator.dart_api_test_library;
 
 import 'dart_api_library.dart';
@@ -97,7 +99,6 @@ $ignoreForFileComments
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
 // ignore_for_file: prefer_single_quotes
-// ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unused_local_variable
 
 library ${apiLibrary.libraryName}.test;

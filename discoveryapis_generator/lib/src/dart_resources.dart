@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// ignore_for_file: missing_whitespace_between_adjacent_strings
+
 library discoveryapis_generator.dart_resources;
 
 import 'dart:collection';
@@ -45,7 +47,7 @@ class MethodParameter {
   /// [jsonName] may be null if this parameter is the request object parameter.
   final String jsonName;
 
-  /// [encodeInPath] is
+  /// The value is
   ///   - `true` if this parameter is encoded in the path of URL.
   ///   - `false` if this parameter is encoded in the query part of the URL.
   ///   - `null` otherwise.
@@ -158,7 +160,8 @@ class DartResourceMethod {
     if (returnType != null && !mediaDownload) {
       genericReturnType = '<${returnType.declaration}>';
     }
-    return '${imports.async.ref()}Future$genericReturnType $name($parameterString)';
+    return '${imports.async.ref()}Future$genericReturnType '
+        '$name($parameterString)';
   }
 
   String get definition {
@@ -227,7 +230,8 @@ class DartResourceMethod {
           requestParameter.type.jsonEncode('${requestParameter.name}');
       params.writeln('    if (${requestParameter.name} != null) {');
       params.writeln(
-          '      _body = ${imports.convert.ref()}json.encode($parameterEncode);');
+        '      _body = ${imports.convert.ref()}json.encode($parameterEncode);',
+      );
       params.writeln('    }');
     }
 
@@ -264,12 +268,12 @@ class DartResourceMethod {
     }
 
     void encodeQueryParam(MethodParameter param) {
-      var propertyAssignment;
+      String propertyAssignment;
       // NOTE: We need to special case array values, since they get encoded
       // as repeated query parameters.
       if (param.type is UnnamedArrayType || param.type is NamedArrayType) {
         final DartSchemaType innerType = (param.type as dynamic).innerType;
-        var expr;
+        String expr;
         if (innerType.needsPrimitiveEncoding) {
           expr = '${param.name}.map('
               '(item) => ${innerType.primitiveEncoding('item')}).toList()';
@@ -321,17 +325,17 @@ class DartResourceMethod {
 
     final requestCode = StringBuffer();
     if (mediaUpload) {
-      params.writeln('');
+      params.writeln();
       requestCode.writeln('    _uploadMedia =  uploadMedia;');
       if (mediaUploadResumable) {
         requestCode.writeln('    _uploadOptions =  uploadOptions;');
       }
     }
     if (mediaDownload) {
-      params.writeln('');
+      params.writeln();
       requestCode.writeln('    _downloadOptions = downloadOptions;');
     } else if (returnType == null) {
-      params.writeln('');
+      params.writeln();
       requestCode.writeln('    _downloadOptions = null;');
     }
 
@@ -401,9 +405,8 @@ $urlPatternCode
     final core = imports.core.ref();
     // For null safe code need an explicit type since `var` will infer as
     // non-nullable and we need nullable.
-    final downloadOptionsType = generateNullSafeCode
-        ? imports.commons.toString() + '.DownloadOptions?'
-        : 'var';
+    final downloadOptionsType =
+        generateNullSafeCode ? '${imports.commons}.DownloadOptions?' : 'var';
     methodString.write('''
     ${core}String _url;
     final _queryParams = <${core}String, ${core}List<${core}String>>{};
@@ -468,7 +471,7 @@ class DartResourceClass {
     str.writeln('class $className {');
     str.write(preamble);
     str.writeln('  final ${imports.commons}.ApiRequester _requester;');
-    str.writeln('');
+    str.writeln();
     str.write('$fields$constructor$functions');
     str.writeln('}');
     return '$str';
@@ -507,9 +510,9 @@ class DartApiClass extends DartResourceClass {
       final doc = scope.comment.asDartDoc(2);
       sb.writeln('$doc  static const ${scope.identifier} = '
           "'${escapeString(scope.url)}';");
-      sb.writeln('');
+      sb.writeln();
     }
-    sb.writeln('');
+    sb.writeln();
     return '$sb';
   }
 
@@ -519,7 +522,8 @@ class DartApiClass extends DartResourceClass {
 
     final parameters = [
       "${imports.core.ref()}String rootUrl = '${escapeString(rootUrl)}'",
-      "${imports.core.ref()}String servicePath = '${escapeString(servicePath)}'",
+      '${imports.core.ref()}String servicePath = '
+          "'${escapeString(servicePath)}'",
     ].join(', ');
 
     str.writeln('  $className(${imports.http}.Client client, {$parameters}) :');

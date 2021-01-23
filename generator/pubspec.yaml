@@ -6,9 +6,7 @@ environment:
 
 dependencies:
   discoveryapis_generator:
-    git:
-      url: https://github.com/dart-lang/discoveryapis_generator.git
-      path: discoveryapis_generator
+    path: ../discoveryapis_generator
   io: ^0.3.3
   pool: ^1.4.0
   yaml: ^2.1.0

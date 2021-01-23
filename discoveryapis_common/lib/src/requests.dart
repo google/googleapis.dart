@@ -17,8 +17,8 @@ class Media {
   /// Creates a new [Media] with a byte [stream] of length [length] with a
   /// [contentType].
   ///
-  /// When uploading media, [length] can only be null if [ResumableUploadOptions]
-  /// is used.
+  /// When uploading media, [length] can only be null if
+  /// [ResumableUploadOptions] is used.
   Media(this.stream, this.length,
       {this.contentType = 'application/octet-stream'}) {
     if (length != null && length! < 0) {
@@ -30,9 +30,13 @@ class Media {
 /// Represents options for uploading a [Media].
 class UploadOptions {
   /// Use either simple uploads (only media) or multipart for media+metadata
+  // ignoring the non-standard name since we'd have to update the generator!
+  // ignore: constant_identifier_names
   static const UploadOptions Default = UploadOptions();
 
   /// Make resumable uploads
+  // ignoring the non-standard name since we'd have to update the generator!
+  // ignore: non_constant_identifier_names
   static final ResumableUploadOptions Resumable = ResumableUploadOptions();
 
   const UploadOptions();
@@ -40,14 +44,14 @@ class UploadOptions {
 
 /// Specifies options for resumable uploads.
 class ResumableUploadOptions extends UploadOptions {
-  static final core.Function ExponentialBackoff = (core.int failedAttempts) {
+  static core.Duration? exponentialBackoff(core.int failedAttempts) {
     // Do not retry more than 5 times.
     if (failedAttempts > 5) return null;
 
     // Wait for 2^(failedAttempts-1) seconds, before retrying.
     // i.e. 1 second, 2 seconds, 4 seconds, ...
     return core.Duration(seconds: 1 << (failedAttempts - 1));
-  };
+  }
 
   /// Maximum number of upload attempts per chunk.
   final core.int numberOfAttempts;
@@ -59,15 +63,14 @@ class ResumableUploadOptions extends UploadOptions {
   final core.int chunkSize;
 
   /// Function for determining the [core.Duration] to wait before making the
-  /// next attempt. See [ExponentialBackoff] for an example.
+  /// next attempt. See [exponentialBackoff] for an example.
   final core.Function backoffFunction;
 
   ResumableUploadOptions(
       {this.numberOfAttempts = 3,
       this.chunkSize = 1024 * 1024,
       core.Function? backoffFunction})
-      : backoffFunction =
-            backoffFunction == null ? ExponentialBackoff : backoffFunction {
+      : backoffFunction = backoffFunction ?? exponentialBackoff {
     // See e.g. here:
     // https://developers.google.com/maps-engine/documentation/resumable-upload
     //
@@ -91,9 +94,13 @@ class ResumableUploadOptions extends UploadOptions {
 /// For partial downloads, see [PartialDownloadOptions].
 class DownloadOptions {
   /// Download only metadata.
+  // ignoring the non-standard name since we'd have to update the generator!
+  // ignore: constant_identifier_names
   static const DownloadOptions Metadata = DownloadOptions();
 
   /// Download full media.
+  // ignoring the non-standard name since we'd have to update the generator!
+  // ignore: non_constant_identifier_names
   static final PartialDownloadOptions FullMedia =
       PartialDownloadOptions(ByteRange(0, -1));
 
@@ -110,6 +117,7 @@ class PartialDownloadOptions extends DownloadOptions {
 
   PartialDownloadOptions(this.range);
 
+  @core.override
   core.bool get isMetadataDownload => false;
 
   /// `true` if this is a full download and `false` if this is a partial
@@ -141,6 +149,7 @@ class ApiRequestError implements core.Exception {
 
   ApiRequestError(this.message);
 
+  @core.override
   core.String toString() => 'ApiRequestError(message: $message)';
 }
 
@@ -158,24 +167,24 @@ class DetailedApiRequestError extends ApiRequestError {
       {this.errors = const [], this.jsonResponse})
       : super(message);
 
+  @core.override
   core.String toString() =>
       'DetailedApiRequestError(status: $status, message: $message)';
 }
 
-/// Instances of this class can be added to an [RpcError] to provide detailed
+/// Instances of this class can be added to an `RpcError` to provide detailed
 /// information.
 /// They will be sent back to the client in the `errors` field.
 ///
 /// This follows the Google JSON style guide:
-/// http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=error#error.errors
+/// https://google.github.io/styleguide/jsoncstyleguide.xml
 class ApiRequestErrorDetail {
   /// Unique identifier for the service raising this error. This helps
   /// distinguish service-specific errors (i.e. error inserting an event in a
   /// calendar) from general protocol errors (i.e. file not found).
   final core.String? domain;
 
-  /// Unique identifier for this error. Different from the [RpcError.statusCode]
-  /// property in that this is not an http response code.
+  /// Unique identifier for this error.
   final core.String? reason;
 
   /// A human readable message providing more details about the error. If there

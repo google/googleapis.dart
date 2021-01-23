@@ -58,7 +58,7 @@ class Comment {
         if (line.isNotEmpty) {
           result.writeln(' $line');
         } else {
-          result.writeln('');
+          result.writeln();
         }
       }
 
@@ -66,7 +66,8 @@ class Comment {
     }
 
     if (!commentString.contains('\n')) {
-      final onelineComment = spaces + '/// ${escapeComment(commentString)}\n';
+      final onelineComment =
+          '$spaces${'/// ${escapeComment(commentString)}\n'}';
       if (onelineComment.length <= 80) {
         return onelineComment;
       }

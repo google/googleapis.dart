@@ -35,8 +35,9 @@ class ClientObjectType extends ObjectType {
       if (!isVariantDiscriminator(property)) {
         final decodeString = property.type
             .jsonDecode("_json['${escapeString(property.jsonName)}']");
-        fromJsonString.writeln('    if (_json.containsKey'
-            "('${escapeString(property.jsonName)}')) {");
+        fromJsonString.writeln(
+          "    if (_json.containsKey('${escapeString(property.jsonName)}')) {",
+        );
         fromJsonString
             .writeln('      message.${property.name} = $decodeString;');
         fromJsonString.writeln('    }');
