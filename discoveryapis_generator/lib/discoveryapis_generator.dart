@@ -27,16 +27,16 @@ class Pubspec {
   Pubspec(this.name, this.version, this.description,
       {this.author, this.homepage});
 
-  String get sdkConstraint => '>=2.0.0-dev.22.0 <3.0.0';
+  String get sdkConstraint => '>=2.10.0 <3.0.0';
 
-  static Map<String, Object> get dependencies => const {
-        'http': '\'>=0.11.1 <0.13.0\'',
-        '_discoveryapis_commons': '\'>=0.1.0 <0.3.0\'',
-      };
+  static const dependencies = {
+    'http': '\'>=0.11.1 <0.13.0\'',
+    '_discoveryapis_commons': '\'>=0.1.0 <0.3.0\'',
+  };
 
-  static Map<String, Object> get devDependencies => const {
-        'test': '\'>=0.12.0 <2.0.0\'',
-      };
+  static const devDependencies = {
+    'test': '\'>=0.12.0 <2.0.0\'',
+  };
 }
 
 List<GenerateResult> generateApiPackage(List<RestDescription> descriptions,

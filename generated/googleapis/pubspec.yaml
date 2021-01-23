@@ -3,7 +3,7 @@ version: 0.57.0
 description: Auto-generated client libraries for accessing Google APIs described through the API discovery service.
 homepage: https://github.com/dart-lang/googleapis
 environment:
-  sdk: '>=2.0.0-dev.22.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: '>=0.1.0 <0.3.0'
