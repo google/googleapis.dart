@@ -241,12 +241,22 @@ package.
     return packages;
   }
 
-  static Package _packageFromYaml(String name, YamlMap values,
-      String configFile, List<RestDescription> allApis) {
+  static Package _packageFromYaml(
+    String name,
+    YamlMap values,
+    String configFile,
+    List<RestDescription> allApis,
+  ) {
     final apis = _listFromYaml(values['apis']).cast<String>();
     final version = values['version'] ?? '0.1.0-dev';
     final author = values['author'];
     final homepage = values['homepage'];
+
+    Map<String, String> extraDevDependencies;
+    if (values.containsKey('extraDevDependencies')) {
+      extraDevDependencies =
+          (values['extraDevDependencies'] as YamlMap).cast<String, String>();
+    }
 
     final configUri = Uri.file(configFile);
 
@@ -306,6 +316,7 @@ package.
       description,
       author: author,
       homepage: homepage,
+      extraDevDependencies: extraDevDependencies,
     );
     return Package(
       name,

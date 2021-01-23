@@ -163,6 +163,6 @@ class ApisPackageGenerator {
     sink.writeln('dependencies:');
     writeDependencies(Pubspec.dependencies);
     sink.writeln('dev_dependencies:');
-    writeDependencies(Pubspec.devDependencies);
+    writeDependencies(pubspec.devDependencies);
   }
 }

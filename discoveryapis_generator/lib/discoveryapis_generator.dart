@@ -24,8 +24,19 @@ class Pubspec {
   final String author;
   final String homepage;
 
-  Pubspec(this.name, this.version, this.description,
-      {this.author, this.homepage});
+  final Map<String, String> devDependencies;
+
+  Pubspec(
+    this.name,
+    this.version,
+    this.description, {
+    this.author,
+    this.homepage,
+    Map<String, String> extraDevDependencies,
+  }) : devDependencies = {
+          ..._defaultDevDependencies,
+          if (extraDevDependencies != null) ...extraDevDependencies,
+        };
 
   String get sdkConstraint => '>=2.10.0 <3.0.0';
 
@@ -34,8 +45,8 @@ class Pubspec {
     '_discoveryapis_commons': '\'>=0.1.0 <0.3.0\'',
   };
 
-  static const devDependencies = {
-    'test': '\'>=0.12.0 <2.0.0\'',
+  static const _defaultDevDependencies = {
+    'test': '^1.0.0',
   };
 }
 

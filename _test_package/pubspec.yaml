@@ -2,10 +2,10 @@ name: googleapis
 version: 0.1.0-dev
 description: Auto-generated client libraries.
 environment:
-  sdk: '>=2.0.0-dev.22.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 dependencies:
   # This is a private package dependency used by the generated client stubs.
   _discoveryapis_commons: '>=0.1.0 <0.3.0'
   http: '>=0.11.1 <0.13.0'
 dev_dependencies:
-  test: '>=0.12.0 <2.0.0'
+  test: ^1.0.0
