@@ -26,13 +26,22 @@ import 'utils.dart';
 class ApisPackageGenerator {
   final List<RestDescription> descriptions;
   final String packageFolderPath;
-  final Pubspec config;
+  final Pubspec pubspec;
+  final bool deleteExisting;
 
   /// [descriptions] is a list of API descriptions we want to generate code for.
-  /// [config] contains configuration parameters for this API package generator.
+  ///
+  /// [pubspec] contains configuration parameters for this API package
+  /// generator.
+  ///
   /// [packageFolderPath] is the output directory where the dart package gets
   /// generated.
-  ApisPackageGenerator(this.descriptions, this.config, this.packageFolderPath);
+  ApisPackageGenerator(
+    this.descriptions,
+    this.pubspec,
+    this.packageFolderPath, {
+    this.deleteExisting = true,
+  });
 
   /// Starts generating the API package with all the APIs given in the
   /// constructor.
@@ -47,14 +56,18 @@ class ApisPackageGenerator {
     // Clean contents of directory (except for .git folder)
     final packageDirectory = Directory(packageFolderPath);
     if (packageDirectory.existsSync()) {
-      print('Emptying folder before library generation.');
-      packageDirectory.listSync().forEach((FileSystemEntity fse) {
-        if (fse is File) {
-          fse.deleteSync();
-        } else if (fse is Directory && !fse.path.endsWith('.git')) {
-          fse.deleteSync(recursive: true);
-        }
-      });
+      if (deleteExisting) {
+        print('Emptying folder before library generation.');
+        packageDirectory.listSync().forEach((FileSystemEntity fse) {
+          if (fse is File) {
+            fse.deleteSync();
+          } else if (fse is Directory && !fse.path.endsWith('.git')) {
+            fse.deleteSync(recursive: true);
+          }
+        });
+      } else {
+        print('WARNING: Directory exists, but NOT deleting contents.');
+      }
     }
 
     Directory(libFolderPath).createSync(recursive: true);
@@ -77,7 +90,7 @@ class ApisPackageGenerator {
       final apiVersionFile = '$libFolderPath/$name/$version.dart';
       final apiTestVersionFile = '$testFolderPath/$name/${version}_test.dart';
 
-      final packagePath = 'package:${config.name}/$name/$version.dart';
+      final packagePath = 'package:${pubspec.name}/$name/$version.dart';
 
       try {
         // Create API itself.
@@ -106,7 +119,7 @@ class ApisPackageGenerator {
 
   DartApiLibrary _generateApiLibrary(
       String outputFile, RestDescription description) {
-    final lib = DartApiLibrary.build(description, config.name);
+    final lib = DartApiLibrary.build(description, pubspec.name);
     writeDartSource(outputFile, lib.librarySource);
     return lib;
   }
@@ -114,7 +127,7 @@ class ApisPackageGenerator {
   void _generateApiTestLibrary(
       String outputFile, String packageImportPath, DartApiLibrary apiLibrary) {
     final testLib =
-        DartApiTestLibrary.build(apiLibrary, packageImportPath, config.name);
+        DartApiTestLibrary.build(apiLibrary, packageImportPath, pubspec.name);
     writeDartSource(outputFile, testLib.librarySource);
   }
 
@@ -136,17 +149,17 @@ class ApisPackageGenerator {
       });
     }
 
-    sink.writeln('name: ${config.name}');
-    sink.writeln('version: ${config.version}');
-    if (config.author != null) {
-      sink.writeln('author: ${config.author}');
+    sink.writeln('name: ${pubspec.name}');
+    sink.writeln('version: ${pubspec.version}');
+    if (pubspec.author != null) {
+      sink.writeln('author: ${pubspec.author}');
     }
-    sink.writeln('description: ${config.description}');
-    if (config.homepage != null) {
-      sink.writeln('homepage: ${config.homepage}');
+    sink.writeln('description: ${pubspec.description}');
+    if (pubspec.homepage != null) {
+      sink.writeln('homepage: ${pubspec.homepage}');
     }
     sink.writeln('environment:');
-    sink.writeln("  sdk: '${config.sdkConstraint}'");
+    sink.writeln("  sdk: '${pubspec.sdkConstraint}'");
     sink.writeln('dependencies:');
     writeDependencies(Pubspec.dependencies);
     sink.writeln('dev_dependencies:');

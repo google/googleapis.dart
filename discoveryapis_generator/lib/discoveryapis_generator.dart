@@ -39,17 +39,29 @@ class Pubspec {
   };
 }
 
-List<GenerateResult> generateApiPackage(List<RestDescription> descriptions,
-    String outputDirectory, Pubspec pubspec) {
-  final apisPackageGenerator =
-      ApisPackageGenerator(descriptions, pubspec, outputDirectory);
+List<GenerateResult> generateApiPackage(
+  List<RestDescription> descriptions,
+  String outputDirectory,
+  Pubspec pubspec, {
+  bool deleteExisting = true,
+}) {
+  final apisPackageGenerator = ApisPackageGenerator(
+    descriptions,
+    pubspec,
+    outputDirectory,
+    deleteExisting: deleteExisting,
+  );
 
   return apisPackageGenerator.generateApiPackage();
 }
 
 List<GenerateResult> generateAllLibraries(
-    String inputDirectory, String outputDirectory, Pubspec pubspec,
-    {bool generateNullSafe = false}) {
+  String inputDirectory,
+  String outputDirectory,
+  Pubspec pubspec, {
+  bool generateNullSafe = false,
+  bool deleteExisting = true,
+}) {
   null_safety.generateNullSafeCode = generateNullSafe;
 
   final apiDescriptions = Directory(inputDirectory)
@@ -58,7 +70,12 @@ List<GenerateResult> generateAllLibraries(
       .map((FileSystemEntity entity) => RestDescription.fromJson(
           json.decode((entity as File).readAsStringSync())))
       .toList();
-  return generateApiPackage(apiDescriptions, outputDirectory, pubspec);
+  return generateApiPackage(
+    apiDescriptions,
+    outputDirectory,
+    pubspec,
+    deleteExisting: deleteExisting,
+  );
 }
 
 List<GenerateResult> generateApiFiles(

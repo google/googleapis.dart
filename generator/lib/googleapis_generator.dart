@@ -120,13 +120,21 @@ Future downloadFromConfiguration(String configFile) async {
   }
 }
 
-void generateFromConfiguration(String configFile, bool generateNullSafe) {
+void generateFromConfiguration(
+  String configFile,
+  bool generateNullSafe,
+  bool deleteExisting,
+) {
   final configuration = DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.
   final configFileUri = Uri.file(configFile);
-  return configuration.generate(configFileUri.resolve('discovery').path,
-      configFileUri.resolve('generated').path, generateNullSafe);
+  return configuration.generate(
+    configFileUri.resolve('discovery').path,
+    configFileUri.resolve('generated').path,
+    generateNullSafe,
+    deleteExisting,
+  );
 }
 
 DiscoveryApi _discoveryClient(http.Client client) => DiscoveryApi(client);
