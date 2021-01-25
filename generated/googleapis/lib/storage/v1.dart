@@ -5157,7 +5157,7 @@ class BucketIamConfigurationBucketPolicyOnly {
       enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('lockedTime')) {
-      lockedTime = core.DateTime.parse(_json['lockedTime']);
+      lockedTime = core.DateTime.parse(_json['lockedTime'] as core.String);
     }
   }
 
@@ -5192,7 +5192,7 @@ class BucketIamConfigurationUniformBucketLevelAccess {
       enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('lockedTime')) {
-      lockedTime = core.DateTime.parse(_json['lockedTime']);
+      lockedTime = core.DateTime.parse(_json['lockedTime'] as core.String);
     }
   }
 
@@ -5343,10 +5343,12 @@ class BucketLifecycleRuleCondition {
       age = _json['age'] as core.int;
     }
     if (_json.containsKey('createdBefore')) {
-      createdBefore = core.DateTime.parse(_json['createdBefore']);
+      createdBefore =
+          core.DateTime.parse(_json['createdBefore'] as core.String);
     }
     if (_json.containsKey('customTimeBefore')) {
-      customTimeBefore = core.DateTime.parse(_json['customTimeBefore']);
+      customTimeBefore =
+          core.DateTime.parse(_json['customTimeBefore'] as core.String);
     }
     if (_json.containsKey('daysSinceCustomTime')) {
       daysSinceCustomTime = _json['daysSinceCustomTime'] as core.int;
@@ -5366,7 +5368,8 @@ class BucketLifecycleRuleCondition {
           .toList();
     }
     if (_json.containsKey('noncurrentTimeBefore')) {
-      noncurrentTimeBefore = core.DateTime.parse(_json['noncurrentTimeBefore']);
+      noncurrentTimeBefore =
+          core.DateTime.parse(_json['noncurrentTimeBefore'] as core.String);
     }
     if (_json.containsKey('numNewerVersions')) {
       numNewerVersions = _json['numNewerVersions'] as core.int;
@@ -5559,7 +5562,8 @@ class BucketRetentionPolicy {
 
   BucketRetentionPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('effectiveTime')) {
-      effectiveTime = core.DateTime.parse(_json['effectiveTime']);
+      effectiveTime =
+          core.DateTime.parse(_json['effectiveTime'] as core.String);
     }
     if (_json.containsKey('isLocked')) {
       isLocked = _json['isLocked'] as core.bool;
@@ -5846,10 +5850,10 @@ class Bucket {
       storageClass = _json['storageClass'] as core.String;
     }
     if (_json.containsKey('timeCreated')) {
-      timeCreated = core.DateTime.parse(_json['timeCreated']);
+      timeCreated = core.DateTime.parse(_json['timeCreated'] as core.String);
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('versioning')) {
       versioning = BucketVersioning.fromJson(_json['versioning']);
@@ -6566,10 +6570,10 @@ class HmacKeyMetadata {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('timeCreated')) {
-      timeCreated = core.DateTime.parse(_json['timeCreated']);
+      timeCreated = core.DateTime.parse(_json['timeCreated'] as core.String);
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 
@@ -7021,7 +7025,7 @@ class Object {
       crc32c = _json['crc32c'] as core.String;
     }
     if (_json.containsKey('customTime')) {
-      customTime = core.DateTime.parse(_json['customTime']);
+      customTime = core.DateTime.parse(_json['customTime'] as core.String);
     }
     if (_json.containsKey('customerEncryption')) {
       customerEncryption =
@@ -7067,7 +7071,7 @@ class Object {
     }
     if (_json.containsKey('retentionExpirationTime')) {
       retentionExpirationTime =
-          core.DateTime.parse(_json['retentionExpirationTime']);
+          core.DateTime.parse(_json['retentionExpirationTime'] as core.String);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -7082,17 +7086,17 @@ class Object {
       temporaryHold = _json['temporaryHold'] as core.bool;
     }
     if (_json.containsKey('timeCreated')) {
-      timeCreated = core.DateTime.parse(_json['timeCreated']);
+      timeCreated = core.DateTime.parse(_json['timeCreated'] as core.String);
     }
     if (_json.containsKey('timeDeleted')) {
-      timeDeleted = core.DateTime.parse(_json['timeDeleted']);
+      timeDeleted = core.DateTime.parse(_json['timeDeleted'] as core.String);
     }
     if (_json.containsKey('timeStorageClassUpdated')) {
       timeStorageClassUpdated =
-          core.DateTime.parse(_json['timeStorageClassUpdated']);
+          core.DateTime.parse(_json['timeStorageClassUpdated'] as core.String);
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 

@@ -391,8 +391,8 @@ class DateType extends StringType {
   String jsonEncode(String value) => primitiveEncoding(value);
 
   @override
-  String jsonDecode(String json) =>
-      '${imports.core.ref()}DateTime.parse($json)';
+  String jsonDecode(String json) => '${imports.core.ref()}DateTime'
+      '.parse($json as ${imports.core.ref()}String)';
 }
 
 class DateTimeType extends StringType {
@@ -408,8 +408,8 @@ class DateTimeType extends StringType {
   String jsonEncode(String value) => '($value).toIso8601String()';
 
   @override
-  String jsonDecode(String json) =>
-      '${imports.core.ref()}DateTime.parse($json)';
+  String jsonDecode(String json) => '${imports.core.ref()}DateTime'
+      '.parse($json as ${imports.core.ref()}String)';
 }
 
 /// Class representing "any" schema type.

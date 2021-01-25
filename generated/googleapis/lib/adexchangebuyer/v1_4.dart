@@ -3701,7 +3701,8 @@ class Creative {
       agencyId = _json['agencyId'] as core.String;
     }
     if (_json.containsKey('apiUploadTimestamp')) {
-      apiUploadTimestamp = core.DateTime.parse(_json['apiUploadTimestamp']);
+      apiUploadTimestamp =
+          core.DateTime.parse(_json['apiUploadTimestamp'] as core.String);
     }
     if (_json.containsKey('attribute')) {
       attribute = (_json['attribute'] as core.List)

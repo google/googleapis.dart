@@ -6731,7 +6731,7 @@ class Account {
       childLink = AccountChildLink.fromJson(_json['childLink']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -6752,7 +6752,7 @@ class Account {
       starred = _json['starred'] as core.bool;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 
@@ -7563,7 +7563,7 @@ class CustomDataSource {
       childLink = CustomDataSourceChildLink.fromJson(_json['childLink']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -7600,7 +7600,7 @@ class CustomDataSource {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('uploadType')) {
       uploadType = _json['uploadType'] as core.String;
@@ -7840,7 +7840,7 @@ class CustomDimension {
       active = _json['active'] as core.bool;
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -7864,7 +7864,7 @@ class CustomDimension {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -8098,7 +8098,7 @@ class CustomMetric {
       active = _json['active'] as core.bool;
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -8131,7 +8131,7 @@ class CustomMetric {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -8946,7 +8946,7 @@ class Experiment {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -8955,7 +8955,7 @@ class Experiment {
       editableInGaUi = _json['editableInGaUi'] as core.bool;
     }
     if (_json.containsKey('endTime')) {
-      endTime = core.DateTime.parse(_json['endTime']);
+      endTime = core.DateTime.parse(_json['endTime'] as core.String);
     }
     if (_json.containsKey('equalWeighting')) {
       equalWeighting = _json['equalWeighting'] as core.bool;
@@ -9005,7 +9005,7 @@ class Experiment {
       snippet = _json['snippet'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = core.DateTime.parse(_json['startTime']);
+      startTime = core.DateTime.parse(_json['startTime'] as core.String);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -9014,7 +9014,7 @@ class Experiment {
       trafficCoverage = (_json['trafficCoverage'] as core.num).toDouble();
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('variations')) {
       variations = (_json['variations'] as core.List)
@@ -9567,7 +9567,7 @@ class Filter {
           FilterAdvancedDetails.fromJson(_json['advancedDetails']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('excludeDetails')) {
       excludeDetails = FilterExpression.fromJson(_json['excludeDetails']);
@@ -9602,7 +9602,7 @@ class Filter {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('uppercaseDetails')) {
       uppercaseDetails =
@@ -10846,7 +10846,7 @@ class Goal {
       active = _json['active'] as core.bool;
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('eventDetails')) {
       eventDetails = GoalEventDetails.fromJson(_json['eventDetails']);
@@ -10876,7 +10876,7 @@ class Goal {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('urlDestinationDetails')) {
       urlDestinationDetails =
@@ -11958,7 +11958,7 @@ class Profile {
       childLink = ProfileChildLink.fromJson(_json['childLink']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('currency')) {
       currency = _json['currency'] as core.String;
@@ -12023,7 +12023,7 @@ class Profile {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -12966,7 +12966,7 @@ class RemarketingAudience {
       audienceType = _json['audienceType'] as core.String;
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -13000,7 +13000,7 @@ class RemarketingAudience {
               _json['stateBasedAudienceDefinition']);
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -13186,7 +13186,7 @@ class Segment {
 
   Segment.fromJson(core.Map _json) {
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('definition')) {
       definition = _json['definition'] as core.String;
@@ -13210,7 +13210,7 @@ class Segment {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 
@@ -13469,7 +13469,7 @@ class UnsampledReport {
               _json['cloudStorageDownloadDetails']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('dimensions')) {
       dimensions = _json['dimensions'] as core.String;
@@ -13515,7 +13515,7 @@ class UnsampledReport {
       title = _json['title'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -13729,7 +13729,7 @@ class Upload {
       status = _json['status'] as core.String;
     }
     if (_json.containsKey('uploadTime')) {
-      uploadTime = core.DateTime.parse(_json['uploadTime']);
+      uploadTime = core.DateTime.parse(_json['uploadTime'] as core.String);
     }
   }
 
@@ -13901,7 +13901,8 @@ class UserDeletionRequest {
 
   UserDeletionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deletionRequestTime')) {
-      deletionRequestTime = core.DateTime.parse(_json['deletionRequestTime']);
+      deletionRequestTime =
+          core.DateTime.parse(_json['deletionRequestTime'] as core.String);
     }
     if (_json.containsKey('firebaseProjectId')) {
       firebaseProjectId = _json['firebaseProjectId'] as core.String;
@@ -14398,7 +14399,7 @@ class Webproperty {
       childLink = WebpropertyChildLink.fromJson(_json['childLink']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('dataRetentionResetOnNewActivity')) {
       dataRetentionResetOnNewActivity =
@@ -14444,7 +14445,7 @@ class Webproperty {
       starred = _json['starred'] as core.bool;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('websiteUrl')) {
       websiteUrl = _json['websiteUrl'] as core.String;

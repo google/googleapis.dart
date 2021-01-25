@@ -6739,7 +6739,8 @@ class Change {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modificationDate')) {
-      modificationDate = core.DateTime.parse(_json['modificationDate']);
+      modificationDate =
+          core.DateTime.parse(_json['modificationDate'] as core.String);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -7232,7 +7233,7 @@ class Comment {
       context = CommentContext.fromJson(_json['context']);
     }
     if (_json.containsKey('createdDate')) {
-      createdDate = core.DateTime.parse(_json['createdDate']);
+      createdDate = core.DateTime.parse(_json['createdDate'] as core.String);
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -7250,7 +7251,7 @@ class Comment {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedDate')) {
-      modifiedDate = core.DateTime.parse(_json['modifiedDate']);
+      modifiedDate = core.DateTime.parse(_json['modifiedDate'] as core.String);
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
@@ -7429,7 +7430,7 @@ class CommentReply {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('createdDate')) {
-      createdDate = core.DateTime.parse(_json['createdDate']);
+      createdDate = core.DateTime.parse(_json['createdDate'] as core.String);
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -7441,7 +7442,7 @@ class CommentReply {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedDate')) {
-      modifiedDate = core.DateTime.parse(_json['modifiedDate']);
+      modifiedDate = core.DateTime.parse(_json['modifiedDate'] as core.String);
     }
     if (_json.containsKey('replyId')) {
       replyId = _json['replyId'] as core.String;
@@ -7584,7 +7585,8 @@ class ContentRestriction {
       restrictingUser = User.fromJson(_json['restrictingUser']);
     }
     if (_json.containsKey('restrictionDate')) {
-      restrictionDate = core.DateTime.parse(_json['restrictionDate']);
+      restrictionDate =
+          core.DateTime.parse(_json['restrictionDate'] as core.String);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -7990,7 +7992,7 @@ class Drive {
       colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdDate')) {
-      createdDate = core.DateTime.parse(_json['createdDate']);
+      createdDate = core.DateTime.parse(_json['createdDate'] as core.String);
     }
     if (_json.containsKey('hidden')) {
       hidden = _json['hidden'] as core.bool;
@@ -9215,7 +9217,7 @@ class File {
       copyable = _json['copyable'] as core.bool;
     }
     if (_json.containsKey('createdDate')) {
-      createdDate = core.DateTime.parse(_json['createdDate']);
+      createdDate = core.DateTime.parse(_json['createdDate'] as core.String);
     }
     if (_json.containsKey('defaultOpenWithLink')) {
       defaultOpenWithLink = _json['defaultOpenWithLink'] as core.String;
@@ -9296,10 +9298,12 @@ class File {
       lastModifyingUserName = _json['lastModifyingUserName'] as core.String;
     }
     if (_json.containsKey('lastViewedByMeDate')) {
-      lastViewedByMeDate = core.DateTime.parse(_json['lastViewedByMeDate']);
+      lastViewedByMeDate =
+          core.DateTime.parse(_json['lastViewedByMeDate'] as core.String);
     }
     if (_json.containsKey('markedViewedByMeDate')) {
-      markedViewedByMeDate = core.DateTime.parse(_json['markedViewedByMeDate']);
+      markedViewedByMeDate =
+          core.DateTime.parse(_json['markedViewedByMeDate'] as core.String);
     }
     if (_json.containsKey('md5Checksum')) {
       md5Checksum = _json['md5Checksum'] as core.String;
@@ -9308,10 +9312,11 @@ class File {
       mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('modifiedByMeDate')) {
-      modifiedByMeDate = core.DateTime.parse(_json['modifiedByMeDate']);
+      modifiedByMeDate =
+          core.DateTime.parse(_json['modifiedByMeDate'] as core.String);
     }
     if (_json.containsKey('modifiedDate')) {
-      modifiedDate = core.DateTime.parse(_json['modifiedDate']);
+      modifiedDate = core.DateTime.parse(_json['modifiedDate'] as core.String);
     }
     if (_json.containsKey('openWithLinks')) {
       openWithLinks = commons.mapMap<core.String, core.String>(
@@ -9367,7 +9372,8 @@ class File {
       shared = _json['shared'] as core.bool;
     }
     if (_json.containsKey('sharedWithMeDate')) {
-      sharedWithMeDate = core.DateTime.parse(_json['sharedWithMeDate']);
+      sharedWithMeDate =
+          core.DateTime.parse(_json['sharedWithMeDate'] as core.String);
     }
     if (_json.containsKey('sharingUser')) {
       sharingUser = User.fromJson(_json['sharingUser']);
@@ -9396,7 +9402,7 @@ class File {
       title = _json['title'] as core.String;
     }
     if (_json.containsKey('trashedDate')) {
-      trashedDate = core.DateTime.parse(_json['trashedDate']);
+      trashedDate = core.DateTime.parse(_json['trashedDate'] as core.String);
     }
     if (_json.containsKey('trashingUser')) {
       trashingUser = User.fromJson(_json['trashingUser']);
@@ -10124,7 +10130,8 @@ class Permission {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('expirationDate')) {
-      expirationDate = core.DateTime.parse(_json['expirationDate']);
+      expirationDate =
+          core.DateTime.parse(_json['expirationDate'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -10559,7 +10566,7 @@ class Revision {
       mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('modifiedDate')) {
-      modifiedDate = core.DateTime.parse(_json['modifiedDate']);
+      modifiedDate = core.DateTime.parse(_json['modifiedDate'] as core.String);
     }
     if (_json.containsKey('originalFilename')) {
       originalFilename = _json['originalFilename'] as core.String;
@@ -11124,7 +11131,7 @@ class TeamDrive {
       colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdDate')) {
-      createdDate = core.DateTime.parse(_json['createdDate']);
+      createdDate = core.DateTime.parse(_json['createdDate'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;

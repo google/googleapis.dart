@@ -958,10 +958,12 @@ class WmxSitemap {
       isSitemapsIndex = _json['isSitemapsIndex'] as core.bool;
     }
     if (_json.containsKey('lastDownloaded')) {
-      lastDownloaded = core.DateTime.parse(_json['lastDownloaded']);
+      lastDownloaded =
+          core.DateTime.parse(_json['lastDownloaded'] as core.String);
     }
     if (_json.containsKey('lastSubmitted')) {
-      lastSubmitted = core.DateTime.parse(_json['lastSubmitted']);
+      lastSubmitted =
+          core.DateTime.parse(_json['lastSubmitted'] as core.String);
     }
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;

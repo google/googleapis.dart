@@ -4019,7 +4019,7 @@ class Change {
       teamDriveId = _json['teamDriveId'] as core.String;
     }
     if (_json.containsKey('time')) {
-      time = core.DateTime.parse(_json['time']);
+      time = core.DateTime.parse(_json['time'] as core.String);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -4324,7 +4324,7 @@ class Comment {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
-      createdTime = core.DateTime.parse(_json['createdTime']);
+      createdTime = core.DateTime.parse(_json['createdTime'] as core.String);
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -4339,7 +4339,7 @@ class Comment {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
-      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
+      modifiedTime = core.DateTime.parse(_json['modifiedTime'] as core.String);
     }
     if (_json.containsKey('quotedFileContent')) {
       quotedFileContent =
@@ -4480,7 +4480,8 @@ class ContentRestriction {
       restrictingUser = User.fromJson(_json['restrictingUser']);
     }
     if (_json.containsKey('restrictionTime')) {
-      restrictionTime = core.DateTime.parse(_json['restrictionTime']);
+      restrictionTime =
+          core.DateTime.parse(_json['restrictionTime'] as core.String);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -4887,7 +4888,7 @@ class Drive {
       colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
-      createdTime = core.DateTime.parse(_json['createdTime']);
+      createdTime = core.DateTime.parse(_json['createdTime'] as core.String);
     }
     if (_json.containsKey('hidden')) {
       hidden = _json['hidden'] as core.bool;
@@ -6006,7 +6007,7 @@ class File {
           _json['copyRequiresWriterPermission'] as core.bool;
     }
     if (_json.containsKey('createdTime')) {
-      createdTime = core.DateTime.parse(_json['createdTime']);
+      createdTime = core.DateTime.parse(_json['createdTime'] as core.String);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -6069,10 +6070,11 @@ class File {
       modifiedByMe = _json['modifiedByMe'] as core.bool;
     }
     if (_json.containsKey('modifiedByMeTime')) {
-      modifiedByMeTime = core.DateTime.parse(_json['modifiedByMeTime']);
+      modifiedByMeTime =
+          core.DateTime.parse(_json['modifiedByMeTime'] as core.String);
     }
     if (_json.containsKey('modifiedTime')) {
-      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
+      modifiedTime = core.DateTime.parse(_json['modifiedTime'] as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -6115,7 +6117,8 @@ class File {
       shared = _json['shared'] as core.bool;
     }
     if (_json.containsKey('sharedWithMeTime')) {
-      sharedWithMeTime = core.DateTime.parse(_json['sharedWithMeTime']);
+      sharedWithMeTime =
+          core.DateTime.parse(_json['sharedWithMeTime'] as core.String);
     }
     if (_json.containsKey('sharingUser')) {
       sharingUser = User.fromJson(_json['sharingUser']);
@@ -6147,7 +6150,7 @@ class File {
       trashed = _json['trashed'] as core.bool;
     }
     if (_json.containsKey('trashedTime')) {
-      trashedTime = core.DateTime.parse(_json['trashedTime']);
+      trashedTime = core.DateTime.parse(_json['trashedTime'] as core.String);
     }
     if (_json.containsKey('trashingUser')) {
       trashingUser = User.fromJson(_json['trashingUser']);
@@ -6163,7 +6166,8 @@ class File {
       viewedByMe = _json['viewedByMe'] as core.bool;
     }
     if (_json.containsKey('viewedByMeTime')) {
-      viewedByMeTime = core.DateTime.parse(_json['viewedByMeTime']);
+      viewedByMeTime =
+          core.DateTime.parse(_json['viewedByMeTime'] as core.String);
     }
     if (_json.containsKey('viewersCanCopyContent')) {
       viewersCanCopyContent = _json['viewersCanCopyContent'] as core.bool;
@@ -6665,7 +6669,8 @@ class Permission {
       emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('expirationTime')) {
-      expirationTime = core.DateTime.parse(_json['expirationTime']);
+      expirationTime =
+          core.DateTime.parse(_json['expirationTime'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -6846,7 +6851,7 @@ class Reply {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
-      createdTime = core.DateTime.parse(_json['createdTime']);
+      createdTime = core.DateTime.parse(_json['createdTime'] as core.String);
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -6861,7 +6866,7 @@ class Reply {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
-      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
+      modifiedTime = core.DateTime.parse(_json['modifiedTime'] as core.String);
     }
   }
 
@@ -7027,7 +7032,7 @@ class Revision {
       mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
-      modifiedTime = core.DateTime.parse(_json['modifiedTime']);
+      modifiedTime = core.DateTime.parse(_json['modifiedTime'] as core.String);
     }
     if (_json.containsKey('originalFilename')) {
       originalFilename = _json['originalFilename'] as core.String;
@@ -7561,7 +7566,7 @@ class TeamDrive {
       colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
-      createdTime = core.DateTime.parse(_json['createdTime']);
+      createdTime = core.DateTime.parse(_json['createdTime'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;

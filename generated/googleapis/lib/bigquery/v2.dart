@@ -3832,7 +3832,7 @@ class BqmlTrainingRun {
           .toList();
     }
     if (_json.containsKey('startTime')) {
-      startTime = core.DateTime.parse(_json['startTime']);
+      startTime = core.DateTime.parse(_json['startTime'] as core.String);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -9929,7 +9929,7 @@ class SnapshotDefinition {
       baseTableReference = TableReference.fromJson(_json['baseTableReference']);
     }
     if (_json.containsKey('snapshotTime')) {
-      snapshotTime = core.DateTime.parse(_json['snapshotTime']);
+      snapshotTime = core.DateTime.parse(_json['snapshotTime'] as core.String);
     }
   }
 
