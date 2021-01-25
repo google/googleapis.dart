@@ -723,192 +723,199 @@ class Groups {
 
   Groups.fromJson(core.Map _json) {
     if (_json.containsKey('allowExternalMembers')) {
-      allowExternalMembers = _json['allowExternalMembers'];
+      allowExternalMembers = _json['allowExternalMembers'] as core.String;
     }
     if (_json.containsKey('allowGoogleCommunication')) {
-      allowGoogleCommunication = _json['allowGoogleCommunication'];
+      allowGoogleCommunication =
+          _json['allowGoogleCommunication'] as core.String;
     }
     if (_json.containsKey('allowWebPosting')) {
-      allowWebPosting = _json['allowWebPosting'];
+      allowWebPosting = _json['allowWebPosting'] as core.String;
     }
     if (_json.containsKey('archiveOnly')) {
-      archiveOnly = _json['archiveOnly'];
+      archiveOnly = _json['archiveOnly'] as core.String;
     }
     if (_json.containsKey('customFooterText')) {
-      customFooterText = _json['customFooterText'];
+      customFooterText = _json['customFooterText'] as core.String;
     }
     if (_json.containsKey('customReplyTo')) {
-      customReplyTo = _json['customReplyTo'];
+      customReplyTo = _json['customReplyTo'] as core.String;
     }
     if (_json.containsKey('customRolesEnabledForSettingsToBeMerged')) {
       customRolesEnabledForSettingsToBeMerged =
-          _json['customRolesEnabledForSettingsToBeMerged'];
+          _json['customRolesEnabledForSettingsToBeMerged'] as core.String;
     }
     if (_json.containsKey('defaultMessageDenyNotificationText')) {
       defaultMessageDenyNotificationText =
-          _json['defaultMessageDenyNotificationText'];
+          _json['defaultMessageDenyNotificationText'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('enableCollaborativeInbox')) {
-      enableCollaborativeInbox = _json['enableCollaborativeInbox'];
+      enableCollaborativeInbox =
+          _json['enableCollaborativeInbox'] as core.String;
     }
     if (_json.containsKey('favoriteRepliesOnTop')) {
-      favoriteRepliesOnTop = _json['favoriteRepliesOnTop'];
+      favoriteRepliesOnTop = _json['favoriteRepliesOnTop'] as core.String;
     }
     if (_json.containsKey('includeCustomFooter')) {
-      includeCustomFooter = _json['includeCustomFooter'];
+      includeCustomFooter = _json['includeCustomFooter'] as core.String;
     }
     if (_json.containsKey('includeInGlobalAddressList')) {
-      includeInGlobalAddressList = _json['includeInGlobalAddressList'];
+      includeInGlobalAddressList =
+          _json['includeInGlobalAddressList'] as core.String;
     }
     if (_json.containsKey('isArchived')) {
-      isArchived = _json['isArchived'];
+      isArchived = _json['isArchived'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxMessageBytes')) {
-      maxMessageBytes = _json['maxMessageBytes'];
+      maxMessageBytes = _json['maxMessageBytes'] as core.int;
     }
     if (_json.containsKey('membersCanPostAsTheGroup')) {
-      membersCanPostAsTheGroup = _json['membersCanPostAsTheGroup'];
+      membersCanPostAsTheGroup =
+          _json['membersCanPostAsTheGroup'] as core.String;
     }
     if (_json.containsKey('messageDisplayFont')) {
-      messageDisplayFont = _json['messageDisplayFont'];
+      messageDisplayFont = _json['messageDisplayFont'] as core.String;
     }
     if (_json.containsKey('messageModerationLevel')) {
-      messageModerationLevel = _json['messageModerationLevel'];
+      messageModerationLevel = _json['messageModerationLevel'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('primaryLanguage')) {
-      primaryLanguage = _json['primaryLanguage'];
+      primaryLanguage = _json['primaryLanguage'] as core.String;
     }
     if (_json.containsKey('replyTo')) {
-      replyTo = _json['replyTo'];
+      replyTo = _json['replyTo'] as core.String;
     }
     if (_json.containsKey('sendMessageDenyNotification')) {
-      sendMessageDenyNotification = _json['sendMessageDenyNotification'];
+      sendMessageDenyNotification =
+          _json['sendMessageDenyNotification'] as core.String;
     }
     if (_json.containsKey('showInGroupDirectory')) {
-      showInGroupDirectory = _json['showInGroupDirectory'];
+      showInGroupDirectory = _json['showInGroupDirectory'] as core.String;
     }
     if (_json.containsKey('spamModerationLevel')) {
-      spamModerationLevel = _json['spamModerationLevel'];
+      spamModerationLevel = _json['spamModerationLevel'] as core.String;
     }
     if (_json.containsKey('whoCanAdd')) {
-      whoCanAdd = _json['whoCanAdd'];
+      whoCanAdd = _json['whoCanAdd'] as core.String;
     }
     if (_json.containsKey('whoCanAddReferences')) {
-      whoCanAddReferences = _json['whoCanAddReferences'];
+      whoCanAddReferences = _json['whoCanAddReferences'] as core.String;
     }
     if (_json.containsKey('whoCanApproveMembers')) {
-      whoCanApproveMembers = _json['whoCanApproveMembers'];
+      whoCanApproveMembers = _json['whoCanApproveMembers'] as core.String;
     }
     if (_json.containsKey('whoCanApproveMessages')) {
-      whoCanApproveMessages = _json['whoCanApproveMessages'];
+      whoCanApproveMessages = _json['whoCanApproveMessages'] as core.String;
     }
     if (_json.containsKey('whoCanAssignTopics')) {
-      whoCanAssignTopics = _json['whoCanAssignTopics'];
+      whoCanAssignTopics = _json['whoCanAssignTopics'] as core.String;
     }
     if (_json.containsKey('whoCanAssistContent')) {
-      whoCanAssistContent = _json['whoCanAssistContent'];
+      whoCanAssistContent = _json['whoCanAssistContent'] as core.String;
     }
     if (_json.containsKey('whoCanBanUsers')) {
-      whoCanBanUsers = _json['whoCanBanUsers'];
+      whoCanBanUsers = _json['whoCanBanUsers'] as core.String;
     }
     if (_json.containsKey('whoCanContactOwner')) {
-      whoCanContactOwner = _json['whoCanContactOwner'];
+      whoCanContactOwner = _json['whoCanContactOwner'] as core.String;
     }
     if (_json.containsKey('whoCanDeleteAnyPost')) {
-      whoCanDeleteAnyPost = _json['whoCanDeleteAnyPost'];
+      whoCanDeleteAnyPost = _json['whoCanDeleteAnyPost'] as core.String;
     }
     if (_json.containsKey('whoCanDeleteTopics')) {
-      whoCanDeleteTopics = _json['whoCanDeleteTopics'];
+      whoCanDeleteTopics = _json['whoCanDeleteTopics'] as core.String;
     }
     if (_json.containsKey('whoCanDiscoverGroup')) {
-      whoCanDiscoverGroup = _json['whoCanDiscoverGroup'];
+      whoCanDiscoverGroup = _json['whoCanDiscoverGroup'] as core.String;
     }
     if (_json.containsKey('whoCanEnterFreeFormTags')) {
-      whoCanEnterFreeFormTags = _json['whoCanEnterFreeFormTags'];
+      whoCanEnterFreeFormTags = _json['whoCanEnterFreeFormTags'] as core.String;
     }
     if (_json.containsKey('whoCanHideAbuse')) {
-      whoCanHideAbuse = _json['whoCanHideAbuse'];
+      whoCanHideAbuse = _json['whoCanHideAbuse'] as core.String;
     }
     if (_json.containsKey('whoCanInvite')) {
-      whoCanInvite = _json['whoCanInvite'];
+      whoCanInvite = _json['whoCanInvite'] as core.String;
     }
     if (_json.containsKey('whoCanJoin')) {
-      whoCanJoin = _json['whoCanJoin'];
+      whoCanJoin = _json['whoCanJoin'] as core.String;
     }
     if (_json.containsKey('whoCanLeaveGroup')) {
-      whoCanLeaveGroup = _json['whoCanLeaveGroup'];
+      whoCanLeaveGroup = _json['whoCanLeaveGroup'] as core.String;
     }
     if (_json.containsKey('whoCanLockTopics')) {
-      whoCanLockTopics = _json['whoCanLockTopics'];
+      whoCanLockTopics = _json['whoCanLockTopics'] as core.String;
     }
     if (_json.containsKey('whoCanMakeTopicsSticky')) {
-      whoCanMakeTopicsSticky = _json['whoCanMakeTopicsSticky'];
+      whoCanMakeTopicsSticky = _json['whoCanMakeTopicsSticky'] as core.String;
     }
     if (_json.containsKey('whoCanMarkDuplicate')) {
-      whoCanMarkDuplicate = _json['whoCanMarkDuplicate'];
+      whoCanMarkDuplicate = _json['whoCanMarkDuplicate'] as core.String;
     }
     if (_json.containsKey('whoCanMarkFavoriteReplyOnAnyTopic')) {
       whoCanMarkFavoriteReplyOnAnyTopic =
-          _json['whoCanMarkFavoriteReplyOnAnyTopic'];
+          _json['whoCanMarkFavoriteReplyOnAnyTopic'] as core.String;
     }
     if (_json.containsKey('whoCanMarkFavoriteReplyOnOwnTopic')) {
       whoCanMarkFavoriteReplyOnOwnTopic =
-          _json['whoCanMarkFavoriteReplyOnOwnTopic'];
+          _json['whoCanMarkFavoriteReplyOnOwnTopic'] as core.String;
     }
     if (_json.containsKey('whoCanMarkNoResponseNeeded')) {
-      whoCanMarkNoResponseNeeded = _json['whoCanMarkNoResponseNeeded'];
+      whoCanMarkNoResponseNeeded =
+          _json['whoCanMarkNoResponseNeeded'] as core.String;
     }
     if (_json.containsKey('whoCanModerateContent')) {
-      whoCanModerateContent = _json['whoCanModerateContent'];
+      whoCanModerateContent = _json['whoCanModerateContent'] as core.String;
     }
     if (_json.containsKey('whoCanModerateMembers')) {
-      whoCanModerateMembers = _json['whoCanModerateMembers'];
+      whoCanModerateMembers = _json['whoCanModerateMembers'] as core.String;
     }
     if (_json.containsKey('whoCanModifyMembers')) {
-      whoCanModifyMembers = _json['whoCanModifyMembers'];
+      whoCanModifyMembers = _json['whoCanModifyMembers'] as core.String;
     }
     if (_json.containsKey('whoCanModifyTagsAndCategories')) {
-      whoCanModifyTagsAndCategories = _json['whoCanModifyTagsAndCategories'];
+      whoCanModifyTagsAndCategories =
+          _json['whoCanModifyTagsAndCategories'] as core.String;
     }
     if (_json.containsKey('whoCanMoveTopicsIn')) {
-      whoCanMoveTopicsIn = _json['whoCanMoveTopicsIn'];
+      whoCanMoveTopicsIn = _json['whoCanMoveTopicsIn'] as core.String;
     }
     if (_json.containsKey('whoCanMoveTopicsOut')) {
-      whoCanMoveTopicsOut = _json['whoCanMoveTopicsOut'];
+      whoCanMoveTopicsOut = _json['whoCanMoveTopicsOut'] as core.String;
     }
     if (_json.containsKey('whoCanPostAnnouncements')) {
-      whoCanPostAnnouncements = _json['whoCanPostAnnouncements'];
+      whoCanPostAnnouncements = _json['whoCanPostAnnouncements'] as core.String;
     }
     if (_json.containsKey('whoCanPostMessage')) {
-      whoCanPostMessage = _json['whoCanPostMessage'];
+      whoCanPostMessage = _json['whoCanPostMessage'] as core.String;
     }
     if (_json.containsKey('whoCanTakeTopics')) {
-      whoCanTakeTopics = _json['whoCanTakeTopics'];
+      whoCanTakeTopics = _json['whoCanTakeTopics'] as core.String;
     }
     if (_json.containsKey('whoCanUnassignTopic')) {
-      whoCanUnassignTopic = _json['whoCanUnassignTopic'];
+      whoCanUnassignTopic = _json['whoCanUnassignTopic'] as core.String;
     }
     if (_json.containsKey('whoCanUnmarkFavoriteReplyOnAnyTopic')) {
       whoCanUnmarkFavoriteReplyOnAnyTopic =
-          _json['whoCanUnmarkFavoriteReplyOnAnyTopic'];
+          _json['whoCanUnmarkFavoriteReplyOnAnyTopic'] as core.String;
     }
     if (_json.containsKey('whoCanViewGroup')) {
-      whoCanViewGroup = _json['whoCanViewGroup'];
+      whoCanViewGroup = _json['whoCanViewGroup'] as core.String;
     }
     if (_json.containsKey('whoCanViewMembership')) {
-      whoCanViewMembership = _json['whoCanViewMembership'];
+      whoCanViewMembership = _json['whoCanViewMembership'] as core.String;
     }
   }
 

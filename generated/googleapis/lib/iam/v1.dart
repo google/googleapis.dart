@@ -2705,7 +2705,7 @@ class AuditConfig {
           .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -2767,11 +2767,12 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers =
-          (_json['exemptedMembers'] as core.List).cast<core.String>();
+      exemptedMembers = (_json['exemptedMembers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -2797,7 +2798,7 @@ class AuditableService {
 
   AuditableService.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2864,16 +2865,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -2920,16 +2923,16 @@ class BindingDelta {
 
   BindingDelta.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('member')) {
-      member = _json['member'];
+      member = _json['member'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -2968,7 +2971,7 @@ class CreateRoleRequest {
       role = Role.fromJson(_json['role']);
     }
     if (_json.containsKey('roleId')) {
-      roleId = _json['roleId'];
+      roleId = _json['roleId'] as core.String;
     }
   }
 
@@ -3010,10 +3013,10 @@ class CreateServiceAccountKeyRequest {
 
   CreateServiceAccountKeyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('keyAlgorithm')) {
-      keyAlgorithm = _json['keyAlgorithm'];
+      keyAlgorithm = _json['keyAlgorithm'] as core.String;
     }
     if (_json.containsKey('privateKeyType')) {
-      privateKeyType = _json['privateKeyType'];
+      privateKeyType = _json['privateKeyType'] as core.String;
     }
   }
 
@@ -3045,7 +3048,7 @@ class CreateServiceAccountRequest {
 
   CreateServiceAccountRequest.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = ServiceAccount.fromJson(_json['serviceAccount']);
@@ -3147,16 +3150,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -3199,7 +3202,7 @@ class LintPolicyRequest {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
   }
 
@@ -3298,22 +3301,22 @@ class LintResult {
 
   LintResult.fromJson(core.Map _json) {
     if (_json.containsKey('debugMessage')) {
-      debugMessage = _json['debugMessage'];
+      debugMessage = _json['debugMessage'] as core.String;
     }
     if (_json.containsKey('fieldName')) {
-      fieldName = _json['fieldName'];
+      fieldName = _json['fieldName'] as core.String;
     }
     if (_json.containsKey('level')) {
-      level = _json['level'];
+      level = _json['level'] as core.String;
     }
     if (_json.containsKey('locationOffset')) {
-      locationOffset = _json['locationOffset'];
+      locationOffset = _json['locationOffset'] as core.int;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('validationUnitName')) {
-      validationUnitName = _json['validationUnitName'];
+      validationUnitName = _json['validationUnitName'] as core.String;
     }
   }
 
@@ -3354,7 +3357,7 @@ class ListRolesResponse {
 
   ListRolesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('roles')) {
       roles = (_json['roles'] as core.List)
@@ -3417,7 +3420,7 @@ class ListServiceAccountsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3449,7 +3452,7 @@ class PatchServiceAccountRequest {
       serviceAccount = ServiceAccount.fromJson(_json['serviceAccount']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -3505,28 +3508,28 @@ class Permission {
 
   Permission.fromJson(core.Map _json) {
     if (_json.containsKey('apiDisabled')) {
-      apiDisabled = _json['apiDisabled'];
+      apiDisabled = _json['apiDisabled'] as core.bool;
     }
     if (_json.containsKey('customRolesSupportLevel')) {
-      customRolesSupportLevel = _json['customRolesSupportLevel'];
+      customRolesSupportLevel = _json['customRolesSupportLevel'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('onlyInPredefinedRoles')) {
-      onlyInPredefinedRoles = _json['onlyInPredefinedRoles'];
+      onlyInPredefinedRoles = _json['onlyInPredefinedRoles'] as core.bool;
     }
     if (_json.containsKey('primaryPermission')) {
-      primaryPermission = _json['primaryPermission'];
+      primaryPermission = _json['primaryPermission'] as core.String;
     }
     if (_json.containsKey('stage')) {
-      stage = _json['stage'];
+      stage = _json['stage'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -3573,12 +3576,14 @@ class PermissionDelta {
 
   PermissionDelta.fromJson(core.Map _json) {
     if (_json.containsKey('addedPermissions')) {
-      addedPermissions =
-          (_json['addedPermissions'] as core.List).cast<core.String>();
+      addedPermissions = (_json['addedPermissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('removedPermissions')) {
-      removedPermissions =
-          (_json['removedPermissions'] as core.List).cast<core.String>();
+      removedPermissions = (_json['removedPermissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3682,10 +3687,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -3745,7 +3750,7 @@ class QueryAuditableServicesRequest {
 
   QueryAuditableServicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
   }
 
@@ -3809,16 +3814,16 @@ class QueryGrantableRolesRequest {
 
   QueryGrantableRolesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('view')) {
-      view = _json['view'];
+      view = _json['view'] as core.String;
     }
   }
 
@@ -3853,7 +3858,7 @@ class QueryGrantableRolesResponse {
 
   QueryGrantableRolesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('roles')) {
       roles = (_json['roles'] as core.List)
@@ -3894,13 +3899,13 @@ class QueryTestablePermissionsRequest {
 
   QueryTestablePermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
   }
 
@@ -3932,7 +3937,7 @@ class QueryTestablePermissionsResponse {
 
   QueryTestablePermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
@@ -4005,26 +4010,27 @@ class Role {
 
   Role.fromJson(core.Map _json) {
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('includedPermissions')) {
-      includedPermissions =
-          (_json['includedPermissions'] as core.List).cast<core.String>();
+      includedPermissions = (_json['includedPermissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('stage')) {
-      stage = _json['stage'];
+      stage = _json['stage'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -4117,31 +4123,31 @@ class ServiceAccount {
 
   ServiceAccount.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('oauth2ClientId')) {
-      oauth2ClientId = _json['oauth2ClientId'];
+      oauth2ClientId = _json['oauth2ClientId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('uniqueId')) {
-      uniqueId = _json['uniqueId'];
+      uniqueId = _json['uniqueId'] as core.String;
     }
   }
 
@@ -4267,31 +4273,31 @@ class ServiceAccountKey {
 
   ServiceAccountKey.fromJson(core.Map _json) {
     if (_json.containsKey('keyAlgorithm')) {
-      keyAlgorithm = _json['keyAlgorithm'];
+      keyAlgorithm = _json['keyAlgorithm'] as core.String;
     }
     if (_json.containsKey('keyOrigin')) {
-      keyOrigin = _json['keyOrigin'];
+      keyOrigin = _json['keyOrigin'] as core.String;
     }
     if (_json.containsKey('keyType')) {
-      keyType = _json['keyType'];
+      keyType = _json['keyType'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('privateKeyData')) {
-      privateKeyData = _json['privateKeyData'];
+      privateKeyData = _json['privateKeyData'] as core.String;
     }
     if (_json.containsKey('privateKeyType')) {
-      privateKeyType = _json['privateKeyType'];
+      privateKeyType = _json['privateKeyType'] as core.String;
     }
     if (_json.containsKey('publicKeyData')) {
-      publicKeyData = _json['publicKeyData'];
+      publicKeyData = _json['publicKeyData'] as core.String;
     }
     if (_json.containsKey('validAfterTime')) {
-      validAfterTime = _json['validAfterTime'];
+      validAfterTime = _json['validAfterTime'] as core.String;
     }
     if (_json.containsKey('validBeforeTime')) {
-      validBeforeTime = _json['validBeforeTime'];
+      validBeforeTime = _json['validBeforeTime'] as core.String;
     }
   }
 
@@ -4348,7 +4354,7 @@ class SetIamPolicyRequest {
       policy = Policy.fromJson(_json['policy']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -4384,7 +4390,7 @@ class SignBlobRequest {
 
   SignBlobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bytesToSign')) {
-      bytesToSign = _json['bytesToSign'];
+      bytesToSign = _json['bytesToSign'] as core.String;
     }
   }
 
@@ -4421,10 +4427,10 @@ class SignBlobResponse {
 
   SignBlobResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'];
+      keyId = _json['keyId'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
   }
 
@@ -4459,7 +4465,7 @@ class SignJwtRequest {
 
   SignJwtRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = _json['payload'];
+      payload = _json['payload'] as core.String;
     }
   }
 
@@ -4490,10 +4496,10 @@ class SignJwtResponse {
 
   SignJwtResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'];
+      keyId = _json['keyId'] as core.String;
     }
     if (_json.containsKey('signedJwt')) {
-      signedJwt = _json['signedJwt'];
+      signedJwt = _json['signedJwt'] as core.String;
     }
   }
 
@@ -4521,7 +4527,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4544,7 +4552,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4572,7 +4582,7 @@ class UndeleteRoleRequest {
 
   UndeleteRoleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
   }
 
@@ -4638,7 +4648,7 @@ class UploadServiceAccountKeyRequest {
 
   UploadServiceAccountKeyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('publicKeyData')) {
-      publicKeyData = _json['publicKeyData'];
+      publicKeyData = _json['publicKeyData'] as core.String;
     }
   }
 

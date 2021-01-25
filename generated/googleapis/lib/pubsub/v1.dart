@@ -2149,7 +2149,9 @@ class AcknowledgeRequest {
 
   AcknowledgeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('ackIds')) {
-      ackIds = (_json['ackIds'] as core.List).cast<core.String>();
+      ackIds = (_json['ackIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2216,16 +2218,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -2266,10 +2270,12 @@ class CreateSnapshotRequest {
 
   CreateSnapshotRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('subscription')) {
-      subscription = _json['subscription'];
+      subscription = _json['subscription'] as core.String;
     }
   }
 
@@ -2313,10 +2319,10 @@ class DeadLetterPolicy {
 
   DeadLetterPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('deadLetterTopic')) {
-      deadLetterTopic = _json['deadLetterTopic'];
+      deadLetterTopic = _json['deadLetterTopic'] as core.String;
     }
     if (_json.containsKey('maxDeliveryAttempts')) {
-      maxDeliveryAttempts = _json['maxDeliveryAttempts'];
+      maxDeliveryAttempts = _json['maxDeliveryAttempts'] as core.int;
     }
   }
 
@@ -2379,7 +2385,7 @@ class ExpirationPolicy {
 
   ExpirationPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('ttl')) {
-      ttl = _json['ttl'];
+      ttl = _json['ttl'] as core.String;
     }
   }
 
@@ -2429,16 +2435,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -2473,7 +2479,7 @@ class ListSnapshotsResponse {
 
   ListSnapshotsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('snapshots')) {
       snapshots = (_json['snapshots'] as core.List)
@@ -2508,7 +2514,7 @@ class ListSubscriptionsResponse {
 
   ListSubscriptionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('subscriptions')) {
       subscriptions = (_json['subscriptions'] as core.List)
@@ -2544,10 +2550,12 @@ class ListTopicSnapshotsResponse {
 
   ListTopicSnapshotsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('snapshots')) {
-      snapshots = (_json['snapshots'] as core.List).cast<core.String>();
+      snapshots = (_json['snapshots'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2577,10 +2585,12 @@ class ListTopicSubscriptionsResponse {
 
   ListTopicSubscriptionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('subscriptions')) {
-      subscriptions = (_json['subscriptions'] as core.List).cast<core.String>();
+      subscriptions = (_json['subscriptions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2609,7 +2619,7 @@ class ListTopicsResponse {
 
   ListTopicsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('topics')) {
       topics = (_json['topics'] as core.List)
@@ -2644,7 +2654,9 @@ class MessageStoragePolicy {
   MessageStoragePolicy.fromJson(core.Map _json) {
     if (_json.containsKey('allowedPersistenceRegions')) {
       allowedPersistenceRegions =
-          (_json['allowedPersistenceRegions'] as core.List).cast<core.String>();
+          (_json['allowedPersistenceRegions'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
   }
 
@@ -2676,10 +2688,12 @@ class ModifyAckDeadlineRequest {
 
   ModifyAckDeadlineRequest.fromJson(core.Map _json) {
     if (_json.containsKey('ackDeadlineSeconds')) {
-      ackDeadlineSeconds = _json['ackDeadlineSeconds'];
+      ackDeadlineSeconds = _json['ackDeadlineSeconds'] as core.int;
     }
     if (_json.containsKey('ackIds')) {
-      ackIds = (_json['ackIds'] as core.List).cast<core.String>();
+      ackIds = (_json['ackIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2743,10 +2757,10 @@ class OidcToken {
 
   OidcToken.fromJson(core.Map _json) {
     if (_json.containsKey('audience')) {
-      audience = _json['audience'];
+      audience = _json['audience'] as core.String;
     }
     if (_json.containsKey('serviceAccountEmail')) {
-      serviceAccountEmail = _json['serviceAccountEmail'];
+      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
     }
   }
 
@@ -2842,10 +2856,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -2898,7 +2912,9 @@ class PublishResponse {
 
   PublishResponse.fromJson(core.Map _json) {
     if (_json.containsKey('messageIds')) {
-      messageIds = (_json['messageIds'] as core.List).cast<core.String>();
+      messageIds = (_json['messageIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2958,20 +2974,21 @@ class PubsubMessage {
 
   PubsubMessage.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.String>();
+      attributes = commons.mapMap<core.String, core.String>(
+          _json['attributes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('messageId')) {
-      messageId = _json['messageId'];
+      messageId = _json['messageId'] as core.String;
     }
     if (_json.containsKey('orderingKey')) {
-      orderingKey = _json['orderingKey'];
+      orderingKey = _json['orderingKey'] as core.String;
     }
     if (_json.containsKey('publishTime')) {
-      publishTime = _json['publishTime'];
+      publishTime = _json['publishTime'] as core.String;
     }
   }
 
@@ -3016,10 +3033,10 @@ class PullRequest {
 
   PullRequest.fromJson(core.Map _json) {
     if (_json.containsKey('maxMessages')) {
-      maxMessages = _json['maxMessages'];
+      maxMessages = _json['maxMessages'] as core.int;
     }
     if (_json.containsKey('returnImmediately')) {
-      returnImmediately = _json['returnImmediately'];
+      returnImmediately = _json['returnImmediately'] as core.bool;
     }
   }
 
@@ -3093,14 +3110,15 @@ class PushConfig {
 
   PushConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.String>();
+      attributes = commons.mapMap<core.String, core.String>(
+          _json['attributes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('oidcToken')) {
       oidcToken = OidcToken.fromJson(_json['oidcToken']);
     }
     if (_json.containsKey('pushEndpoint')) {
-      pushEndpoint = _json['pushEndpoint'];
+      pushEndpoint = _json['pushEndpoint'] as core.String;
     }
   }
 
@@ -3144,10 +3162,10 @@ class ReceivedMessage {
 
   ReceivedMessage.fromJson(core.Map _json) {
     if (_json.containsKey('ackId')) {
-      ackId = _json['ackId'];
+      ackId = _json['ackId'] as core.String;
     }
     if (_json.containsKey('deliveryAttempt')) {
-      deliveryAttempt = _json['deliveryAttempt'];
+      deliveryAttempt = _json['deliveryAttempt'] as core.int;
     }
     if (_json.containsKey('message')) {
       message = PubsubMessage.fromJson(_json['message']);
@@ -3189,10 +3207,10 @@ class RetryPolicy {
 
   RetryPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('maximumBackoff')) {
-      maximumBackoff = _json['maximumBackoff'];
+      maximumBackoff = _json['maximumBackoff'] as core.String;
     }
     if (_json.containsKey('minimumBackoff')) {
-      minimumBackoff = _json['minimumBackoff'];
+      minimumBackoff = _json['minimumBackoff'] as core.String;
     }
   }
 
@@ -3231,10 +3249,10 @@ class SeekRequest {
 
   SeekRequest.fromJson(core.Map _json) {
     if (_json.containsKey('snapshot')) {
-      snapshot = _json['snapshot'];
+      snapshot = _json['snapshot'] as core.String;
     }
     if (_json.containsKey('time')) {
-      time = _json['time'];
+      time = _json['time'] as core.String;
     }
   }
 
@@ -3321,16 +3339,18 @@ class Snapshot {
 
   Snapshot.fromJson(core.Map _json) {
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('topic')) {
-      topic = _json['topic'];
+      topic = _json['topic'] as core.String;
     }
   }
 
@@ -3453,43 +3473,46 @@ class Subscription {
 
   Subscription.fromJson(core.Map _json) {
     if (_json.containsKey('ackDeadlineSeconds')) {
-      ackDeadlineSeconds = _json['ackDeadlineSeconds'];
+      ackDeadlineSeconds = _json['ackDeadlineSeconds'] as core.int;
     }
     if (_json.containsKey('deadLetterPolicy')) {
       deadLetterPolicy = DeadLetterPolicy.fromJson(_json['deadLetterPolicy']);
     }
     if (_json.containsKey('detached')) {
-      detached = _json['detached'];
+      detached = _json['detached'] as core.bool;
     }
     if (_json.containsKey('enableMessageOrdering')) {
-      enableMessageOrdering = _json['enableMessageOrdering'];
+      enableMessageOrdering = _json['enableMessageOrdering'] as core.bool;
     }
     if (_json.containsKey('expirationPolicy')) {
       expirationPolicy = ExpirationPolicy.fromJson(_json['expirationPolicy']);
     }
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('messageRetentionDuration')) {
-      messageRetentionDuration = _json['messageRetentionDuration'];
+      messageRetentionDuration =
+          _json['messageRetentionDuration'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pushConfig')) {
       pushConfig = PushConfig.fromJson(_json['pushConfig']);
     }
     if (_json.containsKey('retainAckedMessages')) {
-      retainAckedMessages = _json['retainAckedMessages'];
+      retainAckedMessages = _json['retainAckedMessages'] as core.bool;
     }
     if (_json.containsKey('retryPolicy')) {
       retryPolicy = RetryPolicy.fromJson(_json['retryPolicy']);
     }
     if (_json.containsKey('topic')) {
-      topic = _json['topic'];
+      topic = _json['topic'] as core.String;
     }
   }
 
@@ -3550,7 +3573,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3573,7 +3598,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3614,17 +3641,19 @@ class Topic {
 
   Topic.fromJson(core.Map _json) {
     if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'];
+      kmsKeyName = _json['kmsKeyName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('messageStoragePolicy')) {
       messageStoragePolicy =
           MessageStoragePolicy.fromJson(_json['messageStoragePolicy']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3662,7 +3691,7 @@ class UpdateSnapshotRequest {
       snapshot = Snapshot.fromJson(_json['snapshot']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -3694,7 +3723,7 @@ class UpdateSubscriptionRequest {
       subscription = Subscription.fromJson(_json['subscription']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -3729,7 +3758,7 @@ class UpdateTopicRequest {
       topic = Topic.fromJson(_json['topic']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 

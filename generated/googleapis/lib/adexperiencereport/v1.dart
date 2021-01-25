@@ -198,25 +198,27 @@ class PlatformSummary {
 
   PlatformSummary.fromJson(core.Map _json) {
     if (_json.containsKey('betterAdsStatus')) {
-      betterAdsStatus = _json['betterAdsStatus'];
+      betterAdsStatus = _json['betterAdsStatus'] as core.String;
     }
     if (_json.containsKey('enforcementTime')) {
-      enforcementTime = _json['enforcementTime'];
+      enforcementTime = _json['enforcementTime'] as core.String;
     }
     if (_json.containsKey('filterStatus')) {
-      filterStatus = _json['filterStatus'];
+      filterStatus = _json['filterStatus'] as core.String;
     }
     if (_json.containsKey('lastChangeTime')) {
-      lastChangeTime = _json['lastChangeTime'];
+      lastChangeTime = _json['lastChangeTime'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = (_json['region'] as core.List).cast<core.String>();
+      region = (_json['region'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('reportUrl')) {
-      reportUrl = _json['reportUrl'];
+      reportUrl = _json['reportUrl'] as core.String;
     }
     if (_json.containsKey('underReview')) {
-      underReview = _json['underReview'];
+      underReview = _json['underReview'] as core.bool;
     }
   }
 
@@ -268,7 +270,7 @@ class SiteSummaryResponse {
       mobileSummary = PlatformSummary.fromJson(_json['mobileSummary']);
     }
     if (_json.containsKey('reviewedSite')) {
-      reviewedSite = _json['reviewedSite'];
+      reviewedSite = _json['reviewedSite'] as core.String;
     }
   }
 

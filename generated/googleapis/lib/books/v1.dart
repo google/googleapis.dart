@@ -4051,7 +4051,7 @@ class AnnotationClientVersionRanges {
       cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
     if (_json.containsKey('contentVersion')) {
-      contentVersion = _json['contentVersion'];
+      contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
       gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
@@ -4109,7 +4109,7 @@ class AnnotationCurrentVersionRanges {
       cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
     if (_json.containsKey('contentVersion')) {
-      contentVersion = _json['contentVersion'];
+      contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
       gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
@@ -4159,13 +4159,13 @@ class AnnotationLayerSummary {
 
   AnnotationLayerSummary.fromJson(core.Map _json) {
     if (_json.containsKey('allowedCharacterCount')) {
-      allowedCharacterCount = _json['allowedCharacterCount'];
+      allowedCharacterCount = _json['allowedCharacterCount'] as core.int;
     }
     if (_json.containsKey('limitType')) {
-      limitType = _json['limitType'];
+      limitType = _json['limitType'] as core.String;
     }
     if (_json.containsKey('remainingCharacterCount')) {
-      remainingCharacterCount = _json['remainingCharacterCount'];
+      remainingCharacterCount = _json['remainingCharacterCount'] as core.int;
     }
   }
 
@@ -4240,57 +4240,59 @@ class Annotation {
 
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey('afterSelectedText')) {
-      afterSelectedText = _json['afterSelectedText'];
+      afterSelectedText = _json['afterSelectedText'] as core.String;
     }
     if (_json.containsKey('beforeSelectedText')) {
-      beforeSelectedText = _json['beforeSelectedText'];
+      beforeSelectedText = _json['beforeSelectedText'] as core.String;
     }
     if (_json.containsKey('clientVersionRanges')) {
       clientVersionRanges =
           AnnotationClientVersionRanges.fromJson(_json['clientVersionRanges']);
     }
     if (_json.containsKey('created')) {
-      created = _json['created'];
+      created = _json['created'] as core.String;
     }
     if (_json.containsKey('currentVersionRanges')) {
       currentVersionRanges = AnnotationCurrentVersionRanges.fromJson(
           _json['currentVersionRanges']);
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('highlightStyle')) {
-      highlightStyle = _json['highlightStyle'];
+      highlightStyle = _json['highlightStyle'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('layerSummary')) {
       layerSummary = AnnotationLayerSummary.fromJson(_json['layerSummary']);
     }
     if (_json.containsKey('pageIds')) {
-      pageIds = (_json['pageIds'] as core.List).cast<core.String>();
+      pageIds = (_json['pageIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('selectedText')) {
-      selectedText = _json['selectedText'];
+      selectedText = _json['selectedText'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -4375,13 +4377,13 @@ class Annotations {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -4414,19 +4416,19 @@ class AnnotationsSummaryLayers {
 
   AnnotationsSummaryLayers.fromJson(core.Map _json) {
     if (_json.containsKey('allowedCharacterCount')) {
-      allowedCharacterCount = _json['allowedCharacterCount'];
+      allowedCharacterCount = _json['allowedCharacterCount'] as core.int;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('limitType')) {
-      limitType = _json['limitType'];
+      limitType = _json['limitType'] as core.String;
     }
     if (_json.containsKey('remainingCharacterCount')) {
-      remainingCharacterCount = _json['remainingCharacterCount'];
+      remainingCharacterCount = _json['remainingCharacterCount'] as core.int;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
   }
 
@@ -4459,7 +4461,7 @@ class AnnotationsSummary {
 
   AnnotationsSummary.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layers')) {
       layers = (_json['layers'] as core.List)
@@ -4504,13 +4506,13 @@ class Annotationsdata {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -4549,16 +4551,16 @@ class BooksAnnotationsRange {
 
   BooksAnnotationsRange.fromJson(core.Map _json) {
     if (_json.containsKey('endOffset')) {
-      endOffset = _json['endOffset'];
+      endOffset = _json['endOffset'] as core.String;
     }
     if (_json.containsKey('endPosition')) {
-      endPosition = _json['endPosition'];
+      endPosition = _json['endPosition'] as core.String;
     }
     if (_json.containsKey('startOffset')) {
-      startOffset = _json['startOffset'];
+      startOffset = _json['startOffset'] as core.String;
     }
     if (_json.containsKey('startPosition')) {
-      startPosition = _json['startPosition'];
+      startPosition = _json['startPosition'] as core.String;
     }
   }
 
@@ -4590,16 +4592,16 @@ class BooksCloudloadingResource {
 
   BooksCloudloadingResource.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = _json['author'];
+      author = _json['author'] as core.String;
     }
     if (_json.containsKey('processingState')) {
-      processingState = _json['processingState'];
+      processingState = _json['processingState'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -4628,7 +4630,7 @@ class BooksVolumesRecommendedRateResponse {
 
   BooksVolumesRecommendedRateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('consistency_token')) {
-      consistencyToken = _json['consistency_token'];
+      consistencyToken = _json['consistency_token'] as core.String;
     }
   }
 
@@ -4679,34 +4681,34 @@ class Bookshelf {
 
   Bookshelf.fromJson(core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
     if (_json.containsKey('created')) {
-      created = _json['created'];
+      created = _json['created'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.int;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeCount')) {
-      volumeCount = _json['volumeCount'];
+      volumeCount = _json['volumeCount'] as core.int;
     }
     if (_json.containsKey('volumesLastUpdated')) {
-      volumesLastUpdated = _json['volumesLastUpdated'];
+      volumesLastUpdated = _json['volumesLastUpdated'] as core.String;
     }
   }
 
@@ -4762,7 +4764,7 @@ class Bookshelves {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4787,13 +4789,13 @@ class CategoryItems {
 
   CategoryItems.fromJson(core.Map _json) {
     if (_json.containsKey('badgeUrl')) {
-      badgeUrl = _json['badgeUrl'];
+      badgeUrl = _json['badgeUrl'] as core.String;
     }
     if (_json.containsKey('categoryId')) {
-      categoryId = _json['categoryId'];
+      categoryId = _json['categoryId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4828,7 +4830,7 @@ class Category {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4883,37 +4885,37 @@ class ConcurrentAccessRestriction {
 
   ConcurrentAccessRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('deviceAllowed')) {
-      deviceAllowed = _json['deviceAllowed'];
+      deviceAllowed = _json['deviceAllowed'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxConcurrentDevices')) {
-      maxConcurrentDevices = _json['maxConcurrentDevices'];
+      maxConcurrentDevices = _json['maxConcurrentDevices'] as core.int;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('nonce')) {
-      nonce = _json['nonce'];
+      nonce = _json['nonce'] as core.String;
     }
     if (_json.containsKey('reasonCode')) {
-      reasonCode = _json['reasonCode'];
+      reasonCode = _json['reasonCode'] as core.String;
     }
     if (_json.containsKey('restricted')) {
-      restricted = _json['restricted'];
+      restricted = _json['restricted'] as core.bool;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('timeWindowSeconds')) {
-      timeWindowSeconds = _json['timeWindowSeconds'];
+      timeWindowSeconds = _json['timeWindowSeconds'] as core.int;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -4997,31 +4999,31 @@ class DictionaryAnnotationdata {
 
   DictionaryAnnotationdata.fromJson(core.Map _json) {
     if (_json.containsKey('annotationType')) {
-      annotationType = _json['annotationType'];
+      annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('data')) {
       data = Dictlayerdata.fromJson(_json['data']);
     }
     if (_json.containsKey('encodedData')) {
-      encodedData = _json['encodedData'];
+      encodedData = _json['encodedData'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -5067,7 +5069,7 @@ class DictlayerdataCommon {
 
   DictlayerdataCommon.fromJson(core.Map _json) {
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -5089,10 +5091,10 @@ class DictlayerdataDictSource {
 
   DictlayerdataDictSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5116,10 +5118,10 @@ class DictlayerdataDictWordsDerivativesSource {
 
   DictlayerdataDictWordsDerivativesSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5147,7 +5149,7 @@ class DictlayerdataDictWordsDerivatives {
           DictlayerdataDictWordsDerivativesSource.fromJson(_json['source']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5171,10 +5173,10 @@ class DictlayerdataDictWordsExamplesSource {
 
   DictlayerdataDictWordsExamplesSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5201,7 +5203,7 @@ class DictlayerdataDictWordsExamples {
       source = DictlayerdataDictWordsExamplesSource.fromJson(_json['source']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5225,10 +5227,10 @@ class DictlayerdataDictWordsSensesConjugations {
 
   DictlayerdataDictWordsSensesConjugations.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -5253,10 +5255,10 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
   DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
       core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5284,7 +5286,7 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
           _json['source']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5308,7 +5310,7 @@ class DictlayerdataDictWordsSensesDefinitions {
 
   DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map _json) {
     if (_json.containsKey('definition')) {
-      definition = _json['definition'];
+      definition = _json['definition'] as core.String;
     }
     if (_json.containsKey('examples')) {
       examples = (_json['examples'] as core.List)
@@ -5338,10 +5340,10 @@ class DictlayerdataDictWordsSensesSource {
 
   DictlayerdataDictWordsSensesSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5365,10 +5367,10 @@ class DictlayerdataDictWordsSensesSynonymsSource {
 
   DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5396,7 +5398,7 @@ class DictlayerdataDictWordsSensesSynonyms {
           DictlayerdataDictWordsSensesSynonymsSource.fromJson(_json['source']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5438,19 +5440,19 @@ class DictlayerdataDictWordsSenses {
           .toList();
     }
     if (_json.containsKey('partOfSpeech')) {
-      partOfSpeech = _json['partOfSpeech'];
+      partOfSpeech = _json['partOfSpeech'] as core.String;
     }
     if (_json.containsKey('pronunciation')) {
-      pronunciation = _json['pronunciation'];
+      pronunciation = _json['pronunciation'] as core.String;
     }
     if (_json.containsKey('pronunciationUrl')) {
-      pronunciationUrl = _json['pronunciationUrl'];
+      pronunciationUrl = _json['pronunciationUrl'] as core.String;
     }
     if (_json.containsKey('source')) {
       source = DictlayerdataDictWordsSensesSource.fromJson(_json['source']);
     }
     if (_json.containsKey('syllabification')) {
-      syllabification = _json['syllabification'];
+      syllabification = _json['syllabification'] as core.String;
     }
     if (_json.containsKey('synonyms')) {
       synonyms = (_json['synonyms'] as core.List)
@@ -5502,10 +5504,10 @@ class DictlayerdataDictWordsSource {
 
   DictlayerdataDictWordsSource.fromJson(core.Map _json) {
     if (_json.containsKey('attribution')) {
-      attribution = _json['attribution'];
+      attribution = _json['attribution'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -5621,7 +5623,7 @@ class Dictlayerdata {
       dict = DictlayerdataDict.fromJson(_json['dict']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -5652,22 +5654,22 @@ class DiscoveryclustersClustersBannerWithContentContainer {
 
   DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map _json) {
     if (_json.containsKey('fillColorArgb')) {
-      fillColorArgb = _json['fillColorArgb'];
+      fillColorArgb = _json['fillColorArgb'] as core.String;
     }
     if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'];
+      imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('maskColorArgb')) {
-      maskColorArgb = _json['maskColorArgb'];
+      maskColorArgb = _json['maskColorArgb'] as core.String;
     }
     if (_json.containsKey('moreButtonText')) {
-      moreButtonText = _json['moreButtonText'];
+      moreButtonText = _json['moreButtonText'] as core.String;
     }
     if (_json.containsKey('moreButtonUrl')) {
-      moreButtonUrl = _json['moreButtonUrl'];
+      moreButtonUrl = _json['moreButtonUrl'] as core.String;
     }
     if (_json.containsKey('textColorArgb')) {
-      textColorArgb = _json['textColorArgb'];
+      textColorArgb = _json['textColorArgb'] as core.String;
     }
   }
 
@@ -5713,16 +5715,16 @@ class DiscoveryclustersClusters {
               _json['banner_with_content_container']);
     }
     if (_json.containsKey('subTitle')) {
-      subTitle = _json['subTitle'];
+      subTitle = _json['subTitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('totalVolumes')) {
-      totalVolumes = _json['totalVolumes'];
+      totalVolumes = _json['totalVolumes'] as core.int;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
@@ -5773,10 +5775,10 @@ class Discoveryclusters {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('totalClusters')) {
-      totalClusters = _json['totalClusters'];
+      totalClusters = _json['totalClusters'] as core.int;
     }
   }
 
@@ -5841,40 +5843,40 @@ class DownloadAccessRestriction {
 
   DownloadAccessRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('deviceAllowed')) {
-      deviceAllowed = _json['deviceAllowed'];
+      deviceAllowed = _json['deviceAllowed'] as core.bool;
     }
     if (_json.containsKey('downloadsAcquired')) {
-      downloadsAcquired = _json['downloadsAcquired'];
+      downloadsAcquired = _json['downloadsAcquired'] as core.int;
     }
     if (_json.containsKey('justAcquired')) {
-      justAcquired = _json['justAcquired'];
+      justAcquired = _json['justAcquired'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxDownloadDevices')) {
-      maxDownloadDevices = _json['maxDownloadDevices'];
+      maxDownloadDevices = _json['maxDownloadDevices'] as core.int;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('nonce')) {
-      nonce = _json['nonce'];
+      nonce = _json['nonce'] as core.String;
     }
     if (_json.containsKey('reasonCode')) {
-      reasonCode = _json['reasonCode'];
+      reasonCode = _json['reasonCode'] as core.String;
     }
     if (_json.containsKey('restricted')) {
-      restricted = _json['restricted'];
+      restricted = _json['restricted'] as core.bool;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -5937,7 +5939,7 @@ class DownloadAccesses {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -5991,19 +5993,19 @@ class FamilyInfoMembership {
 
   FamilyInfoMembership.fromJson(core.Map _json) {
     if (_json.containsKey('acquirePermission')) {
-      acquirePermission = _json['acquirePermission'];
+      acquirePermission = _json['acquirePermission'] as core.String;
     }
     if (_json.containsKey('ageGroup')) {
-      ageGroup = _json['ageGroup'];
+      ageGroup = _json['ageGroup'] as core.String;
     }
     if (_json.containsKey('allowedMaturityRating')) {
-      allowedMaturityRating = _json['allowedMaturityRating'];
+      allowedMaturityRating = _json['allowedMaturityRating'] as core.String;
     }
     if (_json.containsKey('isInFamily')) {
-      isInFamily = _json['isInFamily'];
+      isInFamily = _json['isInFamily'] as core.bool;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -6039,7 +6041,7 @@ class FamilyInfo {
 
   FamilyInfo.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('membership')) {
       membership = FamilyInfoMembership.fromJson(_json['membership']);
@@ -6099,31 +6101,31 @@ class GeoAnnotationdata {
 
   GeoAnnotationdata.fromJson(core.Map _json) {
     if (_json.containsKey('annotationType')) {
-      annotationType = _json['annotationType'];
+      annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('data')) {
       data = Geolayerdata.fromJson(_json['data']);
     }
     if (_json.containsKey('encodedData')) {
-      encodedData = _json['encodedData'];
+      encodedData = _json['encodedData'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -6181,19 +6183,19 @@ class GeolayerdataCommon {
 
   GeolayerdataCommon.fromJson(core.Map _json) {
     if (_json.containsKey('lang')) {
-      lang = _json['lang'];
+      lang = _json['lang'] as core.String;
     }
     if (_json.containsKey('previewImageUrl')) {
-      previewImageUrl = _json['previewImageUrl'];
+      previewImageUrl = _json['previewImageUrl'] as core.String;
     }
     if (_json.containsKey('snippet')) {
-      snippet = _json['snippet'];
+      snippet = _json['snippet'] as core.String;
     }
     if (_json.containsKey('snippetUrl')) {
-      snippetUrl = _json['snippetUrl'];
+      snippetUrl = _json['snippetUrl'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -6336,13 +6338,15 @@ class GeolayerdataGeo {
 
   GeolayerdataGeo.fromJson(core.Map _json) {
     if (_json.containsKey('boundary')) {
-      boundary = (_json['boundary'] as core.List).cast<core.String>();
+      boundary = (_json['boundary'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('cachePolicy')) {
-      cachePolicy = _json['cachePolicy'];
+      cachePolicy = _json['cachePolicy'] as core.String;
     }
     if (_json.containsKey('countryCode')) {
-      countryCode = _json['countryCode'];
+      countryCode = _json['countryCode'] as core.String;
     }
     if (_json.containsKey('latitude')) {
       latitude = _json['latitude'].toDouble();
@@ -6351,13 +6355,13 @@ class GeolayerdataGeo {
       longitude = _json['longitude'].toDouble();
     }
     if (_json.containsKey('mapType')) {
-      mapType = _json['mapType'];
+      mapType = _json['mapType'] as core.String;
     }
     if (_json.containsKey('viewport')) {
       viewport = GeolayerdataGeoViewport.fromJson(_json['viewport']);
     }
     if (_json.containsKey('zoom')) {
-      zoom = _json['zoom'];
+      zoom = _json['zoom'] as core.int;
     }
   }
 
@@ -6406,7 +6410,7 @@ class Geolayerdata {
       geo = GeolayerdataGeo.fromJson(_json['geo']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6444,10 +6448,10 @@ class Layersummaries {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -6513,44 +6517,46 @@ class Layersummary {
 
   Layersummary.fromJson(core.Map _json) {
     if (_json.containsKey('annotationCount')) {
-      annotationCount = _json['annotationCount'];
+      annotationCount = _json['annotationCount'] as core.int;
     }
     if (_json.containsKey('annotationTypes')) {
-      annotationTypes =
-          (_json['annotationTypes'] as core.List).cast<core.String>();
+      annotationTypes = (_json['annotationTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('annotationsDataLink')) {
-      annotationsDataLink = _json['annotationsDataLink'];
+      annotationsDataLink = _json['annotationsDataLink'] as core.String;
     }
     if (_json.containsKey('annotationsLink')) {
-      annotationsLink = _json['annotationsLink'];
+      annotationsLink = _json['annotationsLink'] as core.String;
     }
     if (_json.containsKey('contentVersion')) {
-      contentVersion = _json['contentVersion'];
+      contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('dataCount')) {
-      dataCount = _json['dataCount'];
+      dataCount = _json['dataCount'] as core.int;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeAnnotationsVersion')) {
-      volumeAnnotationsVersion = _json['volumeAnnotationsVersion'];
+      volumeAnnotationsVersion =
+          _json['volumeAnnotationsVersion'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -6610,19 +6616,19 @@ class MetadataItems {
 
   MetadataItems.fromJson(core.Map _json) {
     if (_json.containsKey('download_url')) {
-      downloadUrl = _json['download_url'];
+      downloadUrl = _json['download_url'] as core.String;
     }
     if (_json.containsKey('encrypted_key')) {
-      encryptedKey = _json['encrypted_key'];
+      encryptedKey = _json['encrypted_key'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -6663,7 +6669,7 @@ class Metadata {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6705,54 +6711,55 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey('body')) {
-      body = _json['body'];
+      body = _json['body'] as core.String;
     }
     if (_json.containsKey('crmExperimentIds')) {
-      crmExperimentIds =
-          (_json['crmExperimentIds'] as core.List).cast<core.String>();
+      crmExperimentIds = (_json['crmExperimentIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('doc_id')) {
-      docId = _json['doc_id'];
+      docId = _json['doc_id'] as core.String;
     }
     if (_json.containsKey('doc_type')) {
-      docType = _json['doc_type'];
+      docType = _json['doc_type'] as core.String;
     }
     if (_json.containsKey('dont_show_notification')) {
-      dontShowNotification = _json['dont_show_notification'];
+      dontShowNotification = _json['dont_show_notification'] as core.bool;
     }
     if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'];
+      iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('is_document_mature')) {
-      isDocumentMature = _json['is_document_mature'];
+      isDocumentMature = _json['is_document_mature'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('notificationGroup')) {
-      notificationGroup = _json['notificationGroup'];
+      notificationGroup = _json['notificationGroup'] as core.String;
     }
     if (_json.containsKey('notification_type')) {
-      notificationType = _json['notification_type'];
+      notificationType = _json['notification_type'] as core.String;
     }
     if (_json.containsKey('pcampaign_id')) {
-      pcampaignId = _json['pcampaign_id'];
+      pcampaignId = _json['pcampaign_id'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('show_notification_settings_action')) {
       showNotificationSettingsAction =
-          _json['show_notification_settings_action'];
+          _json['show_notification_settings_action'] as core.bool;
     }
     if (_json.containsKey('targetUrl')) {
-      targetUrl = _json['targetUrl'];
+      targetUrl = _json['targetUrl'] as core.String;
     }
     if (_json.containsKey('timeToExpireMs')) {
-      timeToExpireMs = _json['timeToExpireMs'];
+      timeToExpireMs = _json['timeToExpireMs'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -6823,22 +6830,22 @@ class OffersItemsItems {
 
   OffersItemsItems.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = _json['author'];
+      author = _json['author'] as core.String;
     }
     if (_json.containsKey('canonicalVolumeLink')) {
-      canonicalVolumeLink = _json['canonicalVolumeLink'];
+      canonicalVolumeLink = _json['canonicalVolumeLink'] as core.String;
     }
     if (_json.containsKey('coverUrl')) {
-      coverUrl = _json['coverUrl'];
+      coverUrl = _json['coverUrl'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -6876,13 +6883,13 @@ class OffersItems {
 
   OffersItems.fromJson(core.Map _json) {
     if (_json.containsKey('artUrl')) {
-      artUrl = _json['artUrl'];
+      artUrl = _json['artUrl'] as core.String;
     }
     if (_json.containsKey('gservicesKey')) {
-      gservicesKey = _json['gservicesKey'];
+      gservicesKey = _json['gservicesKey'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -6925,7 +6932,7 @@ class Offers {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6968,25 +6975,25 @@ class ReadingPosition {
 
   ReadingPosition.fromJson(core.Map _json) {
     if (_json.containsKey('epubCfiPosition')) {
-      epubCfiPosition = _json['epubCfiPosition'];
+      epubCfiPosition = _json['epubCfiPosition'] as core.String;
     }
     if (_json.containsKey('gbImagePosition')) {
-      gbImagePosition = _json['gbImagePosition'];
+      gbImagePosition = _json['gbImagePosition'] as core.String;
     }
     if (_json.containsKey('gbTextPosition')) {
-      gbTextPosition = _json['gbTextPosition'];
+      gbTextPosition = _json['gbTextPosition'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('pdfPosition')) {
-      pdfPosition = _json['pdfPosition'];
+      pdfPosition = _json['pdfPosition'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -7039,7 +7046,7 @@ class RequestAccessData {
           DownloadAccessRestriction.fromJson(_json['downloadAccess']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -7067,7 +7074,7 @@ class ReviewAuthor {
 
   ReviewAuthor.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
   }
 
@@ -7096,13 +7103,13 @@ class ReviewSource {
 
   ReviewSource.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('extraDescription')) {
-      extraDescription = _json['extraDescription'];
+      extraDescription = _json['extraDescription'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -7162,31 +7169,31 @@ class Review {
       author = ReviewAuthor.fromJson(_json['author']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('date')) {
-      date = _json['date'];
+      date = _json['date'] as core.String;
     }
     if (_json.containsKey('fullTextUrl')) {
-      fullTextUrl = _json['fullTextUrl'];
+      fullTextUrl = _json['fullTextUrl'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('rating')) {
-      rating = _json['rating'];
+      rating = _json['rating'] as core.String;
     }
     if (_json.containsKey('source')) {
       source = ReviewSource.fromJson(_json['source']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -7240,13 +7247,13 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
       amountInMicros = _json['amountInMicros'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('releaseNumber')) {
-      releaseNumber = _json['releaseNumber'];
+      releaseNumber = _json['releaseNumber'] as core.String;
     }
     if (_json.containsKey('releaseTime')) {
-      releaseTime = _json['releaseTime'];
+      releaseTime = _json['releaseTime'] as core.String;
     }
   }
 
@@ -7282,13 +7289,13 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
       amountInMicros = _json['amountInMicros'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('releaseNumber')) {
-      releaseNumber = _json['releaseNumber'];
+      releaseNumber = _json['releaseNumber'] as core.String;
     }
     if (_json.containsKey('releaseTime')) {
-      releaseTime = _json['releaseTime'];
+      releaseTime = _json['releaseTime'] as core.String;
     }
   }
 
@@ -7321,7 +7328,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
 
   SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map _json) {
     if (_json.containsKey('cancelTime')) {
-      cancelTime = _json['cancelTime'];
+      cancelTime = _json['cancelTime'] as core.String;
     }
     if (_json.containsKey('currentReleaseInfo')) {
       currentReleaseInfo =
@@ -7334,7 +7341,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
               _json['nextReleaseInfo']);
     }
     if (_json.containsKey('seriesSubscriptionType')) {
-      seriesSubscriptionType = _json['seriesSubscriptionType'];
+      seriesSubscriptionType = _json['seriesSubscriptionType'] as core.String;
     }
   }
 
@@ -7372,22 +7379,22 @@ class SeriesSeries {
 
   SeriesSeries.fromJson(core.Map _json) {
     if (_json.containsKey('bannerImageUrl')) {
-      bannerImageUrl = _json['bannerImageUrl'];
+      bannerImageUrl = _json['bannerImageUrl'] as core.String;
     }
     if (_json.containsKey('eligibleForSubscription')) {
-      eligibleForSubscription = _json['eligibleForSubscription'];
+      eligibleForSubscription = _json['eligibleForSubscription'] as core.bool;
     }
     if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'];
+      imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('isComplete')) {
-      isComplete = _json['isComplete'];
+      isComplete = _json['isComplete'] as core.bool;
     }
     if (_json.containsKey('seriesFormatType')) {
-      seriesFormatType = _json['seriesFormatType'];
+      seriesFormatType = _json['seriesFormatType'] as core.String;
     }
     if (_json.containsKey('seriesId')) {
-      seriesId = _json['seriesId'];
+      seriesId = _json['seriesId'] as core.String;
     }
     if (_json.containsKey('seriesSubscriptionReleaseInfo')) {
       seriesSubscriptionReleaseInfo =
@@ -7395,13 +7402,13 @@ class SeriesSeries {
               _json['seriesSubscriptionReleaseInfo']);
     }
     if (_json.containsKey('seriesType')) {
-      seriesType = _json['seriesType'];
+      seriesType = _json['seriesType'] as core.String;
     }
     if (_json.containsKey('subscriptionId')) {
-      subscriptionId = _json['subscriptionId'];
+      subscriptionId = _json['subscriptionId'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7451,7 +7458,7 @@ class Series {
 
   Series.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
@@ -7482,7 +7489,7 @@ class Seriesmembership {
 
   Seriesmembership.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('member')) {
       member = (_json['member'] as core.List)
@@ -7490,7 +7497,7 @@ class Seriesmembership {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -7518,10 +7525,10 @@ class UsersettingsNotesExport {
 
   UsersettingsNotesExport.fromJson(core.Map _json) {
     if (_json.containsKey('folderName')) {
-      folderName = _json['folderName'];
+      folderName = _json['folderName'] as core.String;
     }
     if (_json.containsKey('isEnabled')) {
-      isEnabled = _json['isEnabled'];
+      isEnabled = _json['isEnabled'] as core.bool;
     }
   }
 
@@ -7544,7 +7551,7 @@ class UsersettingsNotificationMatchMyInterests {
 
   UsersettingsNotificationMatchMyInterests.fromJson(core.Map _json) {
     if (_json.containsKey('opted_state')) {
-      optedState = _json['opted_state'];
+      optedState = _json['opted_state'] as core.String;
     }
   }
 
@@ -7564,7 +7571,7 @@ class UsersettingsNotificationMoreFromAuthors {
 
   UsersettingsNotificationMoreFromAuthors.fromJson(core.Map _json) {
     if (_json.containsKey('opted_state')) {
-      optedState = _json['opted_state'];
+      optedState = _json['opted_state'] as core.String;
     }
   }
 
@@ -7584,7 +7591,7 @@ class UsersettingsNotificationMoreFromSeries {
 
   UsersettingsNotificationMoreFromSeries.fromJson(core.Map _json) {
     if (_json.containsKey('opted_state')) {
-      optedState = _json['opted_state'];
+      optedState = _json['opted_state'] as core.String;
     }
   }
 
@@ -7604,7 +7611,7 @@ class UsersettingsNotificationPriceDrop {
 
   UsersettingsNotificationPriceDrop.fromJson(core.Map _json) {
     if (_json.containsKey('opted_state')) {
-      optedState = _json['opted_state'];
+      optedState = _json['opted_state'] as core.String;
     }
   }
 
@@ -7624,7 +7631,7 @@ class UsersettingsNotificationRewardExpirations {
 
   UsersettingsNotificationRewardExpirations.fromJson(core.Map _json) {
     if (_json.containsKey('opted_state')) {
-      optedState = _json['opted_state'];
+      optedState = _json['opted_state'] as core.String;
     }
   }
 
@@ -7702,7 +7709,7 @@ class Usersettings {
 
   Usersettings.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('notesExport')) {
       notesExport = UsersettingsNotesExport.fromJson(_json['notesExport']);
@@ -7743,13 +7750,13 @@ class VolumeAccessInfoEpub {
 
   VolumeAccessInfoEpub.fromJson(core.Map _json) {
     if (_json.containsKey('acsTokenLink')) {
-      acsTokenLink = _json['acsTokenLink'];
+      acsTokenLink = _json['acsTokenLink'] as core.String;
     }
     if (_json.containsKey('downloadLink')) {
-      downloadLink = _json['downloadLink'];
+      downloadLink = _json['downloadLink'] as core.String;
     }
     if (_json.containsKey('isAvailable')) {
-      isAvailable = _json['isAvailable'];
+      isAvailable = _json['isAvailable'] as core.bool;
     }
   }
 
@@ -7784,13 +7791,13 @@ class VolumeAccessInfoPdf {
 
   VolumeAccessInfoPdf.fromJson(core.Map _json) {
     if (_json.containsKey('acsTokenLink')) {
-      acsTokenLink = _json['acsTokenLink'];
+      acsTokenLink = _json['acsTokenLink'] as core.String;
     }
     if (_json.containsKey('downloadLink')) {
-      downloadLink = _json['downloadLink'];
+      downloadLink = _json['downloadLink'] as core.String;
     }
     if (_json.containsKey('isAvailable')) {
-      isAvailable = _json['isAvailable'];
+      isAvailable = _json['isAvailable'] as core.bool;
     }
   }
 
@@ -7874,48 +7881,49 @@ class VolumeAccessInfo {
 
   VolumeAccessInfo.fromJson(core.Map _json) {
     if (_json.containsKey('accessViewStatus')) {
-      accessViewStatus = _json['accessViewStatus'];
+      accessViewStatus = _json['accessViewStatus'] as core.String;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('downloadAccess')) {
       downloadAccess =
           DownloadAccessRestriction.fromJson(_json['downloadAccess']);
     }
     if (_json.containsKey('driveImportedContentLink')) {
-      driveImportedContentLink = _json['driveImportedContentLink'];
+      driveImportedContentLink =
+          _json['driveImportedContentLink'] as core.String;
     }
     if (_json.containsKey('embeddable')) {
-      embeddable = _json['embeddable'];
+      embeddable = _json['embeddable'] as core.bool;
     }
     if (_json.containsKey('epub')) {
       epub = VolumeAccessInfoEpub.fromJson(_json['epub']);
     }
     if (_json.containsKey('explicitOfflineLicenseManagement')) {
       explicitOfflineLicenseManagement =
-          _json['explicitOfflineLicenseManagement'];
+          _json['explicitOfflineLicenseManagement'] as core.bool;
     }
     if (_json.containsKey('pdf')) {
       pdf = VolumeAccessInfoPdf.fromJson(_json['pdf']);
     }
     if (_json.containsKey('publicDomain')) {
-      publicDomain = _json['publicDomain'];
+      publicDomain = _json['publicDomain'] as core.bool;
     }
     if (_json.containsKey('quoteSharingAllowed')) {
-      quoteSharingAllowed = _json['quoteSharingAllowed'];
+      quoteSharingAllowed = _json['quoteSharingAllowed'] as core.bool;
     }
     if (_json.containsKey('textToSpeechPermission')) {
-      textToSpeechPermission = _json['textToSpeechPermission'];
+      textToSpeechPermission = _json['textToSpeechPermission'] as core.String;
     }
     if (_json.containsKey('viewOrderUrl')) {
-      viewOrderUrl = _json['viewOrderUrl'];
+      viewOrderUrl = _json['viewOrderUrl'] as core.String;
     }
     if (_json.containsKey('viewability')) {
-      viewability = _json['viewability'];
+      viewability = _json['viewability'] as core.String;
     }
     if (_json.containsKey('webReaderLink')) {
-      webReaderLink = _json['webReaderLink'];
+      webReaderLink = _json['webReaderLink'] as core.String;
     }
   }
 
@@ -7981,10 +7989,11 @@ class VolumeLayerInfoLayers {
 
   VolumeLayerInfoLayers.fromJson(core.Map _json) {
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('volumeAnnotationsVersion')) {
-      volumeAnnotationsVersion = _json['volumeAnnotationsVersion'];
+      volumeAnnotationsVersion =
+          _json['volumeAnnotationsVersion'] as core.String;
     }
   }
 
@@ -8034,7 +8043,7 @@ class VolumeRecommendedInfo {
 
   VolumeRecommendedInfo.fromJson(core.Map _json) {
     if (_json.containsKey('explanation')) {
-      explanation = _json['explanation'];
+      explanation = _json['explanation'] as core.String;
     }
   }
 
@@ -8062,7 +8071,7 @@ class VolumeSaleInfoListPrice {
       amount = _json['amount'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
   }
 
@@ -8090,7 +8099,7 @@ class VolumeSaleInfoOffersListPrice {
       amountInMicros = _json['amountInMicros'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
   }
 
@@ -8118,7 +8127,7 @@ class VolumeSaleInfoOffersRentalDuration {
       count = _json['count'].toDouble();
     }
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
   }
 
@@ -8146,7 +8155,7 @@ class VolumeSaleInfoOffersRetailPrice {
       amountInMicros = _json['amountInMicros'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
   }
 
@@ -8182,10 +8191,10 @@ class VolumeSaleInfoOffers {
 
   VolumeSaleInfoOffers.fromJson(core.Map _json) {
     if (_json.containsKey('finskyOfferType')) {
-      finskyOfferType = _json['finskyOfferType'];
+      finskyOfferType = _json['finskyOfferType'] as core.int;
     }
     if (_json.containsKey('giftable')) {
-      giftable = _json['giftable'];
+      giftable = _json['giftable'] as core.bool;
     }
     if (_json.containsKey('listPrice')) {
       listPrice = VolumeSaleInfoOffersListPrice.fromJson(_json['listPrice']);
@@ -8238,7 +8247,7 @@ class VolumeSaleInfoRetailPrice {
       amount = _json['amount'].toDouble();
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
   }
 
@@ -8294,13 +8303,13 @@ class VolumeSaleInfo {
 
   VolumeSaleInfo.fromJson(core.Map _json) {
     if (_json.containsKey('buyLink')) {
-      buyLink = _json['buyLink'];
+      buyLink = _json['buyLink'] as core.String;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('isEbook')) {
-      isEbook = _json['isEbook'];
+      isEbook = _json['isEbook'] as core.bool;
     }
     if (_json.containsKey('listPrice')) {
       listPrice = VolumeSaleInfoListPrice.fromJson(_json['listPrice']);
@@ -8312,13 +8321,13 @@ class VolumeSaleInfo {
           .toList();
     }
     if (_json.containsKey('onSaleDate')) {
-      onSaleDate = _json['onSaleDate'];
+      onSaleDate = _json['onSaleDate'] as core.String;
     }
     if (_json.containsKey('retailPrice')) {
       retailPrice = VolumeSaleInfoRetailPrice.fromJson(_json['retailPrice']);
     }
     if (_json.containsKey('saleability')) {
-      saleability = _json['saleability'];
+      saleability = _json['saleability'] as core.String;
     }
   }
 
@@ -8361,7 +8370,7 @@ class VolumeSearchInfo {
 
   VolumeSearchInfo.fromJson(core.Map _json) {
     if (_json.containsKey('textSnippet')) {
-      textSnippet = _json['textSnippet'];
+      textSnippet = _json['textSnippet'] as core.String;
     }
   }
 
@@ -8385,16 +8394,16 @@ class VolumeUserInfoCopy {
 
   VolumeUserInfoCopy.fromJson(core.Map _json) {
     if (_json.containsKey('allowedCharacterCount')) {
-      allowedCharacterCount = _json['allowedCharacterCount'];
+      allowedCharacterCount = _json['allowedCharacterCount'] as core.int;
     }
     if (_json.containsKey('limitType')) {
-      limitType = _json['limitType'];
+      limitType = _json['limitType'] as core.String;
     }
     if (_json.containsKey('remainingCharacterCount')) {
-      remainingCharacterCount = _json['remainingCharacterCount'];
+      remainingCharacterCount = _json['remainingCharacterCount'] as core.int;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
   }
 
@@ -8434,13 +8443,13 @@ class VolumeUserInfoFamilySharing {
 
   VolumeUserInfoFamilySharing.fromJson(core.Map _json) {
     if (_json.containsKey('familyRole')) {
-      familyRole = _json['familyRole'];
+      familyRole = _json['familyRole'] as core.String;
     }
     if (_json.containsKey('isSharingAllowed')) {
-      isSharingAllowed = _json['isSharingAllowed'];
+      isSharingAllowed = _json['isSharingAllowed'] as core.bool;
     }
     if (_json.containsKey('isSharingDisabledByFop')) {
-      isSharingDisabledByFop = _json['isSharingDisabledByFop'];
+      isSharingDisabledByFop = _json['isSharingDisabledByFop'] as core.bool;
     }
   }
 
@@ -8468,10 +8477,10 @@ class VolumeUserInfoRentalPeriod {
 
   VolumeUserInfoRentalPeriod.fromJson(core.Map _json) {
     if (_json.containsKey('endUtcSec')) {
-      endUtcSec = _json['endUtcSec'];
+      endUtcSec = _json['endUtcSec'] as core.String;
     }
     if (_json.containsKey('startUtcSec')) {
-      startUtcSec = _json['startUtcSec'];
+      startUtcSec = _json['startUtcSec'] as core.String;
     }
   }
 
@@ -8494,7 +8503,7 @@ class VolumeUserInfoUserUploadedVolumeInfo {
 
   VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map _json) {
     if (_json.containsKey('processingState')) {
-      processingState = _json['processingState'];
+      processingState = _json['processingState'] as core.String;
     }
   }
 
@@ -8576,44 +8585,45 @@ class VolumeUserInfo {
 
   VolumeUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('acquiredTime')) {
-      acquiredTime = _json['acquiredTime'];
+      acquiredTime = _json['acquiredTime'] as core.String;
     }
     if (_json.containsKey('acquisitionType')) {
-      acquisitionType = _json['acquisitionType'];
+      acquisitionType = _json['acquisitionType'] as core.int;
     }
     if (_json.containsKey('copy')) {
       copy = VolumeUserInfoCopy.fromJson(_json['copy']);
     }
     if (_json.containsKey('entitlementType')) {
-      entitlementType = _json['entitlementType'];
+      entitlementType = _json['entitlementType'] as core.int;
     }
     if (_json.containsKey('familySharing')) {
       familySharing =
           VolumeUserInfoFamilySharing.fromJson(_json['familySharing']);
     }
     if (_json.containsKey('isFamilySharedFromUser')) {
-      isFamilySharedFromUser = _json['isFamilySharedFromUser'];
+      isFamilySharedFromUser = _json['isFamilySharedFromUser'] as core.bool;
     }
     if (_json.containsKey('isFamilySharedToUser')) {
-      isFamilySharedToUser = _json['isFamilySharedToUser'];
+      isFamilySharedToUser = _json['isFamilySharedToUser'] as core.bool;
     }
     if (_json.containsKey('isFamilySharingAllowed')) {
-      isFamilySharingAllowed = _json['isFamilySharingAllowed'];
+      isFamilySharingAllowed = _json['isFamilySharingAllowed'] as core.bool;
     }
     if (_json.containsKey('isFamilySharingDisabledByFop')) {
-      isFamilySharingDisabledByFop = _json['isFamilySharingDisabledByFop'];
+      isFamilySharingDisabledByFop =
+          _json['isFamilySharingDisabledByFop'] as core.bool;
     }
     if (_json.containsKey('isInMyBooks')) {
-      isInMyBooks = _json['isInMyBooks'];
+      isInMyBooks = _json['isInMyBooks'] as core.bool;
     }
     if (_json.containsKey('isPreordered')) {
-      isPreordered = _json['isPreordered'];
+      isPreordered = _json['isPreordered'] as core.bool;
     }
     if (_json.containsKey('isPurchased')) {
-      isPurchased = _json['isPurchased'];
+      isPurchased = _json['isPurchased'] as core.bool;
     }
     if (_json.containsKey('isUploaded')) {
-      isUploaded = _json['isUploaded'];
+      isUploaded = _json['isUploaded'] as core.bool;
     }
     if (_json.containsKey('readingPosition')) {
       readingPosition = ReadingPosition.fromJson(_json['readingPosition']);
@@ -8622,13 +8632,13 @@ class VolumeUserInfo {
       rentalPeriod = VolumeUserInfoRentalPeriod.fromJson(_json['rentalPeriod']);
     }
     if (_json.containsKey('rentalState')) {
-      rentalState = _json['rentalState'];
+      rentalState = _json['rentalState'] as core.String;
     }
     if (_json.containsKey('review')) {
       review = Review.fromJson(_json['review']);
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('userUploadedVolumeInfo')) {
       userUploadedVolumeInfo = VolumeUserInfoUserUploadedVolumeInfo.fromJson(
@@ -8714,13 +8724,13 @@ class VolumeVolumeInfoDimensions {
 
   VolumeVolumeInfoDimensions.fromJson(core.Map _json) {
     if (_json.containsKey('height')) {
-      height = _json['height'];
+      height = _json['height'] as core.String;
     }
     if (_json.containsKey('thickness')) {
-      thickness = _json['thickness'];
+      thickness = _json['thickness'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'];
+      width = _json['width'] as core.String;
     }
   }
 
@@ -8766,22 +8776,22 @@ class VolumeVolumeInfoImageLinks {
 
   VolumeVolumeInfoImageLinks.fromJson(core.Map _json) {
     if (_json.containsKey('extraLarge')) {
-      extraLarge = _json['extraLarge'];
+      extraLarge = _json['extraLarge'] as core.String;
     }
     if (_json.containsKey('large')) {
-      large = _json['large'];
+      large = _json['large'] as core.String;
     }
     if (_json.containsKey('medium')) {
-      medium = _json['medium'];
+      medium = _json['medium'] as core.String;
     }
     if (_json.containsKey('small')) {
-      small = _json['small'];
+      small = _json['small'] as core.String;
     }
     if (_json.containsKey('smallThumbnail')) {
-      smallThumbnail = _json['smallThumbnail'];
+      smallThumbnail = _json['smallThumbnail'] as core.String;
     }
     if (_json.containsKey('thumbnail')) {
-      thumbnail = _json['thumbnail'];
+      thumbnail = _json['thumbnail'] as core.String;
     }
   }
 
@@ -8820,10 +8830,10 @@ class VolumeVolumeInfoIndustryIdentifiers {
 
   VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map _json) {
     if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'];
+      identifier = _json['identifier'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -8850,16 +8860,16 @@ class VolumeVolumeInfoPanelizationSummary {
 
   VolumeVolumeInfoPanelizationSummary.fromJson(core.Map _json) {
     if (_json.containsKey('containsEpubBubbles')) {
-      containsEpubBubbles = _json['containsEpubBubbles'];
+      containsEpubBubbles = _json['containsEpubBubbles'] as core.bool;
     }
     if (_json.containsKey('containsImageBubbles')) {
-      containsImageBubbles = _json['containsImageBubbles'];
+      containsImageBubbles = _json['containsImageBubbles'] as core.bool;
     }
     if (_json.containsKey('epubBubbleVersion')) {
-      epubBubbleVersion = _json['epubBubbleVersion'];
+      epubBubbleVersion = _json['epubBubbleVersion'] as core.String;
     }
     if (_json.containsKey('imageBubbleVersion')) {
-      imageBubbleVersion = _json['imageBubbleVersion'];
+      imageBubbleVersion = _json['imageBubbleVersion'] as core.String;
     }
   }
 
@@ -8890,10 +8900,10 @@ class VolumeVolumeInfoReadingModes {
 
   VolumeVolumeInfoReadingModes.fromJson(core.Map _json) {
     if (_json.containsKey('image')) {
-      image = _json['image'];
+      image = _json['image'] as core.bool;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.bool;
     }
   }
 
@@ -9003,28 +9013,32 @@ class VolumeVolumeInfo {
 
   VolumeVolumeInfo.fromJson(core.Map _json) {
     if (_json.containsKey('allowAnonLogging')) {
-      allowAnonLogging = _json['allowAnonLogging'];
+      allowAnonLogging = _json['allowAnonLogging'] as core.bool;
     }
     if (_json.containsKey('authors')) {
-      authors = (_json['authors'] as core.List).cast<core.String>();
+      authors = (_json['authors'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('averageRating')) {
       averageRating = _json['averageRating'].toDouble();
     }
     if (_json.containsKey('canonicalVolumeLink')) {
-      canonicalVolumeLink = _json['canonicalVolumeLink'];
+      canonicalVolumeLink = _json['canonicalVolumeLink'] as core.String;
     }
     if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List).cast<core.String>();
+      categories = (_json['categories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('comicsContent')) {
-      comicsContent = _json['comicsContent'];
+      comicsContent = _json['comicsContent'] as core.bool;
     }
     if (_json.containsKey('contentVersion')) {
-      contentVersion = _json['contentVersion'];
+      contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
       dimensions = VolumeVolumeInfoDimensions.fromJson(_json['dimensions']);
@@ -9039,57 +9053,57 @@ class VolumeVolumeInfo {
           .toList();
     }
     if (_json.containsKey('infoLink')) {
-      infoLink = _json['infoLink'];
+      infoLink = _json['infoLink'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('mainCategory')) {
-      mainCategory = _json['mainCategory'];
+      mainCategory = _json['mainCategory'] as core.String;
     }
     if (_json.containsKey('maturityRating')) {
-      maturityRating = _json['maturityRating'];
+      maturityRating = _json['maturityRating'] as core.String;
     }
     if (_json.containsKey('pageCount')) {
-      pageCount = _json['pageCount'];
+      pageCount = _json['pageCount'] as core.int;
     }
     if (_json.containsKey('panelizationSummary')) {
       panelizationSummary = VolumeVolumeInfoPanelizationSummary.fromJson(
           _json['panelizationSummary']);
     }
     if (_json.containsKey('previewLink')) {
-      previewLink = _json['previewLink'];
+      previewLink = _json['previewLink'] as core.String;
     }
     if (_json.containsKey('printType')) {
-      printType = _json['printType'];
+      printType = _json['printType'] as core.String;
     }
     if (_json.containsKey('printedPageCount')) {
-      printedPageCount = _json['printedPageCount'];
+      printedPageCount = _json['printedPageCount'] as core.int;
     }
     if (_json.containsKey('publishedDate')) {
-      publishedDate = _json['publishedDate'];
+      publishedDate = _json['publishedDate'] as core.String;
     }
     if (_json.containsKey('publisher')) {
-      publisher = _json['publisher'];
+      publisher = _json['publisher'] as core.String;
     }
     if (_json.containsKey('ratingsCount')) {
-      ratingsCount = _json['ratingsCount'];
+      ratingsCount = _json['ratingsCount'] as core.int;
     }
     if (_json.containsKey('readingModes')) {
       readingModes =
           VolumeVolumeInfoReadingModes.fromJson(_json['readingModes']);
     }
     if (_json.containsKey('samplePageCount')) {
-      samplePageCount = _json['samplePageCount'];
+      samplePageCount = _json['samplePageCount'] as core.int;
     }
     if (_json.containsKey('seriesInfo')) {
       seriesInfo = Volumeseriesinfo.fromJson(_json['seriesInfo']);
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -9232,13 +9246,13 @@ class Volume {
       accessInfo = VolumeAccessInfo.fromJson(_json['accessInfo']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerInfo')) {
       layerInfo = VolumeLayerInfo.fromJson(_json['layerInfo']);
@@ -9254,7 +9268,7 @@ class Volume {
       searchInfo = VolumeSearchInfo.fromJson(_json['searchInfo']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('userInfo')) {
       userInfo = VolumeUserInfo.fromJson(_json['userInfo']);
@@ -9320,10 +9334,10 @@ class Volume2 {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -9363,7 +9377,7 @@ class VolumeannotationContentRanges {
       cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
     }
     if (_json.containsKey('contentVersion')) {
-      contentVersion = _json['contentVersion'];
+      contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
       gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
@@ -9439,47 +9453,49 @@ class Volumeannotation {
 
   Volumeannotation.fromJson(core.Map _json) {
     if (_json.containsKey('annotationDataId')) {
-      annotationDataId = _json['annotationDataId'];
+      annotationDataId = _json['annotationDataId'] as core.String;
     }
     if (_json.containsKey('annotationDataLink')) {
-      annotationDataLink = _json['annotationDataLink'];
+      annotationDataLink = _json['annotationDataLink'] as core.String;
     }
     if (_json.containsKey('annotationType')) {
-      annotationType = _json['annotationType'];
+      annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('contentRanges')) {
       contentRanges =
           VolumeannotationContentRanges.fromJson(_json['contentRanges']);
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerId')) {
-      layerId = _json['layerId'];
+      layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('pageIds')) {
-      pageIds = (_json['pageIds'] as core.List).cast<core.String>();
+      pageIds = (_json['pageIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('selectedText')) {
-      selectedText = _json['selectedText'];
+      selectedText = _json['selectedText'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('volumeId')) {
-      volumeId = _json['volumeId'];
+      volumeId = _json['volumeId'] as core.String;
     }
   }
 
@@ -9560,16 +9576,16 @@ class Volumeannotations {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -9614,10 +9630,10 @@ class Volumes {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -9644,10 +9660,10 @@ class VolumeseriesinfoVolumeSeriesIssue {
 
   VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map _json) {
     if (_json.containsKey('issueDisplayNumber')) {
-      issueDisplayNumber = _json['issueDisplayNumber'];
+      issueDisplayNumber = _json['issueDisplayNumber'] as core.String;
     }
     if (_json.containsKey('issueOrderNumber')) {
-      issueOrderNumber = _json['issueOrderNumber'];
+      issueOrderNumber = _json['issueOrderNumber'] as core.int;
     }
   }
 
@@ -9687,13 +9703,13 @@ class VolumeseriesinfoVolumeSeries {
           .toList();
     }
     if (_json.containsKey('orderNumber')) {
-      orderNumber = _json['orderNumber'];
+      orderNumber = _json['orderNumber'] as core.int;
     }
     if (_json.containsKey('seriesBookType')) {
-      seriesBookType = _json['seriesBookType'];
+      seriesBookType = _json['seriesBookType'] as core.String;
     }
     if (_json.containsKey('seriesId')) {
-      seriesId = _json['seriesId'];
+      seriesId = _json['seriesId'] as core.String;
     }
   }
 
@@ -9731,13 +9747,13 @@ class Volumeseriesinfo {
 
   Volumeseriesinfo.fromJson(core.Map _json) {
     if (_json.containsKey('bookDisplayNumber')) {
-      bookDisplayNumber = _json['bookDisplayNumber'];
+      bookDisplayNumber = _json['bookDisplayNumber'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('shortSeriesBookTitle')) {
-      shortSeriesBookTitle = _json['shortSeriesBookTitle'];
+      shortSeriesBookTitle = _json['shortSeriesBookTitle'] as core.String;
     }
     if (_json.containsKey('volumeSeries')) {
       volumeSeries = (_json['volumeSeries'] as core.List)

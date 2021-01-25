@@ -332,13 +332,17 @@ class GenerateAccessTokenRequest {
 
   GenerateAccessTokenRequest.fromJson(core.Map _json) {
     if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List).cast<core.String>();
+      delegates = (_json['delegates'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('lifetime')) {
-      lifetime = _json['lifetime'];
+      lifetime = _json['lifetime'] as core.String;
     }
     if (_json.containsKey('scope')) {
-      scope = (_json['scope'] as core.List).cast<core.String>();
+      scope = (_json['scope'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -368,10 +372,10 @@ class GenerateAccessTokenResponse {
 
   GenerateAccessTokenResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accessToken')) {
-      accessToken = _json['accessToken'];
+      accessToken = _json['accessToken'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
   }
 
@@ -410,13 +414,15 @@ class GenerateIdTokenRequest {
 
   GenerateIdTokenRequest.fromJson(core.Map _json) {
     if (_json.containsKey('audience')) {
-      audience = _json['audience'];
+      audience = _json['audience'] as core.String;
     }
     if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List).cast<core.String>();
+      delegates = (_json['delegates'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includeEmail')) {
-      includeEmail = _json['includeEmail'];
+      includeEmail = _json['includeEmail'] as core.bool;
     }
   }
 
@@ -443,7 +449,7 @@ class GenerateIdTokenResponse {
 
   GenerateIdTokenResponse.fromJson(core.Map _json) {
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
   }
 
@@ -480,10 +486,12 @@ class SignBlobRequest {
 
   SignBlobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List).cast<core.String>();
+      delegates = (_json['delegates'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = _json['payload'];
+      payload = _json['payload'] as core.String;
     }
   }
 
@@ -528,10 +536,10 @@ class SignBlobResponse {
 
   SignBlobResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'];
+      keyId = _json['keyId'] as core.String;
     }
     if (_json.containsKey('signedBlob')) {
-      signedBlob = _json['signedBlob'];
+      signedBlob = _json['signedBlob'] as core.String;
     }
   }
 
@@ -569,10 +577,12 @@ class SignJwtRequest {
 
   SignJwtRequest.fromJson(core.Map _json) {
     if (_json.containsKey('delegates')) {
-      delegates = (_json['delegates'] as core.List).cast<core.String>();
+      delegates = (_json['delegates'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = _json['payload'];
+      payload = _json['payload'] as core.String;
     }
   }
 
@@ -612,10 +622,10 @@ class SignJwtResponse {
 
   SignJwtResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keyId')) {
-      keyId = _json['keyId'];
+      keyId = _json['keyId'] as core.String;
     }
     if (_json.containsKey('signedJwt')) {
-      signedJwt = _json['signedJwt'];
+      signedJwt = _json['signedJwt'] as core.String;
     }
   }
 

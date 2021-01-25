@@ -412,16 +412,16 @@ class GoogleExampleLibraryagentV1Book {
 
   GoogleExampleLibraryagentV1Book.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = _json['author'];
+      author = _json['author'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('read')) {
-      read = _json['read'];
+      read = _json['read'] as core.bool;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -463,7 +463,7 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -493,7 +493,7 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
 
   GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('shelves')) {
       shelves = (_json['shelves'] as core.List)
@@ -528,10 +528,10 @@ class GoogleExampleLibraryagentV1Shelf {
 
   GoogleExampleLibraryagentV1Shelf.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('theme')) {
-      theme = _json['theme'];
+      theme = _json['theme'] as core.String;
     }
   }
 

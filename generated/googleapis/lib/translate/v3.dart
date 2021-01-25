@@ -1297,20 +1297,25 @@ class BatchTranslateTextRequest {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('models')) {
-      models = (_json['models'] as core.Map).cast<core.String, core.String>();
+      models = commons.mapMap<core.String, core.String>(
+          _json['models'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('outputConfig')) {
       outputConfig = OutputConfig.fromJson(_json['outputConfig']);
     }
     if (_json.containsKey('sourceLanguageCode')) {
-      sourceLanguageCode = _json['sourceLanguageCode'];
+      sourceLanguageCode = _json['sourceLanguageCode'] as core.String;
     }
     if (_json.containsKey('targetLanguageCodes')) {
-      targetLanguageCodes =
-          (_json['targetLanguageCodes'] as core.List).cast<core.String>();
+      targetLanguageCodes = (_json['targetLanguageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1387,16 +1392,18 @@ class DetectLanguageRequest {
 
   DetectLanguageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
   }
 
@@ -1459,7 +1466,7 @@ class DetectedLanguage {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -1506,7 +1513,7 @@ class GcsDestination {
 
   GcsDestination.fromJson(core.Map _json) {
     if (_json.containsKey('outputUriPrefix')) {
-      outputUriPrefix = _json['outputUriPrefix'];
+      outputUriPrefix = _json['outputUriPrefix'] as core.String;
     }
   }
 
@@ -1528,7 +1535,7 @@ class GcsSource {
 
   GcsSource.fromJson(core.Map _json) {
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
   }
 
@@ -1570,10 +1577,10 @@ class Glossary {
 
   Glossary.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('entryCount')) {
-      entryCount = _json['entryCount'];
+      entryCount = _json['entryCount'] as core.int;
     }
     if (_json.containsKey('inputConfig')) {
       inputConfig = GlossaryInputConfig.fromJson(_json['inputConfig']);
@@ -1585,10 +1592,10 @@ class Glossary {
       languagePair = LanguageCodePair.fromJson(_json['languagePair']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('submitTime')) {
-      submitTime = _json['submitTime'];
+      submitTime = _json['submitTime'] as core.String;
     }
   }
 
@@ -1682,7 +1689,7 @@ class InputConfig {
       gcsSource = GcsSource.fromJson(_json['gcsSource']);
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
   }
 
@@ -1712,10 +1719,10 @@ class LanguageCodePair {
 
   LanguageCodePair.fromJson(core.Map _json) {
     if (_json.containsKey('sourceLanguageCode')) {
-      sourceLanguageCode = _json['sourceLanguageCode'];
+      sourceLanguageCode = _json['sourceLanguageCode'] as core.String;
     }
     if (_json.containsKey('targetLanguageCode')) {
-      targetLanguageCode = _json['targetLanguageCode'];
+      targetLanguageCode = _json['targetLanguageCode'] as core.String;
     }
   }
 
@@ -1742,7 +1749,9 @@ class LanguageCodesSet {
 
   LanguageCodesSet.fromJson(core.Map _json) {
     if (_json.containsKey('languageCodes')) {
-      languageCodes = (_json['languageCodes'] as core.List).cast<core.String>();
+      languageCodes = (_json['languageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1774,7 +1783,7 @@ class ListGlossariesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1807,7 +1816,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1835,7 +1844,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -1884,20 +1893,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1963,21 +1975,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2093,16 +2107,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -2143,16 +2159,16 @@ class SupportedLanguage {
 
   SupportedLanguage.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('supportSource')) {
-      supportSource = _json['supportSource'];
+      supportSource = _json['supportSource'] as core.bool;
     }
     if (_json.containsKey('supportTarget')) {
-      supportTarget = _json['supportTarget'];
+      supportTarget = _json['supportTarget'] as core.bool;
     }
   }
 
@@ -2215,10 +2231,10 @@ class TranslateTextGlossaryConfig {
 
   TranslateTextGlossaryConfig.fromJson(core.Map _json) {
     if (_json.containsKey('glossary')) {
-      glossary = _json['glossary'];
+      glossary = _json['glossary'] as core.String;
     }
     if (_json.containsKey('ignoreCase')) {
-      ignoreCase = _json['ignoreCase'];
+      ignoreCase = _json['ignoreCase'] as core.bool;
     }
   }
 
@@ -2286,26 +2302,30 @@ class TranslateTextRequest {
 
   TranslateTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('contents')) {
-      contents = (_json['contents'] as core.List).cast<core.String>();
+      contents = (_json['contents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('glossaryConfig')) {
       glossaryConfig =
           TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']);
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('sourceLanguageCode')) {
-      sourceLanguageCode = _json['sourceLanguageCode'];
+      sourceLanguageCode = _json['sourceLanguageCode'] as core.String;
     }
     if (_json.containsKey('targetLanguageCode')) {
-      targetLanguageCode = _json['targetLanguageCode'];
+      targetLanguageCode = _json['targetLanguageCode'] as core.String;
     }
   }
 
@@ -2401,17 +2421,17 @@ class Translation {
 
   Translation.fromJson(core.Map _json) {
     if (_json.containsKey('detectedLanguageCode')) {
-      detectedLanguageCode = _json['detectedLanguageCode'];
+      detectedLanguageCode = _json['detectedLanguageCode'] as core.String;
     }
     if (_json.containsKey('glossaryConfig')) {
       glossaryConfig =
           TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']);
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('translatedText')) {
-      translatedText = _json['translatedText'];
+      translatedText = _json['translatedText'] as core.String;
     }
   }
 
@@ -2444,7 +2464,7 @@ class WaitOperationRequest {
 
   WaitOperationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'];
+      timeout = _json['timeout'] as core.String;
     }
   }
 

@@ -377,7 +377,7 @@ class AndroidAppAsset {
       certificate = CertificateInfo.fromJson(_json['certificate']);
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
   }
 
@@ -449,7 +449,7 @@ class CertificateInfo {
 
   CertificateInfo.fromJson(core.Map _json) {
     if (_json.containsKey('sha256Fingerprint')) {
-      sha256Fingerprint = _json['sha256Fingerprint'];
+      sha256Fingerprint = _json['sha256Fingerprint'] as core.String;
     }
   }
 
@@ -488,16 +488,18 @@ class CheckResponse {
 
   CheckResponse.fromJson(core.Map _json) {
     if (_json.containsKey('debugString')) {
-      debugString = _json['debugString'];
+      debugString = _json['debugString'] as core.String;
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = (_json['errorCode'] as core.List).cast<core.String>();
+      errorCode = (_json['errorCode'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('linked')) {
-      linked = _json['linked'];
+      linked = _json['linked'] as core.bool;
     }
     if (_json.containsKey('maxAge')) {
-      maxAge = _json['maxAge'];
+      maxAge = _json['maxAge'] as core.String;
     }
   }
 
@@ -544,13 +546,15 @@ class ListResponse {
 
   ListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('debugString')) {
-      debugString = _json['debugString'];
+      debugString = _json['debugString'] as core.String;
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = (_json['errorCode'] as core.List).cast<core.String>();
+      errorCode = (_json['errorCode'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('maxAge')) {
-      maxAge = _json['maxAge'];
+      maxAge = _json['maxAge'] as core.String;
     }
     if (_json.containsKey('statements')) {
       statements = (_json['statements'] as core.List)
@@ -605,7 +609,7 @@ class Statement {
 
   Statement.fromJson(core.Map _json) {
     if (_json.containsKey('relation')) {
-      relation = _json['relation'];
+      relation = _json['relation'] as core.String;
     }
     if (_json.containsKey('source')) {
       source = Asset.fromJson(_json['source']);
@@ -653,7 +657,7 @@ class WebAsset {
 
   WebAsset.fromJson(core.Map _json) {
     if (_json.containsKey('site')) {
-      site = _json['site'];
+      site = _json['site'] as core.String;
     }
   }
 

@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 void main() {
   group('namer', () {
     test('to-valid-identifier', () {
-      String identifier(x, {bool removeUnderscores = true}) =>
+      String identifier(String x, {bool removeUnderscores = true}) =>
           Scope.toValidIdentifier(x, removeUnderscores: removeUnderscores);
 
       expect(identifier('abc'), equals('abc'));
@@ -25,7 +25,7 @@ void main() {
     });
 
     test('capitalize-name', () {
-      String capitalize(x) => Scope.capitalize(x);
+      String capitalize(String x) => Scope.capitalize(x);
       expect(capitalize('a'), equals('A'));
       expect(capitalize('abc'), equals('Abc'));
       expect(capitalize('A'), equals('A'));
@@ -34,7 +34,7 @@ void main() {
     });
 
     test('scope-name', () {
-      String scopename(x) => Scope.toValidScopeName(x);
+      String scopename(String x) => Scope.toValidScopeName(x);
       expect(
         scopename('https://www.googleapis.com/auth/youtube.readonly'),
         'youtubeReadonlyScope',

@@ -427,10 +427,10 @@ class SiteVerificationWebResourceGettokenRequestSite {
 
   SiteVerificationWebResourceGettokenRequestSite.fromJson(core.Map _json) {
     if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'];
+      identifier = _json['identifier'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -462,7 +462,7 @@ class SiteVerificationWebResourceGettokenRequest {
           _json['site']);
     }
     if (_json.containsKey('verificationMethod')) {
-      verificationMethod = _json['verificationMethod'];
+      verificationMethod = _json['verificationMethod'] as core.String;
     }
   }
 
@@ -494,10 +494,10 @@ class SiteVerificationWebResourceGettokenResponse {
 
   SiteVerificationWebResourceGettokenResponse.fromJson(core.Map _json) {
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
   }
 
@@ -550,10 +550,10 @@ class SiteVerificationWebResourceResourceSite {
 
   SiteVerificationWebResourceResourceSite.fromJson(core.Map _json) {
     if (_json.containsKey('identifier')) {
-      identifier = _json['identifier'];
+      identifier = _json['identifier'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -584,10 +584,12 @@ class SiteVerificationWebResourceResource {
 
   SiteVerificationWebResourceResource.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('owners')) {
-      owners = (_json['owners'] as core.List).cast<core.String>();
+      owners = (_json['owners'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('site')) {
       site = SiteVerificationWebResourceResourceSite.fromJson(_json['site']);

@@ -136,28 +136,34 @@ class Webfont {
 
   Webfont.fromJson(core.Map _json) {
     if (_json.containsKey('category')) {
-      category = _json['category'];
+      category = _json['category'] as core.String;
     }
     if (_json.containsKey('family')) {
-      family = _json['family'];
+      family = _json['family'] as core.String;
     }
     if (_json.containsKey('files')) {
-      files = (_json['files'] as core.Map).cast<core.String, core.String>();
+      files = commons.mapMap<core.String, core.String>(
+          _json['files'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastModified')) {
-      lastModified = _json['lastModified'];
+      lastModified = _json['lastModified'] as core.String;
     }
     if (_json.containsKey('subsets')) {
-      subsets = (_json['subsets'] as core.List).cast<core.String>();
+      subsets = (_json['subsets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('variants')) {
-      variants = (_json['variants'] as core.List).cast<core.String>();
+      variants = (_json['variants'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -209,7 +215,7 @@ class WebfontList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 

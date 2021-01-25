@@ -515,29 +515,30 @@ class Attributes {
           .toList();
     }
     if (_json.containsKey('ageGroup')) {
-      ageGroup = _json['ageGroup'];
+      ageGroup = _json['ageGroup'] as core.String;
     }
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('capacity')) {
       capacity = Capacity.fromJson(_json['capacity']);
     }
     if (_json.containsKey('color')) {
-      color = _json['color'];
+      color = _json['color'] as core.String;
     }
     if (_json.containsKey('count')) {
       count = Count.fromJson(_json['count']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('disclosureDate')) {
-      disclosureDate = _json['disclosureDate'];
+      disclosureDate = _json['disclosureDate'] as core.String;
     }
     if (_json.containsKey('excludedDestination')) {
-      excludedDestination =
-          (_json['excludedDestination'] as core.List).cast<core.String>();
+      excludedDestination = (_json['excludedDestination'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('featureDescription')) {
       featureDescription = (_json['featureDescription'] as core.List)
@@ -546,35 +547,38 @@ class Attributes {
           .toList();
     }
     if (_json.containsKey('flavor')) {
-      flavor = _json['flavor'];
+      flavor = _json['flavor'] as core.String;
     }
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
     if (_json.containsKey('gender')) {
-      gender = _json['gender'];
+      gender = _json['gender'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = (_json['gtin'] as core.List).cast<core.String>();
+      gtin = (_json['gtin'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('imageLink')) {
       imageLink = Image.fromJson(_json['imageLink']);
     }
     if (_json.containsKey('includedDestination')) {
-      includedDestination =
-          (_json['includedDestination'] as core.List).cast<core.String>();
+      includedDestination = (_json['includedDestination'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('itemGroupId')) {
-      itemGroupId = _json['itemGroupId'];
+      itemGroupId = _json['itemGroupId'] as core.String;
     }
     if (_json.containsKey('material')) {
-      material = _json['material'];
+      material = _json['material'] as core.String;
     }
     if (_json.containsKey('mpn')) {
-      mpn = _json['mpn'];
+      mpn = _json['mpn'] as core.String;
     }
     if (_json.containsKey('pattern')) {
-      pattern = _json['pattern'];
+      pattern = _json['pattern'] as core.String;
     }
     if (_json.containsKey('productDetail')) {
       productDetail = (_json['productDetail'] as core.List)
@@ -582,50 +586,55 @@ class Attributes {
           .toList();
     }
     if (_json.containsKey('productLine')) {
-      productLine = _json['productLine'];
+      productLine = _json['productLine'] as core.String;
     }
     if (_json.containsKey('productName')) {
-      productName = _json['productName'];
+      productName = _json['productName'] as core.String;
     }
     if (_json.containsKey('productPageUrl')) {
-      productPageUrl = _json['productPageUrl'];
+      productPageUrl = _json['productPageUrl'] as core.String;
     }
     if (_json.containsKey('productType')) {
-      productType = (_json['productType'] as core.List).cast<core.String>();
+      productType = (_json['productType'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('releaseDate')) {
-      releaseDate = _json['releaseDate'];
+      releaseDate = _json['releaseDate'] as core.String;
     }
     if (_json.containsKey('richProductContent')) {
-      richProductContent =
-          (_json['richProductContent'] as core.List).cast<core.String>();
+      richProductContent = (_json['richProductContent'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('scent')) {
-      scent = _json['scent'];
+      scent = _json['scent'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('sizeSystem')) {
-      sizeSystem = _json['sizeSystem'];
+      sizeSystem = _json['sizeSystem'] as core.String;
     }
     if (_json.containsKey('sizeType')) {
-      sizeType = _json['sizeType'];
+      sizeType = _json['sizeType'] as core.String;
     }
     if (_json.containsKey('suggestedRetailPrice')) {
       suggestedRetailPrice = Price.fromJson(_json['suggestedRetailPrice']);
     }
     if (_json.containsKey('targetClientId')) {
-      targetClientId = _json['targetClientId'];
+      targetClientId = _json['targetClientId'] as core.String;
     }
     if (_json.containsKey('theme')) {
-      theme = _json['theme'];
+      theme = _json['theme'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('videoLink')) {
-      videoLink = (_json['videoLink'] as core.List).cast<core.String>();
+      videoLink = (_json['videoLink'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -759,10 +768,10 @@ class Capacity {
 
   Capacity.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -791,10 +800,10 @@ class Count {
 
   Count.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -827,10 +836,10 @@ class DestinationStatus {
 
   DestinationStatus.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -880,13 +889,13 @@ class FeatureDescription {
 
   FeatureDescription.fromJson(core.Map _json) {
     if (_json.containsKey('headline')) {
-      headline = _json['headline'];
+      headline = _json['headline'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = Image.fromJson(_json['image']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -945,13 +954,13 @@ class Image {
 
   Image.fromJson(core.Map _json) {
     if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'];
+      imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1020,28 +1029,28 @@ class Issue {
 
   Issue.fromJson(core.Map _json) {
     if (_json.containsKey('attribute')) {
-      attribute = _json['attribute'];
+      attribute = _json['attribute'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('resolution')) {
-      resolution = _json['resolution'];
+      resolution = _json['resolution'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1086,7 +1095,7 @@ class ListProductsResponse {
 
   ListProductsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
@@ -1119,10 +1128,10 @@ class Price {
 
   Price.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = _json['amount'];
+      amount = _json['amount'] as core.String;
     }
     if (_json.containsKey('currency')) {
-      currency = _json['currency'];
+      currency = _json['currency'] as core.String;
     }
   }
 
@@ -1181,7 +1190,7 @@ class Product {
       attributes = Attributes.fromJson(_json['attributes']);
     }
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('destinationStatuses')) {
       destinationStatuses = (_json['destinationStatuses'] as core.List)
@@ -1194,16 +1203,16 @@ class Product {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
   }
 
@@ -1254,13 +1263,13 @@ class ProductDetail {
 
   ProductDetail.fromJson(core.Map _json) {
     if (_json.containsKey('attributeName')) {
-      attributeName = _json['attributeName'];
+      attributeName = _json['attributeName'] as core.String;
     }
     if (_json.containsKey('attributeValue')) {
-      attributeValue = _json['attributeValue'];
+      attributeValue = _json['attributeValue'] as core.String;
     }
     if (_json.containsKey('sectionName')) {
-      sectionName = _json['sectionName'];
+      sectionName = _json['sectionName'] as core.String;
     }
   }
 

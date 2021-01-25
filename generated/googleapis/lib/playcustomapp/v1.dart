@@ -155,13 +155,13 @@ class CustomApp {
 
   CustomApp.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 

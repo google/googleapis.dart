@@ -1667,7 +1667,7 @@ class ClaimDeviceRequest {
 
   ClaimDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'];
+      customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
@@ -1676,7 +1676,7 @@ class ClaimDeviceRequest {
       deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
   }
 
@@ -1711,10 +1711,10 @@ class ClaimDeviceResponse {
 
   ClaimDeviceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceName')) {
-      deviceName = _json['deviceName'];
+      deviceName = _json['deviceName'] as core.String;
     }
   }
 
@@ -1801,22 +1801,26 @@ class Company {
 
   Company.fromJson(core.Map _json) {
     if (_json.containsKey('adminEmails')) {
-      adminEmails = (_json['adminEmails'] as core.List).cast<core.String>();
+      adminEmails = (_json['adminEmails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('companyId')) {
-      companyId = _json['companyId'];
+      companyId = _json['companyId'] as core.String;
     }
     if (_json.containsKey('companyName')) {
-      companyName = _json['companyName'];
+      companyName = _json['companyName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('ownerEmails')) {
-      ownerEmails = (_json['ownerEmails'] as core.List).cast<core.String>();
+      ownerEmails = (_json['ownerEmails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('termsStatus')) {
-      termsStatus = _json['termsStatus'];
+      termsStatus = _json['termsStatus'] as core.String;
     }
   }
 
@@ -1904,34 +1908,34 @@ class Configuration {
 
   Configuration.fromJson(core.Map _json) {
     if (_json.containsKey('companyName')) {
-      companyName = _json['companyName'];
+      companyName = _json['companyName'] as core.String;
     }
     if (_json.containsKey('configurationId')) {
-      configurationId = _json['configurationId'];
+      configurationId = _json['configurationId'] as core.String;
     }
     if (_json.containsKey('configurationName')) {
-      configurationName = _json['configurationName'];
+      configurationName = _json['configurationName'] as core.String;
     }
     if (_json.containsKey('contactEmail')) {
-      contactEmail = _json['contactEmail'];
+      contactEmail = _json['contactEmail'] as core.String;
     }
     if (_json.containsKey('contactPhone')) {
-      contactPhone = _json['contactPhone'];
+      contactPhone = _json['contactPhone'] as core.String;
     }
     if (_json.containsKey('customMessage')) {
-      customMessage = _json['customMessage'];
+      customMessage = _json['customMessage'] as core.String;
     }
     if (_json.containsKey('dpcExtras')) {
-      dpcExtras = _json['dpcExtras'];
+      dpcExtras = _json['dpcExtras'] as core.String;
     }
     if (_json.containsKey('dpcResourcePath')) {
-      dpcResourcePath = _json['dpcResourcePath'];
+      dpcResourcePath = _json['dpcResourcePath'] as core.String;
     }
     if (_json.containsKey('isDefault')) {
-      isDefault = _json['isDefault'];
+      isDefault = _json['isDefault'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2009,7 +2013,7 @@ class CustomerApplyConfigurationRequest {
 
   CustomerApplyConfigurationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('configuration')) {
-      configuration = _json['configuration'];
+      configuration = _json['configuration'] as core.String;
     }
     if (_json.containsKey('device')) {
       device = DeviceReference.fromJson(_json['device']);
@@ -2071,7 +2075,7 @@ class CustomerListCustomersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2105,7 +2109,7 @@ class CustomerListDevicesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2227,10 +2231,10 @@ class Device {
           .toList();
     }
     if (_json.containsKey('configuration')) {
-      configuration = _json['configuration'];
+      configuration = _json['configuration'] as core.String;
     }
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
@@ -2239,7 +2243,7 @@ class Device {
       deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2297,19 +2301,19 @@ class DeviceClaim {
 
   DeviceClaim.fromJson(core.Map _json) {
     if (_json.containsKey('ownerCompanyId')) {
-      ownerCompanyId = _json['ownerCompanyId'];
+      ownerCompanyId = _json['ownerCompanyId'] as core.String;
     }
     if (_json.containsKey('resellerId')) {
-      resellerId = _json['resellerId'];
+      resellerId = _json['resellerId'] as core.String;
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
     if (_json.containsKey('vacationModeExpireTime')) {
-      vacationModeExpireTime = _json['vacationModeExpireTime'];
+      vacationModeExpireTime = _json['vacationModeExpireTime'] as core.String;
     }
     if (_json.containsKey('vacationModeStartTime')) {
-      vacationModeStartTime = _json['vacationModeStartTime'];
+      vacationModeStartTime = _json['vacationModeStartTime'] as core.String;
     }
   }
 
@@ -2363,19 +2367,19 @@ class DeviceIdentifier {
 
   DeviceIdentifier.fromJson(core.Map _json) {
     if (_json.containsKey('imei')) {
-      imei = _json['imei'];
+      imei = _json['imei'] as core.String;
     }
     if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'];
+      manufacturer = _json['manufacturer'] as core.String;
     }
     if (_json.containsKey('meid')) {
-      meid = _json['meid'];
+      meid = _json['meid'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'];
+      serialNumber = _json['serialNumber'] as core.String;
     }
   }
 
@@ -2410,7 +2414,9 @@ class DeviceMetadata {
 
   DeviceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
-      entries = (_json['entries'] as core.Map).cast<core.String, core.String>();
+      entries = commons.mapMap<core.String, core.String>(
+          _json['entries'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -2441,7 +2447,7 @@ class DeviceReference {
 
   DeviceReference.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
@@ -2488,13 +2494,13 @@ class DevicesLongRunningOperationMetadata {
 
   DevicesLongRunningOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('devicesCount')) {
-      devicesCount = _json['devicesCount'];
+      devicesCount = _json['devicesCount'] as core.int;
     }
     if (_json.containsKey('processingStatus')) {
-      processingStatus = _json['processingStatus'];
+      processingStatus = _json['processingStatus'] as core.String;
     }
     if (_json.containsKey('progress')) {
-      progress = _json['progress'];
+      progress = _json['progress'] as core.int;
     }
   }
 
@@ -2536,7 +2542,7 @@ class DevicesLongRunningOperationResponse {
           .toList();
     }
     if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'];
+      successCount = _json['successCount'] as core.int;
     }
   }
 
@@ -2578,13 +2584,13 @@ class Dpc {
 
   Dpc.fromJson(core.Map _json) {
     if (_json.containsKey('dpcName')) {
-      dpcName = _json['dpcName'];
+      dpcName = _json['dpcName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
   }
 
@@ -2640,10 +2646,10 @@ class FindDevicesByDeviceIdentifierRequest {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.String;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
   }
 
@@ -2683,10 +2689,10 @@ class FindDevicesByDeviceIdentifierResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -2728,16 +2734,18 @@ class FindDevicesByOwnerRequest {
 
   FindDevicesByOwnerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('customerId')) {
-      customerId = (_json['customerId'] as core.List).cast<core.String>();
+      customerId = (_json['customerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.String;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
   }
 
@@ -2780,10 +2788,10 @@ class FindDevicesByOwnerResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -2823,10 +2831,10 @@ class ListCustomersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -2866,10 +2874,10 @@ class ListVendorCustomersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -2905,10 +2913,10 @@ class ListVendorsResponse {
 
   ListVendorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
     if (_json.containsKey('vendors')) {
       vendors = (_json['vendors'] as core.List)
@@ -2971,21 +2979,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -3083,7 +3093,7 @@ class PartnerClaim {
 
   PartnerClaim.fromJson(core.Map _json) {
     if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'];
+      customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
@@ -3092,7 +3102,7 @@ class PartnerClaim {
       deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
   }
 
@@ -3140,19 +3150,19 @@ class PartnerUnclaim {
 
   PartnerUnclaim.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
     if (_json.containsKey('vacationModeDays')) {
-      vacationModeDays = _json['vacationModeDays'];
+      vacationModeDays = _json['vacationModeDays'] as core.int;
     }
     if (_json.containsKey('vacationModeExpireTime')) {
-      vacationModeExpireTime = _json['vacationModeExpireTime'];
+      vacationModeExpireTime = _json['vacationModeExpireTime'] as core.String;
     }
   }
 
@@ -3208,16 +3218,16 @@ class PerDeviceStatusInBatch {
 
   PerDeviceStatusInBatch.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('errorIdentifier')) {
-      errorIdentifier = _json['errorIdentifier'];
+      errorIdentifier = _json['errorIdentifier'] as core.String;
     }
     if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'];
+      errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -3265,16 +3275,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3319,19 +3331,19 @@ class UnclaimDeviceRequest {
 
   UnclaimDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
     if (_json.containsKey('vacationModeDays')) {
-      vacationModeDays = _json['vacationModeDays'];
+      vacationModeDays = _json['vacationModeDays'] as core.int;
     }
     if (_json.containsKey('vacationModeExpireTime')) {
-      vacationModeExpireTime = _json['vacationModeExpireTime'];
+      vacationModeExpireTime = _json['vacationModeExpireTime'] as core.String;
     }
   }
 
@@ -3442,7 +3454,7 @@ class UpdateMetadataArguments {
 
   UpdateMetadataArguments.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
       deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);

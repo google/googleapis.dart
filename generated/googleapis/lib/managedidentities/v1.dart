@@ -1343,16 +1343,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -1475,35 +1477,40 @@ class Domain {
 
   Domain.fromJson(core.Map _json) {
     if (_json.containsKey('admin')) {
-      admin = _json['admin'];
+      admin = _json['admin'] as core.String;
     }
     if (_json.containsKey('authorizedNetworks')) {
-      authorizedNetworks =
-          (_json['authorizedNetworks'] as core.List).cast<core.String>();
+      authorizedNetworks = (_json['authorizedNetworks'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('fqdn')) {
-      fqdn = _json['fqdn'];
+      fqdn = _json['fqdn'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List).cast<core.String>();
+      locations = (_json['locations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('reservedIpRange')) {
-      reservedIpRange = _json['reservedIpRange'];
+      reservedIpRange = _json['reservedIpRange'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'];
+      statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('trusts')) {
       trusts = (_json['trusts'] as core.List)
@@ -1511,7 +1518,7 @@ class Domain {
           .toList();
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1612,16 +1619,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1670,22 +1677,22 @@ class GoogleCloudManagedidentitiesV1OpMetadata {
 
   GoogleCloudManagedidentitiesV1OpMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('requestedCancellation')) {
-      requestedCancellation = _json['requestedCancellation'];
+      requestedCancellation = _json['requestedCancellation'] as core.bool;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
     if (_json.containsKey('verb')) {
-      verb = _json['verb'];
+      verb = _json['verb'] as core.String;
     }
   }
 
@@ -1740,22 +1747,22 @@ class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
 
   GoogleCloudManagedidentitiesV1alpha1OpMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('requestedCancellation')) {
-      requestedCancellation = _json['requestedCancellation'];
+      requestedCancellation = _json['requestedCancellation'] as core.bool;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
     if (_json.containsKey('verb')) {
-      verb = _json['verb'];
+      verb = _json['verb'] as core.String;
     }
   }
 
@@ -1810,22 +1817,22 @@ class GoogleCloudManagedidentitiesV1beta1OpMetadata {
 
   GoogleCloudManagedidentitiesV1beta1OpMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('requestedCancellation')) {
-      requestedCancellation = _json['requestedCancellation'];
+      requestedCancellation = _json['requestedCancellation'] as core.bool;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
     if (_json.containsKey('verb')) {
-      verb = _json['verb'];
+      verb = _json['verb'] as core.String;
     }
   }
 
@@ -1938,17 +1945,20 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
       core.Map _json) {
     if (_json.containsKey('consumerDefinedName')) {
-      consumerDefinedName = _json['consumerDefinedName'];
+      consumerDefinedName = _json['consumerDefinedName'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('maintenancePolicyNames')) {
-      maintenancePolicyNames = (_json['maintenancePolicyNames'] as core.Map)
-          .cast<core.String, core.String>();
+      maintenancePolicyNames = commons.mapMap<core.String, core.String>(
+          _json['maintenancePolicyNames'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('maintenanceSchedules')) {
       maintenanceSchedules = commons.mapMap<core.Map,
@@ -1964,11 +1974,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               .fromJson(_json['maintenanceSettings']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('producerMetadata')) {
-      producerMetadata = (_json['producerMetadata'] as core.Map)
-          .cast<core.String, core.String>();
+      producerMetadata = commons.mapMap<core.String, core.String>(
+          _json['producerMetadata'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('provisionedResources')) {
       provisionedResources = (_json['provisionedResources'] as core.List)
@@ -1979,7 +1990,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
           .toList();
     }
     if (_json.containsKey('slmInstanceTemplate')) {
-      slmInstanceTemplate = _json['slmInstanceTemplate'];
+      slmInstanceTemplate = _json['slmInstanceTemplate'] as core.String;
     }
     if (_json.containsKey('sloMetadata')) {
       sloMetadata =
@@ -1987,17 +1998,18 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               _json['sloMetadata']);
     }
     if (_json.containsKey('softwareVersions')) {
-      softwareVersions = (_json['softwareVersions'] as core.Map)
-          .cast<core.String, core.String>();
+      softwareVersions = commons.mapMap<core.String, core.String>(
+          _json['softwareVersions'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('tenantProjectId')) {
-      tenantProjectId = _json['tenantProjectId'];
+      tenantProjectId = _json['tenantProjectId'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2083,16 +2095,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule.fromJson(
       core.Map _json) {
     if (_json.containsKey('canReschedule')) {
-      canReschedule = _json['canReschedule'];
+      canReschedule = _json['canReschedule'] as core.bool;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('rolloutManagementPolicy')) {
-      rolloutManagementPolicy = _json['rolloutManagementPolicy'];
+      rolloutManagementPolicy = _json['rolloutManagementPolicy'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -2127,7 +2139,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings.fromJson(
       core.Map _json) {
     if (_json.containsKey('exclude')) {
-      exclude = _json['exclude'];
+      exclude = _json['exclude'] as core.bool;
     }
   }
 
@@ -2172,10 +2184,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
           .toList();
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('nodeId')) {
-      nodeId = _json['nodeId'];
+      nodeId = _json['nodeId'] as core.String;
     }
   }
 
@@ -2213,10 +2225,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource.fromJson(
       core.Map _json) {
     if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'];
+      resourceType = _json['resourceType'] as core.String;
     }
     if (_json.containsKey('resourceUrl')) {
-      resourceUrl = _json['resourceUrl'];
+      resourceUrl = _json['resourceUrl'] as core.String;
     }
   }
 
@@ -2249,10 +2261,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility.fromJson(
       core.Map _json) {
     if (_json.containsKey('eligible')) {
-      eligible = _json['eligible'];
+      eligible = _json['eligible'] as core.bool;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
   }
 
@@ -2297,16 +2309,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
       core.Map _json) {
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('sliName')) {
-      sliName = _json['sliName'];
+      sliName = _json['sliName'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -2386,7 +2398,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
           .toList();
     }
     if (_json.containsKey('tier')) {
-      tier = _json['tier'];
+      tier = _json['tier'] as core.String;
     }
   }
 
@@ -2429,10 +2441,12 @@ class ListDomainsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List).cast<core.String>();
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2468,7 +2482,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2496,7 +2510,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -2545,20 +2559,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2624,21 +2641,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2694,25 +2713,25 @@ class OperationMetadata {
 
   OperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('cancelRequested')) {
-      cancelRequested = _json['cancelRequested'];
+      cancelRequested = _json['cancelRequested'] as core.bool;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('statusDetail')) {
-      statusDetail = _json['statusDetail'];
+      statusDetail = _json['statusDetail'] as core.String;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
     if (_json.containsKey('verb')) {
-      verb = _json['verb'];
+      verb = _json['verb'] as core.String;
     }
   }
 
@@ -2823,10 +2842,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -2859,11 +2878,12 @@ class ReconfigureTrustRequest {
 
   ReconfigureTrustRequest.fromJson(core.Map _json) {
     if (_json.containsKey('targetDnsIpAddresses')) {
-      targetDnsIpAddresses =
-          (_json['targetDnsIpAddresses'] as core.List).cast<core.String>();
+      targetDnsIpAddresses = (_json['targetDnsIpAddresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('targetDomainName')) {
-      targetDomainName = _json['targetDomainName'];
+      targetDomainName = _json['targetDomainName'] as core.String;
     }
   }
 
@@ -2902,7 +2922,7 @@ class ResetAdminPasswordResponse {
 
   ResetAdminPasswordResponse.fromJson(core.Map _json) {
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
   }
 
@@ -2966,16 +2986,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3006,7 +3028,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3029,7 +3053,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3107,38 +3133,39 @@ class Trust {
 
   Trust.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('lastTrustHeartbeatTime')) {
-      lastTrustHeartbeatTime = _json['lastTrustHeartbeatTime'];
+      lastTrustHeartbeatTime = _json['lastTrustHeartbeatTime'] as core.String;
     }
     if (_json.containsKey('selectiveAuthentication')) {
-      selectiveAuthentication = _json['selectiveAuthentication'];
+      selectiveAuthentication = _json['selectiveAuthentication'] as core.bool;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('stateDescription')) {
-      stateDescription = _json['stateDescription'];
+      stateDescription = _json['stateDescription'] as core.String;
     }
     if (_json.containsKey('targetDnsIpAddresses')) {
-      targetDnsIpAddresses =
-          (_json['targetDnsIpAddresses'] as core.List).cast<core.String>();
+      targetDnsIpAddresses = (_json['targetDnsIpAddresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('targetDomainName')) {
-      targetDomainName = _json['targetDomainName'];
+      targetDomainName = _json['targetDomainName'] as core.String;
     }
     if (_json.containsKey('trustDirection')) {
-      trustDirection = _json['trustDirection'];
+      trustDirection = _json['trustDirection'] as core.String;
     }
     if (_json.containsKey('trustHandshakeSecret')) {
-      trustHandshakeSecret = _json['trustHandshakeSecret'];
+      trustHandshakeSecret = _json['trustHandshakeSecret'] as core.String;
     }
     if (_json.containsKey('trustType')) {
-      trustType = _json['trustType'];
+      trustType = _json['trustType'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 

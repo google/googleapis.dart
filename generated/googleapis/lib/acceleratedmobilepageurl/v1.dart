@@ -115,13 +115,13 @@ class AmpUrl {
 
   AmpUrl.fromJson(core.Map _json) {
     if (_json.containsKey('ampUrl')) {
-      ampUrl = _json['ampUrl'];
+      ampUrl = _json['ampUrl'] as core.String;
     }
     if (_json.containsKey('cdnAmpUrl')) {
-      cdnAmpUrl = _json['cdnAmpUrl'];
+      cdnAmpUrl = _json['cdnAmpUrl'] as core.String;
     }
     if (_json.containsKey('originalUrl')) {
-      originalUrl = _json['originalUrl'];
+      originalUrl = _json['originalUrl'] as core.String;
     }
   }
 
@@ -169,13 +169,13 @@ class AmpUrlError {
 
   AmpUrlError.fromJson(core.Map _json) {
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'];
+      errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('originalUrl')) {
-      originalUrl = _json['originalUrl'];
+      originalUrl = _json['originalUrl'] as core.String;
     }
   }
 
@@ -218,10 +218,12 @@ class BatchGetAmpUrlsRequest {
 
   BatchGetAmpUrlsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lookupStrategy')) {
-      lookupStrategy = _json['lookupStrategy'];
+      lookupStrategy = _json['lookupStrategy'] as core.String;
     }
     if (_json.containsKey('urls')) {
-      urls = (_json['urls'] as core.List).cast<core.String>();
+      urls = (_json['urls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

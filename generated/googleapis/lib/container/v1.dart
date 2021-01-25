@@ -4679,10 +4679,10 @@ class AcceleratorConfig {
 
   AcceleratorConfig.fromJson(core.Map _json) {
     if (_json.containsKey('acceleratorCount')) {
-      acceleratorCount = _json['acceleratorCount'];
+      acceleratorCount = _json['acceleratorCount'] as core.String;
     }
     if (_json.containsKey('acceleratorType')) {
-      acceleratorType = _json['acceleratorType'];
+      acceleratorType = _json['acceleratorType'] as core.String;
     }
   }
 
@@ -4805,10 +4805,10 @@ class AuthenticatorGroupsConfig {
 
   AuthenticatorGroupsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('securityGroup')) {
-      securityGroup = _json['securityGroup'];
+      securityGroup = _json['securityGroup'] as core.String;
     }
   }
 
@@ -4840,10 +4840,10 @@ class AutoUpgradeOptions {
 
   AutoUpgradeOptions.fromJson(core.Map _json) {
     if (_json.containsKey('autoUpgradeStartTime')) {
-      autoUpgradeStartTime = _json['autoUpgradeStartTime'];
+      autoUpgradeStartTime = _json['autoUpgradeStartTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
   }
 
@@ -4906,25 +4906,27 @@ class AutoprovisioningNodePoolDefaults {
 
   AutoprovisioningNodePoolDefaults.fromJson(core.Map _json) {
     if (_json.containsKey('bootDiskKmsKey')) {
-      bootDiskKmsKey = _json['bootDiskKmsKey'];
+      bootDiskKmsKey = _json['bootDiskKmsKey'] as core.String;
     }
     if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'];
+      diskSizeGb = _json['diskSizeGb'] as core.int;
     }
     if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'];
+      diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('management')) {
       management = NodeManagement.fromJson(_json['management']);
     }
     if (_json.containsKey('minCpuPlatform')) {
-      minCpuPlatform = _json['minCpuPlatform'];
+      minCpuPlatform = _json['minCpuPlatform'] as core.String;
     }
     if (_json.containsKey('oauthScopes')) {
-      oauthScopes = (_json['oauthScopes'] as core.List).cast<core.String>();
+      oauthScopes = (_json['oauthScopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'];
+      serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
       shieldedInstanceConfig =
@@ -4977,7 +4979,7 @@ class BigQueryDestination {
 
   BigQueryDestination.fromJson(core.Map _json) {
     if (_json.containsKey('datasetId')) {
-      datasetId = _json['datasetId'];
+      datasetId = _json['datasetId'] as core.String;
     }
   }
 
@@ -5000,7 +5002,7 @@ class BinaryAuthorization {
 
   BinaryAuthorization.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -5038,16 +5040,16 @@ class CancelOperationRequest {
 
   CancelOperationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -5081,10 +5083,10 @@ class CidrBlock {
 
   CidrBlock.fromJson(core.Map _json) {
     if (_json.containsKey('cidrBlock')) {
-      cidrBlock = _json['cidrBlock'];
+      cidrBlock = _json['cidrBlock'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
   }
 
@@ -5109,7 +5111,7 @@ class ClientCertificateConfig {
 
   ClientCertificateConfig.fromJson(core.Map _json) {
     if (_json.containsKey('issueClientCertificate')) {
-      issueClientCertificate = _json['issueClientCertificate'];
+      issueClientCertificate = _json['issueClientCertificate'] as core.bool;
     }
   }
 
@@ -5141,10 +5143,10 @@ class CloudRunConfig {
 
   CloudRunConfig.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('loadBalancerType')) {
-      loadBalancerType = _json['loadBalancerType'];
+      loadBalancerType = _json['loadBalancerType'] as core.String;
     }
   }
 
@@ -5437,7 +5439,7 @@ class Cluster {
           BinaryAuthorization.fromJson(_json['binaryAuthorization']);
     }
     if (_json.containsKey('clusterIpv4Cidr')) {
-      clusterIpv4Cidr = _json['clusterIpv4Cidr'];
+      clusterIpv4Cidr = _json['clusterIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
@@ -5445,16 +5447,16 @@ class Cluster {
           .toList();
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('currentMasterVersion')) {
-      currentMasterVersion = _json['currentMasterVersion'];
+      currentMasterVersion = _json['currentMasterVersion'] as core.String;
     }
     if (_json.containsKey('currentNodeCount')) {
-      currentNodeCount = _json['currentNodeCount'];
+      currentNodeCount = _json['currentNodeCount'] as core.int;
     }
     if (_json.containsKey('currentNodeVersion')) {
-      currentNodeVersion = _json['currentNodeVersion'];
+      currentNodeVersion = _json['currentNodeVersion'] as core.String;
     }
     if (_json.containsKey('databaseEncryption')) {
       databaseEncryption =
@@ -5465,48 +5467,51 @@ class Cluster {
           MaxPodsConstraint.fromJson(_json['defaultMaxPodsConstraint']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('enableKubernetesAlpha')) {
-      enableKubernetesAlpha = _json['enableKubernetesAlpha'];
+      enableKubernetesAlpha = _json['enableKubernetesAlpha'] as core.bool;
     }
     if (_json.containsKey('enableTpu')) {
-      enableTpu = _json['enableTpu'];
+      enableTpu = _json['enableTpu'] as core.bool;
     }
     if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'];
+      endpoint = _json['endpoint'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('initialClusterVersion')) {
-      initialClusterVersion = _json['initialClusterVersion'];
+      initialClusterVersion = _json['initialClusterVersion'] as core.String;
     }
     if (_json.containsKey('initialNodeCount')) {
-      initialNodeCount = _json['initialNodeCount'];
+      initialNodeCount = _json['initialNodeCount'] as core.int;
     }
     if (_json.containsKey('instanceGroupUrls')) {
-      instanceGroupUrls =
-          (_json['instanceGroupUrls'] as core.List).cast<core.String>();
+      instanceGroupUrls = (_json['instanceGroupUrls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('ipAllocationPolicy')) {
       ipAllocationPolicy =
           IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']);
     }
     if (_json.containsKey('labelFingerprint')) {
-      labelFingerprint = _json['labelFingerprint'];
+      labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('legacyAbac')) {
       legacyAbac = LegacyAbac.fromJson(_json['legacyAbac']);
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List).cast<core.String>();
+      locations = (_json['locations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('loggingService')) {
-      loggingService = _json['loggingService'];
+      loggingService = _json['loggingService'] as core.String;
     }
     if (_json.containsKey('maintenancePolicy')) {
       maintenancePolicy =
@@ -5520,13 +5525,13 @@ class Cluster {
           _json['masterAuthorizedNetworksConfig']);
     }
     if (_json.containsKey('monitoringService')) {
-      monitoringService = _json['monitoringService'];
+      monitoringService = _json['monitoringService'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('network')) {
-      network = _json['network'];
+      network = _json['network'] as core.String;
     }
     if (_json.containsKey('networkConfig')) {
       networkConfig = NetworkConfig.fromJson(_json['networkConfig']);
@@ -5538,7 +5543,7 @@ class Cluster {
       nodeConfig = NodeConfig.fromJson(_json['nodeConfig']);
     }
     if (_json.containsKey('nodeIpv4CidrSize')) {
-      nodeIpv4CidrSize = _json['nodeIpv4CidrSize'];
+      nodeIpv4CidrSize = _json['nodeIpv4CidrSize'] as core.int;
     }
     if (_json.containsKey('nodePools')) {
       nodePools = (_json['nodePools'] as core.List)
@@ -5553,33 +5558,34 @@ class Cluster {
       releaseChannel = ReleaseChannel.fromJson(_json['releaseChannel']);
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = (_json['resourceLabels'] as core.Map)
-          .cast<core.String, core.String>();
+      resourceLabels = commons.mapMap<core.String, core.String>(
+          _json['resourceLabels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('resourceUsageExportConfig')) {
       resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
           _json['resourceUsageExportConfig']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('servicesIpv4Cidr')) {
-      servicesIpv4Cidr = _json['servicesIpv4Cidr'];
+      servicesIpv4Cidr = _json['servicesIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('shieldedNodes')) {
       shieldedNodes = ShieldedNodes.fromJson(_json['shieldedNodes']);
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'];
+      statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'];
+      subnetwork = _json['subnetwork'] as core.String;
     }
     if (_json.containsKey('tpuIpv4CidrBlock')) {
-      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'];
+      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('verticalPodAutoscaling')) {
       verticalPodAutoscaling =
@@ -5590,7 +5596,7 @@ class Cluster {
           WorkloadIdentityConfig.fromJson(_json['workloadIdentityConfig']);
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -5779,7 +5785,9 @@ class ClusterAutoscaling {
   ClusterAutoscaling.fromJson(core.Map _json) {
     if (_json.containsKey('autoprovisioningLocations')) {
       autoprovisioningLocations =
-          (_json['autoprovisioningLocations'] as core.List).cast<core.String>();
+          (_json['autoprovisioningLocations'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('autoprovisioningNodePoolDefaults')) {
       autoprovisioningNodePoolDefaults =
@@ -5787,7 +5795,8 @@ class ClusterAutoscaling {
               _json['autoprovisioningNodePoolDefaults']);
     }
     if (_json.containsKey('enableNodeAutoprovisioning')) {
-      enableNodeAutoprovisioning = _json['enableNodeAutoprovisioning'];
+      enableNodeAutoprovisioning =
+          _json['enableNodeAutoprovisioning'] as core.bool;
     }
     if (_json.containsKey('resourceLimits')) {
       resourceLimits = (_json['resourceLimits'] as core.List)
@@ -5944,18 +5953,19 @@ class ClusterUpdate {
           DefaultSnatStatus.fromJson(_json['desiredDefaultSnatStatus']);
     }
     if (_json.containsKey('desiredImageType')) {
-      desiredImageType = _json['desiredImageType'];
+      desiredImageType = _json['desiredImageType'] as core.String;
     }
     if (_json.containsKey('desiredIntraNodeVisibilityConfig')) {
       desiredIntraNodeVisibilityConfig = IntraNodeVisibilityConfig.fromJson(
           _json['desiredIntraNodeVisibilityConfig']);
     }
     if (_json.containsKey('desiredLocations')) {
-      desiredLocations =
-          (_json['desiredLocations'] as core.List).cast<core.String>();
+      desiredLocations = (_json['desiredLocations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('desiredLoggingService')) {
-      desiredLoggingService = _json['desiredLoggingService'];
+      desiredLoggingService = _json['desiredLoggingService'] as core.String;
     }
     if (_json.containsKey('desiredMasterAuthorizedNetworksConfig')) {
       desiredMasterAuthorizedNetworksConfig =
@@ -5963,20 +5973,21 @@ class ClusterUpdate {
               _json['desiredMasterAuthorizedNetworksConfig']);
     }
     if (_json.containsKey('desiredMasterVersion')) {
-      desiredMasterVersion = _json['desiredMasterVersion'];
+      desiredMasterVersion = _json['desiredMasterVersion'] as core.String;
     }
     if (_json.containsKey('desiredMonitoringService')) {
-      desiredMonitoringService = _json['desiredMonitoringService'];
+      desiredMonitoringService =
+          _json['desiredMonitoringService'] as core.String;
     }
     if (_json.containsKey('desiredNodePoolAutoscaling')) {
       desiredNodePoolAutoscaling =
           NodePoolAutoscaling.fromJson(_json['desiredNodePoolAutoscaling']);
     }
     if (_json.containsKey('desiredNodePoolId')) {
-      desiredNodePoolId = _json['desiredNodePoolId'];
+      desiredNodePoolId = _json['desiredNodePoolId'] as core.String;
     }
     if (_json.containsKey('desiredNodeVersion')) {
-      desiredNodeVersion = _json['desiredNodeVersion'];
+      desiredNodeVersion = _json['desiredNodeVersion'] as core.String;
     }
     if (_json.containsKey('desiredPrivateClusterConfig')) {
       desiredPrivateClusterConfig =
@@ -6105,16 +6116,16 @@ class CompleteIPRotationRequest {
 
   CompleteIPRotationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -6145,7 +6156,7 @@ class ConfigConnectorConfig {
 
   ConfigConnectorConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -6169,7 +6180,7 @@ class ConsumptionMeteringConfig {
 
   ConsumptionMeteringConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -6210,13 +6221,13 @@ class CreateClusterRequest {
       cluster = Cluster.fromJson(_json['cluster']);
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -6267,19 +6278,19 @@ class CreateNodePoolRequest {
 
   CreateNodePoolRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('nodePool')) {
       nodePool = NodePool.fromJson(_json['nodePool']);
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -6320,10 +6331,10 @@ class DailyMaintenanceWindow {
 
   DailyMaintenanceWindow.fromJson(core.Map _json) {
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -6357,10 +6368,10 @@ class DatabaseEncryption {
 
   DatabaseEncryption.fromJson(core.Map _json) {
     if (_json.containsKey('keyName')) {
-      keyName = _json['keyName'];
+      keyName = _json['keyName'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -6386,7 +6397,7 @@ class DefaultSnatStatus {
 
   DefaultSnatStatus.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
   }
 
@@ -6408,7 +6419,7 @@ class DnsCacheConfig {
 
   DnsCacheConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -6511,30 +6522,36 @@ class GetOpenIDConfigResponse {
           HttpCacheControlResponseHeader.fromJson(_json['cacheHeader']);
     }
     if (_json.containsKey('claims_supported')) {
-      claimsSupported =
-          (_json['claims_supported'] as core.List).cast<core.String>();
+      claimsSupported = (_json['claims_supported'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('grant_types')) {
-      grantTypes = (_json['grant_types'] as core.List).cast<core.String>();
+      grantTypes = (_json['grant_types'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('id_token_signing_alg_values_supported')) {
       idTokenSigningAlgValuesSupported =
           (_json['id_token_signing_alg_values_supported'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'];
+      issuer = _json['issuer'] as core.String;
     }
     if (_json.containsKey('jwks_uri')) {
-      jwksUri = _json['jwks_uri'];
+      jwksUri = _json['jwks_uri'] as core.String;
     }
     if (_json.containsKey('response_types_supported')) {
-      responseTypesSupported =
-          (_json['response_types_supported'] as core.List).cast<core.String>();
+      responseTypesSupported = (_json['response_types_supported'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('subject_types_supported')) {
-      subjectTypesSupported =
-          (_json['subject_types_supported'] as core.List).cast<core.String>();
+      subjectTypesSupported = (_json['subject_types_supported'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -6582,7 +6599,7 @@ class HorizontalPodAutoscaling {
 
   HorizontalPodAutoscaling.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
   }
 
@@ -6610,13 +6627,13 @@ class HttpCacheControlResponseHeader {
 
   HttpCacheControlResponseHeader.fromJson(core.Map _json) {
     if (_json.containsKey('age')) {
-      age = _json['age'];
+      age = _json['age'] as core.String;
     }
     if (_json.containsKey('directive')) {
-      directive = _json['directive'];
+      directive = _json['directive'] as core.String;
     }
     if (_json.containsKey('expires')) {
-      expires = _json['expires'];
+      expires = _json['expires'] as core.String;
     }
   }
 
@@ -6647,7 +6664,7 @@ class HttpLoadBalancing {
 
   HttpLoadBalancing.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
   }
 
@@ -6753,43 +6770,45 @@ class IPAllocationPolicy {
 
   IPAllocationPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('clusterIpv4Cidr')) {
-      clusterIpv4Cidr = _json['clusterIpv4Cidr'];
+      clusterIpv4Cidr = _json['clusterIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('clusterIpv4CidrBlock')) {
-      clusterIpv4CidrBlock = _json['clusterIpv4CidrBlock'];
+      clusterIpv4CidrBlock = _json['clusterIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('clusterSecondaryRangeName')) {
-      clusterSecondaryRangeName = _json['clusterSecondaryRangeName'];
+      clusterSecondaryRangeName =
+          _json['clusterSecondaryRangeName'] as core.String;
     }
     if (_json.containsKey('createSubnetwork')) {
-      createSubnetwork = _json['createSubnetwork'];
+      createSubnetwork = _json['createSubnetwork'] as core.bool;
     }
     if (_json.containsKey('nodeIpv4Cidr')) {
-      nodeIpv4Cidr = _json['nodeIpv4Cidr'];
+      nodeIpv4Cidr = _json['nodeIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('nodeIpv4CidrBlock')) {
-      nodeIpv4CidrBlock = _json['nodeIpv4CidrBlock'];
+      nodeIpv4CidrBlock = _json['nodeIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('servicesIpv4Cidr')) {
-      servicesIpv4Cidr = _json['servicesIpv4Cidr'];
+      servicesIpv4Cidr = _json['servicesIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('servicesIpv4CidrBlock')) {
-      servicesIpv4CidrBlock = _json['servicesIpv4CidrBlock'];
+      servicesIpv4CidrBlock = _json['servicesIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('servicesSecondaryRangeName')) {
-      servicesSecondaryRangeName = _json['servicesSecondaryRangeName'];
+      servicesSecondaryRangeName =
+          _json['servicesSecondaryRangeName'] as core.String;
     }
     if (_json.containsKey('subnetworkName')) {
-      subnetworkName = _json['subnetworkName'];
+      subnetworkName = _json['subnetworkName'] as core.String;
     }
     if (_json.containsKey('tpuIpv4CidrBlock')) {
-      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'];
+      tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('useIpAliases')) {
-      useIpAliases = _json['useIpAliases'];
+      useIpAliases = _json['useIpAliases'] as core.bool;
     }
     if (_json.containsKey('useRoutes')) {
-      useRoutes = _json['useRoutes'];
+      useRoutes = _json['useRoutes'] as core.bool;
     }
   }
 
@@ -6848,7 +6867,7 @@ class IntraNodeVisibilityConfig {
 
   IntraNodeVisibilityConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -6894,31 +6913,31 @@ class Jwk {
 
   Jwk.fromJson(core.Map _json) {
     if (_json.containsKey('alg')) {
-      alg = _json['alg'];
+      alg = _json['alg'] as core.String;
     }
     if (_json.containsKey('crv')) {
-      crv = _json['crv'];
+      crv = _json['crv'] as core.String;
     }
     if (_json.containsKey('e')) {
-      e = _json['e'];
+      e = _json['e'] as core.String;
     }
     if (_json.containsKey('kid')) {
-      kid = _json['kid'];
+      kid = _json['kid'] as core.String;
     }
     if (_json.containsKey('kty')) {
-      kty = _json['kty'];
+      kty = _json['kty'] as core.String;
     }
     if (_json.containsKey('n')) {
-      n = _json['n'];
+      n = _json['n'] as core.String;
     }
     if (_json.containsKey('use')) {
-      use = _json['use'];
+      use = _json['use'] as core.String;
     }
     if (_json.containsKey('x')) {
-      x = _json['x'];
+      x = _json['x'] as core.String;
     }
     if (_json.containsKey('y')) {
-      y = _json['y'];
+      y = _json['y'] as core.String;
     }
   }
 
@@ -6964,7 +6983,7 @@ class KubernetesDashboard {
 
   KubernetesDashboard.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
   }
 
@@ -6990,7 +7009,7 @@ class LegacyAbac {
 
   LegacyAbac.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -7022,7 +7041,9 @@ class ListClustersResponse {
           .toList();
     }
     if (_json.containsKey('missingZones')) {
-      missingZones = (_json['missingZones'] as core.List).cast<core.String>();
+      missingZones = (_json['missingZones'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -7075,7 +7096,9 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('missingZones')) {
-      missingZones = (_json['missingZones'] as core.List).cast<core.String>();
+      missingZones = (_json['missingZones'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -7112,7 +7135,7 @@ class ListUsableSubnetworksResponse {
 
   ListUsableSubnetworksResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('subnetworks')) {
       subnetworks = (_json['subnetworks'] as core.List)
@@ -7150,7 +7173,7 @@ class MaintenancePolicy {
 
   MaintenancePolicy.fromJson(core.Map _json) {
     if (_json.containsKey('resourceVersion')) {
-      resourceVersion = _json['resourceVersion'];
+      resourceVersion = _json['resourceVersion'] as core.String;
     }
     if (_json.containsKey('window')) {
       window = MaintenanceWindow.fromJson(_json['window']);
@@ -7260,23 +7283,23 @@ class MasterAuth {
 
   MasterAuth.fromJson(core.Map _json) {
     if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'];
+      clientCertificate = _json['clientCertificate'] as core.String;
     }
     if (_json.containsKey('clientCertificateConfig')) {
       clientCertificateConfig =
           ClientCertificateConfig.fromJson(_json['clientCertificateConfig']);
     }
     if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'];
+      clientKey = _json['clientKey'] as core.String;
     }
     if (_json.containsKey('clusterCaCertificate')) {
-      clusterCaCertificate = _json['clusterCaCertificate'];
+      clusterCaCertificate = _json['clusterCaCertificate'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
   }
 
@@ -7325,7 +7348,7 @@ class MasterAuthorizedNetworksConfig {
           .toList();
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -7350,7 +7373,7 @@ class MaxPodsConstraint {
 
   MaxPodsConstraint.fromJson(core.Map _json) {
     if (_json.containsKey('maxPodsPerNode')) {
-      maxPodsPerNode = _json['maxPodsPerNode'];
+      maxPodsPerNode = _json['maxPodsPerNode'] as core.String;
     }
   }
 
@@ -7384,13 +7407,13 @@ class Metric {
       doubleValue = _json['doubleValue'].toDouble();
     }
     if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'];
+      intValue = _json['intValue'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
   }
 
@@ -7444,13 +7467,14 @@ class NetworkConfig {
           DefaultSnatStatus.fromJson(_json['defaultSnatStatus']);
     }
     if (_json.containsKey('enableIntraNodeVisibility')) {
-      enableIntraNodeVisibility = _json['enableIntraNodeVisibility'];
+      enableIntraNodeVisibility =
+          _json['enableIntraNodeVisibility'] as core.bool;
     }
     if (_json.containsKey('network')) {
-      network = _json['network'];
+      network = _json['network'] as core.String;
     }
     if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'];
+      subnetwork = _json['subnetwork'] as core.String;
     }
   }
 
@@ -7488,10 +7512,10 @@ class NetworkPolicy {
 
   NetworkPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('provider')) {
-      provider = _json['provider'];
+      provider = _json['provider'] as core.String;
     }
   }
 
@@ -7518,7 +7542,7 @@ class NetworkPolicyConfig {
 
   NetworkPolicyConfig.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
   }
 
@@ -7666,41 +7690,46 @@ class NodeConfig {
           .toList();
     }
     if (_json.containsKey('bootDiskKmsKey')) {
-      bootDiskKmsKey = _json['bootDiskKmsKey'];
+      bootDiskKmsKey = _json['bootDiskKmsKey'] as core.String;
     }
     if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'];
+      diskSizeGb = _json['diskSizeGb'] as core.int;
     }
     if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'];
+      diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'];
+      imageType = _json['imageType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('localSsdCount')) {
-      localSsdCount = _json['localSsdCount'];
+      localSsdCount = _json['localSsdCount'] as core.int;
     }
     if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'];
+      machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>();
+      metadata = commons.mapMap<core.String, core.String>(
+          _json['metadata'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('minCpuPlatform')) {
-      minCpuPlatform = _json['minCpuPlatform'];
+      minCpuPlatform = _json['minCpuPlatform'] as core.String;
     }
     if (_json.containsKey('nodeGroup')) {
-      nodeGroup = _json['nodeGroup'];
+      nodeGroup = _json['nodeGroup'] as core.String;
     }
     if (_json.containsKey('oauthScopes')) {
-      oauthScopes = (_json['oauthScopes'] as core.List).cast<core.String>();
+      oauthScopes = (_json['oauthScopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('preemptible')) {
-      preemptible = _json['preemptible'];
+      preemptible = _json['preemptible'] as core.bool;
     }
     if (_json.containsKey('reservationAffinity')) {
       reservationAffinity =
@@ -7710,14 +7739,16 @@ class NodeConfig {
       sandboxConfig = SandboxConfig.fromJson(_json['sandboxConfig']);
     }
     if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'];
+      serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
       shieldedInstanceConfig =
           ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']);
     }
     if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List).cast<core.String>();
+      tags = (_json['tags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('taints')) {
       taints = (_json['taints'] as core.List)
@@ -7818,10 +7849,10 @@ class NodeManagement {
 
   NodeManagement.fromJson(core.Map _json) {
     if (_json.containsKey('autoRepair')) {
-      autoRepair = _json['autoRepair'];
+      autoRepair = _json['autoRepair'] as core.bool;
     }
     if (_json.containsKey('autoUpgrade')) {
-      autoUpgrade = _json['autoUpgrade'];
+      autoUpgrade = _json['autoUpgrade'] as core.bool;
     }
     if (_json.containsKey('upgradeOptions')) {
       upgradeOptions = AutoUpgradeOptions.fromJson(_json['upgradeOptions']);
@@ -7937,14 +7968,17 @@ class NodePool {
       config = NodeConfig.fromJson(_json['config']);
     }
     if (_json.containsKey('initialNodeCount')) {
-      initialNodeCount = _json['initialNodeCount'];
+      initialNodeCount = _json['initialNodeCount'] as core.int;
     }
     if (_json.containsKey('instanceGroupUrls')) {
-      instanceGroupUrls =
-          (_json['instanceGroupUrls'] as core.List).cast<core.String>();
+      instanceGroupUrls = (_json['instanceGroupUrls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List).cast<core.String>();
+      locations = (_json['locations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('management')) {
       management = NodeManagement.fromJson(_json['management']);
@@ -7954,25 +7988,25 @@ class NodePool {
           MaxPodsConstraint.fromJson(_json['maxPodsConstraint']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('podIpv4CidrSize')) {
-      podIpv4CidrSize = _json['podIpv4CidrSize'];
+      podIpv4CidrSize = _json['podIpv4CidrSize'] as core.int;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'];
+      statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('upgradeSettings')) {
       upgradeSettings = UpgradeSettings.fromJson(_json['upgradeSettings']);
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -8048,16 +8082,16 @@ class NodePoolAutoscaling {
 
   NodePoolAutoscaling.fromJson(core.Map _json) {
     if (_json.containsKey('autoprovisioned')) {
-      autoprovisioned = _json['autoprovisioned'];
+      autoprovisioned = _json['autoprovisioned'] as core.bool;
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('maxNodeCount')) {
-      maxNodeCount = _json['maxNodeCount'];
+      maxNodeCount = _json['maxNodeCount'] as core.int;
     }
     if (_json.containsKey('minNodeCount')) {
-      minNodeCount = _json['minNodeCount'];
+      minNodeCount = _json['minNodeCount'] as core.int;
     }
   }
 
@@ -8103,13 +8137,13 @@ class NodeTaint {
 
   NodeTaint.fromJson(core.Map _json) {
     if (_json.containsKey('effect')) {
-      effect = _json['effect'];
+      effect = _json['effect'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -8214,16 +8248,16 @@ class Operation {
           .toList();
     }
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodepoolConditions')) {
       nodepoolConditions = (_json['nodepoolConditions'] as core.List)
@@ -8231,28 +8265,28 @@ class Operation {
           .toList();
     }
     if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'];
+      operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('progress')) {
       progress = OperationProgress.fromJson(_json['progress']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'];
+      statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('targetLink')) {
-      targetLink = _json['targetLink'];
+      targetLink = _json['targetLink'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -8339,7 +8373,7 @@ class OperationProgress {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('stages')) {
       stages = (_json['stages'] as core.List)
@@ -8347,7 +8381,7 @@ class OperationProgress {
           .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -8401,10 +8435,10 @@ class PrivateClusterConfig {
 
   PrivateClusterConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enablePrivateEndpoint')) {
-      enablePrivateEndpoint = _json['enablePrivateEndpoint'];
+      enablePrivateEndpoint = _json['enablePrivateEndpoint'] as core.bool;
     }
     if (_json.containsKey('enablePrivateNodes')) {
-      enablePrivateNodes = _json['enablePrivateNodes'];
+      enablePrivateNodes = _json['enablePrivateNodes'] as core.bool;
     }
     if (_json.containsKey('masterGlobalAccessConfig')) {
       masterGlobalAccessConfig =
@@ -8412,16 +8446,16 @@ class PrivateClusterConfig {
               _json['masterGlobalAccessConfig']);
     }
     if (_json.containsKey('masterIpv4CidrBlock')) {
-      masterIpv4CidrBlock = _json['masterIpv4CidrBlock'];
+      masterIpv4CidrBlock = _json['masterIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('peeringName')) {
-      peeringName = _json['peeringName'];
+      peeringName = _json['peeringName'] as core.String;
     }
     if (_json.containsKey('privateEndpoint')) {
-      privateEndpoint = _json['privateEndpoint'];
+      privateEndpoint = _json['privateEndpoint'] as core.String;
     }
     if (_json.containsKey('publicEndpoint')) {
-      publicEndpoint = _json['publicEndpoint'];
+      publicEndpoint = _json['publicEndpoint'] as core.String;
     }
   }
 
@@ -8461,7 +8495,7 @@ class PrivateClusterMasterGlobalAccessConfig {
 
   PrivateClusterMasterGlobalAccessConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -8501,7 +8535,7 @@ class RecurringTimeWindow {
 
   RecurringTimeWindow.fromJson(core.Map _json) {
     if (_json.containsKey('recurrence')) {
-      recurrence = _json['recurrence'];
+      recurrence = _json['recurrence'] as core.String;
     }
     if (_json.containsKey('window')) {
       window = TimeWindow.fromJson(_json['window']);
@@ -8543,7 +8577,7 @@ class ReleaseChannel {
 
   ReleaseChannel.fromJson(core.Map _json) {
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
   }
 
@@ -8582,13 +8616,15 @@ class ReleaseChannelConfig {
 
   ReleaseChannelConfig.fromJson(core.Map _json) {
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
     if (_json.containsKey('defaultVersion')) {
-      defaultVersion = _json['defaultVersion'];
+      defaultVersion = _json['defaultVersion'] as core.String;
     }
     if (_json.containsKey('validVersions')) {
-      validVersions = (_json['validVersions'] as core.List).cast<core.String>();
+      validVersions = (_json['validVersions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8632,13 +8668,15 @@ class ReservationAffinity {
 
   ReservationAffinity.fromJson(core.Map _json) {
     if (_json.containsKey('consumeReservationType')) {
-      consumeReservationType = _json['consumeReservationType'];
+      consumeReservationType = _json['consumeReservationType'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.String>();
+      values = (_json['values'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8673,13 +8711,13 @@ class ResourceLimit {
 
   ResourceLimit.fromJson(core.Map _json) {
     if (_json.containsKey('maximum')) {
-      maximum = _json['maximum'];
+      maximum = _json['maximum'] as core.String;
     }
     if (_json.containsKey('minimum')) {
-      minimum = _json['minimum'];
+      minimum = _json['minimum'] as core.String;
     }
     if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'];
+      resourceType = _json['resourceType'] as core.String;
     }
   }
 
@@ -8722,7 +8760,8 @@ class ResourceUsageExportConfig {
           _json['consumptionMeteringConfig']);
     }
     if (_json.containsKey('enableNetworkEgressMetering')) {
-      enableNetworkEgressMetering = _json['enableNetworkEgressMetering'];
+      enableNetworkEgressMetering =
+          _json['enableNetworkEgressMetering'] as core.bool;
     }
   }
 
@@ -8773,19 +8812,19 @@ class RollbackNodePoolUpgradeRequest {
 
   RollbackNodePoolUpgradeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'];
+      nodePoolId = _json['nodePoolId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -8822,7 +8861,7 @@ class SandboxConfig {
 
   SandboxConfig.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -8865,22 +8904,25 @@ class ServerConfig {
           .toList();
     }
     if (_json.containsKey('defaultClusterVersion')) {
-      defaultClusterVersion = _json['defaultClusterVersion'];
+      defaultClusterVersion = _json['defaultClusterVersion'] as core.String;
     }
     if (_json.containsKey('defaultImageType')) {
-      defaultImageType = _json['defaultImageType'];
+      defaultImageType = _json['defaultImageType'] as core.String;
     }
     if (_json.containsKey('validImageTypes')) {
-      validImageTypes =
-          (_json['validImageTypes'] as core.List).cast<core.String>();
+      validImageTypes = (_json['validImageTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('validMasterVersions')) {
-      validMasterVersions =
-          (_json['validMasterVersions'] as core.List).cast<core.String>();
+      validMasterVersions = (_json['validMasterVersions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('validNodeVersions')) {
-      validNodeVersions =
-          (_json['validNodeVersions'] as core.List).cast<core.String>();
+      validNodeVersions = (_json['validNodeVersions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8940,16 +8982,16 @@ class SetAddonsConfigRequest {
       addonsConfig = AddonsConfig.fromJson(_json['addonsConfig']);
     }
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9012,23 +9054,24 @@ class SetLabelsRequest {
 
   SetLabelsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('labelFingerprint')) {
-      labelFingerprint = _json['labelFingerprint'];
+      labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = (_json['resourceLabels'] as core.Map)
-          .cast<core.String, core.String>();
+      resourceLabels = commons.mapMap<core.String, core.String>(
+          _json['resourceLabels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9086,19 +9129,19 @@ class SetLegacyAbacRequest {
 
   SetLegacyAbacRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9156,19 +9199,21 @@ class SetLocationsRequest {
 
   SetLocationsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List).cast<core.String>();
+      locations = (_json['locations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9228,19 +9273,19 @@ class SetLoggingServiceRequest {
 
   SetLoggingServiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('loggingService')) {
-      loggingService = _json['loggingService'];
+      loggingService = _json['loggingService'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9292,20 +9337,20 @@ class SetMaintenancePolicyRequest {
 
   SetMaintenancePolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('maintenancePolicy')) {
       maintenancePolicy =
           MaintenancePolicy.fromJson(_json['maintenancePolicy']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9369,22 +9414,22 @@ class SetMasterAuthRequest {
 
   SetMasterAuthRequest.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('update')) {
       update = MasterAuth.fromJson(_json['update']);
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9447,19 +9492,19 @@ class SetMonitoringServiceRequest {
 
   SetMonitoringServiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('monitoringService')) {
-      monitoringService = _json['monitoringService'];
+      monitoringService = _json['monitoringService'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9513,19 +9558,19 @@ class SetNetworkPolicyRequest {
 
   SetNetworkPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkPolicy')) {
       networkPolicy = NetworkPolicy.fromJson(_json['networkPolicy']);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9586,19 +9631,19 @@ class SetNodePoolAutoscalingRequest {
       autoscaling = NodePoolAutoscaling.fromJson(_json['autoscaling']);
     }
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'];
+      nodePoolId = _json['nodePoolId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9660,22 +9705,22 @@ class SetNodePoolManagementRequest {
 
   SetNodePoolManagementRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('management')) {
       management = NodeManagement.fromJson(_json['management']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'];
+      nodePoolId = _json['nodePoolId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9736,22 +9781,22 @@ class SetNodePoolSizeRequest {
 
   SetNodePoolSizeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeCount')) {
-      nodeCount = _json['nodeCount'];
+      nodeCount = _json['nodeCount'] as core.int;
     }
     if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'];
+      nodePoolId = _json['nodePoolId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9798,10 +9843,11 @@ class ShieldedInstanceConfig {
 
   ShieldedInstanceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enableIntegrityMonitoring')) {
-      enableIntegrityMonitoring = _json['enableIntegrityMonitoring'];
+      enableIntegrityMonitoring =
+          _json['enableIntegrityMonitoring'] as core.bool;
     }
     if (_json.containsKey('enableSecureBoot')) {
-      enableSecureBoot = _json['enableSecureBoot'];
+      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
     }
   }
 
@@ -9826,7 +9872,7 @@ class ShieldedNodes {
 
   ShieldedNodes.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -9869,19 +9915,19 @@ class StartIPRotationRequest {
 
   StartIPRotationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('rotateCredentials')) {
-      rotateCredentials = _json['rotateCredentials'];
+      rotateCredentials = _json['rotateCredentials'] as core.bool;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -9930,10 +9976,10 @@ class StatusCondition {
 
   StatusCondition.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -9962,10 +10008,10 @@ class TimeWindow {
 
   TimeWindow.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -10009,19 +10055,19 @@ class UpdateClusterRequest {
 
   UpdateClusterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('update')) {
       update = ClusterUpdate.fromJson(_json['update']);
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -10080,19 +10126,19 @@ class UpdateMasterRequest {
 
   UpdateMasterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('masterVersion')) {
-      masterVersion = _json['masterVersion'];
+      masterVersion = _json['masterVersion'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -10172,25 +10218,27 @@ class UpdateNodePoolRequest {
 
   UpdateNodePoolRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusterId')) {
-      clusterId = _json['clusterId'];
+      clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'];
+      imageType = _json['imageType'] as core.String;
     }
     if (_json.containsKey('locations')) {
-      locations = (_json['locations'] as core.List).cast<core.String>();
+      locations = (_json['locations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodePoolId')) {
-      nodePoolId = _json['nodePoolId'];
+      nodePoolId = _json['nodePoolId'] as core.String;
     }
     if (_json.containsKey('nodeVersion')) {
-      nodeVersion = _json['nodeVersion'];
+      nodeVersion = _json['nodeVersion'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('upgradeSettings')) {
       upgradeSettings = UpgradeSettings.fromJson(_json['upgradeSettings']);
@@ -10200,7 +10248,7 @@ class UpdateNodePoolRequest {
           WorkloadMetadataConfig.fromJson(_json['workloadMetadataConfig']);
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -10271,22 +10319,22 @@ class UpgradeEvent {
 
   UpgradeEvent.fromJson(core.Map _json) {
     if (_json.containsKey('currentVersion')) {
-      currentVersion = _json['currentVersion'];
+      currentVersion = _json['currentVersion'] as core.String;
     }
     if (_json.containsKey('operation')) {
-      operation = _json['operation'];
+      operation = _json['operation'] as core.String;
     }
     if (_json.containsKey('operationStartTime')) {
-      operationStartTime = _json['operationStartTime'];
+      operationStartTime = _json['operationStartTime'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
     if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'];
+      resourceType = _json['resourceType'] as core.String;
     }
     if (_json.containsKey('targetVersion')) {
-      targetVersion = _json['targetVersion'];
+      targetVersion = _json['targetVersion'] as core.String;
     }
   }
 
@@ -10343,10 +10391,10 @@ class UpgradeSettings {
 
   UpgradeSettings.fromJson(core.Map _json) {
     if (_json.containsKey('maxSurge')) {
-      maxSurge = _json['maxSurge'];
+      maxSurge = _json['maxSurge'] as core.int;
     }
     if (_json.containsKey('maxUnavailable')) {
-      maxUnavailable = _json['maxUnavailable'];
+      maxUnavailable = _json['maxUnavailable'] as core.int;
     }
   }
 
@@ -10388,10 +10436,10 @@ class UsableSubnetwork {
 
   UsableSubnetwork.fromJson(core.Map _json) {
     if (_json.containsKey('ipCidrRange')) {
-      ipCidrRange = _json['ipCidrRange'];
+      ipCidrRange = _json['ipCidrRange'] as core.String;
     }
     if (_json.containsKey('network')) {
-      network = _json['network'];
+      network = _json['network'] as core.String;
     }
     if (_json.containsKey('secondaryIpRanges')) {
       secondaryIpRanges = (_json['secondaryIpRanges'] as core.List)
@@ -10400,10 +10448,10 @@ class UsableSubnetwork {
           .toList();
     }
     if (_json.containsKey('statusMessage')) {
-      statusMessage = _json['statusMessage'];
+      statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('subnetwork')) {
-      subnetwork = _json['subnetwork'];
+      subnetwork = _json['subnetwork'] as core.String;
     }
   }
 
@@ -10456,13 +10504,13 @@ class UsableSubnetworkSecondaryRange {
 
   UsableSubnetworkSecondaryRange.fromJson(core.Map _json) {
     if (_json.containsKey('ipCidrRange')) {
-      ipCidrRange = _json['ipCidrRange'];
+      ipCidrRange = _json['ipCidrRange'] as core.String;
     }
     if (_json.containsKey('rangeName')) {
-      rangeName = _json['rangeName'];
+      rangeName = _json['rangeName'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -10492,7 +10540,7 @@ class VerticalPodAutoscaling {
 
   VerticalPodAutoscaling.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -10515,7 +10563,7 @@ class WorkloadIdentityConfig {
 
   WorkloadIdentityConfig.fromJson(core.Map _json) {
     if (_json.containsKey('workloadPool')) {
-      workloadPool = _json['workloadPool'];
+      workloadPool = _json['workloadPool'] as core.String;
     }
   }
 
@@ -10547,7 +10595,7 @@ class WorkloadMetadataConfig {
 
   WorkloadMetadataConfig.fromJson(core.Map _json) {
     if (_json.containsKey('mode')) {
-      mode = _json['mode'];
+      mode = _json['mode'] as core.String;
     }
   }
 

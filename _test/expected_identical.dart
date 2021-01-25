@@ -265,8 +265,9 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => (data as core.Map).cast<core.String, core.int>());
+    return _response.then((data) => commons.mapMap<core.int, core.int>(
+        data.cast<core.String, core.int>(),
+        (core.int item) => item as core.int));
   }
 
   /// Request parameters:
@@ -478,8 +479,9 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then((data) => (data as core.List)
-        .map<core.List<core.String>>(
-            (value) => (value as core.List).cast<core.String>())
+        .map<core.List<core.String>>((value) => (value as core.List)
+            .map<core.String>((value) => value as core.String)
+            .toList())
         .toList());
   }
 
@@ -532,7 +534,9 @@ class ToyApi {
         .map<core.Map<core.String, core.List<core.String>>>((value) =>
             commons.mapMap<core.List, core.List<core.String>>(
                 value.cast<core.String, core.List>(),
-                (core.List item) => (item as core.List).cast<core.String>()))
+                (core.List item) => (item as core.List)
+                    .map<core.String>((value) => value as core.String)
+                    .toList()))
         .toList());
   }
 
@@ -627,7 +631,9 @@ class ToyApi {
             data.cast<core.String, core.List>(),
             (core.List item) => (item as core.List)
                 .map<core.Map<core.String, core.bool>>((value) =>
-                    (value as core.Map).cast<core.String, core.bool>())
+                    commons.mapMap<core.bool, core.bool>(
+                        value.cast<core.String, core.bool>(),
+                        (core.bool item) => item as core.bool))
                 .toList()));
   }
 
@@ -679,8 +685,9 @@ class ToyApi {
     return _response.then((data) =>
         commons.mapMap<core.Map, core.Map<core.String, core.bool>>(
             data.cast<core.String, core.Map>(),
-            (core.Map item) =>
-                (item as core.Map).cast<core.String, core.bool>()));
+            (core.Map item) => commons.mapMap<core.bool, core.bool>(
+                item.cast<core.String, core.bool>(),
+                (core.bool item) => item as core.bool)));
   }
 
   /// [request] - The metadata request object.
@@ -892,7 +899,9 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => (data as core.List).cast<core.String>());
+    return _response.then((data) => (data as core.List)
+        .map<core.String>((value) => value as core.String)
+        .toList());
   }
 }
 
@@ -1022,7 +1031,7 @@ class NestedResponseFactory {
   static NestedResponse fromJson(core.Map _json) {
     var message = NestedResponse();
     if (_json.containsKey('nestedResult')) {
-      message.nestedResult = _json['nestedResult'];
+      message.nestedResult = _json['nestedResult'] as core.String;
     }
     return message;
   }
@@ -1040,7 +1049,7 @@ class ToyAgeRequestFactory {
   static ToyAgeRequest fromJson(core.Map _json) {
     var message = ToyAgeRequest();
     if (_json.containsKey('age')) {
-      message.age = _json['age'];
+      message.age = _json['age'] as core.int;
     }
     return message;
   }
@@ -1063,7 +1072,7 @@ class ToyMapResponseFactory {
           (core.Map item) => NestedResponseFactory.fromJson(item));
     }
     if (_json.containsKey('result')) {
-      message.result = _json['result'];
+      message.result = _json['result'] as core.String;
     }
     return message;
   }
@@ -1087,10 +1096,10 @@ class ToyRequestFactory {
   static ToyRequest fromJson(core.Map _json) {
     var message = ToyRequest();
     if (_json.containsKey('age')) {
-      message.age = _json['age'];
+      message.age = _json['age'] as core.int;
     }
     if (_json.containsKey('name')) {
-      message.name = _json['name'];
+      message.name = _json['name'] as core.String;
     }
     return message;
   }
@@ -1111,7 +1120,7 @@ class ToyResourceResponseFactory {
   static ToyResourceResponse fromJson(core.Map _json) {
     var message = ToyResourceResponse();
     if (_json.containsKey('result')) {
-      message.result = _json['result'];
+      message.result = _json['result'] as core.String;
     }
     return message;
   }
@@ -1129,7 +1138,7 @@ class ToyResponseFactory {
   static ToyResponse fromJson(core.Map _json) {
     var message = ToyResponse();
     if (_json.containsKey('result')) {
-      message.result = _json['result'];
+      message.result = _json['result'] as core.String;
     }
     return message;
   }

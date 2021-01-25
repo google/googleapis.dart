@@ -200,13 +200,13 @@ class UrlNotification {
 
   UrlNotification.fromJson(core.Map _json) {
     if (_json.containsKey('notifyTime')) {
-      notifyTime = _json['notifyTime'];
+      notifyTime = _json['notifyTime'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -247,7 +247,7 @@ class UrlNotificationMetadata {
       latestUpdate = UrlNotification.fromJson(_json['latestUpdate']);
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 

@@ -2332,10 +2332,10 @@ class AsymmetricDecryptRequest {
 
   AsymmetricDecryptRequest.fromJson(core.Map _json) {
     if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'];
+      ciphertext = _json['ciphertext'] as core.String;
     }
     if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'];
+      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
     }
   }
 
@@ -2390,13 +2390,13 @@ class AsymmetricDecryptResponse {
 
   AsymmetricDecryptResponse.fromJson(core.Map _json) {
     if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'];
+      plaintext = _json['plaintext'] as core.String;
     }
     if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'];
+      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
     }
     if (_json.containsKey('verifiedCiphertextCrc32c')) {
-      verifiedCiphertextCrc32c = _json['verifiedCiphertextCrc32c'];
+      verifiedCiphertextCrc32c = _json['verifiedCiphertextCrc32c'] as core.bool;
     }
   }
 
@@ -2443,7 +2443,7 @@ class AsymmetricSignRequest {
       digest = Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('digestCrc32c')) {
-      digestCrc32c = _json['digestCrc32c'];
+      digestCrc32c = _json['digestCrc32c'] as core.String;
     }
   }
 
@@ -2502,16 +2502,16 @@ class AsymmetricSignResponse {
 
   AsymmetricSignResponse.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
     if (_json.containsKey('signatureCrc32c')) {
-      signatureCrc32c = _json['signatureCrc32c'];
+      signatureCrc32c = _json['signatureCrc32c'] as core.String;
     }
     if (_json.containsKey('verifiedDigestCrc32c')) {
-      verifiedDigestCrc32c = _json['verifiedDigestCrc32c'];
+      verifiedDigestCrc32c = _json['verifiedDigestCrc32c'] as core.bool;
     }
   }
 
@@ -2567,7 +2567,7 @@ class AuditConfig {
           .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -2606,11 +2606,12 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers =
-          (_json['exemptedMembers'] as core.List).cast<core.String>();
+      exemptedMembers = (_json['exemptedMembers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -2680,16 +2681,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -2728,15 +2731,19 @@ class CertificateChains {
 
   CertificateChains.fromJson(core.Map _json) {
     if (_json.containsKey('caviumCerts')) {
-      caviumCerts = (_json['caviumCerts'] as core.List).cast<core.String>();
+      caviumCerts = (_json['caviumCerts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('googleCardCerts')) {
-      googleCardCerts =
-          (_json['googleCardCerts'] as core.List).cast<core.String>();
+      googleCardCerts = (_json['googleCardCerts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('googlePartitionCerts')) {
-      googlePartitionCerts =
-          (_json['googlePartitionCerts'] as core.List).cast<core.String>();
+      googlePartitionCerts = (_json['googlePartitionCerts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2812,25 +2819,27 @@ class CryptoKey {
 
   CryptoKey.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nextRotationTime')) {
-      nextRotationTime = _json['nextRotationTime'];
+      nextRotationTime = _json['nextRotationTime'] as core.String;
     }
     if (_json.containsKey('primary')) {
       primary = CryptoKeyVersion.fromJson(_json['primary']);
     }
     if (_json.containsKey('purpose')) {
-      purpose = _json['purpose'];
+      purpose = _json['purpose'] as core.String;
     }
     if (_json.containsKey('rotationPeriod')) {
-      rotationPeriod = _json['rotationPeriod'];
+      rotationPeriod = _json['rotationPeriod'] as core.String;
     }
     if (_json.containsKey('versionTemplate')) {
       versionTemplate =
@@ -2991,44 +3000,44 @@ class CryptoKeyVersion {
 
   CryptoKeyVersion.fromJson(core.Map _json) {
     if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'];
+      algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('attestation')) {
       attestation = KeyOperationAttestation.fromJson(_json['attestation']);
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('destroyEventTime')) {
-      destroyEventTime = _json['destroyEventTime'];
+      destroyEventTime = _json['destroyEventTime'] as core.String;
     }
     if (_json.containsKey('destroyTime')) {
-      destroyTime = _json['destroyTime'];
+      destroyTime = _json['destroyTime'] as core.String;
     }
     if (_json.containsKey('externalProtectionLevelOptions')) {
       externalProtectionLevelOptions = ExternalProtectionLevelOptions.fromJson(
           _json['externalProtectionLevelOptions']);
     }
     if (_json.containsKey('generateTime')) {
-      generateTime = _json['generateTime'];
+      generateTime = _json['generateTime'] as core.String;
     }
     if (_json.containsKey('importFailureReason')) {
-      importFailureReason = _json['importFailureReason'];
+      importFailureReason = _json['importFailureReason'] as core.String;
     }
     if (_json.containsKey('importJob')) {
-      importJob = _json['importJob'];
+      importJob = _json['importJob'] as core.String;
     }
     if (_json.containsKey('importTime')) {
-      importTime = _json['importTime'];
+      importTime = _json['importTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'];
+      protectionLevel = _json['protectionLevel'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3134,10 +3143,10 @@ class CryptoKeyVersionTemplate {
 
   CryptoKeyVersionTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'];
+      algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'];
+      protectionLevel = _json['protectionLevel'] as core.String;
     }
   }
 
@@ -3212,17 +3221,18 @@ class DecryptRequest {
 
   DecryptRequest.fromJson(core.Map _json) {
     if (_json.containsKey('additionalAuthenticatedData')) {
-      additionalAuthenticatedData = _json['additionalAuthenticatedData'];
+      additionalAuthenticatedData =
+          _json['additionalAuthenticatedData'] as core.String;
     }
     if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
       additionalAuthenticatedDataCrc32c =
-          _json['additionalAuthenticatedDataCrc32c'];
+          _json['additionalAuthenticatedDataCrc32c'] as core.String;
     }
     if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'];
+      ciphertext = _json['ciphertext'] as core.String;
     }
     if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'];
+      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
     }
   }
 
@@ -3275,10 +3285,10 @@ class DecryptResponse {
 
   DecryptResponse.fromJson(core.Map _json) {
     if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'];
+      plaintext = _json['plaintext'] as core.String;
     }
     if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'];
+      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
     }
   }
 
@@ -3341,13 +3351,13 @@ class Digest {
 
   Digest.fromJson(core.Map _json) {
     if (_json.containsKey('sha256')) {
-      sha256 = _json['sha256'];
+      sha256 = _json['sha256'] as core.String;
     }
     if (_json.containsKey('sha384')) {
-      sha384 = _json['sha384'];
+      sha384 = _json['sha384'] as core.String;
     }
     if (_json.containsKey('sha512')) {
-      sha512 = _json['sha512'];
+      sha512 = _json['sha512'] as core.String;
     }
   }
 
@@ -3431,17 +3441,18 @@ class EncryptRequest {
 
   EncryptRequest.fromJson(core.Map _json) {
     if (_json.containsKey('additionalAuthenticatedData')) {
-      additionalAuthenticatedData = _json['additionalAuthenticatedData'];
+      additionalAuthenticatedData =
+          _json['additionalAuthenticatedData'] as core.String;
     }
     if (_json.containsKey('additionalAuthenticatedDataCrc32c')) {
       additionalAuthenticatedDataCrc32c =
-          _json['additionalAuthenticatedDataCrc32c'];
+          _json['additionalAuthenticatedDataCrc32c'] as core.String;
     }
     if (_json.containsKey('plaintext')) {
-      plaintext = _json['plaintext'];
+      plaintext = _json['plaintext'] as core.String;
     }
     if (_json.containsKey('plaintextCrc32c')) {
-      plaintextCrc32c = _json['plaintextCrc32c'];
+      plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
     }
   }
 
@@ -3518,20 +3529,20 @@ class EncryptResponse {
 
   EncryptResponse.fromJson(core.Map _json) {
     if (_json.containsKey('ciphertext')) {
-      ciphertext = _json['ciphertext'];
+      ciphertext = _json['ciphertext'] as core.String;
     }
     if (_json.containsKey('ciphertextCrc32c')) {
-      ciphertextCrc32c = _json['ciphertextCrc32c'];
+      ciphertextCrc32c = _json['ciphertextCrc32c'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('verifiedAdditionalAuthenticatedDataCrc32c')) {
       verifiedAdditionalAuthenticatedDataCrc32c =
-          _json['verifiedAdditionalAuthenticatedDataCrc32c'];
+          _json['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool;
     }
     if (_json.containsKey('verifiedPlaintextCrc32c')) {
-      verifiedPlaintextCrc32c = _json['verifiedPlaintextCrc32c'];
+      verifiedPlaintextCrc32c = _json['verifiedPlaintextCrc32c'] as core.bool;
     }
   }
 
@@ -3594,16 +3605,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -3636,7 +3647,7 @@ class ExternalProtectionLevelOptions {
 
   ExternalProtectionLevelOptions.fromJson(core.Map _json) {
     if (_json.containsKey('externalKeyUri')) {
-      externalKeyUri = _json['externalKeyUri'];
+      externalKeyUri = _json['externalKeyUri'] as core.String;
     }
   }
 
@@ -3716,13 +3727,13 @@ class ImportCryptoKeyVersionRequest {
 
   ImportCryptoKeyVersionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'];
+      algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('importJob')) {
-      importJob = _json['importJob'];
+      importJob = _json['importJob'] as core.String;
     }
     if (_json.containsKey('rsaAesWrappedKey')) {
-      rsaAesWrappedKey = _json['rsaAesWrappedKey'];
+      rsaAesWrappedKey = _json['rsaAesWrappedKey'] as core.String;
     }
   }
 
@@ -3835,31 +3846,31 @@ class ImportJob {
       attestation = KeyOperationAttestation.fromJson(_json['attestation']);
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('expireEventTime')) {
-      expireEventTime = _json['expireEventTime'];
+      expireEventTime = _json['expireEventTime'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('generateTime')) {
-      generateTime = _json['generateTime'];
+      generateTime = _json['generateTime'] as core.String;
     }
     if (_json.containsKey('importMethod')) {
-      importMethod = _json['importMethod'];
+      importMethod = _json['importMethod'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('protectionLevel')) {
-      protectionLevel = _json['protectionLevel'];
+      protectionLevel = _json['protectionLevel'] as core.String;
     }
     if (_json.containsKey('publicKey')) {
       publicKey = WrappingPublicKey.fromJson(_json['publicKey']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3933,10 +3944,10 @@ class KeyOperationAttestation {
       certChains = CertificateChains.fromJson(_json['certChains']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
   }
 
@@ -3968,10 +3979,10 @@ class KeyRing {
 
   KeyRing.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4009,10 +4020,10 @@ class ListCryptoKeyVersionsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -4053,10 +4064,10 @@ class ListCryptoKeysResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -4096,10 +4107,10 @@ class ListImportJobsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -4139,10 +4150,10 @@ class ListKeyRingsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -4178,7 +4189,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4222,20 +4233,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4274,10 +4288,10 @@ class LocationMetadata {
 
   LocationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('ekmAvailable')) {
-      ekmAvailable = _json['ekmAvailable'];
+      ekmAvailable = _json['ekmAvailable'] as core.bool;
     }
     if (_json.containsKey('hsmAvailable')) {
-      hsmAvailable = _json['hsmAvailable'];
+      hsmAvailable = _json['hsmAvailable'] as core.bool;
     }
   }
 
@@ -4381,10 +4395,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -4472,16 +4486,16 @@ class PublicKey {
 
   PublicKey.fromJson(core.Map _json) {
     if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'];
+      algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pem')) {
-      pem = _json['pem'];
+      pem = _json['pem'] as core.String;
     }
     if (_json.containsKey('pemCrc32c')) {
-      pemCrc32c = _json['pemCrc32c'];
+      pemCrc32c = _json['pemCrc32c'] as core.String;
     }
   }
 
@@ -4537,7 +4551,7 @@ class SetIamPolicyRequest {
       policy = Policy.fromJson(_json['policy']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -4565,7 +4579,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4588,7 +4604,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4610,7 +4628,7 @@ class UpdateCryptoKeyPrimaryVersionRequest {
 
   UpdateCryptoKeyPrimaryVersionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cryptoKeyVersionId')) {
-      cryptoKeyVersionId = _json['cryptoKeyVersionId'];
+      cryptoKeyVersionId = _json['cryptoKeyVersionId'] as core.String;
     }
   }
 
@@ -4637,7 +4655,7 @@ class WrappingPublicKey {
 
   WrappingPublicKey.fromJson(core.Map _json) {
     if (_json.containsKey('pem')) {
-      pem = _json['pem'];
+      pem = _json['pem'] as core.String;
     }
   }
 

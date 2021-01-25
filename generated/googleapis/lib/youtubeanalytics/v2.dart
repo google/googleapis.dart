@@ -770,25 +770,27 @@ class ErrorProto {
 
   ErrorProto.fromJson(core.Map _json) {
     if (_json.containsKey('argument')) {
-      argument = (_json['argument'] as core.List).cast<core.String>();
+      argument = (_json['argument'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('debugInfo')) {
-      debugInfo = _json['debugInfo'];
+      debugInfo = _json['debugInfo'] as core.String;
     }
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('externalErrorMessage')) {
-      externalErrorMessage = _json['externalErrorMessage'];
+      externalErrorMessage = _json['externalErrorMessage'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('locationType')) {
-      locationType = _json['locationType'];
+      locationType = _json['locationType'] as core.String;
     }
   }
 
@@ -846,7 +848,7 @@ class Errors {
 
   Errors.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('error')) {
       error = (_json['error'] as core.List)
@@ -854,7 +856,7 @@ class Errors {
           .toList();
     }
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
   }
 
@@ -905,13 +907,13 @@ class Group {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('snippet')) {
       snippet = GroupSnippet.fromJson(_json['snippet']);
@@ -956,10 +958,10 @@ class GroupContentDetails {
 
   GroupContentDetails.fromJson(core.Map _json) {
     if (_json.containsKey('itemCount')) {
-      itemCount = _json['itemCount'];
+      itemCount = _json['itemCount'] as core.String;
     }
     if (_json.containsKey('itemType')) {
-      itemType = _json['itemType'];
+      itemType = _json['itemType'] as core.String;
     }
   }
 
@@ -1010,16 +1012,16 @@ class GroupItem {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('groupId')) {
-      groupId = _json['groupId'];
+      groupId = _json['groupId'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('resource')) {
       resource = GroupItemResource.fromJson(_json['resource']);
@@ -1064,10 +1066,10 @@ class GroupItemResource {
 
   GroupItemResource.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -1096,10 +1098,10 @@ class GroupSnippet {
 
   GroupSnippet.fromJson(core.Map _json) {
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'];
+      publishedAt = _json['publishedAt'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1138,7 +1140,7 @@ class ListGroupItemsResponse {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -1146,7 +1148,7 @@ class ListGroupItemsResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -1195,7 +1197,7 @@ class ListGroupsResponse {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -1203,10 +1205,10 @@ class ListGroupsResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1278,12 +1280,13 @@ class QueryResponse {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<core.List<core.Object>>(
-              (value) => (value as core.List).cast<core.Object>())
+          .map<core.List<core.Object>>((value) => (value as core.List)
+              .map<core.Object>((value) => value as core.Object)
+              .toList())
           .toList();
     }
   }
@@ -1322,13 +1325,13 @@ class ResultTableColumnHeader {
 
   ResultTableColumnHeader.fromJson(core.Map _json) {
     if (_json.containsKey('columnType')) {
-      columnType = _json['columnType'];
+      columnType = _json['columnType'] as core.String;
     }
     if (_json.containsKey('dataType')) {
-      dataType = _json['dataType'];
+      dataType = _json['dataType'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 

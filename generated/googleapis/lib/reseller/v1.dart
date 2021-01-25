@@ -1196,34 +1196,34 @@ class Address {
 
   Address.fromJson(core.Map _json) {
     if (_json.containsKey('addressLine1')) {
-      addressLine1 = _json['addressLine1'];
+      addressLine1 = _json['addressLine1'] as core.String;
     }
     if (_json.containsKey('addressLine2')) {
-      addressLine2 = _json['addressLine2'];
+      addressLine2 = _json['addressLine2'] as core.String;
     }
     if (_json.containsKey('addressLine3')) {
-      addressLine3 = _json['addressLine3'];
+      addressLine3 = _json['addressLine3'] as core.String;
     }
     if (_json.containsKey('contactName')) {
-      contactName = _json['contactName'];
+      contactName = _json['contactName'] as core.String;
     }
     if (_json.containsKey('countryCode')) {
-      countryCode = _json['countryCode'];
+      countryCode = _json['countryCode'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('organizationName')) {
-      organizationName = _json['organizationName'];
+      organizationName = _json['organizationName'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
   }
 
@@ -1305,16 +1305,16 @@ class ChangePlanRequest {
 
   ChangePlanRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dealCode')) {
-      dealCode = _json['dealCode'];
+      dealCode = _json['dealCode'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('planName')) {
-      planName = _json['planName'];
+      planName = _json['planName'] as core.String;
     }
     if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'];
+      purchaseOrderId = _json['purchaseOrderId'] as core.String;
     }
     if (_json.containsKey('seats')) {
       seats = Seats.fromJson(_json['seats']);
@@ -1385,28 +1385,28 @@ class Customer {
 
   Customer.fromJson(core.Map _json) {
     if (_json.containsKey('alternateEmail')) {
-      alternateEmail = _json['alternateEmail'];
+      alternateEmail = _json['alternateEmail'] as core.String;
     }
     if (_json.containsKey('customerDomain')) {
-      customerDomain = _json['customerDomain'];
+      customerDomain = _json['customerDomain'] as core.String;
     }
     if (_json.containsKey('customerDomainVerified')) {
-      customerDomainVerified = _json['customerDomainVerified'];
+      customerDomainVerified = _json['customerDomainVerified'] as core.bool;
     }
     if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'];
+      customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
     if (_json.containsKey('postalAddress')) {
       postalAddress = Address.fromJson(_json['postalAddress']);
     }
     if (_json.containsKey('resourceUiUrl')) {
-      resourceUiUrl = _json['resourceUiUrl'];
+      resourceUiUrl = _json['resourceUiUrl'] as core.String;
     }
   }
 
@@ -1455,10 +1455,10 @@ class RenewalSettings {
 
   RenewalSettings.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('renewalType')) {
-      renewalType = _json['renewalType'];
+      renewalType = _json['renewalType'] as core.String;
     }
   }
 
@@ -1488,10 +1488,11 @@ class ResellernotifyGetwatchdetailsResponse {
     if (_json.containsKey('serviceAccountEmailAddresses')) {
       serviceAccountEmailAddresses =
           (_json['serviceAccountEmailAddresses'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'];
+      topicName = _json['topicName'] as core.String;
     }
   }
 
@@ -1516,7 +1517,7 @@ class ResellernotifyResource {
 
   ResellernotifyResource.fromJson(core.Map _json) {
     if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'];
+      topicName = _json['topicName'] as core.String;
     }
   }
 
@@ -1562,16 +1563,16 @@ class Seats {
 
   Seats.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('licensedNumberOfSeats')) {
-      licensedNumberOfSeats = _json['licensedNumberOfSeats'];
+      licensedNumberOfSeats = _json['licensedNumberOfSeats'] as core.int;
     }
     if (_json.containsKey('maximumNumberOfSeats')) {
-      maximumNumberOfSeats = _json['maximumNumberOfSeats'];
+      maximumNumberOfSeats = _json['maximumNumberOfSeats'] as core.int;
     }
     if (_json.containsKey('numberOfSeats')) {
-      numberOfSeats = _json['numberOfSeats'];
+      numberOfSeats = _json['numberOfSeats'] as core.int;
     }
   }
 
@@ -1609,10 +1610,10 @@ class SubscriptionPlanCommitmentInterval {
 
   SubscriptionPlanCommitmentInterval.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -1670,10 +1671,10 @@ class SubscriptionPlan {
           _json['commitmentInterval']);
     }
     if (_json.containsKey('isCommitmentPlan')) {
-      isCommitmentPlan = _json['isCommitmentPlan'];
+      isCommitmentPlan = _json['isCommitmentPlan'] as core.bool;
     }
     if (_json.containsKey('planName')) {
-      planName = _json['planName'];
+      planName = _json['planName'] as core.String;
     }
   }
 
@@ -1709,10 +1710,11 @@ class SubscriptionTransferInfo {
 
   SubscriptionTransferInfo.fromJson(core.Map _json) {
     if (_json.containsKey('minimumTransferableSeats')) {
-      minimumTransferableSeats = _json['minimumTransferableSeats'];
+      minimumTransferableSeats = _json['minimumTransferableSeats'] as core.int;
     }
     if (_json.containsKey('transferabilityExpirationTime')) {
-      transferabilityExpirationTime = _json['transferabilityExpirationTime'];
+      transferabilityExpirationTime =
+          _json['transferabilityExpirationTime'] as core.String;
     }
   }
 
@@ -1744,10 +1746,10 @@ class SubscriptionTrialSettings {
 
   SubscriptionTrialSettings.fromJson(core.Map _json) {
     if (_json.containsKey('isInTrial')) {
-      isInTrial = _json['isInTrial'];
+      isInTrial = _json['isInTrial'] as core.bool;
     }
     if (_json.containsKey('trialEndTime')) {
-      trialEndTime = _json['trialEndTime'];
+      trialEndTime = _json['trialEndTime'] as core.String;
     }
   }
 
@@ -1865,53 +1867,54 @@ class Subscription {
 
   Subscription.fromJson(core.Map _json) {
     if (_json.containsKey('billingMethod')) {
-      billingMethod = _json['billingMethod'];
+      billingMethod = _json['billingMethod'] as core.String;
     }
     if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'];
+      creationTime = _json['creationTime'] as core.String;
     }
     if (_json.containsKey('customerDomain')) {
-      customerDomain = _json['customerDomain'];
+      customerDomain = _json['customerDomain'] as core.String;
     }
     if (_json.containsKey('customerId')) {
-      customerId = _json['customerId'];
+      customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('dealCode')) {
-      dealCode = _json['dealCode'];
+      dealCode = _json['dealCode'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('plan')) {
       plan = SubscriptionPlan.fromJson(_json['plan']);
     }
     if (_json.containsKey('purchaseOrderId')) {
-      purchaseOrderId = _json['purchaseOrderId'];
+      purchaseOrderId = _json['purchaseOrderId'] as core.String;
     }
     if (_json.containsKey('renewalSettings')) {
       renewalSettings = RenewalSettings.fromJson(_json['renewalSettings']);
     }
     if (_json.containsKey('resourceUiUrl')) {
-      resourceUiUrl = _json['resourceUiUrl'];
+      resourceUiUrl = _json['resourceUiUrl'] as core.String;
     }
     if (_json.containsKey('seats')) {
       seats = Seats.fromJson(_json['seats']);
     }
     if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'];
+      skuId = _json['skuId'] as core.String;
     }
     if (_json.containsKey('skuName')) {
-      skuName = _json['skuName'];
+      skuName = _json['skuName'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('subscriptionId')) {
-      subscriptionId = _json['subscriptionId'];
+      subscriptionId = _json['subscriptionId'] as core.String;
     }
     if (_json.containsKey('suspensionReasons')) {
-      suspensionReasons =
-          (_json['suspensionReasons'] as core.List).cast<core.String>();
+      suspensionReasons = (_json['suspensionReasons'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('transferInfo')) {
       transferInfo = SubscriptionTransferInfo.fromJson(_json['transferInfo']);
@@ -1999,10 +2002,10 @@ class Subscriptions {
 
   Subscriptions.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('subscriptions')) {
       subscriptions = (_json['subscriptions'] as core.List)

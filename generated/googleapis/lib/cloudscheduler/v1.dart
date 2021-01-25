@@ -736,16 +736,18 @@ class AppEngineHttpTarget {
       appEngineRouting = AppEngineRouting.fromJson(_json['appEngineRouting']);
     }
     if (_json.containsKey('body')) {
-      body = _json['body'];
+      body = _json['body'] as core.String;
     }
     if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.Map).cast<core.String, core.String>();
+      headers = commons.mapMap<core.String, core.String>(
+          _json['headers'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'];
+      httpMethod = _json['httpMethod'] as core.String;
     }
     if (_json.containsKey('relativeUri')) {
-      relativeUri = _json['relativeUri'];
+      relativeUri = _json['relativeUri'] as core.String;
     }
   }
 
@@ -829,16 +831,16 @@ class AppEngineRouting {
 
   AppEngineRouting.fromJson(core.Map _json) {
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -947,13 +949,15 @@ class HttpTarget {
 
   HttpTarget.fromJson(core.Map _json) {
     if (_json.containsKey('body')) {
-      body = _json['body'];
+      body = _json['body'] as core.String;
     }
     if (_json.containsKey('headers')) {
-      headers = (_json['headers'] as core.Map).cast<core.String, core.String>();
+      headers = commons.mapMap<core.String, core.String>(
+          _json['headers'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'];
+      httpMethod = _json['httpMethod'] as core.String;
     }
     if (_json.containsKey('oauthToken')) {
       oauthToken = OAuthToken.fromJson(_json['oauthToken']);
@@ -962,7 +966,7 @@ class HttpTarget {
       oidcToken = OidcToken.fromJson(_json['oidcToken']);
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -1092,19 +1096,19 @@ class Job {
           AppEngineHttpTarget.fromJson(_json['appEngineHttpTarget']);
     }
     if (_json.containsKey('attemptDeadline')) {
-      attemptDeadline = _json['attemptDeadline'];
+      attemptDeadline = _json['attemptDeadline'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('httpTarget')) {
       httpTarget = HttpTarget.fromJson(_json['httpTarget']);
     }
     if (_json.containsKey('lastAttemptTime')) {
-      lastAttemptTime = _json['lastAttemptTime'];
+      lastAttemptTime = _json['lastAttemptTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pubsubTarget')) {
       pubsubTarget = PubsubTarget.fromJson(_json['pubsubTarget']);
@@ -1113,22 +1117,22 @@ class Job {
       retryConfig = RetryConfig.fromJson(_json['retryConfig']);
     }
     if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'];
+      schedule = _json['schedule'] as core.String;
     }
     if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'];
+      scheduleTime = _json['scheduleTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('status')) {
       status = Status.fromJson(_json['status']);
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
     if (_json.containsKey('userUpdateTime')) {
-      userUpdateTime = _json['userUpdateTime'];
+      userUpdateTime = _json['userUpdateTime'] as core.String;
     }
   }
 
@@ -1201,7 +1205,7 @@ class ListJobsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1234,7 +1238,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1278,20 +1282,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1336,10 +1343,10 @@ class OAuthToken {
 
   OAuthToken.fromJson(core.Map _json) {
     if (_json.containsKey('scope')) {
-      scope = _json['scope'];
+      scope = _json['scope'] as core.String;
     }
     if (_json.containsKey('serviceAccountEmail')) {
-      serviceAccountEmail = _json['serviceAccountEmail'];
+      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
     }
   }
 
@@ -1375,10 +1382,10 @@ class OidcToken {
 
   OidcToken.fromJson(core.Map _json) {
     if (_json.containsKey('audience')) {
-      audience = _json['audience'];
+      audience = _json['audience'] as core.String;
     }
     if (_json.containsKey('serviceAccountEmail')) {
-      serviceAccountEmail = _json['serviceAccountEmail'];
+      serviceAccountEmail = _json['serviceAccountEmail'] as core.String;
     }
   }
 
@@ -1455,20 +1462,21 @@ class PubsubMessage {
 
   PubsubMessage.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.String>();
+      attributes = commons.mapMap<core.String, core.String>(
+          _json['attributes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('messageId')) {
-      messageId = _json['messageId'];
+      messageId = _json['messageId'] as core.String;
     }
     if (_json.containsKey('orderingKey')) {
-      orderingKey = _json['orderingKey'];
+      orderingKey = _json['orderingKey'] as core.String;
     }
     if (_json.containsKey('publishTime')) {
-      publishTime = _json['publishTime'];
+      publishTime = _json['publishTime'] as core.String;
     }
   }
 
@@ -1522,14 +1530,15 @@ class PubsubTarget {
 
   PubsubTarget.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.String>();
+      attributes = commons.mapMap<core.String, core.String>(
+          _json['attributes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('topicName')) {
-      topicName = _json['topicName'];
+      topicName = _json['topicName'] as core.String;
     }
   }
 
@@ -1609,19 +1618,19 @@ class RetryConfig {
 
   RetryConfig.fromJson(core.Map _json) {
     if (_json.containsKey('maxBackoffDuration')) {
-      maxBackoffDuration = _json['maxBackoffDuration'];
+      maxBackoffDuration = _json['maxBackoffDuration'] as core.String;
     }
     if (_json.containsKey('maxDoublings')) {
-      maxDoublings = _json['maxDoublings'];
+      maxDoublings = _json['maxDoublings'] as core.int;
     }
     if (_json.containsKey('maxRetryDuration')) {
-      maxRetryDuration = _json['maxRetryDuration'];
+      maxRetryDuration = _json['maxRetryDuration'] as core.String;
     }
     if (_json.containsKey('minBackoffDuration')) {
-      minBackoffDuration = _json['minBackoffDuration'];
+      minBackoffDuration = _json['minBackoffDuration'] as core.String;
     }
     if (_json.containsKey('retryCount')) {
-      retryCount = _json['retryCount'];
+      retryCount = _json['retryCount'] as core.int;
     }
   }
 
@@ -1686,16 +1695,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 

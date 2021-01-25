@@ -132,7 +132,7 @@ class ApisPackageGenerator {
   }
 
   void _writePubspec(StringSink sink) {
-    void writeDependencies(dependencies) {
+    void writeDependencies(Map<String, dynamic> dependencies) {
       orderedForEach(dependencies, (String lib, Object value) {
         if (value is String) {
           if (lib.startsWith('_discoveryapis_commons')) {

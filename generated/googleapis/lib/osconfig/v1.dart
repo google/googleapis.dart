@@ -655,14 +655,17 @@ class AptSettings {
 
   AptSettings.fromJson(core.Map _json) {
     if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List).cast<core.String>();
+      excludes = (_json['excludes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('exclusivePackages')) {
-      exclusivePackages =
-          (_json['exclusivePackages'] as core.List).cast<core.String>();
+      exclusivePackages = (_json['exclusivePackages'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -776,17 +779,18 @@ class ExecStepConfig {
 
   ExecStepConfig.fromJson(core.Map _json) {
     if (_json.containsKey('allowedSuccessCodes')) {
-      allowedSuccessCodes =
-          (_json['allowedSuccessCodes'] as core.List).cast<core.int>();
+      allowedSuccessCodes = (_json['allowedSuccessCodes'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('gcsObject')) {
       gcsObject = GcsObject.fromJson(_json['gcsObject']);
     }
     if (_json.containsKey('interpreter')) {
-      interpreter = _json['interpreter'];
+      interpreter = _json['interpreter'] as core.String;
     }
     if (_json.containsKey('localPath')) {
-      localPath = _json['localPath'];
+      localPath = _json['localPath'] as core.String;
     }
   }
 
@@ -840,16 +844,16 @@ class ExecutePatchJobRequest {
 
   ExecutePatchJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('dryRun')) {
-      dryRun = _json['dryRun'];
+      dryRun = _json['dryRun'] as core.bool;
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('instanceFilter')) {
       instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
@@ -903,10 +907,10 @@ class FixedOrPercent {
 
   FixedOrPercent.fromJson(core.Map _json) {
     if (_json.containsKey('fixed')) {
-      fixed = _json['fixed'];
+      fixed = _json['fixed'] as core.int;
     }
     if (_json.containsKey('percent')) {
-      percent = _json['percent'];
+      percent = _json['percent'] as core.int;
     }
   }
 
@@ -938,13 +942,13 @@ class GcsObject {
 
   GcsObject.fromJson(core.Map _json) {
     if (_json.containsKey('bucket')) {
-      bucket = _json['bucket'];
+      bucket = _json['bucket'] as core.String;
     }
     if (_json.containsKey('generationNumber')) {
-      generationNumber = _json['generationNumber'];
+      generationNumber = _json['generationNumber'] as core.String;
     }
     if (_json.containsKey('object')) {
-      object = _json['object'];
+      object = _json['object'] as core.String;
     }
   }
 
@@ -990,7 +994,7 @@ class ListPatchDeploymentsResponse {
 
   ListPatchDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('patchDeployments')) {
       patchDeployments = (_json['patchDeployments'] as core.List)
@@ -1024,7 +1028,7 @@ class ListPatchJobInstanceDetailsResponse {
 
   ListPatchJobInstanceDetailsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('patchJobInstanceDetails')) {
       patchJobInstanceDetails = (_json['patchJobInstanceDetails'] as core.List)
@@ -1059,7 +1063,7 @@ class ListPatchJobsResponse {
 
   ListPatchJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('patchJobs')) {
       patchJobs = (_json['patchJobs'] as core.List)
@@ -1096,7 +1100,7 @@ class MonthlySchedule {
 
   MonthlySchedule.fromJson(core.Map _json) {
     if (_json.containsKey('monthDay')) {
-      monthDay = _json['monthDay'];
+      monthDay = _json['monthDay'] as core.int;
     }
     if (_json.containsKey('weekDayOfMonth')) {
       weekDayOfMonth = WeekDayOfMonth.fromJson(_json['weekDayOfMonth']);
@@ -1125,7 +1129,7 @@ class OneTimeSchedule {
 
   OneTimeSchedule.fromJson(core.Map _json) {
     if (_json.containsKey('executeTime')) {
-      executeTime = _json['executeTime'];
+      executeTime = _json['executeTime'] as core.String;
     }
   }
 
@@ -1194,7 +1198,7 @@ class PatchConfig {
       preStep = ExecStep.fromJson(_json['preStep']);
     }
     if (_json.containsKey('rebootConfig')) {
-      rebootConfig = _json['rebootConfig'];
+      rebootConfig = _json['rebootConfig'] as core.String;
     }
     if (_json.containsKey('windowsUpdate')) {
       windowsUpdate = WindowsUpdateSettings.fromJson(_json['windowsUpdate']);
@@ -1289,22 +1293,22 @@ class PatchDeployment {
 
   PatchDeployment.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('instanceFilter')) {
       instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
     }
     if (_json.containsKey('lastExecuteTime')) {
-      lastExecuteTime = _json['lastExecuteTime'];
+      lastExecuteTime = _json['lastExecuteTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('oneTimeSchedule')) {
       oneTimeSchedule = OneTimeSchedule.fromJson(_json['oneTimeSchedule']);
@@ -1320,7 +1324,7 @@ class PatchDeployment {
       rollout = PatchRollout.fromJson(_json['rollout']);
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1394,7 +1398,7 @@ class PatchInstanceFilter {
 
   PatchInstanceFilter.fromJson(core.Map _json) {
     if (_json.containsKey('all')) {
-      all = _json['all'];
+      all = _json['all'] as core.bool;
     }
     if (_json.containsKey('groupLabels')) {
       groupLabels = (_json['groupLabels'] as core.List)
@@ -1403,14 +1407,19 @@ class PatchInstanceFilter {
           .toList();
     }
     if (_json.containsKey('instanceNamePrefixes')) {
-      instanceNamePrefixes =
-          (_json['instanceNamePrefixes'] as core.List).cast<core.String>();
+      instanceNamePrefixes = (_json['instanceNamePrefixes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('instances')) {
-      instances = (_json['instances'] as core.List).cast<core.String>();
+      instances = (_json['instances'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('zones')) {
-      zones = (_json['zones'] as core.List).cast<core.String>();
+      zones = (_json['zones'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1452,7 +1461,9 @@ class PatchInstanceFilterGroupLabel {
 
   PatchInstanceFilterGroupLabel.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -1536,22 +1547,22 @@ class PatchJob {
 
   PatchJob.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('dryRun')) {
-      dryRun = _json['dryRun'];
+      dryRun = _json['dryRun'] as core.bool;
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'];
+      errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('instanceDetailsSummary')) {
       instanceDetailsSummary = PatchJobInstanceDetailsSummary.fromJson(
@@ -1561,13 +1572,13 @@ class PatchJob {
       instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('patchConfig')) {
       patchConfig = PatchConfig.fromJson(_json['patchConfig']);
     }
     if (_json.containsKey('patchDeployment')) {
-      patchDeployment = _json['patchDeployment'];
+      patchDeployment = _json['patchDeployment'] as core.String;
     }
     if (_json.containsKey('percentComplete')) {
       percentComplete = _json['percentComplete'].toDouble();
@@ -1576,10 +1587,10 @@ class PatchJob {
       rollout = PatchRollout.fromJson(_json['rollout']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1679,19 +1690,19 @@ class PatchJobInstanceDetails {
 
   PatchJobInstanceDetails.fromJson(core.Map _json) {
     if (_json.containsKey('attemptCount')) {
-      attemptCount = _json['attemptCount'];
+      attemptCount = _json['attemptCount'] as core.String;
     }
     if (_json.containsKey('failureReason')) {
-      failureReason = _json['failureReason'];
+      failureReason = _json['failureReason'] as core.String;
     }
     if (_json.containsKey('instanceSystemId')) {
-      instanceSystemId = _json['instanceSystemId'];
+      instanceSystemId = _json['instanceSystemId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1772,51 +1783,55 @@ class PatchJobInstanceDetailsSummary {
 
   PatchJobInstanceDetailsSummary.fromJson(core.Map _json) {
     if (_json.containsKey('ackedInstanceCount')) {
-      ackedInstanceCount = _json['ackedInstanceCount'];
+      ackedInstanceCount = _json['ackedInstanceCount'] as core.String;
     }
     if (_json.containsKey('applyingPatchesInstanceCount')) {
-      applyingPatchesInstanceCount = _json['applyingPatchesInstanceCount'];
+      applyingPatchesInstanceCount =
+          _json['applyingPatchesInstanceCount'] as core.String;
     }
     if (_json.containsKey('downloadingPatchesInstanceCount')) {
       downloadingPatchesInstanceCount =
-          _json['downloadingPatchesInstanceCount'];
+          _json['downloadingPatchesInstanceCount'] as core.String;
     }
     if (_json.containsKey('failedInstanceCount')) {
-      failedInstanceCount = _json['failedInstanceCount'];
+      failedInstanceCount = _json['failedInstanceCount'] as core.String;
     }
     if (_json.containsKey('inactiveInstanceCount')) {
-      inactiveInstanceCount = _json['inactiveInstanceCount'];
+      inactiveInstanceCount = _json['inactiveInstanceCount'] as core.String;
     }
     if (_json.containsKey('noAgentDetectedInstanceCount')) {
-      noAgentDetectedInstanceCount = _json['noAgentDetectedInstanceCount'];
+      noAgentDetectedInstanceCount =
+          _json['noAgentDetectedInstanceCount'] as core.String;
     }
     if (_json.containsKey('notifiedInstanceCount')) {
-      notifiedInstanceCount = _json['notifiedInstanceCount'];
+      notifiedInstanceCount = _json['notifiedInstanceCount'] as core.String;
     }
     if (_json.containsKey('pendingInstanceCount')) {
-      pendingInstanceCount = _json['pendingInstanceCount'];
+      pendingInstanceCount = _json['pendingInstanceCount'] as core.String;
     }
     if (_json.containsKey('postPatchStepInstanceCount')) {
-      postPatchStepInstanceCount = _json['postPatchStepInstanceCount'];
+      postPatchStepInstanceCount =
+          _json['postPatchStepInstanceCount'] as core.String;
     }
     if (_json.containsKey('prePatchStepInstanceCount')) {
-      prePatchStepInstanceCount = _json['prePatchStepInstanceCount'];
+      prePatchStepInstanceCount =
+          _json['prePatchStepInstanceCount'] as core.String;
     }
     if (_json.containsKey('rebootingInstanceCount')) {
-      rebootingInstanceCount = _json['rebootingInstanceCount'];
+      rebootingInstanceCount = _json['rebootingInstanceCount'] as core.String;
     }
     if (_json.containsKey('startedInstanceCount')) {
-      startedInstanceCount = _json['startedInstanceCount'];
+      startedInstanceCount = _json['startedInstanceCount'] as core.String;
     }
     if (_json.containsKey('succeededInstanceCount')) {
-      succeededInstanceCount = _json['succeededInstanceCount'];
+      succeededInstanceCount = _json['succeededInstanceCount'] as core.String;
     }
     if (_json.containsKey('succeededRebootRequiredInstanceCount')) {
       succeededRebootRequiredInstanceCount =
-          _json['succeededRebootRequiredInstanceCount'];
+          _json['succeededRebootRequiredInstanceCount'] as core.String;
     }
     if (_json.containsKey('timedOutInstanceCount')) {
-      timedOutInstanceCount = _json['timedOutInstanceCount'];
+      timedOutInstanceCount = _json['timedOutInstanceCount'] as core.String;
     }
   }
 
@@ -1916,7 +1931,7 @@ class PatchRollout {
       disruptionBudget = FixedOrPercent.fromJson(_json['disruptionBudget']);
     }
     if (_json.containsKey('mode')) {
-      mode = _json['mode'];
+      mode = _json['mode'] as core.String;
     }
   }
 
@@ -1974,22 +1989,22 @@ class RecurringSchedule {
 
   RecurringSchedule.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('frequency')) {
-      frequency = _json['frequency'];
+      frequency = _json['frequency'] as core.String;
     }
     if (_json.containsKey('lastExecuteTime')) {
-      lastExecuteTime = _json['lastExecuteTime'];
+      lastExecuteTime = _json['lastExecuteTime'] as core.String;
     }
     if (_json.containsKey('monthly')) {
       monthly = MonthlySchedule.fromJson(_json['monthly']);
     }
     if (_json.containsKey('nextExecuteTime')) {
-      nextExecuteTime = _json['nextExecuteTime'];
+      nextExecuteTime = _json['nextExecuteTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('timeOfDay')) {
       timeOfDay = TimeOfDay.fromJson(_json['timeOfDay']);
@@ -2057,16 +2072,16 @@ class TimeOfDay {
 
   TimeOfDay.fromJson(core.Map _json) {
     if (_json.containsKey('hours')) {
-      hours = _json['hours'];
+      hours = _json['hours'] as core.int;
     }
     if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'];
+      minutes = _json['minutes'] as core.int;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'];
+      seconds = _json['seconds'] as core.int;
     }
   }
 
@@ -2101,10 +2116,10 @@ class TimeZone {
 
   TimeZone.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -2142,10 +2157,10 @@ class WeekDayOfMonth {
 
   WeekDayOfMonth.fromJson(core.Map _json) {
     if (_json.containsKey('dayOfWeek')) {
-      dayOfWeek = _json['dayOfWeek'];
+      dayOfWeek = _json['dayOfWeek'] as core.String;
     }
     if (_json.containsKey('weekOrdinal')) {
-      weekOrdinal = _json['weekOrdinal'];
+      weekOrdinal = _json['weekOrdinal'] as core.int;
     }
   }
 
@@ -2179,7 +2194,7 @@ class WeeklySchedule {
 
   WeeklySchedule.fromJson(core.Map _json) {
     if (_json.containsKey('dayOfWeek')) {
-      dayOfWeek = _json['dayOfWeek'];
+      dayOfWeek = _json['dayOfWeek'] as core.String;
     }
   }
 
@@ -2210,15 +2225,19 @@ class WindowsUpdateSettings {
 
   WindowsUpdateSettings.fromJson(core.Map _json) {
     if (_json.containsKey('classifications')) {
-      classifications =
-          (_json['classifications'] as core.List).cast<core.String>();
+      classifications = (_json['classifications'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List).cast<core.String>();
+      excludes = (_json['excludes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('exclusivePatches')) {
-      exclusivePatches =
-          (_json['exclusivePatches'] as core.List).cast<core.String>();
+      exclusivePatches = (_json['exclusivePatches'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2262,17 +2281,20 @@ class YumSettings {
 
   YumSettings.fromJson(core.Map _json) {
     if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List).cast<core.String>();
+      excludes = (_json['excludes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('exclusivePackages')) {
-      exclusivePackages =
-          (_json['exclusivePackages'] as core.List).cast<core.String>();
+      exclusivePackages = (_json['exclusivePackages'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('minimal')) {
-      minimal = _json['minimal'];
+      minimal = _json['minimal'] as core.bool;
     }
     if (_json.containsKey('security')) {
-      security = _json['security'];
+      security = _json['security'] as core.bool;
     }
   }
 
@@ -2323,23 +2345,30 @@ class ZypperSettings {
 
   ZypperSettings.fromJson(core.Map _json) {
     if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List).cast<core.String>();
+      categories = (_json['categories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('excludes')) {
-      excludes = (_json['excludes'] as core.List).cast<core.String>();
+      excludes = (_json['excludes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('exclusivePatches')) {
-      exclusivePatches =
-          (_json['exclusivePatches'] as core.List).cast<core.String>();
+      exclusivePatches = (_json['exclusivePatches'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('severities')) {
-      severities = (_json['severities'] as core.List).cast<core.String>();
+      severities = (_json['severities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('withOptional')) {
-      withOptional = _json['withOptional'];
+      withOptional = _json['withOptional'] as core.bool;
     }
     if (_json.containsKey('withUpdate')) {
-      withUpdate = _json['withUpdate'];
+      withUpdate = _json['withUpdate'] as core.bool;
     }
   }
 

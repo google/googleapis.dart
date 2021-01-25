@@ -279,7 +279,7 @@ abstract class PrimitiveDartSchemaType extends DartSchemaType {
   String jsonEncode(String value) => value;
 
   @override
-  String jsonDecode(String json) => json;
+  String jsonDecode(String json) => '$json as $declaration';
 }
 
 class BooleanType extends PrimitiveDartSchemaType {

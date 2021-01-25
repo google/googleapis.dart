@@ -246,10 +246,10 @@ class AttributeValue {
 
   AttributeValue.fromJson(core.Map _json) {
     if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'];
+      boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('intValue')) {
-      intValue = _json['intValue'];
+      intValue = _json['intValue'] as core.String;
     }
     if (_json.containsKey('stringValue')) {
       stringValue = TruncatableString.fromJson(_json['stringValue']);
@@ -294,7 +294,7 @@ class Attributes {
           (core.Map item) => AttributeValue.fromJson(item));
     }
     if (_json.containsKey('droppedAttributesCount')) {
-      droppedAttributesCount = _json['droppedAttributesCount'];
+      droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
@@ -384,13 +384,13 @@ class Link {
       attributes = Attributes.fromJson(_json['attributes']);
     }
     if (_json.containsKey('spanId')) {
-      spanId = _json['spanId'];
+      spanId = _json['spanId'] as core.String;
     }
     if (_json.containsKey('traceId')) {
-      traceId = _json['traceId'];
+      traceId = _json['traceId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -426,7 +426,7 @@ class Links {
 
   Links.fromJson(core.Map _json) {
     if (_json.containsKey('droppedLinksCount')) {
-      droppedLinksCount = _json['droppedLinksCount'];
+      droppedLinksCount = _json['droppedLinksCount'] as core.int;
     }
     if (_json.containsKey('link')) {
       link = (_json['link'] as core.List)
@@ -472,16 +472,16 @@ class MessageEvent {
 
   MessageEvent.fromJson(core.Map _json) {
     if (_json.containsKey('compressedSizeBytes')) {
-      compressedSizeBytes = _json['compressedSizeBytes'];
+      compressedSizeBytes = _json['compressedSizeBytes'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('uncompressedSizeBytes')) {
-      uncompressedSizeBytes = _json['uncompressedSizeBytes'];
+      uncompressedSizeBytes = _json['uncompressedSizeBytes'] as core.String;
     }
   }
 
@@ -630,37 +630,37 @@ class Span {
       attributes = Attributes.fromJson(_json['attributes']);
     }
     if (_json.containsKey('childSpanCount')) {
-      childSpanCount = _json['childSpanCount'];
+      childSpanCount = _json['childSpanCount'] as core.int;
     }
     if (_json.containsKey('displayName')) {
       displayName = TruncatableString.fromJson(_json['displayName']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('links')) {
       links = Links.fromJson(_json['links']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentSpanId')) {
-      parentSpanId = _json['parentSpanId'];
+      parentSpanId = _json['parentSpanId'] as core.String;
     }
     if (_json.containsKey('sameProcessAsParentSpan')) {
-      sameProcessAsParentSpan = _json['sameProcessAsParentSpan'];
+      sameProcessAsParentSpan = _json['sameProcessAsParentSpan'] as core.bool;
     }
     if (_json.containsKey('spanId')) {
-      spanId = _json['spanId'];
+      spanId = _json['spanId'] as core.String;
     }
     if (_json.containsKey('spanKind')) {
-      spanKind = _json['spanKind'];
+      spanKind = _json['spanKind'] as core.String;
     }
     if (_json.containsKey('stackTrace')) {
       stackTrace = StackTrace.fromJson(_json['stackTrace']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
       status = Status.fromJson(_json['status']);
@@ -750,7 +750,7 @@ class StackFrame {
 
   StackFrame.fromJson(core.Map _json) {
     if (_json.containsKey('columnNumber')) {
-      columnNumber = _json['columnNumber'];
+      columnNumber = _json['columnNumber'] as core.String;
     }
     if (_json.containsKey('fileName')) {
       fileName = TruncatableString.fromJson(_json['fileName']);
@@ -759,7 +759,7 @@ class StackFrame {
       functionName = TruncatableString.fromJson(_json['functionName']);
     }
     if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'];
+      lineNumber = _json['lineNumber'] as core.String;
     }
     if (_json.containsKey('loadModule')) {
       loadModule = Module.fromJson(_json['loadModule']);
@@ -813,7 +813,7 @@ class StackFrames {
 
   StackFrames.fromJson(core.Map _json) {
     if (_json.containsKey('droppedFramesCount')) {
-      droppedFramesCount = _json['droppedFramesCount'];
+      droppedFramesCount = _json['droppedFramesCount'] as core.int;
     }
     if (_json.containsKey('frame')) {
       frame = (_json['frame'] as core.List)
@@ -854,7 +854,7 @@ class StackTrace {
       stackFrames = StackFrames.fromJson(_json['stackFrames']);
     }
     if (_json.containsKey('stackTraceHashId')) {
-      stackTraceHashId = _json['stackTraceHashId'];
+      stackTraceHashId = _json['stackTraceHashId'] as core.String;
     }
   }
 
@@ -896,16 +896,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -945,7 +947,7 @@ class TimeEvent {
       messageEvent = MessageEvent.fromJson(_json['messageEvent']);
     }
     if (_json.containsKey('time')) {
-      time = _json['time'];
+      time = _json['time'] as core.String;
     }
   }
 
@@ -983,10 +985,11 @@ class TimeEvents {
 
   TimeEvents.fromJson(core.Map _json) {
     if (_json.containsKey('droppedAnnotationsCount')) {
-      droppedAnnotationsCount = _json['droppedAnnotationsCount'];
+      droppedAnnotationsCount = _json['droppedAnnotationsCount'] as core.int;
     }
     if (_json.containsKey('droppedMessageEventsCount')) {
-      droppedMessageEventsCount = _json['droppedMessageEventsCount'];
+      droppedMessageEventsCount =
+          _json['droppedMessageEventsCount'] as core.int;
     }
     if (_json.containsKey('timeEvent')) {
       timeEvent = (_json['timeEvent'] as core.List)
@@ -1027,10 +1030,10 @@ class TruncatableString {
 
   TruncatableString.fromJson(core.Map _json) {
     if (_json.containsKey('truncatedByteCount')) {
-      truncatedByteCount = _json['truncatedByteCount'];
+      truncatedByteCount = _json['truncatedByteCount'] as core.int;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 

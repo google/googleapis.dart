@@ -3683,13 +3683,13 @@ class AboutDriveThemes {
 
   AboutDriveThemes.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundImageLink')) {
-      backgroundImageLink = _json['backgroundImageLink'];
+      backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('colorRgb')) {
-      colorRgb = _json['colorRgb'];
+      colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3727,16 +3727,16 @@ class AboutStorageQuota {
 
   AboutStorageQuota.fromJson(core.Map _json) {
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.String;
     }
     if (_json.containsKey('usage')) {
-      usage = _json['usage'];
+      usage = _json['usage'] as core.String;
     }
     if (_json.containsKey('usageInDrive')) {
-      usageInDrive = _json['usageInDrive'];
+      usageInDrive = _json['usageInDrive'] as core.String;
     }
     if (_json.containsKey('usageInDriveTrash')) {
-      usageInDriveTrash = _json['usageInDriveTrash'];
+      usageInDriveTrash = _json['usageInDriveTrash'] as core.String;
     }
   }
 
@@ -3772,13 +3772,13 @@ class AboutTeamDriveThemes {
 
   AboutTeamDriveThemes.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundImageLink')) {
-      backgroundImageLink = _json['backgroundImageLink'];
+      backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('colorRgb')) {
-      colorRgb = _json['colorRgb'];
+      colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3844,13 +3844,13 @@ class About {
 
   About.fromJson(core.Map _json) {
     if (_json.containsKey('appInstalled')) {
-      appInstalled = _json['appInstalled'];
+      appInstalled = _json['appInstalled'] as core.bool;
     }
     if (_json.containsKey('canCreateDrives')) {
-      canCreateDrives = _json['canCreateDrives'];
+      canCreateDrives = _json['canCreateDrives'] as core.bool;
     }
     if (_json.containsKey('canCreateTeamDrives')) {
-      canCreateTeamDrives = _json['canCreateTeamDrives'];
+      canCreateTeamDrives = _json['canCreateTeamDrives'] as core.bool;
     }
     if (_json.containsKey('driveThemes')) {
       driveThemes = (_json['driveThemes'] as core.List)
@@ -3860,26 +3860,32 @@ class About {
     if (_json.containsKey('exportFormats')) {
       exportFormats = commons.mapMap<core.List, core.List<core.String>>(
           _json['exportFormats'].cast<core.String, core.List>(),
-          (core.List item) => (item as core.List).cast<core.String>());
+          (core.List item) => (item as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList());
     }
     if (_json.containsKey('folderColorPalette')) {
-      folderColorPalette =
-          (_json['folderColorPalette'] as core.List).cast<core.String>();
+      folderColorPalette = (_json['folderColorPalette'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('importFormats')) {
       importFormats = commons.mapMap<core.List, core.List<core.String>>(
           _json['importFormats'].cast<core.String, core.List>(),
-          (core.List item) => (item as core.List).cast<core.String>());
+          (core.List item) => (item as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList());
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxImportSizes')) {
-      maxImportSizes = (_json['maxImportSizes'] as core.Map)
-          .cast<core.String, core.String>();
+      maxImportSizes = commons.mapMap<core.String, core.String>(
+          _json['maxImportSizes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('maxUploadSize')) {
-      maxUploadSize = _json['maxUploadSize'];
+      maxUploadSize = _json['maxUploadSize'] as core.String;
     }
     if (_json.containsKey('storageQuota')) {
       storageQuota = AboutStorageQuota.fromJson(_json['storageQuota']);
@@ -3986,37 +3992,37 @@ class Change {
 
   Change.fromJson(core.Map _json) {
     if (_json.containsKey('changeType')) {
-      changeType = _json['changeType'];
+      changeType = _json['changeType'] as core.String;
     }
     if (_json.containsKey('drive')) {
       drive = Drive.fromJson(_json['drive']);
     }
     if (_json.containsKey('driveId')) {
-      driveId = _json['driveId'];
+      driveId = _json['driveId'] as core.String;
     }
     if (_json.containsKey('file')) {
       file = File.fromJson(_json['file']);
     }
     if (_json.containsKey('fileId')) {
-      fileId = _json['fileId'];
+      fileId = _json['fileId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('removed')) {
-      removed = _json['removed'];
+      removed = _json['removed'] as core.bool;
     }
     if (_json.containsKey('teamDrive')) {
       teamDrive = TeamDrive.fromJson(_json['teamDrive']);
     }
     if (_json.containsKey('teamDriveId')) {
-      teamDriveId = _json['teamDriveId'];
+      teamDriveId = _json['teamDriveId'] as core.String;
     }
     if (_json.containsKey('time')) {
       time = core.DateTime.parse(_json['time']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4088,13 +4094,13 @@ class ChangeList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('newStartPageToken')) {
-      newStartPageToken = _json['newStartPageToken'];
+      newStartPageToken = _json['newStartPageToken'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4156,34 +4162,36 @@ class Channel {
 
   Channel.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = _json['address'];
+      address = _json['address'] as core.String;
     }
     if (_json.containsKey('expiration')) {
-      expiration = _json['expiration'];
+      expiration = _json['expiration'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map).cast<core.String, core.String>();
+      params = commons.mapMap<core.String, core.String>(
+          _json['params'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
-      payload = _json['payload'];
+      payload = _json['payload'] as core.bool;
     }
     if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'];
+      resourceId = _json['resourceId'] as core.String;
     }
     if (_json.containsKey('resourceUri')) {
-      resourceUri = _json['resourceUri'];
+      resourceUri = _json['resourceUri'] as core.String;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4238,10 +4246,10 @@ class CommentQuotedFileContent {
 
   CommentQuotedFileContent.fromJson(core.Map _json) {
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -4307,28 +4315,28 @@ class Comment {
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey('anchor')) {
-      anchor = _json['anchor'];
+      anchor = _json['anchor'] as core.String;
     }
     if (_json.containsKey('author')) {
       author = User.fromJson(_json['author']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
       createdTime = core.DateTime.parse(_json['createdTime']);
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('htmlContent')) {
-      htmlContent = _json['htmlContent'];
+      htmlContent = _json['htmlContent'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
       modifiedTime = core.DateTime.parse(_json['modifiedTime']);
@@ -4343,7 +4351,7 @@ class Comment {
           .toList();
     }
     if (_json.containsKey('resolved')) {
-      resolved = _json['resolved'];
+      resolved = _json['resolved'] as core.bool;
     }
   }
 
@@ -4414,10 +4422,10 @@ class CommentList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4463,10 +4471,10 @@ class ContentRestriction {
 
   ContentRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('readOnly')) {
-      readOnly = _json['readOnly'];
+      readOnly = _json['readOnly'] as core.bool;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('restrictingUser')) {
       restrictingUser = User.fromJson(_json['restrictingUser']);
@@ -4475,7 +4483,7 @@ class ContentRestriction {
       restrictionTime = core.DateTime.parse(_json['restrictionTime']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4533,7 +4541,7 @@ class DriveBackgroundImageFile {
 
   DriveBackgroundImageFile.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('width')) {
       width = _json['width'].toDouble();
@@ -4634,61 +4642,62 @@ class DriveCapabilities {
 
   DriveCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey('canAddChildren')) {
-      canAddChildren = _json['canAddChildren'];
+      canAddChildren = _json['canAddChildren'] as core.bool;
     }
     if (_json.containsKey('canChangeCopyRequiresWriterPermissionRestriction')) {
       canChangeCopyRequiresWriterPermissionRestriction =
-          _json['canChangeCopyRequiresWriterPermissionRestriction'];
+          _json['canChangeCopyRequiresWriterPermissionRestriction']
+              as core.bool;
     }
     if (_json.containsKey('canChangeDomainUsersOnlyRestriction')) {
       canChangeDomainUsersOnlyRestriction =
-          _json['canChangeDomainUsersOnlyRestriction'];
+          _json['canChangeDomainUsersOnlyRestriction'] as core.bool;
     }
     if (_json.containsKey('canChangeDriveBackground')) {
-      canChangeDriveBackground = _json['canChangeDriveBackground'];
+      canChangeDriveBackground = _json['canChangeDriveBackground'] as core.bool;
     }
     if (_json.containsKey('canChangeDriveMembersOnlyRestriction')) {
       canChangeDriveMembersOnlyRestriction =
-          _json['canChangeDriveMembersOnlyRestriction'];
+          _json['canChangeDriveMembersOnlyRestriction'] as core.bool;
     }
     if (_json.containsKey('canComment')) {
-      canComment = _json['canComment'];
+      canComment = _json['canComment'] as core.bool;
     }
     if (_json.containsKey('canCopy')) {
-      canCopy = _json['canCopy'];
+      canCopy = _json['canCopy'] as core.bool;
     }
     if (_json.containsKey('canDeleteChildren')) {
-      canDeleteChildren = _json['canDeleteChildren'];
+      canDeleteChildren = _json['canDeleteChildren'] as core.bool;
     }
     if (_json.containsKey('canDeleteDrive')) {
-      canDeleteDrive = _json['canDeleteDrive'];
+      canDeleteDrive = _json['canDeleteDrive'] as core.bool;
     }
     if (_json.containsKey('canDownload')) {
-      canDownload = _json['canDownload'];
+      canDownload = _json['canDownload'] as core.bool;
     }
     if (_json.containsKey('canEdit')) {
-      canEdit = _json['canEdit'];
+      canEdit = _json['canEdit'] as core.bool;
     }
     if (_json.containsKey('canListChildren')) {
-      canListChildren = _json['canListChildren'];
+      canListChildren = _json['canListChildren'] as core.bool;
     }
     if (_json.containsKey('canManageMembers')) {
-      canManageMembers = _json['canManageMembers'];
+      canManageMembers = _json['canManageMembers'] as core.bool;
     }
     if (_json.containsKey('canReadRevisions')) {
-      canReadRevisions = _json['canReadRevisions'];
+      canReadRevisions = _json['canReadRevisions'] as core.bool;
     }
     if (_json.containsKey('canRename')) {
-      canRename = _json['canRename'];
+      canRename = _json['canRename'] as core.bool;
     }
     if (_json.containsKey('canRenameDrive')) {
-      canRenameDrive = _json['canRenameDrive'];
+      canRenameDrive = _json['canRenameDrive'] as core.bool;
     }
     if (_json.containsKey('canShare')) {
-      canShare = _json['canShare'];
+      canShare = _json['canShare'] as core.bool;
     }
     if (_json.containsKey('canTrashChildren')) {
-      canTrashChildren = _json['canTrashChildren'];
+      canTrashChildren = _json['canTrashChildren'] as core.bool;
     }
   }
 
@@ -4782,16 +4791,17 @@ class DriveRestrictions {
 
   DriveRestrictions.fromJson(core.Map _json) {
     if (_json.containsKey('adminManagedRestrictions')) {
-      adminManagedRestrictions = _json['adminManagedRestrictions'];
+      adminManagedRestrictions = _json['adminManagedRestrictions'] as core.bool;
     }
     if (_json.containsKey('copyRequiresWriterPermission')) {
-      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
+      copyRequiresWriterPermission =
+          _json['copyRequiresWriterPermission'] as core.bool;
     }
     if (_json.containsKey('domainUsersOnly')) {
-      domainUsersOnly = _json['domainUsersOnly'];
+      domainUsersOnly = _json['domainUsersOnly'] as core.bool;
     }
     if (_json.containsKey('driveMembersOnly')) {
-      driveMembersOnly = _json['driveMembersOnly'];
+      driveMembersOnly = _json['driveMembersOnly'] as core.bool;
     }
   }
 
@@ -4868,34 +4878,34 @@ class Drive {
           DriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
     }
     if (_json.containsKey('backgroundImageLink')) {
-      backgroundImageLink = _json['backgroundImageLink'];
+      backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('capabilities')) {
       capabilities = DriveCapabilities.fromJson(_json['capabilities']);
     }
     if (_json.containsKey('colorRgb')) {
-      colorRgb = _json['colorRgb'];
+      colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
       createdTime = core.DateTime.parse(_json['createdTime']);
     }
     if (_json.containsKey('hidden')) {
-      hidden = _json['hidden'];
+      hidden = _json['hidden'] as core.bool;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('restrictions')) {
       restrictions = DriveRestrictions.fromJson(_json['restrictions']);
     }
     if (_json.containsKey('themeId')) {
-      themeId = _json['themeId'];
+      themeId = _json['themeId'] as core.String;
     }
   }
 
@@ -4963,10 +4973,10 @@ class DriveList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -5121,107 +5131,116 @@ class FileCapabilities {
 
   FileCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey('canAddChildren')) {
-      canAddChildren = _json['canAddChildren'];
+      canAddChildren = _json['canAddChildren'] as core.bool;
     }
     if (_json.containsKey('canAddFolderFromAnotherDrive')) {
-      canAddFolderFromAnotherDrive = _json['canAddFolderFromAnotherDrive'];
+      canAddFolderFromAnotherDrive =
+          _json['canAddFolderFromAnotherDrive'] as core.bool;
     }
     if (_json.containsKey('canAddMyDriveParent')) {
-      canAddMyDriveParent = _json['canAddMyDriveParent'];
+      canAddMyDriveParent = _json['canAddMyDriveParent'] as core.bool;
     }
     if (_json.containsKey('canChangeCopyRequiresWriterPermission')) {
       canChangeCopyRequiresWriterPermission =
-          _json['canChangeCopyRequiresWriterPermission'];
+          _json['canChangeCopyRequiresWriterPermission'] as core.bool;
     }
     if (_json.containsKey('canChangeViewersCanCopyContent')) {
-      canChangeViewersCanCopyContent = _json['canChangeViewersCanCopyContent'];
+      canChangeViewersCanCopyContent =
+          _json['canChangeViewersCanCopyContent'] as core.bool;
     }
     if (_json.containsKey('canComment')) {
-      canComment = _json['canComment'];
+      canComment = _json['canComment'] as core.bool;
     }
     if (_json.containsKey('canCopy')) {
-      canCopy = _json['canCopy'];
+      canCopy = _json['canCopy'] as core.bool;
     }
     if (_json.containsKey('canDelete')) {
-      canDelete = _json['canDelete'];
+      canDelete = _json['canDelete'] as core.bool;
     }
     if (_json.containsKey('canDeleteChildren')) {
-      canDeleteChildren = _json['canDeleteChildren'];
+      canDeleteChildren = _json['canDeleteChildren'] as core.bool;
     }
     if (_json.containsKey('canDownload')) {
-      canDownload = _json['canDownload'];
+      canDownload = _json['canDownload'] as core.bool;
     }
     if (_json.containsKey('canEdit')) {
-      canEdit = _json['canEdit'];
+      canEdit = _json['canEdit'] as core.bool;
     }
     if (_json.containsKey('canListChildren')) {
-      canListChildren = _json['canListChildren'];
+      canListChildren = _json['canListChildren'] as core.bool;
     }
     if (_json.containsKey('canModifyContent')) {
-      canModifyContent = _json['canModifyContent'];
+      canModifyContent = _json['canModifyContent'] as core.bool;
     }
     if (_json.containsKey('canModifyContentRestriction')) {
-      canModifyContentRestriction = _json['canModifyContentRestriction'];
+      canModifyContentRestriction =
+          _json['canModifyContentRestriction'] as core.bool;
     }
     if (_json.containsKey('canMoveChildrenOutOfDrive')) {
-      canMoveChildrenOutOfDrive = _json['canMoveChildrenOutOfDrive'];
+      canMoveChildrenOutOfDrive =
+          _json['canMoveChildrenOutOfDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveChildrenOutOfTeamDrive')) {
-      canMoveChildrenOutOfTeamDrive = _json['canMoveChildrenOutOfTeamDrive'];
+      canMoveChildrenOutOfTeamDrive =
+          _json['canMoveChildrenOutOfTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveChildrenWithinDrive')) {
-      canMoveChildrenWithinDrive = _json['canMoveChildrenWithinDrive'];
+      canMoveChildrenWithinDrive =
+          _json['canMoveChildrenWithinDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveChildrenWithinTeamDrive')) {
-      canMoveChildrenWithinTeamDrive = _json['canMoveChildrenWithinTeamDrive'];
+      canMoveChildrenWithinTeamDrive =
+          _json['canMoveChildrenWithinTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveItemIntoTeamDrive')) {
-      canMoveItemIntoTeamDrive = _json['canMoveItemIntoTeamDrive'];
+      canMoveItemIntoTeamDrive = _json['canMoveItemIntoTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveItemOutOfDrive')) {
-      canMoveItemOutOfDrive = _json['canMoveItemOutOfDrive'];
+      canMoveItemOutOfDrive = _json['canMoveItemOutOfDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveItemOutOfTeamDrive')) {
-      canMoveItemOutOfTeamDrive = _json['canMoveItemOutOfTeamDrive'];
+      canMoveItemOutOfTeamDrive =
+          _json['canMoveItemOutOfTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveItemWithinDrive')) {
-      canMoveItemWithinDrive = _json['canMoveItemWithinDrive'];
+      canMoveItemWithinDrive = _json['canMoveItemWithinDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveItemWithinTeamDrive')) {
-      canMoveItemWithinTeamDrive = _json['canMoveItemWithinTeamDrive'];
+      canMoveItemWithinTeamDrive =
+          _json['canMoveItemWithinTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canMoveTeamDriveItem')) {
-      canMoveTeamDriveItem = _json['canMoveTeamDriveItem'];
+      canMoveTeamDriveItem = _json['canMoveTeamDriveItem'] as core.bool;
     }
     if (_json.containsKey('canReadDrive')) {
-      canReadDrive = _json['canReadDrive'];
+      canReadDrive = _json['canReadDrive'] as core.bool;
     }
     if (_json.containsKey('canReadRevisions')) {
-      canReadRevisions = _json['canReadRevisions'];
+      canReadRevisions = _json['canReadRevisions'] as core.bool;
     }
     if (_json.containsKey('canReadTeamDrive')) {
-      canReadTeamDrive = _json['canReadTeamDrive'];
+      canReadTeamDrive = _json['canReadTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canRemoveChildren')) {
-      canRemoveChildren = _json['canRemoveChildren'];
+      canRemoveChildren = _json['canRemoveChildren'] as core.bool;
     }
     if (_json.containsKey('canRemoveMyDriveParent')) {
-      canRemoveMyDriveParent = _json['canRemoveMyDriveParent'];
+      canRemoveMyDriveParent = _json['canRemoveMyDriveParent'] as core.bool;
     }
     if (_json.containsKey('canRename')) {
-      canRename = _json['canRename'];
+      canRename = _json['canRename'] as core.bool;
     }
     if (_json.containsKey('canShare')) {
-      canShare = _json['canShare'];
+      canShare = _json['canShare'] as core.bool;
     }
     if (_json.containsKey('canTrash')) {
-      canTrash = _json['canTrash'];
+      canTrash = _json['canTrash'] as core.bool;
     }
     if (_json.containsKey('canTrashChildren')) {
-      canTrashChildren = _json['canTrashChildren'];
+      canTrashChildren = _json['canTrashChildren'] as core.bool;
     }
     if (_json.containsKey('canUntrash')) {
-      canUntrash = _json['canUntrash'];
+      canUntrash = _json['canUntrash'] as core.bool;
     }
   }
 
@@ -5353,10 +5372,10 @@ class FileContentHintsThumbnail {
 
   FileContentHintsThumbnail.fromJson(core.Map _json) {
     if (_json.containsKey('image')) {
-      image = _json['image'];
+      image = _json['image'] as core.String;
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
   }
 
@@ -5387,7 +5406,7 @@ class FileContentHints {
 
   FileContentHints.fromJson(core.Map _json) {
     if (_json.containsKey('indexableText')) {
-      indexableText = _json['indexableText'];
+      indexableText = _json['indexableText'] as core.String;
     }
     if (_json.containsKey('thumbnail')) {
       thumbnail = FileContentHintsThumbnail.fromJson(_json['thumbnail']);
@@ -5520,37 +5539,37 @@ class FileImageMediaMetadata {
       aperture = _json['aperture'].toDouble();
     }
     if (_json.containsKey('cameraMake')) {
-      cameraMake = _json['cameraMake'];
+      cameraMake = _json['cameraMake'] as core.String;
     }
     if (_json.containsKey('cameraModel')) {
-      cameraModel = _json['cameraModel'];
+      cameraModel = _json['cameraModel'] as core.String;
     }
     if (_json.containsKey('colorSpace')) {
-      colorSpace = _json['colorSpace'];
+      colorSpace = _json['colorSpace'] as core.String;
     }
     if (_json.containsKey('exposureBias')) {
       exposureBias = _json['exposureBias'].toDouble();
     }
     if (_json.containsKey('exposureMode')) {
-      exposureMode = _json['exposureMode'];
+      exposureMode = _json['exposureMode'] as core.String;
     }
     if (_json.containsKey('exposureTime')) {
       exposureTime = _json['exposureTime'].toDouble();
     }
     if (_json.containsKey('flashUsed')) {
-      flashUsed = _json['flashUsed'];
+      flashUsed = _json['flashUsed'] as core.bool;
     }
     if (_json.containsKey('focalLength')) {
       focalLength = _json['focalLength'].toDouble();
     }
     if (_json.containsKey('height')) {
-      height = _json['height'];
+      height = _json['height'] as core.int;
     }
     if (_json.containsKey('isoSpeed')) {
-      isoSpeed = _json['isoSpeed'];
+      isoSpeed = _json['isoSpeed'] as core.int;
     }
     if (_json.containsKey('lens')) {
-      lens = _json['lens'];
+      lens = _json['lens'] as core.String;
     }
     if (_json.containsKey('location')) {
       location = FileImageMediaMetadataLocation.fromJson(_json['location']);
@@ -5559,25 +5578,25 @@ class FileImageMediaMetadata {
       maxApertureValue = _json['maxApertureValue'].toDouble();
     }
     if (_json.containsKey('meteringMode')) {
-      meteringMode = _json['meteringMode'];
+      meteringMode = _json['meteringMode'] as core.String;
     }
     if (_json.containsKey('rotation')) {
-      rotation = _json['rotation'];
+      rotation = _json['rotation'] as core.int;
     }
     if (_json.containsKey('sensor')) {
-      sensor = _json['sensor'];
+      sensor = _json['sensor'] as core.String;
     }
     if (_json.containsKey('subjectDistance')) {
-      subjectDistance = _json['subjectDistance'];
+      subjectDistance = _json['subjectDistance'] as core.int;
     }
     if (_json.containsKey('time')) {
-      time = _json['time'];
+      time = _json['time'] as core.String;
     }
     if (_json.containsKey('whiteBalance')) {
-      whiteBalance = _json['whiteBalance'];
+      whiteBalance = _json['whiteBalance'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'];
+      width = _json['width'] as core.int;
     }
   }
 
@@ -5665,10 +5684,10 @@ class FileShortcutDetails {
 
   FileShortcutDetails.fromJson(core.Map _json) {
     if (_json.containsKey('targetId')) {
-      targetId = _json['targetId'];
+      targetId = _json['targetId'] as core.String;
     }
     if (_json.containsKey('targetMimeType')) {
-      targetMimeType = _json['targetMimeType'];
+      targetMimeType = _json['targetMimeType'] as core.String;
     }
   }
 
@@ -5700,13 +5719,13 @@ class FileVideoMediaMetadata {
 
   FileVideoMediaMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('durationMillis')) {
-      durationMillis = _json['durationMillis'];
+      durationMillis = _json['durationMillis'] as core.String;
     }
     if (_json.containsKey('height')) {
-      height = _json['height'];
+      height = _json['height'] as core.int;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'];
+      width = _json['width'] as core.int;
     }
   }
 
@@ -5966,8 +5985,9 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('appProperties')) {
-      appProperties =
-          (_json['appProperties'] as core.Map).cast<core.String, core.String>();
+      appProperties = commons.mapMap<core.String, core.String>(
+          _json['appProperties'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('capabilities')) {
       capabilities = FileCapabilities.fromJson(_json['capabilities']);
@@ -5982,69 +6002,71 @@ class File {
           .toList();
     }
     if (_json.containsKey('copyRequiresWriterPermission')) {
-      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
+      copyRequiresWriterPermission =
+          _json['copyRequiresWriterPermission'] as core.bool;
     }
     if (_json.containsKey('createdTime')) {
       createdTime = core.DateTime.parse(_json['createdTime']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('driveId')) {
-      driveId = _json['driveId'];
+      driveId = _json['driveId'] as core.String;
     }
     if (_json.containsKey('explicitlyTrashed')) {
-      explicitlyTrashed = _json['explicitlyTrashed'];
+      explicitlyTrashed = _json['explicitlyTrashed'] as core.bool;
     }
     if (_json.containsKey('exportLinks')) {
-      exportLinks =
-          (_json['exportLinks'] as core.Map).cast<core.String, core.String>();
+      exportLinks = commons.mapMap<core.String, core.String>(
+          _json['exportLinks'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('fileExtension')) {
-      fileExtension = _json['fileExtension'];
+      fileExtension = _json['fileExtension'] as core.String;
     }
     if (_json.containsKey('folderColorRgb')) {
-      folderColorRgb = _json['folderColorRgb'];
+      folderColorRgb = _json['folderColorRgb'] as core.String;
     }
     if (_json.containsKey('fullFileExtension')) {
-      fullFileExtension = _json['fullFileExtension'];
+      fullFileExtension = _json['fullFileExtension'] as core.String;
     }
     if (_json.containsKey('hasAugmentedPermissions')) {
-      hasAugmentedPermissions = _json['hasAugmentedPermissions'];
+      hasAugmentedPermissions = _json['hasAugmentedPermissions'] as core.bool;
     }
     if (_json.containsKey('hasThumbnail')) {
-      hasThumbnail = _json['hasThumbnail'];
+      hasThumbnail = _json['hasThumbnail'] as core.bool;
     }
     if (_json.containsKey('headRevisionId')) {
-      headRevisionId = _json['headRevisionId'];
+      headRevisionId = _json['headRevisionId'] as core.String;
     }
     if (_json.containsKey('iconLink')) {
-      iconLink = _json['iconLink'];
+      iconLink = _json['iconLink'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('imageMediaMetadata')) {
       imageMediaMetadata =
           FileImageMediaMetadata.fromJson(_json['imageMediaMetadata']);
     }
     if (_json.containsKey('isAppAuthorized')) {
-      isAppAuthorized = _json['isAppAuthorized'];
+      isAppAuthorized = _json['isAppAuthorized'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastModifyingUser')) {
       lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
     }
     if (_json.containsKey('md5Checksum')) {
-      md5Checksum = _json['md5Checksum'];
+      md5Checksum = _json['md5Checksum'] as core.String;
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('modifiedByMe')) {
-      modifiedByMe = _json['modifiedByMe'];
+      modifiedByMe = _json['modifiedByMe'] as core.bool;
     }
     if (_json.containsKey('modifiedByMeTime')) {
       modifiedByMeTime = core.DateTime.parse(_json['modifiedByMeTime']);
@@ -6053,13 +6075,13 @@ class File {
       modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('originalFilename')) {
-      originalFilename = _json['originalFilename'];
+      originalFilename = _json['originalFilename'] as core.String;
     }
     if (_json.containsKey('ownedByMe')) {
-      ownedByMe = _json['ownedByMe'];
+      ownedByMe = _json['ownedByMe'] as core.bool;
     }
     if (_json.containsKey('owners')) {
       owners = (_json['owners'] as core.List)
@@ -6067,10 +6089,14 @@ class File {
           .toList();
     }
     if (_json.containsKey('parents')) {
-      parents = (_json['parents'] as core.List).cast<core.String>();
+      parents = (_json['parents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('permissionIds')) {
-      permissionIds = (_json['permissionIds'] as core.List).cast<core.String>();
+      permissionIds = (_json['permissionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
@@ -6078,14 +6104,15 @@ class File {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties =
-          (_json['properties'] as core.Map).cast<core.String, core.String>();
+      properties = commons.mapMap<core.String, core.String>(
+          _json['properties'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('quotaBytesUsed')) {
-      quotaBytesUsed = _json['quotaBytesUsed'];
+      quotaBytesUsed = _json['quotaBytesUsed'] as core.String;
     }
     if (_json.containsKey('shared')) {
-      shared = _json['shared'];
+      shared = _json['shared'] as core.bool;
     }
     if (_json.containsKey('sharedWithMeTime')) {
       sharedWithMeTime = core.DateTime.parse(_json['sharedWithMeTime']);
@@ -6097,25 +6124,27 @@ class File {
       shortcutDetails = FileShortcutDetails.fromJson(_json['shortcutDetails']);
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('spaces')) {
-      spaces = (_json['spaces'] as core.List).cast<core.String>();
+      spaces = (_json['spaces'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('starred')) {
-      starred = _json['starred'];
+      starred = _json['starred'] as core.bool;
     }
     if (_json.containsKey('teamDriveId')) {
-      teamDriveId = _json['teamDriveId'];
+      teamDriveId = _json['teamDriveId'] as core.String;
     }
     if (_json.containsKey('thumbnailLink')) {
-      thumbnailLink = _json['thumbnailLink'];
+      thumbnailLink = _json['thumbnailLink'] as core.String;
     }
     if (_json.containsKey('thumbnailVersion')) {
-      thumbnailVersion = _json['thumbnailVersion'];
+      thumbnailVersion = _json['thumbnailVersion'] as core.String;
     }
     if (_json.containsKey('trashed')) {
-      trashed = _json['trashed'];
+      trashed = _json['trashed'] as core.bool;
     }
     if (_json.containsKey('trashedTime')) {
       trashedTime = core.DateTime.parse(_json['trashedTime']);
@@ -6124,29 +6153,29 @@ class File {
       trashingUser = User.fromJson(_json['trashingUser']);
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
     if (_json.containsKey('videoMediaMetadata')) {
       videoMediaMetadata =
           FileVideoMediaMetadata.fromJson(_json['videoMediaMetadata']);
     }
     if (_json.containsKey('viewedByMe')) {
-      viewedByMe = _json['viewedByMe'];
+      viewedByMe = _json['viewedByMe'] as core.bool;
     }
     if (_json.containsKey('viewedByMeTime')) {
       viewedByMeTime = core.DateTime.parse(_json['viewedByMeTime']);
     }
     if (_json.containsKey('viewersCanCopyContent')) {
-      viewersCanCopyContent = _json['viewersCanCopyContent'];
+      viewersCanCopyContent = _json['viewersCanCopyContent'] as core.bool;
     }
     if (_json.containsKey('webContentLink')) {
-      webContentLink = _json['webContentLink'];
+      webContentLink = _json['webContentLink'] as core.String;
     }
     if (_json.containsKey('webViewLink')) {
-      webViewLink = _json['webViewLink'];
+      webViewLink = _json['webViewLink'] as core.String;
     }
     if (_json.containsKey('writersCanShare')) {
-      writersCanShare = _json['writersCanShare'];
+      writersCanShare = _json['writersCanShare'] as core.bool;
     }
   }
 
@@ -6362,13 +6391,13 @@ class FileList {
           .toList();
     }
     if (_json.containsKey('incompleteSearch')) {
-      incompleteSearch = _json['incompleteSearch'];
+      incompleteSearch = _json['incompleteSearch'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6406,13 +6435,15 @@ class GeneratedIds {
 
   GeneratedIds.fromJson(core.Map _json) {
     if (_json.containsKey('ids')) {
-      ids = (_json['ids'] as core.List).cast<core.String>();
+      ids = (_json['ids'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('space')) {
-      space = _json['space'];
+      space = _json['space'] as core.String;
     }
   }
 
@@ -6459,16 +6490,16 @@ class PermissionPermissionDetails {
 
   PermissionPermissionDetails.fromJson(core.Map _json) {
     if (_json.containsKey('inherited')) {
-      inherited = _json['inherited'];
+      inherited = _json['inherited'] as core.bool;
     }
     if (_json.containsKey('inheritedFrom')) {
-      inheritedFrom = _json['inheritedFrom'];
+      inheritedFrom = _json['inheritedFrom'] as core.String;
     }
     if (_json.containsKey('permissionType')) {
-      permissionType = _json['permissionType'];
+      permissionType = _json['permissionType'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -6507,16 +6538,16 @@ class PermissionTeamDrivePermissionDetails {
 
   PermissionTeamDrivePermissionDetails.fromJson(core.Map _json) {
     if (_json.containsKey('inherited')) {
-      inherited = _json['inherited'];
+      inherited = _json['inherited'] as core.bool;
     }
     if (_json.containsKey('inheritedFrom')) {
-      inheritedFrom = _json['inheritedFrom'];
+      inheritedFrom = _json['inheritedFrom'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
     if (_json.containsKey('teamDrivePermissionType')) {
-      teamDrivePermissionType = _json['teamDrivePermissionType'];
+      teamDrivePermissionType = _json['teamDrivePermissionType'] as core.String;
     }
   }
 
@@ -6619,28 +6650,28 @@ class Permission {
 
   Permission.fromJson(core.Map _json) {
     if (_json.containsKey('allowFileDiscovery')) {
-      allowFileDiscovery = _json['allowFileDiscovery'];
+      allowFileDiscovery = _json['allowFileDiscovery'] as core.bool;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'];
+      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('expirationTime')) {
       expirationTime = core.DateTime.parse(_json['expirationTime']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('permissionDetails')) {
       permissionDetails = (_json['permissionDetails'] as core.List)
@@ -6649,10 +6680,10 @@ class Permission {
           .toList();
     }
     if (_json.containsKey('photoLink')) {
-      photoLink = _json['photoLink'];
+      photoLink = _json['photoLink'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
     if (_json.containsKey('teamDrivePermissionDetails')) {
       teamDrivePermissionDetails = (_json['teamDrivePermissionDetails']
@@ -6662,10 +6693,10 @@ class Permission {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('view')) {
-      view = _json['view'];
+      view = _json['view'] as core.String;
     }
   }
 
@@ -6739,10 +6770,10 @@ class PermissionList {
 
   PermissionList.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
@@ -6806,28 +6837,28 @@ class Reply {
 
   Reply.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('author')) {
       author = User.fromJson(_json['author']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
       createdTime = core.DateTime.parse(_json['createdTime']);
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('htmlContent')) {
-      htmlContent = _json['htmlContent'];
+      htmlContent = _json['htmlContent'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
       modifiedTime = core.DateTime.parse(_json['modifiedTime']);
@@ -6887,10 +6918,10 @@ class ReplyList {
 
   ReplyList.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
@@ -6973,47 +7004,48 @@ class Revision {
 
   Revision.fromJson(core.Map _json) {
     if (_json.containsKey('exportLinks')) {
-      exportLinks =
-          (_json['exportLinks'] as core.Map).cast<core.String, core.String>();
+      exportLinks = commons.mapMap<core.String, core.String>(
+          _json['exportLinks'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('keepForever')) {
-      keepForever = _json['keepForever'];
+      keepForever = _json['keepForever'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastModifyingUser')) {
       lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
     }
     if (_json.containsKey('md5Checksum')) {
-      md5Checksum = _json['md5Checksum'];
+      md5Checksum = _json['md5Checksum'] as core.String;
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('modifiedTime')) {
       modifiedTime = core.DateTime.parse(_json['modifiedTime']);
     }
     if (_json.containsKey('originalFilename')) {
-      originalFilename = _json['originalFilename'];
+      originalFilename = _json['originalFilename'] as core.String;
     }
     if (_json.containsKey('publishAuto')) {
-      publishAuto = _json['publishAuto'];
+      publishAuto = _json['publishAuto'] as core.bool;
     }
     if (_json.containsKey('published')) {
-      published = _json['published'];
+      published = _json['published'] as core.bool;
     }
     if (_json.containsKey('publishedLink')) {
-      publishedLink = _json['publishedLink'];
+      publishedLink = _json['publishedLink'] as core.String;
     }
     if (_json.containsKey('publishedOutsideDomain')) {
-      publishedOutsideDomain = _json['publishedOutsideDomain'];
+      publishedOutsideDomain = _json['publishedOutsideDomain'] as core.bool;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
   }
 
@@ -7085,10 +7117,10 @@ class RevisionList {
 
   RevisionList.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('revisions')) {
       revisions = (_json['revisions'] as core.List)
@@ -7124,10 +7156,10 @@ class StartPageToken {
 
   StartPageToken.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('startPageToken')) {
-      startPageToken = _json['startPageToken'];
+      startPageToken = _json['startPageToken'] as core.String;
     }
   }
 
@@ -7176,7 +7208,7 @@ class TeamDriveBackgroundImageFile {
 
   TeamDriveBackgroundImageFile.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('width')) {
       width = _json['width'].toDouble();
@@ -7280,64 +7312,66 @@ class TeamDriveCapabilities {
 
   TeamDriveCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey('canAddChildren')) {
-      canAddChildren = _json['canAddChildren'];
+      canAddChildren = _json['canAddChildren'] as core.bool;
     }
     if (_json.containsKey('canChangeCopyRequiresWriterPermissionRestriction')) {
       canChangeCopyRequiresWriterPermissionRestriction =
-          _json['canChangeCopyRequiresWriterPermissionRestriction'];
+          _json['canChangeCopyRequiresWriterPermissionRestriction']
+              as core.bool;
     }
     if (_json.containsKey('canChangeDomainUsersOnlyRestriction')) {
       canChangeDomainUsersOnlyRestriction =
-          _json['canChangeDomainUsersOnlyRestriction'];
+          _json['canChangeDomainUsersOnlyRestriction'] as core.bool;
     }
     if (_json.containsKey('canChangeTeamDriveBackground')) {
-      canChangeTeamDriveBackground = _json['canChangeTeamDriveBackground'];
+      canChangeTeamDriveBackground =
+          _json['canChangeTeamDriveBackground'] as core.bool;
     }
     if (_json.containsKey('canChangeTeamMembersOnlyRestriction')) {
       canChangeTeamMembersOnlyRestriction =
-          _json['canChangeTeamMembersOnlyRestriction'];
+          _json['canChangeTeamMembersOnlyRestriction'] as core.bool;
     }
     if (_json.containsKey('canComment')) {
-      canComment = _json['canComment'];
+      canComment = _json['canComment'] as core.bool;
     }
     if (_json.containsKey('canCopy')) {
-      canCopy = _json['canCopy'];
+      canCopy = _json['canCopy'] as core.bool;
     }
     if (_json.containsKey('canDeleteChildren')) {
-      canDeleteChildren = _json['canDeleteChildren'];
+      canDeleteChildren = _json['canDeleteChildren'] as core.bool;
     }
     if (_json.containsKey('canDeleteTeamDrive')) {
-      canDeleteTeamDrive = _json['canDeleteTeamDrive'];
+      canDeleteTeamDrive = _json['canDeleteTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canDownload')) {
-      canDownload = _json['canDownload'];
+      canDownload = _json['canDownload'] as core.bool;
     }
     if (_json.containsKey('canEdit')) {
-      canEdit = _json['canEdit'];
+      canEdit = _json['canEdit'] as core.bool;
     }
     if (_json.containsKey('canListChildren')) {
-      canListChildren = _json['canListChildren'];
+      canListChildren = _json['canListChildren'] as core.bool;
     }
     if (_json.containsKey('canManageMembers')) {
-      canManageMembers = _json['canManageMembers'];
+      canManageMembers = _json['canManageMembers'] as core.bool;
     }
     if (_json.containsKey('canReadRevisions')) {
-      canReadRevisions = _json['canReadRevisions'];
+      canReadRevisions = _json['canReadRevisions'] as core.bool;
     }
     if (_json.containsKey('canRemoveChildren')) {
-      canRemoveChildren = _json['canRemoveChildren'];
+      canRemoveChildren = _json['canRemoveChildren'] as core.bool;
     }
     if (_json.containsKey('canRename')) {
-      canRename = _json['canRename'];
+      canRename = _json['canRename'] as core.bool;
     }
     if (_json.containsKey('canRenameTeamDrive')) {
-      canRenameTeamDrive = _json['canRenameTeamDrive'];
+      canRenameTeamDrive = _json['canRenameTeamDrive'] as core.bool;
     }
     if (_json.containsKey('canShare')) {
-      canShare = _json['canShare'];
+      canShare = _json['canShare'] as core.bool;
     }
     if (_json.containsKey('canTrashChildren')) {
-      canTrashChildren = _json['canTrashChildren'];
+      canTrashChildren = _json['canTrashChildren'] as core.bool;
     }
   }
 
@@ -7434,16 +7468,17 @@ class TeamDriveRestrictions {
 
   TeamDriveRestrictions.fromJson(core.Map _json) {
     if (_json.containsKey('adminManagedRestrictions')) {
-      adminManagedRestrictions = _json['adminManagedRestrictions'];
+      adminManagedRestrictions = _json['adminManagedRestrictions'] as core.bool;
     }
     if (_json.containsKey('copyRequiresWriterPermission')) {
-      copyRequiresWriterPermission = _json['copyRequiresWriterPermission'];
+      copyRequiresWriterPermission =
+          _json['copyRequiresWriterPermission'] as core.bool;
     }
     if (_json.containsKey('domainUsersOnly')) {
-      domainUsersOnly = _json['domainUsersOnly'];
+      domainUsersOnly = _json['domainUsersOnly'] as core.bool;
     }
     if (_json.containsKey('teamMembersOnly')) {
-      teamMembersOnly = _json['teamMembersOnly'];
+      teamMembersOnly = _json['teamMembersOnly'] as core.bool;
     }
   }
 
@@ -7517,31 +7552,31 @@ class TeamDrive {
           TeamDriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
     }
     if (_json.containsKey('backgroundImageLink')) {
-      backgroundImageLink = _json['backgroundImageLink'];
+      backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('capabilities')) {
       capabilities = TeamDriveCapabilities.fromJson(_json['capabilities']);
     }
     if (_json.containsKey('colorRgb')) {
-      colorRgb = _json['colorRgb'];
+      colorRgb = _json['colorRgb'] as core.String;
     }
     if (_json.containsKey('createdTime')) {
       createdTime = core.DateTime.parse(_json['createdTime']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('restrictions')) {
       restrictions = TeamDriveRestrictions.fromJson(_json['restrictions']);
     }
     if (_json.containsKey('themeId')) {
-      themeId = _json['themeId'];
+      themeId = _json['themeId'] as core.String;
     }
   }
 
@@ -7601,10 +7636,10 @@ class TeamDriveList {
 
   TeamDriveList.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('teamDrives')) {
       teamDrives = (_json['teamDrives'] as core.List)
@@ -7654,22 +7689,22 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'];
+      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('me')) {
-      me = _json['me'];
+      me = _json['me'] as core.bool;
     }
     if (_json.containsKey('permissionId')) {
-      permissionId = _json['permissionId'];
+      permissionId = _json['permissionId'] as core.String;
     }
     if (_json.containsKey('photoLink')) {
-      photoLink = _json['photoLink'];
+      photoLink = _json['photoLink'] as core.String;
     }
   }
 

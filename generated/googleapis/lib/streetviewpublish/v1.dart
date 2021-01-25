@@ -673,7 +673,9 @@ class BatchDeletePhotosRequest {
 
   BatchDeletePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey('photoIds')) {
-      photoIds = (_json['photoIds'] as core.List).cast<core.String>();
+      photoIds = (_json['photoIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -879,7 +881,7 @@ class Level {
 
   Level.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('number')) {
       number = _json['number'].toDouble();
@@ -912,7 +914,7 @@ class ListPhotosResponse {
 
   ListPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('photos')) {
       photos = (_json['photos'] as core.List)
@@ -974,21 +976,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -1078,7 +1082,7 @@ class Photo {
 
   Photo.fromJson(core.Map _json) {
     if (_json.containsKey('captureTime')) {
-      captureTime = _json['captureTime'];
+      captureTime = _json['captureTime'] as core.String;
     }
     if (_json.containsKey('connections')) {
       connections = (_json['connections'] as core.List)
@@ -1086,10 +1090,10 @@ class Photo {
           .toList();
     }
     if (_json.containsKey('downloadUrl')) {
-      downloadUrl = _json['downloadUrl'];
+      downloadUrl = _json['downloadUrl'] as core.String;
     }
     if (_json.containsKey('mapsPublishStatus')) {
-      mapsPublishStatus = _json['mapsPublishStatus'];
+      mapsPublishStatus = _json['mapsPublishStatus'] as core.String;
     }
     if (_json.containsKey('photoId')) {
       photoId = PhotoId.fromJson(_json['photoId']);
@@ -1103,19 +1107,19 @@ class Photo {
       pose = Pose.fromJson(_json['pose']);
     }
     if (_json.containsKey('shareLink')) {
-      shareLink = _json['shareLink'];
+      shareLink = _json['shareLink'] as core.String;
     }
     if (_json.containsKey('thumbnailUrl')) {
-      thumbnailUrl = _json['thumbnailUrl'];
+      thumbnailUrl = _json['thumbnailUrl'] as core.String;
     }
     if (_json.containsKey('transferStatus')) {
-      transferStatus = _json['transferStatus'];
+      transferStatus = _json['transferStatus'] as core.String;
     }
     if (_json.containsKey('uploadReference')) {
       uploadReference = UploadRef.fromJson(_json['uploadReference']);
     }
     if (_json.containsKey('viewCount')) {
-      viewCount = _json['viewCount'];
+      viewCount = _json['viewCount'] as core.String;
     }
   }
 
@@ -1171,7 +1175,7 @@ class PhotoId {
 
   PhotoId.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -1235,13 +1239,13 @@ class Place {
 
   Place.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('placeId')) {
-      placeId = _json['placeId'];
+      placeId = _json['placeId'] as core.String;
     }
   }
 
@@ -1378,16 +1382,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -1432,7 +1438,7 @@ class UpdatePhotoRequest {
       photo = Photo.fromJson(_json['photo']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -1459,7 +1465,7 @@ class UploadRef {
 
   UploadRef.fromJson(core.Map _json) {
     if (_json.containsKey('uploadUrl')) {
-      uploadUrl = _json['uploadUrl'];
+      uploadUrl = _json['uploadUrl'] as core.String;
     }
   }
 

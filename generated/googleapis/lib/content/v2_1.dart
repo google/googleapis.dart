@@ -7116,33 +7116,35 @@ class Account {
           .toList();
     }
     if (_json.containsKey('adultContent')) {
-      adultContent = _json['adultContent'];
+      adultContent = _json['adultContent'] as core.bool;
     }
     if (_json.containsKey('businessInformation')) {
       businessInformation =
           AccountBusinessInformation.fromJson(_json['businessInformation']);
     }
     if (_json.containsKey('cssId')) {
-      cssId = _json['cssId'];
+      cssId = _json['cssId'] as core.String;
     }
     if (_json.containsKey('googleMyBusinessLink')) {
       googleMyBusinessLink =
           AccountGoogleMyBusinessLink.fromJson(_json['googleMyBusinessLink']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
+      labelIds = (_json['labelIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sellerId')) {
-      sellerId = _json['sellerId'];
+      sellerId = _json['sellerId'] as core.String;
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
@@ -7150,7 +7152,7 @@ class Account {
           .toList();
     }
     if (_json.containsKey('websiteUrl')) {
-      websiteUrl = _json['websiteUrl'];
+      websiteUrl = _json['websiteUrl'] as core.String;
     }
     if (_json.containsKey('youtubeChannelLinks')) {
       youtubeChannelLinks = (_json['youtubeChannelLinks'] as core.List)
@@ -7229,19 +7231,19 @@ class AccountAddress {
 
   AccountAddress.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('streetAddress')) {
-      streetAddress = _json['streetAddress'];
+      streetAddress = _json['streetAddress'] as core.String;
     }
   }
 
@@ -7290,10 +7292,10 @@ class AccountAdsLink {
 
   AccountAdsLink.fromJson(core.Map _json) {
     if (_json.containsKey('adsId')) {
-      adsId = _json['adsId'];
+      adsId = _json['adsId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -7330,7 +7332,7 @@ class AccountBusinessInformation {
           AccountCustomerService.fromJson(_json['customerService']);
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -7363,13 +7365,13 @@ class AccountCustomerService {
 
   AccountCustomerService.fromJson(core.Map _json) {
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -7411,13 +7413,13 @@ class AccountGoogleMyBusinessLink {
 
   AccountGoogleMyBusinessLink.fromJson(core.Map _json) {
     if (_json.containsKey('gmbAccountId')) {
-      gmbAccountId = _json['gmbAccountId'];
+      gmbAccountId = _json['gmbAccountId'] as core.String;
     }
     if (_json.containsKey('gmbEmail')) {
-      gmbEmail = _json['gmbEmail'];
+      gmbEmail = _json['gmbEmail'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -7448,10 +7450,10 @@ class AccountIdentifier {
 
   AccountIdentifier.fromJson(core.Map _json) {
     if (_json.containsKey('aggregatorId')) {
-      aggregatorId = _json['aggregatorId'];
+      aggregatorId = _json['aggregatorId'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
   }
 
@@ -7491,7 +7493,7 @@ class AccountStatus {
 
   AccountStatus.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('accountLevelIssues')) {
       accountLevelIssues = (_json['accountLevelIssues'] as core.List)
@@ -7500,7 +7502,7 @@ class AccountStatus {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
@@ -7509,7 +7511,7 @@ class AccountStatus {
           .toList();
     }
     if (_json.containsKey('websiteClaimed')) {
-      websiteClaimed = _json['websiteClaimed'];
+      websiteClaimed = _json['websiteClaimed'] as core.bool;
     }
   }
 
@@ -7567,25 +7569,25 @@ class AccountStatusAccountLevelIssue {
 
   AccountStatusAccountLevelIssue.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('documentation')) {
-      documentation = _json['documentation'];
+      documentation = _json['documentation'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7645,28 +7647,28 @@ class AccountStatusItemLevelIssue {
 
   AccountStatusItemLevelIssue.fromJson(core.Map _json) {
     if (_json.containsKey('attributeName')) {
-      attributeName = _json['attributeName'];
+      attributeName = _json['attributeName'] as core.String;
     }
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('documentation')) {
-      documentation = _json['documentation'];
+      documentation = _json['documentation'] as core.String;
     }
     if (_json.containsKey('numItems')) {
-      numItems = _json['numItems'];
+      numItems = _json['numItems'] as core.String;
     }
     if (_json.containsKey('resolution')) {
-      resolution = _json['resolution'];
+      resolution = _json['resolution'] as core.String;
     }
     if (_json.containsKey('servability')) {
-      servability = _json['servability'];
+      servability = _json['servability'] as core.String;
     }
   }
 
@@ -7724,13 +7726,13 @@ class AccountStatusProducts {
 
   AccountStatusProducts.fromJson(core.Map _json) {
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('itemLevelIssues')) {
       itemLevelIssues = (_json['itemLevelIssues'] as core.List)
@@ -7782,16 +7784,16 @@ class AccountStatusStatistics {
 
   AccountStatusStatistics.fromJson(core.Map _json) {
     if (_json.containsKey('active')) {
-      active = _json['active'];
+      active = _json['active'] as core.String;
     }
     if (_json.containsKey('disapproved')) {
-      disapproved = _json['disapproved'];
+      disapproved = _json['disapproved'] as core.String;
     }
     if (_json.containsKey('expiring')) {
-      expiring = _json['expiring'];
+      expiring = _json['expiring'] as core.String;
     }
     if (_json.containsKey('pending')) {
-      pending = _json['pending'];
+      pending = _json['pending'] as core.String;
     }
   }
 
@@ -7831,10 +7833,10 @@ class AccountTax {
 
   AccountTax.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
@@ -7882,19 +7884,19 @@ class AccountTaxTaxRule {
 
   AccountTaxTaxRule.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('ratePercent')) {
-      ratePercent = _json['ratePercent'];
+      ratePercent = _json['ratePercent'] as core.String;
     }
     if (_json.containsKey('shippingTaxed')) {
-      shippingTaxed = _json['shippingTaxed'];
+      shippingTaxed = _json['shippingTaxed'] as core.bool;
     }
     if (_json.containsKey('useGlobalRate')) {
-      useGlobalRate = _json['useGlobalRate'];
+      useGlobalRate = _json['useGlobalRate'] as core.bool;
     }
   }
 
@@ -7939,19 +7941,19 @@ class AccountUser {
 
   AccountUser.fromJson(core.Map _json) {
     if (_json.containsKey('admin')) {
-      admin = _json['admin'];
+      admin = _json['admin'] as core.bool;
     }
     if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'];
+      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('orderManager')) {
-      orderManager = _json['orderManager'];
+      orderManager = _json['orderManager'] as core.bool;
     }
     if (_json.containsKey('paymentsAnalyst')) {
-      paymentsAnalyst = _json['paymentsAnalyst'];
+      paymentsAnalyst = _json['paymentsAnalyst'] as core.bool;
     }
     if (_json.containsKey('paymentsManager')) {
-      paymentsManager = _json['paymentsManager'];
+      paymentsManager = _json['paymentsManager'] as core.bool;
     }
   }
 
@@ -7996,10 +7998,10 @@ class AccountYouTubeChannelLink {
 
   AccountYouTubeChannelLink.fromJson(core.Map _json) {
     if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'];
+      channelId = _json['channelId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -8036,7 +8038,7 @@ class AccountsAuthInfoResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8062,7 +8064,7 @@ class AccountsClaimWebsiteResponse {
 
   AccountsClaimWebsiteResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8150,32 +8152,34 @@ class AccountsCustomBatchRequestEntry {
       account = Account.fromJson(_json['account']);
     }
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('force')) {
-      force = _json['force'];
+      force = _json['force'] as core.bool;
     }
     if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
+      labelIds = (_json['labelIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('linkRequest')) {
       linkRequest = AccountsCustomBatchRequestEntryLinkRequest.fromJson(
           _json['linkRequest']);
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('overwrite')) {
-      overwrite = _json['overwrite'];
+      overwrite = _json['overwrite'] as core.bool;
     }
     if (_json.containsKey('view')) {
-      view = _json['view'];
+      view = _json['view'] as core.String;
     }
   }
 
@@ -8242,16 +8246,18 @@ class AccountsCustomBatchRequestEntryLinkRequest {
 
   AccountsCustomBatchRequestEntryLinkRequest.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('linkType')) {
-      linkType = _json['linkType'];
+      linkType = _json['linkType'] as core.String;
     }
     if (_json.containsKey('linkedAccountId')) {
-      linkedAccountId = _json['linkedAccountId'];
+      linkedAccountId = _json['linkedAccountId'] as core.String;
     }
     if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List).cast<core.String>();
+      services = (_json['services'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8291,7 +8297,7 @@ class AccountsCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8330,13 +8336,13 @@ class AccountsCustomBatchResponseEntry {
       account = Account.fromJson(_json['account']);
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8385,16 +8391,18 @@ class AccountsLinkRequest {
 
   AccountsLinkRequest.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('linkType')) {
-      linkType = _json['linkType'];
+      linkType = _json['linkType'] as core.String;
     }
     if (_json.containsKey('linkedAccountId')) {
-      linkedAccountId = _json['linkedAccountId'];
+      linkedAccountId = _json['linkedAccountId'] as core.String;
     }
     if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List).cast<core.String>();
+      services = (_json['services'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8425,7 +8433,7 @@ class AccountsLinkResponse {
 
   AccountsLinkResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8453,7 +8461,7 @@ class AccountsListLinksResponse {
 
   AccountsListLinksResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
@@ -8461,7 +8469,7 @@ class AccountsListLinksResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -8493,10 +8501,10 @@ class AccountsListResponse {
 
   AccountsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -8528,7 +8536,9 @@ class AccountsUpdateLabelsRequest {
 
   AccountsUpdateLabelsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labelIds')) {
-      labelIds = (_json['labelIds'] as core.List).cast<core.String>();
+      labelIds = (_json['labelIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8550,7 +8560,7 @@ class AccountsUpdateLabelsResponse {
 
   AccountsUpdateLabelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8612,19 +8622,21 @@ class AccountstatusesCustomBatchRequestEntry {
 
   AccountstatusesCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('destinations')) {
-      destinations = (_json['destinations'] as core.List).cast<core.String>();
+      destinations = (_json['destinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
   }
 
@@ -8667,7 +8679,7 @@ class AccountstatusesCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8702,7 +8714,7 @@ class AccountstatusesCustomBatchResponseEntry {
       accountStatus = AccountStatus.fromJson(_json['accountStatus']);
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
@@ -8737,10 +8749,10 @@ class AccountstatusesListResponse {
 
   AccountstatusesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -8814,19 +8826,19 @@ class AccounttaxCustomBatchRequestEntry {
 
   AccounttaxCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('accountTax')) {
       accountTax = AccountTax.fromJson(_json['accountTax']);
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
   }
 
@@ -8869,7 +8881,7 @@ class AccounttaxCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8907,13 +8919,13 @@ class AccounttaxCustomBatchResponseEntry {
       accountTax = AccountTax.fromJson(_json['accountTax']);
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -8948,10 +8960,10 @@ class AccounttaxListResponse {
 
   AccounttaxListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -9014,7 +9026,9 @@ class BusinessDayConfig {
 
   BusinessDayConfig.fromJson(core.Map _json) {
     if (_json.containsKey('businessDays')) {
-      businessDays = (_json['businessDays'] as core.List).cast<core.String>();
+      businessDays = (_json['businessDays'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -9057,22 +9071,22 @@ class CarrierRate {
 
   CarrierRate.fromJson(core.Map _json) {
     if (_json.containsKey('carrierName')) {
-      carrierName = _json['carrierName'];
+      carrierName = _json['carrierName'] as core.String;
     }
     if (_json.containsKey('carrierService')) {
-      carrierService = _json['carrierService'];
+      carrierService = _json['carrierService'] as core.String;
     }
     if (_json.containsKey('flatAdjustment')) {
       flatAdjustment = Price.fromJson(_json['flatAdjustment']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('originPostalCode')) {
-      originPostalCode = _json['originPostalCode'];
+      originPostalCode = _json['originPostalCode'] as core.String;
     }
     if (_json.containsKey('percentageAdjustment')) {
-      percentageAdjustment = _json['percentageAdjustment'];
+      percentageAdjustment = _json['percentageAdjustment'] as core.String;
     }
   }
 
@@ -9115,13 +9129,15 @@ class CarriersCarrier {
 
   CarriersCarrier.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List).cast<core.String>();
+      services = (_json['services'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -9161,10 +9177,10 @@ class CustomAttribute {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -9211,10 +9227,10 @@ class CustomerReturnReason {
 
   CustomerReturnReason.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('reasonCode')) {
-      reasonCode = _json['reasonCode'];
+      reasonCode = _json['reasonCode'] as core.String;
     }
   }
 
@@ -9247,13 +9263,13 @@ class CutoffTime {
 
   CutoffTime.fromJson(core.Map _json) {
     if (_json.containsKey('hour')) {
-      hour = _json['hour'];
+      hour = _json['hour'] as core.int;
     }
     if (_json.containsKey('minute')) {
-      minute = _json['minute'];
+      minute = _json['minute'] as core.int;
     }
     if (_json.containsKey('timezone')) {
-      timezone = _json['timezone'];
+      timezone = _json['timezone'] as core.String;
     }
   }
 
@@ -9314,28 +9330,28 @@ class Datafeed {
 
   Datafeed.fromJson(core.Map _json) {
     if (_json.containsKey('attributeLanguage')) {
-      attributeLanguage = _json['attributeLanguage'];
+      attributeLanguage = _json['attributeLanguage'] as core.String;
     }
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('fetchSchedule')) {
       fetchSchedule = DatafeedFetchSchedule.fromJson(_json['fetchSchedule']);
     }
     if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'];
+      fileName = _json['fileName'] as core.String;
     }
     if (_json.containsKey('format')) {
       format = DatafeedFormat.fromJson(_json['format']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('targets')) {
       targets = (_json['targets'] as core.List)
@@ -9425,31 +9441,31 @@ class DatafeedFetchSchedule {
 
   DatafeedFetchSchedule.fromJson(core.Map _json) {
     if (_json.containsKey('dayOfMonth')) {
-      dayOfMonth = _json['dayOfMonth'];
+      dayOfMonth = _json['dayOfMonth'] as core.int;
     }
     if (_json.containsKey('fetchUrl')) {
-      fetchUrl = _json['fetchUrl'];
+      fetchUrl = _json['fetchUrl'] as core.String;
     }
     if (_json.containsKey('hour')) {
-      hour = _json['hour'];
+      hour = _json['hour'] as core.int;
     }
     if (_json.containsKey('minuteOfHour')) {
-      minuteOfHour = _json['minuteOfHour'];
+      minuteOfHour = _json['minuteOfHour'] as core.int;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('paused')) {
-      paused = _json['paused'];
+      paused = _json['paused'] as core.bool;
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
     if (_json.containsKey('weekday')) {
-      weekday = _json['weekday'];
+      weekday = _json['weekday'] as core.String;
     }
   }
 
@@ -9520,13 +9536,13 @@ class DatafeedFormat {
 
   DatafeedFormat.fromJson(core.Map _json) {
     if (_json.containsKey('columnDelimiter')) {
-      columnDelimiter = _json['columnDelimiter'];
+      columnDelimiter = _json['columnDelimiter'] as core.String;
     }
     if (_json.containsKey('fileEncoding')) {
-      fileEncoding = _json['fileEncoding'];
+      fileEncoding = _json['fileEncoding'] as core.String;
     }
     if (_json.containsKey('quotingMode')) {
-      quotingMode = _json['quotingMode'];
+      quotingMode = _json['quotingMode'] as core.String;
     }
   }
 
@@ -9593,10 +9609,10 @@ class DatafeedStatus {
 
   DatafeedStatus.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('datafeedId')) {
-      datafeedId = _json['datafeedId'];
+      datafeedId = _json['datafeedId'] as core.String;
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
@@ -9605,22 +9621,22 @@ class DatafeedStatus {
           .toList();
     }
     if (_json.containsKey('itemsTotal')) {
-      itemsTotal = _json['itemsTotal'];
+      itemsTotal = _json['itemsTotal'] as core.String;
     }
     if (_json.containsKey('itemsValid')) {
-      itemsValid = _json['itemsValid'];
+      itemsValid = _json['itemsValid'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('lastUploadDate')) {
-      lastUploadDate = _json['lastUploadDate'];
+      lastUploadDate = _json['lastUploadDate'] as core.String;
     }
     if (_json.containsKey('processingStatus')) {
-      processingStatus = _json['processingStatus'];
+      processingStatus = _json['processingStatus'] as core.String;
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
@@ -9684,10 +9700,10 @@ class DatafeedStatusError {
 
   DatafeedStatusError.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.String;
     }
     if (_json.containsKey('examples')) {
       examples = (_json['examples'] as core.List)
@@ -9696,7 +9712,7 @@ class DatafeedStatusError {
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -9733,13 +9749,13 @@ class DatafeedStatusExample {
 
   DatafeedStatusExample.fromJson(core.Map _json) {
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'];
+      lineNumber = _json['lineNumber'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -9786,18 +9802,20 @@ class DatafeedTarget {
 
   DatafeedTarget.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('excludedDestinations')) {
-      excludedDestinations =
-          (_json['excludedDestinations'] as core.List).cast<core.String>();
+      excludedDestinations = (_json['excludedDestinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includedDestinations')) {
-      includedDestinations =
-          (_json['includedDestinations'] as core.List).cast<core.String>();
+      includedDestinations = (_json['includedDestinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
   }
 
@@ -9871,19 +9889,19 @@ class DatafeedsCustomBatchRequestEntry {
 
   DatafeedsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeed')) {
       datafeed = Datafeed.fromJson(_json['datafeed']);
     }
     if (_json.containsKey('datafeedId')) {
-      datafeedId = _json['datafeedId'];
+      datafeedId = _json['datafeedId'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
   }
 
@@ -9926,7 +9944,7 @@ class DatafeedsCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -9958,7 +9976,7 @@ class DatafeedsCustomBatchResponseEntry {
 
   DatafeedsCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeed')) {
       datafeed = Datafeed.fromJson(_json['datafeed']);
@@ -9992,7 +10010,7 @@ class DatafeedsFetchNowResponse {
 
   DatafeedsFetchNowResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -10018,10 +10036,10 @@ class DatafeedsListResponse {
 
   DatafeedsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -10100,22 +10118,22 @@ class DatafeedstatusesCustomBatchRequestEntry {
 
   DatafeedstatusesCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('datafeedId')) {
-      datafeedId = _json['datafeedId'];
+      datafeedId = _json['datafeedId'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
   }
 
@@ -10161,7 +10179,7 @@ class DatafeedstatusesCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -10193,7 +10211,7 @@ class DatafeedstatusesCustomBatchResponseEntry {
 
   DatafeedstatusesCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeedStatus')) {
       datafeedStatus = DatafeedStatus.fromJson(_json['datafeedStatus']);
@@ -10231,10 +10249,10 @@ class DatafeedstatusesListResponse {
 
   DatafeedstatusesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -10315,16 +10333,16 @@ class DeliveryTime {
           .toList();
     }
     if (_json.containsKey('maxHandlingTimeInDays')) {
-      maxHandlingTimeInDays = _json['maxHandlingTimeInDays'];
+      maxHandlingTimeInDays = _json['maxHandlingTimeInDays'] as core.int;
     }
     if (_json.containsKey('maxTransitTimeInDays')) {
-      maxTransitTimeInDays = _json['maxTransitTimeInDays'];
+      maxTransitTimeInDays = _json['maxTransitTimeInDays'] as core.int;
     }
     if (_json.containsKey('minHandlingTimeInDays')) {
-      minHandlingTimeInDays = _json['minHandlingTimeInDays'];
+      minHandlingTimeInDays = _json['minHandlingTimeInDays'] as core.int;
     }
     if (_json.containsKey('minTransitTimeInDays')) {
-      minTransitTimeInDays = _json['minTransitTimeInDays'];
+      minTransitTimeInDays = _json['minTransitTimeInDays'] as core.int;
     }
     if (_json.containsKey('transitBusinessDayConfig')) {
       transitBusinessDayConfig =
@@ -10384,13 +10402,13 @@ class Error {
 
   Error.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
   }
 
@@ -10424,7 +10442,7 @@ class Errors {
 
   Errors.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
@@ -10432,7 +10450,7 @@ class Errors {
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -10462,7 +10480,7 @@ class GmbAccounts {
 
   GmbAccounts.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('gmbAccounts')) {
       gmbAccounts = (_json['gmbAccounts'] as core.List)
@@ -10502,16 +10520,16 @@ class GmbAccountsGmbAccount {
 
   GmbAccountsGmbAccount.fromJson(core.Map _json) {
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('listingCount')) {
-      listingCount = _json['listingCount'];
+      listingCount = _json['listingCount'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -10579,11 +10597,14 @@ class Headers {
           .toList();
     }
     if (_json.containsKey('numberOfItems')) {
-      numberOfItems = (_json['numberOfItems'] as core.List).cast<core.String>();
+      numberOfItems = (_json['numberOfItems'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('postalCodeGroupNames')) {
-      postalCodeGroupNames =
-          (_json['postalCodeGroupNames'] as core.List).cast<core.String>();
+      postalCodeGroupNames = (_json['postalCodeGroupNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('prices')) {
       prices = (_json['prices'] as core.List)
@@ -10643,19 +10664,19 @@ class HolidayCutoff {
 
   HolidayCutoff.fromJson(core.Map _json) {
     if (_json.containsKey('deadlineDate')) {
-      deadlineDate = _json['deadlineDate'];
+      deadlineDate = _json['deadlineDate'] as core.String;
     }
     if (_json.containsKey('deadlineHour')) {
-      deadlineHour = _json['deadlineHour'];
+      deadlineHour = _json['deadlineHour'] as core.int;
     }
     if (_json.containsKey('deadlineTimezone')) {
-      deadlineTimezone = _json['deadlineTimezone'];
+      deadlineTimezone = _json['deadlineTimezone'] as core.String;
     }
     if (_json.containsKey('holidayId')) {
-      holidayId = _json['holidayId'];
+      holidayId = _json['holidayId'] as core.String;
     }
     if (_json.containsKey('visibleFromDate')) {
-      visibleFromDate = _json['visibleFromDate'];
+      visibleFromDate = _json['visibleFromDate'] as core.String;
     }
   }
 
@@ -10720,22 +10741,22 @@ class HolidaysHoliday {
 
   HolidaysHoliday.fromJson(core.Map _json) {
     if (_json.containsKey('countryCode')) {
-      countryCode = _json['countryCode'];
+      countryCode = _json['countryCode'] as core.String;
     }
     if (_json.containsKey('date')) {
-      date = _json['date'];
+      date = _json['date'] as core.String;
     }
     if (_json.containsKey('deliveryGuaranteeDate')) {
-      deliveryGuaranteeDate = _json['deliveryGuaranteeDate'];
+      deliveryGuaranteeDate = _json['deliveryGuaranteeDate'] as core.String;
     }
     if (_json.containsKey('deliveryGuaranteeHour')) {
-      deliveryGuaranteeHour = _json['deliveryGuaranteeHour'];
+      deliveryGuaranteeHour = _json['deliveryGuaranteeHour'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -10777,7 +10798,7 @@ class Installment {
       amount = Price.fromJson(_json['amount']);
     }
     if (_json.containsKey('months')) {
-      months = _json['months'];
+      months = _json['months'] as core.String;
     }
   }
 
@@ -10845,7 +10866,7 @@ class InvoiceSummaryAdditionalChargeSummary {
       totalAmount = Amount.fromJson(_json['totalAmount']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -10877,10 +10898,10 @@ class LiaAboutPageSettings {
 
   LiaAboutPageSettings.fromJson(core.Map _json) {
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -10925,10 +10946,11 @@ class LiaCountrySettings {
       about = LiaAboutPageSettings.fromJson(_json['about']);
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('hostedLocalStorefrontActive')) {
-      hostedLocalStorefrontActive = _json['hostedLocalStorefrontActive'];
+      hostedLocalStorefrontActive =
+          _json['hostedLocalStorefrontActive'] as core.bool;
     }
     if (_json.containsKey('inventory')) {
       inventory = LiaInventorySettings.fromJson(_json['inventory']);
@@ -10941,7 +10963,7 @@ class LiaCountrySettings {
       posDataProvider = LiaPosDataProvider.fromJson(_json['posDataProvider']);
     }
     if (_json.containsKey('storePickupActive')) {
-      storePickupActive = _json['storePickupActive'];
+      storePickupActive = _json['storePickupActive'] as core.bool;
     }
   }
 
@@ -11000,18 +11022,18 @@ class LiaInventorySettings {
   LiaInventorySettings.fromJson(core.Map _json) {
     if (_json.containsKey('inventoryVerificationContactEmail')) {
       inventoryVerificationContactEmail =
-          _json['inventoryVerificationContactEmail'];
+          _json['inventoryVerificationContactEmail'] as core.String;
     }
     if (_json.containsKey('inventoryVerificationContactName')) {
       inventoryVerificationContactName =
-          _json['inventoryVerificationContactName'];
+          _json['inventoryVerificationContactName'] as core.String;
     }
     if (_json.containsKey('inventoryVerificationContactStatus')) {
       inventoryVerificationContactStatus =
-          _json['inventoryVerificationContactStatus'];
+          _json['inventoryVerificationContactStatus'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -11052,10 +11074,10 @@ class LiaOnDisplayToOrderSettings {
 
   LiaOnDisplayToOrderSettings.fromJson(core.Map _json) {
     if (_json.containsKey('shippingCostPolicyUrl')) {
-      shippingCostPolicyUrl = _json['shippingCostPolicyUrl'];
+      shippingCostPolicyUrl = _json['shippingCostPolicyUrl'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -11082,10 +11104,10 @@ class LiaPosDataProvider {
 
   LiaPosDataProvider.fromJson(core.Map _json) {
     if (_json.containsKey('posDataProviderId')) {
-      posDataProviderId = _json['posDataProviderId'];
+      posDataProviderId = _json['posDataProviderId'] as core.String;
     }
     if (_json.containsKey('posExternalAccountId')) {
-      posExternalAccountId = _json['posExternalAccountId'];
+      posExternalAccountId = _json['posExternalAccountId'] as core.String;
     }
   }
 
@@ -11119,7 +11141,7 @@ class LiaSettings {
 
   LiaSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('countrySettings')) {
       countrySettings = (_json['countrySettings'] as core.List)
@@ -11128,7 +11150,7 @@ class LiaSettings {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11221,37 +11243,37 @@ class LiasettingsCustomBatchRequestEntry {
 
   LiasettingsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('contactEmail')) {
-      contactEmail = _json['contactEmail'];
+      contactEmail = _json['contactEmail'] as core.String;
     }
     if (_json.containsKey('contactName')) {
-      contactName = _json['contactName'];
+      contactName = _json['contactName'] as core.String;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('gmbEmail')) {
-      gmbEmail = _json['gmbEmail'];
+      gmbEmail = _json['gmbEmail'] as core.String;
     }
     if (_json.containsKey('liaSettings')) {
       liaSettings = LiaSettings.fromJson(_json['liaSettings']);
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('posDataProviderId')) {
-      posDataProviderId = _json['posDataProviderId'];
+      posDataProviderId = _json['posDataProviderId'] as core.String;
     }
     if (_json.containsKey('posExternalAccountId')) {
-      posExternalAccountId = _json['posExternalAccountId'];
+      posExternalAccountId = _json['posExternalAccountId'] as core.String;
     }
   }
 
@@ -11312,7 +11334,7 @@ class LiasettingsCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11352,7 +11374,7 @@ class LiasettingsCustomBatchResponseEntry {
 
   LiasettingsCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
@@ -11361,7 +11383,7 @@ class LiasettingsCustomBatchResponseEntry {
       gmbAccounts = GmbAccounts.fromJson(_json['gmbAccounts']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('liaSettings')) {
       liaSettings = LiaSettings.fromJson(_json['liaSettings']);
@@ -11413,7 +11435,7 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
 
   LiasettingsGetAccessibleGmbAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('gmbAccounts')) {
       gmbAccounts = (_json['gmbAccounts'] as core.List)
@@ -11422,7 +11444,7 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11454,7 +11476,7 @@ class LiasettingsListPosDataProvidersResponse {
 
   LiasettingsListPosDataProvidersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('posDataProviders')) {
       posDataProviders = (_json['posDataProviders'] as core.List)
@@ -11489,10 +11511,10 @@ class LiasettingsListResponse {
 
   LiasettingsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -11525,7 +11547,7 @@ class LiasettingsRequestGmbAccessResponse {
 
   LiasettingsRequestGmbAccessResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11547,7 +11569,7 @@ class LiasettingsRequestInventoryVerificationResponse {
 
   LiasettingsRequestInventoryVerificationResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11569,7 +11591,7 @@ class LiasettingsSetInventoryVerificationContactResponse {
 
   LiasettingsSetInventoryVerificationContactResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11591,7 +11613,7 @@ class LiasettingsSetPosDataProviderResponse {
 
   LiasettingsSetPosDataProviderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11625,10 +11647,10 @@ class LinkService {
 
   LinkService.fromJson(core.Map _json) {
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -11655,7 +11677,7 @@ class LinkedAccount {
 
   LinkedAccount.fromJson(core.Map _json) {
     if (_json.containsKey('linkedAccountId')) {
-      linkedAccountId = _json['linkedAccountId'];
+      linkedAccountId = _json['linkedAccountId'] as core.String;
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
@@ -11718,34 +11740,34 @@ class LocalInventory {
 
   LocalInventory.fromJson(core.Map _json) {
     if (_json.containsKey('availability')) {
-      availability = _json['availability'];
+      availability = _json['availability'] as core.String;
     }
     if (_json.containsKey('instoreProductLocation')) {
-      instoreProductLocation = _json['instoreProductLocation'];
+      instoreProductLocation = _json['instoreProductLocation'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('pickupMethod')) {
-      pickupMethod = _json['pickupMethod'];
+      pickupMethod = _json['pickupMethod'] as core.String;
     }
     if (_json.containsKey('pickupSla')) {
-      pickupSla = _json['pickupSla'];
+      pickupSla = _json['pickupSla'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('salePrice')) {
       salePrice = Price.fromJson(_json['salePrice']);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
-      salePriceEffectiveDate = _json['salePriceEffectiveDate'];
+      salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
   }
 
@@ -11833,19 +11855,19 @@ class LocalinventoryCustomBatchRequestEntry {
 
   LocalinventoryCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('localInventory')) {
       localInventory = LocalInventory.fromJson(_json['localInventory']);
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
   }
 
@@ -11888,7 +11910,7 @@ class LocalinventoryCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11920,13 +11942,13 @@ class LocalinventoryCustomBatchResponseEntry {
 
   LocalinventoryCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -11954,7 +11976,9 @@ class LocationIdSet {
 
   LocationIdSet.fromJson(core.Map _json) {
     if (_json.containsKey('locationIds')) {
-      locationIds = (_json['locationIds'] as core.List).cast<core.String>();
+      locationIds = (_json['locationIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -11984,10 +12008,10 @@ class LoyaltyPoints {
 
   LoyaltyPoints.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pointsValue')) {
-      pointsValue = _json['pointsValue'];
+      pointsValue = _json['pointsValue'] as core.String;
     }
     if (_json.containsKey('ratio')) {
       ratio = _json['ratio'].toDouble();
@@ -12037,16 +12061,16 @@ class MerchantOrderReturn {
 
   MerchantOrderReturn.fromJson(core.Map _json) {
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('merchantOrderId')) {
-      merchantOrderId = _json['merchantOrderId'];
+      merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('orderId')) {
-      orderId = _json['orderId'];
+      orderId = _json['orderId'] as core.String;
     }
     if (_json.containsKey('orderReturnId')) {
-      orderReturnId = _json['orderReturnId'];
+      orderReturnId = _json['orderReturnId'] as core.String;
     }
     if (_json.containsKey('returnItems')) {
       returnItems = (_json['returnItems'] as core.List)
@@ -12147,7 +12171,7 @@ class MerchantOrderReturnItem {
           CustomerReturnReason.fromJson(_json['customerReturnReason']);
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('merchantRejectionReason')) {
       merchantRejectionReason =
@@ -12164,20 +12188,21 @@ class MerchantOrderReturnItem {
       refundableAmount = MonetaryAmount.fromJson(_json['refundableAmount']);
     }
     if (_json.containsKey('returnItemId')) {
-      returnItemId = _json['returnItemId'];
+      returnItemId = _json['returnItemId'] as core.String;
     }
     if (_json.containsKey('returnShipmentIds')) {
-      returnShipmentIds =
-          (_json['returnShipmentIds'] as core.List).cast<core.String>();
+      returnShipmentIds = (_json['returnShipmentIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('shipmentGroupId')) {
-      shipmentGroupId = _json['shipmentGroupId'];
+      shipmentGroupId = _json['shipmentGroupId'] as core.String;
     }
     if (_json.containsKey('shipmentUnitId')) {
-      shipmentUnitId = _json['shipmentUnitId'];
+      shipmentUnitId = _json['shipmentUnitId'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -12231,10 +12256,10 @@ class MerchantRejectionReason {
 
   MerchantRejectionReason.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('reasonCode')) {
-      reasonCode = _json['reasonCode'];
+      reasonCode = _json['reasonCode'] as core.String;
     }
   }
 
@@ -12289,7 +12314,9 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
 
   MinimumOrderValueTableStoreCodeSetWithMov.fromJson(core.Map _json) {
     if (_json.containsKey('storeCodes')) {
-      storeCodes = (_json['storeCodes'] as core.List).cast<core.String>();
+      storeCodes = (_json['storeCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
       value = Price.fromJson(_json['value']);
@@ -12464,7 +12491,7 @@ class Order {
 
   Order.fromJson(core.Map _json) {
     if (_json.containsKey('acknowledged')) {
-      acknowledged = _json['acknowledged'];
+      acknowledged = _json['acknowledged'] as core.bool;
     }
     if (_json.containsKey('annotations')) {
       annotations = (_json['annotations'] as core.List)
@@ -12482,10 +12509,10 @@ class Order {
       deliveryDetails = OrderDeliveryDetails.fromJson(_json['deliveryDetails']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
@@ -12493,10 +12520,10 @@ class Order {
           .toList();
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('merchantOrderId')) {
-      merchantOrderId = _json['merchantOrderId'];
+      merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('netPriceAmount')) {
       netPriceAmount = Price.fromJson(_json['netPriceAmount']);
@@ -12505,13 +12532,13 @@ class Order {
       netTaxAmount = Price.fromJson(_json['netTaxAmount']);
     }
     if (_json.containsKey('paymentStatus')) {
-      paymentStatus = _json['paymentStatus'];
+      paymentStatus = _json['paymentStatus'] as core.String;
     }
     if (_json.containsKey('pickupDetails')) {
       pickupDetails = OrderPickupDetails.fromJson(_json['pickupDetails']);
     }
     if (_json.containsKey('placedDate')) {
-      placedDate = _json['placedDate'];
+      placedDate = _json['placedDate'] as core.String;
     }
     if (_json.containsKey('promotions')) {
       promotions = (_json['promotions'] as core.List)
@@ -12535,10 +12562,10 @@ class Order {
       shippingCostTax = Price.fromJson(_json['shippingCostTax']);
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('taxCollector')) {
-      taxCollector = _json['taxCollector'];
+      taxCollector = _json['taxCollector'] as core.String;
     }
   }
 
@@ -12651,28 +12678,32 @@ class OrderAddress {
 
   OrderAddress.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('fullAddress')) {
-      fullAddress = (_json['fullAddress'] as core.List).cast<core.String>();
+      fullAddress = (_json['fullAddress'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('isPostOfficeBox')) {
-      isPostOfficeBox = _json['isPostOfficeBox'];
+      isPostOfficeBox = _json['isPostOfficeBox'] as core.bool;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('recipientName')) {
-      recipientName = _json['recipientName'];
+      recipientName = _json['recipientName'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('streetAddress')) {
-      streetAddress = (_json['streetAddress'] as core.List).cast<core.String>();
+      streetAddress = (_json['streetAddress'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -12767,19 +12798,19 @@ class OrderCancellation {
 
   OrderCancellation.fromJson(core.Map _json) {
     if (_json.containsKey('actor')) {
-      actor = _json['actor'];
+      actor = _json['actor'] as core.String;
     }
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -12827,10 +12858,10 @@ class OrderCustomer {
 
   OrderCustomer.fromJson(core.Map _json) {
     if (_json.containsKey('fullName')) {
-      fullName = _json['fullName'];
+      fullName = _json['fullName'] as core.String;
     }
     if (_json.containsKey('invoiceReceivingEmail')) {
-      invoiceReceivingEmail = _json['invoiceReceivingEmail'];
+      invoiceReceivingEmail = _json['invoiceReceivingEmail'] as core.String;
     }
     if (_json.containsKey('loyaltyInfo')) {
       loyaltyInfo = OrderCustomerLoyaltyInfo.fromJson(_json['loyaltyInfo']);
@@ -12870,10 +12901,10 @@ class OrderCustomerLoyaltyInfo {
 
   OrderCustomerLoyaltyInfo.fromJson(core.Map _json) {
     if (_json.containsKey('loyaltyNumber')) {
-      loyaltyNumber = _json['loyaltyNumber'];
+      loyaltyNumber = _json['loyaltyNumber'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -12914,13 +12945,14 @@ class OrderCustomerMarketingRightsInfo {
 
   OrderCustomerMarketingRightsInfo.fromJson(core.Map _json) {
     if (_json.containsKey('explicitMarketingPreference')) {
-      explicitMarketingPreference = _json['explicitMarketingPreference'];
+      explicitMarketingPreference =
+          _json['explicitMarketingPreference'] as core.String;
     }
     if (_json.containsKey('lastUpdatedTimestamp')) {
-      lastUpdatedTimestamp = _json['lastUpdatedTimestamp'];
+      lastUpdatedTimestamp = _json['lastUpdatedTimestamp'] as core.String;
     }
     if (_json.containsKey('marketingEmailAddress')) {
-      marketingEmailAddress = _json['marketingEmailAddress'];
+      marketingEmailAddress = _json['marketingEmailAddress'] as core.String;
     }
   }
 
@@ -12953,7 +12985,7 @@ class OrderDeliveryDetails {
       address = OrderAddress.fromJson(_json['address']);
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -13050,7 +13082,7 @@ class OrderLineItem {
           .toList();
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
@@ -13059,28 +13091,28 @@ class OrderLineItem {
       product = OrderLineItemProduct.fromJson(_json['product']);
     }
     if (_json.containsKey('quantityCanceled')) {
-      quantityCanceled = _json['quantityCanceled'];
+      quantityCanceled = _json['quantityCanceled'] as core.int;
     }
     if (_json.containsKey('quantityDelivered')) {
-      quantityDelivered = _json['quantityDelivered'];
+      quantityDelivered = _json['quantityDelivered'] as core.int;
     }
     if (_json.containsKey('quantityOrdered')) {
-      quantityOrdered = _json['quantityOrdered'];
+      quantityOrdered = _json['quantityOrdered'] as core.int;
     }
     if (_json.containsKey('quantityPending')) {
-      quantityPending = _json['quantityPending'];
+      quantityPending = _json['quantityPending'] as core.int;
     }
     if (_json.containsKey('quantityReadyForPickup')) {
-      quantityReadyForPickup = _json['quantityReadyForPickup'];
+      quantityReadyForPickup = _json['quantityReadyForPickup'] as core.int;
     }
     if (_json.containsKey('quantityReturned')) {
-      quantityReturned = _json['quantityReturned'];
+      quantityReturned = _json['quantityReturned'] as core.int;
     }
     if (_json.containsKey('quantityShipped')) {
-      quantityShipped = _json['quantityShipped'];
+      quantityShipped = _json['quantityShipped'] as core.int;
     }
     if (_json.containsKey('quantityUndeliverable')) {
-      quantityUndeliverable = _json['quantityUndeliverable'];
+      quantityUndeliverable = _json['quantityUndeliverable'] as core.int;
     }
     if (_json.containsKey('returnInfo')) {
       returnInfo = OrderLineItemReturnInfo.fromJson(_json['returnInfo']);
@@ -13185,7 +13217,7 @@ class OrderLineItemAdjustment {
       taxAdjustment = Price.fromJson(_json['taxAdjustment']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -13261,13 +13293,13 @@ class OrderLineItemProduct {
 
   OrderLineItemProduct.fromJson(core.Map _json) {
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = _json['condition'];
+      condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('fees')) {
       fees = (_json['fees'] as core.List)
@@ -13276,34 +13308,34 @@ class OrderLineItemProduct {
           .toList();
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('imageLink')) {
-      imageLink = _json['imageLink'];
+      imageLink = _json['imageLink'] as core.String;
     }
     if (_json.containsKey('itemGroupId')) {
-      itemGroupId = _json['itemGroupId'];
+      itemGroupId = _json['itemGroupId'] as core.String;
     }
     if (_json.containsKey('mpn')) {
-      mpn = _json['mpn'];
+      mpn = _json['mpn'] as core.String;
     }
     if (_json.containsKey('offerId')) {
-      offerId = _json['offerId'];
+      offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('shownImage')) {
-      shownImage = _json['shownImage'];
+      shownImage = _json['shownImage'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('variantAttributes')) {
       variantAttributes = (_json['variantAttributes'] as core.List)
@@ -13379,7 +13411,7 @@ class OrderLineItemProductFee {
       amount = Price.fromJson(_json['amount']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -13406,10 +13438,10 @@ class OrderLineItemProductVariantAttribute {
 
   OrderLineItemProductVariantAttribute.fromJson(core.Map _json) {
     if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'];
+      dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -13439,13 +13471,13 @@ class OrderLineItemReturnInfo {
 
   OrderLineItemReturnInfo.fromJson(core.Map _json) {
     if (_json.containsKey('daysToReturn')) {
-      daysToReturn = _json['daysToReturn'];
+      daysToReturn = _json['daysToReturn'] as core.int;
     }
     if (_json.containsKey('isReturnable')) {
-      isReturnable = _json['isReturnable'];
+      isReturnable = _json['isReturnable'] as core.bool;
     }
     if (_json.containsKey('policyUrl')) {
-      policyUrl = _json['policyUrl'];
+      policyUrl = _json['policyUrl'] as core.String;
     }
   }
 
@@ -13490,19 +13522,19 @@ class OrderLineItemShippingDetails {
 
   OrderLineItemShippingDetails.fromJson(core.Map _json) {
     if (_json.containsKey('deliverByDate')) {
-      deliverByDate = _json['deliverByDate'];
+      deliverByDate = _json['deliverByDate'] as core.String;
     }
     if (_json.containsKey('method')) {
       method = OrderLineItemShippingDetailsMethod.fromJson(_json['method']);
     }
     if (_json.containsKey('pickupPromiseInMinutes')) {
-      pickupPromiseInMinutes = _json['pickupPromiseInMinutes'];
+      pickupPromiseInMinutes = _json['pickupPromiseInMinutes'] as core.int;
     }
     if (_json.containsKey('shipByDate')) {
-      shipByDate = _json['shipByDate'];
+      shipByDate = _json['shipByDate'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -13545,16 +13577,16 @@ class OrderLineItemShippingDetailsMethod {
 
   OrderLineItemShippingDetailsMethod.fromJson(core.Map _json) {
     if (_json.containsKey('carrier')) {
-      carrier = _json['carrier'];
+      carrier = _json['carrier'] as core.String;
     }
     if (_json.containsKey('maxDaysInTransit')) {
-      maxDaysInTransit = _json['maxDaysInTransit'];
+      maxDaysInTransit = _json['maxDaysInTransit'] as core.int;
     }
     if (_json.containsKey('methodName')) {
-      methodName = _json['methodName'];
+      methodName = _json['methodName'] as core.String;
     }
     if (_json.containsKey('minDaysInTransit')) {
-      minDaysInTransit = _json['minDaysInTransit'];
+      minDaysInTransit = _json['minDaysInTransit'] as core.int;
     }
   }
 
@@ -13589,10 +13621,10 @@ class OrderMerchantProvidedAnnotation {
 
   OrderMerchantProvidedAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -13619,10 +13651,10 @@ class OrderOrderAnnotation {
 
   OrderOrderAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -13673,10 +13705,10 @@ class OrderPickupDetails {
           .toList();
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('pickupType')) {
-      pickupType = _json['pickupType'];
+      pickupType = _json['pickupType'] as core.String;
     }
   }
 
@@ -13709,10 +13741,10 @@ class OrderPickupDetailsCollector {
 
   OrderPickupDetailsCollector.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -13819,34 +13851,34 @@ class OrderPromotion {
           .toList();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('funder')) {
-      funder = _json['funder'];
+      funder = _json['funder'] as core.String;
     }
     if (_json.containsKey('merchantPromotionId')) {
-      merchantPromotionId = _json['merchantPromotionId'];
+      merchantPromotionId = _json['merchantPromotionId'] as core.String;
     }
     if (_json.containsKey('priceValue')) {
       priceValue = Price.fromJson(_json['priceValue']);
     }
     if (_json.containsKey('shortTitle')) {
-      shortTitle = _json['shortTitle'];
+      shortTitle = _json['shortTitle'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('subtype')) {
-      subtype = _json['subtype'];
+      subtype = _json['subtype'] as core.String;
     }
     if (_json.containsKey('taxValue')) {
       taxValue = Price.fromJson(_json['taxValue']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -13913,16 +13945,16 @@ class OrderPromotionItem {
 
   OrderPromotionItem.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('offerId')) {
-      offerId = _json['offerId'];
+      offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
   }
 
@@ -14018,19 +14050,19 @@ class OrderRefund {
 
   OrderRefund.fromJson(core.Map _json) {
     if (_json.containsKey('actor')) {
-      actor = _json['actor'];
+      actor = _json['actor'] as core.String;
     }
     if (_json.containsKey('amount')) {
       amount = Price.fromJson(_json['amount']);
     }
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -14080,16 +14112,17 @@ class OrderReportDisbursement {
       disbursementAmount = Price.fromJson(_json['disbursementAmount']);
     }
     if (_json.containsKey('disbursementCreationDate')) {
-      disbursementCreationDate = _json['disbursementCreationDate'];
+      disbursementCreationDate =
+          _json['disbursementCreationDate'] as core.String;
     }
     if (_json.containsKey('disbursementDate')) {
-      disbursementDate = _json['disbursementDate'];
+      disbursementDate = _json['disbursementDate'] as core.String;
     }
     if (_json.containsKey('disbursementId')) {
-      disbursementId = _json['disbursementId'];
+      disbursementId = _json['disbursementId'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
   }
 
@@ -14149,28 +14182,29 @@ class OrderReportTransaction {
       disbursementAmount = Price.fromJson(_json['disbursementAmount']);
     }
     if (_json.containsKey('disbursementCreationDate')) {
-      disbursementCreationDate = _json['disbursementCreationDate'];
+      disbursementCreationDate =
+          _json['disbursementCreationDate'] as core.String;
     }
     if (_json.containsKey('disbursementDate')) {
-      disbursementDate = _json['disbursementDate'];
+      disbursementDate = _json['disbursementDate'] as core.String;
     }
     if (_json.containsKey('disbursementId')) {
-      disbursementId = _json['disbursementId'];
+      disbursementId = _json['disbursementId'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('merchantOrderId')) {
-      merchantOrderId = _json['merchantOrderId'];
+      merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('orderId')) {
-      orderId = _json['orderId'];
+      orderId = _json['orderId'] as core.String;
     }
     if (_json.containsKey('productAmount')) {
       productAmount = ProductAmount.fromJson(_json['productAmount']);
     }
     if (_json.containsKey('transactionDate')) {
-      transactionDate = _json['transactionDate'];
+      transactionDate = _json['transactionDate'] as core.String;
     }
   }
 
@@ -14250,19 +14284,19 @@ class OrderReturn {
 
   OrderReturn.fromJson(core.Map _json) {
     if (_json.containsKey('actor')) {
-      actor = _json['actor'];
+      actor = _json['actor'] as core.String;
     }
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -14380,16 +14414,16 @@ class OrderShipment {
 
   OrderShipment.fromJson(core.Map _json) {
     if (_json.containsKey('carrier')) {
-      carrier = _json['carrier'];
+      carrier = _json['carrier'] as core.String;
     }
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('deliveryDate')) {
-      deliveryDate = _json['deliveryDate'];
+      deliveryDate = _json['deliveryDate'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
@@ -14402,13 +14436,13 @@ class OrderShipment {
           _json['scheduledDeliveryDetails']);
     }
     if (_json.containsKey('shipmentGroupId')) {
-      shipmentGroupId = _json['shipmentGroupId'];
+      shipmentGroupId = _json['shipmentGroupId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('trackingId')) {
-      trackingId = _json['trackingId'];
+      trackingId = _json['trackingId'] as core.String;
     }
   }
 
@@ -14461,13 +14495,13 @@ class OrderShipmentLineItemShipment {
 
   OrderShipmentLineItemShipment.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
   }
 
@@ -14499,10 +14533,10 @@ class OrderShipmentScheduledDeliveryDetails {
 
   OrderShipmentScheduledDeliveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey('carrierPhoneNumber')) {
-      carrierPhoneNumber = _json['carrierPhoneNumber'];
+      carrierPhoneNumber = _json['carrierPhoneNumber'] as core.String;
     }
     if (_json.containsKey('scheduledDate')) {
-      scheduledDate = _json['scheduledDate'];
+      scheduledDate = _json['scheduledDate'] as core.String;
     }
   }
 
@@ -14541,7 +14575,7 @@ class OrderinvoicesCreateChargeInvoiceRequest {
 
   OrderinvoicesCreateChargeInvoiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('invoiceId')) {
-      invoiceId = _json['invoiceId'];
+      invoiceId = _json['invoiceId'] as core.String;
     }
     if (_json.containsKey('invoiceSummary')) {
       invoiceSummary = InvoiceSummary.fromJson(_json['invoiceSummary']);
@@ -14553,10 +14587,10 @@ class OrderinvoicesCreateChargeInvoiceRequest {
           .toList();
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('shipmentGroupId')) {
-      shipmentGroupId = _json['shipmentGroupId'];
+      shipmentGroupId = _json['shipmentGroupId'] as core.String;
     }
   }
 
@@ -14598,10 +14632,10 @@ class OrderinvoicesCreateChargeInvoiceResponse {
 
   OrderinvoicesCreateChargeInvoiceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -14643,10 +14677,10 @@ class OrderinvoicesCreateRefundInvoiceRequest {
 
   OrderinvoicesCreateRefundInvoiceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('invoiceId')) {
-      invoiceId = _json['invoiceId'];
+      invoiceId = _json['invoiceId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('refundOnlyOption')) {
       refundOnlyOption =
@@ -14703,10 +14737,10 @@ class OrderinvoicesCreateRefundInvoiceResponse {
 
   OrderinvoicesCreateRefundInvoiceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -14780,10 +14814,10 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
   }
 
@@ -14826,10 +14860,10 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
   }
 
@@ -14866,10 +14900,10 @@ class OrderreportsListDisbursementsResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -14904,10 +14938,10 @@ class OrderreportsListTransactionsResponse {
 
   OrderreportsListTransactionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('transactions')) {
       transactions = (_json['transactions'] as core.List)
@@ -14942,7 +14976,7 @@ class OrderreturnsAcknowledgeRequest {
 
   OrderreturnsAcknowledgeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
   }
 
@@ -14971,10 +15005,10 @@ class OrderreturnsAcknowledgeResponse {
 
   OrderreturnsAcknowledgeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15013,13 +15047,13 @@ class OrderreturnsCreateOrderReturnRequest {
           .toList();
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('orderId')) {
-      orderId = _json['orderId'];
+      orderId = _json['orderId'] as core.String;
     }
     if (_json.containsKey('returnMethodType')) {
-      returnMethodType = _json['returnMethodType'];
+      returnMethodType = _json['returnMethodType'] as core.String;
     }
   }
 
@@ -15060,10 +15094,10 @@ class OrderreturnsCreateOrderReturnResponse {
 
   OrderreturnsCreateOrderReturnResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('orderReturn')) {
       orderReturn = MerchantOrderReturn.fromJson(_json['orderReturn']);
@@ -15097,10 +15131,10 @@ class OrderreturnsLineItem {
 
   OrderreturnsLineItem.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
   }
 
@@ -15129,10 +15163,10 @@ class OrderreturnsListResponse {
 
   OrderreturnsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -15207,10 +15241,11 @@ class OrderreturnsProcessRequest {
 
   OrderreturnsProcessRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fullChargeReturnShippingCost')) {
-      fullChargeReturnShippingCost = _json['fullChargeReturnShippingCost'];
+      fullChargeReturnShippingCost =
+          _json['fullChargeReturnShippingCost'] as core.bool;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('refundShippingFee')) {
       refundShippingFee =
@@ -15259,10 +15294,10 @@ class OrderreturnsProcessResponse {
 
   OrderreturnsProcessResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15304,20 +15339,20 @@ class OrderreturnsRefundOperation {
 
   OrderreturnsRefundOperation.fromJson(core.Map _json) {
     if (_json.containsKey('fullRefund')) {
-      fullRefund = _json['fullRefund'];
+      fullRefund = _json['fullRefund'] as core.bool;
     }
     if (_json.containsKey('partialRefund')) {
       partialRefund =
           OrderreturnsPartialRefund.fromJson(_json['partialRefund']);
     }
     if (_json.containsKey('paymentType')) {
-      paymentType = _json['paymentType'];
+      paymentType = _json['paymentType'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('returnRefundReason')) {
-      returnRefundReason = _json['returnRefundReason'];
+      returnRefundReason = _json['returnRefundReason'] as core.String;
     }
   }
 
@@ -15353,10 +15388,10 @@ class OrderreturnsRejectOperation {
 
   OrderreturnsRejectOperation.fromJson(core.Map _json) {
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -15393,7 +15428,7 @@ class OrderreturnsReturnItem {
       reject = OrderreturnsRejectOperation.fromJson(_json['reject']);
     }
     if (_json.containsKey('returnItemId')) {
-      returnItemId = _json['returnItemId'];
+      returnItemId = _json['returnItemId'] as core.String;
     }
   }
 
@@ -15420,7 +15455,7 @@ class OrdersAcknowledgeRequest {
 
   OrdersAcknowledgeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
   }
 
@@ -15449,10 +15484,10 @@ class OrdersAcknowledgeResponse {
 
   OrdersAcknowledgeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15477,7 +15512,7 @@ class OrdersAdvanceTestOrderResponse {
 
   OrdersAdvanceTestOrderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15527,22 +15562,22 @@ class OrdersCancelLineItemRequest {
 
   OrdersCancelLineItemRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -15586,10 +15621,10 @@ class OrdersCancelLineItemResponse {
 
   OrdersCancelLineItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15631,13 +15666,13 @@ class OrdersCancelRequest {
 
   OrdersCancelRequest.fromJson(core.Map _json) {
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -15672,10 +15707,10 @@ class OrdersCancelResponse {
 
   OrdersCancelResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15704,7 +15739,7 @@ class OrdersCancelTestOrderByCustomerRequest {
 
   OrdersCancelTestOrderByCustomerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
   }
 
@@ -15726,7 +15761,7 @@ class OrdersCancelTestOrderByCustomerResponse {
 
   OrdersCancelTestOrderByCustomerResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -15768,10 +15803,10 @@ class OrdersCreateTestOrderRequest {
 
   OrdersCreateTestOrderRequest.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('templateName')) {
-      templateName = _json['templateName'];
+      templateName = _json['templateName'] as core.String;
     }
     if (_json.containsKey('testOrder')) {
       testOrder = TestOrder.fromJson(_json['testOrder']);
@@ -15805,10 +15840,10 @@ class OrdersCreateTestOrderResponse {
 
   OrdersCreateTestOrderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('orderId')) {
-      orderId = _json['orderId'];
+      orderId = _json['orderId'] as core.String;
     }
   }
 
@@ -15861,10 +15896,10 @@ class OrdersCreateTestReturnResponse {
 
   OrdersCreateTestReturnResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('returnId')) {
-      returnId = _json['returnId'];
+      returnId = _json['returnId'] as core.String;
     }
   }
 
@@ -15892,10 +15927,10 @@ class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
   OrdersCustomBatchRequestEntryCreateTestReturnReturnItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
   }
 
@@ -15939,16 +15974,16 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
       amount = MonetaryAmount.fromJson(_json['amount']);
     }
     if (_json.containsKey('fullRefund')) {
-      fullRefund = _json['fullRefund'];
+      fullRefund = _json['fullRefund'] as core.bool;
     }
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
   }
 
@@ -15989,7 +16024,7 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
       amount = Price.fromJson(_json['amount']);
     }
     if (_json.containsKey('fullRefund')) {
-      fullRefund = _json['fullRefund'];
+      fullRefund = _json['fullRefund'] as core.bool;
     }
   }
 
@@ -16022,13 +16057,13 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
   OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('carrier')) {
-      carrier = _json['carrier'];
+      carrier = _json['carrier'] as core.String;
     }
     if (_json.containsKey('shipmentId')) {
-      shipmentId = _json['shipmentId'];
+      shipmentId = _json['shipmentId'] as core.String;
     }
     if (_json.containsKey('trackingId')) {
-      trackingId = _json['trackingId'];
+      trackingId = _json['trackingId'] as core.String;
     }
   }
 
@@ -16059,7 +16094,7 @@ class OrdersGetByMerchantOrderIdResponse {
 
   OrdersGetByMerchantOrderIdResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('order')) {
       order = Order.fromJson(_json['order']);
@@ -16090,7 +16125,7 @@ class OrdersGetTestOrderTemplateResponse {
 
   OrdersGetTestOrderTemplateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('template')) {
       template = TestOrder.fromJson(_json['template']);
@@ -16156,25 +16191,25 @@ class OrdersInStoreRefundLineItemRequest {
 
   OrdersInStoreRefundLineItemRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('priceAmount')) {
       priceAmount = Price.fromJson(_json['priceAmount']);
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('taxAmount')) {
       taxAmount = Price.fromJson(_json['taxAmount']);
@@ -16227,10 +16262,10 @@ class OrdersInStoreRefundLineItemResponse {
 
   OrdersInStoreRefundLineItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16259,10 +16294,10 @@ class OrdersListResponse {
 
   OrdersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -16330,13 +16365,13 @@ class OrdersRefundItemRequest {
           .toList();
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('shipping')) {
       shipping = OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
@@ -16381,10 +16416,10 @@ class OrdersRefundItemResponse {
 
   OrdersRefundItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16429,16 +16464,16 @@ class OrdersRefundOrderRequest {
       amount = MonetaryAmount.fromJson(_json['amount']);
     }
     if (_json.containsKey('fullRefund')) {
-      fullRefund = _json['fullRefund'];
+      fullRefund = _json['fullRefund'] as core.bool;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -16479,10 +16514,10 @@ class OrdersRefundOrderResponse {
 
   OrdersRefundOrderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16530,22 +16565,22 @@ class OrdersRejectReturnLineItemRequest {
 
   OrdersRejectReturnLineItemRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
   }
 
@@ -16589,10 +16624,10 @@ class OrdersRejectReturnLineItemResponse {
 
   OrdersRejectReturnLineItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16656,25 +16691,25 @@ class OrdersReturnRefundLineItemRequest {
 
   OrdersReturnRefundLineItemRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('priceAmount')) {
       priceAmount = Price.fromJson(_json['priceAmount']);
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('reason')) {
-      reason = _json['reason'];
+      reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('reasonText')) {
-      reasonText = _json['reasonText'];
+      reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('taxAmount')) {
       taxAmount = Price.fromJson(_json['taxAmount']);
@@ -16727,10 +16762,10 @@ class OrdersReturnRefundLineItemResponse {
 
   OrdersReturnRefundLineItemResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16770,13 +16805,13 @@ class OrdersSetLineItemMetadataRequest {
           .toList();
     }
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
   }
 
@@ -16815,10 +16850,10 @@ class OrdersSetLineItemMetadataResponse {
 
   OrdersSetLineItemMetadataResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16860,10 +16895,10 @@ class OrdersShipLineItemsRequest {
           .toList();
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('shipmentGroupId')) {
-      shipmentGroupId = _json['shipmentGroupId'];
+      shipmentGroupId = _json['shipmentGroupId'] as core.String;
     }
     if (_json.containsKey('shipmentInfos')) {
       shipmentInfos = (_json['shipmentInfos'] as core.List)
@@ -16909,10 +16944,10 @@ class OrdersShipLineItemsResponse {
 
   OrdersShipLineItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -16958,19 +16993,19 @@ class OrdersUpdateLineItemShippingDetailsRequest {
 
   OrdersUpdateLineItemShippingDetailsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deliverByDate')) {
-      deliverByDate = _json['deliverByDate'];
+      deliverByDate = _json['deliverByDate'] as core.String;
     }
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('shipByDate')) {
-      shipByDate = _json['shipByDate'];
+      shipByDate = _json['shipByDate'] as core.String;
     }
   }
 
@@ -17011,10 +17046,10 @@ class OrdersUpdateLineItemShippingDetailsResponse {
 
   OrdersUpdateLineItemShippingDetailsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -17042,10 +17077,10 @@ class OrdersUpdateMerchantOrderIdRequest {
 
   OrdersUpdateMerchantOrderIdRequest.fromJson(core.Map _json) {
     if (_json.containsKey('merchantOrderId')) {
-      merchantOrderId = _json['merchantOrderId'];
+      merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
   }
 
@@ -17077,10 +17112,10 @@ class OrdersUpdateMerchantOrderIdResponse {
 
   OrdersUpdateMerchantOrderIdResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -17140,31 +17175,31 @@ class OrdersUpdateShipmentRequest {
 
   OrdersUpdateShipmentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('carrier')) {
-      carrier = _json['carrier'];
+      carrier = _json['carrier'] as core.String;
     }
     if (_json.containsKey('deliveryDate')) {
-      deliveryDate = _json['deliveryDate'];
+      deliveryDate = _json['deliveryDate'] as core.String;
     }
     if (_json.containsKey('lastPickupDate')) {
-      lastPickupDate = _json['lastPickupDate'];
+      lastPickupDate = _json['lastPickupDate'] as core.String;
     }
     if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'];
+      operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('readyPickupDate')) {
-      readyPickupDate = _json['readyPickupDate'];
+      readyPickupDate = _json['readyPickupDate'] as core.String;
     }
     if (_json.containsKey('shipmentId')) {
-      shipmentId = _json['shipmentId'];
+      shipmentId = _json['shipmentId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('trackingId')) {
-      trackingId = _json['trackingId'];
+      trackingId = _json['trackingId'] as core.String;
     }
     if (_json.containsKey('undeliveredDate')) {
-      undeliveredDate = _json['undeliveredDate'];
+      undeliveredDate = _json['undeliveredDate'] as core.String;
     }
   }
 
@@ -17217,10 +17252,10 @@ class OrdersUpdateShipmentResponse {
 
   OrdersUpdateShipmentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executionStatus')) {
-      executionStatus = _json['executionStatus'];
+      executionStatus = _json['executionStatus'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -17247,10 +17282,10 @@ class PickupCarrierService {
 
   PickupCarrierService.fromJson(core.Map _json) {
     if (_json.containsKey('carrierName')) {
-      carrierName = _json['carrierName'];
+      carrierName = _json['carrierName'] as core.String;
     }
     if (_json.containsKey('serviceName')) {
-      serviceName = _json['serviceName'];
+      serviceName = _json['serviceName'] as core.String;
     }
   }
 
@@ -17280,13 +17315,13 @@ class PickupServicesPickupService {
 
   PickupServicesPickupService.fromJson(core.Map _json) {
     if (_json.containsKey('carrierName')) {
-      carrierName = _json['carrierName'];
+      carrierName = _json['carrierName'] as core.String;
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('serviceName')) {
-      serviceName = _json['serviceName'];
+      serviceName = _json['serviceName'] as core.String;
     }
   }
 
@@ -17365,16 +17400,16 @@ class PosCustomBatchRequestEntry {
 
   PosCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('inventory')) {
       inventory = PosInventory.fromJson(_json['inventory']);
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('sale')) {
       sale = PosSale.fromJson(_json['sale']);
@@ -17383,10 +17418,10 @@ class PosCustomBatchRequestEntry {
       store = PosStore.fromJson(_json['store']);
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetMerchantId')) {
-      targetMerchantId = _json['targetMerchantId'];
+      targetMerchantId = _json['targetMerchantId'] as core.String;
     }
   }
 
@@ -17438,7 +17473,7 @@ class PosCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -17478,7 +17513,7 @@ class PosCustomBatchResponseEntry {
 
   PosCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
@@ -17487,7 +17522,7 @@ class PosCustomBatchResponseEntry {
       inventory = PosInventory.fromJson(_json['inventory']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('sale')) {
       sale = PosSale.fromJson(_json['sale']);
@@ -17532,7 +17567,7 @@ class PosDataProviders {
 
   PosDataProviders.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('posDataProviders')) {
       posDataProviders = (_json['posDataProviders'] as core.List)
@@ -17569,13 +17604,13 @@ class PosDataProvidersPosDataProvider {
 
   PosDataProvidersPosDataProvider.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fullName')) {
-      fullName = _json['fullName'];
+      fullName = _json['fullName'] as core.String;
     }
     if (_json.containsKey('providerId')) {
-      providerId = _json['providerId'];
+      providerId = _json['providerId'] as core.String;
     }
   }
 
@@ -17629,31 +17664,31 @@ class PosInventory {
 
   PosInventory.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -17720,28 +17755,28 @@ class PosInventoryRequest {
 
   PosInventoryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -17809,31 +17844,31 @@ class PosInventoryResponse {
 
   PosInventoryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -17880,7 +17915,7 @@ class PosListResponse {
 
   PosListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -17940,34 +17975,34 @@ class PosSale {
 
   PosSale.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('saleId')) {
-      saleId = _json['saleId'];
+      saleId = _json['saleId'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -18041,31 +18076,31 @@ class PosSaleRequest {
 
   PosSaleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('saleId')) {
-      saleId = _json['saleId'];
+      saleId = _json['saleId'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -18140,34 +18175,34 @@ class PosSaleResponse {
 
   PosSaleResponse.fromJson(core.Map _json) {
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('itemId')) {
-      itemId = _json['itemId'];
+      itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('quantity')) {
-      quantity = _json['quantity'];
+      quantity = _json['quantity'] as core.String;
     }
     if (_json.containsKey('saleId')) {
-      saleId = _json['saleId'];
+      saleId = _json['saleId'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -18223,13 +18258,13 @@ class PosStore {
 
   PosStore.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('storeAddress')) {
-      storeAddress = _json['storeAddress'];
+      storeAddress = _json['storeAddress'] as core.String;
     }
     if (_json.containsKey('storeCode')) {
-      storeCode = _json['storeCode'];
+      storeCode = _json['storeCode'] as core.String;
     }
   }
 
@@ -18263,10 +18298,10 @@ class PostalCodeGroup {
 
   PostalCodeGroup.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('postalCodeRanges')) {
       postalCodeRanges = (_json['postalCodeRanges'] as core.List)
@@ -18310,10 +18345,10 @@ class PostalCodeRange {
 
   PostalCodeRange.fromJson(core.Map _json) {
     if (_json.containsKey('postalCodeRangeBegin')) {
-      postalCodeRangeBegin = _json['postalCodeRangeBegin'];
+      postalCodeRangeBegin = _json['postalCodeRangeBegin'] as core.String;
     }
     if (_json.containsKey('postalCodeRangeEnd')) {
-      postalCodeRangeEnd = _json['postalCodeRangeEnd'];
+      postalCodeRangeEnd = _json['postalCodeRangeEnd'] as core.String;
     }
   }
 
@@ -18340,10 +18375,10 @@ class Price {
 
   Price.fromJson(core.Map _json) {
     if (_json.containsKey('currency')) {
-      currency = _json['currency'];
+      currency = _json['currency'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -18659,47 +18694,50 @@ class Product {
 
   Product.fromJson(core.Map _json) {
     if (_json.containsKey('additionalImageLinks')) {
-      additionalImageLinks =
-          (_json['additionalImageLinks'] as core.List).cast<core.String>();
+      additionalImageLinks = (_json['additionalImageLinks'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('adsGrouping')) {
-      adsGrouping = _json['adsGrouping'];
+      adsGrouping = _json['adsGrouping'] as core.String;
     }
     if (_json.containsKey('adsLabels')) {
-      adsLabels = (_json['adsLabels'] as core.List).cast<core.String>();
+      adsLabels = (_json['adsLabels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('adsRedirect')) {
-      adsRedirect = _json['adsRedirect'];
+      adsRedirect = _json['adsRedirect'] as core.String;
     }
     if (_json.containsKey('adult')) {
-      adult = _json['adult'];
+      adult = _json['adult'] as core.bool;
     }
     if (_json.containsKey('ageGroup')) {
-      ageGroup = _json['ageGroup'];
+      ageGroup = _json['ageGroup'] as core.String;
     }
     if (_json.containsKey('availability')) {
-      availability = _json['availability'];
+      availability = _json['availability'] as core.String;
     }
     if (_json.containsKey('availabilityDate')) {
-      availabilityDate = _json['availabilityDate'];
+      availabilityDate = _json['availabilityDate'] as core.String;
     }
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('canonicalLink')) {
-      canonicalLink = _json['canonicalLink'];
+      canonicalLink = _json['canonicalLink'] as core.String;
     }
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
     if (_json.containsKey('color')) {
-      color = _json['color'];
+      color = _json['color'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = _json['condition'];
+      condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('costOfGoodsSold')) {
       costOfGoodsSold = Price.fromJson(_json['costOfGoodsSold']);
@@ -18710,118 +18748,123 @@ class Product {
           .toList();
     }
     if (_json.containsKey('customLabel0')) {
-      customLabel0 = _json['customLabel0'];
+      customLabel0 = _json['customLabel0'] as core.String;
     }
     if (_json.containsKey('customLabel1')) {
-      customLabel1 = _json['customLabel1'];
+      customLabel1 = _json['customLabel1'] as core.String;
     }
     if (_json.containsKey('customLabel2')) {
-      customLabel2 = _json['customLabel2'];
+      customLabel2 = _json['customLabel2'] as core.String;
     }
     if (_json.containsKey('customLabel3')) {
-      customLabel3 = _json['customLabel3'];
+      customLabel3 = _json['customLabel3'] as core.String;
     }
     if (_json.containsKey('customLabel4')) {
-      customLabel4 = _json['customLabel4'];
+      customLabel4 = _json['customLabel4'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayAdsId')) {
-      displayAdsId = _json['displayAdsId'];
+      displayAdsId = _json['displayAdsId'] as core.String;
     }
     if (_json.containsKey('displayAdsLink')) {
-      displayAdsLink = _json['displayAdsLink'];
+      displayAdsLink = _json['displayAdsLink'] as core.String;
     }
     if (_json.containsKey('displayAdsSimilarIds')) {
-      displayAdsSimilarIds =
-          (_json['displayAdsSimilarIds'] as core.List).cast<core.String>();
+      displayAdsSimilarIds = (_json['displayAdsSimilarIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('displayAdsTitle')) {
-      displayAdsTitle = _json['displayAdsTitle'];
+      displayAdsTitle = _json['displayAdsTitle'] as core.String;
     }
     if (_json.containsKey('displayAdsValue')) {
       displayAdsValue = _json['displayAdsValue'].toDouble();
     }
     if (_json.containsKey('energyEfficiencyClass')) {
-      energyEfficiencyClass = _json['energyEfficiencyClass'];
+      energyEfficiencyClass = _json['energyEfficiencyClass'] as core.String;
     }
     if (_json.containsKey('excludedDestinations')) {
-      excludedDestinations =
-          (_json['excludedDestinations'] as core.List).cast<core.String>();
+      excludedDestinations = (_json['excludedDestinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('expirationDate')) {
-      expirationDate = _json['expirationDate'];
+      expirationDate = _json['expirationDate'] as core.String;
     }
     if (_json.containsKey('gender')) {
-      gender = _json['gender'];
+      gender = _json['gender'] as core.String;
     }
     if (_json.containsKey('googleProductCategory')) {
-      googleProductCategory = _json['googleProductCategory'];
+      googleProductCategory = _json['googleProductCategory'] as core.String;
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('identifierExists')) {
-      identifierExists = _json['identifierExists'];
+      identifierExists = _json['identifierExists'] as core.bool;
     }
     if (_json.containsKey('imageLink')) {
-      imageLink = _json['imageLink'];
+      imageLink = _json['imageLink'] as core.String;
     }
     if (_json.containsKey('includedDestinations')) {
-      includedDestinations =
-          (_json['includedDestinations'] as core.List).cast<core.String>();
+      includedDestinations = (_json['includedDestinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('installment')) {
       installment = Installment.fromJson(_json['installment']);
     }
     if (_json.containsKey('isBundle')) {
-      isBundle = _json['isBundle'];
+      isBundle = _json['isBundle'] as core.bool;
     }
     if (_json.containsKey('itemGroupId')) {
-      itemGroupId = _json['itemGroupId'];
+      itemGroupId = _json['itemGroupId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('link')) {
-      link = _json['link'];
+      link = _json['link'] as core.String;
     }
     if (_json.containsKey('loyaltyPoints')) {
       loyaltyPoints = LoyaltyPoints.fromJson(_json['loyaltyPoints']);
     }
     if (_json.containsKey('material')) {
-      material = _json['material'];
+      material = _json['material'] as core.String;
     }
     if (_json.containsKey('maxEnergyEfficiencyClass')) {
-      maxEnergyEfficiencyClass = _json['maxEnergyEfficiencyClass'];
+      maxEnergyEfficiencyClass =
+          _json['maxEnergyEfficiencyClass'] as core.String;
     }
     if (_json.containsKey('maxHandlingTime')) {
-      maxHandlingTime = _json['maxHandlingTime'];
+      maxHandlingTime = _json['maxHandlingTime'] as core.String;
     }
     if (_json.containsKey('minEnergyEfficiencyClass')) {
-      minEnergyEfficiencyClass = _json['minEnergyEfficiencyClass'];
+      minEnergyEfficiencyClass =
+          _json['minEnergyEfficiencyClass'] as core.String;
     }
     if (_json.containsKey('minHandlingTime')) {
-      minHandlingTime = _json['minHandlingTime'];
+      minHandlingTime = _json['minHandlingTime'] as core.String;
     }
     if (_json.containsKey('mobileLink')) {
-      mobileLink = _json['mobileLink'];
+      mobileLink = _json['mobileLink'] as core.String;
     }
     if (_json.containsKey('mpn')) {
-      mpn = _json['mpn'];
+      mpn = _json['mpn'] as core.String;
     }
     if (_json.containsKey('multipack')) {
-      multipack = _json['multipack'];
+      multipack = _json['multipack'] as core.String;
     }
     if (_json.containsKey('offerId')) {
-      offerId = _json['offerId'];
+      offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('pattern')) {
-      pattern = _json['pattern'];
+      pattern = _json['pattern'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
@@ -18833,23 +18876,28 @@ class Product {
           .toList();
     }
     if (_json.containsKey('productHighlights')) {
-      productHighlights =
-          (_json['productHighlights'] as core.List).cast<core.String>();
+      productHighlights = (_json['productHighlights'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('productTypes')) {
-      productTypes = (_json['productTypes'] as core.List).cast<core.String>();
+      productTypes = (_json['productTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('promotionIds')) {
-      promotionIds = (_json['promotionIds'] as core.List).cast<core.String>();
+      promotionIds = (_json['promotionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('salePrice')) {
       salePrice = Price.fromJson(_json['salePrice']);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
-      salePriceEffectiveDate = _json['salePriceEffectiveDate'];
+      salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
     }
     if (_json.containsKey('sellOnGoogleQuantity')) {
-      sellOnGoogleQuantity = _json['sellOnGoogleQuantity'];
+      sellOnGoogleQuantity = _json['sellOnGoogleQuantity'] as core.String;
     }
     if (_json.containsKey('shipping')) {
       shipping = (_json['shipping'] as core.List)
@@ -18861,7 +18909,7 @@ class Product {
           ProductShippingDimension.fromJson(_json['shippingHeight']);
     }
     if (_json.containsKey('shippingLabel')) {
-      shippingLabel = _json['shippingLabel'];
+      shippingLabel = _json['shippingLabel'] as core.String;
     }
     if (_json.containsKey('shippingLength')) {
       shippingLength =
@@ -18876,29 +18924,32 @@ class Product {
     if (_json.containsKey('shoppingAdsExcludedCountries')) {
       shoppingAdsExcludedCountries =
           (_json['shoppingAdsExcludedCountries'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('sizeSystem')) {
-      sizeSystem = _json['sizeSystem'];
+      sizeSystem = _json['sizeSystem'] as core.String;
     }
     if (_json.containsKey('sizeType')) {
-      sizeType = _json['sizeType'];
+      sizeType = _json['sizeType'] as core.String;
     }
     if (_json.containsKey('sizes')) {
-      sizes = (_json['sizes'] as core.List).cast<core.String>();
+      sizes = (_json['sizes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('subscriptionCost')) {
       subscriptionCost =
           ProductSubscriptionCost.fromJson(_json['subscriptionCost']);
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('taxCategory')) {
-      taxCategory = _json['taxCategory'];
+      taxCategory = _json['taxCategory'] as core.String;
     }
     if (_json.containsKey('taxes')) {
       taxes = (_json['taxes'] as core.List)
@@ -18906,10 +18957,10 @@ class Product {
           .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('transitTimeLabel')) {
-      transitTimeLabel = _json['transitTimeLabel'];
+      transitTimeLabel = _json['transitTimeLabel'] as core.String;
     }
     if (_json.containsKey('unitPricingBaseMeasure')) {
       unitPricingBaseMeasure = ProductUnitPricingBaseMeasure.fromJson(
@@ -19222,13 +19273,13 @@ class ProductProductDetail {
 
   ProductProductDetail.fromJson(core.Map _json) {
     if (_json.containsKey('attributeName')) {
-      attributeName = _json['attributeName'];
+      attributeName = _json['attributeName'] as core.String;
     }
     if (_json.containsKey('attributeValue')) {
-      attributeValue = _json['attributeValue'];
+      attributeValue = _json['attributeValue'] as core.String;
     }
     if (_json.containsKey('sectionName')) {
-      sectionName = _json['sectionName'];
+      sectionName = _json['sectionName'] as core.String;
     }
   }
 
@@ -19277,25 +19328,25 @@ class ProductShipping {
 
   ProductShipping.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('locationGroupName')) {
-      locationGroupName = _json['locationGroupName'];
+      locationGroupName = _json['locationGroupName'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -19338,7 +19389,7 @@ class ProductShippingDimension {
 
   ProductShippingDimension.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = _json['value'].toDouble();
@@ -19368,7 +19419,7 @@ class ProductShippingWeight {
 
   ProductShippingWeight.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = _json['value'].toDouble();
@@ -19422,7 +19473,7 @@ class ProductStatus {
 
   ProductStatus.fromJson(core.Map _json) {
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('destinationStatuses')) {
       destinationStatuses = (_json['destinationStatuses'] as core.List)
@@ -19431,7 +19482,7 @@ class ProductStatus {
           .toList();
     }
     if (_json.containsKey('googleExpirationDate')) {
-      googleExpirationDate = _json['googleExpirationDate'];
+      googleExpirationDate = _json['googleExpirationDate'] as core.String;
     }
     if (_json.containsKey('itemLevelIssues')) {
       itemLevelIssues = (_json['itemLevelIssues'] as core.List)
@@ -19440,19 +19491,19 @@ class ProductStatus {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastUpdateDate')) {
-      lastUpdateDate = _json['lastUpdateDate'];
+      lastUpdateDate = _json['lastUpdateDate'] as core.String;
     }
     if (_json.containsKey('link')) {
-      link = _json['link'];
+      link = _json['link'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -19512,22 +19563,25 @@ class ProductStatusDestinationStatus {
 
   ProductStatusDestinationStatus.fromJson(core.Map _json) {
     if (_json.containsKey('approvedCountries')) {
-      approvedCountries =
-          (_json['approvedCountries'] as core.List).cast<core.String>();
+      approvedCountries = (_json['approvedCountries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('disapprovedCountries')) {
-      disapprovedCountries =
-          (_json['disapprovedCountries'] as core.List).cast<core.String>();
+      disapprovedCountries = (_json['disapprovedCountries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('pendingCountries')) {
-      pendingCountries =
-          (_json['pendingCountries'] as core.List).cast<core.String>();
+      pendingCountries = (_json['pendingCountries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -19585,32 +19639,33 @@ class ProductStatusItemLevelIssue {
 
   ProductStatusItemLevelIssue.fromJson(core.Map _json) {
     if (_json.containsKey('applicableCountries')) {
-      applicableCountries =
-          (_json['applicableCountries'] as core.List).cast<core.String>();
+      applicableCountries = (_json['applicableCountries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('attributeName')) {
-      attributeName = _json['attributeName'];
+      attributeName = _json['attributeName'] as core.String;
     }
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('documentation')) {
-      documentation = _json['documentation'];
+      documentation = _json['documentation'] as core.String;
     }
     if (_json.containsKey('resolution')) {
-      resolution = _json['resolution'];
+      resolution = _json['resolution'] as core.String;
     }
     if (_json.containsKey('servability')) {
-      servability = _json['servability'];
+      servability = _json['servability'] as core.String;
     }
   }
 
@@ -19664,10 +19719,10 @@ class ProductSubscriptionCost {
       amount = Price.fromJson(_json['amount']);
     }
     if (_json.containsKey('period')) {
-      period = _json['period'];
+      period = _json['period'] as core.String;
     }
     if (_json.containsKey('periodLength')) {
-      periodLength = _json['periodLength'];
+      periodLength = _json['periodLength'] as core.String;
     }
   }
 
@@ -19714,22 +19769,22 @@ class ProductTax {
 
   ProductTax.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('rate')) {
       rate = _json['rate'].toDouble();
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('taxShip')) {
-      taxShip = _json['taxShip'];
+      taxShip = _json['taxShip'] as core.bool;
     }
   }
 
@@ -19768,10 +19823,10 @@ class ProductUnitPricingBaseMeasure {
 
   ProductUnitPricingBaseMeasure.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -19798,7 +19853,7 @@ class ProductUnitPricingMeasure {
 
   ProductUnitPricingMeasure.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = _json['value'].toDouble();
@@ -19871,22 +19926,22 @@ class ProductsCustomBatchRequestEntry {
 
   ProductsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('feedId')) {
-      feedId = _json['feedId'];
+      feedId = _json['feedId'] as core.String;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('product')) {
       product = Product.fromJson(_json['product']);
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
   }
 
@@ -19932,7 +19987,7 @@ class ProductsCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -19968,13 +20023,13 @@ class ProductsCustomBatchResponseEntry {
 
   ProductsCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('product')) {
       product = Product.fromJson(_json['product']);
@@ -20012,10 +20067,10 @@ class ProductsListResponse {
 
   ProductsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -20089,22 +20144,24 @@ class ProductstatusesCustomBatchRequestEntry {
 
   ProductstatusesCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('destinations')) {
-      destinations = (_json['destinations'] as core.List).cast<core.String>();
+      destinations = (_json['destinations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includeAttributes')) {
-      includeAttributes = _json['includeAttributes'];
+      includeAttributes = _json['includeAttributes'] as core.bool;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
   }
 
@@ -20150,7 +20207,7 @@ class ProductstatusesCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -20185,13 +20242,13 @@ class ProductstatusesCustomBatchResponseEntry {
 
   ProductstatusesCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('productStatus')) {
       productStatus = ProductStatus.fromJson(_json['productStatus']);
@@ -20229,10 +20286,10 @@ class ProductstatusesListResponse {
 
   ProductstatusesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -20277,14 +20334,15 @@ class PubsubNotificationSettings {
 
   PubsubNotificationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('cloudTopicName')) {
-      cloudTopicName = _json['cloudTopicName'];
+      cloudTopicName = _json['cloudTopicName'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('registeredEvents')) {
-      registeredEvents =
-          (_json['registeredEvents'] as core.List).cast<core.String>();
+      registeredEvents = (_json['registeredEvents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -20335,7 +20393,9 @@ class RateGroup {
   RateGroup.fromJson(core.Map _json) {
     if (_json.containsKey('applicableShippingLabels')) {
       applicableShippingLabels =
-          (_json['applicableShippingLabels'] as core.List).cast<core.String>();
+          (_json['applicableShippingLabels'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('carrierRates')) {
       carrierRates = (_json['carrierRates'] as core.List)
@@ -20346,7 +20406,7 @@ class RateGroup {
       mainTable = Table.fromJson(_json['mainTable']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('singleValue')) {
       singleValue = Value.fromJson(_json['singleValue']);
@@ -20440,10 +20500,10 @@ class RefundReason {
 
   RefundReason.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('reasonCode')) {
-      reasonCode = _json['reasonCode'];
+      reasonCode = _json['reasonCode'] as core.String;
     }
   }
 
@@ -20491,7 +20551,7 @@ class RegionalInventory {
 
   RegionalInventory.fromJson(core.Map _json) {
     if (_json.containsKey('availability')) {
-      availability = _json['availability'];
+      availability = _json['availability'] as core.String;
     }
     if (_json.containsKey('customAttributes')) {
       customAttributes = (_json['customAttributes'] as core.List)
@@ -20499,19 +20559,19 @@ class RegionalInventory {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('regionId')) {
-      regionId = _json['regionId'];
+      regionId = _json['regionId'] as core.String;
     }
     if (_json.containsKey('salePrice')) {
       salePrice = Price.fromJson(_json['salePrice']);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
-      salePriceEffectiveDate = _json['salePriceEffectiveDate'];
+      salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
     }
   }
 
@@ -20591,16 +20651,16 @@ class RegionalinventoryCustomBatchRequestEntry {
 
   RegionalinventoryCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('regionalInventory')) {
       regionalInventory =
@@ -20647,7 +20707,7 @@ class RegionalinventoryCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -20682,13 +20742,13 @@ class RegionalinventoryCustomBatchResponseEntry {
 
   RegionalinventoryCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('regionalInventory')) {
       regionalInventory =
@@ -20743,19 +20803,19 @@ class ReturnAddress {
       address = ReturnAddressAddress.fromJson(_json['address']);
     }
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('label')) {
-      label = _json['label'];
+      label = _json['label'] as core.String;
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
     if (_json.containsKey('returnAddressId')) {
-      returnAddressId = _json['returnAddressId'];
+      returnAddressId = _json['returnAddressId'] as core.String;
     }
   }
 
@@ -20809,22 +20869,24 @@ class ReturnAddressAddress {
 
   ReturnAddressAddress.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('recipientName')) {
-      recipientName = _json['recipientName'];
+      recipientName = _json['recipientName'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('streetAddress')) {
-      streetAddress = (_json['streetAddress'] as core.List).cast<core.String>();
+      streetAddress = (_json['streetAddress'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -20884,26 +20946,27 @@ class ReturnPolicy {
 
   ReturnPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('label')) {
-      label = _json['label'];
+      label = _json['label'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nonFreeReturnReasons')) {
-      nonFreeReturnReasons =
-          (_json['nonFreeReturnReasons'] as core.List).cast<core.String>();
+      nonFreeReturnReasons = (_json['nonFreeReturnReasons'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('policy')) {
       policy = ReturnPolicyPolicy.fromJson(_json['policy']);
     }
     if (_json.containsKey('returnPolicyId')) {
-      returnPolicyId = _json['returnPolicyId'];
+      returnPolicyId = _json['returnPolicyId'] as core.String;
     }
     if (_json.containsKey('seasonalOverrides')) {
       seasonalOverrides = (_json['seasonalOverrides'] as core.List)
@@ -20977,13 +21040,13 @@ class ReturnPolicyPolicy {
 
   ReturnPolicyPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('lastReturnDate')) {
-      lastReturnDate = _json['lastReturnDate'];
+      lastReturnDate = _json['lastReturnDate'] as core.String;
     }
     if (_json.containsKey('numberOfDays')) {
-      numberOfDays = _json['numberOfDays'];
+      numberOfDays = _json['numberOfDays'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -21019,16 +21082,16 @@ class ReturnPolicySeasonalOverride {
 
   ReturnPolicySeasonalOverride.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('policy')) {
       policy = ReturnPolicyPolicy.fromJson(_json['policy']);
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
   }
 
@@ -21078,7 +21141,7 @@ class ReturnPricingInfo {
 
   ReturnPricingInfo.fromJson(core.Map _json) {
     if (_json.containsKey('chargeReturnShippingFee')) {
-      chargeReturnShippingFee = _json['chargeReturnShippingFee'];
+      chargeReturnShippingFee = _json['chargeReturnShippingFee'] as core.bool;
     }
     if (_json.containsKey('maxReturnShippingFee')) {
       maxReturnShippingFee =
@@ -21158,16 +21221,16 @@ class ReturnShipment {
 
   ReturnShipment.fromJson(core.Map _json) {
     if (_json.containsKey('creationDate')) {
-      creationDate = _json['creationDate'];
+      creationDate = _json['creationDate'] as core.String;
     }
     if (_json.containsKey('deliveryDate')) {
-      deliveryDate = _json['deliveryDate'];
+      deliveryDate = _json['deliveryDate'] as core.String;
     }
     if (_json.containsKey('returnMethodType')) {
-      returnMethodType = _json['returnMethodType'];
+      returnMethodType = _json['returnMethodType'] as core.String;
     }
     if (_json.containsKey('shipmentId')) {
-      shipmentId = _json['shipmentId'];
+      shipmentId = _json['shipmentId'] as core.String;
     }
     if (_json.containsKey('shipmentTrackingInfos')) {
       shipmentTrackingInfos = (_json['shipmentTrackingInfos'] as core.List)
@@ -21176,10 +21239,10 @@ class ReturnShipment {
           .toList();
     }
     if (_json.containsKey('shippingDate')) {
-      shippingDate = _json['shippingDate'];
+      shippingDate = _json['shippingDate'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -21260,19 +21323,19 @@ class ReturnaddressCustomBatchRequestEntry {
 
   ReturnaddressCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('returnAddress')) {
       returnAddress = ReturnAddress.fromJson(_json['returnAddress']);
     }
     if (_json.containsKey('returnAddressId')) {
-      returnAddressId = _json['returnAddressId'];
+      returnAddressId = _json['returnAddressId'] as core.String;
     }
   }
 
@@ -21315,7 +21378,7 @@ class ReturnaddressCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -21349,13 +21412,13 @@ class ReturnaddressCustomBatchResponseEntry {
 
   ReturnaddressCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('returnAddress')) {
       returnAddress = ReturnAddress.fromJson(_json['returnAddress']);
@@ -21393,10 +21456,10 @@ class ReturnaddressListResponse {
 
   ReturnaddressListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -21469,19 +21532,19 @@ class ReturnpolicyCustomBatchRequestEntry {
 
   ReturnpolicyCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('returnPolicy')) {
       returnPolicy = ReturnPolicy.fromJson(_json['returnPolicy']);
     }
     if (_json.containsKey('returnPolicyId')) {
-      returnPolicyId = _json['returnPolicyId'];
+      returnPolicyId = _json['returnPolicyId'] as core.String;
     }
   }
 
@@ -21524,7 +21587,7 @@ class ReturnpolicyCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -21558,13 +21621,13 @@ class ReturnpolicyCustomBatchResponseEntry {
 
   ReturnpolicyCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('returnPolicy')) {
       returnPolicy = ReturnPolicy.fromJson(_json['returnPolicy']);
@@ -21599,7 +21662,7 @@ class ReturnpolicyListResponse {
 
   ReturnpolicyListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -21705,19 +21768,19 @@ class Service {
 
   Service.fromJson(core.Map _json) {
     if (_json.containsKey('active')) {
-      active = _json['active'];
+      active = _json['active'] as core.bool;
     }
     if (_json.containsKey('currency')) {
-      currency = _json['currency'];
+      currency = _json['currency'] as core.String;
     }
     if (_json.containsKey('deliveryCountry')) {
-      deliveryCountry = _json['deliveryCountry'];
+      deliveryCountry = _json['deliveryCountry'] as core.String;
     }
     if (_json.containsKey('deliveryTime')) {
       deliveryTime = DeliveryTime.fromJson(_json['deliveryTime']);
     }
     if (_json.containsKey('eligibility')) {
-      eligibility = _json['eligibility'];
+      eligibility = _json['eligibility'] as core.String;
     }
     if (_json.containsKey('minimumOrderValue')) {
       minimumOrderValue = Price.fromJson(_json['minimumOrderValue']);
@@ -21727,7 +21790,7 @@ class Service {
           MinimumOrderValueTable.fromJson(_json['minimumOrderValueTable']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pickupService')) {
       pickupService = PickupCarrierService.fromJson(_json['pickupService']);
@@ -21738,7 +21801,7 @@ class Service {
           .toList();
     }
     if (_json.containsKey('shipmentType')) {
-      shipmentType = _json['shipmentType'];
+      shipmentType = _json['shipmentType'] as core.String;
     }
   }
 
@@ -21819,28 +21882,30 @@ class SettlementReport {
 
   SettlementReport.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('previousBalance')) {
       previousBalance = Price.fromJson(_json['previousBalance']);
     }
     if (_json.containsKey('settlementId')) {
-      settlementId = _json['settlementId'];
+      settlementId = _json['settlementId'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
     if (_json.containsKey('transferAmount')) {
       transferAmount = Price.fromJson(_json['transferAmount']);
     }
     if (_json.containsKey('transferDate')) {
-      transferDate = _json['transferDate'];
+      transferDate = _json['transferDate'] as core.String;
     }
     if (_json.containsKey('transferIds')) {
-      transferIds = (_json['transferIds'] as core.List).cast<core.String>();
+      transferIds = (_json['transferIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -21901,7 +21966,7 @@ class SettlementTransaction {
           SettlementTransactionIdentifiers.fromJson(_json['identifiers']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('transaction')) {
       transaction =
@@ -21999,13 +22064,13 @@ class SettlementTransactionAmount {
           SettlementTransactionAmountCommission.fromJson(_json['commission']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('transactionAmount')) {
       transactionAmount = Price.fromJson(_json['transactionAmount']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -22084,10 +22149,10 @@ class SettlementTransactionAmountCommission {
 
   SettlementTransactionAmountCommission.fromJson(core.Map _json) {
     if (_json.containsKey('category')) {
-      category = _json['category'];
+      category = _json['category'] as core.String;
     }
     if (_json.containsKey('rate')) {
-      rate = _json['rate'];
+      rate = _json['rate'] as core.String;
     }
   }
 
@@ -22126,22 +22191,24 @@ class SettlementTransactionIdentifiers {
 
   SettlementTransactionIdentifiers.fromJson(core.Map _json) {
     if (_json.containsKey('adjustmentId')) {
-      adjustmentId = _json['adjustmentId'];
+      adjustmentId = _json['adjustmentId'] as core.String;
     }
     if (_json.containsKey('merchantOrderId')) {
-      merchantOrderId = _json['merchantOrderId'];
+      merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('orderItemId')) {
-      orderItemId = _json['orderItemId'];
+      orderItemId = _json['orderItemId'] as core.String;
     }
     if (_json.containsKey('settlementEntryId')) {
-      settlementEntryId = _json['settlementEntryId'];
+      settlementEntryId = _json['settlementEntryId'] as core.String;
     }
     if (_json.containsKey('shipmentIds')) {
-      shipmentIds = (_json['shipmentIds'] as core.List).cast<core.String>();
+      shipmentIds = (_json['shipmentIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('transactionId')) {
-      transactionId = _json['transactionId'];
+      transactionId = _json['transactionId'] as core.String;
     }
   }
 
@@ -22190,10 +22257,10 @@ class SettlementTransactionTransaction {
 
   SettlementTransactionTransaction.fromJson(core.Map _json) {
     if (_json.containsKey('postDate')) {
-      postDate = _json['postDate'];
+      postDate = _json['postDate'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -22222,10 +22289,10 @@ class SettlementreportsListResponse {
 
   SettlementreportsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -22262,10 +22329,10 @@ class SettlementtransactionsListResponse {
 
   SettlementtransactionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -22315,7 +22382,7 @@ class ShipmentInvoice {
           .toList();
     }
     if (_json.containsKey('shipmentGroupId')) {
-      shipmentGroupId = _json['shipmentGroupId'];
+      shipmentGroupId = _json['shipmentGroupId'] as core.String;
     }
   }
 
@@ -22356,14 +22423,15 @@ class ShipmentInvoiceLineItemInvoice {
 
   ShipmentInvoiceLineItemInvoice.fromJson(core.Map _json) {
     if (_json.containsKey('lineItemId')) {
-      lineItemId = _json['lineItemId'];
+      lineItemId = _json['lineItemId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('shipmentUnitIds')) {
-      shipmentUnitIds =
-          (_json['shipmentUnitIds'] as core.List).cast<core.String>();
+      shipmentUnitIds = (_json['shipmentUnitIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('unitInvoice')) {
       unitInvoice = UnitInvoice.fromJson(_json['unitInvoice']);
@@ -22431,10 +22499,10 @@ class ShipmentTrackingInfo {
 
   ShipmentTrackingInfo.fromJson(core.Map _json) {
     if (_json.containsKey('carrier')) {
-      carrier = _json['carrier'];
+      carrier = _json['carrier'] as core.String;
     }
     if (_json.containsKey('trackingNumber')) {
-      trackingNumber = _json['trackingNumber'];
+      trackingNumber = _json['trackingNumber'] as core.String;
     }
   }
 
@@ -22468,7 +22536,7 @@ class ShippingSettings {
 
   ShippingSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('postalCodeGroups')) {
       postalCodeGroups = (_json['postalCodeGroups'] as core.List)
@@ -22548,16 +22616,16 @@ class ShippingsettingsCustomBatchRequestEntry {
 
   ShippingsettingsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('merchantId')) {
-      merchantId = _json['merchantId'];
+      merchantId = _json['merchantId'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('shippingSettings')) {
       shippingSettings = ShippingSettings.fromJson(_json['shippingSettings']);
@@ -22603,7 +22671,7 @@ class ShippingsettingsCustomBatchResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -22638,13 +22706,13 @@ class ShippingsettingsCustomBatchResponseEntry {
 
   ShippingsettingsCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('batchId')) {
-      batchId = _json['batchId'];
+      batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
       errors = Errors.fromJson(_json['errors']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('shippingSettings')) {
       shippingSettings = ShippingSettings.fromJson(_json['shippingSettings']);
@@ -22686,7 +22754,7 @@ class ShippingsettingsGetSupportedCarriersResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -22719,7 +22787,7 @@ class ShippingsettingsGetSupportedHolidaysResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -22747,7 +22815,7 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
 
   ShippingsettingsGetSupportedPickupServicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('pickupServices')) {
       pickupServices = (_json['pickupServices'] as core.List)
@@ -22783,10 +22851,10 @@ class ShippingsettingsListResponse {
 
   ShippingsettingsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -22832,7 +22900,7 @@ class Table {
       columnHeaders = Headers.fromJson(_json['columnHeaders']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('rowHeaders')) {
       rowHeaders = Headers.fromJson(_json['rowHeaders']);
@@ -22945,10 +23013,10 @@ class TestOrder {
           TestOrderDeliveryDetails.fromJson(_json['deliveryDetails']);
     }
     if (_json.containsKey('enableOrderinvoices')) {
-      enableOrderinvoices = _json['enableOrderinvoices'];
+      enableOrderinvoices = _json['enableOrderinvoices'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
@@ -22956,22 +23024,24 @@ class TestOrder {
           .toList();
     }
     if (_json.containsKey('notificationMode')) {
-      notificationMode = _json['notificationMode'];
+      notificationMode = _json['notificationMode'] as core.String;
     }
     if (_json.containsKey('pickupDetails')) {
       pickupDetails = TestOrderPickupDetails.fromJson(_json['pickupDetails']);
     }
     if (_json.containsKey('predefinedBillingAddress')) {
-      predefinedBillingAddress = _json['predefinedBillingAddress'];
+      predefinedBillingAddress =
+          _json['predefinedBillingAddress'] as core.String;
     }
     if (_json.containsKey('predefinedDeliveryAddress')) {
-      predefinedDeliveryAddress = _json['predefinedDeliveryAddress'];
+      predefinedDeliveryAddress =
+          _json['predefinedDeliveryAddress'] as core.String;
     }
     if (_json.containsKey('predefinedEmail')) {
-      predefinedEmail = _json['predefinedEmail'];
+      predefinedEmail = _json['predefinedEmail'] as core.String;
     }
     if (_json.containsKey('predefinedPickupDetails')) {
-      predefinedPickupDetails = _json['predefinedPickupDetails'];
+      predefinedPickupDetails = _json['predefinedPickupDetails'] as core.String;
     }
     if (_json.containsKey('promotions')) {
       promotions = (_json['promotions'] as core.List)
@@ -22982,7 +23052,7 @@ class TestOrder {
       shippingCost = Price.fromJson(_json['shippingCost']);
     }
     if (_json.containsKey('shippingOption')) {
-      shippingOption = _json['shippingOption'];
+      shippingOption = _json['shippingOption'] as core.String;
     }
   }
 
@@ -23067,28 +23137,32 @@ class TestOrderAddress {
 
   TestOrderAddress.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('fullAddress')) {
-      fullAddress = (_json['fullAddress'] as core.List).cast<core.String>();
+      fullAddress = (_json['fullAddress'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('isPostOfficeBox')) {
-      isPostOfficeBox = _json['isPostOfficeBox'];
+      isPostOfficeBox = _json['isPostOfficeBox'] as core.bool;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('recipientName')) {
-      recipientName = _json['recipientName'];
+      recipientName = _json['recipientName'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('streetAddress')) {
-      streetAddress = (_json['streetAddress'] as core.List).cast<core.String>();
+      streetAddress = (_json['streetAddress'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -23136,7 +23210,7 @@ class TestOrderDeliveryDetails {
       address = TestOrderAddress.fromJson(_json['address']);
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -23172,7 +23246,7 @@ class TestOrderLineItem {
       product = TestOrderLineItemProduct.fromJson(_json['product']);
     }
     if (_json.containsKey('quantityOrdered')) {
-      quantityOrdered = _json['quantityOrdered'];
+      quantityOrdered = _json['quantityOrdered'] as core.int;
     }
     if (_json.containsKey('returnInfo')) {
       returnInfo = OrderLineItemReturnInfo.fromJson(_json['returnInfo']);
@@ -23254,13 +23328,13 @@ class TestOrderLineItemProduct {
 
   TestOrderLineItemProduct.fromJson(core.Map _json) {
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = _json['condition'];
+      condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('contentLanguage')) {
-      contentLanguage = _json['contentLanguage'];
+      contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('fees')) {
       fees = (_json['fees'] as core.List)
@@ -23269,28 +23343,28 @@ class TestOrderLineItemProduct {
           .toList();
     }
     if (_json.containsKey('gtin')) {
-      gtin = _json['gtin'];
+      gtin = _json['gtin'] as core.String;
     }
     if (_json.containsKey('imageLink')) {
-      imageLink = _json['imageLink'];
+      imageLink = _json['imageLink'] as core.String;
     }
     if (_json.containsKey('itemGroupId')) {
-      itemGroupId = _json['itemGroupId'];
+      itemGroupId = _json['itemGroupId'] as core.String;
     }
     if (_json.containsKey('mpn')) {
-      mpn = _json['mpn'];
+      mpn = _json['mpn'] as core.String;
     }
     if (_json.containsKey('offerId')) {
-      offerId = _json['offerId'];
+      offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('price')) {
       price = Price.fromJson(_json['price']);
     }
     if (_json.containsKey('targetCountry')) {
-      targetCountry = _json['targetCountry'];
+      targetCountry = _json['targetCountry'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('variantAttributes')) {
       variantAttributes = (_json['variantAttributes'] as core.List)
@@ -23368,14 +23442,14 @@ class TestOrderPickupDetails {
 
   TestOrderPickupDetails.fromJson(core.Map _json) {
     if (_json.containsKey('locationCode')) {
-      locationCode = _json['locationCode'];
+      locationCode = _json['locationCode'] as core.String;
     }
     if (_json.containsKey('pickupLocationAddress')) {
       pickupLocationAddress =
           TestOrderAddress.fromJson(_json['pickupLocationAddress']);
     }
     if (_json.containsKey('pickupLocationType')) {
-      pickupLocationType = _json['pickupLocationType'];
+      pickupLocationType = _json['pickupLocationType'] as core.String;
     }
     if (_json.containsKey('pickupPersons')) {
       pickupPersons = (_json['pickupPersons'] as core.List)
@@ -23415,10 +23489,10 @@ class TestOrderPickupDetailsPickupPerson {
 
   TestOrderPickupDetailsPickupPerson.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -23450,8 +23524,9 @@ class TransitTable {
 
   TransitTable.fromJson(core.Map _json) {
     if (_json.containsKey('postalCodeGroupNames')) {
-      postalCodeGroupNames =
-          (_json['postalCodeGroupNames'] as core.List).cast<core.String>();
+      postalCodeGroupNames = (_json['postalCodeGroupNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -23460,8 +23535,9 @@ class TransitTable {
           .toList();
     }
     if (_json.containsKey('transitTimeLabels')) {
-      transitTimeLabels =
-          (_json['transitTimeLabels'] as core.List).cast<core.String>();
+      transitTimeLabels = (_json['transitTimeLabels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -23515,10 +23591,10 @@ class TransitTableTransitTimeRowTransitTimeValue {
 
   TransitTableTransitTimeRowTransitTimeValue.fromJson(core.Map _json) {
     if (_json.containsKey('maxTransitTimeInDays')) {
-      maxTransitTimeInDays = _json['maxTransitTimeInDays'];
+      maxTransitTimeInDays = _json['maxTransitTimeInDays'] as core.int;
     }
     if (_json.containsKey('minTransitTimeInDays')) {
-      minTransitTimeInDays = _json['minTransitTimeInDays'];
+      minTransitTimeInDays = _json['minTransitTimeInDays'] as core.int;
     }
   }
 
@@ -23599,7 +23675,7 @@ class UnitInvoiceAdditionalCharge {
       additionalChargeAmount = Amount.fromJson(_json['additionalChargeAmount']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -23638,10 +23714,10 @@ class UnitInvoiceTaxLine {
       taxAmount = Price.fromJson(_json['taxAmount']);
     }
     if (_json.containsKey('taxName')) {
-      taxName = _json['taxName'];
+      taxName = _json['taxName'] as core.String;
     }
     if (_json.containsKey('taxType')) {
-      taxType = _json['taxType'];
+      taxType = _json['taxType'] as core.String;
     }
   }
 
@@ -23687,19 +23763,19 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey('carrierRateName')) {
-      carrierRateName = _json['carrierRateName'];
+      carrierRateName = _json['carrierRateName'] as core.String;
     }
     if (_json.containsKey('flatRate')) {
       flatRate = Price.fromJson(_json['flatRate']);
     }
     if (_json.containsKey('noShipping')) {
-      noShipping = _json['noShipping'];
+      noShipping = _json['noShipping'] as core.bool;
     }
     if (_json.containsKey('pricePercentage')) {
-      pricePercentage = _json['pricePercentage'];
+      pricePercentage = _json['pricePercentage'] as core.String;
     }
     if (_json.containsKey('subtableName')) {
-      subtableName = _json['subtableName'];
+      subtableName = _json['subtableName'] as core.String;
     }
   }
 
@@ -23739,10 +23815,10 @@ class Weight {
 
   Weight.fromJson(core.Map _json) {
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 

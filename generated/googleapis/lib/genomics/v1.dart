@@ -291,16 +291,18 @@ class ComputeEngine {
 
   ComputeEngine.fromJson(core.Map _json) {
     if (_json.containsKey('diskNames')) {
-      diskNames = (_json['diskNames'] as core.List).cast<core.String>();
+      diskNames = (_json['diskNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('instanceName')) {
-      instanceName = _json['instanceName'];
+      instanceName = _json['instanceName'] as core.String;
     }
     if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'];
+      machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -333,7 +335,7 @@ class ContainerKilledEvent {
 
   ContainerKilledEvent.fromJson(core.Map _json) {
     if (_json.containsKey('actionId')) {
-      actionId = _json['actionId'];
+      actionId = _json['actionId'] as core.int;
     }
   }
 
@@ -366,14 +368,15 @@ class ContainerStartedEvent {
 
   ContainerStartedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('actionId')) {
-      actionId = _json['actionId'];
+      actionId = _json['actionId'] as core.int;
     }
     if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'];
+      ipAddress = _json['ipAddress'] as core.String;
     }
     if (_json.containsKey('portMappings')) {
-      portMappings =
-          (_json['portMappings'] as core.Map).cast<core.String, core.int>();
+      portMappings = commons.mapMap<core.int, core.int>(
+          _json['portMappings'].cast<core.String, core.int>(),
+          (core.int item) => item as core.int);
     }
   }
 
@@ -413,13 +416,13 @@ class ContainerStoppedEvent {
 
   ContainerStoppedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('actionId')) {
-      actionId = _json['actionId'];
+      actionId = _json['actionId'] as core.int;
     }
     if (_json.containsKey('exitStatus')) {
-      exitStatus = _json['exitStatus'];
+      exitStatus = _json['exitStatus'] as core.int;
     }
     if (_json.containsKey('stderr')) {
-      stderr = _json['stderr'];
+      stderr = _json['stderr'] as core.String;
     }
   }
 
@@ -456,10 +459,12 @@ class DelayedEvent {
 
   DelayedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('cause')) {
-      cause = _json['cause'];
+      cause = _json['cause'] as core.String;
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List).cast<core.String>();
+      metrics = (_json['metrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -513,13 +518,15 @@ class Event {
 
   Event.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('details')) {
-      details = (_json['details'] as core.Map).cast<core.String, core.Object>();
+      details = commons.mapMap<core.Object, core.Object>(
+          _json['details'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -631,10 +638,10 @@ class FailedEvent {
 
   FailedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('cause')) {
-      cause = _json['cause'];
+      cause = _json['cause'] as core.String;
     }
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
   }
 
@@ -662,7 +669,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -716,21 +723,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -771,13 +780,13 @@ class OperationEvent {
 
   OperationEvent.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -841,13 +850,13 @@ class OperationMetadata {
 
   OperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'];
+      clientId = _json['clientId'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
@@ -855,20 +864,25 @@ class OperationMetadata {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('request')) {
-      request = (_json['request'] as core.Map).cast<core.String, core.Object>();
+      request = commons.mapMap<core.Object, core.Object>(
+          _json['request'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('runtimeMetadata')) {
-      runtimeMetadata = (_json['runtimeMetadata'] as core.Map)
-          .cast<core.String, core.Object>();
+      runtimeMetadata = commons.mapMap<core.Object, core.Object>(
+          _json['runtimeMetadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -914,7 +928,7 @@ class PullStartedEvent {
 
   PullStartedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
   }
 
@@ -936,7 +950,7 @@ class PullStoppedEvent {
 
   PullStoppedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
   }
 
@@ -1013,16 +1027,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -1056,10 +1072,10 @@ class UnexpectedExitStatusEvent {
 
   UnexpectedExitStatusEvent.fromJson(core.Map _json) {
     if (_json.containsKey('actionId')) {
-      actionId = _json['actionId'];
+      actionId = _json['actionId'] as core.int;
     }
     if (_json.containsKey('exitStatus')) {
-      exitStatus = _json['exitStatus'];
+      exitStatus = _json['exitStatus'] as core.int;
     }
   }
 
@@ -1090,13 +1106,13 @@ class WorkerAssignedEvent {
 
   WorkerAssignedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'];
+      machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -1128,10 +1144,10 @@ class WorkerReleasedEvent {
 
   WorkerReleasedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 

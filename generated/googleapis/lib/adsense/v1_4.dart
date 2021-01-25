@@ -2934,19 +2934,19 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('creation_time')) {
-      creationTime = _json['creation_time'];
+      creationTime = _json['creation_time'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('premium')) {
-      premium = _json['premium'];
+      premium = _json['premium'] as core.bool;
     }
     if (_json.containsKey('subAccounts')) {
       subAccounts = (_json['subAccounts'] as core.List)
@@ -2954,7 +2954,7 @@ class Account {
           .toList();
     }
     if (_json.containsKey('timezone')) {
-      timezone = _json['timezone'];
+      timezone = _json['timezone'] as core.String;
     }
   }
 
@@ -3004,7 +3004,7 @@ class Accounts {
 
   Accounts.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -3012,10 +3012,10 @@ class Accounts {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3058,19 +3058,19 @@ class AdClient {
 
   AdClient.fromJson(core.Map _json) {
     if (_json.containsKey('arcOptIn')) {
-      arcOptIn = _json['arcOptIn'];
+      arcOptIn = _json['arcOptIn'] as core.bool;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('productCode')) {
-      productCode = _json['productCode'];
+      productCode = _json['productCode'] as core.String;
     }
     if (_json.containsKey('supportsReporting')) {
-      supportsReporting = _json['supportsReporting'];
+      supportsReporting = _json['supportsReporting'] as core.bool;
     }
   }
 
@@ -3113,7 +3113,7 @@ class AdClients {
 
   AdClients.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -3121,10 +3121,10 @@ class AdClients {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3163,16 +3163,16 @@ class AdCode {
 
   AdCode.fromJson(core.Map _json) {
     if (_json.containsKey('adCode')) {
-      adCode = _json['adCode'];
+      adCode = _json['adCode'] as core.String;
     }
     if (_json.containsKey('ampBody')) {
-      ampBody = _json['ampBody'];
+      ampBody = _json['ampBody'] as core.String;
     }
     if (_json.containsKey('ampHead')) {
-      ampHead = _json['ampHead'];
+      ampHead = _json['ampHead'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -3217,19 +3217,19 @@ class AdStyleColors {
 
   AdStyleColors.fromJson(core.Map _json) {
     if (_json.containsKey('background')) {
-      background = _json['background'];
+      background = _json['background'] as core.String;
     }
     if (_json.containsKey('border')) {
-      border = _json['border'];
+      border = _json['border'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3266,10 +3266,10 @@ class AdStyleFont {
 
   AdStyleFont.fromJson(core.Map _json) {
     if (_json.containsKey('family')) {
-      family = _json['family'];
+      family = _json['family'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
   }
 
@@ -3307,13 +3307,13 @@ class AdStyle {
       colors = AdStyleColors.fromJson(_json['colors']);
     }
     if (_json.containsKey('corners')) {
-      corners = _json['corners'];
+      corners = _json['corners'] as core.String;
     }
     if (_json.containsKey('font')) {
       font = AdStyleFont.fromJson(_json['font']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -3350,13 +3350,13 @@ class AdUnitContentAdsSettingsBackupOption {
 
   AdUnitContentAdsSettingsBackupOption.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = _json['color'];
+      color = _json['color'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3395,10 +3395,10 @@ class AdUnitContentAdsSettings {
           AdUnitContentAdsSettingsBackupOption.fromJson(_json['backupOption']);
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3436,16 +3436,16 @@ class AdUnitFeedAdsSettings {
 
   AdUnitFeedAdsSettings.fromJson(core.Map _json) {
     if (_json.containsKey('adPosition')) {
-      adPosition = _json['adPosition'];
+      adPosition = _json['adPosition'] as core.String;
     }
     if (_json.containsKey('frequency')) {
-      frequency = _json['frequency'];
+      frequency = _json['frequency'] as core.int;
     }
     if (_json.containsKey('minimumWordCount')) {
-      minimumWordCount = _json['minimumWordCount'];
+      minimumWordCount = _json['minimumWordCount'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3485,16 +3485,16 @@ class AdUnitMobileContentAdsSettings {
 
   AdUnitMobileContentAdsSettings.fromJson(core.Map _json) {
     if (_json.containsKey('markupLanguage')) {
-      markupLanguage = _json['markupLanguage'];
+      markupLanguage = _json['markupLanguage'] as core.String;
     }
     if (_json.containsKey('scriptingLanguage')) {
-      scriptingLanguage = _json['scriptingLanguage'];
+      scriptingLanguage = _json['scriptingLanguage'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3561,7 +3561,7 @@ class AdUnit {
 
   AdUnit.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('contentAdsSettings')) {
       contentAdsSettings =
@@ -3575,23 +3575,23 @@ class AdUnit {
           AdUnitFeedAdsSettings.fromJson(_json['feedAdsSettings']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('mobileContentAdsSettings')) {
       mobileContentAdsSettings = AdUnitMobileContentAdsSettings.fromJson(
           _json['mobileContentAdsSettings']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('savedStyleId')) {
-      savedStyleId = _json['savedStyleId'];
+      savedStyleId = _json['savedStyleId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -3649,7 +3649,7 @@ class AdUnits {
 
   AdUnits.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -3657,10 +3657,10 @@ class AdUnits {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3698,13 +3698,13 @@ class AdsenseReportsGenerateResponseHeaders {
 
   AdsenseReportsGenerateResponseHeaders.fromJson(core.Map _json) {
     if (_json.containsKey('currency')) {
-      currency = _json['currency'];
+      currency = _json['currency'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3763,10 +3763,12 @@ class AdsenseReportsGenerateResponse {
 
   AdsenseReportsGenerateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('averages')) {
-      averages = (_json['averages'] as core.List).cast<core.String>();
+      averages = (_json['averages'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
@@ -3775,25 +3777,30 @@ class AdsenseReportsGenerateResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<core.List<core.String>>(
-              (value) => (value as core.List).cast<core.String>())
+          .map<core.List<core.String>>((value) => (value as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList())
           .toList();
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
     if (_json.containsKey('totalMatchedRows')) {
-      totalMatchedRows = _json['totalMatchedRows'];
+      totalMatchedRows = _json['totalMatchedRows'] as core.String;
     }
     if (_json.containsKey('totals')) {
-      totals = (_json['totals'] as core.List).cast<core.String>();
+      totals = (_json['totals'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('warnings')) {
-      warnings = (_json['warnings'] as core.List).cast<core.String>();
+      warnings = (_json['warnings'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3856,22 +3863,22 @@ class Alert {
 
   Alert.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('isDismissible')) {
-      isDismissible = _json['isDismissible'];
+      isDismissible = _json['isDismissible'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3915,7 +3922,7 @@ class Alerts {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -3954,16 +3961,16 @@ class CustomChannelTargetingInfo {
 
   CustomChannelTargetingInfo.fromJson(core.Map _json) {
     if (_json.containsKey('adsAppearOn')) {
-      adsAppearOn = _json['adsAppearOn'];
+      adsAppearOn = _json['adsAppearOn'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('siteLanguage')) {
-      siteLanguage = _json['siteLanguage'];
+      siteLanguage = _json['siteLanguage'] as core.String;
     }
   }
 
@@ -4007,16 +4014,16 @@ class CustomChannel {
 
   CustomChannel.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('targetingInfo')) {
       targetingInfo =
@@ -4063,7 +4070,7 @@ class CustomChannels {
 
   CustomChannels.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -4071,10 +4078,10 @@ class CustomChannels {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4112,7 +4119,7 @@ class Metadata {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4149,19 +4156,20 @@ class Payment {
 
   Payment.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('paymentAmount')) {
-      paymentAmount = _json['paymentAmount'];
+      paymentAmount = _json['paymentAmount'] as core.String;
     }
     if (_json.containsKey('paymentAmountCurrencyCode')) {
-      paymentAmountCurrencyCode = _json['paymentAmountCurrencyCode'];
+      paymentAmountCurrencyCode =
+          _json['paymentAmountCurrencyCode'] as core.String;
     }
     if (_json.containsKey('paymentDate')) {
-      paymentDate = _json['paymentDate'];
+      paymentDate = _json['paymentDate'] as core.String;
     }
   }
 
@@ -4203,7 +4211,7 @@ class Payments {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4256,30 +4264,35 @@ class ReportingMetadataEntry {
 
   ReportingMetadataEntry.fromJson(core.Map _json) {
     if (_json.containsKey('compatibleDimensions')) {
-      compatibleDimensions =
-          (_json['compatibleDimensions'] as core.List).cast<core.String>();
+      compatibleDimensions = (_json['compatibleDimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('compatibleMetrics')) {
-      compatibleMetrics =
-          (_json['compatibleMetrics'] as core.List).cast<core.String>();
+      compatibleMetrics = (_json['compatibleMetrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('requiredDimensions')) {
-      requiredDimensions =
-          (_json['requiredDimensions'] as core.List).cast<core.String>();
+      requiredDimensions = (_json['requiredDimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('requiredMetrics')) {
-      requiredMetrics =
-          (_json['requiredMetrics'] as core.List).cast<core.String>();
+      requiredMetrics = (_json['requiredMetrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('supportedProducts')) {
-      supportedProducts =
-          (_json['supportedProducts'] as core.List).cast<core.String>();
+      supportedProducts = (_json['supportedProducts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4332,13 +4345,13 @@ class SavedAdStyle {
       adStyle = AdStyle.fromJson(_json['adStyle']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4378,7 +4391,7 @@ class SavedAdStyles {
 
   SavedAdStyles.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -4386,10 +4399,10 @@ class SavedAdStyles {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4425,13 +4438,13 @@ class SavedReport {
 
   SavedReport.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4468,7 +4481,7 @@ class SavedReports {
 
   SavedReports.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -4476,10 +4489,10 @@ class SavedReports {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4517,13 +4530,13 @@ class UrlChannel {
 
   UrlChannel.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('urlPattern')) {
-      urlPattern = _json['urlPattern'];
+      urlPattern = _json['urlPattern'] as core.String;
     }
   }
 
@@ -4560,7 +4573,7 @@ class UrlChannels {
 
   UrlChannels.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -4568,10 +4581,10 @@ class UrlChannels {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 

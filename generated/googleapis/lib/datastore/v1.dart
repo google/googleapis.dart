@@ -1207,7 +1207,7 @@ class BeginTransactionResponse {
 
   BeginTransactionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -1256,7 +1256,7 @@ class CommitRequest {
 
   CommitRequest.fromJson(core.Map _json) {
     if (_json.containsKey('mode')) {
-      mode = _json['mode'];
+      mode = _json['mode'] as core.String;
     }
     if (_json.containsKey('mutations')) {
       mutations = (_json['mutations'] as core.List)
@@ -1264,7 +1264,7 @@ class CommitRequest {
           .toList();
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -1297,7 +1297,7 @@ class CommitResponse {
 
   CommitResponse.fromJson(core.Map _json) {
     if (_json.containsKey('indexUpdates')) {
-      indexUpdates = _json['indexUpdates'];
+      indexUpdates = _json['indexUpdates'] as core.int;
     }
     if (_json.containsKey('mutationResults')) {
       mutationResults = (_json['mutationResults'] as core.List)
@@ -1340,7 +1340,7 @@ class CompositeFilter {
           .toList();
     }
     if (_json.containsKey('op')) {
-      op = _json['op'];
+      op = _json['op'] as core.String;
     }
   }
 
@@ -1443,13 +1443,13 @@ class EntityResult {
 
   EntityResult.fromJson(core.Map _json) {
     if (_json.containsKey('cursor')) {
-      cursor = _json['cursor'];
+      cursor = _json['cursor'] as core.String;
     }
     if (_json.containsKey('entity')) {
       entity = Entity.fromJson(_json['entity']);
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1541,19 +1541,21 @@ class GoogleDatastoreAdminV1CommonMetadata {
 
   GoogleDatastoreAdminV1CommonMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'];
+      operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1602,10 +1604,14 @@ class GoogleDatastoreAdminV1EntityFilter {
 
   GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map _json) {
     if (_json.containsKey('kinds')) {
-      kinds = (_json['kinds'] as core.List).cast<core.String>();
+      kinds = (_json['kinds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('namespaceIds')) {
-      namespaceIds = (_json['namespaceIds'] as core.List).cast<core.String>();
+      namespaceIds = (_json['namespaceIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1653,7 +1659,7 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
           GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
     }
     if (_json.containsKey('outputUrlPrefix')) {
-      outputUrlPrefix = _json['outputUrlPrefix'];
+      outputUrlPrefix = _json['outputUrlPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -1718,10 +1724,12 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
           GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('outputUrlPrefix')) {
-      outputUrlPrefix = _json['outputUrlPrefix'];
+      outputUrlPrefix = _json['outputUrlPrefix'] as core.String;
     }
   }
 
@@ -1752,7 +1760,7 @@ class GoogleDatastoreAdminV1ExportEntitiesResponse {
 
   GoogleDatastoreAdminV1ExportEntitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputUrl')) {
-      outputUrl = _json['outputUrl'];
+      outputUrl = _json['outputUrl'] as core.String;
     }
   }
 
@@ -1794,7 +1802,7 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
           GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
     }
     if (_json.containsKey('inputUrl')) {
-      inputUrl = _json['inputUrl'];
+      inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -1860,10 +1868,12 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
           GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
     }
     if (_json.containsKey('inputUrl')) {
-      inputUrl = _json['inputUrl'];
+      inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -1928,16 +1938,16 @@ class GoogleDatastoreAdminV1Index {
 
   GoogleDatastoreAdminV1Index.fromJson(core.Map _json) {
     if (_json.containsKey('ancestor')) {
-      ancestor = _json['ancestor'];
+      ancestor = _json['ancestor'] as core.String;
     }
     if (_json.containsKey('indexId')) {
-      indexId = _json['indexId'];
+      indexId = _json['indexId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
@@ -1946,7 +1956,7 @@ class GoogleDatastoreAdminV1Index {
           .toList();
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1992,7 +2002,7 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
       common = GoogleDatastoreAdminV1CommonMetadata.fromJson(_json['common']);
     }
     if (_json.containsKey('indexId')) {
-      indexId = _json['indexId'];
+      indexId = _json['indexId'] as core.String;
     }
     if (_json.containsKey('progressEntities')) {
       progressEntities =
@@ -2034,10 +2044,10 @@ class GoogleDatastoreAdminV1IndexedProperty {
 
   GoogleDatastoreAdminV1IndexedProperty.fromJson(core.Map _json) {
     if (_json.containsKey('direction')) {
-      direction = _json['direction'];
+      direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2071,7 +2081,7 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2101,10 +2111,10 @@ class GoogleDatastoreAdminV1Progress {
 
   GoogleDatastoreAdminV1Progress.fromJson(core.Map _json) {
     if (_json.containsKey('workCompleted')) {
-      workCompleted = _json['workCompleted'];
+      workCompleted = _json['workCompleted'] as core.String;
     }
     if (_json.containsKey('workEstimated')) {
-      workEstimated = _json['workEstimated'];
+      workEstimated = _json['workEstimated'] as core.String;
     }
   }
 
@@ -2160,19 +2170,21 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
 
   GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'];
+      operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -2221,10 +2233,14 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
 
   GoogleDatastoreAdminV1beta1EntityFilter.fromJson(core.Map _json) {
     if (_json.containsKey('kinds')) {
-      kinds = (_json['kinds'] as core.List).cast<core.String>();
+      kinds = (_json['kinds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('namespaceIds')) {
-      namespaceIds = (_json['namespaceIds'] as core.List).cast<core.String>();
+      namespaceIds = (_json['namespaceIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2273,7 +2289,7 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
           _json['entityFilter']);
     }
     if (_json.containsKey('outputUrlPrefix')) {
-      outputUrlPrefix = _json['outputUrlPrefix'];
+      outputUrlPrefix = _json['outputUrlPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -2319,7 +2335,7 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
 
   GoogleDatastoreAdminV1beta1ExportEntitiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputUrl')) {
-      outputUrl = _json['outputUrl'];
+      outputUrl = _json['outputUrl'] as core.String;
     }
   }
 
@@ -2363,7 +2379,7 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
           _json['entityFilter']);
     }
     if (_json.containsKey('inputUrl')) {
-      inputUrl = _json['inputUrl'];
+      inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -2410,10 +2426,10 @@ class GoogleDatastoreAdminV1beta1Progress {
 
   GoogleDatastoreAdminV1beta1Progress.fromJson(core.Map _json) {
     if (_json.containsKey('workCompleted')) {
-      workCompleted = _json['workCompleted'];
+      workCompleted = _json['workCompleted'] as core.String;
     }
     if (_json.containsKey('workEstimated')) {
-      workEstimated = _json['workEstimated'];
+      workEstimated = _json['workEstimated'] as core.String;
     }
   }
 
@@ -2441,7 +2457,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -2504,21 +2520,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2571,7 +2589,7 @@ class GqlQuery {
 
   GqlQuery.fromJson(core.Map _json) {
     if (_json.containsKey('allowLiterals')) {
-      allowLiterals = _json['allowLiterals'];
+      allowLiterals = _json['allowLiterals'] as core.bool;
     }
     if (_json.containsKey('namedBindings')) {
       namedBindings = commons.mapMap<core.Map, GqlQueryParameter>(
@@ -2584,7 +2602,7 @@ class GqlQuery {
           .toList();
     }
     if (_json.containsKey('queryString')) {
-      queryString = _json['queryString'];
+      queryString = _json['queryString'] as core.String;
     }
   }
 
@@ -2627,7 +2645,7 @@ class GqlQueryParameter {
 
   GqlQueryParameter.fromJson(core.Map _json) {
     if (_json.containsKey('cursor')) {
-      cursor = _json['cursor'];
+      cursor = _json['cursor'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = Value.fromJson(_json['value']);
@@ -2702,7 +2720,7 @@ class KindExpression {
 
   KindExpression.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2860,7 +2878,7 @@ class Mutation {
 
   Mutation.fromJson(core.Map _json) {
     if (_json.containsKey('baseVersion')) {
-      baseVersion = _json['baseVersion'];
+      baseVersion = _json['baseVersion'] as core.String;
     }
     if (_json.containsKey('delete')) {
       delete = Key.fromJson(_json['delete']);
@@ -2918,13 +2936,13 @@ class MutationResult {
 
   MutationResult.fromJson(core.Map _json) {
     if (_json.containsKey('conflictDetected')) {
-      conflictDetected = _json['conflictDetected'];
+      conflictDetected = _json['conflictDetected'] as core.bool;
     }
     if (_json.containsKey('key')) {
       key = Key.fromJson(_json['key']);
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -2964,10 +2982,10 @@ class PartitionId {
 
   PartitionId.fromJson(core.Map _json) {
     if (_json.containsKey('namespaceId')) {
-      namespaceId = _json['namespaceId'];
+      namespaceId = _json['namespaceId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -3004,13 +3022,13 @@ class PathElement {
 
   PathElement.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3074,7 +3092,7 @@ class PropertyFilter {
 
   PropertyFilter.fromJson(core.Map _json) {
     if (_json.containsKey('op')) {
-      op = _json['op'];
+      op = _json['op'] as core.String;
     }
     if (_json.containsKey('property')) {
       property = PropertyReference.fromJson(_json['property']);
@@ -3115,7 +3133,7 @@ class PropertyOrder {
 
   PropertyOrder.fromJson(core.Map _json) {
     if (_json.containsKey('direction')) {
-      direction = _json['direction'];
+      direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('property')) {
       property = PropertyReference.fromJson(_json['property']);
@@ -3144,7 +3162,7 @@ class PropertyReference {
 
   PropertyReference.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3218,7 +3236,7 @@ class Query {
           .toList();
     }
     if (_json.containsKey('endCursor')) {
-      endCursor = _json['endCursor'];
+      endCursor = _json['endCursor'] as core.String;
     }
     if (_json.containsKey('filter')) {
       filter = Filter.fromJson(_json['filter']);
@@ -3229,10 +3247,10 @@ class Query {
           .toList();
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.int;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'];
+      offset = _json['offset'] as core.int;
     }
     if (_json.containsKey('order')) {
       order = (_json['order'] as core.List)
@@ -3245,7 +3263,7 @@ class Query {
           .toList();
     }
     if (_json.containsKey('startCursor')) {
-      startCursor = _json['startCursor'];
+      startCursor = _json['startCursor'] as core.String;
     }
   }
 
@@ -3346,10 +3364,10 @@ class QueryResultBatch {
 
   QueryResultBatch.fromJson(core.Map _json) {
     if (_json.containsKey('endCursor')) {
-      endCursor = _json['endCursor'];
+      endCursor = _json['endCursor'] as core.String;
     }
     if (_json.containsKey('entityResultType')) {
-      entityResultType = _json['entityResultType'];
+      entityResultType = _json['entityResultType'] as core.String;
     }
     if (_json.containsKey('entityResults')) {
       entityResults = (_json['entityResults'] as core.List)
@@ -3357,16 +3375,16 @@ class QueryResultBatch {
           .toList();
     }
     if (_json.containsKey('moreResults')) {
-      moreResults = _json['moreResults'];
+      moreResults = _json['moreResults'] as core.String;
     }
     if (_json.containsKey('skippedCursor')) {
-      skippedCursor = _json['skippedCursor'];
+      skippedCursor = _json['skippedCursor'] as core.String;
     }
     if (_json.containsKey('skippedResults')) {
-      skippedResults = _json['skippedResults'];
+      skippedResults = _json['skippedResults'] as core.int;
     }
     if (_json.containsKey('snapshotVersion')) {
-      snapshotVersion = _json['snapshotVersion'];
+      snapshotVersion = _json['snapshotVersion'] as core.String;
     }
   }
 
@@ -3438,10 +3456,10 @@ class ReadOptions {
 
   ReadOptions.fromJson(core.Map _json) {
     if (_json.containsKey('readConsistency')) {
-      readConsistency = _json['readConsistency'];
+      readConsistency = _json['readConsistency'] as core.String;
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -3473,7 +3491,7 @@ class ReadWrite {
 
   ReadWrite.fromJson(core.Map _json) {
     if (_json.containsKey('previousTransaction')) {
-      previousTransaction = _json['previousTransaction'];
+      previousTransaction = _json['previousTransaction'] as core.String;
     }
   }
 
@@ -3499,7 +3517,7 @@ class ReserveIdsRequest {
 
   ReserveIdsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('databaseId')) {
-      databaseId = _json['databaseId'];
+      databaseId = _json['databaseId'] as core.String;
     }
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
@@ -3551,7 +3569,7 @@ class RollbackRequest {
 
   RollbackRequest.fromJson(core.Map _json) {
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -3686,16 +3704,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3813,10 +3833,10 @@ class Value {
       arrayValue = ArrayValue.fromJson(_json['arrayValue']);
     }
     if (_json.containsKey('blobValue')) {
-      blobValue = _json['blobValue'];
+      blobValue = _json['blobValue'] as core.String;
     }
     if (_json.containsKey('booleanValue')) {
-      booleanValue = _json['booleanValue'];
+      booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('doubleValue')) {
       doubleValue = _json['doubleValue'].toDouble();
@@ -3825,28 +3845,28 @@ class Value {
       entityValue = Entity.fromJson(_json['entityValue']);
     }
     if (_json.containsKey('excludeFromIndexes')) {
-      excludeFromIndexes = _json['excludeFromIndexes'];
+      excludeFromIndexes = _json['excludeFromIndexes'] as core.bool;
     }
     if (_json.containsKey('geoPointValue')) {
       geoPointValue = LatLng.fromJson(_json['geoPointValue']);
     }
     if (_json.containsKey('integerValue')) {
-      integerValue = _json['integerValue'];
+      integerValue = _json['integerValue'] as core.String;
     }
     if (_json.containsKey('keyValue')) {
       keyValue = Key.fromJson(_json['keyValue']);
     }
     if (_json.containsKey('meaning')) {
-      meaning = _json['meaning'];
+      meaning = _json['meaning'] as core.int;
     }
     if (_json.containsKey('nullValue')) {
-      nullValue = _json['nullValue'];
+      nullValue = _json['nullValue'] as core.String;
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('timestampValue')) {
-      timestampValue = _json['timestampValue'];
+      timestampValue = _json['timestampValue'] as core.String;
     }
   }
 

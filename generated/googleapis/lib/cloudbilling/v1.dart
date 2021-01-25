@@ -913,13 +913,13 @@ class AggregationInfo {
 
   AggregationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('aggregationCount')) {
-      aggregationCount = _json['aggregationCount'];
+      aggregationCount = _json['aggregationCount'] as core.int;
     }
     if (_json.containsKey('aggregationInterval')) {
-      aggregationInterval = _json['aggregationInterval'];
+      aggregationInterval = _json['aggregationInterval'] as core.String;
     }
     if (_json.containsKey('aggregationLevel')) {
-      aggregationLevel = _json['aggregationLevel'];
+      aggregationLevel = _json['aggregationLevel'] as core.String;
     }
   }
 
@@ -972,7 +972,7 @@ class AuditConfig {
           .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -1011,11 +1011,12 @@ class AuditLogConfig {
 
   AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers =
-          (_json['exemptedMembers'] as core.List).cast<core.String>();
+      exemptedMembers = (_json['exemptedMembers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -1061,16 +1062,16 @@ class BillingAccount {
 
   BillingAccount.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('masterBillingAccount')) {
-      masterBillingAccount = _json['masterBillingAccount'];
+      masterBillingAccount = _json['masterBillingAccount'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('open')) {
-      open = _json['open'];
+      open = _json['open'] as core.bool;
     }
   }
 
@@ -1145,10 +1146,12 @@ class Binding {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -1188,16 +1191,16 @@ class Category {
 
   Category.fromJson(core.Map _json) {
     if (_json.containsKey('resourceFamily')) {
-      resourceFamily = _json['resourceFamily'];
+      resourceFamily = _json['resourceFamily'] as core.String;
     }
     if (_json.containsKey('resourceGroup')) {
-      resourceGroup = _json['resourceGroup'];
+      resourceGroup = _json['resourceGroup'] as core.String;
     }
     if (_json.containsKey('serviceDisplayName')) {
-      serviceDisplayName = _json['serviceDisplayName'];
+      serviceDisplayName = _json['serviceDisplayName'] as core.String;
     }
     if (_json.containsKey('usageType')) {
-      usageType = _json['usageType'];
+      usageType = _json['usageType'] as core.String;
     }
   }
 
@@ -1256,16 +1259,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1307,10 +1310,12 @@ class GeoTaxonomy {
 
   GeoTaxonomy.fromJson(core.Map _json) {
     if (_json.containsKey('regions')) {
-      regions = (_json['regions'] as core.List).cast<core.String>();
+      regions = (_json['regions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1345,7 +1350,7 @@ class ListBillingAccountsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1377,7 +1382,7 @@ class ListProjectBillingInfoResponse {
 
   ListProjectBillingInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('projectBillingInfo')) {
       projectBillingInfo = (_json['projectBillingInfo'] as core.List)
@@ -1414,7 +1419,7 @@ class ListServicesResponse {
 
   ListServicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
@@ -1449,7 +1454,7 @@ class ListSkusResponse {
 
   ListSkusResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('skus')) {
       skus = (_json['skus'] as core.List)
@@ -1491,13 +1496,13 @@ class Money {
 
   Money.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('units')) {
-      units = _json['units'];
+      units = _json['units'] as core.String;
     }
   }
 
@@ -1604,10 +1609,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -1675,13 +1680,13 @@ class PricingExpression {
 
   PricingExpression.fromJson(core.Map _json) {
     if (_json.containsKey('baseUnit')) {
-      baseUnit = _json['baseUnit'];
+      baseUnit = _json['baseUnit'] as core.String;
     }
     if (_json.containsKey('baseUnitConversionFactor')) {
       baseUnitConversionFactor = _json['baseUnitConversionFactor'].toDouble();
     }
     if (_json.containsKey('baseUnitDescription')) {
-      baseUnitDescription = _json['baseUnitDescription'];
+      baseUnitDescription = _json['baseUnitDescription'] as core.String;
     }
     if (_json.containsKey('displayQuantity')) {
       displayQuantity = _json['displayQuantity'].toDouble();
@@ -1692,10 +1697,10 @@ class PricingExpression {
           .toList();
     }
     if (_json.containsKey('usageUnit')) {
-      usageUnit = _json['usageUnit'];
+      usageUnit = _json['usageUnit'] as core.String;
     }
     if (_json.containsKey('usageUnitDescription')) {
-      usageUnitDescription = _json['usageUnitDescription'];
+      usageUnitDescription = _json['usageUnitDescription'] as core.String;
     }
   }
 
@@ -1764,14 +1769,14 @@ class PricingInfo {
       currencyConversionRate = _json['currencyConversionRate'].toDouble();
     }
     if (_json.containsKey('effectiveTime')) {
-      effectiveTime = _json['effectiveTime'];
+      effectiveTime = _json['effectiveTime'] as core.String;
     }
     if (_json.containsKey('pricingExpression')) {
       pricingExpression =
           PricingExpression.fromJson(_json['pricingExpression']);
     }
     if (_json.containsKey('summary')) {
-      summary = _json['summary'];
+      summary = _json['summary'] as core.String;
     }
   }
 
@@ -1825,16 +1830,16 @@ class ProjectBillingInfo {
 
   ProjectBillingInfo.fromJson(core.Map _json) {
     if (_json.containsKey('billingAccountName')) {
-      billingAccountName = _json['billingAccountName'];
+      billingAccountName = _json['billingAccountName'] as core.String;
     }
     if (_json.containsKey('billingEnabled')) {
-      billingEnabled = _json['billingEnabled'];
+      billingEnabled = _json['billingEnabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -1875,16 +1880,16 @@ class Service {
 
   Service.fromJson(core.Map _json) {
     if (_json.containsKey('businessEntityName')) {
-      businessEntityName = _json['businessEntityName'];
+      businessEntityName = _json['businessEntityName'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('serviceId')) {
-      serviceId = _json['serviceId'];
+      serviceId = _json['serviceId'] as core.String;
     }
   }
 
@@ -1926,7 +1931,7 @@ class SetIamPolicyRequest {
       policy = Policy.fromJson(_json['policy']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -1979,13 +1984,13 @@ class Sku {
       category = Category.fromJson(_json['category']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('geoTaxonomy')) {
       geoTaxonomy = GeoTaxonomy.fromJson(_json['geoTaxonomy']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pricingInfo')) {
       pricingInfo = (_json['pricingInfo'] as core.List)
@@ -1993,14 +1998,15 @@ class Sku {
           .toList();
     }
     if (_json.containsKey('serviceProviderName')) {
-      serviceProviderName = _json['serviceProviderName'];
+      serviceProviderName = _json['serviceProviderName'] as core.String;
     }
     if (_json.containsKey('serviceRegions')) {
-      serviceRegions =
-          (_json['serviceRegions'] as core.List).cast<core.String>();
+      serviceRegions = (_json['serviceRegions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'];
+      skuId = _json['skuId'] as core.String;
     }
   }
 
@@ -2047,7 +2053,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2070,7 +2078,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

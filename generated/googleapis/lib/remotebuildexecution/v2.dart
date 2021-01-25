@@ -877,18 +877,19 @@ class BuildBazelRemoteExecutionV2Action {
           BuildBazelRemoteExecutionV2Digest.fromJson(_json['commandDigest']);
     }
     if (_json.containsKey('doNotCache')) {
-      doNotCache = _json['doNotCache'];
+      doNotCache = _json['doNotCache'] as core.bool;
     }
     if (_json.containsKey('inputRootDigest')) {
       inputRootDigest =
           BuildBazelRemoteExecutionV2Digest.fromJson(_json['inputRootDigest']);
     }
     if (_json.containsKey('outputNodeProperties')) {
-      outputNodeProperties =
-          (_json['outputNodeProperties'] as core.List).cast<core.String>();
+      outputNodeProperties = (_json['outputNodeProperties'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'];
+      timeout = _json['timeout'] as core.String;
     }
   }
 
@@ -922,7 +923,7 @@ class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
   BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities.fromJson(
       core.Map _json) {
     if (_json.containsKey('updateEnabled')) {
-      updateEnabled = _json['updateEnabled'];
+      updateEnabled = _json['updateEnabled'] as core.bool;
     }
   }
 
@@ -1065,7 +1066,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
               _json['executionMetadata']);
     }
     if (_json.containsKey('exitCode')) {
-      exitCode = _json['exitCode'];
+      exitCode = _json['exitCode'] as core.int;
     }
     if (_json.containsKey('outputDirectories')) {
       outputDirectories = (_json['outputDirectories'] as core.List)
@@ -1102,14 +1103,14 @@ class BuildBazelRemoteExecutionV2ActionResult {
           BuildBazelRemoteExecutionV2Digest.fromJson(_json['stderrDigest']);
     }
     if (_json.containsKey('stderrRaw')) {
-      stderrRaw = _json['stderrRaw'];
+      stderrRaw = _json['stderrRaw'] as core.String;
     }
     if (_json.containsKey('stdoutDigest')) {
       stdoutDigest =
           BuildBazelRemoteExecutionV2Digest.fromJson(_json['stdoutDigest']);
     }
     if (_json.containsKey('stdoutRaw')) {
-      stdoutRaw = _json['stdoutRaw'];
+      stdoutRaw = _json['stdoutRaw'] as core.String;
     }
   }
 
@@ -1232,7 +1233,7 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
   BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('digest')) {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
@@ -1303,7 +1304,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
   BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('digest')) {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
@@ -1424,14 +1425,16 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
               _json['cachePriorityCapabilities']);
     }
     if (_json.containsKey('digestFunction')) {
-      digestFunction =
-          (_json['digestFunction'] as core.List).cast<core.String>();
+      digestFunction = (_json['digestFunction'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('maxBatchTotalSizeBytes')) {
-      maxBatchTotalSizeBytes = _json['maxBatchTotalSizeBytes'];
+      maxBatchTotalSizeBytes = _json['maxBatchTotalSizeBytes'] as core.String;
     }
     if (_json.containsKey('symlinkAbsolutePathStrategy')) {
-      symlinkAbsolutePathStrategy = _json['symlinkAbsolutePathStrategy'];
+      symlinkAbsolutePathStrategy =
+          _json['symlinkAbsolutePathStrategy'] as core.String;
     }
   }
 
@@ -1556,7 +1559,9 @@ class BuildBazelRemoteExecutionV2Command {
 
   BuildBazelRemoteExecutionV2Command.fromJson(core.Map _json) {
     if (_json.containsKey('arguments')) {
-      arguments = (_json['arguments'] as core.List).cast<core.String>();
+      arguments = (_json['arguments'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('environmentVariables')) {
       environmentVariables = (_json['environmentVariables'] as core.List)
@@ -1566,21 +1571,26 @@ class BuildBazelRemoteExecutionV2Command {
           .toList();
     }
     if (_json.containsKey('outputDirectories')) {
-      outputDirectories =
-          (_json['outputDirectories'] as core.List).cast<core.String>();
+      outputDirectories = (_json['outputDirectories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('outputFiles')) {
-      outputFiles = (_json['outputFiles'] as core.List).cast<core.String>();
+      outputFiles = (_json['outputFiles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('outputPaths')) {
-      outputPaths = (_json['outputPaths'] as core.List).cast<core.String>();
+      outputPaths = (_json['outputPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('platform')) {
       platform =
           BuildBazelRemoteExecutionV2Platform.fromJson(_json['platform']);
     }
     if (_json.containsKey('workingDirectory')) {
-      workingDirectory = _json['workingDirectory'];
+      workingDirectory = _json['workingDirectory'] as core.String;
     }
   }
 
@@ -1626,10 +1636,10 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
   BuildBazelRemoteExecutionV2CommandEnvironmentVariable.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -1681,10 +1691,10 @@ class BuildBazelRemoteExecutionV2Digest {
 
   BuildBazelRemoteExecutionV2Digest.fromJson(core.Map _json) {
     if (_json.containsKey('hash')) {
-      hash = _json['hash'];
+      hash = _json['hash'] as core.String;
     }
     if (_json.containsKey('sizeBytes')) {
-      sizeBytes = _json['sizeBytes'];
+      sizeBytes = _json['sizeBytes'] as core.String;
     }
   }
 
@@ -1806,7 +1816,7 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1853,13 +1863,13 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
           BuildBazelRemoteExecutionV2Digest.fromJson(_json['actionDigest']);
     }
     if (_json.containsKey('stage')) {
-      stage = _json['stage'];
+      stage = _json['stage'] as core.String;
     }
     if (_json.containsKey('stderrStreamName')) {
-      stderrStreamName = _json['stderrStreamName'];
+      stderrStreamName = _json['stderrStreamName'] as core.String;
     }
     if (_json.containsKey('stdoutStreamName')) {
-      stdoutStreamName = _json['stdoutStreamName'];
+      stdoutStreamName = _json['stdoutStreamName'] as core.String;
     }
   }
 
@@ -1926,7 +1936,7 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
               _json['resultsCachePolicy']);
     }
     if (_json.containsKey('skipCacheLookup')) {
-      skipCacheLookup = _json['skipCacheLookup'];
+      skipCacheLookup = _json['skipCacheLookup'] as core.bool;
     }
   }
 
@@ -1986,10 +1996,10 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
 
   BuildBazelRemoteExecutionV2ExecuteResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cachedResult')) {
-      cachedResult = _json['cachedResult'];
+      cachedResult = _json['cachedResult'] as core.bool;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('result')) {
       result =
@@ -2064,34 +2074,40 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
 
   BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('executionCompletedTimestamp')) {
-      executionCompletedTimestamp = _json['executionCompletedTimestamp'];
+      executionCompletedTimestamp =
+          _json['executionCompletedTimestamp'] as core.String;
     }
     if (_json.containsKey('executionStartTimestamp')) {
-      executionStartTimestamp = _json['executionStartTimestamp'];
+      executionStartTimestamp = _json['executionStartTimestamp'] as core.String;
     }
     if (_json.containsKey('inputFetchCompletedTimestamp')) {
-      inputFetchCompletedTimestamp = _json['inputFetchCompletedTimestamp'];
+      inputFetchCompletedTimestamp =
+          _json['inputFetchCompletedTimestamp'] as core.String;
     }
     if (_json.containsKey('inputFetchStartTimestamp')) {
-      inputFetchStartTimestamp = _json['inputFetchStartTimestamp'];
+      inputFetchStartTimestamp =
+          _json['inputFetchStartTimestamp'] as core.String;
     }
     if (_json.containsKey('outputUploadCompletedTimestamp')) {
-      outputUploadCompletedTimestamp = _json['outputUploadCompletedTimestamp'];
+      outputUploadCompletedTimestamp =
+          _json['outputUploadCompletedTimestamp'] as core.String;
     }
     if (_json.containsKey('outputUploadStartTimestamp')) {
-      outputUploadStartTimestamp = _json['outputUploadStartTimestamp'];
+      outputUploadStartTimestamp =
+          _json['outputUploadStartTimestamp'] as core.String;
     }
     if (_json.containsKey('queuedTimestamp')) {
-      queuedTimestamp = _json['queuedTimestamp'];
+      queuedTimestamp = _json['queuedTimestamp'] as core.String;
     }
     if (_json.containsKey('worker')) {
-      worker = _json['worker'];
+      worker = _json['worker'] as core.String;
     }
     if (_json.containsKey('workerCompletedTimestamp')) {
-      workerCompletedTimestamp = _json['workerCompletedTimestamp'];
+      workerCompletedTimestamp =
+          _json['workerCompletedTimestamp'] as core.String;
     }
     if (_json.containsKey('workerStartTimestamp')) {
-      workerStartTimestamp = _json['workerStartTimestamp'];
+      workerStartTimestamp = _json['workerStartTimestamp'] as core.String;
     }
   }
 
@@ -2159,10 +2175,10 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
 
   BuildBazelRemoteExecutionV2ExecutionCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey('digestFunction')) {
-      digestFunction = _json['digestFunction'];
+      digestFunction = _json['digestFunction'] as core.String;
     }
     if (_json.containsKey('execEnabled')) {
-      execEnabled = _json['execEnabled'];
+      execEnabled = _json['execEnabled'] as core.bool;
     }
     if (_json.containsKey('executionPriorityCapabilities')) {
       executionPriorityCapabilities =
@@ -2170,8 +2186,9 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
               _json['executionPriorityCapabilities']);
     }
     if (_json.containsKey('supportedNodeProperties')) {
-      supportedNodeProperties =
-          (_json['supportedNodeProperties'] as core.List).cast<core.String>();
+      supportedNodeProperties = (_json['supportedNodeProperties'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2211,7 +2228,7 @@ class BuildBazelRemoteExecutionV2ExecutionPolicy {
 
   BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('priority')) {
-      priority = _json['priority'];
+      priority = _json['priority'] as core.int;
     }
   }
 
@@ -2245,10 +2262,10 @@ class BuildBazelRemoteExecutionV2FileNode {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('isExecutable')) {
-      isExecutable = _json['isExecutable'];
+      isExecutable = _json['isExecutable'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
@@ -2349,7 +2366,7 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2385,7 +2402,7 @@ class BuildBazelRemoteExecutionV2LogFile {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('humanReadable')) {
-      humanReadable = _json['humanReadable'];
+      humanReadable = _json['humanReadable'] as core.bool;
     }
   }
 
@@ -2415,10 +2432,10 @@ class BuildBazelRemoteExecutionV2NodeProperty {
 
   BuildBazelRemoteExecutionV2NodeProperty.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2450,7 +2467,7 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
 
   BuildBazelRemoteExecutionV2OutputDirectory.fromJson(core.Map _json) {
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('treeDigest')) {
       treeDigest =
@@ -2505,13 +2522,13 @@ class BuildBazelRemoteExecutionV2OutputFile {
 
   BuildBazelRemoteExecutionV2OutputFile.fromJson(core.Map _json) {
     if (_json.containsKey('contents')) {
-      contents = _json['contents'];
+      contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
       digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('isExecutable')) {
-      isExecutable = _json['isExecutable'];
+      isExecutable = _json['isExecutable'] as core.bool;
     }
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
@@ -2520,7 +2537,7 @@ class BuildBazelRemoteExecutionV2OutputFile {
           .toList();
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -2576,10 +2593,10 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
           .toList();
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
   }
 
@@ -2653,10 +2670,10 @@ class BuildBazelRemoteExecutionV2PlatformProperty {
 
   BuildBazelRemoteExecutionV2PlatformProperty.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2710,10 +2727,10 @@ class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
   BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange.fromJson(
       core.Map _json) {
     if (_json.containsKey('maxPriority')) {
-      maxPriority = _json['maxPriority'];
+      maxPriority = _json['maxPriority'] as core.int;
     }
     if (_json.containsKey('minPriority')) {
-      minPriority = _json['minPriority'];
+      minPriority = _json['minPriority'] as core.int;
     }
   }
 
@@ -2761,17 +2778,17 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
 
   BuildBazelRemoteExecutionV2RequestMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('actionId')) {
-      actionId = _json['actionId'];
+      actionId = _json['actionId'] as core.String;
     }
     if (_json.containsKey('correlatedInvocationsId')) {
-      correlatedInvocationsId = _json['correlatedInvocationsId'];
+      correlatedInvocationsId = _json['correlatedInvocationsId'] as core.String;
     }
     if (_json.containsKey('toolDetails')) {
       toolDetails =
           BuildBazelRemoteExecutionV2ToolDetails.fromJson(_json['toolDetails']);
     }
     if (_json.containsKey('toolInvocationId')) {
-      toolInvocationId = _json['toolInvocationId'];
+      toolInvocationId = _json['toolInvocationId'] as core.String;
     }
   }
 
@@ -2809,7 +2826,7 @@ class BuildBazelRemoteExecutionV2ResultsCachePolicy {
 
   BuildBazelRemoteExecutionV2ResultsCachePolicy.fromJson(core.Map _json) {
     if (_json.containsKey('priority')) {
-      priority = _json['priority'];
+      priority = _json['priority'] as core.int;
     }
   }
 
@@ -2904,7 +2921,7 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
 
   BuildBazelRemoteExecutionV2SymlinkNode.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
@@ -2913,7 +2930,7 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
           .toList();
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
   }
 
@@ -2945,10 +2962,10 @@ class BuildBazelRemoteExecutionV2ToolDetails {
 
   BuildBazelRemoteExecutionV2ToolDetails.fromJson(core.Map _json) {
     if (_json.containsKey('toolName')) {
-      toolName = _json['toolName'];
+      toolName = _json['toolName'] as core.String;
     }
     if (_json.containsKey('toolVersion')) {
-      toolVersion = _json['toolVersion'];
+      toolVersion = _json['toolVersion'] as core.String;
     }
   }
 
@@ -3036,16 +3053,16 @@ class BuildBazelSemverSemVer {
 
   BuildBazelSemverSemVer.fromJson(core.Map _json) {
     if (_json.containsKey('major')) {
-      major = _json['major'];
+      major = _json['major'] as core.int;
     }
     if (_json.containsKey('minor')) {
-      minor = _json['minor'];
+      minor = _json['minor'] as core.int;
     }
     if (_json.containsKey('patch')) {
-      patch = _json['patch'];
+      patch = _json['patch'] as core.int;
     }
     if (_json.containsKey('prerelease')) {
-      prerelease = _json['prerelease'];
+      prerelease = _json['prerelease'] as core.String;
     }
   }
 
@@ -3109,37 +3126,37 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
 
   GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(core.Map _json) {
     if (_json.containsKey('dockerPrep')) {
-      dockerPrep = _json['dockerPrep'];
+      dockerPrep = _json['dockerPrep'] as core.String;
     }
     if (_json.containsKey('dockerPrepStartTime')) {
-      dockerPrepStartTime = _json['dockerPrepStartTime'];
+      dockerPrepStartTime = _json['dockerPrepStartTime'] as core.String;
     }
     if (_json.containsKey('download')) {
-      download = _json['download'];
+      download = _json['download'] as core.String;
     }
     if (_json.containsKey('downloadStartTime')) {
-      downloadStartTime = _json['downloadStartTime'];
+      downloadStartTime = _json['downloadStartTime'] as core.String;
     }
     if (_json.containsKey('execStartTime')) {
-      execStartTime = _json['execStartTime'];
+      execStartTime = _json['execStartTime'] as core.String;
     }
     if (_json.containsKey('execution')) {
-      execution = _json['execution'];
+      execution = _json['execution'] as core.String;
     }
     if (_json.containsKey('isoPrepDone')) {
-      isoPrepDone = _json['isoPrepDone'];
+      isoPrepDone = _json['isoPrepDone'] as core.String;
     }
     if (_json.containsKey('overall')) {
-      overall = _json['overall'];
+      overall = _json['overall'] as core.String;
     }
     if (_json.containsKey('stdout')) {
-      stdout = _json['stdout'];
+      stdout = _json['stdout'] as core.String;
     }
     if (_json.containsKey('upload')) {
-      upload = _json['upload'];
+      upload = _json['upload'] as core.String;
     }
     if (_json.containsKey('uploadStartTime')) {
-      uploadStartTime = _json['uploadStartTime'];
+      uploadStartTime = _json['uploadStartTime'] as core.String;
     }
   }
 
@@ -3205,19 +3222,19 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
 
   GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(core.Map _json) {
     if (_json.containsKey('dockerCacheHit')) {
-      dockerCacheHit = _json['dockerCacheHit'];
+      dockerCacheHit = _json['dockerCacheHit'] as core.bool;
     }
     if (_json.containsKey('dockerImageName')) {
-      dockerImageName = _json['dockerImageName'];
+      dockerImageName = _json['dockerImageName'] as core.String;
     }
     if (_json.containsKey('inputCacheMiss')) {
       inputCacheMiss = _json['inputCacheMiss'].toDouble();
     }
     if (_json.containsKey('numErrors')) {
-      numErrors = _json['numErrors'];
+      numErrors = _json['numErrors'] as core.String;
     }
     if (_json.containsKey('numWarnings')) {
-      numWarnings = _json['numWarnings'];
+      numWarnings = _json['numWarnings'] as core.String;
     }
   }
 
@@ -3314,10 +3331,10 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
 
   GoogleDevtoolsRemotebuildbotCommandStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3378,10 +3395,10 @@ class GoogleDevtoolsRemotebuildbotResourceUsageStat {
 
   GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(core.Map _json) {
     if (_json.containsKey('total')) {
-      total = _json['total'];
+      total = _json['total'] as core.String;
     }
     if (_json.containsKey('used')) {
-      used = _json['used'];
+      used = _json['used'] as core.String;
     }
   }
 
@@ -3411,10 +3428,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('acceleratorCount')) {
-      acceleratorCount = _json['acceleratorCount'];
+      acceleratorCount = _json['acceleratorCount'] as core.String;
     }
     if (_json.containsKey('acceleratorType')) {
-      acceleratorType = _json['acceleratorType'];
+      acceleratorType = _json['acceleratorType'] as core.String;
     }
   }
 
@@ -3443,10 +3460,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
       core.Map _json) {
     if (_json.containsKey('maxSize')) {
-      maxSize = _json['maxSize'];
+      maxSize = _json['maxSize'] as core.String;
     }
     if (_json.containsKey('minSize')) {
-      minSize = _json['minSize'];
+      minSize = _json['minSize'] as core.String;
     }
   }
 
@@ -3487,10 +3504,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
               _json['instance']);
     }
     if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'];
+      instanceId = _json['instanceId'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
   }
 
@@ -3529,10 +3546,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('poolId')) {
-      poolId = _json['poolId'];
+      poolId = _json['poolId'] as core.String;
     }
     if (_json.containsKey('workerPool')) {
       workerPool =
@@ -3567,7 +3584,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3591,7 +3608,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3705,7 +3722,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
               .fromJson(_json['dockerSiblingContainers']);
     }
     if (_json.containsKey('linuxIsolation')) {
-      linuxIsolation = _json['linuxIsolation'];
+      linuxIsolation = _json['linuxIsolation'] as core.String;
     }
   }
 
@@ -3765,10 +3782,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromJson(
       core.Map _json) {
     if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List).cast<core.String>();
+      allowedValues = (_json['allowedValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('policy')) {
-      policy = _json['policy'];
+      policy = _json['policy'] as core.String;
     }
   }
 
@@ -3795,7 +3814,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3819,7 +3838,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3877,16 +3896,16 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
               _json['featurePolicy']);
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('loggingEnabled')) {
-      loggingEnabled = _json['loggingEnabled'];
+      loggingEnabled = _json['loggingEnabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3920,7 +3939,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
   }
 
@@ -3986,10 +4005,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
   }
 
@@ -4047,10 +4066,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('nodeType')) {
-      nodeType = _json['nodeType'];
+      nodeType = _json['nodeType'] as core.String;
     }
     if (_json.containsKey('nodesZone')) {
-      nodesZone = _json['nodesZone'];
+      nodesZone = _json['nodesZone'] as core.String;
     }
   }
 
@@ -4097,13 +4116,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
               _json['instance']);
     }
     if (_json.containsKey('loggingEnabled')) {
-      loggingEnabled = _json['loggingEnabled'];
+      loggingEnabled = _json['loggingEnabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -4144,7 +4163,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
     if (_json.containsKey('workerPool')) {
       workerPool =
@@ -4228,28 +4247,30 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
               .fromJson(_json['accelerator']);
     }
     if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'];
+      diskSizeGb = _json['diskSizeGb'] as core.String;
     }
     if (_json.containsKey('diskType')) {
-      diskType = _json['diskType'];
+      diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'];
+      machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('maxConcurrentActions')) {
-      maxConcurrentActions = _json['maxConcurrentActions'];
+      maxConcurrentActions = _json['maxConcurrentActions'] as core.String;
     }
     if (_json.containsKey('minCpuPlatform')) {
-      minCpuPlatform = _json['minCpuPlatform'];
+      minCpuPlatform = _json['minCpuPlatform'] as core.String;
     }
     if (_json.containsKey('networkAccess')) {
-      networkAccess = _json['networkAccess'];
+      networkAccess = _json['networkAccess'] as core.String;
     }
     if (_json.containsKey('reserved')) {
-      reserved = _json['reserved'];
+      reserved = _json['reserved'] as core.bool;
     }
     if (_json.containsKey('soleTenancy')) {
       soleTenancy =
@@ -4257,7 +4278,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
               .fromJson(_json['soleTenancy']);
     }
     if (_json.containsKey('vmImage')) {
-      vmImage = _json['vmImage'];
+      vmImage = _json['vmImage'] as core.String;
     }
   }
 
@@ -4350,13 +4371,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
               _json['autoscale']);
     }
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('workerConfig')) {
       workerConfig =
@@ -4364,7 +4385,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
               _json['workerConfig']);
     }
     if (_json.containsKey('workerCount')) {
-      workerCount = _json['workerCount'];
+      workerCount = _json['workerCount'] as core.String;
     }
   }
 
@@ -4423,10 +4444,10 @@ class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
 
   GoogleDevtoolsRemoteworkersV1test2AdminTemp.fromJson(core.Map _json) {
     if (_json.containsKey('arg')) {
-      arg = _json['arg'];
+      arg = _json['arg'] as core.String;
     }
     if (_json.containsKey('command')) {
-      command = _json['command'];
+      command = _json['command'] as core.String;
     }
   }
 
@@ -4460,7 +4481,7 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
 
   GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(core.Map _json) {
     if (_json.containsKey('contents')) {
-      contents = _json['contents'];
+      contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
       digest =
@@ -4498,7 +4519,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
 
   GoogleDevtoolsRemoteworkersV1test2CommandOutputs.fromJson(core.Map _json) {
     if (_json.containsKey('exitCode')) {
-      exitCode = _json['exitCode'];
+      exitCode = _json['exitCode'] as core.int;
     }
     if (_json.containsKey('outputs')) {
       outputs =
@@ -4534,10 +4555,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
 
   GoogleDevtoolsRemoteworkersV1test2CommandOverhead.fromJson(core.Map _json) {
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('overhead')) {
-      overhead = _json['overhead'];
+      overhead = _json['overhead'] as core.String;
     }
   }
 
@@ -4594,15 +4615,17 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
 
   GoogleDevtoolsRemoteworkersV1test2CommandResult.fromJson(core.Map _json) {
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('exitCode')) {
-      exitCode = _json['exitCode'];
+      exitCode = _json['exitCode'] as core.int;
     }
     if (_json.containsKey('metadata')) {
       metadata = (_json['metadata'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('outputs')) {
@@ -4610,7 +4633,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
           GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['outputs']);
     }
     if (_json.containsKey('overhead')) {
-      overhead = _json['overhead'];
+      overhead = _json['overhead'] as core.String;
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(_json['status']);
@@ -4728,7 +4751,9 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs.fromJson(core.Map _json) {
     if (_json.containsKey('arguments')) {
-      arguments = (_json['arguments'] as core.List).cast<core.String>();
+      arguments = (_json['arguments'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('environmentVariables')) {
       environmentVariables = (_json['environmentVariables'] as core.List)
@@ -4751,7 +4776,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
           .toList();
     }
     if (_json.containsKey('workingDirectory')) {
-      workingDirectory = _json['workingDirectory'];
+      workingDirectory = _json['workingDirectory'] as core.String;
     }
   }
 
@@ -4791,10 +4816,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable.fromJson(
       core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -4839,16 +4864,20 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
   GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs.fromJson(
       core.Map _json) {
     if (_json.containsKey('directories')) {
-      directories = (_json['directories'] as core.List).cast<core.String>();
+      directories = (_json['directories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('files')) {
-      files = (_json['files'] as core.List).cast<core.String>();
+      files = (_json['files'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('stderrDestination')) {
-      stderrDestination = _json['stderrDestination'];
+      stderrDestination = _json['stderrDestination'] as core.String;
     }
     if (_json.containsKey('stdoutDestination')) {
-      stdoutDestination = _json['stdoutDestination'];
+      stdoutDestination = _json['stdoutDestination'] as core.String;
     }
   }
 
@@ -4896,13 +4925,13 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
   GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts.fromJson(
       core.Map _json) {
     if (_json.containsKey('execution')) {
-      execution = _json['execution'];
+      execution = _json['execution'] as core.String;
     }
     if (_json.containsKey('idle')) {
-      idle = _json['idle'];
+      idle = _json['idle'] as core.String;
     }
     if (_json.containsKey('shutdown')) {
-      shutdown = _json['shutdown'];
+      shutdown = _json['shutdown'] as core.String;
     }
   }
 
@@ -4943,10 +4972,10 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
 
   GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(core.Map _json) {
     if (_json.containsKey('hash')) {
-      hash = _json['hash'];
+      hash = _json['hash'] as core.String;
     }
     if (_json.containsKey('sizeBytes')) {
-      sizeBytes = _json['sizeBytes'];
+      sizeBytes = _json['sizeBytes'] as core.String;
     }
   }
 
@@ -5020,7 +5049,7 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
           GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -5067,17 +5096,17 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
 
   GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('contents')) {
-      contents = _json['contents'];
+      contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
       digest =
           GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['digest']);
     }
     if (_json.containsKey('isExecutable')) {
-      isExecutable = _json['isExecutable'];
+      isExecutable = _json['isExecutable'] as core.bool;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -5140,21 +5169,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = GoogleRpcStatus.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -5205,16 +5236,18 @@ class GoogleRpcStatus {
 
   GoogleRpcStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 

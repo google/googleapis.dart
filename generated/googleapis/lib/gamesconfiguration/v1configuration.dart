@@ -747,28 +747,28 @@ class AchievementConfiguration {
 
   AchievementConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('achievementType')) {
-      achievementType = _json['achievementType'];
+      achievementType = _json['achievementType'] as core.String;
     }
     if (_json.containsKey('draft')) {
       draft = AchievementConfigurationDetail.fromJson(_json['draft']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('initialState')) {
-      initialState = _json['initialState'];
+      initialState = _json['initialState'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('published')) {
       published = AchievementConfigurationDetail.fromJson(_json['published']);
     }
     if (_json.containsKey('stepsToUnlock')) {
-      stepsToUnlock = _json['stepsToUnlock'];
+      stepsToUnlock = _json['stepsToUnlock'] as core.int;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
   }
 
@@ -830,19 +830,19 @@ class AchievementConfigurationDetail {
       description = LocalizedStringBundle.fromJson(_json['description']);
     }
     if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'];
+      iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = LocalizedStringBundle.fromJson(_json['name']);
     }
     if (_json.containsKey('pointValue')) {
-      pointValue = _json['pointValue'];
+      pointValue = _json['pointValue'] as core.int;
     }
     if (_json.containsKey('sortRank')) {
-      sortRank = _json['sortRank'];
+      sortRank = _json['sortRank'] as core.int;
     }
   }
 
@@ -892,10 +892,10 @@ class AchievementConfigurationListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1016,13 +1016,13 @@ class GamesNumberFormatConfiguration {
 
   GamesNumberFormatConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('numDecimalPlaces')) {
-      numDecimalPlaces = _json['numDecimalPlaces'];
+      numDecimalPlaces = _json['numDecimalPlaces'] as core.int;
     }
     if (_json.containsKey('numberFormatType')) {
-      numberFormatType = _json['numberFormatType'];
+      numberFormatType = _json['numberFormatType'] as core.String;
     }
     if (_json.containsKey('suffix')) {
       suffix = GamesNumberAffixConfiguration.fromJson(_json['suffix']);
@@ -1070,16 +1070,16 @@ class ImageConfiguration {
 
   ImageConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('imageType')) {
-      imageType = _json['imageType'];
+      imageType = _json['imageType'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('resourceId')) {
-      resourceId = _json['resourceId'];
+      resourceId = _json['resourceId'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -1139,25 +1139,25 @@ class LeaderboardConfiguration {
       draft = LeaderboardConfigurationDetail.fromJson(_json['draft']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('published')) {
       published = LeaderboardConfigurationDetail.fromJson(_json['published']);
     }
     if (_json.containsKey('scoreMax')) {
-      scoreMax = _json['scoreMax'];
+      scoreMax = _json['scoreMax'] as core.String;
     }
     if (_json.containsKey('scoreMin')) {
-      scoreMin = _json['scoreMin'];
+      scoreMin = _json['scoreMin'] as core.String;
     }
     if (_json.containsKey('scoreOrder')) {
-      scoreOrder = _json['scoreOrder'];
+      scoreOrder = _json['scoreOrder'] as core.String;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
   }
 
@@ -1213,10 +1213,10 @@ class LeaderboardConfigurationDetail {
 
   LeaderboardConfigurationDetail.fromJson(core.Map _json) {
     if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'];
+      iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = LocalizedStringBundle.fromJson(_json['name']);
@@ -1226,7 +1226,7 @@ class LeaderboardConfigurationDetail {
           GamesNumberFormatConfiguration.fromJson(_json['scoreFormat']);
     }
     if (_json.containsKey('sortRank')) {
-      sortRank = _json['sortRank'];
+      sortRank = _json['sortRank'] as core.int;
     }
   }
 
@@ -1273,10 +1273,10 @@ class LeaderboardConfigurationListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1311,13 +1311,13 @@ class LocalizedString {
 
   LocalizedString.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locale')) {
-      locale = _json['locale'];
+      locale = _json['locale'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -1349,7 +1349,7 @@ class LocalizedStringBundle {
 
   LocalizedStringBundle.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('translations')) {
       translations = (_json['translations'] as core.List)

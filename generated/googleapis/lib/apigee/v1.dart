@@ -11752,15 +11752,17 @@ class GoogleApiHttpBody {
 
   GoogleApiHttpBody.fromJson(core.Map _json) {
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
   }
@@ -11824,10 +11826,10 @@ class GoogleCloudApigeeV1AccessGet {
 
   GoogleCloudApigeeV1AccessGet.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -11853,10 +11855,10 @@ class GoogleCloudApigeeV1AccessRemove {
 
   GoogleCloudApigeeV1AccessRemove.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('success')) {
-      success = _json['success'];
+      success = _json['success'] as core.bool;
     }
   }
 
@@ -11883,13 +11885,13 @@ class GoogleCloudApigeeV1AccessSet {
 
   GoogleCloudApigeeV1AccessSet.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('success')) {
-      success = _json['success'];
+      success = _json['success'] as core.bool;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -11928,13 +11930,13 @@ class GoogleCloudApigeeV1Alias {
 
   GoogleCloudApigeeV1Alias.fromJson(core.Map _json) {
     if (_json.containsKey('alias')) {
-      alias = _json['alias'];
+      alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('certsInfo')) {
       certsInfo = GoogleCloudApigeeV1Certificate.fromJson(_json['certsInfo']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -11973,13 +11975,13 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
 
   GoogleCloudApigeeV1AliasRevisionConfig.fromJson(core.Map _json) {
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -12022,16 +12024,16 @@ class GoogleCloudApigeeV1ApiCategory {
       data = GoogleCloudApigeeV1ApiCategoryData.fromJson(_json['data']);
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -12074,16 +12076,16 @@ class GoogleCloudApigeeV1ApiCategoryData {
 
   GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('siteId')) {
-      siteId = _json['siteId'];
+      siteId = _json['siteId'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -12219,10 +12221,12 @@ class GoogleCloudApigeeV1ApiProduct {
 
   GoogleCloudApigeeV1ApiProduct.fromJson(core.Map _json) {
     if (_json.containsKey('apiResources')) {
-      apiResources = (_json['apiResources'] as core.List).cast<core.String>();
+      apiResources = (_json['apiResources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('approvalType')) {
-      approvalType = _json['approvalType'];
+      approvalType = _json['approvalType'] as core.String;
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -12231,41 +12235,47 @@ class GoogleCloudApigeeV1ApiProduct {
           .toList();
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List).cast<core.String>();
+      environments = (_json['environments'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('operationGroup')) {
       operationGroup =
           GoogleCloudApigeeV1OperationGroup.fromJson(_json['operationGroup']);
     }
     if (_json.containsKey('proxies')) {
-      proxies = (_json['proxies'] as core.List).cast<core.String>();
+      proxies = (_json['proxies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('quota')) {
-      quota = _json['quota'];
+      quota = _json['quota'] as core.String;
     }
     if (_json.containsKey('quotaInterval')) {
-      quotaInterval = _json['quotaInterval'];
+      quotaInterval = _json['quotaInterval'] as core.String;
     }
     if (_json.containsKey('quotaTimeUnit')) {
-      quotaTimeUnit = _json['quotaTimeUnit'];
+      quotaTimeUnit = _json['quotaTimeUnit'] as core.String;
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -12331,10 +12341,10 @@ class GoogleCloudApigeeV1ApiProductRef {
 
   GoogleCloudApigeeV1ApiProductRef.fromJson(core.Map _json) {
     if (_json.containsKey('apiproduct')) {
-      apiproduct = _json['apiproduct'];
+      apiproduct = _json['apiproduct'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -12368,16 +12378,18 @@ class GoogleCloudApigeeV1ApiProxy {
 
   GoogleCloudApigeeV1ApiProxy.fromJson(core.Map _json) {
     if (_json.containsKey('latestRevisionId')) {
-      latestRevisionId = _json['latestRevisionId'];
+      latestRevisionId = _json['latestRevisionId'] as core.String;
     }
     if (_json.containsKey('metaData')) {
       metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json['metaData']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('revision')) {
-      revision = (_json['revision'] as core.List).cast<core.String>();
+      revision = (_json['revision'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -12487,76 +12499,94 @@ class GoogleCloudApigeeV1ApiProxyRevision {
 
   GoogleCloudApigeeV1ApiProxyRevision.fromJson(core.Map _json) {
     if (_json.containsKey('basepaths')) {
-      basepaths = (_json['basepaths'] as core.List).cast<core.String>();
+      basepaths = (_json['basepaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('configurationVersion')) {
       configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
           _json['configurationVersion']);
     }
     if (_json.containsKey('contextInfo')) {
-      contextInfo = _json['contextInfo'];
+      contextInfo = _json['contextInfo'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties =
-          (_json['entityMetaDataAsProperties'] as core.Map)
-              .cast<core.String, core.String>();
+      entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
+          _json['entityMetaDataAsProperties'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List).cast<core.String>();
+      policies = (_json['policies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('proxies')) {
-      proxies = (_json['proxies'] as core.List).cast<core.String>();
+      proxies = (_json['proxies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('proxyEndpoints')) {
-      proxyEndpoints =
-          (_json['proxyEndpoints'] as core.List).cast<core.String>();
+      proxyEndpoints = (_json['proxyEndpoints'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('resourceFiles')) {
       resourceFiles =
           GoogleCloudApigeeV1ResourceFiles.fromJson(_json['resourceFiles']);
     }
     if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List).cast<core.String>();
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
     if (_json.containsKey('sharedFlows')) {
-      sharedFlows = (_json['sharedFlows'] as core.List).cast<core.String>();
+      sharedFlows = (_json['sharedFlows'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('spec')) {
-      spec = _json['spec'];
+      spec = _json['spec'] as core.String;
     }
     if (_json.containsKey('targetEndpoints')) {
-      targetEndpoints =
-          (_json['targetEndpoints'] as core.List).cast<core.String>();
+      targetEndpoints = (_json['targetEndpoints'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('targetServers')) {
-      targetServers = (_json['targetServers'] as core.List).cast<core.String>();
+      targetServers = (_json['targetServers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('targets')) {
-      targets = (_json['targets'] as core.List).cast<core.String>();
+      targets = (_json['targets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('teams')) {
-      teams = (_json['teams'] as core.List).cast<core.String>();
+      teams = (_json['teams'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -12649,16 +12679,16 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
 
   GoogleCloudApigeeV1ApiResponseWrapper.fromJson(core.Map _json) {
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -12735,7 +12765,7 @@ class GoogleCloudApigeeV1App {
           .toList();
     }
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -12744,13 +12774,13 @@ class GoogleCloudApigeeV1App {
           .toList();
     }
     if (_json.containsKey('callbackUrl')) {
-      callbackUrl = _json['callbackUrl'];
+      callbackUrl = _json['callbackUrl'] as core.String;
     }
     if (_json.containsKey('companyName')) {
-      companyName = _json['companyName'];
+      companyName = _json['companyName'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
@@ -12759,22 +12789,24 @@ class GoogleCloudApigeeV1App {
           .toList();
     }
     if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'];
+      developerId = _json['developerId'] as core.String;
     }
     if (_json.containsKey('keyExpiresIn')) {
-      keyExpiresIn = _json['keyExpiresIn'];
+      keyExpiresIn = _json['keyExpiresIn'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -12867,41 +12899,41 @@ class GoogleCloudApigeeV1AsyncQuery {
 
   GoogleCloudApigeeV1AsyncQuery.fromJson(core.Map _json) {
     if (_json.containsKey('created')) {
-      created = _json['created'];
+      created = _json['created'] as core.String;
     }
     if (_json.containsKey('error')) {
-      error = _json['error'];
+      error = _json['error'] as core.String;
     }
     if (_json.containsKey('executionTime')) {
-      executionTime = _json['executionTime'];
+      executionTime = _json['executionTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('queryParams')) {
       queryParams =
           GoogleCloudApigeeV1QueryMetadata.fromJson(_json['queryParams']);
     }
     if (_json.containsKey('reportDefinitionId')) {
-      reportDefinitionId = _json['reportDefinitionId'];
+      reportDefinitionId = _json['reportDefinitionId'] as core.String;
     }
     if (_json.containsKey('result')) {
       result = GoogleCloudApigeeV1AsyncQueryResult.fromJson(_json['result']);
     }
     if (_json.containsKey('resultFileSize')) {
-      resultFileSize = _json['resultFileSize'];
+      resultFileSize = _json['resultFileSize'] as core.String;
     }
     if (_json.containsKey('resultRows')) {
-      resultRows = _json['resultRows'];
+      resultRows = _json['resultRows'] as core.String;
     }
     if (_json.containsKey('self')) {
-      self = _json['self'];
+      self = _json['self'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
   }
 
@@ -12959,10 +12991,10 @@ class GoogleCloudApigeeV1AsyncQueryResult {
 
   GoogleCloudApigeeV1AsyncQueryResult.fromJson(core.Map _json) {
     if (_json.containsKey('expires')) {
-      expires = _json['expires'];
+      expires = _json['expires'] as core.String;
     }
     if (_json.containsKey('self')) {
-      self = _json['self'];
+      self = _json['self'] as core.String;
     }
   }
 
@@ -12990,10 +13022,10 @@ class GoogleCloudApigeeV1Attribute {
 
   GoogleCloudApigeeV1Attribute.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -13073,38 +13105,39 @@ class GoogleCloudApigeeV1CertInfo {
 
   GoogleCloudApigeeV1CertInfo.fromJson(core.Map _json) {
     if (_json.containsKey('basicConstraints')) {
-      basicConstraints = _json['basicConstraints'];
+      basicConstraints = _json['basicConstraints'] as core.String;
     }
     if (_json.containsKey('expiryDate')) {
-      expiryDate = _json['expiryDate'];
+      expiryDate = _json['expiryDate'] as core.String;
     }
     if (_json.containsKey('isValid')) {
-      isValid = _json['isValid'];
+      isValid = _json['isValid'] as core.String;
     }
     if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'];
+      issuer = _json['issuer'] as core.String;
     }
     if (_json.containsKey('publicKey')) {
-      publicKey = _json['publicKey'];
+      publicKey = _json['publicKey'] as core.String;
     }
     if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'];
+      serialNumber = _json['serialNumber'] as core.String;
     }
     if (_json.containsKey('sigAlgName')) {
-      sigAlgName = _json['sigAlgName'];
+      sigAlgName = _json['sigAlgName'] as core.String;
     }
     if (_json.containsKey('subject')) {
-      subject = _json['subject'];
+      subject = _json['subject'] as core.String;
     }
     if (_json.containsKey('subjectAlternativeNames')) {
-      subjectAlternativeNames =
-          (_json['subjectAlternativeNames'] as core.List).cast<core.String>();
+      subjectAlternativeNames = (_json['subjectAlternativeNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('validFrom')) {
-      validFrom = _json['validFrom'];
+      validFrom = _json['validFrom'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -13179,10 +13212,10 @@ class GoogleCloudApigeeV1CommonNameConfig {
 
   GoogleCloudApigeeV1CommonNameConfig.fromJson(core.Map _json) {
     if (_json.containsKey('matchWildCards')) {
-      matchWildCards = _json['matchWildCards'];
+      matchWildCards = _json['matchWildCards'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -13211,10 +13244,10 @@ class GoogleCloudApigeeV1ConfigVersion {
 
   GoogleCloudApigeeV1ConfigVersion.fromJson(core.Map _json) {
     if (_json.containsKey('majorVersion')) {
-      majorVersion = _json['majorVersion'];
+      majorVersion = _json['majorVersion'] as core.int;
     }
     if (_json.containsKey('minorVersion')) {
-      minorVersion = _json['minorVersion'];
+      minorVersion = _json['minorVersion'] as core.int;
     }
   }
 
@@ -13272,22 +13305,24 @@ class GoogleCloudApigeeV1Credential {
           .toList();
     }
     if (_json.containsKey('consumerKey')) {
-      consumerKey = _json['consumerKey'];
+      consumerKey = _json['consumerKey'] as core.String;
     }
     if (_json.containsKey('consumerSecret')) {
-      consumerSecret = _json['consumerSecret'];
+      consumerSecret = _json['consumerSecret'] as core.String;
     }
     if (_json.containsKey('expiresAt')) {
-      expiresAt = _json['expiresAt'];
+      expiresAt = _json['expiresAt'] as core.String;
     }
     if (_json.containsKey('issuedAt')) {
-      issuedAt = _json['issuedAt'];
+      issuedAt = _json['issuedAt'] as core.String;
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -13399,37 +13434,41 @@ class GoogleCloudApigeeV1CustomReport {
 
   GoogleCloudApigeeV1CustomReport.fromJson(core.Map _json) {
     if (_json.containsKey('chartType')) {
-      chartType = _json['chartType'];
+      chartType = _json['chartType'] as core.String;
     }
     if (_json.containsKey('comments')) {
-      comments = (_json['comments'] as core.List).cast<core.String>();
+      comments = (_json['comments'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('fromTime')) {
-      fromTime = _json['fromTime'];
+      fromTime = _json['fromTime'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('lastViewedAt')) {
-      lastViewedAt = _json['lastViewedAt'];
+      lastViewedAt = _json['lastViewedAt'] as core.String;
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.String;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -13438,13 +13477,13 @@ class GoogleCloudApigeeV1CustomReport {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'];
+      offset = _json['offset'] as core.String;
     }
     if (_json.containsKey('organization')) {
-      organization = _json['organization'];
+      organization = _json['organization'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
@@ -13453,22 +13492,26 @@ class GoogleCloudApigeeV1CustomReport {
           .toList();
     }
     if (_json.containsKey('sortByCols')) {
-      sortByCols = (_json['sortByCols'] as core.List).cast<core.String>();
+      sortByCols = (_json['sortByCols'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sortOrder')) {
-      sortOrder = _json['sortOrder'];
+      sortOrder = _json['sortOrder'] as core.String;
     }
     if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List).cast<core.String>();
+      tags = (_json['tags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'];
+      timeUnit = _json['timeUnit'] as core.String;
     }
     if (_json.containsKey('toTime')) {
-      toTime = _json['toTime'];
+      toTime = _json['toTime'] as core.String;
     }
     if (_json.containsKey('topk')) {
-      topk = _json['topk'];
+      topk = _json['topk'] as core.String;
     }
   }
 
@@ -13557,10 +13600,10 @@ class GoogleCloudApigeeV1CustomReportMetric {
 
   GoogleCloudApigeeV1CustomReportMetric.fromJson(core.Map _json) {
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -13596,10 +13639,10 @@ class GoogleCloudApigeeV1DataCollectorConfig {
 
   GoogleCloudApigeeV1DataCollectorConfig.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -13647,26 +13690,26 @@ class GoogleCloudApigeeV1Datastore {
 
   GoogleCloudApigeeV1Datastore.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('datastoreConfig')) {
       datastoreConfig =
           GoogleCloudApigeeV1DatastoreConfig.fromJson(_json['datastoreConfig']);
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'];
+      lastUpdateTime = _json['lastUpdateTime'] as core.String;
     }
     if (_json.containsKey('org')) {
-      org = _json['org'];
+      org = _json['org'] as core.String;
     }
     if (_json.containsKey('self')) {
-      self = _json['self'];
+      self = _json['self'] as core.String;
     }
     if (_json.containsKey('targetType')) {
-      targetType = _json['targetType'];
+      targetType = _json['targetType'] as core.String;
     }
   }
 
@@ -13718,19 +13761,19 @@ class GoogleCloudApigeeV1DatastoreConfig {
 
   GoogleCloudApigeeV1DatastoreConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'];
+      bucketName = _json['bucketName'] as core.String;
     }
     if (_json.containsKey('datasetName')) {
-      datasetName = _json['datasetName'];
+      datasetName = _json['datasetName'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('tablePrefix')) {
-      tablePrefix = _json['tablePrefix'];
+      tablePrefix = _json['tablePrefix'] as core.String;
     }
   }
 
@@ -13770,10 +13813,10 @@ class GoogleCloudApigeeV1DateRange {
 
   GoogleCloudApigeeV1DateRange.fromJson(core.Map _json) {
     if (_json.containsKey('end')) {
-      end = _json['end'];
+      end = _json['end'] as core.String;
     }
     if (_json.containsKey('start')) {
-      start = _json['start'];
+      start = _json['start'] as core.String;
     }
   }
 
@@ -13827,36 +13870,47 @@ class GoogleCloudApigeeV1DebugMask {
 
   GoogleCloudApigeeV1DebugMask.fromJson(core.Map _json) {
     if (_json.containsKey('faultJSONPaths')) {
-      faultJSONPaths =
-          (_json['faultJSONPaths'] as core.List).cast<core.String>();
+      faultJSONPaths = (_json['faultJSONPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('faultXPaths')) {
-      faultXPaths = (_json['faultXPaths'] as core.List).cast<core.String>();
+      faultXPaths = (_json['faultXPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('namespaces')) {
-      namespaces =
-          (_json['namespaces'] as core.Map).cast<core.String, core.String>();
+      namespaces = commons.mapMap<core.String, core.String>(
+          _json['namespaces'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('requestJSONPaths')) {
-      requestJSONPaths =
-          (_json['requestJSONPaths'] as core.List).cast<core.String>();
+      requestJSONPaths = (_json['requestJSONPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('requestXPaths')) {
-      requestXPaths = (_json['requestXPaths'] as core.List).cast<core.String>();
+      requestXPaths = (_json['requestXPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('responseJSONPaths')) {
-      responseJSONPaths =
-          (_json['responseJSONPaths'] as core.List).cast<core.String>();
+      responseJSONPaths = (_json['responseJSONPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('responseXPaths')) {
-      responseXPaths =
-          (_json['responseXPaths'] as core.List).cast<core.String>();
+      responseXPaths = (_json['responseXPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('variables')) {
-      variables = (_json['variables'] as core.List).cast<core.String>();
+      variables = (_json['variables'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -13923,22 +13977,22 @@ class GoogleCloudApigeeV1DebugSession {
 
   GoogleCloudApigeeV1DebugSession.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.int;
     }
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'];
+      timeout = _json['timeout'] as core.String;
     }
     if (_json.containsKey('tracesize')) {
-      tracesize = _json['tracesize'];
+      tracesize = _json['tracesize'] as core.int;
     }
     if (_json.containsKey('validity')) {
-      validity = _json['validity'];
+      validity = _json['validity'] as core.int;
     }
   }
 
@@ -13982,7 +14036,7 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
 
   GoogleCloudApigeeV1DebugSessionTransaction.fromJson(core.Map _json) {
     if (_json.containsKey('completed')) {
-      completed = _json['completed'];
+      completed = _json['completed'] as core.bool;
     }
     if (_json.containsKey('point')) {
       point = (_json['point'] as core.List)
@@ -14012,7 +14066,7 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
 
   GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -14073,13 +14127,13 @@ class GoogleCloudApigeeV1Deployment {
 
   GoogleCloudApigeeV1Deployment.fromJson(core.Map _json) {
     if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'];
+      apiProxy = _json['apiProxy'] as core.String;
     }
     if (_json.containsKey('deployStartTime')) {
-      deployStartTime = _json['deployStartTime'];
+      deployStartTime = _json['deployStartTime'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
@@ -14099,7 +14153,7 @@ class GoogleCloudApigeeV1Deployment {
           .toList();
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
     if (_json.containsKey('routeConflicts')) {
       routeConflicts = (_json['routeConflicts'] as core.List)
@@ -14110,7 +14164,7 @@ class GoogleCloudApigeeV1Deployment {
           .toList();
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -14240,10 +14294,10 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('environmentGroup')) {
-      environmentGroup = _json['environmentGroup'];
+      environmentGroup = _json['environmentGroup'] as core.String;
     }
     if (_json.containsKey('fromDeployment')) {
       fromDeployment =
@@ -14251,7 +14305,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
               _json['fromDeployment']);
     }
     if (_json.containsKey('shouldSequenceRollout')) {
-      shouldSequenceRollout = _json['shouldSequenceRollout'];
+      shouldSequenceRollout = _json['shouldSequenceRollout'] as core.bool;
     }
     if (_json.containsKey('toDeployment')) {
       toDeployment =
@@ -14304,10 +14358,10 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
               _json['conflictingDeployment']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('environmentGroup')) {
-      environmentGroup = _json['environmentGroup'];
+      environmentGroup = _json['environmentGroup'] as core.String;
     }
   }
 
@@ -14345,16 +14399,16 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
       core.Map _json) {
     if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'];
+      apiProxy = _json['apiProxy'] as core.String;
     }
     if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'];
+      basepath = _json['basepath'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
   }
 
@@ -14402,23 +14456,24 @@ class GoogleCloudApigeeV1DeploymentConfig {
 
   GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.String>();
+      attributes = commons.mapMap<core.String, core.String>(
+          _json['attributes'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('basePath')) {
-      basePath = _json['basePath'];
+      basePath = _json['basePath'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('proxyUid')) {
-      proxyUid = _json['proxyUid'];
+      proxyUid = _json['proxyUid'] as core.String;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -14500,13 +14555,15 @@ class GoogleCloudApigeeV1Developer {
 
   GoogleCloudApigeeV1Developer.fromJson(core.Map _json) {
     if (_json.containsKey('accessType')) {
-      accessType = _json['accessType'];
+      accessType = _json['accessType'] as core.String;
     }
     if (_json.containsKey('appFamily')) {
-      appFamily = _json['appFamily'];
+      appFamily = _json['appFamily'] as core.String;
     }
     if (_json.containsKey('apps')) {
-      apps = (_json['apps'] as core.List).cast<core.String>();
+      apps = (_json['apps'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -14515,34 +14572,36 @@ class GoogleCloudApigeeV1Developer {
           .toList();
     }
     if (_json.containsKey('companies')) {
-      companies = (_json['companies'] as core.List).cast<core.String>();
+      companies = (_json['companies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'];
+      developerId = _json['developerId'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'];
+      firstName = _json['firstName'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'];
+      lastName = _json['lastName'] as core.String;
     }
     if (_json.containsKey('organizationName')) {
-      organizationName = _json['organizationName'];
+      organizationName = _json['organizationName'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('userName')) {
-      userName = _json['userName'];
+      userName = _json['userName'] as core.String;
     }
   }
 
@@ -14646,13 +14705,15 @@ class GoogleCloudApigeeV1DeveloperApp {
 
   GoogleCloudApigeeV1DeveloperApp.fromJson(core.Map _json) {
     if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List).cast<core.String>();
+      apiProducts = (_json['apiProducts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('appFamily')) {
-      appFamily = _json['appFamily'];
+      appFamily = _json['appFamily'] as core.String;
     }
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -14661,10 +14722,10 @@ class GoogleCloudApigeeV1DeveloperApp {
           .toList();
     }
     if (_json.containsKey('callbackUrl')) {
-      callbackUrl = _json['callbackUrl'];
+      callbackUrl = _json['callbackUrl'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
@@ -14673,22 +14734,24 @@ class GoogleCloudApigeeV1DeveloperApp {
           .toList();
     }
     if (_json.containsKey('developerId')) {
-      developerId = _json['developerId'];
+      developerId = _json['developerId'] as core.String;
     }
     if (_json.containsKey('keyExpiresIn')) {
-      keyExpiresIn = _json['keyExpiresIn'];
+      keyExpiresIn = _json['keyExpiresIn'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -14774,7 +14837,9 @@ class GoogleCloudApigeeV1DeveloperAppKey {
 
   GoogleCloudApigeeV1DeveloperAppKey.fromJson(core.Map _json) {
     if (_json.containsKey('apiProducts')) {
-      apiProducts = (_json['apiProducts'] as core.List).cast<core.Object>();
+      apiProducts = (_json['apiProducts'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -14783,22 +14848,24 @@ class GoogleCloudApigeeV1DeveloperAppKey {
           .toList();
     }
     if (_json.containsKey('consumerKey')) {
-      consumerKey = _json['consumerKey'];
+      consumerKey = _json['consumerKey'] as core.String;
     }
     if (_json.containsKey('consumerSecret')) {
-      consumerSecret = _json['consumerSecret'];
+      consumerSecret = _json['consumerSecret'] as core.String;
     }
     if (_json.containsKey('expiresAt')) {
-      expiresAt = _json['expiresAt'];
+      expiresAt = _json['expiresAt'] as core.String;
     }
     if (_json.containsKey('issuedAt')) {
-      issuedAt = _json['issuedAt'];
+      issuedAt = _json['issuedAt'] as core.String;
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -14850,7 +14917,7 @@ class GoogleCloudApigeeV1DimensionMetric {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -14882,13 +14949,13 @@ class GoogleCloudApigeeV1EntityMetadata {
 
   GoogleCloudApigeeV1EntityMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('subType')) {
-      subType = _json['subType'];
+      subType = _json['subType'] as core.String;
     }
   }
 
@@ -14934,19 +15001,19 @@ class GoogleCloudApigeeV1Environment {
 
   GoogleCloudApigeeV1Environment.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
@@ -15039,7 +15106,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
 
   GoogleCloudApigeeV1EnvironmentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('dataCollectors')) {
       dataCollectors = (_json['dataCollectors'] as core.List)
@@ -15057,8 +15124,9 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           .toList();
     }
     if (_json.containsKey('featureFlags')) {
-      featureFlags =
-          (_json['featureFlags'] as core.Map).cast<core.String, core.String>();
+      featureFlags = commons.mapMap<core.String, core.String>(
+          _json['featureFlags'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('flowhooks')) {
       flowhooks = (_json['flowhooks'] as core.List)
@@ -15073,13 +15141,13 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('provider')) {
-      provider = _json['provider'];
+      provider = _json['provider'] as core.String;
     }
     if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'];
+      pubsubTopic = _json['pubsubTopic'] as core.String;
     }
     if (_json.containsKey('resourceReferences')) {
       resourceReferences = (_json['resourceReferences'] as core.List)
@@ -15094,10 +15162,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           .toList();
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('sequenceNumber')) {
-      sequenceNumber = _json['sequenceNumber'];
+      sequenceNumber = _json['sequenceNumber'] as core.String;
     }
     if (_json.containsKey('targets')) {
       targets = (_json['targets'] as core.List)
@@ -15110,7 +15178,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(_json['traceConfig']);
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -15195,16 +15263,18 @@ class GoogleCloudApigeeV1EnvironmentGroup {
 
   GoogleCloudApigeeV1EnvironmentGroup.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('hostnames')) {
-      hostnames = (_json['hostnames'] as core.List).cast<core.String>();
+      hostnames = (_json['hostnames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -15243,13 +15313,13 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
 
   GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -15295,13 +15365,15 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
 
   GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(core.Map _json) {
     if (_json.containsKey('hostnames')) {
-      hostnames = (_json['hostnames'] as core.List).cast<core.String>();
+      hostnames = (_json['hostnames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('routingRules')) {
       routingRules = (_json['routingRules'] as core.List)
@@ -15310,7 +15382,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
           .toList();
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -15376,31 +15448,31 @@ class GoogleCloudApigeeV1Export {
 
   GoogleCloudApigeeV1Export.fromJson(core.Map _json) {
     if (_json.containsKey('created')) {
-      created = _json['created'];
+      created = _json['created'] as core.String;
     }
     if (_json.containsKey('datastoreName')) {
-      datastoreName = _json['datastoreName'];
+      datastoreName = _json['datastoreName'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('error')) {
-      error = _json['error'];
+      error = _json['error'] as core.String;
     }
     if (_json.containsKey('executionTime')) {
-      executionTime = _json['executionTime'];
+      executionTime = _json['executionTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('self')) {
-      self = _json['self'];
+      self = _json['self'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
   }
 
@@ -15465,22 +15537,22 @@ class GoogleCloudApigeeV1ExportRequest {
 
   GoogleCloudApigeeV1ExportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('csvDelimiter')) {
-      csvDelimiter = _json['csvDelimiter'];
+      csvDelimiter = _json['csvDelimiter'] as core.String;
     }
     if (_json.containsKey('datastoreName')) {
-      datastoreName = _json['datastoreName'];
+      datastoreName = _json['datastoreName'] as core.String;
     }
     if (_json.containsKey('dateRange')) {
       dateRange = GoogleCloudApigeeV1DateRange.fromJson(_json['dateRange']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'];
+      outputFormat = _json['outputFormat'] as core.String;
     }
   }
 
@@ -15531,16 +15603,16 @@ class GoogleCloudApigeeV1FlowHook {
 
   GoogleCloudApigeeV1FlowHook.fromJson(core.Map _json) {
     if (_json.containsKey('continueOnError')) {
-      continueOnError = _json['continueOnError'];
+      continueOnError = _json['continueOnError'] as core.bool;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('flowHookPoint')) {
-      flowHookPoint = _json['flowHookPoint'];
+      flowHookPoint = _json['flowHookPoint'] as core.String;
     }
     if (_json.containsKey('sharedFlow')) {
-      sharedFlow = _json['sharedFlow'];
+      sharedFlow = _json['sharedFlow'] as core.String;
     }
   }
 
@@ -15581,13 +15653,13 @@ class GoogleCloudApigeeV1FlowHookConfig {
 
   GoogleCloudApigeeV1FlowHookConfig.fromJson(core.Map _json) {
     if (_json.containsKey('continueOnError')) {
-      continueOnError = _json['continueOnError'];
+      continueOnError = _json['continueOnError'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sharedFlowName')) {
-      sharedFlowName = _json['sharedFlowName'];
+      sharedFlowName = _json['sharedFlowName'] as core.String;
     }
   }
 
@@ -15649,16 +15721,16 @@ class GoogleCloudApigeeV1IngressConfig {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'];
+      revisionCreateTime = _json['revisionCreateTime'] as core.String;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -15730,34 +15802,34 @@ class GoogleCloudApigeeV1Instance {
 
   GoogleCloudApigeeV1Instance.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('diskEncryptionKeyName')) {
-      diskEncryptionKeyName = _json['diskEncryptionKeyName'];
+      diskEncryptionKeyName = _json['diskEncryptionKeyName'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('port')) {
-      port = _json['port'];
+      port = _json['port'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -15813,13 +15885,13 @@ class GoogleCloudApigeeV1InstanceAttachment {
 
   GoogleCloudApigeeV1InstanceAttachment.fromJson(core.Map _json) {
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -15872,7 +15944,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
           .toList();
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
   }
 
@@ -15906,10 +15978,10 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision.fromJson(
       core.Map _json) {
     if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'];
+      percentage = _json['percentage'] as core.int;
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
   }
 
@@ -15945,16 +16017,16 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
       core.Map _json) {
     if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'];
+      basepath = _json['basepath'] as core.String;
     }
     if (_json.containsKey('envgroup')) {
-      envgroup = _json['envgroup'];
+      envgroup = _json['envgroup'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'];
+      percentage = _json['percentage'] as core.int;
     }
   }
 
@@ -15988,10 +16060,10 @@ class GoogleCloudApigeeV1KeyAliasReference {
 
   GoogleCloudApigeeV1KeyAliasReference.fromJson(core.Map _json) {
     if (_json.containsKey('aliasId')) {
-      aliasId = _json['aliasId'];
+      aliasId = _json['aliasId'] as core.String;
     }
     if (_json.containsKey('reference')) {
-      reference = _json['reference'];
+      reference = _json['reference'] as core.String;
     }
   }
 
@@ -16019,10 +16091,10 @@ class GoogleCloudApigeeV1KeyValueMap {
 
   GoogleCloudApigeeV1KeyValueMap.fromJson(core.Map _json) {
     if (_json.containsKey('encrypted')) {
-      encrypted = _json['encrypted'];
+      encrypted = _json['encrypted'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -16051,10 +16123,12 @@ class GoogleCloudApigeeV1Keystore {
 
   GoogleCloudApigeeV1Keystore.fromJson(core.Map _json) {
     if (_json.containsKey('aliases')) {
-      aliases = (_json['aliases'] as core.List).cast<core.String>();
+      aliases = (_json['aliases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -16088,7 +16162,7 @@ class GoogleCloudApigeeV1KeystoreConfig {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -16131,16 +16205,16 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
           .toList();
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -16322,7 +16396,7 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
 
   GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('sessions')) {
       sessions = (_json['sessions'] as core.List)
@@ -16415,7 +16489,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
               .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -16451,7 +16525,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -16562,7 +16636,7 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -16598,7 +16672,7 @@ class GoogleCloudApigeeV1ListInstancesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -16703,10 +16777,14 @@ class GoogleCloudApigeeV1Metadata {
 
   GoogleCloudApigeeV1Metadata.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = (_json['errors'] as core.List).cast<core.String>();
+      errors = (_json['errors'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('notices')) {
-      notices = (_json['notices'] as core.List).cast<core.String>();
+      notices = (_json['notices'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -16741,10 +16819,12 @@ class GoogleCloudApigeeV1Metric {
 
   GoogleCloudApigeeV1Metric.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.Object>();
+      values = (_json['values'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
   }
 
@@ -16776,10 +16856,12 @@ class GoogleCloudApigeeV1Operation {
 
   GoogleCloudApigeeV1Operation.fromJson(core.Map _json) {
     if (_json.containsKey('methods')) {
-      methods = (_json['methods'] as core.List).cast<core.String>();
+      methods = (_json['methods'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
   }
 
@@ -16818,7 +16900,7 @@ class GoogleCloudApigeeV1OperationConfig {
 
   GoogleCloudApigeeV1OperationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('apiSource')) {
-      apiSource = _json['apiSource'];
+      apiSource = _json['apiSource'] as core.String;
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
@@ -16874,7 +16956,7 @@ class GoogleCloudApigeeV1OperationGroup {
 
   GoogleCloudApigeeV1OperationGroup.fromJson(core.Map _json) {
     if (_json.containsKey('operationConfigType')) {
-      operationConfigType = _json['operationConfigType'];
+      operationConfigType = _json['operationConfigType'] as core.String;
     }
     if (_json.containsKey('operationConfigs')) {
       operationConfigs = (_json['operationConfigs'] as core.List)
@@ -16922,13 +17004,13 @@ class GoogleCloudApigeeV1OperationMetadata {
 
   GoogleCloudApigeeV1OperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'];
+      operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('targetResourceName')) {
-      targetResourceName = _json['targetResourceName'];
+      targetResourceName = _json['targetResourceName'] as core.String;
     }
   }
 
@@ -16996,7 +17078,9 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
 
   GoogleCloudApigeeV1OptimizedStatsNode.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = (_json['data'] as core.List).cast<core.Object>();
+      data = (_json['data'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
   }
 
@@ -17029,13 +17113,15 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
 
   GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('TimeUnit')) {
-      TimeUnit = (_json['TimeUnit'] as core.List).cast<core.String>();
+      TimeUnit = (_json['TimeUnit'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('metaData')) {
       metaData = GoogleCloudApigeeV1Metadata.fromJson(_json['metaData']);
     }
     if (_json.containsKey('resultTruncated')) {
-      resultTruncated = _json['resultTruncated'];
+      resultTruncated = _json['resultTruncated'] as core.bool;
     }
     if (_json.containsKey('stats')) {
       stats = GoogleCloudApigeeV1OptimizedStatsNode.fromJson(_json['stats']);
@@ -17148,52 +17234,56 @@ class GoogleCloudApigeeV1Organization {
 
   GoogleCloudApigeeV1Organization.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsRegion')) {
-      analyticsRegion = _json['analyticsRegion'];
+      analyticsRegion = _json['analyticsRegion'] as core.String;
     }
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.List).cast<core.String>();
+      attributes = (_json['attributes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('authorizedNetwork')) {
-      authorizedNetwork = _json['authorizedNetwork'];
+      authorizedNetwork = _json['authorizedNetwork'] as core.String;
     }
     if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'];
+      caCertificate = _json['caCertificate'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('customerName')) {
-      customerName = _json['customerName'];
+      customerName = _json['customerName'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('environments')) {
-      environments = (_json['environments'] as core.List).cast<core.String>();
+      environments = (_json['environments'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
     }
     if (_json.containsKey('runtimeType')) {
-      runtimeType_ = _json['runtimeType'];
+      runtimeType_ = _json['runtimeType'] as core.String;
     }
     if (_json.containsKey('subscriptionType')) {
-      subscriptionType = _json['subscriptionType'];
+      subscriptionType = _json['subscriptionType'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -17262,10 +17352,12 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
 
   GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(core.Map _json) {
     if (_json.containsKey('organization')) {
-      organization = _json['organization'];
+      organization = _json['organization'] as core.String;
     }
     if (_json.containsKey('projectIds')) {
-      projectIds = (_json['projectIds'] as core.List).cast<core.String>();
+      projectIds = (_json['projectIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -17317,31 +17409,31 @@ class GoogleCloudApigeeV1PodStatus {
 
   GoogleCloudApigeeV1PodStatus.fromJson(core.Map _json) {
     if (_json.containsKey('appVersion')) {
-      appVersion = _json['appVersion'];
+      appVersion = _json['appVersion'] as core.String;
     }
     if (_json.containsKey('deploymentStatus')) {
-      deploymentStatus = _json['deploymentStatus'];
+      deploymentStatus = _json['deploymentStatus'] as core.String;
     }
     if (_json.containsKey('deploymentStatusTime')) {
-      deploymentStatusTime = _json['deploymentStatusTime'];
+      deploymentStatusTime = _json['deploymentStatusTime'] as core.String;
     }
     if (_json.containsKey('deploymentTime')) {
-      deploymentTime = _json['deploymentTime'];
+      deploymentTime = _json['deploymentTime'] as core.String;
     }
     if (_json.containsKey('podName')) {
-      podName = _json['podName'];
+      podName = _json['podName'] as core.String;
     }
     if (_json.containsKey('podStatus')) {
-      podStatus = _json['podStatus'];
+      podStatus = _json['podStatus'] as core.String;
     }
     if (_json.containsKey('podStatusTime')) {
-      podStatusTime = _json['podStatusTime'];
+      podStatusTime = _json['podStatusTime'] as core.String;
     }
     if (_json.containsKey('statusCode')) {
-      statusCode = _json['statusCode'];
+      statusCode = _json['statusCode'] as core.String;
     }
     if (_json.containsKey('statusCodeDetails')) {
-      statusCodeDetails = _json['statusCodeDetails'];
+      statusCodeDetails = _json['statusCodeDetails'] as core.String;
     }
   }
 
@@ -17399,7 +17491,7 @@ class GoogleCloudApigeeV1Point {
 
   GoogleCloudApigeeV1Point.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
@@ -17459,10 +17551,10 @@ class GoogleCloudApigeeV1Property {
 
   GoogleCloudApigeeV1Property.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -17498,13 +17590,13 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
 
   GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsRegion')) {
-      analyticsRegion = _json['analyticsRegion'];
+      analyticsRegion = _json['analyticsRegion'] as core.String;
     }
     if (_json.containsKey('authorizedNetwork')) {
-      authorizedNetwork = _json['authorizedNetwork'];
+      authorizedNetwork = _json['authorizedNetwork'] as core.String;
     }
     if (_json.containsKey('runtimeLocation')) {
-      runtimeLocation = _json['runtimeLocation'];
+      runtimeLocation = _json['runtimeLocation'] as core.String;
     }
   }
 
@@ -17582,19 +17674,21 @@ class GoogleCloudApigeeV1Query {
 
   GoogleCloudApigeeV1Query.fromJson(core.Map _json) {
     if (_json.containsKey('csvDelimiter')) {
-      csvDelimiter = _json['csvDelimiter'];
+      csvDelimiter = _json['csvDelimiter'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('groupByTimeUnit')) {
-      groupByTimeUnit = _json['groupByTimeUnit'];
+      groupByTimeUnit = _json['groupByTimeUnit'] as core.String;
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.int;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -17603,16 +17697,16 @@ class GoogleCloudApigeeV1Query {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'];
+      outputFormat = _json['outputFormat'] as core.String;
     }
     if (_json.containsKey('reportDefinitionId')) {
-      reportDefinitionId = _json['reportDefinitionId'];
+      reportDefinitionId = _json['reportDefinitionId'] as core.String;
     }
     if (_json.containsKey('timeRange')) {
-      timeRange = _json['timeRange'];
+      timeRange = _json['timeRange'] as core.Object;
     }
   }
 
@@ -17676,22 +17770,26 @@ class GoogleCloudApigeeV1QueryMetadata {
 
   GoogleCloudApigeeV1QueryMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('endTimestamp')) {
-      endTimestamp = _json['endTimestamp'];
+      endTimestamp = _json['endTimestamp'] as core.String;
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List).cast<core.String>();
+      metrics = (_json['metrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('outputFormat')) {
-      outputFormat = _json['outputFormat'];
+      outputFormat = _json['outputFormat'] as core.String;
     }
     if (_json.containsKey('startTimestamp')) {
-      startTimestamp = _json['startTimestamp'];
+      startTimestamp = _json['startTimestamp'] as core.String;
     }
     if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'];
+      timeUnit = _json['timeUnit'] as core.String;
     }
   }
 
@@ -17742,19 +17840,19 @@ class GoogleCloudApigeeV1QueryMetric {
 
   GoogleCloudApigeeV1QueryMetric.fromJson(core.Map _json) {
     if (_json.containsKey('alias')) {
-      alias = _json['alias'];
+      alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -17802,13 +17900,13 @@ class GoogleCloudApigeeV1Quota {
 
   GoogleCloudApigeeV1Quota.fromJson(core.Map _json) {
     if (_json.containsKey('interval')) {
-      interval = _json['interval'];
+      interval = _json['interval'] as core.String;
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.String;
     }
     if (_json.containsKey('timeUnit')) {
-      timeUnit = _json['timeUnit'];
+      timeUnit = _json['timeUnit'] as core.String;
     }
   }
 
@@ -17850,16 +17948,16 @@ class GoogleCloudApigeeV1Reference {
 
   GoogleCloudApigeeV1Reference.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('refers')) {
-      refers = _json['refers'];
+      refers = _json['refers'] as core.String;
     }
     if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'];
+      resourceType = _json['resourceType'] as core.String;
     }
   }
 
@@ -17895,10 +17993,10 @@ class GoogleCloudApigeeV1ReferenceConfig {
 
   GoogleCloudApigeeV1ReferenceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'];
+      resourceName = _json['resourceName'] as core.String;
     }
   }
 
@@ -17932,10 +18030,10 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
 
   GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instanceUid')) {
-      instanceUid = _json['instanceUid'];
+      instanceUid = _json['instanceUid'] as core.String;
     }
     if (_json.containsKey('reportTime')) {
-      reportTime = _json['reportTime'];
+      reportTime = _json['reportTime'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -17985,7 +18083,7 @@ class GoogleCloudApigeeV1ReportProperty {
 
   GoogleCloudApigeeV1ReportProperty.fromJson(core.Map _json) {
     if (_json.containsKey('property')) {
-      property = _json['property'];
+      property = _json['property'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = (_json['value'] as core.List)
@@ -18020,10 +18118,10 @@ class GoogleCloudApigeeV1ResourceConfig {
 
   GoogleCloudApigeeV1ResourceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -18051,10 +18149,10 @@ class GoogleCloudApigeeV1ResourceFile {
 
   GoogleCloudApigeeV1ResourceFile.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -18119,7 +18217,7 @@ class GoogleCloudApigeeV1ResourceStatus {
 
   GoogleCloudApigeeV1ResourceStatus.fromJson(core.Map _json) {
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
     if (_json.containsKey('revisions')) {
       revisions = (_json['revisions'] as core.List)
@@ -18128,10 +18226,10 @@ class GoogleCloudApigeeV1ResourceStatus {
           .toList();
     }
     if (_json.containsKey('totalReplicas')) {
-      totalReplicas = _json['totalReplicas'];
+      totalReplicas = _json['totalReplicas'] as core.int;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -18208,7 +18306,7 @@ class GoogleCloudApigeeV1Result {
 
   GoogleCloudApigeeV1Result.fromJson(core.Map _json) {
     if (_json.containsKey('ActionResult')) {
-      ActionResult = _json['ActionResult'];
+      ActionResult = _json['ActionResult'] as core.String;
     }
     if (_json.containsKey('accessList')) {
       accessList = (_json['accessList'] as core.List)
@@ -18217,7 +18315,7 @@ class GoogleCloudApigeeV1Result {
           .toList();
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
@@ -18229,19 +18327,19 @@ class GoogleCloudApigeeV1Result {
       properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
     }
     if (_json.containsKey('reasonPhrase')) {
-      reasonPhrase = _json['reasonPhrase'];
+      reasonPhrase = _json['reasonPhrase'] as core.String;
     }
     if (_json.containsKey('statusCode')) {
-      statusCode = _json['statusCode'];
+      statusCode = _json['statusCode'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('uRI')) {
-      uRI = _json['uRI'];
+      uRI = _json['uRI'] as core.String;
     }
     if (_json.containsKey('verb')) {
-      verb = _json['verb'];
+      verb = _json['verb'] as core.String;
     }
   }
 
@@ -18305,13 +18403,13 @@ class GoogleCloudApigeeV1RevisionStatus {
           .toList();
     }
     if (_json.containsKey('jsonSpec')) {
-      jsonSpec = _json['jsonSpec'];
+      jsonSpec = _json['jsonSpec'] as core.String;
     }
     if (_json.containsKey('replicas')) {
-      replicas = _json['replicas'];
+      replicas = _json['replicas'] as core.int;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
   }
 
@@ -18367,19 +18465,19 @@ class GoogleCloudApigeeV1RoutingRule {
 
   GoogleCloudApigeeV1RoutingRule.fromJson(core.Map _json) {
     if (_json.containsKey('basepath')) {
-      basepath = _json['basepath'];
+      basepath = _json['basepath'] as core.String;
     }
     if (_json.containsKey('envGroupRevision')) {
-      envGroupRevision = _json['envGroupRevision'];
+      envGroupRevision = _json['envGroupRevision'] as core.String;
     }
     if (_json.containsKey('environment')) {
-      environment = _json['environment'];
+      environment = _json['environment'] as core.String;
     }
     if (_json.containsKey('receiver')) {
-      receiver = _json['receiver'];
+      receiver = _json['receiver'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -18440,13 +18538,13 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
 
   GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('endpoint')) {
-      endpoint = _json['endpoint'];
+      endpoint = _json['endpoint'] as core.String;
     }
     if (_json.containsKey('exporter')) {
-      exporter = _json['exporter'];
+      exporter = _json['exporter'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('overrides')) {
       overrides = (_json['overrides'] as core.List)
@@ -18455,10 +18553,10 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
           .toList();
     }
     if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'];
+      revisionCreateTime = _json['revisionCreateTime'] as core.String;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('samplingConfig')) {
       samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
@@ -18522,23 +18620,23 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 
   GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(core.Map _json) {
     if (_json.containsKey('apiProxy')) {
-      apiProxy = _json['apiProxy'];
+      apiProxy = _json['apiProxy'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('revisionCreateTime')) {
-      revisionCreateTime = _json['revisionCreateTime'];
+      revisionCreateTime = _json['revisionCreateTime'] as core.String;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('samplingConfig')) {
       samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
           _json['samplingConfig']);
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
   }
 
@@ -18603,7 +18701,9 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('errorSources')) {
-      errorSources = (_json['errorSources'] as core.List).cast<core.String>();
+      errorSources = (_json['errorSources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('responseCodeRanges')) {
       responseCodeRanges = (_json['responseCodeRanges'] as core.List)
@@ -18614,10 +18714,12 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
           .toList();
     }
     if (_json.containsKey('responseCodes')) {
-      responseCodes = (_json['responseCodes'] as core.List).cast<core.int>();
+      responseCodes = (_json['responseCodes'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('sampler')) {
-      sampler = _json['sampler'];
+      sampler = _json['sampler'] as core.String;
     }
     if (_json.containsKey('samplingRate')) {
       samplingRate = _json['samplingRate'].toDouble();
@@ -18662,10 +18764,10 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
   GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange.fromJson(
       core.Map _json) {
     if (_json.containsKey('firstResponseCode')) {
-      firstResponseCode = _json['firstResponseCode'];
+      firstResponseCode = _json['firstResponseCode'] as core.int;
     }
     if (_json.containsKey('lastResponseCode')) {
-      lastResponseCode = _json['lastResponseCode'];
+      lastResponseCode = _json['lastResponseCode'] as core.int;
     }
   }
 
@@ -18704,7 +18806,9 @@ class GoogleCloudApigeeV1Schema {
           .toList();
     }
     if (_json.containsKey('meta')) {
-      meta = (_json['meta'] as core.List).cast<core.String>();
+      meta = (_json['meta'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -18742,7 +18846,7 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
 
   GoogleCloudApigeeV1SchemaSchemaElement.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties =
@@ -18778,13 +18882,13 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
 
   GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('custom')) {
-      custom = _json['custom'];
+      custom = _json['custom'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -18814,10 +18918,12 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
 
   GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(core.Map _json) {
     if (_json.containsKey('emailIds')) {
-      emailIds = (_json['emailIds'] as core.List).cast<core.String>();
+      emailIds = (_json['emailIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -18845,10 +18951,10 @@ class GoogleCloudApigeeV1Session {
 
   GoogleCloudApigeeV1Session.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('timestampMs')) {
-      timestampMs = _json['timestampMs'];
+      timestampMs = _json['timestampMs'] as core.String;
     }
   }
 
@@ -18882,16 +18988,18 @@ class GoogleCloudApigeeV1SharedFlow {
 
   GoogleCloudApigeeV1SharedFlow.fromJson(core.Map _json) {
     if (_json.containsKey('latestRevisionId')) {
-      latestRevisionId = _json['latestRevisionId'];
+      latestRevisionId = _json['latestRevisionId'] as core.String;
     }
     if (_json.containsKey('metaData')) {
       metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json['metaData']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('revision')) {
-      revision = (_json['revision'] as core.List).cast<core.String>();
+      revision = (_json['revision'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -18971,46 +19079,52 @@ class GoogleCloudApigeeV1SharedFlowRevision {
           _json['configurationVersion']);
     }
     if (_json.containsKey('contextInfo')) {
-      contextInfo = _json['contextInfo'];
+      contextInfo = _json['contextInfo'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'];
+      createdAt = _json['createdAt'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties =
-          (_json['entityMetaDataAsProperties'] as core.Map)
-              .cast<core.String, core.String>();
+      entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
+          _json['entityMetaDataAsProperties'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('lastModifiedAt')) {
-      lastModifiedAt = _json['lastModifiedAt'];
+      lastModifiedAt = _json['lastModifiedAt'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('policies')) {
-      policies = (_json['policies'] as core.List).cast<core.String>();
+      policies = (_json['policies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('resourceFiles')) {
       resourceFiles =
           GoogleCloudApigeeV1ResourceFiles.fromJson(_json['resourceFiles']);
     }
     if (_json.containsKey('resources')) {
-      resources = (_json['resources'] as core.List).cast<core.String>();
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
     if (_json.containsKey('sharedFlows')) {
-      sharedFlows = (_json['sharedFlows'] as core.List).cast<core.String>();
+      sharedFlows = (_json['sharedFlows'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -19133,7 +19247,7 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -19162,7 +19276,7 @@ class GoogleCloudApigeeV1Subscription {
 
   GoogleCloudApigeeV1Subscription.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -19209,10 +19323,12 @@ class GoogleCloudApigeeV1SyncAuthorization {
 
   GoogleCloudApigeeV1SyncAuthorization.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('identities')) {
-      identities = (_json['identities'] as core.List).cast<core.String>();
+      identities = (_json['identities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -19262,19 +19378,19 @@ class GoogleCloudApigeeV1TargetServer {
 
   GoogleCloudApigeeV1TargetServer.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('isEnabled')) {
-      isEnabled = _json['isEnabled'];
+      isEnabled = _json['isEnabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('port')) {
-      port = _json['port'];
+      port = _json['port'] as core.int;
     }
     if (_json.containsKey('sSLInfo')) {
       sSLInfo = GoogleCloudApigeeV1TlsInfo.fromJson(_json['sSLInfo']);
@@ -19323,13 +19439,13 @@ class GoogleCloudApigeeV1TargetServerConfig {
 
   GoogleCloudApigeeV1TargetServerConfig.fromJson(core.Map _json) {
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('port')) {
-      port = _json['port'];
+      port = _json['port'] as core.int;
     }
     if (_json.containsKey('tlsInfo')) {
       tlsInfo = GoogleCloudApigeeV1TlsInfoConfig.fromJson(_json['tlsInfo']);
@@ -19366,10 +19482,10 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
 
   GoogleCloudApigeeV1TestDatastoreResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = _json['error'];
+      error = _json['error'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -19428,32 +19544,36 @@ class GoogleCloudApigeeV1TlsInfo {
 
   GoogleCloudApigeeV1TlsInfo.fromJson(core.Map _json) {
     if (_json.containsKey('ciphers')) {
-      ciphers = (_json['ciphers'] as core.List).cast<core.String>();
+      ciphers = (_json['ciphers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('clientAuthEnabled')) {
-      clientAuthEnabled = _json['clientAuthEnabled'];
+      clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
     }
     if (_json.containsKey('commonName')) {
       commonName =
           GoogleCloudApigeeV1TlsInfoCommonName.fromJson(_json['commonName']);
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('ignoreValidationErrors')) {
-      ignoreValidationErrors = _json['ignoreValidationErrors'];
+      ignoreValidationErrors = _json['ignoreValidationErrors'] as core.bool;
     }
     if (_json.containsKey('keyAlias')) {
-      keyAlias = _json['keyAlias'];
+      keyAlias = _json['keyAlias'] as core.String;
     }
     if (_json.containsKey('keyStore')) {
-      keyStore = _json['keyStore'];
+      keyStore = _json['keyStore'] as core.String;
     }
     if (_json.containsKey('protocols')) {
-      protocols = (_json['protocols'] as core.List).cast<core.String>();
+      protocols = (_json['protocols'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('trustStore')) {
-      trustStore = _json['trustStore'];
+      trustStore = _json['trustStore'] as core.String;
     }
   }
 
@@ -19501,10 +19621,10 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
 
   GoogleCloudApigeeV1TlsInfoCommonName.fromJson(core.Map _json) {
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
     if (_json.containsKey('wildcardMatch')) {
-      wildcardMatch = _json['wildcardMatch'];
+      wildcardMatch = _json['wildcardMatch'] as core.bool;
     }
   }
 
@@ -19560,33 +19680,37 @@ class GoogleCloudApigeeV1TlsInfoConfig {
 
   GoogleCloudApigeeV1TlsInfoConfig.fromJson(core.Map _json) {
     if (_json.containsKey('ciphers')) {
-      ciphers = (_json['ciphers'] as core.List).cast<core.String>();
+      ciphers = (_json['ciphers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('clientAuthEnabled')) {
-      clientAuthEnabled = _json['clientAuthEnabled'];
+      clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
     }
     if (_json.containsKey('commonName')) {
       commonName =
           GoogleCloudApigeeV1CommonNameConfig.fromJson(_json['commonName']);
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('ignoreValidationErrors')) {
-      ignoreValidationErrors = _json['ignoreValidationErrors'];
+      ignoreValidationErrors = _json['ignoreValidationErrors'] as core.bool;
     }
     if (_json.containsKey('keyAlias')) {
-      keyAlias = _json['keyAlias'];
+      keyAlias = _json['keyAlias'] as core.String;
     }
     if (_json.containsKey('keyAliasReference')) {
       keyAliasReference = GoogleCloudApigeeV1KeyAliasReference.fromJson(
           _json['keyAliasReference']);
     }
     if (_json.containsKey('protocols')) {
-      protocols = (_json['protocols'] as core.List).cast<core.String>();
+      protocols = (_json['protocols'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('trustStore')) {
-      trustStore = _json['trustStore'];
+      trustStore = _json['trustStore'] as core.String;
     }
   }
 
@@ -19723,16 +19847,16 @@ class GoogleCloudApigeeV1UpdateError {
 
   GoogleCloudApigeeV1UpdateError.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -19789,7 +19913,7 @@ class GoogleIamV1AuditConfig {
           .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -19828,11 +19952,12 @@ class GoogleIamV1AuditLogConfig {
 
   GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers =
-          (_json['exemptedMembers'] as core.List).cast<core.String>();
+      exemptedMembers = (_json['exemptedMembers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -19901,10 +20026,12 @@ class GoogleIamV1Binding {
       condition = GoogleTypeExpr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -20013,10 +20140,10 @@ class GoogleIamV1Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -20059,7 +20186,7 @@ class GoogleIamV1SetIamPolicyRequest {
       policy = GoogleIamV1Policy.fromJson(_json['policy']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -20087,7 +20214,9 @@ class GoogleIamV1TestIamPermissionsRequest {
 
   GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -20110,7 +20239,9 @@ class GoogleIamV1TestIamPermissionsResponse {
 
   GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -20135,7 +20266,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -20198,21 +20329,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = GoogleRpcStatus.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -20303,13 +20436,13 @@ class GoogleRpcPreconditionFailureViolation {
 
   GoogleRpcPreconditionFailureViolation.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('subject')) {
-      subject = _json['subject'];
+      subject = _json['subject'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -20354,16 +20487,18 @@ class GoogleRpcStatus {
 
   GoogleRpcStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -20419,16 +20554,16 @@ class GoogleTypeExpr {
 
   GoogleTypeExpr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
